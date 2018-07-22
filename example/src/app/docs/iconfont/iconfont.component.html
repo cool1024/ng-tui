@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="card-header bg-white">指令参数 @Directive</div>
+    <div class="card-body">
+        <p>选择器：
+            <code>*[tsIcon]</code>
+            <i class="ml-2 text-warning" tsIcon="warning"></i>
+            <i class="ml-2 text-success" tsIcon="success"></i>
+            <i class="ml-2 text-danger" tsIcon="delete"></i>
+        </p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">属性名称</th>
+                    <th scope="col">类型</th>
+                    <th scope="col">说明</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">tsIcon</th>
+                    <td>
+                        <code>string</code>
+                    </td>
+                    <td>图标名称</td>
+                </tr>
+                <tr>
+                    <th scope="row">loading</th>
+                    <td>
+                        <code>boolean 不设值时为使用</code>
+                    </td>
+                    <td>添加这个属性点击按钮会有加载动画，默认加载图标为loading</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card mt-3">
+    <div class="card-header bg-white">加载动画</div>
+    <div class="card-body m-btn">
+        <button class="border-0" tsBtn>
+            <i tsIcon="loading" loading></i>
+        </button>
+        <button class="border-0" tsBtn>
+            <i tsIcon="refresh" loading></i>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,150 @@
+/* You can add global styles to this file, and also import other style files */
+
+/** bootstrap **/
+$enable-shadows: true;
+$enable-gradients: false;
+$enable-transitions: false;
+$enable-print-styles: false;
+
+$font-weight-light: 200 !default;
+$font-weight-normal: 300 !default;
+$font-weight-bold: 400 !default;
+
+$card-border-radius: 0;
+$btn-box-shadow: none;
+
+@import "~bootstrap/scss/bootstrap";
+
+.card {
+    @extend .shadow-sm;
+}
+
+.m-btn .btn:not(:first-child) {
+    @extend .ml-1;
+}
+
+.btn-white,
+.btn-outline-white {
+    background-color: $white;
+    color: $dark;
+    border-color: $gray-400;
+}
+
+.btn-white:hover,
+.btn-outline-white:hover,
+.btn-outline-white:active {
+    color: $dark;
+    background-color: $gray-100;
+    border-color: $gray-400;
+}
+
+.btn-outline-white:not(:disabled):not(.disabled):active,
+.btn-outline-white:not(:disabled):not(.disabled).active,
+.show > .btn-outline-white.dropdown-toggle {
+    color: $dark;
+    border-color: $gray-400;
+    background-color: $gray-300;
+}
+
+.btn-outline-white.disabled,
+.btn-outline-white:disabled {
+    color: $gray-500;
+}
+
+/** checkbox **/
+.radio-box {
+    cursor: pointer;
+}
+
+.radio-box.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.radio {
+    border: 1px solid $gray-400;
+    height: 1.2rem;
+    width: 1.2rem;
+    padding: $border-width * 2;
+}
+
+.radio-check {
+    height: 100%;
+    width: 100%;
+}
+
+@each $name, $color in $theme-colors {
+    .radio-#{$name}.active .radio-check {
+        background-color: $color;
+    }
+}
+
+.radio:not(.active):hover .radio-check {
+    background-color: $gray-300;
+}
+
+.radio:hover .radio-check {
+    opacity: 0.8;
+}
+
+.switch {
+    cursor: pointer;
+}
+
+.switch-bar {
+    height: 17px;
+    width: 17px;
+}
+
+.switch-line {
+    height: 19px;
+    width: 33px;
+    padding: $border-width;
+    border-radius: 30px;
+    vertical-align: top;
+    background-color: $gray-300;
+}
+
+.switch.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.switch.active .switch-bar {
+    transition: all 0.3s linear;
+    margin-left: 14px;
+}
+
+.switch .switch-bar {
+    transition: all 0.3s linear;
+    margin-left: 0px;
+}
+
+@each $name, $color in $theme-colors {
+    .switch-#{$name}.active .switch-line {
+        background-color: $color;
+    }
+}
+
+/** iconfont **/
+
+@import "assets/iconfont/iconfont.css";
+
+.fa-spin {
+    display: inline-block;
+    animation: fa-spin 1s infinite linear;
+}
+
+@keyframes fa-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(359deg);
+    }
+}
+
+/** animate.css **/
+@import "~animate.css/source/_base.css";
+@import "~animate.css/source/rotating_entrances/rotateIn.css";
