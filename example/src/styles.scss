@@ -14,10 +14,17 @@ $card-border-radius: 0;
 $btn-box-shadow: none;
 $dropdown-border-radius: 0;
 
+$theme-colors: ("purple": #6f42c1, "pink": #e83e8c);
+
 @import "~bootstrap/scss/bootstrap";
 
 .dropup .dropdown-menu {
     bottom: auto !important;
+}
+
+ts-select .dropdown-menu {
+    height: 200px;
+    overflow-y: auto;
 }
 
 .card {
@@ -146,6 +153,31 @@ $dropdown-border-radius: 0;
     display: inline-block !important;
     vertical-align: middle;
     border-color: #eee !important;
+}
+
+/** tab **/
+@each $name, $color in $theme-colors {
+    .nav-link-#{$name}.active {
+        border-top: 3px solid $color !important;
+        color: $color !important;
+    }
+}
+
+/** badge **/
+.ts-badge span {
+    transition: all 0.2s;
+    width: 0px;
+    overflow: hidden;
+    opacity: 0;
+    display: inline-block;
+}
+
+.ts-badge:hover span {
+    transition: all 0.2s;
+    opacity: 1;
+    width: 15px;
+    overflow: hidden;
+    margin-left: 3px;
 }
 
 /** iconfont **/

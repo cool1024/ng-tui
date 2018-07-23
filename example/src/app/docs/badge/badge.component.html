@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="card-header bg-white">
+        标签
+    </div>
+    <div class="card-body">
+        <!--一个简单的标签-->
+        <ts-badge color="dark" label="这个标签是独立的"></ts-badge>
+        <!--使用ngFor打印标签-->
+        <ts-badge *ngFor="let badge of badges" (closeHandle)="closeBadge(badge)" [color]="badge.badgeColor" [label]="badge.badgeLabel"></ts-badge>
+    </div>
+</div>
+<div class="card mt-3">
+    <div class="card-header bg-white">
+        标签组
+    </div>
+    <div class="card-body">
+        <ts-badges [badges]="badges" (closeHandle)="sendRemoveRequest($event)"></ts-badges>
+    </div>
+</div>

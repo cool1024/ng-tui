@@ -5,20 +5,32 @@ import { ButtonModule } from './modules/button/button.module';
 import { CheckboxModule } from './modules/checkbox/checkbox.module';
 import { DropdownModule } from './modules/dropdown/dropdown.module';
 import { PaginationModule } from './modules/pagination/pagination.module';
+import { SelectModule } from './modules/select/select.module';
+import { CollapseModule } from './modules/collapse/collapse.module';
+import { TabModule } from './modules/tab/tab.module';
+import { BadgeModule } from './modules/badge/badge.module';
 @NgModule({
     imports: [
-        IconfontModule,
+        BadgeModule,
         ButtonModule,
         CheckboxModule,
+        CollapseModule,
         DropdownModule,
+        IconfontModule,
         PaginationModule,
+        SelectModule,
+        TabModule,
     ],
     exports: [
-        IconfontModule,
+        BadgeModule,
         ButtonModule,
         CheckboxModule,
+        CollapseModule,
         DropdownModule,
+        IconfontModule,
         PaginationModule,
+        SelectModule,
+        TabModule,
     ]
 })
 export class TUIModule {

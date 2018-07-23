@@ -12,6 +12,8 @@ export class ConfigService {
             iconfontLoadingClass: ['fa-spin'],
             buttonLoadingIcon: 'loading',
             defaultColor: 'primary',
+            confirmCancelTitle: 'Cancel',
+            confirmOkTitle: 'Confirm',
         }, config);
     }
 

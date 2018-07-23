@@ -12,4 +12,8 @@ export interface TUIConfig {
     buttonLoadingIcon?: string;
 
     defaultColor?: string;
+
+    confirmCancelTitle?: string;
+
+    confirmOkTitle?: string;
 }
