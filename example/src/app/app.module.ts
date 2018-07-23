@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { ButtonComponent } from './docs/button/button.component';
 import { IconfontComponent } from './docs/iconfont/iconfont.component';
 import { CheckboxComponent } from './docs/checkbox/checkbox.component';
+import { DropdownComponent } from './docs/dropdown/dropdown.component';
+import { PaginationComponent } from './docs/pagination/pagination.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         ButtonComponent,
         IconfontComponent,
-        CheckboxComponent
+        CheckboxComponent,
+        DropdownComponent,
+        PaginationComponent
     ],
     imports: [
         BrowserModule,

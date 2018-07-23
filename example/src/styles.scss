@@ -12,8 +12,13 @@ $font-weight-bold: 400 !default;
 
 $card-border-radius: 0;
 $btn-box-shadow: none;
+$dropdown-border-radius: 0;
 
 @import "~bootstrap/scss/bootstrap";
+
+.dropup .dropdown-menu {
+    bottom: auto !important;
+}
 
 .card {
     @extend .shadow-sm;
@@ -21,6 +26,10 @@ $btn-box-shadow: none;
 
 .m-btn .btn:not(:first-child) {
     @extend .ml-1;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 .btn-white,
@@ -49,6 +58,11 @@ $btn-box-shadow: none;
 .btn-outline-white.disabled,
 .btn-outline-white:disabled {
     color: $gray-500;
+}
+
+.btn-white.active,
+.btn-outline-white .active {
+    background-color: $gray-200;
 }
 
 /** checkbox **/
@@ -124,6 +138,14 @@ $btn-box-shadow: none;
     .switch-#{$name}.active .switch-line {
         background-color: $color;
     }
+}
+
+/** pagination **/
+.pagination-input {
+    width: 70px;
+    display: inline-block !important;
+    vertical-align: middle;
+    border-color: #eee !important;
 }
 
 /** iconfont **/
