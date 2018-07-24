@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import { TUICoreModule } from '../../tui-core/tui-core.module';
-import { CssloadComponent } from './cssload.component';
 import { TableLoadComponent } from './table-load.component';
+import { IconfontModule } from '../iconfont/iconfont.module';
 
 @NgModule({
     imports: [
         TUICoreModule,
+        IconfontModule
     ],
     declarations: [
-        CssloadComponent,
         TableLoadComponent
     ],
     exports: [
-        CssloadComponent,
         TableLoadComponent,
     ]
 })

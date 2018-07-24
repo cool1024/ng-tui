@@ -5,64 +5,22 @@ import { ToastConfig } from './toast.interface';
 
 @Component({
     template: `
-    <div *ngIf="show" class="{{position}} position-fixed alert m-2" style="width:20rem;z-index:9999">
+    <div *ngIf="show" class="{{position}} position-fixed alert m-2">
         <div *ngFor="let toast of toasts"
-            class="ts-toast animated fadeInUp alert rounded-0 bg-white {{toast.color}}"
-            [class.ts-op-hidden]="(toast.timeout - toast.cx)<=1000">
-            <h6 class="alert-heading">
-                <i class="fa fa-fw {{toast.icon}}"></i>
-                <span class="text-dark">{{toast.title}}</span>
+            class="toast border-{{toast.color}} animated slideInUp alert rounded-0 bg-white shadow-sm"
+            [class.toast-hidden]="(toast.timeout - toast.cx)<=1000">
+            <h6 class="alert-heading d-flex justify-content-between">
+                <div>
+                    <i [tsIcon]="toast.icon" [ngClass]="'text-'+toast.color"></i>
+                    <span class="text-dark ml-2">{{toast.title}}</span>
+                </div>
                 <span (click)="removeToast(toast)" class="pointer pull-right" style="opacity: 0.8;">&times;</span>
             </h6>
             <hr class="mb-2">
             <p class="mb-0 mt-0 text-dark">{{toast.message}}</p>
         </div>
     </div>
-    `,
-    styles: [`
-        .animated {
-            animation-duration: 0.5s;
-            animation-fill-mode: both;
-        }
-        @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translate3d(0, 100%, 0);
-            }
-            to {
-              opacity: 1;
-              transform: translate3d(0, 0, 0);
-            }
-        }
-        .fadeInUp {
-            animation-name: fadeInUp;
-        }
-        .ts-toast{
-            box-shadow: 1px 2px 3px #ccc;
-            border-width: 0;
-            border-left-width: 3px;
-        }
-        .close {
-            cursor:pointer;
-        }
-        .ts-top {
-            top:0
-        }
-        .ts-bottom {
-            bottom:0
-        }
-        .ts-left {
-            left:0
-        }
-        .ts-right {
-            right:0;
-        }
-        .ts-op-hidden{
-            opacity:0;
-            transition: opacity 1s;
-        }
-        `,
-    ]
+    `
 })
 export class ToastComponent implements OnDestroy {
 

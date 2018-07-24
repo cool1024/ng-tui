@@ -25,7 +25,12 @@ export class ConfirmService {
         containerEl.appendChild(this.windowCmptRef.location.nativeElement);
     }
 
-    create(title: string, message: string, options: { okTitle?: string, cancelTitle?: string, color?: string }): Observable<void> {
+    create(title: string, message: string, options: {
+        okTitle?: string,
+        cancelTitle?: string,
+        color?: string,
+        icon?: string
+    }): Observable<void> {
         this.init();
         this.windowCmptRef.instance.title = title;
         this.windowCmptRef.instance.message = message;
@@ -39,7 +44,7 @@ export class ConfirmService {
 
     info(title: string, message: string, options?: { okTitle?: string, cancelTitle?: string }) {
         const config = this.combineOptions(options || {});
-        config.icon = 'info';
+        config.icon = 'infomation';
         config.color = 'info';
         return this.create(title, message, config);
     }
@@ -53,7 +58,7 @@ export class ConfirmService {
 
     danger(title: string, message: string, options?: { okTitle?: string, cancelTitle?: string }) {
         const config = this.combineOptions(options || {});
-        config.icon = 'danger';
+        config.icon = 'wrong';
         config.color = 'danger';
         return this.create(title, message, config);
     }

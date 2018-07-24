@@ -12,6 +12,11 @@ import { SelectComponent } from './docs/select/select.component';
 import { CollapseComponent } from './docs/collapse/collapse.component';
 import { TabComponent } from './docs/tab/tab.component';
 import { BadgeComponent } from './docs/badge/badge.component';
+import { ToastComponent } from './docs/toast/toast.component';
+import { ProgressComponent } from './docs/progress/progress.component';
+import { ImageComponent } from './docs/image/image.component';
+import { LoadingComponent } from './docs/loading/loading.component';
+import { SearchComponent } from './docs/search/search.component';
 
 @NgModule({
     declarations: [
@@ -24,12 +29,17 @@ import { BadgeComponent } from './docs/badge/badge.component';
         SelectComponent,
         CollapseComponent,
         TabComponent,
-        BadgeComponent
+        BadgeComponent,
+        ToastComponent,
+        ProgressComponent,
+        ImageComponent,
+        LoadingComponent,
+        SearchComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
-        TUIModule.forRoot({ iconfontType: 'font-class' }),
+        TUIModule.forRoot({ iconfontType: 'font-class', confirmCancelTitle: '取消', confirmOkTitle: '确认' }),
     ],
     providers: [],
     bootstrap: [AppComponent]

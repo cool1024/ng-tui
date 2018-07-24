@@ -53,7 +53,6 @@ export class IconfontDirective implements OnInit {
         } else if (this.iconType === 'unicode') {
             dom.classList.add(prefix);
         } else {
-            console.log(this.icon);
             dom.classList.remove(`icon-${this.icon}`);
             dom.classList.add(prefix, `icon-${icon}`);
         }

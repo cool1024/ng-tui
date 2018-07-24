@@ -7,12 +7,12 @@ import { ConfirmOptions } from './confirm.interface';
 @Component({
     template: `
     <div #pad (click)="tryClose($event.target)" [class.show]="show"
-        [class.d-block]="show" class="modal fade animated fadeInUp" tabindex="-1">
+        [class.d-block]="show" class="modal fade animated slideInUp" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">
-                        <i *ngIf="config.icon" [class]="config.icon"></i>
+                        <i [ngClass]="'text-'+config.color" [tsIcon]="config.icon" ></i>
                         {{title}}
                     </h5>
                     <button (click)="dismiss()" type="button" class="close">

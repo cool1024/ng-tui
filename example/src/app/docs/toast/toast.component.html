@@ -1,0 +1,20 @@
+<div class="card mt-2">
+    <div class="card-header bg-white">消息提示</div>
+    <div class="card-body m-btn">
+        <button (click)="showToast('success')" tsBtn color="success">Success</button>
+        <button (click)="showToast('info')" tsBtn color="info">Info</button>
+        <button (click)="showToast('warning')" tsBtn color="warning">Warning</button>
+        <button (click)="showToast('danger')" tsBtn color="danger">Danger</button>
+        <button (click)="showCustom()" tsBtn>Custom</button>
+    </div>
+</div>
+<div class="card mt-2">
+    <div class="card-header bg-white">确认对话</div>
+    <div class="card-body m-btn">
+        <button (click)="showConfirm('success')" tsBtn color="success">Success</button>
+        <button (click)="showConfirm('info')" tsBtn color="info">Info</button>
+        <button (click)="showConfirm('warning')" tsBtn color="warning">Warning</button>
+        <button (click)="showConfirm('danger')" tsBtn color="danger">Danger</button>
+        <button (click)="showCustomConfirm()" tsBtn>Custom</button>
+    </div>
+</div>

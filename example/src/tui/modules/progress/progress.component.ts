@@ -1,25 +1,25 @@
 import { Component, Input } from '@angular/core';
-import { DomAttr } from './../../commons/extends/attr.class';
+import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
+import { ConfigService } from '../../tui-core/base-services/config.service';
 
 @Component({
     selector: 'ts-progress',
     template: `
     <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" [ngClass]="bgClass" [ngStyle]="{width:value+'%'}">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-{{color}}" [ngStyle]="{width:value+'%'}">
             {{progress}}
         </div>
     </div>`
 })
-export class ProgressComponent extends DomAttr {
+export class ProgressComponent extends BaseTheme {
 
     @Input() value: number;
 
-    constructor() {
+    get progress() { return `${this.value}%`; }
+
+    constructor(private configService: ConfigService) {
         super();
         this.value = 0;
-    }
-
-    get progress() {
-        return `${this.value}%`;
+        this.color = this.configService.config.defaultColor;
     }
 }

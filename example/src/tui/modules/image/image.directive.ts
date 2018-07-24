@@ -1,5 +1,5 @@
 import { Directive, HostListener, Input, HostBinding, OnChanges, SimpleChanges } from '@angular/core';
-import { ImageConfig } from './image.config';
+import { ConfigService } from '../../tui-core/base-services/config.service';
 
 @Directive({
     selector: `img[tsImg]`,
@@ -14,10 +14,10 @@ export class ImageDirective implements OnChanges {
     @HostBinding('src') _src: string;
 
     @HostListener('error', ['$event.target']) onError(image: HTMLImageElement) {
-        this._src = this.dataSrc || this.config.default;
+        this._src = this.dataSrc || this.configService.config.errorImgSrc;
     }
 
-    constructor(private config: ImageConfig) { }
+    constructor(private configService: ConfigService) { }
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes.hasOwnProperty('src')) {

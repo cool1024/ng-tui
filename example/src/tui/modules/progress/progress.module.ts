@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from './../../commons/common.module';
+import { TUICoreModule } from '../../tui-core/tui-core.module';
 import { ProgressComponent } from './progress.component';
 
 @NgModule({
     imports: [
-        CommonModule,
+        TUICoreModule,
     ],
     declarations: [
         ProgressComponent,
     ],
     exports: [
-        CommonModule,
         ProgressComponent,
     ]
 })

@@ -31,28 +31,34 @@ export class ToastService {
     }
 
     info(title: string, message: string, timer?: number) {
-        this.create(title, message, { color: 'border-info', icon: 'text-info fa-info-circle', timeout: timer || this.config.timeout });
+        this.create(title, message, {
+            color: 'info',
+            icon: 'information',
+            timeout: timer || this.config.timeout
+        });
     }
 
     success(title: string, message: string, timer?: number) {
         this.create(title, message, {
-            color: 'border-success',
-            icon: 'text-success fa-check-circle', timeout: timer || this.config.timeout
+            color: 'success',
+            icon: 'success',
+            timeout: timer || this.config.timeout
         });
     }
 
     danger(title: string, message: string, timer?: number) {
         this.create(title, message, {
-            color: 'border-danger',
-            icon: 'text-danger fa-exclamation-circle', timeout: timer || this.config.timeout
+            color: 'danger',
+            icon: 'wrong',
+            timeout: timer || this.config.timeout
         });
     }
 
     warning(title: string, message: string, timer?: number) {
         this.create(title, message, {
-            color: 'border-warning',
-            icon: 'text-warning fa-exclamation-triangle', timeout: timer || this.config.timeout
+            color: 'warning',
+            icon: 'warning',
+            timeout: timer || this.config.timeout
         });
     }
-
 }

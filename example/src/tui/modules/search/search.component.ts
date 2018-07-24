@@ -7,12 +7,13 @@ import {
     forwardRef,
     OnInit,
 } from '@angular/core';
-import { Item } from './../../commons/interfaces/item.interface';
-import { DomAttr } from '../../commons/extends/attr.class';
+import { Item } from './../../tui-core/interfaces/item.interface';
 import { DropdownDirective } from '../dropdown/dropdown.directive';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { BaseForm } from '../../tui-core/base-class/base-form.class';
+import { ConfigService } from '../../tui-core/base-services/config.service';
 
 @Component({
     selector: '*[tsSearch]',
@@ -23,9 +24,9 @@ import { switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
             [class.p-2]="activeItems.length<=0"
             class="pointer w-100">
             <span class="text-muted" *ngIf="activeItems.length<=0">{{placeholder}}</span>
-            <span class="badge p-2 m-1 no-select {{badgeClass}}" *ngFor="let active of activeItems">
-                <i (click)="setValue(active)" class="fa fa-fw fa-close"></i>
+            <span class="badge p-2 m-1 no-select badge-{{color}}" *ngFor="let active of activeItems">
                 {{active.text}}
+                <i (click)="setValue(active)" tsIcon="delete"></i>
             </span>
         </div>
         <div tsDropMenu [style.width]="'100%'">
@@ -38,11 +39,11 @@ import { switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
                </div>
                 <div *ngFor="let item of items$ | async"
                     (click)="setValue(item)"
-                    class="dropdown-item pointer no-select {{isActiveItem(item)?textClass:''}}">
+                    class="dropdown-item pointer no-select {{isActiveItem(item)?'text-'+color:''}}">
                     <div class="d-table w-100">
                         <div class="d-table-cell" [innerHTML]="item.content||item.text"></div>
                         <div class="d-table-cell text-right" *ngIf="isActiveItem(item)">
-                            <i class="fa fa-fw fa-check"></i>
+                            <i tsIcon="check"></i>
                         </div>
                     </div>
                 </div>
@@ -69,28 +70,40 @@ import { switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
         multi: true
     }]
 })
-export class SearchComponent extends DomAttr implements OnInit, AfterViewInit, ControlValueAccessor {
+export class SearchComponent extends BaseForm implements OnInit, AfterViewInit, ControlValueAccessor {
 
     @Input() search: (key: string) => Observable<Item[]>;
+
     @Input() placeholder: string;
+
     @Input() emptyLabel: string;
+
     @Input() searchLabel: string;
 
+    @Input() color: string;
+
+    @Input() lg: string;
+
+    @Input() sm: string;
+
     @ViewChild('tsDropdown') dropdown: DropdownDirective;
+
     @ViewChild('searchBox') input: ElementRef;
 
     items$: Observable<Item[]>;
-    title = '';
-    activeItems: Array<Item> = [];
-    private changeInside = false;
-    private subject = new Subject<string>();
-    applyChange = (value: any) => { };
 
-    constructor(private elementRef: ElementRef) {
+    title = '';
+
+    activeItems: Array<Item> = [];
+
+    private subject = new Subject<string>();
+
+    constructor(private elementRef: ElementRef, private configService: ConfigService) {
         super();
         this.placeholder = 'Select...';
         this.emptyLabel = 'No results found.';
         this.searchLabel = 'Search...';
+        this.color = configService.config.defaultColor;
     }
 
     ngOnInit() {
@@ -104,10 +117,10 @@ export class SearchComponent extends DomAttr implements OnInit, AfterViewInit, C
     ngAfterViewInit() {
         const dom: HTMLElement = this.elementRef.nativeElement;
         dom.classList.add('form-control', 'p-0');
-        if (this.sm !== null) {
+        if (this.sm !== undefined) {
             dom.classList.add('form-control-sm');
         }
-        if (this.lg !== null) {
+        if (this.lg !== undefined) {
             dom.classList.add('form-control-lg');
         }
     }
@@ -130,12 +143,7 @@ export class SearchComponent extends DomAttr implements OnInit, AfterViewInit, C
         this.activeItems = values;
     }
 
-    registerOnChange(fn: any) { this.applyChange = fn; }
-
-    registerOnTouched(fn: any) { this.applyChange = fn; }
-
     cleanSearch() {
-        console.log(this.input);
         this.input.nativeElement.value = '';
     }
 
@@ -146,7 +154,7 @@ export class SearchComponent extends DomAttr implements OnInit, AfterViewInit, C
         } else {
             this.activeItems.splice(index, 1);
         }
-        this.applyChange(this.activeItems);
+        this.changeHandle(this.activeItems);
         setTimeout(() => {
             if (!this.dropdown.isClose()) {
                 this.dropdown.present();

@@ -16,4 +16,6 @@ export interface TUIConfig {
     confirmCancelTitle?: string;
 
     confirmOkTitle?: string;
+
+    errorImgSrc?: string;
 }

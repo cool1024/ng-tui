@@ -1,22 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
 
 /** bootstrap **/
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
 $enable-shadows: true;
 $enable-gradients: false;
 $enable-transitions: false;
 $enable-print-styles: false;
 
-$font-weight-light: 200 !default;
-$font-weight-normal: 300 !default;
-$font-weight-bold: 400 !default;
+$font-weight-light: 200;
+$font-weight-normal: 300;
+$font-weight-bold: 400;
 
 $card-border-radius: 0;
 $btn-box-shadow: none;
 $dropdown-border-radius: 0;
+$input-placeholder-color: $gray-300;
+$input-btn-focus-box-shadow: none;
+$input-focus-box-shadow: none;
 
-$theme-colors: ("purple": #6f42c1, "pink": #e83e8c);
+$theme-colors: ("primary": $primary, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark, "purple": $purple, "pink": $pink);
 
-@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+
+// @import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+
+// @import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+
+// @import "~bootstrap/scss/breadcrumb";
+// @import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+
+// @import "~bootstrap/scss/jumbotron";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/media";
+
+// @import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/modal";
+
+// @import "~bootstrap/scss/tooltip";
+// @import "~bootstrap/scss/popover";
+// @import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/utilities";
+
+@import "~bootstrap/scss/print";
 
 .dropup .dropdown-menu {
     bottom: auto !important;
@@ -180,6 +226,48 @@ ts-select .dropdown-menu {
     margin-left: 3px;
 }
 
+/** toast **/
+.toast {
+    width: 20rem;
+    z-index: 9999;
+    border-width: 0;
+    border-left-width: 3px;
+}
+
+.toast .close {
+    cursor: pointer;
+}
+
+.top {
+    top: 0;
+}
+
+.bottom {
+    bottom: 0;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.toast-hidden {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/** table-loader **/
+.table-loader {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.table-loader .position-absolute {
+    top: 40%;
+}
+
 /** iconfont **/
 
 @import "assets/iconfont/iconfont.css";
@@ -201,4 +289,10 @@ ts-select .dropdown-menu {
 
 /** animate.css **/
 @import "~animate.css/source/_base.css";
-@import "~animate.css/source/rotating_entrances/rotateIn.css";
+
+// @import "~animate.css/source/fading_entrances/fadeInUp.css";
+@import "~animate.css/source/sliding_entrances/slideInUp.css";
+
+.animated {
+    animation-duration: 0.4s;
+}

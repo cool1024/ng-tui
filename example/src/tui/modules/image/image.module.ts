@@ -1,31 +1,16 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CommonModule } from './../../commons/common.module';
-import { ImageConfig } from './image.config';
+import { NgModule } from '@angular/core';
+import { TUICoreModule } from '../../tui-core/tui-core.module';
 import { ImageDirective } from './image.directive';
 
 @NgModule({
     imports: [
-        CommonModule,
+        TUICoreModule,
     ],
     declarations: [
         ImageDirective,
     ],
     exports: [
-        CommonModule,
         ImageDirective,
-    ],
-    providers: [
-        ImageConfig,
     ]
 })
-export class ImageModule {
-
-    public static forRoot(config?: { default?: string }): ModuleWithProviders {
-        return {
-            ngModule: ImageModule,
-            providers: [
-                { provide: ImageConfig, useValue: config }
-            ]
-        };
-    }
-}
+export class ImageModule { }

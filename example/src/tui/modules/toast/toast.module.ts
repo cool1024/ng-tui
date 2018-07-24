@@ -1,19 +1,17 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CommonModule } from './../../commons/common.module';
+import { TUICoreModule } from '../../tui-core/tui-core.module';
 import { ToastComponent } from './toast.component';
 import { ToastService } from './toast.service';
 import { ToastConfig } from './toast.interface';
+import { IconfontModule } from '../iconfont/iconfont.module';
 
 @NgModule({
     imports: [
-        CommonModule,
+        TUICoreModule,
+        IconfontModule,
     ],
     declarations: [
         ToastComponent
-    ],
-    exports: [
-        CommonModule,
-        ToastComponent,
     ],
     entryComponents: [
         ToastComponent,
