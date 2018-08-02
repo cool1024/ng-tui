@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable, Observer, concat } from 'rxjs';
 
-declare const window: any;
-
 @Injectable()
 export class ScriptService {
 
@@ -15,7 +13,6 @@ export class ScriptService {
     load(src: string, target?: any): Subject<void> {
         this.isReady = false;
         this.src = src;
-        const body = document.querySelector('body');
         this.useScript = new Subject<void>();
 
         // filter loaded scripts (use script service loaed)

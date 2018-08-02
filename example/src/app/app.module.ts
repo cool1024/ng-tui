@@ -1,45 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { TUIModule } from '../tui/tui.module';
+import { AppRoutingModule } from './app.routing';
+import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
-import { ButtonComponent } from './docs/button/button.component';
-import { IconfontComponent } from './docs/iconfont/iconfont.component';
-import { CheckboxComponent } from './docs/checkbox/checkbox.component';
-import { DropdownComponent } from './docs/dropdown/dropdown.component';
-import { PaginationComponent } from './docs/pagination/pagination.component';
-import { SelectComponent } from './docs/select/select.component';
-import { CollapseComponent } from './docs/collapse/collapse.component';
-import { TabComponent } from './docs/tab/tab.component';
-import { BadgeComponent } from './docs/badge/badge.component';
-import { ToastComponent } from './docs/toast/toast.component';
-import { ProgressComponent } from './docs/progress/progress.component';
-import { ImageComponent } from './docs/image/image.component';
-import { LoadingComponent } from './docs/loading/loading.component';
-import { SearchComponent } from './docs/search/search.component';
+import { EChartModule } from './tools-ui/lib/echart/echart.module';
+import { TUIModule } from './tools-ui/tui.module';
 
 @NgModule({
     declarations: [
-        AppComponent,
-        ButtonComponent,
-        IconfontComponent,
-        CheckboxComponent,
-        DropdownComponent,
-        PaginationComponent,
-        SelectComponent,
-        CollapseComponent,
-        TabComponent,
-        BadgeComponent,
-        ToastComponent,
-        ProgressComponent,
-        ImageComponent,
-        LoadingComponent,
-        SearchComponent
+        AppComponent
     ],
     imports: [
         BrowserModule,
-        FormsModule,
-        TUIModule.forRoot({ iconfontType: 'font-class', confirmCancelTitle: '取消', confirmOkTitle: '确认' }),
+        CoreModule,
+        TUIModule.forRoot(),
+        EChartModule.forRoot('assets/echart/echarts.common.min.js'),
+        AppRoutingModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

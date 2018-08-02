@@ -1,16 +1,47 @@
-<div class="container pt-3">
-    <app-search></app-search>
-    <!-- <app-loading></app-loading>
-    <app-image></app-image>
-    <app-progress></app-progress>
-    <app-toast></app-toast>
-    <app-badge></app-badge>
-    <app-tab></app-tab>
-    <app-collapse></app-collapse>
-    <app-select></app-select>
-    <app-pagination></app-pagination>
-    <app-dropdown></app-dropdown>
-    <app-checkbox></app-checkbox>
-    <app-iconfont></app-iconfont>
-    <app-button></app-button> -->
-</div>
+<!--纯净模式-->
+<router-outlet *ngIf="global.params.dashboardMode!=='full'; else elseBlock"></router-outlet>
+
+<!--附带菜单与顶部-->
+<ng-template #elseBlock>
+    <div class="d-flex flex-column" style="height:100vh;">
+        <div class="navbar bg-success text-white d-flex align-items-center justify-content-between flex-shrink-0 shadow pl-3 pr-3"
+            style="height:60px">
+            <div class="d-flex align-items-center">
+                <i class="iconfont icon-category"></i>
+                <img class="ml-3" src="assets/images/logo.png" alt="TOOLSUI" height="40">
+            </div>
+            <div></div>
+            <div>
+                <i class="iconfont icon-remind pointer ml-3"></i>
+                <i class="iconfont icon-account pointer ml-3"></i>
+                <i class="iconfont icon-set pointer ml-3"></i>
+            </div>
+        </div>
+        <div class="flex-grow-1 d-flex justify-content-between">
+            <!-- 左侧菜单 -->
+            <div class="bg-white shadow flex-shrink-0" style="width:250px"></div>
+            <!-- 主体内容 -->
+            <div class="flex-grow-1 d-flex flex-column">
+                <!-- 面包屑导航 -->
+                <!-- <div class="breadcrumb pl-3 pr-3">
+                    <a>
+                        <i class="iconfont icon-homepagenormal"></i>
+                        <span>首页</span>
+                    </a>
+                    <a class="ml-2">
+                        <i class="iconfont icon-viewlist"></i>
+                        <span>列表</span>
+                    </a>
+                    <a class="ml-2">
+                        <i class="iconfont icon-information"></i>
+                        <span>详情</span>
+                    </a>
+                </div> -->
+                <!-- 页面出口 -->
+                <div class="flex-grow-1 p-3 bg-light" style="overflow: auto">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
