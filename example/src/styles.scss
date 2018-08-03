@@ -3,6 +3,17 @@
 /** bootstrap **/
 @import "~bootstrap/scss/functions";
 
+$blue: #007bff !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e9488b !default;
+$red: #ff4255 !default;
+$orange: #ff9100 !default;
+$yellow: #ffd900 !default;
+$green: #2abd87 !default;
+$teal: #35d1a2 !default;
+$cyan: #44b1c2 !default;
+
 $enable-shadows: true;
 $enable-gradients: false;
 $enable-transitions: false;

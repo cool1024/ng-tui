@@ -121,6 +121,71 @@ export class HomeComponent implements OnInit {
         ]
     };
 
+    optionFour = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'line',
+                lineStyle: {
+                    color: 'transparent'
+                }
+            }
+        },
+        grid: {
+            left: 0,
+            top: 10,
+            height: '100%',
+            width: '100%'
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            show: false,
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            axisTick: {
+                alignWithLabel: true
+            }
+        },
+        yAxis: {
+            type: 'value',
+            show: false,
+        },
+        series: [{
+            lineStyle: {
+                color: '#007bff',
+            },
+            smooth: 0.4,
+            data: [1, 3, 5, 1, 4, 3, 1],
+            type: 'line',
+            areaStyle: {
+                color: 'rgba(0, 123, 255, 0.5)',
+            },
+            itemStyle: {
+                color: '#007bff',
+                opacity: 0
+            }
+        }]
+    };
+
+    optionPie = {
+        color: ['#ff4255', '#ff9100', '#ffd900', '#2abd87', '#35d1a2', '#44b1c2', '#17a2b8'],
+        series: [
+            {
+                name: '访问来源',
+                type: 'pie',
+                radius: ['50%', '70%'],
+                center: ['50%', '50%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        position: 'center'
+                    }
+                },
+                data: [100, 200, 300, 400, 500]
+            }
+        ]
+    };
+
     constructor() { }
 
     ngOnInit() {
