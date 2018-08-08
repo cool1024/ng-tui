@@ -9,7 +9,7 @@ import {
     ElementRef,
     AfterViewInit,
 } from '@angular/core';
-import { Item } from './../../tui-core/interfaces/item.interface';
+import { Item } from '../../tui-core/interfaces/item.interface';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseForm } from '../../tui-core/base-class/base-form.class';
 

@@ -1,6 +1,6 @@
 import { Directive, ElementRef, AfterViewInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { HtmlDomService } from '../../tui-core/base-services/htmldom.service';
-import { Toggle } from './../../tui-core/interfaces/toggle.interface';
+import { Toggle } from '../../tui-core/interfaces/toggle.interface';
 
 @Directive({
     selector: '*[tsCollapse]',

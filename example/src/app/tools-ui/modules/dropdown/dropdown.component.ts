@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { Item } from './../../tui-core/interfaces/item.interface';
+import { Item } from '../../tui-core/interfaces/item.interface';
 import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
 
 @Component({

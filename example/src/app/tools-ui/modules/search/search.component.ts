@@ -7,7 +7,7 @@ import {
     forwardRef,
     OnInit,
 } from '@angular/core';
-import { Item } from './../../tui-core/interfaces/item.interface';
+import { Item } from '../../tui-core/interfaces/item.interface';
 import { DropdownDirective } from '../dropdown/dropdown.directive';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';

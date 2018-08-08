@@ -1,6 +1,6 @@
 import { Directive, Input, QueryList, ContentChildren, forwardRef, AfterViewInit } from '@angular/core';
 import { CollapseDirective } from './collapse.directive';
-import { ToggleDirective } from './../../tui-core/directives/toggle.directives';
+import { ToggleDirective } from '../../tui-core/directives/toggle.directives';
 
 @Directive({
     selector: '*[tsCollapses]',

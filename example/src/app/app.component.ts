@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { GlobalService } from './core/services/global.service';
+import { GlobalService, RequestService, MenuService } from './core/services';
+import { MenuModel } from './modules/dashboard/components/menu/menu.interface';
 
 @Component({
     selector: 'app-root',
@@ -8,9 +9,14 @@ import { GlobalService } from './core/services/global.service';
 })
 export class AppComponent {
 
+    // 系统菜单列表
+    menus = new Array<MenuModel>();
+
 
     constructor(
-        public global: GlobalService
+        public global: GlobalService,
+        private request: RequestService,
+        private menu: MenuService,
     ) {
 
 
@@ -18,6 +24,14 @@ export class AppComponent {
         this.global.appendValuesToParams({
             dashboardMode: 'full',
             menuMode: 'small',
+        });
+
+        // 载入服务端参数
+
+        // 1.菜单载入
+        this.request.text('assets/json/menu.json').subscribe(res => {
+            this.menus = this.menu.loadMenu(JSON.parse(res));
+            console.log(this.menus);
         });
     }
 }

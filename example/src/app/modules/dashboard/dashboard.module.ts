@@ -7,7 +7,7 @@
  */
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DashboardRoutingModule, declarationComponents, entryComponents, providers } from './dashboard.routing';
+import { DashboardRoutingModule, declarationComponents, entryComponents, providers, exportComponents } from './dashboard.routing';
 import { EChartModule } from '../../tools-ui/lib/echart/echart.module';
 import { TabModule } from '../../tools-ui/modules/tab/tab.module';
 
@@ -20,6 +20,7 @@ import { TabModule } from '../../tools-ui/modules/tab/tab.module';
     ],
     declarations: [declarationComponents],
     entryComponents: [entryComponents],
+    exports: [exportComponents],
     providers: [providers]
 })
 export class DashboardModule { }

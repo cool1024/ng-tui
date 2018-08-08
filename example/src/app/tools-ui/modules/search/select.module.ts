@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { DropdownModule } from './../dropdown/dropdown.module';
+import { DropdownModule } from '../dropdown/dropdown.module';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './search.component';
 import { TUICoreModule } from '../../tui-core/tui-core.module';

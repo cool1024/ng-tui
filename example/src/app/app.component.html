@@ -19,7 +19,9 @@
         </div>
         <div class="flex-grow-1 d-flex justify-content-between">
             <!-- 左侧菜单 -->
-            <div class="bg-white shadow flex-shrink-0" style="width:250px"></div>
+            <div class="bg-white shadow flex-shrink-0" style="width:250px">
+                <app-menu [items]="menus"></app-menu>
+            </div>
             <!-- 主体内容 -->
             <div class="flex-grow-1 d-flex flex-column">
                 <!-- 面包屑导航 -->
