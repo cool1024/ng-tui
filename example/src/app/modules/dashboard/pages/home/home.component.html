@@ -80,7 +80,7 @@
             <ul class="p-0 m-0" style="list-style: none;line-height: 3;">
                 <li class="d-flex justify-content-between">
                     <div>
-                        <span class="badge-circle badge-dark badge-circle badge-light mr-3">1</span>
+                        <span class="badge-dark badge-circle badge-light mr-3">1</span>
                         <span class="mr-5">工专路 0 号店</span>
                     </div>
                     <span>323,234</span>
@@ -131,7 +131,7 @@
         </div>
     </div>
 </div>
-<div class="row p-2 mt-2">
+<div class="row p-2 mt-4">
     <div class="col-xl-6 mb-4">
         <div class="card">
             <div class="card-header border-bottom">线上热门搜索</div>
@@ -186,14 +186,34 @@
     <div class="col-xl-6 mb-4">
         <div class="card h-100">
             <div class="card-header border-bottom">销售额类别占比</div>
-            <div class="card-body flex-grow-1 position-relative">
-                <div class="position-absolute h-100 w-100 top left d-flex align-items-center">
-                    <div class="w-100 text-center">
-                        <p class="text-secondary">销售额</p>
-                        <h4>¥ 15,781</h4>
+            <div class="card-body flex-grow-1 d-flex">
+                <div class="position-relative flex-grow-1">
+                    <div class="position-absolute h-100 w-100 top left d-flex align-items-center">
+                        <div class="w-100 text-center">
+                            <p class="text-secondary">销售额</p>
+                            <h4>¥ 15,781</h4>
+                        </div>
                     </div>
+                    <div tsEchart [option]="optionPie" resize="true" style="height:280px;width:100%;"></div>
                 </div>
-                <div tsEchart [option]="optionPie" resize="true" style="height:300px;width:100%;"></div>
+                <div class="flex-shrink-0">
+                    <p>
+                        <span class="badge badge-pill badge-success">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span class="badge badge-pill">第一季度</span>
+                    </p>
+                    <p>
+                        <span class="badge badge-pill badge-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span class="badge badge-pill">第二季度</span>
+                    </p>
+                    <p>
+                        <span class="badge badge-pill badge-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span class="badge badge-pill">第三季度</span>
+                    </p>
+                    <p>
+                        <span class="badge badge-pill badge-pink">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span class="badge badge-pill">第四季度</span>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
