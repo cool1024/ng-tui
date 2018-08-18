@@ -13,3 +13,6 @@ NG-TUI是ng-tools-ui的增强版本，移除了大部分无用功能，保留了
 3. 使用了[bootstrap4.1](http://getbootstrap.com)。
 4. 个性化主题。
 5. 丰富的第三方组件库支持。
+
+## 预览
+![preview](preview/dashboard.png)
