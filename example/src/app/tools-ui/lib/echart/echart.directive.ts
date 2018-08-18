@@ -1,8 +1,18 @@
 
-import { Directive, ElementRef, Input, Output, OnInit, AfterViewInit, EventEmitter, Inject, OnDestroy } from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    Input,
+    Output,
+    AfterViewInit,
+    EventEmitter,
+    Inject,
+    OnDestroy,
+    OnChanges,
+    SimpleChanges
+} from '@angular/core';
 import { ScriptService } from '../../tui-core/base-services/script.service';
-
-import { EchartsInstance } from './echart.interface';
+import { EChartsInstance } from './echart.interface';
 declare const window: any;
 
 @Directive({
@@ -10,15 +20,15 @@ declare const window: any;
     exportAs: 'tsEchart',
 })
 
-export class BaseEchartDirective implements OnInit, AfterViewInit, OnDestroy {
+export class BaseEchartDirective implements OnChanges, AfterViewInit, OnDestroy {
 
     @Input() option: any;
 
     @Input() resize: boolean;
 
-    @Output() chartLoad = new EventEmitter<{ echartsInstance: EchartsInstance, echarts: any }>();
+    @Output() chartLoad = new EventEmitter<{ echartsInstance: EChartsInstance, echarts: any }>();
 
-    private echart: EchartsInstance;
+    private echart: EChartsInstance;
 
     constructor(
         private script: ScriptService,
@@ -26,14 +36,17 @@ export class BaseEchartDirective implements OnInit, AfterViewInit, OnDestroy {
         @Inject('ECHART_SCRIPT_SRC') private src: string,
     ) {
         this.resize = false;
+        this.script.load(this.src, window.echarts);
     }
 
     resizeChart = () => {
         this.echart.resize();
     }
 
-    ngOnInit() {
-        this.script.load(this.src, window.echarts);
+    ngOnChanges(simpleChanges: SimpleChanges) {
+        if (this.echart && simpleChanges.option && !simpleChanges.option.firstChange) {
+            this.echart.setOption(simpleChanges.option.currentValue || {});
+        }
     }
 
     ngAfterViewInit() {

@@ -6,6 +6,7 @@
  * @date   2018-8-1 15:23:36
  */
 import { Component, OnInit } from '@angular/core';
+import { EChartService } from '../../../../tools-ui/lib/echart/echart.service';
 
 @Component({
     templateUrl: './home.component.html',
@@ -73,7 +74,7 @@ export class HomeComponent implements OnInit {
         }]
     };
 
-    optionThree = {
+    optionThree: any = {
         color: ['#007bff'],
         tooltip: {
             trigger: 'axis',
@@ -186,9 +187,34 @@ export class HomeComponent implements OnInit {
         ]
     };
 
-    constructor() { }
+    constructor(private echart: EChartService) { }
 
     ngOnInit() {
-
+        this.echart.useEChart(echarts => {
+            const serie = this.optionThree.series[0];
+            Object.assign(serie, {
+                itemStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1,
+                            [
+                                { offset: 0, color: '#83bff6' },
+                                { offset: 0.5, color: '#188df0' },
+                                { offset: 1, color: '#188df0' }
+                            ])
+                    },
+                    emphasis: {
+                        color: new echarts.graphic.LinearGradient(
+                            0, 0, 0, 1,
+                            [
+                                { offset: 0, color: '#2378f7' },
+                                { offset: 0.7, color: '#2378f7' },
+                                { offset: 1, color: '#83bff6' }
+                            ]
+                        )
+                    }
+                }
+            });
+            this.optionThree = { series: [serie] };
+        });
     }
 }

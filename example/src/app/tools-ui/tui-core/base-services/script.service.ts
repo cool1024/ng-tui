@@ -4,9 +4,9 @@ import { Subject, Observable, Observer, concat } from 'rxjs';
 @Injectable()
 export class ScriptService {
 
-    private src: string;
+    public src: string;
 
-    private isReady: boolean;
+    public isReady: boolean;
 
     public useScript: Subject<void>;
 

@@ -2,8 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScriptService } from '../../tui-core/base-services/script.service';
 import { BaseEchartDirective } from './echart.directive';
-
-declare const window: any;
+import { EChartService } from './echart.service';
 
 @NgModule({
     imports: [
@@ -25,7 +24,8 @@ export class EChartModule {
         return {
             ngModule: EChartModule,
             providers: [
-                { provide: 'ECHART_SCRIPT_SRC', useValue: src }
+                { provide: 'ECHART_SCRIPT_SRC', useValue: src },
+                EChartService,
             ]
         };
     }
@@ -33,7 +33,8 @@ export class EChartModule {
         return {
             ngModule: EChartModule,
             providers: [
-                { provide: 'ECHART_SCRIPT_SRC', useValue: src }
+                { provide: 'ECHART_SCRIPT_SRC', useValue: src },
+                EChartService,
             ]
         };
     }

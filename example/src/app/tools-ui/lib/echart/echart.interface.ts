@@ -1,4 +1,4 @@
-export interface EchartsInstance {
+export interface EChartsInstance {
 
     group: string | number;
 
@@ -80,4 +80,34 @@ export interface EchartsInstance {
     clear(): void;
     isDisposed(): boolean;
     dispose(): void;
+}
+
+export interface ECharts {
+    graphic: Graphic;
+    init(dom: HTMLDivElement | HTMLCanvasElement, theme?: Object | string, opts?: {
+        devicePixelRatio?: number,
+        renderer?: string,
+        width?: number | string,
+        height?: number | string
+    }): EChartsInstance;
+    connect(group: string | EChartsInstance[]): void;
+    disconnect(group: string): void;
+    dispose(target: EChartsInstance | HTMLDivElement | HTMLCanvasElement): void;
+    getInstanceByDom(target: HTMLDivElement | HTMLCanvasElement): EChartsInstance;
+    registerMap(mapName: string, geoJson: Object, specialAreas?: Object): string;
+    getMap(mapName: string): { geoJson: Object, specialAreas: Object };
+    registerTheme(themeName: string, theme: Object): void;
+}
+
+export interface Graphic {
+    LinearGradient: any;
+    clipPointsByRect(points: Array<[number, number]>, rect: Rect): Array<[number, number]>;
+    clipRectByRect(targetRect: Rect, rect: Rect): Rect;
+}
+
+export interface Rect {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
 }
