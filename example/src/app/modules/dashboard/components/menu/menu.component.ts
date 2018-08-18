@@ -14,11 +14,14 @@ export class MenuComponent {
 
     @Input() autoClose: boolean;
 
+    @Input() menuMode: string;
+
     @Output() menuActiveChange = new EventEmitter<MenuItem>();
 
     constructor() {
         this.items = new Array<MenuModel>();
         this.autoClose = true;
+        this.menuMode = 'full';
     }
 
     toggleGroup(group: MenuGroup) {

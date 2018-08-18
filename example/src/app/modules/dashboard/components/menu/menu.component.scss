@@ -1,5 +1,4 @@
 .text-truncate {
-    text-overflow: ellipsis;
     max-width: 180px;
 }
 
@@ -18,6 +17,10 @@
 
 .ts-icon {
     width: 30px;
+}
+
+.ts-icon img {
+    filter: grayscale(100%);
 }
 
 .icon-up {
@@ -85,46 +88,47 @@
     }
 }
 
-.menu-temp-bar {
-    height: 60px;
+/** small menu mode **/
+.menu-small {
+    overflow-y: auto;
 }
 
-.bg-primary-fill {
-    background-color: #007bff11;
+.menu-rect {
+    line-height: 50px;
+    cursor: pointer;
 }
 
-.bg-secondary-fill {
-    background-color: #6c757d11;
+.menu-rect img {
+    filter: grayscale(100%);
+    transition: filter ease-in-out .3s;
 }
 
-.bg-success-fill {
-    background-color: #28a74511;
+.menu-rect:hover {
+    position: relative;
 }
 
-.bg-danger-fill {
-    background-color: #dc354511;
+.menu-rect:hover img {
+    filter: grayscale(0%);
 }
 
-.bg-warning-fill {
-    background-color: #ffc10711;
+.menu-rect:hover > .menu-popover {
+    visibility: visible;
+    opacity: 1;
 }
 
-.bg-dark-fill {
-    background-color: #343a4011;
+.menu-popover {
+    visibility: hidden;
+    position: fixed;
+    z-index: 3;
+    margin-top: -44px;
+    margin-left: 80px;
+    width: 130px;
+    color: gainsboro;
+    opacity: 0;
+    transition: opacity ease-out .3s;
 }
 
-.bg-info-fill {
-    background-color: #17a2b811;
-}
-
-.bg-light-fill {
-    background-color: #ffffff22;
-}
-
-.bg-pink-fill {
-    background-color: #e83e8c11;
-}
-
-.bg-purple-fill {
-    background-color: #6f42c111;
+.menu-popover .menu-item:hover {
+    background-color: #2abd87;
+    color: white;
 }

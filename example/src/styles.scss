@@ -322,6 +322,25 @@ ts-select .dropdown-menu {
     width: $font-size-base * 1.5;
 }
 
+/** dot **/
+.dot {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+}
+
+.dot-lg {
+    width: 1rem;
+    height: 1rem;
+}
+
+@each $name, $color in $theme-colors {
+    .dot-#{$name} {
+        background-color: $color;
+    }
+}
+
 /** toast **/
 .toast {
     width: 20rem;

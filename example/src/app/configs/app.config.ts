@@ -13,6 +13,8 @@ export const AppConfig = {
     },
 
     MENU_CONFIG: {
+        SMALL_LOGO: 'assets/images/angular.svg',
+        FULL_LOGO: 'assets/images/logo.png',
         BACKGROUND_IMAGE_SRC: '', // 'url(assets/images/background/1.jpg)',
         BACKGROUND_COLOR: 'rgba(255,255,255,0.9)',
         DEFAULT_TEXT_COLOR: 'black',

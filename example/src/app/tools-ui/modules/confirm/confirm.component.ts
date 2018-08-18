@@ -12,7 +12,7 @@ import { ConfirmOptions } from './confirm.interface';
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">
-                        <i [ngClass]="'text-'+config.color" [tsIcon]="config.icon" ></i>
+                        <i [ngClass]="'text-'+color" [tsIcon]="config.icon" ></i>
                         {{title}}
                     </h5>
                     <button (click)="dismiss()" type="button" class="close">

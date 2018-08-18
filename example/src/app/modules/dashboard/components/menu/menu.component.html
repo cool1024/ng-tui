@@ -1,5 +1,6 @@
-<div class="h-100">
-    <div class="h-100 w-100 pt-2 ts-menu-fill">
+<!-- full mode -->
+<div *ngIf="menuMode==='full'; else elseBlock" class="h-100">
+    <div class="h-100 pt-2 ts-menu-fill bg-dark text-light">
         <ng-container *ngFor="let model of items">
             <!-- <div>{{model.modelTitle}}</div> -->
             <div class="menu-block no-select {{group.active?activeMainClass:''}}" *ngFor="let group of model.menuGroups">
@@ -36,3 +37,21 @@
         </ng-container>
     </div>
 </div>
+<!-- small mode -->
+<ng-template #elseBlock>
+    <div class="h-100 bg-dark menu-small">
+        <ng-container *ngFor="let model of items">
+            <div *ngFor="let group of model.menuGroups" class="menu-rect text-center">
+                <img *ngIf="group.image" width="30" height="30" [src]="group.image">
+                <i *ngIf="!(group.image)" [class]="group.icon" aria-hidden="true"></i>
+                <div class="menu-popover">
+                    <div class="shadow-sm rounded text-left ml-2 bg-dark text-truncate">
+                        <div *ngFor="let item of group.menuItems;index as i" class="menu-item pl-4 pr-4">
+                            {{item.title}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</ng-template>

@@ -1,5 +1,12 @@
-.headbar {}
-
 .headbar i {
     font-size: 1.5rem;
+}
+
+.menu-container {
+    width: 230px;
+    transition: width ease-in-out .3s;
+}
+
+.menu-container-sm {
+    width: 80px;
 }
