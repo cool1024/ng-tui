@@ -3,47 +3,54 @@
 
 <!--附带菜单与顶部-->
 <ng-template #elseBlock>
-    <div class="d-flex flex-column" style="height:100vh;">
-        <div class="navbar bg-success text-white d-flex align-items-center justify-content-between flex-shrink-0 shadow pl-3 pr-3"
-            style="height:60px">
-            <div class="d-flex align-items-center">
-                <i class="iconfont icon-category"></i>
-                <img class="ml-3" src="assets/images/logo.png" alt="TOOLSUI" height="40">
+    <div class="d-flex" style="height:100vh;">
+        <!-- 左侧菜单 -->
+        <div class="flex-shrink-0 h-100 d-flex flex-column" style="width:250px;">
+            <div class="d-flex align-items-center justify-content-center bg-success flex-shrink-0" style="width:250px;height: 60px;">
+                <img src="assets/images/logo.png" alt="TOOLSUI" height="40">
             </div>
-            <div></div>
-            <div>
-                <i class="iconfont icon-remind pointer ml-3"></i>
-                <i class="iconfont icon-account pointer ml-3"></i>
-                <i class="iconfont icon-set pointer ml-3"></i>
-            </div>
-        </div>
-        <div class="flex-grow-1 d-flex justify-content-between">
-            <!-- 左侧菜单 -->
-            <div class="bg-white shadow flex-shrink-0" style="width:250px">
+            <div class="flex-grow-1 shadow-sm" style="z-index:1;">
                 <app-menu [items]="menus"></app-menu>
             </div>
+        </div>
+        <!-- 右侧内容 -->
+        <div class="flex-grow-1 h-100 d-flex flex-column">
+            <!-- 顶部工具栏 -->
+            <div class="headbar d-flex align-items-center justify-content-between flex-shrink-0 shadow-sm" style="height:60px;z-index: 1;">
+                <div class="d-flex align-items-center flex-grow-1 ml-3">
+                    <i class="iconfont icon-category"></i>
+                </div>
+                <div class="mr-3 flex-shrink-0">
+                    <i class="iconfont icon-remind pointer ml-3"></i>
+                    <i class="iconfont icon-account pointer ml-3"></i>
+                    <i class="iconfont icon-set pointer ml-3"></i>
+                </div>
+            </div>
             <!-- 主体内容 -->
-            <div class="flex-grow-1 d-flex flex-column">
-                <!-- 面包屑导航 -->
-                <!-- <div class="breadcrumb pl-3 pr-3">
-                    <a>
-                        <i class="iconfont icon-homepagenormal"></i>
-                        <span>首页</span>
-                    </a>
-                    <a class="ml-2">
-                        <i class="iconfont icon-viewlist"></i>
-                        <span>列表</span>
-                    </a>
-                    <a class="ml-2">
-                        <i class="iconfont icon-information"></i>
-                        <span>详情</span>
-                    </a>
-                </div> -->
-                <!-- 页面出口 -->
-                <div class="flex-grow-1 p-3 bg-light" style="overflow: auto">
-                    <router-outlet></router-outlet>
+            <div class="flex-grow-1" style="overflow:auto;">
+                <div class="flex-grow-1 d-flex flex-column">
+                    <!-- 面包屑导航 -->
+                    <div class="breadcrumb pl-3 pr-3">
+                        <a>
+                            <span class="iconfont icon-homepagenormal"></span>
+                            <span>首页</span>
+                        </a>
+                        <a class="ml-2">
+                            <span class="iconfont icon-viewlist"></span>
+                            <span>列表</span>
+                        </a>
+                        <a class="ml-2">
+                            <span class="iconfont icon-information"></span>
+                            <span>详情</span>
+                        </a>
+                    </div>
+                    <!-- 页面出口 -->
+                    <div class="flex-grow-1 p-3 bg-light" style="overflow: auto">
+                        <router-outlet></router-outlet>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </ng-template>

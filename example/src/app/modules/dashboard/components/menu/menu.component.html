@@ -13,7 +13,9 @@
                             <span>{{group.groupTitle | titlecase}}</span>
                         </div>
                         <div class="d-table-cell text-right pr-2">
-                            <i class="iconfont icon-caret-down ts-icon-sm" aria-hidden="true" [class.icon-up]="group.active" [class.icon-down]="!group.active"></i>
+                            <div class="d-inline-block icon-{{group.active?'up':'down'}}">
+                                <i class="iconfont icon-caret-down ts-icon-sm" aria-hidden="true"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
