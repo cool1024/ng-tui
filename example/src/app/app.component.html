@@ -52,8 +52,11 @@
                 </div>
             </div>
             <!-- 主体内容 -->
-            <div class="flex-grow-1 bg-light w-100" style="overflow:auto;">
-                <div class="flex-grow-1 d-flex flex-column">
+            <div #viewcontent class="flex-grow-1 bg-light w-100 h-100" style="overflow:auto;">
+                <div *ngIf="global.params.lazyload" class="h-100 w-100 bg-white d-flex align-items-center">
+                    <div class="dot-windmill m-auto"></div>
+                </div>
+                <div *ngIf="!global.params.lazyload" class="flex-grow-1 d-flex flex-column">
                     <div class="breadcrumb bg-white pl-3 pr-3">
                         <a routerLink="/home">
                             <i class="iconfont icon-homepagenormal"></i>

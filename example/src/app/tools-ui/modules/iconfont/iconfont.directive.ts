@@ -10,16 +10,9 @@ export class IconfontDirective implements OnInit {
         if (this.icon === icon) {
             return;
         }
-        if (!this.iconType) {
-            this.iconType = this.configService.config.iconfontType;
-            this.icon = icon;
-            return;
-        }
         this.applyIcon(icon);
         this.icon = icon;
     }
-
-    @Input() iconType: string;
 
     @Input() set loading(status: any) {
         const dom: HTMLElement = this.elementRef.nativeElement;
@@ -43,18 +36,8 @@ export class IconfontDirective implements OnInit {
         if (!this.elementRef) {
             return;
         }
-
-        let prefix = this.configService.config.iconfontPrefix;
         const dom: HTMLElement = this.elementRef.nativeElement;
-        if (this.iconType === 'symbol') {
-            prefix = this.configService.config.iconfontSymbolPrefix;
-            dom.classList.add(prefix);
-            dom.innerHTML = `<use xlink:href="#icon-${icon}"></use>`;
-        } else if (this.iconType === 'unicode') {
-            dom.classList.add(prefix);
-        } else {
-            dom.classList.remove(`icon-${this.icon}`);
-            dom.classList.add(prefix, `icon-${icon}`);
-        }
+        dom.classList.remove(`icon-${this.icon}`);
+        dom.classList.add(this.configService.config.iconfontPrefix, `icon-${icon}`);
     }
 }

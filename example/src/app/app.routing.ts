@@ -10,11 +10,10 @@ const routes: Routes = [
     { path: '', redirectTo: 'demo/tooltips', pathMatch: 'full' },
 
     // 懒加载子模块
-    // { path: 'dashboard', loadChildren: './modules/dashboard/dashboard.module#DashboardModule' },
-    { path: 'demo', loadChildren: './modules/demo/demo.module#DemoModule' }
+    { path: 'demo', loadChildren: './modules/demo/demo.module#DemoModule' },
 
     // 最后全局匹配其他链接
-    // { path: '**', redirectTo: 'dashboard/error', pathMatch: 'full' },
+    { path: '**', redirectTo: 'dashboard/error', pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -91,6 +91,9 @@ $theme-colors: ("primary": $primary, "secondary": $secondary, "success": $succes
 //     outline: 0 none !important;
 //     text-decoration: none !important;
 // }
+pre {
+    margin-bottom: 0 !important;
+}
 
 div,
 span {
@@ -368,7 +371,7 @@ ts-select .dropdown-menu {
 
 /** toast **/
 .toast {
-    width: 20rem;
+    width: 18rem;
     z-index: 9999;
     border-width: 0;
     border-left-width: 3px;
@@ -460,16 +463,6 @@ ts-select .dropdown-menu {
     100% {
         transform: rotate(359deg);
     }
-}
-
-/** animate.css **/
-@import "~animate.css/source/_base.css";
-
-// @import "~animate.css/source/fading_entrances/fadeInUp.css";
-@import "~animate.css/source/sliding_entrances/slideInUp.css";
-
-.animated {
-    animation-duration: 0.4s;
 }
 
 /** propper **/
@@ -615,3 +608,20 @@ p.bold {
     margin-left: 0;
     margin-right: 0;
 }
+
+/** animate.css **/
+@import "~animate.css/source/_base.css";
+
+// @import "~animate.css/source/fading_entrances/fadeInUp.css";
+@import "~animate.css/source/sliding_entrances/slideInUp.css";
+
+.animated {
+    animation-duration: 0.4s;
+}
+
+/** three-dots **/
+$dotColor: $primary;
+
+@import "assets/three-dots/_variables";
+@import "assets/three-dots/mixins";
+@import "assets/three-dots/dot-windmill";

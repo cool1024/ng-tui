@@ -6,7 +6,6 @@ export class ConfigService {
 
     constructor(@Inject('TUI_CONFIG') public config: TUIConfig) {
         this.config = Object.assign({
-            iconfontType: 'symbol',
             iconfontPrefix: 'iconfont',
             iconfontSymbolPrefix: 'icon',
             iconfontLoadingClass: ['fa-spin'],

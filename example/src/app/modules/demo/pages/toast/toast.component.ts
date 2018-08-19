@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService } from '../../../tui/modules/toast/toast.service';
-import { ConfirmService } from '../../../tui/modules/confirm/confirm.service';
+import { ToastService, ConfirmService } from '../../../../tools-ui';
 
 @Component({
     selector: 'app-toast',
@@ -8,6 +7,10 @@ import { ConfirmService } from '../../../tui/modules/confirm/confirm.service';
     styleUrls: ['./toast.component.scss']
 })
 export class ToastComponent implements OnInit {
+
+    simpleCode = `constructor(private toast: ToastService) {
+    this.toast.success('操作成功', '成功添加新项目到仓库～');
+}`;
 
     constructor(private toast: ToastService, private confirm: ConfirmService) { }
 
@@ -23,11 +26,11 @@ export class ToastComponent implements OnInit {
     }
 
     showCustom() {
-        this.toast.create('自定义标题', '这是一条自定义消息，图标还有颜色可以自由设置', { color: 'dark', icon: 'discount' });
+        this.toast.create('自定义标题', '这是一条自定义消息，图标还有颜色可以自由设置', { color: 'dark', icon: 'account' });
     }
 
     showCustomConfirm() {
-        this.confirm.create('自定义标题', '这是一条自定义确认对话框，图标还有颜色可以自由设置', { color: 'dark', icon: 'discount', cancelTitle: '拒绝', okTitle: '同意' });
+        this.confirm.create('自定义标题', '这是一条自定义确认对话框，图标还有颜色可以自由设置', { color: 'dark', icon: 'account', cancelTitle: '拒绝', okTitle: '同意' });
     }
 
 }

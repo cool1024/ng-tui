@@ -5,10 +5,10 @@ import { ToastConfig } from './toast.interface';
 
 @Component({
     template: `
-    <div *ngIf="show" class="{{position}} position-fixed alert m-2">
+    <div *ngIf="show" class="{{position}} position-fixed mr-3 mt-3 ml-3" style="z-index:9999">
         <div *ngFor="let toast of toasts"
             class="toast border-{{toast.color}} animated slideInUp alert rounded-0 bg-white shadow-sm"
-            [class.toast-hidden]="(toast.timeout - toast.cx)<=1000">
+            [class.toast-hidden]="(toast.timeout - toast.cx)<=1000&&toast.timeout!==-1">
             <h6 class="alert-heading d-flex justify-content-between">
                 <div>
                     <i [tsIcon]="toast.icon" [ngClass]="'text-'+toast.color"></i>
@@ -19,8 +19,7 @@ import { ToastConfig } from './toast.interface';
             <hr class="mb-2">
             <p class="mb-0 mt-0 text-dark">{{toast.message}}</p>
         </div>
-    </div>
-    `
+    </div>`
 })
 export class ToastComponent implements OnDestroy {
 

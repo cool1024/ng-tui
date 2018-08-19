@@ -8,16 +8,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TooltipsComponent } from './pages/tooltips/tooltips.component';
+import { ToastComponent } from './pages/toast/toast.component';
 
 const routes: Routes = [
     { path: 'tooltips', component: TooltipsComponent },
+    { path: 'toast', component: ToastComponent },
 ];
 
 /**
  * 指令、组件、管道声明
  */
 export const declarationComponents = [
-    TooltipsComponent
+    TooltipsComponent,
+    ToastComponent,
 ];
 
 /**

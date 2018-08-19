@@ -91,8 +91,16 @@
                 "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAVgSURBVHhe7Z1LiBxVFIZboyJq8I2vRSROV3eaGBdBURAUF0FUEIXZqNP3zgyMENGVKC5kcOVGjAZEAkqykkynb81MiEh8IFEhuHAiGh8YEReiRCPEICM6xvjf4oDp7lPdVVPV6Qv+P3zUJHXPqZ7zV91bVXOrq0JRFEVRFEVRFEVRFEVRFEVR1Oh1qnJWo2WurrYn15MU5prXbd4xc65UrHzVFqaujWI7W4vtUuTMCpanyACc/Qe1OlKLzYtVN3mTlLKY7nh/9hwkfg4bWO7ZIMmBORk5u3N9a+ZiKW1++WAk2a9vgKySr3yXJiXOodb4Grj6ppKQFMR3Yzfue+hSqXQ21WP7jJaMlEMUmz1S6sGK9s5cgXHjNy0RKQkM+PV44jYpeX/VnHlCTUJKBV3XLil5f8G9d7UEpFzQbf3qx2ope7pwvfGTloAMAVzfSdlTlJxd2b97AslQwGXFzVJ5Xf7aQwskwyGKJ2+X0uuiIWcWGhIYNCQwaEhg0JDAoCGBQUMCg4YEBg0JDBoSGDQkMGhIYNCQwKAhgUFDAoOGBAYNCQwaEhhBGOJn7kXOtqPYvI1/F58z7OwhLFs1Zz7AsuB8AHMSy49AC5/vk8515TNSQ6LY/omiPe4fZ5DNVeru4WtQhHe09oOAqcfqsX1QUiWK2qaObXyhtR+E31G6J69V2/YerDva3bYsRmuIM4/JZjrk57li/Q/d7QdRdc0HJEWHagtTNazPe+T9kTYJuh43t/iZhkpMYUZmCMw40e8BFvzCT2pxfViSUFXI95oSkwo+3xsSqgptfDemxhZhlIZ8JptQVY8n79Pi0jG7JVRVXoP9w0gSqgqf/3Utriij7LKOnj52dAsFfFSJSceZDyVUFdps64npA8ajHRKqCm3e6o4pg5GOIf4okM10CkZhDz2oxaSBPXbFjxWSoUOb9j9yIfL9qMWl4U8Q1s2bSyRFh/zYkpyQKHFFGakh6GZ+7v4A/pE5/LLb9fb9Qdxhf1YlqRLBpLVYt6+7bTbMexsXp6+SVInG4uYNWLfU27YcRmyIB+f5zs5hj3way+exp3+tt8vMsh/Ao3nzFH7eBpMKTRT3RwpyvOzz+W4M/K61K4sADCGnQ0MCg4YEBg0JDBoSGDQkMGhIYNCQwKAhgUFDAoOGBAYNCQwaEhg0JDBoSGDQkMCgIYFBQwKDhgTGQEMarfHztEAyHOrO3CqlT5efHaIFkyEwb66Xsqer5uzHajApm2XfI0nZ0xU586wSTMrGmQUpeX/5yWFRbP5Sk5DSSJu9rwrjyCtaElIOUWwP9pvr3CN/+ouj5HMtGSmKOb6hbatS6uxqLE6PYYD/Vk9KVoc5jjOrO6XE+VWPJy5HolVOXiYdOHuoGk9skNIWU+TsXej3FpGYL3bJh38I9QAG8GZldvZsKWd52rx35gL/+p6qM/diQ+P9KekC05lfsFTyhwt23vurcfOW3O8JGaZgyKf4cHqRc+CviyQlVUT+sTOtwHmAGScac9OXSUqqiFDQwk8e8egoUbiO+V4rcmac/W7dTnO+pKOKqPDfVZJXAjW3SDqqqPxZhlrojKCreklSUWUIZ1i7tUJn5ECm29JUNtXd1EYUdVXfyoNx55uxuckrJRVVVH7P9ncytWIPxNkvB7+Ticqu1vga9P271GIPAtcs/v2JkokqquSsytl5tdj98G9Uju32ob7q+v8m/6Vfq7nmwNF0pNCtaKpXyZjh7DGt4Knggg8xW3kmNQQlfy/J8G1rOBpWfJeG5d1DuQ1N/Sfs7a/2GOC/BMYP1LF9IblVvzC1VppTZ0LJTJU9zU3+u6Uara0XyX9TuVWp/AvW8WHqvtPvSAAAAABJRU5ErkJggg==",
                 "children": [
                     {
-                        "title": "简单例子",
-                        "url": "/message/simple"
+                        "title": "通知消息",
+                        "url": "/demo/toast"
+                    },
+                    {
+                        "title": "确认对话框",
+                        "url": "/demo/confirm"
+                    },
+                    {
+                        "title": "提示消息",
+                        "url": "/demo/tooltips"
                     }
                 ]
             },

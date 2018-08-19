@@ -1,7 +1,7 @@
 export interface TUIConfig {
 
     // unicode | font-class | symbol
-    iconfontType?: string;
+    // iconfontType?: string;
 
     iconfontPrefix?: string;
 

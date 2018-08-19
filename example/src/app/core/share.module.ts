@@ -22,26 +22,11 @@ import {
     SelectModule,
     TabModule,
     TooltipsModule,
+    ToastModule,
+    PrismModule,
 } from '../tools-ui';
 
 @NgModule({
-    imports: [
-        BadgeModule,
-        ButtonModule,
-        CheckboxModule,
-        CollapseModule,
-        ConfirmModule,
-        CssloadModule,
-        DropdownModule,
-        IconfontModule,
-        ImageModule,
-        PaginationModule,
-        ProgressModule,
-        SearchModule,
-        SelectModule,
-        TabModule,
-        TooltipsModule,
-    ],
     exports: [
         BadgeModule,
         ButtonModule,
@@ -58,6 +43,8 @@ import {
         SelectModule,
         TabModule,
         TooltipsModule,
+        PrismModule,
+        ToastModule,
     ]
 })
 export class ShareModule { }
