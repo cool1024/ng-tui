@@ -15,10 +15,10 @@ export const AppConfig = {
     MENU_CONFIG: {
         SMALL_LOGO: 'assets/images/angular.svg',
         FULL_LOGO: 'assets/images/logo.png',
-        BACKGROUND_IMAGE_SRC: '', // 'url(assets/images/background/1.jpg)',
-        BACKGROUND_COLOR: 'rgba(255,255,255,0.9)',
-        DEFAULT_TEXT_COLOR: 'black',
-        LINE_COLOR: 'rgb(0, 0, 0,.1)'
+        BACKGROUND_IMAGE_SRC: 'url(https://picsum.photos/300/800)',
+        BACKGROUND_COLOR: 'rgba(0,0,0,.5)',
+        DEFAULT_TEXT_COLOR: 'white',
+        LINE_COLOR: 'rgba(255, 255, 255,.2)'
     },
 
     THEME_COLORS: [

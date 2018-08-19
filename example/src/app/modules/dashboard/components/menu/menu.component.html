@@ -1,6 +1,6 @@
 <!-- full mode -->
-<div *ngIf="menuMode==='full'; else elseBlock" class="h-100">
-    <div class="h-100 pt-2 ts-menu-fill bg-dark text-light">
+<div *ngIf="menuMode==='full'; else elseBlock" class="menu-full h-100" [ngStyle]="menuFullStyle">
+    <div class="menu-fill h-100 pt-2" [ngStyle]="menuFillStyle">
         <ng-container *ngFor="let model of items">
             <!-- <div>{{model.modelTitle}}</div> -->
             <div class="menu-block no-select {{group.active?activeMainClass:''}}" *ngFor="let group of model.menuGroups">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-            <hr class="mt-0 mb-2 ml-1 mr-1">
+            <div class="menu-line" [ngStyle]="lineStyle"></div>
         </ng-container>
     </div>
 </div>

@@ -10,3 +10,19 @@
 .menu-container-sm {
     width: 80px;
 }
+
+app-menu {
+    height: calc(100% - 60px);
+    z-index: 1;
+}
+
+/** user dropdown **/
+.dropdown-item {
+    line-height: 2;
+}
+
+.dropdown-item-title {
+    padding: 0rem 1.5rem;
+    font-weight: 400;
+    line-height: 3;
+}

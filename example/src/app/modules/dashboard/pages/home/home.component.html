@@ -1,254 +1,256 @@
-<div class="row">
-    <div class="col-xl-3 col-lg-6 col-sm-12 mb-3">
-        <div class="card card-body h-100">
-            <div class="text-secondary">总销售额</div>
-            <h3 class="mt-2">¥ 126,560</h3>
-            <div style="height:50px;">
-                <div class="mt-4">
+<div class="p-3">
+    <div class="row">
+        <div class="col-xl-3 col-lg-6 col-sm-12 mb-3">
+            <div class="card card-body h-100">
+                <div class="text-secondary">总销售额</div>
+                <h3 class="mt-2">¥ 126,560</h3>
+                <div style="height:50px;">
+                    <div class="mt-4">
+                        <i class="iconfont icon-pin text-danger"></i>
+                        周同比12%
+                        <i class="iconfont icon-map ml-1 text-success"></i>
+                        日环比11%
+                    </div>
+                </div>
+                <hr>
+                <div class="text-secondary">日均销售额：￥12,423</div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-sm-12 mb-3">
+            <div class="card card-body h-100">
+                <div class="text-secondary">访问量</div>
+                <h3 class="mt-2">8848</h3>
+                <div tsEchart [option]="optionOne" resize="true" style="height:50px;width:100%;"></div>
+                <hr>
+                <div class="text-secondary">日访问量：1,234</div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-sm-12 mb-3">
+            <div class="card card-body h-100">
+                <div class="text-secondary">支付笔数</div>
+                <h3 class="mt-2">6560</h3>
+                <div tsEchart [option]="optionTwo" resize="true" style="height:50px;width:100%;"></div>
+                <hr>
+                <div class="text-secondary">转化率：60%</div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-sm-12 mb-3">
+            <div class="card card-body h-100">
+                <div class="text-secondary">运营活动效果</div>
+                <h3 class="mt-2">78%</h3>
+                <div style="height:50px;">
+                    <div class="progress mt-4">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <hr>
+                <div class="text-secondary">
                     <i class="iconfont icon-pin text-danger"></i>
-                    周同比12%
+                    周同比 12%
                     <i class="iconfont icon-map ml-1 text-success"></i>
-                    日环比11%
+                    日环比 11%
                 </div>
             </div>
-            <hr>
-            <div class="text-secondary">日均销售额：￥12,423</div>
         </div>
     </div>
-    <div class="col-xl-3 col-lg-6 col-sm-12 mb-3">
-        <div class="card card-body h-100">
-            <div class="text-secondary">访问量</div>
-            <h3 class="mt-2">8848</h3>
-            <div tsEchart [option]="optionOne" resize="true" style="height:50px;width:100%;"></div>
-            <hr>
-            <div class="text-secondary">日访问量：1,234</div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 col-sm-12 mb-3">
-        <div class="card card-body h-100">
-            <div class="text-secondary">支付笔数</div>
-            <h3 class="mt-2">6560</h3>
-            <div tsEchart [option]="optionTwo" resize="true" style="height:50px;width:100%;"></div>
-            <hr>
-            <div class="text-secondary">转化率：60%</div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 col-sm-12 mb-3">
-        <div class="card card-body h-100">
-            <div class="text-secondary">运营活动效果</div>
-            <h3 class="mt-2">78%</h3>
-            <div style="height:50px;">
-                <div class="progress mt-4">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-            <hr>
-            <div class="text-secondary">
-                <i class="iconfont icon-pin text-danger"></i>
-                周同比 12%
-                <i class="iconfont icon-map ml-1 text-success"></i>
-                日环比 11%
-            </div>
-        </div>
-    </div>
-</div>
-<div class="card mb-3">
-    <div class="card-header" style="line-height: 2;">
-        <div>
-            <!-- <a class="d-inline-block text-primary border-bottom border-primary pr-2 pl-2">销售额</a>
+    <div class="card mb-3">
+        <div class="card-header" style="line-height: 2;">
+            <div>
+                <!-- <a class="d-inline-block text-primary border-bottom border-primary pr-2 pl-2">销售额</a>
             <a class="ml-3 ">访问量</a> -->
-            <ts-tabs [tabs]="['销售额','访问量']" activeTab="销售额"></ts-tabs>
-        </div>
-        <!-- <div>
+                <ts-tabs [tabs]="['销售额','访问量']" activeTab="销售额"></ts-tabs>
+            </div>
+            <!-- <div>
             <span class="ml-2">今日</span>
             <span class="ml-2">本周</span>
             <span class="ml-2">本月</span>
             <span class="ml-2 text-primary">全年</span>
         </div> -->
-    </div>
-    <div class="ml-3 mr-3 row">
-        <div class="col-xl-8 mb-4">
-            <p>
-                <b>销售额趋势</b>
-            </p>
-            <div tsEchart [option]="optionThree" resize="true" style="min-height: 200px;height:100%;width:100%;"></div>
         </div>
-        <div class="col-xl-4">
-            <p>
-                <b>门店销售额排名</b>
-            </p>
-            <ul class="p-0 m-0" style="list-style: none;line-height: 3;">
-                <li class="d-flex justify-content-between">
-                    <div>
-                        <span class="badge-dark badge-circle badge-light mr-3">1</span>
-                        <span class="mr-5">工专路 0 号店</span>
-                    </div>
-                    <span>323,234</span>
-                </li>
-                <li class="d-flex justify-content-between">
-                    <div>
-                        <span class="badge-circle badge-dark mr-3">2</span>
-                        <span class="mr-5">工专路 1 号店</span>
-                    </div>
-                    <span>323,234</span>
-                </li>
-                <li class="d-flex justify-content-between">
-                    <div>
-                        <span class="badge-circle badge-dark mr-3">3</span>
-                        <span class="mr-5">工专路 2 号店</span>
-                    </div>
-                    <span>323,234</span>
-                </li>
-                <li class="d-flex justify-content-between">
-                    <div>
-                        <span class="badge-circle badge-light mr-3">4</span>
-                        <span class="mr-5">工专路 3 号店</span>
-                    </div>
-                    <span>323,234</span>
-                </li>
-                <li class="d-flex justify-content-between">
-                    <div>
-                        <span class="badge-circle badge-light mr-3">5</span>
-                        <span class="mr-5">工专路 4 号店</span>
-                    </div>
-                    <span>323,234</span>
-                </li>
-                <li class="d-flex justify-content-between">
-                    <div>
-                        <span class="badge-circle badge-light mr-3">6</span>
-                        <span class="mr-5">工专路 5 号店</span>
-                    </div>
-                    <span>323,234</span>
-                </li>
-                <li class="d-flex justify-content-between">
-                    <div>
-                        <span class="badge-circle badge-light mr-3">7</span>
-                        <span class="mr-5">工专路 6 号店</span>
-                    </div>
-                    <span>323,234</span>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xl-6">
-        <div class="card">
-            <div class="card-header border-bottom">线上热门搜索</div>
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <div class="w-50 mr-3">
-                        <p class="text-secondary">搜索用户数</p>
+        <div class="ml-3 mr-3 row">
+            <div class="col-xl-8 mb-4">
+                <p>
+                    <b>销售额趋势</b>
+                </p>
+                <div tsEchart [option]="optionThree" resize="true" style="min-height: 200px;height:100%;width:100%;"></div>
+            </div>
+            <div class="col-xl-4">
+                <p>
+                    <b>门店销售额排名</b>
+                </p>
+                <ul class="p-0 m-0" style="list-style: none;line-height: 3;">
+                    <li class="d-flex justify-content-between">
                         <div>
-                            <h4>12,321</h4>
+                            <span class="badge-dark badge-circle badge-light mr-3">1</span>
+                            <span class="mr-5">工专路 0 号店</span>
                         </div>
-                        <div tsEchart [option]="optionFour" resize="true" style="height:50px;width:100%;"></div>
-                    </div>
-                    <div class="w-50 ml-3">
-                        <p class="text-secondary">人均搜索次数</p>
+                        <span>323,234</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
                         <div>
-                            <h4>2.7</h4>
+                            <span class="badge-circle badge-dark mr-3">2</span>
+                            <span class="mr-5">工专路 1 号店</span>
                         </div>
-                        <div tsEchart [option]="optionFour" resize="true" style="height:50px;width:100%;"></div>
-                    </div>
-                </div>
-                <table class="table table-hover border mt-2">
-                    <thead>
-                        <tr>
-                            <td class="font-weight-bold">排名</td>
-                            <td class="font-weight-bold">搜索关键词</td>
-                            <td class="font-weight-bold">用户数</td>
-                            <td class="font-weight-bold">涨幅</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>搜索关键词-1</td>
-                            <td>303</td>
-                            <td>33%
-                                <i class="iconfont icon-caret-up text-danger"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>搜索关键词-2</td>
-                            <td>413</td>
-                            <td>80%
-                                <i class="iconfont icon-caret-down text-success"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>搜索关键词-1</td>
-                            <td>303</td>
-                            <td>33%
-                                <i class="iconfont icon-caret-up text-danger"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>搜索关键词-2</td>
-                            <td>413</td>
-                            <td>80%
-                                <i class="iconfont icon-caret-down text-success"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>搜索关键词-1</td>
-                            <td>303</td>
-                            <td>33%
-                                <i class="iconfont icon-caret-up text-danger"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>搜索关键词-2</td>
-                            <td>413</td>
-                            <td>80%
-                                <i class="iconfont icon-caret-down text-success"></i>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                        <span>323,234</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <div>
+                            <span class="badge-circle badge-dark mr-3">3</span>
+                            <span class="mr-5">工专路 2 号店</span>
+                        </div>
+                        <span>323,234</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <div>
+                            <span class="badge-circle badge-light mr-3">4</span>
+                            <span class="mr-5">工专路 3 号店</span>
+                        </div>
+                        <span>323,234</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <div>
+                            <span class="badge-circle badge-light mr-3">5</span>
+                            <span class="mr-5">工专路 4 号店</span>
+                        </div>
+                        <span>323,234</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <div>
+                            <span class="badge-circle badge-light mr-3">6</span>
+                            <span class="mr-5">工专路 5 号店</span>
+                        </div>
+                        <span>323,234</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                        <div>
+                            <span class="badge-circle badge-light mr-3">7</span>
+                            <span class="mr-5">工专路 6 号店</span>
+                        </div>
+                        <span>323,234</span>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    <div class="col-xl-6">
-        <div class="card h-100">
-            <div class="card-header border-bottom">销售额类别占比</div>
-            <div class="card-body flex-grow-1 d-flex">
-                <div class="position-relative flex-grow-1">
-                    <div class="position-absolute h-100 w-100 top left d-flex align-items-center">
-                        <div class="w-100 text-center">
-                            <p class="text-secondary">销售额</p>
-                            <h4>¥ 15,781</h4>
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-header border-bottom">线上热门搜索</div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div class="w-50 mr-3">
+                            <p class="text-secondary">搜索用户数</p>
+                            <div>
+                                <h4>12,321</h4>
+                            </div>
+                            <div tsEchart [option]="optionFour" resize="true" style="height:50px;width:100%;"></div>
+                        </div>
+                        <div class="w-50 ml-3">
+                            <p class="text-secondary">人均搜索次数</p>
+                            <div>
+                                <h4>2.7</h4>
+                            </div>
+                            <div tsEchart [option]="optionFour" resize="true" style="height:50px;width:100%;"></div>
                         </div>
                     </div>
-                    <div tsEchart [option]="optionPie" resize="true" class="w-100 h-100"></div>
+                    <table class="table table-hover border mt-2">
+                        <thead>
+                            <tr>
+                                <td class="font-weight-bold">排名</td>
+                                <td class="font-weight-bold">搜索关键词</td>
+                                <td class="font-weight-bold">用户数</td>
+                                <td class="font-weight-bold">涨幅</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>搜索关键词-1</td>
+                                <td>303</td>
+                                <td>33%
+                                    <i class="iconfont icon-caret-up text-danger"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>搜索关键词-2</td>
+                                <td>413</td>
+                                <td>80%
+                                    <i class="iconfont icon-caret-down text-success"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>搜索关键词-1</td>
+                                <td>303</td>
+                                <td>33%
+                                    <i class="iconfont icon-caret-up text-danger"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>搜索关键词-2</td>
+                                <td>413</td>
+                                <td>80%
+                                    <i class="iconfont icon-caret-down text-success"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>搜索关键词-1</td>
+                                <td>303</td>
+                                <td>33%
+                                    <i class="iconfont icon-caret-up text-danger"></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>搜索关键词-2</td>
+                                <td>413</td>
+                                <td>80%
+                                    <i class="iconfont icon-caret-down text-success"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="flex-shrink-0 text-muted align-self-center" style="line-height:3;">
-                    <p>
-                        <span class="dot dot-info"></span>
-                        <span class="ml-2">家用电器 | 28.79% ¥ 4,544</span>
-                    </p>
-                    <p>
-                        <span class="dot dot-success"></span>
-                        <span class="ml-2">食用酒水 | 21.04% ¥ 3,321</span>
-                    </p>
-                    <p>
-                        <span class="dot dot-warning"></span>
-                        <span class="ml-2">个护健康 | 19.73% ¥ 3,113</span>
-                    </p>
-                    <p>
-                        <span class="dot dot-pink"></span>
-                        <span class="ml-2">服饰箱包 | 14.83% ¥ 2,341</span>
-                    </p>
-                    <p>
-                        <span class="dot dot-purple"></span>
-                        <span class="ml-2">母婴产品 | 08.80% ¥ 1,231</span>
-                    </p>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="card h-100">
+                <div class="card-header border-bottom">销售额类别占比</div>
+                <div class="card-body flex-grow-1 d-flex">
+                    <div class="position-relative flex-grow-1">
+                        <div class="position-absolute h-100 w-100 top left d-flex align-items-center">
+                            <div class="w-100 text-center">
+                                <p class="text-secondary">销售额</p>
+                                <h4>¥ 15,781</h4>
+                            </div>
+                        </div>
+                        <div tsEchart [option]="optionPie" resize="true" class="w-100 h-100"></div>
+                    </div>
+                    <div class="flex-shrink-0 text-muted align-self-center" style="line-height:3;">
+                        <p>
+                            <span class="dot dot-info"></span>
+                            <span class="ml-2">家用电器 | 28.79% ¥ 4,544</span>
+                        </p>
+                        <p>
+                            <span class="dot dot-success"></span>
+                            <span class="ml-2">食用酒水 | 21.04% ¥ 3,321</span>
+                        </p>
+                        <p>
+                            <span class="dot dot-warning"></span>
+                            <span class="ml-2">个护健康 | 19.73% ¥ 3,113</span>
+                        </p>
+                        <p>
+                            <span class="dot dot-pink"></span>
+                            <span class="ml-2">服饰箱包 | 14.83% ¥ 2,341</span>
+                        </p>
+                        <p>
+                            <span class="dot dot-purple"></span>
+                            <span class="ml-2">母婴产品 | 08.80% ¥ 1,231</span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

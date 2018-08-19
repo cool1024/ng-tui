@@ -16,12 +16,34 @@ export class MenuComponent {
 
     @Input() menuMode: string;
 
+    @Input() menuConfig: any;
+
     @Output() menuActiveChange = new EventEmitter<MenuItem>();
+
+    get menuFillStyle(): Object {
+        return {
+            background: this.menuConfig.BACKGROUND_COLOR,
+        };
+    }
+
+    get menuFullStyle(): Object {
+        return {
+            backgroundImage: this.menuConfig.BACKGROUND_IMAGE_SRC,
+            color: this.menuConfig.DEFAULT_TEXT_COLOR
+        };
+    }
+
+    get lineStyle(): Object {
+        return {
+            background: this.menuConfig.LINE_COLOR
+        };
+    }
 
     constructor() {
         this.items = new Array<MenuModel>();
         this.autoClose = true;
         this.menuMode = 'full';
+        this.menuConfig = {};
     }
 
     toggleGroup(group: MenuGroup) {
