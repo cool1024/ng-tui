@@ -67,7 +67,7 @@ $theme-colors: ("primary": $primary, "secondary": $secondary, "success": $succes
 // @import "~bootstrap/scss/pagination";
 @import "~bootstrap/scss/badge";
 
-// @import "~bootstrap/scss/jumbotron";
+@import "~bootstrap/scss/jumbotron";
 @import "~bootstrap/scss/alert";
 @import "~bootstrap/scss/progress";
 @import "~bootstrap/scss/media";
@@ -83,14 +83,6 @@ $theme-colors: ("primary": $primary, "secondary": $secondary, "success": $succes
 
 @import "~bootstrap/scss/print";
 
-// a,
-// button,
-// input,
-// select,
-// textarea {
-//     outline: 0 none !important;
-//     text-decoration: none !important;
-// }
 pre {
     margin-bottom: 0 !important;
 }

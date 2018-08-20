@@ -8,7 +8,8 @@
             <div class="d-flex align-items-center justify-content-center bg-success flex-shrink-0" style="height: 60px;overflow: hidden;">
                 <img [src]="global.params.menuMode==='small'?menuConfig.SMALL_LOGO:menuConfig.FULL_LOGO" alt="TOOLSUI" height="40">
             </div>
-            <app-menu class="flex-grow-1 shadow-sm" [menuConfig]="menuConfig" [menuMode]="global.params.menuMode" [items]="menus"></app-menu>
+            <app-menu class="flex-grow-1 shadow-sm" [menuConfig]="menuConfig" [autoClose]="true" [menuMode]="global.params.menuMode"
+                [items]="menus"></app-menu>
         </div>
         <!-- 右侧内容 -->
         <div class="flex-grow-1 h-100 d-flex flex-column">
@@ -58,17 +59,12 @@
                 </div>
                 <div *ngIf="!global.params.lazyload" class="flex-grow-1 d-flex flex-column">
                     <div class="breadcrumb bg-white pl-3 pr-3">
-                        <a routerLink="/home">
+                        <a routerLink="/">
                             <i class="iconfont icon-homepagenormal"></i>
                             <span>首页</span>
                         </a>
-                        <a class="ml-2 ">
-                            <i class="iconfont icon-viewlist"></i>
-                            <span>列表</span>
-                        </a>
-                        <a class="ml-2 ">
-                            <i class="iconfont icon-information"></i>
-                            <span>详情</span>
+                        <a *ngFor="let breadcrumb of breadcrumbs" [routerLink]="breadcrumb.path" class="mr-2" class="ml-2">
+                            <span>{{breadcrumb.title}}</span>
                         </a>
                     </div>
                     <div class="flex-grow-1" style="overflow: auto">

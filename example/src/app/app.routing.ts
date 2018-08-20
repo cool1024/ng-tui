@@ -13,7 +13,7 @@ const routes: Routes = [
     { path: 'demo', loadChildren: './modules/demo/demo.module#DemoModule' },
 
     // 最后全局匹配其他链接
-    { path: '**', redirectTo: 'dashboard/error', pathMatch: 'full' }
+    { path: '**', redirectTo: 'error', pathMatch: 'full' }
 ];
 
 @NgModule({

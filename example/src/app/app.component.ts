@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Router, RouteConfigLoadStart, NavigationEnd } from '@angular/router';
+import { Router, RouteConfigLoadStart, NavigationEnd, ActivatedRouteSnapshot, UrlSegment } from '@angular/router';
 import { GlobalService, RequestService, MenuService } from './core/services';
 import { MenuModel } from './modules/dashboard/components/menu/menu.interface';
 import { AppConfig } from './configs/app.config';
@@ -17,6 +17,9 @@ export class AppComponent {
     // 菜单配置参数
     menuConfig = AppConfig.MENU_CONFIG;
 
+    // 面包屑导航列表
+    breadcrumbs = new Array<{ title: string, path?: string }>();
+
     // 显示面板
     @ViewChild('viewcontent') viewContent: HTMLDivElement;
 
@@ -30,7 +33,7 @@ export class AppComponent {
         // 载入系统默认配置参数
         this.global.appendValuesToParams({
             dashboardMode: 'full',
-            menuMode: 'small',
+            menuMode: 'full',
             lazyload: true
         });
 
@@ -39,7 +42,6 @@ export class AppComponent {
         // 1.菜单载入
         this.request.text('assets/json/menu.json').subscribe(res => {
             this.menus = this.menu.loadMenu(JSON.parse(res));
-            console.log(this.menus);
         });
 
         // 设置路由监听事件
@@ -47,8 +49,14 @@ export class AppComponent {
             if (event instanceof RouteConfigLoadStart) {
                 this.global.params.lazyload = true;
             } else if (event instanceof NavigationEnd) {
+                // 关闭加载动画
                 this.global.params.lazyload = false;
-                this.viewContent.scrollTop = 0;
+                // 滚动条归位
+                // tslint:disable-next-line:no-unused-expression
+                this.viewContent && (this.viewContent.scrollTop = 0);
+                // 路由导航信息加载
+                this.breadcrumbs = [];
+                this.parseRoute(this.router.routerState.snapshot.root);
             }
         });
     }
@@ -58,5 +66,18 @@ export class AppComponent {
      */
     changeMenuMode() {
         this.global.params.menuMode = this.global.params.menuMode === 'small' ? 'full' : 'small';
+    }
+
+    /**
+     * 路由数据解析
+     * @param node 路由快照
+     */
+    parseRoute(node: ActivatedRouteSnapshot) {
+        if (node.data.breadcrumbs) {
+            this.breadcrumbs = node.data.breadcrumbs;
+        }
+        if (node.firstChild) {
+            this.parseRoute(node.firstChild);
+        }
     }
 }

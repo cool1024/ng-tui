@@ -11,7 +11,17 @@ import { TooltipsComponent } from './pages/tooltips/tooltips.component';
 import { ToastComponent } from './pages/toast/toast.component';
 
 const routes: Routes = [
-    { path: 'tooltips', component: TooltipsComponent },
+    {
+        path: 'tooltips',
+        component: TooltipsComponent,
+        data: {
+            breadcrumbs: [
+                {
+                    title: '提示消息'
+                }
+            ]
+        }
+    },
     { path: 'toast', component: ToastComponent },
 ];
 

@@ -9,16 +9,19 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { ErrorComponent } from './pages/error/error.component';
 
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
+    { path: 'error', component: ErrorComponent },
 ];
 
 /**
  * 导出组件列表
  */
 export const exportComponents = [
-    MenuComponent
+    MenuComponent,
+    ErrorComponent,
 ];
 
 /**
