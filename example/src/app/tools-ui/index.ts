@@ -2,7 +2,6 @@ export { IconfontModule } from './modules/iconfont/iconfont.module';
 export { ButtonModule } from './modules/button/button.module';
 export { CheckboxModule } from './modules/checkbox/checkbox.module';
 export { DropdownModule } from './modules/dropdown/dropdown.module';
-export { PaginationModule } from './modules/pagination/pagination.module';
 export { SelectModule } from './modules/select/select.module';
 export { CollapseModule } from './modules/collapse/collapse.module';
 export { TabModule } from './modules/tab/tab.module';
@@ -19,3 +18,11 @@ export { TooltipsModule } from './modules/tooltips/tooltips.module';
 export { EChartModule } from './lib/echart/echart.module';
 export { PrismModule } from './lib/prism/prism.module';
 export { TUIModule } from './tui.module';
+
+export { Item } from './tui-core/interfaces/item.interface';
+
+export { PaginationModule } from './modules/pagination/pagination.module';
+export { Pagination } from './modules/pagination/pagination.class';
+
+export { ModalModule } from './modules/modal/modal.module';
+export { ModalService } from './modules/modal/modal.service';

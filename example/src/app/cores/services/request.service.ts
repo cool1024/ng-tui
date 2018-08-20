@@ -233,7 +233,7 @@ export class RequestService {
                 subject.complete();
             };
 
-            request.onerror = (error: ErrorEvent) => {
+            request.onerror = (error: any) => {
                 console.error('osssUpload=>', error);
                 subject.next('upload error');
                 subject.complete();
@@ -262,7 +262,7 @@ export class RequestService {
      * 不要添加统一前缀
      * @return {RequestService}
      */
-    withoutHost() {
+    get withoutHost(): RequestService {
         const request = new RequestService(this.http);
         request.serverUlr = '';
         request.appendHeaders = this.appendHeaders;
@@ -274,7 +274,7 @@ export class RequestService {
      * 不用添加头部数据
      * @return {RequestService}
      */
-    withoutHeader() {
+    get withoutHeader(): RequestService {
         const request = new RequestService(this.http);
         request.serverUlr = this.serverUlr;
         request.appendHeaders = this.appendHeaders;

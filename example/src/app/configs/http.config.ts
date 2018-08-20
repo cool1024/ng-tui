@@ -1,7 +1,7 @@
 export const HttpConfig = {
 
     // 服务器接口地址
-    SERVER_URL: '',
+    SERVER_URL: 'https://www.cool1024.com',
 
     WEBSOCKET_URL: '',
 

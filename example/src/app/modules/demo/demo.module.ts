@@ -7,7 +7,7 @@
  */
 import { NgModule } from '@angular/core';
 import { DemoRoutingModule, declarationComponents, entryComponents, providers } from './demo.routing';
-import { ShareModule } from '../../core/share.module';
+import { ShareModule } from '../../cores/share.module';
 
 @NgModule({
     imports: [

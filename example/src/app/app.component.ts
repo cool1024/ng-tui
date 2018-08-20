@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router, RouteConfigLoadStart, NavigationEnd, ActivatedRouteSnapshot, UrlSegment } from '@angular/router';
-import { GlobalService, RequestService, MenuService } from './core/services';
+import { GlobalService, RequestService, MenuService } from './cores/services';
 import { MenuModel } from './modules/dashboard/components/menu/menu.interface';
 import { AppConfig } from './configs/app.config';
 
@@ -33,14 +33,15 @@ export class AppComponent {
         // 载入系统默认配置参数
         this.global.appendValuesToParams({
             dashboardMode: 'full',
-            menuMode: 'full',
-            lazyload: true
+            menuMode: 'small',
+            lazyload: true,
+            color: 'dark'
         });
 
         // 载入服务端参数
 
         // 1.菜单载入
-        this.request.text('assets/json/menu.json').subscribe(res => {
+        this.request.withoutHost.text('assets/json/menu.json').subscribe(res => {
             this.menus = this.menu.loadMenu(JSON.parse(res));
         });
 

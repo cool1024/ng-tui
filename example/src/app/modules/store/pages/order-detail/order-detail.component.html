@@ -1,0 +1,82 @@
+<div class="card m-2">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6">
+                <div class="d-table">
+                    <div class="d-table-row">
+                        <div class="d-table-cell">订单编号：</div>
+                        <div class="d-table-cell">{{order.orderSn}}</div>
+                    </div>
+                    <br>
+                    <div class="d-table-row">
+                        <div class="d-table-cell">付款方式：</div>
+                        <div class="d-table-cell">微信支付</div>
+                    </div>
+                    <br>
+                    <div class="d-table-row">
+                        <div class="d-table-cell">买家：</div>
+                        <div routerLink="/store/user/detail/{{order.user.id}}" class="d-table-cell text-info pointer">{{order.user.nick}}</div>
+                    </div>
+                    <br>
+                    <div class="d-table-row">
+                        <div class="d-table-cell">收货人：</div>
+                        <div class="d-table-cell">{{order.address}}&nbsp;{{order.phone}}&nbsp;{{order.consignee}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="d-table">
+                    <div class="d-table-row">
+                        <div class="d-table-cell">订单状态：</div>
+                        <h4 class="d-table-cell">
+                            <span *ngIf="order.orderStatus===0" class="badge badge-danger badge-pill">已取消</span>
+                            <span *ngIf="order.orderStatus===1" class="badge badge-secondary badge-pill">待付款</span>
+                            <span *ngIf="order.orderStatus===2" class="badge badge-info badge-pill">待发货</span>
+                            <span *ngIf="order.orderStatus===3" class="badge badge-primary badge-pill">已发货</span>
+                            <span *ngIf="order.orderStatus===4" class="badge badge-success badge-pill">已完成</span>
+                        </h4>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <br>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">商品</th>
+                    <th scope="col">规格</th>
+                    <th scope="col">单价</th>
+                    <th scope="col">数量</th>
+                    <th scope="col">合计</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let goods of order.goodsList">
+                    <td>
+                        <img tsImg alt="Avatar" class="align-self-center mr-3" dataSrc="assets/images/404.jpg" [src]="goods.goodsThumb" height="60"
+                            width="60">
+                        <span>{{goods.goodsName}}</span>
+                    </td>
+                    <td>{{goods.goodsSpecification}}</td>
+                    <td>{{goods.goodsPrice}}</td>
+                    <td>{{goods.goodsQuantity}}</td>
+                    <td>{{goods.goodsPrice*goods.goodsQuantity}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-6">
+                <button routerLink="/store/order" tsBtn color="white">订单列表</button>
+            </div>
+            <div class="col-6 text-right">
+                <!-- <p>商品小计：
+                    <span class="font-weight-bold">￥124.00</span>
+                </p> -->
+                <p>实付款：
+                    <span class="font-weight-bold text-danger">￥{{order.orderTotalPrice}}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

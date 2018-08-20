@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app.routing';
-import { CoreModule } from './core/core.module';
-import { TUIModule, EChartModule, ToastModule, DropdownModule, ConfirmModule } from './tools-ui';
+import { CoreModule } from './cores/core.module';
+import { SortablejsModule } from 'angular-sortablejs';
+import { TUIModule, EChartModule, ToastModule, DropdownModule } from './tools-ui';
 import { AppComponent } from './app.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 
@@ -13,6 +14,7 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
     imports: [
         BrowserModule,
         CoreModule,
+        SortablejsModule.forRoot({ animation: 150 }),
         TUIModule.forRoot({
             confirmCancelTitle: '取消',
             confirmOkTitle: '确认',

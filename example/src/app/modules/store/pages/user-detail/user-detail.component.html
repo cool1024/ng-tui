@@ -1,0 +1,97 @@
+<div class="bg-white pl-2 pr-2">
+    <ts-tabs [tabs]="['基本信息','交易记录']" [color]="global.params.color" [target]="tsTabs" activeTab="基本信息">
+    </ts-tabs>
+</div>
+
+<div #tsTabs='tsTabs' tsTabs class="card m-2">
+    <div class="card-body">
+        <div tsTab tab='基本信息'>
+            <div class="container ml-0">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">会员</label>
+                    <div class="col-sm-10">
+                        <div class="media">
+                            <img tsImg alt="Avatar" class="align-self-center mr-3 rounded-circle" dataSrc="assets/images/404.jpg" [src]="user.avatar"
+                                height="40">
+                            <div class="media-body">
+                                <p class="m-0">{{user.nick}}</p>
+                                <p class="m-0 text-muted">
+                                    <small *ngIf="user.gender===1" class="text-info">
+                                        <i class="fa fa-mars fa-fw"></i>先生
+                                    </small>
+                                    <small *ngIf="user.gender===2" class="text-danger">
+                                        <i class="fa fa-mercury fa-fw"></i>女士
+                                    </small>
+                                    <small *ngIf="user.gender===0" class="text-muted">
+                                        <i class="fa fa-transgender fa-fw"></i>未设置
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">会员等级</label>
+                    <div class="col-sm-10">
+                        <select class="custom-select" [(ngModel)]="user.vipLevel">
+                            <option *ngFor="let option of levelOptions" [ngValue]="option.value">{{option.text}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">联系方式</label>
+                    <div class="col-sm-10">
+                        <input [(ngModel)]="user.mobile" class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">积分</label>
+                    <div class="col-sm-10">
+                        <input [value]="user.credit" readonly class="form-control-plaintext" type="text">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">余额</label>
+                    <div class="col-sm-10">
+                        <input [value]="user.balance" readonly class="form-control-plaintext" type="text">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">创建时间</label>
+                    <div class="col-sm-10">
+                        <input [value]="user.createdAt" readonly class="form-control-plaintext" type="text">
+                    </div>
+                </div>
+                <div class="form-group row m-btn">
+                    <label class="col-sm-2 col-form-label text-right"></label>
+                    <div class="col-sm-10">
+                        <button routerLink="/store/user" tsBtn color="white">返回列表</button>
+                        <button tsBtn loading (submit)="updateUser($event)" color="primary">确认修改</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div tsTab tab='交易记录'>
+            <div class="container ml-0">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">成交订单数</label>
+                    <div class="col-sm-10">
+                        <div class="form-control-plaintext">0</div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">成交金额</label>
+                    <div class="col-sm-10">
+                        <div class="form-control-plaintext">0.00 元</div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">最后交易日期</label>
+                    <div class="col-sm-10">
+                        <div class="form-control-plaintext">2018年04月24日</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

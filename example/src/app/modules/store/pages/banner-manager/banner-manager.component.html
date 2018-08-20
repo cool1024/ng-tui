@@ -1,0 +1,38 @@
+<div class="card m-btn">
+    <div class="card-header bg-white">幻灯片管理</div>
+    <div class="card-body">
+        <button (click)="showEditModal()" tsBtn color="success">添加新幻灯片</button>
+        <button (submit)="confirmSort($event)" tsBtn loading color="warning">确认排序</button>
+        <button (click)="loadDatas()" tsBtn>
+            <i class="fa fa-fw fa-refresh"></i>刷新数据
+        </button>
+    </div>
+</div>
+<div class="card card-body mt-2">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr class="font-weight-bold bg-light">
+                    <td *ngFor="let th of theads">{{th}}</td>
+                </tr>
+            </thead>
+            <tbody [sortablejs]="list">
+                <tr *ngFor="let td of list;index as i">
+                    <td>{{i+1}}</td>
+                    <td>
+                        <img tsImg class="img-thumbnail" dataSrc="assets/images/404.jpg" width="60" [src]="td.bannerSrc" alt="幻灯片">
+                    </td>
+                    <td class="text-primary">{{td.bannerLink}}</td>
+                    <td>
+                        <a (click)="confirmDelete(td)" class="btn-icon btn-icon-danger" title="删除">
+                            <i class="fa fa-lg fa-fw fa-trash-o align-middle"></i>
+                        </a>
+                        <a (click)="showEditModal(td)" class="btn-icon btn-icon-info" title="编辑">
+                            <i class="fa fa-lg fa-fw fa-edit align-middle"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
