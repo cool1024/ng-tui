@@ -9,6 +9,8 @@ export class CheckboxComponent implements OnInit {
 
     radioValue = 1;
 
+    switchValue = true;
+
     checkboxValues = [1, 2];
 
     constructor() { }

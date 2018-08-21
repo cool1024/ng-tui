@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Pagination } from '../../../tui/modules/pagination/pagination.class';
+import { Pagination } from '../../../../tools-ui';
+import { GlobalService } from '../../../../cores/services';
 
 @Component({
     selector: 'app-pagination',
     templateUrl: './pagination.component.html',
     styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent {
 
     page = new Pagination(100);
 
-    constructor() { }
-
-    ngOnInit() {
-    }
-
+    constructor(public global: GlobalService) { }
 }

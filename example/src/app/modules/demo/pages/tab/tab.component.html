@@ -1,0 +1,68 @@
+<div class="card pl-3 pb-3">
+    <h4>Tab切换</h4>
+    <p class="text-muted">多个面板之间的切换，也可以做为状态切换</p>
+</div>
+<div class="p-3">
+    <div class="row">
+        <div class="col-xl-6 mb-3">
+            <div #tsTabsOne='tsTabs' tsTabs class="card">
+                <ts-tabs [tabs]="['座头鲸','树袋熊','白头海雕']" [target]="tsTabsOne" activeTab="树袋熊" color="dark"></ts-tabs>
+                <div class="card-body">
+                    <div tsTab tab='座头鲸'>
+                        <h5 class="mt-0">座头鲸</h5>
+                        <p>座头鲸（学名：Megaptera novaeangliae,又名humpback whale），其“座头”之名源于日文“座头”，意为“琵琶”，指鲸背部的形状。为热带暖海性鲸类。身体较短而宽，一般长达13～15米。座头鲸以其跃出水面姿势、超长的前翅与复杂的叫声而闻名。活动时多一双一对活动，性情温顺，有洄游习性，惟游泳速度较慢。主食为小甲壳类和群游性小型鱼类。</p>
+                        <p>座头鲸栖息于世界各大洋，中国分布于黄海、东海、南海，黄海北部较少，台湾南部海区较多。</p>
+                        <div>
+                            <img class="w-100" src="assets/images/material/material-1.jpg">
+                        </div>
+                    </div>
+                    <div tsTab tab='树袋熊'>
+                        <h5 class="mt-0">树袋熊</h5>
+                        <p>树袋熊，又称考拉，是澳大利亚的国宝，也是澳大利亚奇特的珍贵原始树栖动物。英文名Koala bear来源于古代土著文字，意思是“no drink”。因为树袋熊从他们取食的桉树叶中获得所需的90%的水分，只在生病和干旱的时候喝水，当地人称它“克瓦勒”，意思也是“不喝水”。</p>
+                        <p>树袋熊并不是熊科动物，而且它们相差甚远。熊科属于食肉目，而树袋熊却属于有袋目。它每天18个小时处于睡眠状态，性情温顺，体态憨厚。</p>
+                        <div>
+                            <img class="w-100" src="assets/images/material/material-2.jpg">
+                        </div>
+                    </div>
+                    <div tsTab tab='白头海雕'>
+                        <h5 class="mt-0">白头海雕</h5>
+                        <p>白头海雕（学名：Haliaeetus leucocephalus）又称为美洲雕。是大型猛禽，成年海雕体长可达1米，翼展2米多长。眼、嘴和脚为淡黄色，头、颈和尾部的羽毛为白色，身体其他部位的羽毛为暗褐色，十分雄壮美丽。主要栖息在海岸、湖沼和河流附近，以大马哈鱼、鳟鱼等大型鱼类和野鸭、海鸥等水鸟以及生活在水边的小型哺乳动物等为食，飞行能力很强。上喙边端具弧形垂突，适于撕裂猎物吞食；基部具蜡膜或须状羽；翅强健，翅宽圆而钝，扇翅及翱翔飞行，扇翅节奏较隼科慢；跗跖部大多相对较长，约等于胫部长度。是北美洲所特有物种。1782年6月20日，美国国会通过决议立法，选定白头海雕为美国国鸟。</p>
+                        <div>
+                            <img class="w-100" src="assets/images/material/material-3.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 mb-3">
+            <div #tsTabsTwo='tsTabs' tsTabs class="card">
+                <ts-tabs [tabs]="['座头鲸','树袋熊','白头海雕']" [target]="tsTabsTwo" position="end" activeTab="树袋熊" color="dark"></ts-tabs>
+                <div class="card-body">
+                    <div tsTab tab='座头鲸'>
+                        <h5 class="mt-0">座头鲸</h5>
+                        <p>座头鲸（学名：Megaptera novaeangliae,又名humpback whale），其“座头”之名源于日文“座头”，意为“琵琶”，指鲸背部的形状。为热带暖海性鲸类。身体较短而宽，一般长达13～15米。座头鲸以其跃出水面姿势、超长的前翅与复杂的叫声而闻名。活动时多一双一对活动，性情温顺，有洄游习性，惟游泳速度较慢。主食为小甲壳类和群游性小型鱼类。</p>
+                        <p>座头鲸栖息于世界各大洋，中国分布于黄海、东海、南海，黄海北部较少，台湾南部海区较多。</p>
+                        <div>
+                            <img class="w-100" src="assets/images/material/material-1.jpg">
+                        </div>
+                    </div>
+                    <div tsTab tab='树袋熊'>
+                        <h5 class="mt-0">树袋熊</h5>
+                        <p>树袋熊，又称考拉，是澳大利亚的国宝，也是澳大利亚奇特的珍贵原始树栖动物。英文名Koala bear来源于古代土著文字，意思是“no drink”。因为树袋熊从他们取食的桉树叶中获得所需的90%的水分，只在生病和干旱的时候喝水，当地人称它“克瓦勒”，意思也是“不喝水”。</p>
+                        <p>树袋熊并不是熊科动物，而且它们相差甚远。熊科属于食肉目，而树袋熊却属于有袋目。它每天18个小时处于睡眠状态，性情温顺，体态憨厚。</p>
+                        <div>
+                            <img class="w-100" src="assets/images/material/material-2.jpg">
+                        </div>
+                    </div>
+                    <div tsTab tab='白头海雕'>
+                        <h5 class="mt-0">白头海雕</h5>
+                        <p>白头海雕（学名：Haliaeetus leucocephalus）又称为美洲雕。是大型猛禽，成年海雕体长可达1米，翼展2米多长。眼、嘴和脚为淡黄色，头、颈和尾部的羽毛为白色，身体其他部位的羽毛为暗褐色，十分雄壮美丽。主要栖息在海岸、湖沼和河流附近，以大马哈鱼、鳟鱼等大型鱼类和野鸭、海鸥等水鸟以及生活在水边的小型哺乳动物等为食，飞行能力很强。上喙边端具弧形垂突，适于撕裂猎物吞食；基部具蜡膜或须状羽；翅强健，翅宽圆而钝，扇翅及翱翔飞行，扇翅节奏较隼科慢；跗跖部大多相对较长，约等于胫部长度。是北美洲所特有物种。1782年6月20日，美国国会通过决议立法，选定白头海雕为美国国鸟。</p>
+                        <div>
+                            <img class="w-100" src="assets/images/material/material-3.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

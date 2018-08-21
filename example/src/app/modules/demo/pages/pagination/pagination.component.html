@@ -1,12 +1,16 @@
-<div class="card mt-3">
+<div class="card pl-3 pb-3">
+    <h4>分页</h4>
+    <p class="text-muted">分页组件通常用于列表（表格）数据展示</p>
+</div>
+<div class="card m-2">
     <div class="card-header bg-white">
         组件参数 @Component
     </div>
     <div class="card-body">
         <p>选择器：
             <code>ts-pagination </code>
-            <ts-pagination outline color="white" [pagination]="page" [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]"
-                goTitle="跳转" prevTitle="上一页" nextTitle="下一页" startTitle="首页" endTitle="尾页"></ts-pagination>
+            <ts-pagination outline [color]="global.params.color" [pagination]="page" [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]"
+                goTitle="跳转"></ts-pagination>
         </p>
         <table class="table table-striped">
             <thead>
@@ -39,60 +43,11 @@
                     <td>跳转按钮的标题，只有设置了这个属性，才会出现跳转按钮</td>
                 </tr>
                 <tr>
-                    <th scope="row">prevTitle</th>
-                    <td>
-                        <code>string</code>
-                    </td>
-                    <td>上一页按钮的标题，只有设置了这个属性，才会出现此按钮</td>
-                </tr>
-                <tr>
-                    <th scope="row">nextTitle</th>
-                    <td>
-                        <code>string</code>
-                    </td>
-                    <td>下一页按钮的标题，只有设置了这个属性，才会出现此按钮</td>
-                </tr>
-                <tr>
-                    <th scope="row">startTitle</th>
-                    <td>
-                        <code>string</code>
-                    </td>
-                    <td>首页按钮的标题，只有设置了这个属性，才会出现此按钮</td>
-                </tr>
-                <tr>
-                    <th scope="row">endTitle</th>
-                    <td>
-                        <code>string</code>
-                    </td>
-                    <td>尾部按钮的标题，只有设置了这个属性，才会出现此按钮</td>
-                </tr>
-                <tr>
                     <th scope="row">color</th>
                     <td>
                         <code>string</code>
                     </td>
                     <td>颜色设置，bootstrap的基础颜色[danger,light,info...]</td>
-                </tr>
-                <tr>
-                    <th scope="row">outline</th>
-                    <td>
-                        <code>不需要设值</code>
-                    </td>
-                    <td>添加这个属性将会使用outline样式</td>
-                </tr>
-                <tr>
-                    <th scope="row">sm</th>
-                    <td>
-                        <code>不需要设值</code>
-                    </td>
-                    <td>添加这个属性组件会变小</td>
-                </tr>
-                <tr>
-                    <th scope="row">lg</th>
-                    <td>
-                        <code>不需要设值</code>
-                    </td>
-                    <td>添加这个属性组件会变大</td>
                 </tr>
             </tbody>
         </table>

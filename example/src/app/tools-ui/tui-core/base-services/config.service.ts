@@ -8,7 +8,7 @@ export class ConfigService {
         this.config = Object.assign({
             iconfontPrefix: 'iconfont',
             iconfontSymbolPrefix: 'icon',
-            iconfontLoadingClass: ['fa-spin'],
+            iconfontLoadingClass: ['iconfont-rotate'],
             buttonLoadingIcon: 'loading',
             defaultColor: 'primary',
             confirmCancelTitle: 'Cancel',

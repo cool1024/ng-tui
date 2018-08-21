@@ -75,6 +75,7 @@ export class ButtonDirective extends BaseTheme implements AfterViewInit, OnChang
     complete() {
         this.dismiss();
     }
+
     dismiss() {
         if (this.iconDom) {
             this.button.removeChild(this.iconDom);

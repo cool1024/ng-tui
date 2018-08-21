@@ -9,11 +9,15 @@
                 "children": [
                     {
                         "title": "普通按钮",
-                        "url": "/buttons/simple"
+                        "url": "/demo/button"
                     },
                     {
                         "title": "分页按钮",
-                        "url": "/buttons/page"
+                        "url": "/demo/pagination"
+                    },
+                    {
+                        "title": "下拉按钮",
+                        "url": "/demo/dropdown"
                     }
                 ]
             },
@@ -35,23 +39,23 @@
                 "children": [
                     {
                         "title": "多项/单选",
-                        "url": "/form/checkbox"
+                        "url": "/demo/checkbox"
                     },
                     {
                         "title": "下拉选择",
-                        "url": "/form/select"
+                        "url": "/demo/select"
                     },
                     {
                         "title": "日期选择",
-                        "url": "/form/datepicker"
+                        "url": "/demo/datepicker"
                     },
                     {
                         "title": "幻灯片",
-                        "url": "/form/loopcard"
+                        "url": "/demo/loopcard"
                     },
                     {
                         "title": "搜索选择",
-                        "url": "/form/search"
+                        "url": "/demo/search"
                     }
                 ]
             },
@@ -77,11 +81,11 @@
                 "children": [
                     {
                         "title": "面板切换",
-                        "url": "/pad/tab"
+                        "url": "/demo/tab"
                     },
                     {
                         "title": "折叠面板",
-                        "url": "/pad/collapse"
+                        "url": "/demo/collapse"
                     }
                 ]
             },

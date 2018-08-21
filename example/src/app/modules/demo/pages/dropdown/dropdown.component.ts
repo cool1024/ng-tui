@@ -13,6 +13,8 @@ export class DropdownComponent implements OnInit {
         { text: 'Card', value: 3 },
     ];
 
+    dropdownValue = 1;
+
     stringDropdowns = ['Apple', 'Board', 'Card'];
 
     constructor() { }

@@ -35,7 +35,7 @@ export class AppComponent {
             dashboardMode: 'full',
             menuMode: 'small',
             lazyload: true,
-            color: 'info'
+            color: 'dark'
         });
 
         // 载入服务端参数

@@ -512,12 +512,37 @@ ts-select .dropdown-menu {
     font-size: $font-size-base;
 }
 
-.fa-spin {
+.iconfont-rotate::before {
+    animation: rotate 1s infinite linear;
     display: inline-block;
-    animation: fa-spin 1s infinite linear;
 }
 
-@keyframes fa-spin {
+/*.btn--waiting .btn__icon:before{
+  width:20px;
+  height:20px;
+  top: 2px;
+  left: 2px;
+  border-radius:50%;
+  background-color:#2f89d1;
+  z-index: 1;
+}*/
+
+.btn--waiting .btn__icon:after {
+    width: 20px;
+    height: 20px;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+    animation: rotation infinite linear 0.5s;
+    transition: none;
+    border-top: 2px solid transparent;
+    border-left: 2px solid #fff;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    z-index: 0;
+}
+
+@keyframes rotate {
     0% {
         transform: rotate(0deg);
     }

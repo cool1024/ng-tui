@@ -15,8 +15,13 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
 @Component({
     selector: 'ts-tabs',
     template: `
-    <div *ngIf="!this.isApply(cardType)" class="tabs tabs-{{color}}">
-        <div class="tab-bar" [style.width.px]="tabBarWidth" [style.left.px]="offsetLeft"></div>
+    <div *ngIf="!this.isApply(cardType)" class="tabs tabs-{{color}}" 
+        [class.justify-content-end]="position==='end'"
+        [class.justify-content-center]="position==='center'">
+        <div class="tab-bar"
+            [style.width.px]="tabBarWidth"
+            [style.left.px]="offsetLeft">
+        </div>
         <div #tabItem *ngFor="let tab of tabs;index as i"
             [class.active]="tab===activeTab"
             (click)="changeTab(tab,i)"
@@ -70,6 +75,7 @@ export class TabComponent extends BaseTheme implements AfterViewInit {
         }
         const activeIndex = this.tabs.indexOf(this.activeTab);
         setTimeout(() => activeIndex > -1 && this.moveActiveBar(activeIndex));
+        window.addEventListener('resize', this.moveHandle);
     }
 
     changeTab(tab: string, i: number = null) {
@@ -83,12 +89,15 @@ export class TabComponent extends BaseTheme implements AfterViewInit {
         this.tabChange.emit(tab);
     }
 
+    moveHandle = () => {
+        const activeIndex = this.tabs.indexOf(this.activeTab);
+        this.moveActiveBar(activeIndex);
+    }
+
     moveActiveBar(i: number) {
         const tabs = this.tabDoms;
         this.offsetLeft = 0;
-        for (let j = 0; j < i; j++) {
-            this.offsetLeft += tabs[j].clientWidth;
-        }
+        this.offsetLeft = tabs[i].offsetLeft;
         this.tabBarWidth = tabs[i].clientWidth;
     }
 }
