@@ -6,32 +6,45 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
 
 @Component({
     selector: 'ts-pagination',
-    template: `<div class="d-inline-block">
+    template: `
+<div class="d-inline-flex flex-wrap">
     <ng-container *ngIf="goTitle">
-        <button (click)="page.invalid||sendChange(page.value)" [class]="btnClass">{{goTitle}}</button>
-        <input ngModel #page="ngModel" [min]="1" [class.form-control-sm]="isApply(sm)"
-        [class.form-control-lg]="isApply(lg)"
-            class="form-control pagination-input form-sm-control border-muted ml-1 mr-1" type="number">
+        <div (click)="page.invalid||sendChange(page.value)"
+             class="pagination-button pagination-button-{{color}}">
+             {{goTitle}}
+        </div>
+        <input ngModel #page="ngModel" [min]="1" class="form-control pagination-input" type="number">
     </ng-container>
-    <ts-dropdown *ngIf="items" dropup [lg]="lg" [sm]="sm" [color]="color" [outline]="outline"
-    [value]="pagination.limit" [items]="items" (valueChange)="changeLimit($event)" class="mr-1"></ts-dropdown>
-    <div class="btn-group mr-2" role="group">
-        <button type="button" [class]="btnClass" *ngIf="!!startTitle" [class.disabled]="!pagination.hasPrev()"
-        [disabled]="!pagination.hasPrev()"
-            (click)="pagination.page=1;sendChange()">{{startTitle}}</button>
-        <button type="button" [class]="btnClass" *ngIf="!!prevTitle" [class.disabled]="!pagination.hasPrev()"
-        [disabled]="!pagination.hasPrev()"
-            (click)="pagination.page=pagination.page-1;sendChange()">{{prevTitle}}</button>
-        <ng-template ngFor let-item [ngForOf]="pages" let-i="index">
-            <button [ngClass]="{'active':item == pagination.page}" type="button" [class]="btnClass"
-            (click)="pagination.page=item;sendChange()">{{item}}</button>
-        </ng-template>
-        <button type="button" [class]="btnClass" *ngIf="!!nextTitle" [class.disabled]="!pagination.hasNext()"
-        [disabled]="!pagination.hasNext()"
-            (click)="pagination.page=pagination.page+1;sendChange()">{{nextTitle}}</button>
-        <button type="button" [class]="btnClass" *ngIf="!!endTitle" [class.disabled]="!pagination.hasNext()"
-        [disabled]="!pagination.hasNext()"
-            (click)="pagination.page=pagination.maxPage;sendChange()">{{endTitle}}</button>
+    <div tsDropdown dropup class="pagination-dropdown">
+        <div tsToggle class="pagination-button pagination-button-{{color}}">显示 {{pagination.limit}} 条</div>
+        <div tsDropMenu class="rounded">
+            <button *ngFor="let item of items" (click)="changeLimit(item.value)" class="dropdown-item">{{item.text}}</button>
+        </div>
+    </div>
+    <div (click)="pagination.page=1;sendChange()"
+            [class.disabled]="!pagination.hasPrev()"
+            class="pagination-item pagination-tool-{{color}}">
+        <i class="iconfont icon-start"></i>
+    </div>
+    <div (click)="pagination.page=pagination.page-1;sendChange()"
+            [class.disabled]="!pagination.hasPrev()"
+            class="pagination-item pagination-tool-{{color}}">
+        <i class="iconfont icon-preview"></i>
+    </div>
+    <ng-template ngFor let-item [ngForOf]="pages" let-i="index">
+        <div (click)="pagination.page=item;sendChange()"
+            [ngClass]="{'active':item == pagination.page}"
+            class="pagination-item pagination-item-{{color}}">{{item}}</div>
+    </ng-template>
+    <div (click)="pagination.page=pagination.page+1;sendChange()"
+            [class.disabled]="!pagination.hasNext()"
+            class="pagination-item pagination-tool-{{color}}">
+        <i class="iconfont icon-next"></i>
+    </div>
+    <div (click)="pagination.page=pagination.maxPage;sendChange()"
+            [class.disabled]="!pagination.hasNext()"
+            class="pagination-item pagination-tool-{{color}}">
+        <i class="iconfont icon-end"></i>
     </div>
 </div>`
 })

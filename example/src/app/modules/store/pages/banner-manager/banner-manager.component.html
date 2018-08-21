@@ -8,7 +8,7 @@
         </button>
     </div>
 </div>
-<div class="card card-body mt-2">
+<div class="card card-body m-2">
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -20,16 +20,16 @@
                 <tr *ngFor="let td of list;index as i">
                     <td>{{i+1}}</td>
                     <td>
-                        <img tsImg class="img-thumbnail" dataSrc="assets/images/404.jpg" width="60" [src]="td.bannerSrc" alt="幻灯片">
+                        <img tsImg class="shadow-sm rounded" dataSrc="assets/images/404.jpg" width="60" [src]="td.bannerSrc" alt="幻灯片">
                     </td>
                     <td class="text-primary">{{td.bannerLink}}</td>
                     <td>
-                        <a (click)="confirmDelete(td)" class="btn-icon btn-icon-danger" title="删除">
-                            <i class="fa fa-lg fa-fw fa-trash-o align-middle"></i>
-                        </a>
-                        <a (click)="showEditModal(td)" class="btn-icon btn-icon-info" title="编辑">
-                            <i class="fa fa-lg fa-fw fa-edit align-middle"></i>
-                        </a>
+                        <span (click)="confirmDelete(td)" class="btn-icon btn-icon-danger" tsTip="删除">
+                            <i tsIcon="delete"></i>
+                        </span>
+                        <span (click)="showEditModal(td)" class="btn-icon btn-icon-info" tsTip="编辑">
+                            <i tsIcon="form"></i>
+                        </span>
                     </td>
                 </tr>
             </tbody>

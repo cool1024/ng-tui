@@ -15,7 +15,7 @@ import { GlobalService } from '../../../../cores/services';
         <div class="modal-body">
             <img *ngIf="!uploading" class="w-100" [src]="banner.bannerSrc">
             <div *ngIf="uploading" style="height:300px;">
-                <ts-table-load [display]="uploading" [color]="global.getValue('color')"></ts-table-load>
+                <ts-table-load [display]="uploading" [color]="global.params.color"></ts-table-load>
             </div>
             <div class="input-group mt-2">
                 <div class="input-group-prepend">
@@ -25,7 +25,7 @@ import { GlobalService } from '../../../../cores/services';
             </div>
         </div>
         <div class="modal-footer">
-            <!--<input tsFile accept="image/*" #inputFile="tsFile" (fileChange)="uploadBanner($event)">-->
+            <input tsFile accept="image/*" #inputFile="tsFile" (fileChange)="uploadBanner($event)">
             <button tsBtn (click)="modal.dismiss()">取消/返回</button>
             <button tsBtn color="primary" (click)="inputFile.openFileDialog()">
                 <i class="fa fa-fw fa-file-picture-o"></i>选择图片

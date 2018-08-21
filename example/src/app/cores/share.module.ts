@@ -24,6 +24,8 @@ import {
     TooltipsModule,
     ToastModule,
     PrismModule,
+    UploadModule,
+    ModalModule,
 } from '../tools-ui';
 
 @NgModule({
@@ -45,6 +47,8 @@ import {
         TooltipsModule,
         PrismModule,
         ToastModule,
+        UploadModule,
+        ModalModule,
     ]
 })
 export class ShareModule { }

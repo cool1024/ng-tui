@@ -15,6 +15,4 @@ import { FormsModule } from '@angular/forms';
         PaginationComponent,
     ]
 })
-export class PaginationModule {
-
-}
+export class PaginationModule { }

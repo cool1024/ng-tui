@@ -66,5 +66,4 @@ export class BannerManagerComponent implements OnInit {
                 this.loadDatas();
             });
     }
-
 }

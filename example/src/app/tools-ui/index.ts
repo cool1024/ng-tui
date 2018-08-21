@@ -26,3 +26,5 @@ export { Pagination } from './modules/pagination/pagination.class';
 
 export { ModalModule } from './modules/modal/modal.module';
 export { ModalService } from './modules/modal/modal.service';
+
+export { UploadModule } from './modules/upload/upload.module';
