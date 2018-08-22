@@ -1,0 +1,15 @@
+<div class="card">
+    <div class="card-header bg-white">角色管理</div>
+    <div class="card-body m-btn">
+        <button (click)="showAddModal(roleTreeNode)" class="btn btn-success">添加新角色</button>
+        <button (click)="loadDatas()" class="btn btn-white">
+            <i class="fa fa-fw fa-refresh"></i>刷新数据</button>
+    </div>
+</div>
+<div class="card mt-2">
+    <div class="card-body">
+        <app-role-ul *ngFor="let roleGroup of roleTreeNode.roleChildren" (insertEvent)="showAddModal($event)" (updateEvent)="showEditModal($event)"
+            (deleteEvent)="confirmDelete($event)" [roleGroup]="roleGroup">
+        </app-role-ul>
+    </div>
+</div>

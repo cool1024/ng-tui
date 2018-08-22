@@ -15,6 +15,16 @@ import { CheckboxComponent } from './pages/checkbox/checkbox.component';
 import { DropdownComponent } from './pages/dropdown/dropdown.component';
 import { SelectComponent } from './pages/select/select.component';
 import { TabComponent } from './pages/tab/tab.component';
+import { SearchComponent } from './pages/search/search.component';
+import { CollapseComponent } from './pages/collapse/collapse.component';
+import { ProgressComponent } from './pages/progress/progress.component';
+import { LoadingComponent } from './pages/loading/loading.component';
+import { BadgeComponent } from './pages/badge/badge.component';
+import { ImageComponent } from './pages/image/image.component';
+import { IconfontComponent } from './pages/iconfont/iconfont.component';
+import { ModalComponent } from './pages/modal/modal.component';
+import { ModalSimpleComponent } from './pages/modal/modal-simple.component';
+import { ConfirmComponent } from './pages/confirm/confirm.component';
 
 const routes: Routes = [
     {
@@ -48,6 +58,12 @@ const routes: Routes = [
         }
     },
     {
+        path: 'search', component: SearchComponent,
+        data: {
+            breadcrumbs: [{ title: '下拉搜索' }]
+        }
+    },
+    {
         path: 'dropdown', component: DropdownComponent,
         data: {
             breadcrumbs: [{ title: '下拉菜单' }]
@@ -64,6 +80,54 @@ const routes: Routes = [
         data: {
             breadcrumbs: [{ title: '面板切换' }]
         }
+    },
+    {
+        path: 'collapse', component: CollapseComponent,
+        data: {
+            breadcrumbs: [{ title: '折叠面板' }]
+        }
+    },
+    {
+        path: 'progress', component: ProgressComponent,
+        data: {
+            breadcrumbs: [{ title: '进度条' }]
+        }
+    },
+    {
+        path: 'loading', component: LoadingComponent,
+        data: {
+            breadcrumbs: [{ title: '加载动画' }]
+        }
+    },
+    {
+        path: 'badge', component: BadgeComponent,
+        data: {
+            breadcrumbs: [{ title: '标签' }]
+        }
+    },
+    {
+        path: 'image', component: ImageComponent,
+        data: {
+            breadcrumbs: [{ title: '图片' }]
+        }
+    },
+    {
+        path: 'icon', component: IconfontComponent,
+        data: {
+            breadcrumbs: [{ title: '图标' }]
+        }
+    },
+    {
+        path: 'modal', component: ModalComponent,
+        data: {
+            breadcrumbs: [{ title: '弹窗' }]
+        }
+    },
+    {
+        path: 'confirm', component: ConfirmComponent,
+        data: {
+            breadcrumbs: [{ title: '操作确认' }]
+        }
     }
 ];
 
@@ -79,12 +143,24 @@ export const declarationComponents = [
     DropdownComponent,
     SelectComponent,
     TabComponent,
+    SearchComponent,
+    CollapseComponent,
+    ProgressComponent,
+    LoadingComponent,
+    BadgeComponent,
+    ImageComponent,
+    IconfontComponent,
+    ModalComponent,
+    ModalSimpleComponent,
+    ConfirmComponent,
 ];
 
 /**
  * 动态组件（模态框，窗口）
  */
-export const entryComponents = [];
+export const entryComponents = [
+    ModalSimpleComponent,
+];
 
 /**
  * 服务列表

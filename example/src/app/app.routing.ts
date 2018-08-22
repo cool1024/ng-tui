@@ -12,6 +12,7 @@ const routes: Routes = [
     // 懒加载子模块
     { path: 'demo', loadChildren: './modules/demo/demo.module#DemoModule' },
     { path: 'store', loadChildren: './modules/store/store.module#StoreModule' },
+    { path: 'system', loadChildren: './modules/system/system.module#SystemModule' },
 
     // 最后全局匹配其他链接
     { path: '**', redirectTo: 'error', pathMatch: 'full' }

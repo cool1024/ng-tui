@@ -2,7 +2,7 @@ import { Directive, HostListener, Input, HostBinding, OnChanges, SimpleChanges }
 import { ConfigService } from '../../tui-core/base-services/config.service';
 
 @Directive({
-    selector: `img[tsImg]`,
+    selector: `img[tsImg],img[dataSrc]`,
     exportAs: 'tsImg'
 })
 export class ImageDirective implements OnChanges {

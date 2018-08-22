@@ -302,6 +302,11 @@ ts-select .dropdown-menu {
     flex-shrink: 0;
 }
 
+.pagination-item.disabled {
+    opacity: 0.1;
+    cursor: not-allowed;
+}
+
 .pagination-button {
     margin: 0.25rem;
     padding: 0 1rem;
@@ -387,7 +392,12 @@ ts-select .dropdown-menu {
 }
 
 /** badge **/
-.ts-badge span {
+.badge-mark {
+    display: inline-flex;
+    align-items: center;
+}
+
+.badge-mark span {
     transition: all 0.2s;
     width: 0px;
     overflow: hidden;
@@ -395,7 +405,7 @@ ts-select .dropdown-menu {
     display: inline-block;
 }
 
-.ts-badge:hover span {
+.badge-mark:hover span {
     transition: all 0.2s;
     opacity: 1;
     width: 15px;
@@ -466,11 +476,7 @@ ts-select .dropdown-menu {
 
 /** table-loader **/
 .table-loader {
-    background-color: rgba(255, 255, 255, 0.6);
-}
-
-.table-loader .position-absolute {
-    top: 40%;
+    background-color: rgba($white, 0.6);
 }
 
 /** breadcrumb **/

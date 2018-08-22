@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { of, Observable } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
-import { Item } from '../../../tui/tui-core/interfaces/item.interface';
+import { Item } from '../../../../tools-ui';
 
 @Component({
     selector: 'app-search',
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
+
+    values = new Array<Item>();
 
     constructor() { }
-
-    ngOnInit() {
-    }
 
     /**
        * 从服务器查询需要的选项

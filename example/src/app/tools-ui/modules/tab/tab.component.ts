@@ -7,6 +7,7 @@ import {
     ViewChildren,
     QueryList,
     ElementRef,
+    OnDestroy,
 } from '@angular/core';
 import { TabsDirective } from './tab.directive';
 import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
@@ -38,7 +39,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
         </li>
     </ul>`
 })
-export class TabComponent extends BaseTheme implements AfterViewInit {
+export class TabComponent extends BaseTheme implements AfterViewInit, OnDestroy {
 
     @Input() tabs: Array<string>;
 
@@ -76,6 +77,10 @@ export class TabComponent extends BaseTheme implements AfterViewInit {
         const activeIndex = this.tabs.indexOf(this.activeTab);
         setTimeout(() => activeIndex > -1 && this.moveActiveBar(activeIndex));
         window.addEventListener('resize', this.moveHandle);
+    }
+
+    ngOnDestroy() {
+        window.removeEventListener('resize', this.moveHandle);
     }
 
     changeTab(tab: string, i: number = null) {

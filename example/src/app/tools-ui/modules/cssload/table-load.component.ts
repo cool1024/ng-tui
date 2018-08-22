@@ -7,21 +7,17 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
     exportAs: 'tsTableLoad',
     template: `
     <div *ngIf="display" class="table-loader h-100 w-100 position-absolute left top d-flex">
-        <div class="align-self-center text-center w-100 {{textClass}}">
-            <i tsIcon="loading" class="fa-spin" style="font-size:2rem"></i>
-            <p *ngIf="label">{{label}}</p>
+        <div class="d-flex align-self-center justify-content-center text-center w-100 {{textClass}}">
+            <div class="dot-windmill"></div>
         </div>
     </div>`
 })
 export class TableLoadComponent extends BaseTheme {
 
-    @Input() label: string;
-
     @Input() display: boolean;
 
     constructor(private configService: ConfigService) {
         super();
-        this.label = '';
         this.display = false;
         this.color = configService.config.defaultColor;
     }

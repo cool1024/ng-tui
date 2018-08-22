@@ -5,7 +5,6 @@ export { DropdownModule } from './modules/dropdown/dropdown.module';
 export { SelectModule } from './modules/select/select.module';
 export { CollapseModule } from './modules/collapse/collapse.module';
 export { TabModule } from './modules/tab/tab.module';
-export { BadgeModule } from './modules/badge/badge.module';
 export { ToastModule } from './modules/toast/toast.module';
 export { ToastService } from './modules/toast/toast.service';
 export { ConfirmModule } from './modules/confirm/confirm.module';
@@ -28,3 +27,7 @@ export { ModalModule } from './modules/modal/modal.module';
 export { ModalService } from './modules/modal/modal.service';
 
 export { UploadModule } from './modules/upload/upload.module';
+export { UploadConfig } from './modules/upload/upload.interface';
+
+export { BadgeModule } from './modules/badge/badge.module';
+export { Badge } from './modules/badge/badge.interface';

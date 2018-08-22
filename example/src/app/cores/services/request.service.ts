@@ -311,6 +311,7 @@ export class RequestService {
         HttpConfig.AUTH_HEADER_PARAMS.forEach(key => {
             header = header.append(key, localStorage.getItem(key) || '');
         });
+        console.log(header);
         return header;
     }
 

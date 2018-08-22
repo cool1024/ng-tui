@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Badge } from '../../../tui/modules/badge/badge.interface';
+import { Badge } from '../../../../tools-ui';
 
 @Component({
     selector: 'app-badge',

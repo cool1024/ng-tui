@@ -26,7 +26,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
             class="pagination-item pagination-tool-{{color}}">
         <i class="iconfont icon-start"></i>
     </div>
-    <div (click)="pagination.page=pagination.page-1;sendChange()"
+    <div (click)="prevPage()"
             [class.disabled]="!pagination.hasPrev()"
             class="pagination-item pagination-tool-{{color}}">
         <i class="iconfont icon-preview"></i>
@@ -36,7 +36,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
             [ngClass]="{'active':item == pagination.page}"
             class="pagination-item pagination-item-{{color}}">{{item}}</div>
     </ng-template>
-    <div (click)="pagination.page=pagination.page+1;sendChange()"
+    <div (click)="nextPage()"
             [class.disabled]="!pagination.hasNext()"
             class="pagination-item pagination-tool-{{color}}">
         <i class="iconfont icon-next"></i>
@@ -86,6 +86,20 @@ export class PaginationComponent extends BaseTheme implements DoCheck {
     }
 
     ngDoCheck() { this.setPages(); }
+
+    nextPage() {
+        if (this.pagination.hasNext()) {
+            this.pagination.page++;
+            this.sendChange();
+        }
+    }
+
+    prevPage() {
+        if (this.pagination.hasPrev()) {
+            this.pagination.page--;
+            this.sendChange();
+        }
+    }
 
     changeLimit(limit: number) {
         this.pagination.limit = limit;
