@@ -5,6 +5,8 @@ export const HttpConfig = {
 
     WEBSOCKET_URL: '',
 
+    OPEN_PARAM_PACKAGE: true,
+
     // 请求超时时间
     TIME_OUT: 10000,
 
@@ -21,10 +23,10 @@ export const HttpConfig = {
         NOTFOUND_ERROR: '哎呀，请求地址不存在',
         TOKEN_ERROR: '您的登入已经过期，请重新登入',
         AUTH_ERROR: '您没有权限访问这些数据',
-        TIMEOUT_ERROR: '服务器很久没有响应了',
+        TIMEOUT_ERROR: ['通信异常', '服务器很久没有响应了,请检查您的网络'],
         RESPONSE_CONTENT_ERROR: '接收到一个错误的响应',
         CHECK_ERROR: '未授权的令牌~',
-        OTHER_ERROR: '其他错误，异常的请求',
+        OTHER_ERROR: ['请求发送失败', '其他错误，异常的请求'],
     },
 
     // 显示通知消息状态码
@@ -47,6 +49,20 @@ export const HttpConfig = {
 
     // 403跳转页面
     AUTH_ERROR_URL: '/dashboard/error',
+
+    // RSA 请求公钥
+    RSA_PUBLIC_KEY: `-----BEGIN PUBLIC KEY-----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyfRmdYFS58Xrr3rVPbhv
+    ofOFbMmWEJlr1Lec7O5faCG0ACXIWQnqlUwJhdIuimNJhFjwuiYDYjJnQ3EOdGIk
+    YLRO12sdCefcqiKXF5+NIKW4NikgGdr2t2zi8RwA94Q5DO3g/+B+w3FP2QSwrnhW
+    wQ0R2++CrwPFW4txsyXIJQdi0Uv/2pG8vhrRHQrHa29bc/qDUYT4a4z99d6fSDUV
+    JtOrjBYPw76jjf5R1tGKgoCQs9YIM7d6EzNv4j3cbOJqU2kRhhgDyHhinB/c1dpi
+    JWXAjkJHRCyEU9Ugex1Mmi149B6Ucs2JN8PFm9vSoMDesSDtTOd9pQNwyeCIn0TP
+    wwIDAQAB
+    -----END PUBLIC KEY-----`,
+
+    // RSA 私钥
+    RSA_PRIVATE_KEY: ``
 };
 
 export const INTERCEPTOR_MESSAGES = {

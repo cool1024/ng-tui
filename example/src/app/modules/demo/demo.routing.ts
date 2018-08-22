@@ -25,6 +25,7 @@ import { IconfontComponent } from './pages/iconfont/iconfont.component';
 import { ModalComponent } from './pages/modal/modal.component';
 import { ModalSimpleComponent } from './pages/modal/modal-simple.component';
 import { ConfirmComponent } from './pages/confirm/confirm.component';
+import { RequestComponent } from './pages/request/request.component';
 
 const routes: Routes = [
     {
@@ -128,6 +129,12 @@ const routes: Routes = [
         data: {
             breadcrumbs: [{ title: '操作确认' }]
         }
+    },
+    {
+        path: 'request', component: RequestComponent,
+        data: {
+            breadcrumbs: [{ title: '发送请求' }]
+        }
     }
 ];
 
@@ -153,6 +160,7 @@ export const declarationComponents = [
     ModalComponent,
     ModalSimpleComponent,
     ConfirmComponent,
+    RequestComponent,
 ];
 
 /**
