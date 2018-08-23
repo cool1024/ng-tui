@@ -10,8 +10,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
+    { path: 'login', component: LoginComponent },
     { path: 'home', component: HomeComponent },
     { path: 'error', component: ErrorComponent },
 ];
@@ -21,7 +23,6 @@ const routes: Routes = [
  */
 export const exportComponents = [
     MenuComponent,
-    ErrorComponent,
 ];
 
 /**
@@ -29,6 +30,8 @@ export const exportComponents = [
  */
 export const declarationComponents = [
     HomeComponent,
+    LoginComponent,
+    ErrorComponent,
     ...exportComponents,
 ];
 

@@ -5,60 +5,57 @@
     <ts-datepicker #datepickerTwo="tsDatepicker" [(ngModel)]="search.params.end" [color]="global.getValue('color')" [weekTitles]="['一', '二', '三', '四', '五', '六', '日']"
         [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']">
     </ts-datepicker> -->
-    <div class="card rounded-0">
-        <div class="card-header bg-white">
+    <div class="toolbar">
+        <h4>商品列表</h4>
+        <!-- <div class="card-header bg-white">
             <i class="iconfont icon-search mr-2"></i>
             <span>商品列表</span>
+        </div> -->
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white">商品名称</span>
+            </div>
+            <input [(ngModel)]="search.params.name" type="text" class="form-control" placeholder="请输入商品名称关键词">
         </div>
-        <div class="card-body">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text bg-white">商品名称</span>
-                </div>
-                <input [(ngModel)]="search.params.name" type="text" class="form-control" placeholder="请输入商品名称关键词">
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white">创建时间</span>
             </div>
-            <br>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text bg-white">创建时间</span>
-                </div>
-                <input type="text" class="form-control bg-white pointer" placeholder="开始时间" readonly>
-                <div class="input-group-prepend input-group-append">
-                    <span class="input-group-text bg-white">到</span>
-                </div>
-                <input type="text" class="form-control bg-white pointer" placeholder="结束时间" readonly>
+            <input type="text" class="form-control bg-white pointer" placeholder="开始时间" readonly>
+            <div class="input-group-prepend input-group-append">
+                <span class="input-group-text bg-white">到</span>
             </div>
-            <br>
-            <div class="row">
-                <div class="col-6">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white">共查询到</span>
-                        </div>
-                        <input type="text" value="{{pagination.total}}" class="form-control text-center bg-white" readonly placeholder="0">
-                        <div class="input-group-append">
-                            <span class="input-group-text bg-white">条/结果</span>
-                        </div>
+            <input type="text" class="form-control bg-white pointer" placeholder="结束时间" readonly>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white">共查询到</span>
+                    </div>
+                    <input type="text" value="{{pagination.total}}" class="form-control text-center bg-white" readonly placeholder="0">
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-white">条/结果</span>
                     </div>
                 </div>
-                <div class="col-6 text-right m-btn">
-                    <button class="btn btn-success" routerLink="detail">
-                        <span>添加商品</span>
-                    </button>
-                    <button (click)="doReset()" class="btn btn-white">
-                        <i class="fa fa-refresh fa-fw"></i>
-                        <span>重置</span>
-                    </button>
-                    <button (click)="doSearch()" class="btn btn-white">
-                        <i class="fa fa-search fa-fw"></i>
-                        <span>搜索</span>
-                    </button>
-                </div>
+            </div>
+            <div class="col-6 text-right m-btn">
+                <button class="btn btn-success" routerLink="detail">
+                    <span>添加商品</span>
+                </button>
+                <button (click)="doReset()" class="btn btn-white">
+                    <i class="iconfont icon-refresh mr-2"></i>
+                    <span>重置</span>
+                </button>
+                <button (click)="doSearch()" class="btn btn-white">
+                    <i class="iconfont icon-search mr-2"></i>
+                    <span>搜索</span>
+                </button>
             </div>
         </div>
     </div>
     <div class="p-2">
-        <div class="card rounded-0 mt-2">
+        <div class="card rounded-0">
             <div class="card-body">
                 <ts-table-load #tsTableLoad="tsTableLoad" [display]="loading" [color]="global.params.value"></ts-table-load>
                 <div class="table-responsive">

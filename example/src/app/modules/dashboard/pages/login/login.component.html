@@ -1,0 +1,50 @@
+<div class="fixed-top h-100 w-100 login-pad bg-white" [ngStyle]="{'background-image':config.BACKGROUND_IMAGE_SRC}">
+    <div class="w-100 h-100 window d-flex justify-content-between">
+        <div class="w-100 d-flex flex-wrap justify-content-center"></div>
+        <form style="min-width:25rem" class="card h-100 rounded-0 border-0" autocomplete="off">
+            <div class="card-header login-header text-center">
+                <img [src]="config.LOGO" width="40">
+                <span class="ml-2">{{config.TITLE}}</span>
+                <!-- <span class="pull-right text-muted">版本 2.0.0</span> -->
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <h5 class="text-{{global.params.color}}">{{config.SUBJECT}}</h5>
+                    <small class="text-muted">{{config.DESCRIPTION}}</small>
+                </div>
+                <div class="form-group">
+                    <label>{{config.FIRST_LABEL}}</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white rounded-0">
+                                <i class="iconfont icon-account" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <input type="text" name="account" [(ngModel)]="account.account" class="form-control rounded-0" [placeholder]="config.FIRST_PLACEHOLDER">
+                    </div>
+                </div>
+                <div class=" form-group">
+                    <label>密码</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white rounded-0">
+                                <i class="iconfont icon-lock" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <input type="password" name="password" [(ngModel)]="account.password" class="form-control
+                    rounded-0" [placeholder]="config.SECOND_PLACEHOLDER">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <span class="pull-right text-muted ">忘记密码？</span>
+                </div>
+                <div class="p-4"></div>
+                <button class="btn btn-lg btn-dark btn-block rounded-0" (click)="confirmLogin()">登入</button>
+            </div>
+            <div class="card-footer bg-white text-center">
+                <p class="mt-1 mb-0">Copyright © 2018 XiaoJian. All Rights Reserved.
+                    <br> 赣 ICP备16010587号</p>
+            </div>
+        </form>
+    </div>
+</div>

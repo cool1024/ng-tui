@@ -1,0 +1,74 @@
+<div class="toolbar">
+    <h4>高德地图</h4>
+    <div>
+        <div class="map-pad" #map="tsMap" tsMap (positionChange)="getPosition($event)"></div>
+        <div class="text-right mt-2 m-btn" *ngIf="mapStatus">
+            <button (click)="randomStyle()" class="btn btn-info">随机样式</button>
+            <button (click)="randomCenter()" class="btn btn-white">切换中心</button>
+            <button disabled (click)="getMyLocationInfo()" class="btn btn-white">浏览器定位</button>
+        </div>
+    </div>
+</div>
+<div class="p-2">
+    <div class="card">
+        <div class="card-header bg-white">地图服务
+            <a class="pull-right" href="http://lbs.amap.com/api/javascript-api/reference/math" target="_blank">参考文档</a>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 mb-2">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white">地址名称</span>
+                        </div>
+                        <input #address="ngModel" ngModel type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-12 mb-2">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white">坐标一</span>
+                        </div>
+                        <input #lng1="ngModel" ngModel type="text" class="form-control">
+                        <div class="input-group-prepend input-group-append">
+                            <span class="input-group-text bg-white">经度</span>
+                        </div>
+                        <input #lat1="ngModel" ngModel type="text" class="form-control">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-white">纬度</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-2">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white">坐标二</span>
+                        </div>
+                        <input #lng2="ngModel" ngModel type="text" class="form-control">
+                        <div class="input-group-prepend input-group-append">
+                            <span class="input-group-text bg-white">经度</span>
+                        </div>
+                        <input #lat2="ngModel" ngModel type="text" class="form-control">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-white">纬度</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-2 m-btn">
+                    <button (click)="getAddressInfo(address.value)" class="btn btn-white">
+                        <i class="fa fa-location-arrow fa-fw"></i>地址解析
+                    </button>
+                    <button (click)="getPointInfo()" class="btn btn-white">
+                        <i class="fa fa-map-marker fa-fw"></i>坐标解析
+                    </button>
+                    <button (click)="getPointDistance(lng1.value,lat1.value,lng2.value,lat2.value)" class="btn btn-white">
+                        <i class="fa fa-map-signs fa-fw"></i>坐标距离
+                    </button>
+                </div>
+                <div class="col-12">
+                    <pre class="pre-json-pad bg-light mt-1 p-1 text-dark">{{consoleLog|json}}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

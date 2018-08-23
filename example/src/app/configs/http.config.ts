@@ -5,7 +5,7 @@ export const HttpConfig = {
 
     WEBSOCKET_URL: '',
 
-    OPEN_PARAM_PACKAGE: true,
+    OPEN_PARAM_PACKAGE: false,
 
     // 请求超时时间
     TIME_OUT: 10000,

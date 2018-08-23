@@ -26,7 +26,13 @@ import {
     PrismModule,
     UploadModule,
     ModalModule,
+    WindowModule,
+    ClipModule,
+    MapModule,
+    EChartModule,
 } from '../tools-ui';
+import { QuillModule } from '../tools-ui/lib/quill/quill.module';
+import { DatePickerModule } from '../tools-ui/modules/datepicker/datepicker.module';
 
 @NgModule({
     exports: [
@@ -49,6 +55,12 @@ import {
         ToastModule,
         UploadModule,
         ModalModule,
+        WindowModule,
+        ClipModule,
+        QuillModule,
+        MapModule,
+        EChartModule,
+        DatePickerModule,
     ]
 })
 export class ShareModule { }

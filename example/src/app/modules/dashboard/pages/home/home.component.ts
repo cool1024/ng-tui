@@ -214,7 +214,7 @@ export class HomeComponent implements OnInit {
                     }
                 }
             });
-            this.optionThree = { series: [serie] };
+            Object.assign(this.optionThree, { series: [serie] });
         });
     }
 }

@@ -26,6 +26,13 @@ import { ModalComponent } from './pages/modal/modal.component';
 import { ModalSimpleComponent } from './pages/modal/modal-simple.component';
 import { ConfirmComponent } from './pages/confirm/confirm.component';
 import { RequestComponent } from './pages/request/request.component';
+import { CodeComponent } from '../../tools-ui/modules/code/code.component';
+import { MapComponent } from './pages/map/map.component';
+import { EditComponent } from './pages/edit/edit.component';
+import { EchartComponent } from './pages/echart/echart.component';
+import { DatepickerComponent } from './pages/datepicker/datepicker.component';
+import { SimpleComponent } from './pages/upload/simple.component';
+import { ViewComponent } from './pages/upload/view.component';
 
 const routes: Routes = [
     {
@@ -135,6 +142,42 @@ const routes: Routes = [
         data: {
             breadcrumbs: [{ title: '发送请求' }]
         }
+    },
+    {
+        path: 'code', component: CodeComponent,
+        data: {
+            breadcrumbs: [{ title: '代码高亮' }]
+        }
+    },
+    {
+        path: 'map', component: MapComponent,
+        data: {
+            breadcrumbs: [{ title: '高德地图' }]
+        }
+    },
+    {
+        path: 'ckedit', component: EditComponent,
+        data: {
+            breadcrumbs: [{ title: '富文本' }]
+        }
+    },
+    {
+        path: 'echart', component: EchartComponent,
+        data: {
+            breadcrumbs: [{ title: '百度图表' }]
+        }
+    },
+    {
+        path: 'datepicker', component: DatepickerComponent,
+        data: {
+            breadcrumbs: [{ title: '日期选择' }]
+        }
+    },
+    {
+        path: 'upload', component: SimpleComponent,
+        data: {
+            breadcrumbs: [{ title: '图片上传' }]
+        }
     }
 ];
 
@@ -161,6 +204,13 @@ export const declarationComponents = [
     ModalSimpleComponent,
     ConfirmComponent,
     RequestComponent,
+    CodeComponent,
+    MapComponent,
+    EditComponent,
+    EchartComponent,
+    DatepickerComponent,
+    SimpleComponent,
+    ViewComponent,
 ];
 
 /**
@@ -168,6 +218,7 @@ export const declarationComponents = [
  */
 export const entryComponents = [
     ModalSimpleComponent,
+    ViewComponent,
 ];
 
 /**

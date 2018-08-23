@@ -16,7 +16,7 @@ import { EChartsInstance } from './echart.interface';
 declare const window: any;
 
 @Directive({
-    selector: 'div[tsEchart]',
+    selector: 'div[tsEchart],*[baseEchart]',
     exportAs: 'tsEchart',
 })
 

@@ -1,4 +1,4 @@
-<div class="card pl-3 pb-3">
+<div class="toolbar">
     <h4>系统权限管理</h4>
     <div class="m-btn">
         <button (click)="editPermissionGroup()" tsBtn color="success">新增权限组</button>
@@ -25,16 +25,16 @@
                             {{permissionGroupItem.permissionGroup.permissionGroupName}}
                         </td>
                         <td>
-                            <span (click)="editPermission(permissionGroupItem.permissionGroup)" class="btn-icon btn-icon-primary">
+                            <span tsTip="添加子权限" (click)="editPermission(permissionGroupItem.permissionGroup)" class="btn-icon btn-icon-primary">
                                 <i class="iconfont icon-add-circle"></i>
                             </span>
-                            <span (click)="deletePermissionGroup(permissionGroupItem.permissionGroup)" class="btn-icon btn-icon-danger">
+                            <span tsTip="删除权限组" (click)="deletePermissionGroup(permissionGroupItem.permissionGroup)" class="btn-icon btn-icon-danger">
                                 <i class="iconfont icon-delete"></i>
                             </span>
-                            <span (click)="editPermissionGroup(permissionGroupItem.permissionGroup)" class="btn-icon btn-icon-info">
+                            <span tsTip="编辑权限组" (click)="editPermissionGroup(permissionGroupItem.permissionGroup)" class="btn-icon btn-icon-info">
                                 <i class="iconfont icon-form"></i>
                             </span>
-                            <span (click)="permissionGroupItem.open=!permissionGroupItem.open" class="btn-icon btn-icon-dark">
+                            <span tsTip="展开/收起" (click)="permissionGroupItem.open=!permissionGroupItem.open" class="btn-icon btn-icon-dark">
                                 <i class="iconfont icon-viewgallery"></i>
                             </span>
                         </td>

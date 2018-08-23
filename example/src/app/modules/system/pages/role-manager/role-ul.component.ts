@@ -18,13 +18,13 @@ import { RoleGroup } from '../../interfaces/role.interface';
                     {{roleGroup.role.roleName}}
                 </div>
                 <div class="d-table-cell text-right">
-                    <span (click)="sendInsertEvent(roleGroup)" class="btn-icon btn-icon-success" title="添加">
+                    <span (click)="sendInsertEvent(roleGroup)" class="btn-icon btn-icon-success" tsTip="添加">
                         <i class="iconfont icon-add-circle"></i>
                     </span>
-                    <span (click)="sendUpdateEvent(roleGroup)" class="btn-icon btn-icon-info" title="编辑">
+                    <span (click)="sendUpdateEvent(roleGroup)" class="btn-icon btn-icon-info" tsTip="编辑">
                         <i class="iconfont icon-form"></i>
                     </span>
-                    <span (click)="sendDeleteEvent(roleGroup)" class="btn-icon btn-icon-danger" title="删除">
+                    <span (click)="sendDeleteEvent(roleGroup)" class="btn-icon btn-icon-danger" tsTip="删除">
                         <i class="iconfont icon-delete"></i>
                     </span>
                 </div>

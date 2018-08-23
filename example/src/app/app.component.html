@@ -60,19 +60,19 @@
             <!-- 主体内容 -->
             <div #viewcontent class="flex-grow-1 bg-light w-100 h-100" style="overflow:auto;">
                 <div *ngIf="global.params.lazyload" class="h-100 w-100 bg-white d-flex align-items-center">
-                    <div class="dot-windmill m-auto"></div>
+                    <div class="dot-animate m-auto"></div>
                 </div>
                 <div *ngIf="!global.params.lazyload" class="h-100 d-flex flex-column">
-                    <div class="breadcrumb bg-white pl-3 pr-3">
-                        <a routerLink="/">
-                            <i class="iconfont icon-homepagenormal"></i>
-                            <span>首页</span>
-                        </a>
-                        <a *ngFor="let breadcrumb of breadcrumbs" [routerLink]="breadcrumb.path" class="mr-2" class="ml-2">
-                            <span>{{breadcrumb.title}}</span>
-                        </a>
-                    </div>
                     <div class="flex-grow-1" style="overflow: auto">
+                        <div class="breadcrumb bg-white pl-3 pr-3">
+                            <a routerLink="/">
+                                <i class="iconfont icon-homepagenormal"></i>
+                                <span>首页</span>
+                            </a>
+                            <a *ngFor="let breadcrumb of breadcrumbs" [routerLink]="breadcrumb.path" class="mr-2" class="ml-2">
+                                <span>{{breadcrumb.title}}</span>
+                            </a>
+                        </div>
                         <router-outlet></router-outlet>
                     </div>
                 </div>

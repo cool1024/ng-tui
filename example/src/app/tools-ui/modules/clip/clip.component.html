@@ -1,0 +1,17 @@
+<div class="h-100 d-flex">
+    <div class="m-auto shadow algin-self-center position-relative rounded" style="background:url(assets/images/transparent.png);overflow: hidden;">
+        <nav class="bg-white align-items-center d-flex justify-content-between position-absolute w-100" style="height:55px;">
+            <span class="navbar-brand ml-2">图片裁剪</span>
+            <div>
+                <span (click)="view.close()" class="text-muted text-danger-hover pointer">
+                    <i class="fa fa-times mr-2" aria-hidden="true"></i>关闭
+                </span>
+            </div>
+        </nav>
+        <div #clipPad style="width:600px;height:400px;margin-top:60px;margin-bottom:4px;"></div>
+        <div class="text-right m-btn p-2 bg-white">
+            <button tsBtn (click)="confirmSource()">使用原图</button>
+            <button tsBtn (click)="confirmClip()" color="primary">确认裁剪</button>
+        </div>
+    </div>
+</div>

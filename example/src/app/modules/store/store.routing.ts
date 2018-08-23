@@ -18,6 +18,7 @@ const routes: Routes = [
     {
         path: 'types',
         component: GoodsTypesComponent,
+        data: { breadcrumbs: [{ title: '商品分类' }] }
     },
     {
         path: 'order',
@@ -44,6 +45,7 @@ const routes: Routes = [
     {
         path: 'banner',
         component: BannerManagerComponent,
+        data: { breadcrumbs: [{ title: '幻灯片' }] }
     }
 ];
 

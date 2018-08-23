@@ -9,7 +9,7 @@ export const AppConfig = {
         FIRST_PLACEHOLDER: '请输入您的账户',
         SECOND_LABEL: '密码',
         SECOND_PLACEHOLDER: '请输入您的密码',
-        BACKGROUND_IMAGE_SRC: 'url(assets/images/background/6.jpg)'
+        BACKGROUND_IMAGE_SRC: 'url(assets/images/background/1.jpg)'
     },
 
     MENU_CONFIG: {

@@ -70,11 +70,11 @@
                     },
                     {
                         "title": "图片上传",
-                        "url": "/upload/simple"
+                        "url": "/demo/upload"
                     },
                     {
                         "title": "其它上传",
-                        "url": "/upload/video"
+                        "url": "/demo/video"
                     }
                 ]
             },

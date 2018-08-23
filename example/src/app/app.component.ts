@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Router, RouteConfigLoadStart, NavigationEnd, ActivatedRouteSnapshot, UrlSegment } from '@angular/router';
+import { Router, RouteConfigLoadStart, NavigationEnd, ActivatedRouteSnapshot, UrlSegment, RouterOutlet } from '@angular/router';
 import { GlobalService, RequestService, MenuService } from './cores/services';
 import { MenuModel } from './modules/dashboard/components/menu/menu.interface';
 import { AppConfig } from './configs/app.config';
@@ -52,9 +52,8 @@ export class AppComponent {
             } else if (event instanceof NavigationEnd) {
                 // 关闭加载动画
                 this.global.params.lazyload = false;
-                // 滚动条归位
-                // tslint:disable-next-line:no-unused-expression
-                this.viewContent && (this.viewContent.scrollTop = 0);
+                // 滚动条归位 -- ng6现在默认重置滑块位置了
+                // this.viewContent && (this.viewContent.scrollTop = 0);
                 // 路由导航信息加载
                 this.breadcrumbs = [];
                 this.parseRoute(this.router.routerState.snapshot.root);

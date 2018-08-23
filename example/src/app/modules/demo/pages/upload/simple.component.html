@@ -1,0 +1,123 @@
+<div class="toolbar">
+    <h4>图片上传</h4>
+</div>
+<div class="p-2">
+    <div class="row">
+        <div class="col-12 col-lg-6 mb-2">
+            <div class="card">
+                <div class="card-header bg-white">
+                    单图上传
+                </div>
+                <div class="card-body">
+                    <ts-image-card [(src)]="imageUrl" [config]="config" [useView]="true" (viewHandle)="showImage($event)"></ts-image-card>
+                </div>
+                <div tsToggle [target]='imgCode' class="text-primary card-footer bg-white pointer">
+                    查看代码
+                </div>
+                <div #imgCode='tsCollapse' tsCollapse>
+                    <ts-tabs [tabs]="['example.html','example.component.ts']" [color]="global.params.color" [target]="imgTabs" activeTab="example.html"></ts-tabs>
+                    <div #imgTabs='tsTabs' tsTabs>
+                        <div tsTab tab="example.html" class="p-2">
+                            <ts-prism [code]="codes[0]"></ts-prism>
+                        </div>
+                        <div tsTab tab="example.component.ts" class="p-2">
+                            <ts-prism [code]="codes[1]" language="typescript"></ts-prism>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 mb-2">
+            <div class="card">
+                <div class="card-header bg-white">
+                    多图
+                </div>
+                <div class="card-body">
+                    <ts-image-cards [(src)]="imagesUrl" [config]="config"></ts-image-cards>
+                </div>
+                <div tsToggle [target]='imgsCode' class="text-primary card-footer bg-white pointer">
+                    查看代码
+                </div>
+                <div #imgsCode='tsCollapse' tsCollapse>
+                    <ts-tabs [tabs]="['example.html','example.component.ts']" [color]="global.params.color" [target]="imgsTabs" activeTab="example.html"></ts-tabs>
+                    <div #imgsTabs='tsTabs' tsTabs>
+                        <div tsTab tab="example.html" class="p-2">
+                            <ts-prism [code]="codes[2]"></ts-prism>
+                        </div>
+                        <div tsTab tab="example.component.ts" class="p-2">
+                            <ts-prism [code]="codes[3]" language="typescript"></ts-prism>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-2">
+        <div class="card-header bg-white">
+            导入上传模块
+        </div>
+        <div class="card-body">
+            <ts-prism [code]="codes[4]" language="typescript"></ts-prism>
+        </div>
+    </div>
+    <div class="card mt-2">
+        <div class="card-header bg-white">
+            单图上传 @Component
+        </div>
+        <div class="card-body">
+            <p>选择器：
+                <code>ts-image-card</code>
+            </p>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">属性名称</th>
+                        <th scope="col">类型</th>
+                        <th scope="col">说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">config</th>
+                        <td>
+                            <code>UploadConfig</code>
+                        </td>
+                        <td>上传配置参数</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">src</th>
+                        <td>
+                            <code>string</code>
+                        </td>
+                        <td>支持双向绑定，设置获取当前图片地址</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">title</th>
+                        <td>
+                            <code>string</code>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-striped mt-2">
+                <thead>
+                    <tr>
+                        <th scope="col">事件名称</th>
+                        <th scope="col">事件类型</th>
+                        <th scope="col">说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">checkedChange</th>
+                        <td>
+                            <code>boolean</code>
+                        </td>
+                        <td>每次选项状态改变时会触发，返回当前选中状态</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

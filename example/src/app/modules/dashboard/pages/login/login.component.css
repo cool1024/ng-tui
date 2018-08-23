@@ -1,0 +1,33 @@
+.login-pad {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.login-pad input {
+    padding: 10px;
+}
+
+.card {
+    opacity: .99;
+    box-shadow: -1px 0px 2px #8c8c8c;
+}
+
+.login-header {
+    height: 100px;
+    line-height: 100px;
+    padding: 0px;
+    background: white;
+}
+
+.login-header img {
+    vertical-align: middle;
+}
+
+.login-header span {
+    font-size: 20px !important;
+}
+
+.window {
+    background-color: rgba(0, 0, 0, .2)
+}

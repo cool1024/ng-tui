@@ -497,6 +497,18 @@ ts-select .dropdown-menu {
     margin-right: 0.25rem;
 }
 
+/** toolbar **/
+.toolbar {
+    @extend .pr-3;
+
+    @extend .pl-3;
+
+    @extend .pb-3;
+
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.05);
+    background-color: $white;
+}
+
 /** hover **/
 @each $name, $color in $theme-colors {
     .bg-#{$name}-hover:hover {
@@ -707,6 +719,7 @@ p.bold {
 
 // @import "~animate.css/source/fading_entrances/fadeInUp.css";
 @import "~animate.css/source/sliding_entrances/slideInUp.css";
+@import "~animate.css/source/zooming_entrances/zoomIn.css";
 
 .animated {
     animation-duration: 0.4s;
@@ -718,3 +731,7 @@ $dotColor: $primary;
 @import "assets/three-dots/_variables";
 @import "assets/three-dots/mixins";
 @import "assets/three-dots/dot-windmill";
+
+.dot-animate {
+    @extend .dot-windmill;
+}
