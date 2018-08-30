@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app.routing';
 import { CoreModule } from './cores/core.module';
 import { SortablejsModule } from 'angular-sortablejs';
-import { TUIModule, EChartModule, ToastModule, DropdownModule, MapModule } from './tools-ui';
+import { TUIModule, EChartModule, ToastModule, DropdownModule, MapModule, ButtonModule } from './tools-ui';
 import { AppComponent } from './app.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { QuillModule } from './tools-ui/lib/quill/quill.module';
@@ -27,6 +27,7 @@ import { QuillModule } from './tools-ui/lib/quill/quill.module';
         EChartModule.forRoot('assets/echart/echarts.common.min.js'),
         QuillModule.forRoot(['assets/quill/quill.min.js']),
         MapModule.forRoot('bea16ad29a10b04e05e0624362d504dc'),
+        ButtonModule,
         DropdownModule,
         DashboardModule,
         AppRoutingModule,

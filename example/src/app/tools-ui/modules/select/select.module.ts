@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from '../dropdown/dropdown.module';
 import { SelectComponent } from './select.component';
-// import { SelectsComponent } from './selects.component';
+import { SelectsComponent } from './selects.component';
 
 @NgModule({
     imports: [
@@ -11,12 +11,12 @@ import { SelectComponent } from './select.component';
     ],
     declarations: [
         SelectComponent,
-        // SelectsComponent,
+        SelectsComponent,
     ],
     exports: [
         FormsModule,
         SelectComponent,
-        // SelectsComponent,
+        SelectsComponent,
     ]
 })
 export class SelectModule { }

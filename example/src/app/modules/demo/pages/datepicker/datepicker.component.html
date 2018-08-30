@@ -1,8 +1,9 @@
-<ts-datepicker #datepicker="tsDatepicker" [(ngModel)]="date" [color]="global.params.color" [weekTitles]="['一', '二', '三', '四', '五', '六', '日']"
-    [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']">
-</ts-datepicker>
+<ts-datepicker #datepicker="tsDatepicker" [(ngModel)]="date" [color]="global.params.color"></ts-datepicker>
+<ts-timepicker #timepicker="tsTimepicker" [(ngModel)]="time" [color]="global.params.color"></ts-timepicker>
+
 <div class="toolbar">
     <h4>日期选择</h4>
+    <p class="text-muted">日期选择与时间选择可以快速得到一个格式化好的日期/时间字符串</p>
 </div>
 <div class="p-2">
     <div class="card mb-2">
@@ -12,11 +13,20 @@
         <div class="card-body">
             <form class="form-inline">
                 <div class="input-group mb-3">
-                    <input [value]="date|date:'yyyy-MM-dd'" tsToggle [target]="datepicker" [bind]="datepicker" type="text" class="form-control bg-white pointer"
-                        readonly>
+                    <input [value]="date" tsToggle [target]="datepicker" [bind]="datepicker" type="text" class="form-control bg-white pointer"
+                        placeholder="请选择日期" readonly>
                     <div class="input-group-append">
                         <button class="btn btn-white" type="button" tsToggle [target]="datepicker">
                             <i class="iconfont icon-calendar"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="input-group ml-2 mb-3">
+                    <input [value]="time" tsToggle [target]="timepicker" [bind]="timepicker" type="text" class="form-control bg-white pointer"
+                        placeholder="请选择时间" readonly>
+                    <div class="input-group-append">
+                        <button class="btn btn-white" type="button" tsToggle [target]="timepicker">
+                            <i class="iconfont icon-clock"></i>
                         </button>
                     </div>
                 </div>

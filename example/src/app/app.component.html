@@ -5,18 +5,19 @@
     <div class="d-flex" style="height:100vh;overflow: hidden;">
         <!-- 左侧菜单 -->
         <div [class.menu-container-sm]="global.params.menuMode==='small'" class="menu-container flex-shrink-0 h-100 d-flex flex-column">
-            <div class="d-flex align-items-center justify-content-center bg-success flex-shrink-0" style="height: 60px;overflow: hidden;">
-                <img [src]="menuConfig.SMALL_LOGO" width="40">
-                <img *ngIf="global.params.menuMode==='full'" [src]="menuConfig.FULL_LOGO" alt="TOOLSUI" height="40">
+            <div class="d-flex align-items-center justify-content-center bg-white flex-shrink-0" style="height: 60px;overflow: hidden;border-bottom:1px solid rgba(200, 200, 200,.3);">
+                <img [src]="menuConfig.SMALL_LOGO" width="30">
+                <h4 *ngIf="global.params.menuMode==='full'" class="m-0">Admin</h4>
+                <!-- <img *ngIf="global.params.menuMode==='full'" [src]="menuConfig.FULL_LOGO" alt="TOOLSUI" height="40"> -->
                 <!-- <img [src]="global.params.menuMode==='small'?menuConfig.SMALL_LOGO:menuConfig.FULL_LOGO" alt="TOOLSUI" height="40"> -->
             </div>
             <app-menu class="flex-grow-1 shadow-sm" [menuConfig]="menuConfig" [autoClose]="true" [menuMode]="global.params.menuMode"
-                [items]="menus"></app-menu>
+                [items]="menus" [useImage]="true"></app-menu>
         </div>
         <!-- 右侧内容 -->
         <div class="flex-grow-1 h-100 d-flex flex-column">
             <!-- 顶部工具栏 -->
-            <div class="headbar bg-dark text-light d-flex align-items-center justify-content-between flex-shrink-0 shadow-sm" style="height:60px;z-index:1;">
+            <div class="headbar bg-success text-light d-flex align-items-center justify-content-between flex-shrink-0 shadow-sm" style="height:60px;z-index:1;">
                 <div class="d-flex align-items-center flex-grow-1 h-100">
                     <div class="d-flex align-items-center bg-light-hover h-100 pl-3 pr-3">
                         <i (click)="changeMenuMode()" class="iconfont icon-category pointer"></i>
@@ -49,7 +50,7 @@
                                 <span>系统设置</span>
                             </button>
                             <div class="dropdown-divider"></div>
-                            <button class="dropdown-item pointer">
+                            <button (click)="setOut()" class="dropdown-item pointer">
                                 <span class="iconfont icon-out mr-2"></span>
                                 <span>退出</span>
                             </button>

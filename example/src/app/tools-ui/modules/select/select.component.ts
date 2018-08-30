@@ -10,8 +10,8 @@ import {
     AfterViewInit,
 } from '@angular/core';
 import { Item } from '../../tui-core/interfaces/item.interface';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseForm } from '../../tui-core/base-class/base-form.class';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
     selector: 'ts-select',
@@ -28,7 +28,7 @@ import { BaseForm } from '../../tui-core/base-class/base-form.class';
             <div class="ts-select-item pointer border-none">
                 <div *ngFor="let item of itemsList;trackBy: trackByValue"
                      class="dropdown-item"
-                     [class.active]="item===value"
+                     [class.active]="item.value===value"
                      (click)="setValue(item)"
                      [innerHTML]="item.content||item.text">
                 </div>

@@ -5,15 +5,15 @@ import { ToggleDirective } from '../../tui-core/directives/toggle.directives';
 import { TUIConfig } from '../../tui-core/interfaces/config.interface';
 
 export const styleStr = `
-.ts-datepicker-ym {height: 300px;width: 280px;}
+.ts-datepicker-ym {width: 280px;}
 .ts-datepicker-ym-toolbar {height: 30px;}
 .ts-datepicker-ym tr {line-height: 25px;}
 .ts-datepicker-ym td {width: 33%;}
 .ts-datepicker-ym td:hover button {color: white;background-color: #3e9cff;border-color: #3e9cff;}
-.ts-datepicker-hm { height: 300px; width: 280px;}
-.ts-datepicker-hm-box { width: 33.33%; line-height: 25px;}
-.ts-time-item { line-height: 30px;}
-.ts-time-item.active { font-size: 20px;}`;
+.ts-datepicker-hm {width: 280px;}
+.ts-datepicker-hm-box {width: 33.33%; line-height: 25px;}
+.ts-time-item {line-height: 30px;}
+.ts-time-item.active {font-size: 20px;}`;
 
 export class Base implements OnDestroy, Toggle {
 

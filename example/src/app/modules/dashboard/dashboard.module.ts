@@ -9,13 +9,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DashboardRoutingModule, declarationComponents, entryComponents, providers, exportComponents } from './dashboard.routing';
 import { EChartModule } from '../../tools-ui/lib/echart/echart.module';
-import { TabModule } from '../../tools-ui/modules/tab/tab.module';
+import { ButtonModule, TabModule } from '../../tools-ui';
 
 @NgModule({
     imports: [
         FormsModule,
         EChartModule,
         TabModule,
+        ButtonModule,
         DashboardRoutingModule,
     ],
     declarations: [declarationComponents],

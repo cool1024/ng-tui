@@ -95,6 +95,12 @@ textarea {
     box-shadow: 0px 0px 0px white !important;
 }
 
+input:disabled,
+textarea:disabled,
+button:disabled {
+    cursor: not-allowed;
+}
+
 .table td,
 .table th {
     vertical-align: middle !important;
@@ -118,8 +124,13 @@ a:link, a:active, a:hover, a:visited {
 }
 
 ts-select .dropdown-menu {
-    height: 200px;
+    max-height: 300px;
     overflow-y: auto;
+}
+
+.selects-disabled {
+    cursor: not-allowed;
+    background-color: $gray-200;
 }
 
 .card {
@@ -522,12 +533,20 @@ ts-select .dropdown-menu {
 
 /** hover **/
 @each $name, $color in $theme-colors {
-    .bg-#{$name}-hover:hover {
+    .bg-#{$name}-muted {
         background-color: rgba($color, 0.1);
-        transition: background-color ease-in-out .3s;
     }
 
-    .text-#{$name}-hover{
+    .bg-#{$name}-hover:hover {
+        background-color: rgba($color, 0.1);
+        transition: background-color ease-in-out .2s;
+    }
+
+    .bg-#{$name}-hover:active {
+        background-color: rgba($color, 0.4);
+    }
+
+    .text-#{$name}-hover {
         color: $gray-500;
     }
 
@@ -545,34 +564,10 @@ ts-select .dropdown-menu {
     font-size: inherit;
 }
 
-.iconfont-rotate::before {
-    animation: rotate 1s infinite linear;
+.iconfont-rotate {
+    animation: rotate 0.5s infinite linear;
     display: inline-block;
-}
-
-/*.btn--waiting .btn__icon:before{
-  width:20px;
-  height:20px;
-  top: 2px;
-  left: 2px;
-  border-radius:50%;
-  background-color:#2f89d1;
-  z-index: 1;
-}*/
-
-.btn--waiting .btn__icon:after {
-    width: 20px;
-    height: 20px;
-    top: 0px;
-    left: 0px;
-    border-radius: 50%;
-    animation: rotation infinite linear 0.5s;
-    transition: none;
-    border-top: 2px solid transparent;
-    border-left: 2px solid #fff;
-    border-right: 2px solid transparent;
-    border-bottom: 2px solid transparent;
-    z-index: 0;
+    text-align: center;
 }
 
 @keyframes rotate {
@@ -741,7 +736,7 @@ p.bold {
 }
 
 /** three-dots **/
-$dotColor: $dark;
+$dotColor: $success;
 
 @import "assets/three-dots/_variables";
 @import "assets/three-dots/mixins";

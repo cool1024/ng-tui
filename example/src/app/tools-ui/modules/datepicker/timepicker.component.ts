@@ -9,9 +9,9 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
     template: `
     <div [ngClass]="{'d-none':!show}" #pad class="fixed-top h-100 w-100" (click)="tryClose($event)">
         <div class="card p-3 ts-datepicker-hm no-select" [ngStyle]="datepickerStyle">
-            <div class="ts-datepicker-ym-toolbar d-flex justify-content-between">
-                <div>
-                    <button class="btn btn-link btn-sm text-{{color}}">{{getTimeStr()}}</button>
+            <div class="ts-datepicker-ym-toolbar d-flex justify-content-between align-items-center">
+                <div class="text-{{color}}">
+                    {{getTimeStr()}}
                 </div>
                 <div class="text-right" style="width:240px">
                     <button (click)="setTime('');toggle()" tsBtn sm class="ml-1">现在</button>

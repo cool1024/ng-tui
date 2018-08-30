@@ -124,7 +124,9 @@
             <div class="card mb-2">
                 <div class="card-header bg-white">加载动画</div>
                 <div class="card-body m-btn">
-                    <button tsBtn loading (submit)="doSubmit($event)">Small</button>
+                    <button tsBtn loading sm (submit)="doSubmit($event)">Small</button>
+                    <button tsBtn loading (submit)="doSubmit($event)">Default</button>
+                    <button tsBtn loading lg (submit)="doSubmit($event)">Large</button>
                 </div>
             </div>
         </div>

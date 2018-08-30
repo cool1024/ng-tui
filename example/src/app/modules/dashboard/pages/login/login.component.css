@@ -15,9 +15,10 @@
 
 .login-header {
     height: 100px;
-    line-height: 100px;
     padding: 0px;
-    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .login-header img {
@@ -29,5 +30,5 @@
 }
 
 .window {
-    background-color: rgba(0, 0, 0, .2)
+    background-color: rgba(0, 0, 0, 0.2);
 }

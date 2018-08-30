@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouteConfigLoadStart, NavigationEnd, ActivatedRouteSnapshot, UrlSegment, RouterOutlet } from '@angular/router';
 import { GlobalService, RequestService, MenuService } from './cores/services';
 import { MenuModel } from './modules/dashboard/components/menu/menu.interface';
@@ -30,9 +30,9 @@ export class AppComponent {
         // 载入系统默认配置参数
         this.global.appendValuesToParams({
             dashboardMode: 'full',
-            menuMode: 'small',
+            menuMode: 'full',
             lazyload: true,
-            color: 'dark'
+            color: 'success'
         });
 
         // 载入服务端参数
@@ -63,6 +63,13 @@ export class AppComponent {
      */
     changeMenuMode() {
         this.global.params.menuMode = this.global.params.menuMode === 'small' ? 'full' : 'small';
+    }
+
+    /**
+     * 退出登入
+     */
+    setOut() {
+        this.router.navigateByUrl('/login');
     }
 
     /**

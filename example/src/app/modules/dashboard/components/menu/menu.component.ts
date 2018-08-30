@@ -16,16 +16,22 @@ export class MenuComponent {
 
     @Input() menuMode: string;
 
+    @Input() useImage: boolean;
+
     @Input() menuConfig: any;
 
     @ViewChild('menu') set menuDom(elementRef: ElementRef) {
-        window.OverlayScrollbars(elementRef.nativeElement, { className: 'os-theme-light' });
+        window.OverlayScrollbars(elementRef.nativeElement, { className: 'os-theme-dark' });
     }
 
     @Output() menuActiveChange = new EventEmitter<MenuItem>();
 
     get menuChildActiveClass(): string {
-        return `text-${this.menuConfig.ACTIVE_TEXT_THEME} active`;
+        return `bg-${this.menuConfig.ACTIVE_TEXT_THEME}-muted text-${this.menuConfig.ACTIVE_TEXT_THEME} active`;
+    }
+
+    get menuChildClass(): string {
+        return `bg-${this.menuConfig.ACTIVE_TEXT_THEME}-hover`;
     }
 
     get menuFillStyle(): Object {
@@ -41,6 +47,13 @@ export class MenuComponent {
         };
     }
 
+    get menuSmallStyle(): Object {
+        return {
+            background: this.menuConfig.BACKGROUND_COLOR,
+            color: this.menuConfig.DEFAULT_TEXT_COLOR
+        };
+    }
+
     get lineStyle(): Object {
         return {
             background: this.menuConfig.LINE_COLOR
@@ -52,6 +65,7 @@ export class MenuComponent {
         this.autoClose = true;
         this.menuMode = 'full';
         this.menuConfig = {};
+        this.useImage = false;
     }
 
     toggleGroup(group: MenuGroup) {

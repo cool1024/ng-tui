@@ -1,17 +1,12 @@
 <!-- 
     // 使用标签<ts-datepicker></ts-datepicker>获取日期选择组件
     // 使用ngModel进行双向绑定日期的值,value为一个时间串格式为 年/月/日，如 2018/3/7
-    // 使用weekTitles设置日历的星期标题文字
-    // 使用monthTitles设置日历的月份文字
+    // 使用weekTitles设置日历的星期标题文字，默认使用全局配置的
+    // 使用monthTitles设置日历的月份文字，默认使用全局配置的
     // 支持使用color设置颜色
     // #datepicker="tsDatepicker"，这样临时变量datepicker指代日期插件，可以用来后面的target,bind绑定
 -->
-<ts-datepicker 
-    #datepicker="tsDatepicker" 
-    [(ngModel)]="date" 
-    [weekTitles]="['一', '二', '三', '四', '五', '六', '日']"
-    [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']">
-</ts-datepicker>
+<ts-datepicker #datepicker="tsDatepicker" [(ngModel)]="date"></ts-datepicker>
 
 <!-- 
     // 使用tsToggle指令初始化一个带有触发效果的dom

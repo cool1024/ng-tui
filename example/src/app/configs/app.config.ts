@@ -2,7 +2,7 @@ export const AppConfig = {
 
     LOGIN_PAGE: {
         LOGO: 'assets/images/angular.svg',
-        TITLE: 'Angular Tools UI',
+        TITLE: '管理系统模版',
         SUBJECT: '管理员登入',
         DESCRIPTION: '欢迎使用NG-TOOLSUI，为Angular爱好者打造的精简模板',
         FIRST_LABEL: '账户',
@@ -16,9 +16,9 @@ export const AppConfig = {
         SMALL_LOGO: 'assets/images/angular.svg',
         FULL_LOGO: 'assets/images/logo.png',
         BACKGROUND_IMAGE_SRC: '', // 'url(https://picsum.photos/300/800)',
-        BACKGROUND_COLOR: '#343a40',
-        DEFAULT_TEXT_COLOR: 'white',
-        LINE_COLOR: 'rgba(255, 255, 255,.2)',
+        BACKGROUND_COLOR: 'white',
+        DEFAULT_TEXT_COLOR: 'black',
+        LINE_COLOR: 'rgba(200, 200, 200,.3)',
         ACTIVE_TEXT_THEME: 'success',
     },
 

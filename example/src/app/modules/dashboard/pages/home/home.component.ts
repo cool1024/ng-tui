@@ -16,8 +16,8 @@ export class HomeComponent implements OnInit {
 
     optionOne = {
         grid: {
-            left: 0,
-            top: 0,
+            left: '10',
+            top: '10',
             height: '100%',
             width: '100%'
         },
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
                 color: '#007bff',
             },
             smooth: true,
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            data: [1, 3, 1, 2, 3, 2, 1],
             type: 'line',
             areaStyle: {
                 color: '#007bff',
@@ -49,9 +49,9 @@ export class HomeComponent implements OnInit {
 
     optionTwo = {
         grid: {
-            left: 0,
+            left: 20,
             top: 0,
-            right: 0,
+            right: 20,
             height: '100%',
             // width: '100%'
         },
@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
             show: false,
         },
         series: [{
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            data: [1, 3, 1, 2, 3, 2, 1],
             type: 'bar',
             itemStyle: {
                 color: '#007bff',

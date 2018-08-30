@@ -27,7 +27,7 @@ export class LoginComponent {
         private menu: MenuService,
     ) { }
 
-    confirmLogin() {
+    confirmLogin(btn: any) {
         this.request.withoutHeader.post('/managerapi/signin', this.account).subscribe({
             next: res => {
                 const datas = res.datas;
@@ -39,7 +39,8 @@ export class LoginComponent {
                 // this.auth.loadUserDeail();
                 // this.menu.loadMenu();
                 this.router.navigateByUrl('/');
-            }
+            },
+            complete: btn.dismiss()
         });
     }
 }
