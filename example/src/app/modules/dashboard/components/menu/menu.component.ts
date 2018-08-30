@@ -1,6 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { MenuModel, MenuGroup, MenuItem } from './menu.interface';
-
+declare const window: any;
 
 @Component({
     selector: `app-menu`,
@@ -17,6 +17,10 @@ export class MenuComponent {
     @Input() menuMode: string;
 
     @Input() menuConfig: any;
+
+    @ViewChild('menu') set menuDom(elementRef: ElementRef) {
+        window.OverlayScrollbars(elementRef.nativeElement, { className: 'os-theme-light' });
+    }
 
     @Output() menuActiveChange = new EventEmitter<MenuItem>();
 

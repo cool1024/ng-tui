@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router, RouteConfigLoadStart, NavigationEnd, ActivatedRouteSnapshot, UrlSegment, RouterOutlet } from '@angular/router';
 import { GlobalService, RequestService, MenuService } from './cores/services';
 import { MenuModel } from './modules/dashboard/components/menu/menu.interface';
@@ -19,9 +19,6 @@ export class AppComponent {
 
     // 面包屑导航列表
     breadcrumbs = new Array<{ title: string, path?: string }>();
-
-    // 显示面板
-    @ViewChild('viewcontent') viewContent: HTMLDivElement;
 
     constructor(
         public global: GlobalService,

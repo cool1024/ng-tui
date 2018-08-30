@@ -1,6 +1,5 @@
-<!-- full mode -->
 <div *ngIf="menuMode==='full'; else elseBlock" class="menu-full h-100" [ngStyle]="menuFullStyle">
-    <div class="menu-fill h-100 pt-2" [ngStyle]="menuFillStyle">
+    <div #menu class="h-100 pt-2" [ngStyle]="menuFillStyle">
         <ng-container *ngFor="let model of items">
             <!-- <div>{{model.modelTitle}}</div> -->
             <div class="menu-block no-select {{group.active?activeMainClass:''}}" *ngFor="let group of model.menuGroups">
@@ -39,7 +38,7 @@
 </div>
 <!-- small mode -->
 <ng-template #elseBlock>
-    <div class="h-100 bg-dark menu-small">
+    <div #menu class="h-100 bg-dark menu-small">
         <ng-container *ngFor="let model of items">
             <div *ngFor="let group of model.menuGroups" class="menu-rect text-center">
                 <img *ngIf="group.image" width="30" height="30" [src]="group.image">
@@ -55,3 +54,4 @@
         </ng-container>
     </div>
 </ng-template>
+<!-- full mode -->

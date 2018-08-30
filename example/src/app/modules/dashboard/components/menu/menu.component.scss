@@ -6,11 +6,6 @@
     background-size: cover;
 }
 
-.menu-fill {
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
 .ts-icon-sm {
     font-size: 11px;
 }
@@ -20,7 +15,7 @@
 }
 
 .ts-icon img {
-    // filter: grayscale(100%);
+    filter: grayscale(100%);
 }
 
 .icon-up {
@@ -51,15 +46,15 @@
 }
 
 .menu-child-item:hover {
-    background-color: rgba(200, 200, 200, .05);
+    background-color: rgba(200, 200, 200, 0.05);
 }
 
 .menu-child-item.active {
-    background-color: rgba(200, 200, 200, .05);
+    background-color: rgba(200, 200, 200, 0.05);
 }
 
-.menu-child-item:active{
-    background-color: rgba(200, 200, 200, .1);
+.menu-child-item:active {
+    background-color: rgba(200, 200, 200, 0.1);
 }
 
 .child-close {
