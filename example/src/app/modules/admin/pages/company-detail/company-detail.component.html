@@ -1,0 +1,84 @@
+<div class="toolbar">
+    <h4>公司详情</h4>
+</div>
+<div class="p-2">
+    <div class="card card-body">
+        <form #ngForm="ngForm" class="container m-0">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label label-required text-right">商户名称</label>
+                <div class="col-sm-10">
+                    <input required name="name" #companyName="ngModel" [class.is-invalid]="companyName.invalid&&!companyName.pristine" [(ngModel)]="company.companyName"
+                        type="text" class="form-control" placeholder="请输入商家的公司名称（全称）">
+                    <div class="invalid-feedback">商户名称是必填的</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label label-required text-right">商户Logo</label>
+                <div class="col-sm-10">
+                    <ts-image-card [(src)]="company.companyLogo" [config]="options"></ts-image-card>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label text-right">联系方式</label>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col">
+                            <input name="mobile" [(ngModel)]="company.companyManagerMobile" type="text" class="form-control" placeholder="请输入商家手机号">
+                        </div>
+                        <div class="col">
+                            <input name="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z0-9.-]{2,}[.]{1}[a-zA-Z]{2,}" #companyManagerEmail="ngModel" [class.is-invalid]="companyManagerEmail.invalid&&!companyManagerEmail.pristine"
+                                [(ngModel)]="company.companyManagerEmail" class="form-control" placeholder="请输入商家邮箱">
+                            <div class="invalid-feedback">邮箱格式为example@mail.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label text-right">描述</label>
+                <div class="col-sm-10">
+                    <textarea name="description" [(ngModel)]="company.companyDescription" type="text" class="form-control" placeholder="请输入商家的描述信息"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label label-required text-right">账号</label>
+                <div class="col-sm-10">
+                    <input [disabled]="company.id!==0" required name="account" #companyManagerAccount="ngModel" [class.is-invalid]="companyManagerAccount.invalid&&!companyManagerAccount.pristine"
+                        [(ngModel)]="company.companyManagerAccount" type="text" class="form-control" placeholder="请输入商家的登入账号">
+                    <div class="invalid-feedback">登入账号是必填的</div>
+                </div>
+            </div>
+            <!--添加模式下必须填密码-->
+            <div class="form-group row" *ngIf="company.id===0">
+                <label class="col-sm-2 col-form-label label-required text-right">密码</label>
+                <div class="col-sm-10">
+                    <input required name="password" #password="ngModel" [class.is-invalid]="password.invalid&&!password.pristine" [(ngModel)]="company.password"
+                        type="password" class="form-control" placeholder="请输入商家的登入密码">
+                    <div class="invalid-feedback">登入密码是必填的</div>
+                </div>
+            </div>
+            <!--编辑模式下可以选填密码-->
+            <div class="form-group row" *ngIf="company.id!==0">
+                <label class="col-sm-2 col-form-label text-right">密码</label>
+                <div class="col-sm-10">
+                    <input name="password" [(ngModel)]="company.password" type="password" class="form-control" placeholder="如果不修改密码，此处不填写">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label label-required text-right">是否启用</label>
+                <div class="col-sm-10 pt-2">
+                    <ts-switch name="isActive" [color]="global.params.color" [values]="{open:1,close:0}" [(ngModel)]="company.isActive"></ts-switch>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10 m-btn">
+                    <button tsBtn routerLink="/admin/company">取消/返回</button>
+                    <button [disabled]="ngForm.form.invalid" *ngIf="company.id===0" tsBtn loading (submit)="confirmInsert($event)" color="success">确认添加</button>
+                    <button [disabled]="ngForm.form.invalid" *ngIf="company.id!==0" tsBtn loading (submit)="confirmUpdate($event)" color="primary">确认修改</button>
+                </div>
+            </div>
+            <!--表单测试数据-->
+            <!-- <pre>{{company|json}}</pre> -->
+        </form>
+    </div>
+</div>

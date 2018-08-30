@@ -13,6 +13,9 @@ export class ConfigService {
             defaultColor: 'primary',
             confirmCancelTitle: 'Cancel',
             confirmOkTitle: 'Confirm',
+            weekTitles: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+            monthTitles: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            paginationItems: []
         }, config);
     }
 

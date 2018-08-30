@@ -1,37 +1,27 @@
 /**
- * 图片预览
+ * 图片预览窗口
  *
  * @author xiaojian
  * @file   view.component.ts
- * @date   2018-6-27 20:45:03
+ * @date   2018-8-29 22:21:52
  */
-import { Component, OnInit } from '@angular/core';
-import { ModalService } from './../../../../tools-ui';
+import { Component} from '@angular/core';
+import { WindowViewService } from '../../../../tools-ui';
 
 @Component({
     template: `
-    <div class="modal-header">
-        <h5 class="modal-title">
-            图片预览
-        </h5>
-        <button (click)="modal.dismiss()" type="button" class="close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body d-flex justify-content-center" [ngStyle]="{height:'calc(100% - 135px)'}">
-        <img class="mw-100 mh-100 align-self-center" [src]="src">
-    </div>
-    <div class="modal-footer">
-        <button tsBtn (click)="modal.dismiss()">关闭窗口</button>
+    <div class="h-100" style="background-color:rgba(0,0,0,.6)">
+        <span (click)="view.close()"
+             class="position-fixed right top mr-2 pointer iconfont icon-wrong text-white"
+             style="font-size:2rem;right"></span>
+        <div class="h-100 d-flex justify-content-center align-items-center">
+            <img style="max-width:90%;max-height:90%" [src]="src">
+        </div>
     </div>`
 })
-export class ViewComponent implements OnInit {
+export class ViewComponent {
 
     src: string;
 
-    constructor(public modal: ModalService) { }
-
-    ngOnInit() {
-
-    }
+    constructor(public view: WindowViewService) { }
 }

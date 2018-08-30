@@ -21,7 +21,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
             <button *ngFor="let item of items" (click)="changeLimit(item.value)" class="dropdown-item">{{item.text}}</button>
         </div>
     </div>
-    <div (click)="pagination.page=1;sendChange()"
+    <div (click)="startPage()"
             [class.disabled]="!pagination.hasPrev()"
             class="pagination-item pagination-tool-{{color}}">
         <i class="iconfont icon-start"></i>
@@ -41,7 +41,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
             class="pagination-item pagination-tool-{{color}}">
         <i class="iconfont icon-next"></i>
     </div>
-    <div (click)="pagination.page=pagination.maxPage;sendChange()"
+    <div (click)="endPage()"
             [class.disabled]="!pagination.hasNext()"
             class="pagination-item pagination-tool-{{color}}">
         <i class="iconfont icon-end"></i>
@@ -49,16 +49,6 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
 </div>`
 })
 export class PaginationComponent extends BaseTheme implements DoCheck {
-
-    @Input() color: string;
-
-    @Input() nextTitle: string;
-
-    @Input() prevTitle: string;
-
-    @Input() endTitle: string;
-
-    @Input() startTitle: string;
 
     @Input() pagination: Pagination;
 
@@ -83,9 +73,18 @@ export class PaginationComponent extends BaseTheme implements DoCheck {
         this.pagination = new Pagination();
 
         this.color = this.configService.config.defaultColor;
+
+        this.items = configService.config.paginationItems;
     }
 
     ngDoCheck() { this.setPages(); }
+
+    prevPage() {
+        if (this.pagination.hasPrev()) {
+            this.pagination.page--;
+            this.sendChange();
+        }
+    }
 
     nextPage() {
         if (this.pagination.hasNext()) {
@@ -94,9 +93,16 @@ export class PaginationComponent extends BaseTheme implements DoCheck {
         }
     }
 
-    prevPage() {
+    startPage() {
         if (this.pagination.hasPrev()) {
-            this.pagination.page--;
+            this.pagination.page = 1;
+            this.sendChange();
+        }
+    }
+
+    endPage() {
+        if (this.pagination.hasNext()) {
+            this.pagination.page = this.pagination.maxPage;
             this.sendChange();
         }
     }

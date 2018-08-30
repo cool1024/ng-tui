@@ -1,7 +1,6 @@
-export interface TUIConfig {
+import { Item } from './item.interface';
 
-    // unicode | font-class | symbol
-    // iconfontType?: string;
+export interface TUIConfig {
 
     iconfontPrefix?: string;
 
@@ -18,4 +17,10 @@ export interface TUIConfig {
     confirmOkTitle?: string;
 
     errorImgSrc?: string;
+
+    weekTitles?: string[];
+
+    monthTitles?: string[];
+
+    paginationItems?: Item[];
 }

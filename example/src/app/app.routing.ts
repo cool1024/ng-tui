@@ -11,6 +11,7 @@ const routes: Routes = [
 
     // 懒加载子模块
     { path: 'demo', loadChildren: './modules/demo/demo.module#DemoModule' },
+    { path: 'admin', loadChildren: './modules/admin/admin.module#AdminModule' },
     { path: 'store', loadChildren: './modules/store/store.module#StoreModule' },
     { path: 'system', loadChildren: './modules/system/system.module#SystemModule' },
 

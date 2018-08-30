@@ -21,8 +21,8 @@
                     </div>
                 </div>
                 <div class="menu-child-block" [class.child-open]="group.active" [class.child-close]="!group.active">
-                    <div class="menu-child-item" *ngFor="let item of group.menuItems;index as i">
-                        <div class="d-table w-100 pl-2 pointer {{item.active?activeChildClass:''}}" (click)="toggleMenu(group,i)">
+                    <div class="menu-child-item {{item.active&&menuChildActiveClass}}" *ngFor="let item of group.menuItems;index as i">
+                        <div [routerLink]="item.url" class="d-table w-100 pl-2 pointer" (click)="toggleMenu(group,i)">
                             <div class="d-table-cell text-center ts-icon">
                                 <i class="iconfont icon-more"></i>
                             </div>

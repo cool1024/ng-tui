@@ -33,6 +33,8 @@ import { EchartComponent } from './pages/echart/echart.component';
 import { DatepickerComponent } from './pages/datepicker/datepicker.component';
 import { SimpleComponent } from './pages/upload/simple.component';
 import { ViewComponent } from './pages/upload/view.component';
+import { TableComponent } from './pages/table/table.component';
+import { BadgeSelectComponent } from './pages/badge/badge-select.component';
 
 const routes: Routes = [
     {
@@ -178,6 +180,12 @@ const routes: Routes = [
         data: {
             breadcrumbs: [{ title: '图片上传' }]
         }
+    },
+    {
+        path: 'table', component: TableComponent,
+        data: {
+            breadcrumbs: [{ title: '标准表格' }]
+        }
     }
 ];
 
@@ -198,6 +206,7 @@ export const declarationComponents = [
     ProgressComponent,
     LoadingComponent,
     BadgeComponent,
+    BadgeSelectComponent,
     ImageComponent,
     IconfontComponent,
     ModalComponent,
@@ -211,6 +220,7 @@ export const declarationComponents = [
     DatepickerComponent,
     SimpleComponent,
     ViewComponent,
+    TableComponent,
 ];
 
 /**

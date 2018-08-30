@@ -13,8 +13,8 @@ import { styleStr } from './upload.data';
             [ngStyle]="blockStyle">
             <div *ngIf="!item.uploading" class="w-100 h-100 upload-block" [ngStyle]="{'background-image': getUrl(item)}">
                 <div class="upload-block-window text-white text-center h-100 w-100" [ngStyle]="windowStyle">
-                    <i *ngIf="useView" (click)="showImageView(item)" class="fa fa-fw fa-lg fa-eye pointer mr-1"></i>
-                    <i (click)="removeImage(i)" class="fa fa-fw fa-lg fa-trash pointer"></i>
+                    <i *ngIf="useView" (click)="showImageView(item)" class="iconfont icon-eye pointer mr-1"></i>
+                    <i (click)="removeImage(i)" class="iconfont icon-delete pointer"></i>
                 </div>
             </div>
             <div *ngIf="item.uploading" class="span w-100 h-100">

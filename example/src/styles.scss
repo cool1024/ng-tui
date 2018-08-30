@@ -435,6 +435,16 @@ ts-select .dropdown-menu {
     height: 1rem;
 }
 
+.dot-text {
+    display: inline-block;
+    width: 1.4rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    text-align: center;
+    border-radius: 50%;
+    color: $white;
+}
+
 @each $name, $color in $theme-colors {
     .dot-#{$name} {
         background-color: $color;
@@ -477,6 +487,7 @@ ts-select .dropdown-menu {
 /** table-loader **/
 .table-loader {
     background-color: rgba($white, 0.6);
+    z-index: 1;
 }
 
 /** breadcrumb **/
@@ -516,8 +527,12 @@ ts-select .dropdown-menu {
         transition: background-color ease-in-out .3s;
     }
 
+    .text-#{$name}-hover{
+        color: $gray-500;
+    }
+
     .text-#{$name}-hover:hover {
-        color: rgba($color, 0.1);
+        color: $color;
         transition: color ease-in-out .3s;
     }
 }
@@ -527,7 +542,7 @@ ts-select .dropdown-menu {
 @import "assets/iconfont/iconfont.css";
 
 .iconfont {
-    font-size: $font-size-base;
+    font-size: inherit;
 }
 
 .iconfont-rotate::before {
@@ -726,7 +741,7 @@ p.bold {
 }
 
 /** three-dots **/
-$dotColor: $primary;
+$dotColor: $dark;
 
 @import "assets/three-dots/_variables";
 @import "assets/three-dots/mixins";

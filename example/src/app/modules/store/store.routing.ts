@@ -8,12 +8,25 @@ import { UserTableComponent } from './pages/user-table/user-table.component';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { BannerManagerComponent } from './pages/banner-manager/banner-manager.component';
 import { BannerDetailComponent } from './pages/banner-manager/banner-detail.component';
+import { GoodsDetailComponent } from './pages/goods-detail/goods-detail.component';
 
 const routes: Routes = [
     {
         path: 'goods',
         component: GoodsTableComponent,
-        data: { breadcrumbs: [{ title: '商品列表' }] }
+        data: { breadcrumbs: [{ title: '商品列表' }] },
+        children: [
+            {
+                path: 'detail/:id',
+                component: GoodsDetailComponent,
+                data: { breadcrumbs: [{ title: '商品列表', path: '/store/goods' }, { title: '商品详情' }] }
+            },
+            {
+                path: 'detail',
+                component: GoodsDetailComponent,
+                data: { breadcrumbs: [{ title: '商品列表', path: '/store/goods' }, { title: '添加商品' }] }
+            }
+        ]
     },
     {
         path: 'types',
@@ -52,6 +65,7 @@ const routes: Routes = [
 export const declarationComponents = [
     GoodsTypesComponent,
     GoodsTableComponent,
+    GoodsDetailComponent,
     OrderTableComponent,
     OrderDetailComponent,
     UserTableComponent,

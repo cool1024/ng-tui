@@ -44,25 +44,26 @@ const MAX_MONTH = 12;
                             <td class="text-right" colspan="7">
                                 <div class="btn-group">
                                     <button (click)="prevYear()" class="btn btn-{{color}} btn-sm">
-                                        <i class="fa fa-angle-left fa-fw" aria-hidden="true"></i>
+                                        <i class="iconfont icon-preview" aria-hidden="true"></i>
                                     </button>
-                                    <ts-dropdown
-                                    diyClass="btn btn-{{color}} dropdown-toggle btn-sm rounded-0 border-left-0 border-right-0"
-                                    [items]="yearList" [(value)]="year"
-                                        [useNumber]="0" [color]="color" dropup></ts-dropdown>
+                                    <ts-dropdown diyClass="btn btn-{{color}} dropdown-toggle btn-sm rounded-0 border-left-0 border-right-0"
+                                                [items]="yearList" [(value)]="year"
+                                                [useNumber]="0"
+                                                [color]="color" dropup>
+                                    </ts-dropdown>
                                     <button (click)="nextYear()" class="btn btn-{{color}} btn-sm">
-                                        <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
+                                        <i class="iconfont icon-next" aria-hidden="true"></i>
                                     </button>
                                 </div>
                                 <div class="btn-group ml-1">
                                     <button (click)="prevMonth()" class="btn btn-{{color}} btn-sm">
-                                        <i class="iconfont icon-back-back" aria-hidden="true"></i>
+                                        <i class="iconfont icon-preview" aria-hidden="true"></i>
                                     </button>
                                     <ts-dropdown diyClass="btn btn-{{color}} dropdown-toggle btn-sm rounded-0 border-left-0 border-right-0"
                                         [items]="monthTitles"
                                         [(value)]="month" [useNumber]="1" [color]="color" dropup></ts-dropdown>
                                     <button (click)="nextMonth()" class="btn btn-{{color}} btn-sm">
-                                        <i class="iconfont icon-back-reserve" aria-hidden="true"></i>
+                                        <i class="iconfont icon-next" aria-hidden="true"></i>
                                     </button>
                                 </div>
                             </td>
@@ -188,8 +189,8 @@ export class DatepickerComponent implements OnDestroy, Toggle, ControlValueAcces
     constructor(private html: HtmlDomService, private configService: ConfigService) {
 
         // labels
-        this.weekTitles = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
-        this.monthTitles = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        this.weekTitles = configService.config.weekTitles;
+        this.monthTitles = configService.config.monthTitles;
 
         // tody
         const date = new Date();

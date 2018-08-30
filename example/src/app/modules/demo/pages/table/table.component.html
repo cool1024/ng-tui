@@ -1,0 +1,127 @@
+<ts-datepicker [(ngModel)]="search.params.start" #datepickerOne="tsDatepicker" [color]="global.params.color"></ts-datepicker>
+<ts-datepicker [(ngModel)]="search.params.end" #datepickerTwo="tsDatepicker" [color]="global.params.color"></ts-datepicker>
+<div class="toolbar">
+    <h4>标准表格</h4>
+    <p>表格通常需要一个搜索按钮，一个重置搜索的按钮，和其它操作按钮</p>
+    <div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white">会员昵称</span>
+            </div>
+            <input type="text" class="form-control" placeholder="请输入会员昵称的关键词">
+            <div class="input-group-prepend input-group-append">
+                <span class="input-group-text bg-white">联系电话</span>
+            </div>
+            <input type="text" class="form-control" placeholder="请输入联系电话">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white">注册时间</span>
+            </div>
+            <input tsToggle [value]="search.params.start" [target]="datepickerOne" [bind]="datepickerOne" type="text" class="form-control bg-white pointer"
+                placeholder="开始时间" readonly>
+            <div class="input-group-prepend input-group-append">
+                <span class="input-group-text bg-white">到</span>
+            </div>
+            <input tsToggle [value]="search.params.end" [target]="datepickerTwo" [bind]="datepickerTwo" type="text" class="form-control bg-white pointer"
+                placeholder="结束时间" readonly>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white">共查询到</span>
+                    </div>
+                    <input type="text" value="{{pagination.total}}" class="form-control text-center bg-white" readonly placeholder="0">
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-white">条/结果</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 text-right m-btn">
+                <button class="btn btn-success">
+                    <span>新增会员</span>
+                </button>
+                <button (click)="doReset()" class="btn btn-white">
+                    <i class="iconfont icon-refresh mr-1"></i>
+                    <span>重置</span>
+                </button>
+                <button (click)="doSearch()" class="btn btn-white">
+                    <i class="iconfont icon-search mr-1"></i>
+                    <span>搜索</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="p-2">
+    <div class="card">
+        <ts-table-load [display]="pagination.loading"></ts-table-load>
+        <table class="table bg-white border-0">
+            <thead class="text-dark">
+                <tr class="bg-light">
+                    <th *ngFor="let th of theads" class="border-0">{{th}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of list;index as i" class="mat-cell">
+                    <td>{{pagination.offset+i+1}}</td>
+                    <td>
+                        <div class="media">
+                            <img tsImg [src]="item.avatar" dataSrc="assets/images/404.jpg" alt="avatar" class="align-self-center mr-3 rounded-circle"
+                                height="40">
+                            <div class="media-body">
+                                <p class="m-0">{{item.nick}}
+                                    <small *ngIf="item.gender==='female'" class="text-danger">({{item.gender}})</small>
+                                    <small *ngIf="item.gender==='male'" class="text-dark">({{item.gender}})</small>
+                                </p>
+                                <p class="m-0 text-muted">
+                                    <small class="text-info">
+                                        {{item.email}}
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <p class="p-0 m-0">{{item.cell}}</p>
+                        <p class="p-0 m-0">{{item.address}}</p>
+                    </td>
+                    <td>
+                        <p class="p-0 m-0">{{item.registered.date}}</p>
+                    </td>
+                    <td>
+                        <div tsDropdown class="align-top">
+                            <span tsToggle class="btn-icon btn-icon-primary">
+                                <i class="iconfont icon-viewgallery"></i>
+                            </span>
+                            <div tsDropMenu [offsetX]="-50">
+                                <button class="dropdown-item pointer">Action</button>
+                                <button class="dropdown-item pointer">Another action</button>
+                                <button class="dropdown-item pointer">Something else here</button>
+                                <div class="dropdown-divider"></div>
+                                <button class="dropdown-item pointer">Separated link</button>
+                            </div>
+                        </div>
+                        <span class="btn-icon btn-icon-info ml-2" tsTip="详情/编辑">
+                            <i class="iconfont icon-edit"></i>
+                        </span>
+                        <span class="btn-icon btn-icon-danger ml-2" tsTip="删除">
+                            <i class="iconfont icon-delete"></i>
+                        </span>
+                    </td>
+                </tr>
+                <tr class="mat-cell" *ngIf="list.length<=0">
+                    <td [attr.colspan]="theads.length" class="text-center text-info">
+                        暂无数据～
+                    </td>
+                </tr>
+                <tr class="mat-cell">
+                    <td [attr.colspan]="theads.length" class="text-right">
+                        <ts-pagination outline (pageChange)="pageChanged()" [pagination]="pagination" [color]="global.params.color" goTitle="跳转"></ts-pagination>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

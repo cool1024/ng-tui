@@ -29,7 +29,9 @@ export class PermissionManagerComponent implements OnInit {
      * 重新载入数据
      */
     loadDatas() {
-        this.permissionService.getAllPermission().subscribe(items => this.permissionGroupItems = items);
+        this.permissionService.getAllPermission().subscribe(items => {
+            this.permissionGroupItems = items.map(item => Object.assign(item, { open: true }));
+        });
     }
 
     /**
@@ -46,11 +48,11 @@ export class PermissionManagerComponent implements OnInit {
     /**
      * 删除权限组
      */
-    deletePermissionGroup(permissionGroup: PermissionGroup) {
+    deletePermissionGroup(permissionGroup: PermissionGroup, index: number) {
         this.confirm.danger('确认删除', `您确认要删除分组'${permissionGroup.permissionGroupName}',操作不可恢复！？`)
             .pipe(switchMap(() => this.permissionService.deletePermissionGroup(permissionGroup.id)))
             .subscribe(() => {
-                this.loadDatas();
+                this.permissionGroupItems.splice(index, 1);
                 this.toast.success('删除成功', `成功删除分组'${permissionGroup.permissionGroupName}'`);
             });
     }

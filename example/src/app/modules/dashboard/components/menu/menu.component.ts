@@ -20,6 +20,10 @@ export class MenuComponent {
 
     @Output() menuActiveChange = new EventEmitter<MenuItem>();
 
+    get menuChildActiveClass(): string {
+        return `text-${this.menuConfig.ACTIVE_TEXT_THEME} active`;
+    }
+
     get menuFillStyle(): Object {
         return {
             background: this.menuConfig.BACKGROUND_COLOR,

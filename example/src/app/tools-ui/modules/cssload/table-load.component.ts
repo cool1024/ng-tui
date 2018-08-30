@@ -1,6 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
-import { ConfigService } from '../../tui-core/base-services/config.service';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: `ts-table-load`,
@@ -12,14 +10,12 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
         </div>
     </div>`
 })
-export class TableLoadComponent extends BaseTheme {
+export class TableLoadComponent {
 
     @Input() display: boolean;
 
-    constructor(private configService: ConfigService) {
-        super();
+    constructor() {
         this.display = false;
-        this.color = configService.config.defaultColor;
     }
 
     present() { this.display = false; }

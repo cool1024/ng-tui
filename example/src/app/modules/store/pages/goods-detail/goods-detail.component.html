@@ -1,0 +1,163 @@
+<div class="pl-3 pr-3 bg-white">
+    <h4>商品详情</h4>
+    <ts-tabs [tabs]="['基本信息','商品规格']" [color]="global.params.color" [target]="tsTabs" activeTab="商品规格">
+    </ts-tabs>
+</div>
+<div class="p-2">
+    <div #tsTabs='tsTabs' tsTabs class="card">
+        <div class="card-body">
+            <div tsTab tab='基本信息'>
+                <div class="border-bottom">
+                    <div class="card-body">
+                        <!-- <pre>{{goods|json}}</pre> -->
+                        <div class="container m-0">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label label-required text-right">商品名称</label>
+                                <div class="col-sm-10">
+                                    <input [(ngModel)]="goods.goodsName" type="text" class="form-control" placeholder="请输入商品的名称">
+                                    <div class="invalid-feedback">商品名称是必填的</div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label label-required text-right">商品分类</label>
+                                <div class="col-sm-10">
+                                    <div class="row">
+                                        <div class="col">
+                                            <select [(ngModel)]="goods.goodsParentType" class="custom-select" placeholder="请选择一级分类">
+                                                <option *ngFor="let type of parentTypes" [ngValue]="type.value">{{type.text}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <select [(ngModel)]="goods.goodsType" class="custom-select" placeholder="请选择二级分类">
+                                                <option *ngFor="let type of getChildTypes" [ngValue]="type.value">{{type.text}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label label-required text-right">商品单价</label>
+                                <div class="col-sm-10">
+                                    <div class="row">
+                                        <div class="col">
+                                            <input [(ngModel)]="goods.goodsPrice" type="text" class="form-control" placeholder="请输入商品的价格">
+                                            <div class="invalid-feedback">商品价格是必填的</div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label text-center">库存</label>
+                                                <div class="col-sm-9">
+                                                    <input [(ngModel)]="goods.goodsStocks" type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label label-required text-right">是否上架</label>
+                                <div class="col-sm-10 pt-2">
+                                    <ts-switch [color]="global.params.color" [values]="{open:1,close:0}" [(ngModel)]="goods.isActive"></ts-switch>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-bottom">
+                    <div class="card-body">
+                        <div class="container m-0">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label label-required text-right">商品缩略图</label>
+                                <div class="col-sm-10">
+                                    <ts-image-card #tsUp [(src)]="goods.goodsThumb" [config]="options" title="点击选择"></ts-image-card>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label label-required text-right">商品展示图</label>
+                                <div class="col-sm-10">
+                                    <ts-image-cards [(src)]="goods.goodsImages" [config]="options" title="点击选择"></ts-image-cards>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-bottom">
+                    <div class="card-body">
+                        <div class="container m-0">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label label-required text-right">商品详情</label>
+                                <div class="col-sm-10">
+                                    <textarea [(ngModel)]="goods.goodsDetail" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-2 m-btn">
+                    <button routerLink="/store/goods" tsBtn color="white">返回列表</button>
+                    <button *ngIf="goods.id===0" tsBtn loading color="success" (submit)="confirmInsert($event)">确认添加</button>
+                    <button tsBtn color="warning" (click)="resetForm()">添加新商品</button>
+                    <button *ngIf="goods.id>0" tsBtn loading color="primary" (submit)="confirmUpdate($event)">确认修改</button>
+                </div>
+            </div>
+            <div tsTab tab='商品规格'>
+                <div class="border-bottom pb-2">
+                    <div class="card-header pl-0 pt-0">规格类型</div>
+                    <div class="mt-2" *ngFor="let goodsSpecification of goodsSpecifications;index as i">
+                        <div class="input-group">
+                            <input [(ngModel)]="goodsSpecification.specificationTitle" type="text" class="form-control" placeholder="请输入规格分类名称:颜色">
+                            <div class="input-group-append">
+                                <button (click)="addSpecificationChild(goodsSpecification)" class="btn btn-success" type="button">添加规格名称</button>
+                                <button (click)="removeSpecification(i)" class="btn btn-danger" type="button">删除本规格</button>
+                            </div>
+                        </div>
+                        <div class="mt-2 form-inline">
+                            <div class="input-group mb-2 mr-2" *ngFor="let specificationName of goodsSpecification.specificationNames;index as j;trackBy trackFunc">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-white" type="button">{{j+1}}</button>
+                                </div>
+                                <input [(ngModel)]="goodsSpecification.specificationNames[j]" type="text" class="form-control">
+                                <div class="input-group-append">
+                                    <button (click)="removeSpecificationChild(goodsSpecification,j)" class="btn btn-white" type="button">
+                                        <i class="iconfont icon-delete"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <button (click)="addSpecification()" tsBtn color="success">新增规格分类</button>
+                        <!-- <button tsBtn color="info">刷新规格列表</button> -->
+                    </div>
+                </div>
+                <div class="card-header pl-0">规格明细</div>
+                <table class="table table-sm table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th *ngFor="let goodsSpecification of goodsSpecifications">{{goodsSpecification.specificationTitle}}</th>
+                            <th *ngFor="let th of defaultTh">{{th}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let tr of getSpecificationTr()">
+                            <td *ngFor="let td of getSpecificationTd(tr)" [attr.rowspan]="td.rowspan">{{td.name}}</td>
+                            <td>
+                                <input [(ngModel)]="goodsSpecificationDetails[tr].goodsPrice" class="form-control" type="text">
+                            </td>
+                            <td>
+                                <input [(ngModel)]="goodsSpecificationDetails[tr].goodsStocks" class="form-control" type="text">
+                            </td>
+                            <td>
+                                <ts-switch [color]="global.params.color" [values]="{open:1,close:0}" [(ngModel)]="goodsSpecificationDetails[tr].isActive"></ts-switch>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="mt-2 m-btn">
+                    <button routerLink="/store/goods" tsBtn color="white">返回列表</button>
+                    <button tsBtn loading color="primary" (submit)="confirmSave($event)">保存规格</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,31 +1,29 @@
 <ng-container *ngIf="!outlet.isActivated">
-    <!-- <ts-datepicker #datepickerOne="tsDatepicker" [(ngModel)]="search.params.start" [color]="global.getValue('color')" [weekTitles]="['一', '二', '三', '四', '五', '六', '日']"
+    <ts-datepicker #datepickerOne="tsDatepicker" [(ngModel)]="search.params.start" [color]="global.params.color" [weekTitles]="['一', '二', '三', '四', '五', '六', '日']"
         [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']">
     </ts-datepicker>
-    <ts-datepicker #datepickerTwo="tsDatepicker" [(ngModel)]="search.params.end" [color]="global.getValue('color')" [weekTitles]="['一', '二', '三', '四', '五', '六', '日']"
+    <ts-datepicker #datepickerTwo="tsDatepicker" [(ngModel)]="search.params.end" [color]="global.params.color" [weekTitles]="['一', '二', '三', '四', '五', '六', '日']"
         [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']">
-    </ts-datepicker> -->
+    </ts-datepicker>
     <div class="toolbar">
         <h4>商品列表</h4>
-        <!-- <div class="card-header bg-white">
-            <i class="iconfont icon-search mr-2"></i>
-            <span>商品列表</span>
-        </div> -->
-        <div class="input-group mb-2">
+        <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text bg-white">商品名称</span>
             </div>
             <input [(ngModel)]="search.params.name" type="text" class="form-control" placeholder="请输入商品名称关键词">
         </div>
-        <div class="input-group mb-2">
+        <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text bg-white">创建时间</span>
             </div>
-            <input type="text" class="form-control bg-white pointer" placeholder="开始时间" readonly>
+            <input tsToggle [bind]="datepickerOne" [target]="datepickerOne" type="text" [value]="search.params.start" class="form-control bg-white pointer"
+                placeholder="开始时间" readonly>
             <div class="input-group-prepend input-group-append">
                 <span class="input-group-text bg-white">到</span>
             </div>
-            <input type="text" class="form-control bg-white pointer" placeholder="结束时间" readonly>
+            <input tsToggle [bind]="datepickerTwo" [target]="datepickerTwo" type="text" [value]="search.params.end" class="form-control bg-white pointer"
+                placeholder="结束时间" readonly>
         </div>
         <div class="row">
             <div class="col-6">
@@ -57,7 +55,7 @@
     <div class="p-2">
         <div class="card rounded-0">
             <div class="card-body">
-                <ts-table-load #tsTableLoad="tsTableLoad" [display]="loading" [color]="global.params.value"></ts-table-load>
+                <ts-table-load [display]="loading"></ts-table-load>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <tbody>
@@ -85,7 +83,7 @@
                                         <i tsIcon="delete"></i>
                                     </span>
                                     <span tsTip="详情/编辑" class="btn-icon btn-icon-info" routerLink="detail/{{td.id}}">
-                                        <i tsIcon="form"></i>
+                                        <i tsIcon="edit"></i>
                                     </span>
                                 </td>
                             </tr>

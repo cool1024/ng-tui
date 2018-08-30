@@ -15,7 +15,7 @@ import { GlobalService } from '../../../../cores/services';
         <div class="modal-body">
             <img *ngIf="!uploading" class="w-100" [src]="banner.bannerSrc">
             <div *ngIf="uploading" style="height:300px;">
-                <ts-table-load [display]="uploading" [color]="global.params.color"></ts-table-load>
+                <ts-table-load [display]="uploading"></ts-table-load>
             </div>
             <div class="input-group mt-2">
                 <div class="input-group-prepend">
