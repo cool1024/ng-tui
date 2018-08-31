@@ -4,9 +4,9 @@
 </div>
 <div class="p-3">
     <div class="row">
-        <div class="col-xl-6 mb-3">
+        <div class="col-lg-6 mb-3">
             <div #tsTabsOne='tsTabs' tsTabs class="card">
-                <ts-tabs [tabs]="['座头鲸','树袋熊','白头海雕']" [target]="tsTabsOne" activeTab="树袋熊" color="dark"></ts-tabs>
+                <ts-tabs [tabs]="['座头鲸','树袋熊','白头海雕']" [target]="tsTabsOne" activeTab="树袋熊" [color]="global.params.color"></ts-tabs>
                 <div class="card-body">
                     <div tsTab tab='座头鲸'>
                         <h5 class="mt-0">座头鲸</h5>
@@ -34,9 +34,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-6 mb-3">
+        <div class="col-lg-6 mb-3">
             <div #tsTabsTwo='tsTabs' tsTabs class="card">
-                <ts-tabs [tabs]="['座头鲸','树袋熊','白头海雕']" [target]="tsTabsTwo" position="end" activeTab="树袋熊" color="dark"></ts-tabs>
+                <ts-tabs [tabs]="['座头鲸','树袋熊','白头海雕']" [target]="tsTabsTwo" position="end" activeTab="树袋熊" [color]="global.params.color"></ts-tabs>
                 <div class="card-body">
                     <div tsTab tab='座头鲸'>
                         <h5 class="mt-0">座头鲸</h5>
@@ -64,5 +64,28 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="card">
+        <ts-tabs [tabs]="tabTitles" (tabChange)="setActiveFlag($event)" activeTab="全部" [color]="global.params.color"></ts-tabs>
+        <table class="table table-striped mb-0 border-left border-right border-bottom">
+            <thead>
+                <tr>
+                    <td class="font-weight-bold border-top-0">排名</td>
+                    <td class="font-weight-bold border-top-0">搜索关键词</td>
+                    <td class="font-weight-bold border-top-0">用户数</td>
+                    <td class="font-weight-bold border-top-0">涨幅</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of getTableDatas">
+                    <td>{{data.order}}</td>
+                    <td>{{data.searchKey}}</td>
+                    <td>{{data.userCount}}</td>
+                    <td>
+                        <span>{{data.changeCount>0?'+':''}}{{data.changeCount}}%</span>
+                        <i class="iconfont" [ngClass]="{'icon-caret-up text-success':data.changeCount>=0,'icon-caret-down text-danger':data.changeCount<0}"></i>
+                    </td>
+                </tr>
+        </table>
     </div>
 </div>

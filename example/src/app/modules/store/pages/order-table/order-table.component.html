@@ -1,10 +1,10 @@
 <ng-container *ngIf="!outlet.isActivated">
-    <!-- <ts-datepicker #datepickerOne="tsDatepicker" [(ngModel)]="search.params.start" [color]="global.params.color" [weekTitles]="['一', '二', '三', '四', '五', '六', '日']"
+    <ts-datepicker #datepickerOne="tsDatepicker" [(ngModel)]="search.params.start" [color]="global.params.color" [weekTitles]="['一', '二', '三', '四', '五', '六', '日']"
         [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']">
     </ts-datepicker>
     <ts-datepicker #datepickerTwo="tsDatepicker" [(ngModel)]="search.params.end" [color]="global.params.color" [weekTitles]="['一', '二', '三', '四', '五', '六', '日']"
         [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']">
-    </ts-datepicker> -->
+    </ts-datepicker>
     <div class="bg-white pr-3 pl-3">
         <h4>订单列表</h4>
         <ts-tabs [tabs]="['全部订单','待发货','已发货','已完成']" [color]="global.params.color" activeTab="全部订单" (tabChange)="changeSearchStatus($event)">
@@ -27,11 +27,13 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text bg-white">下单时间</span>
                     </div>
-                    <input type="text" class="form-control bg-white pointer" placeholder="开始时间" readonly>
+                    <input tsToggle [bind]="datepickerOne" [target]="datepickerOne" [value]="search.params.start" type="text" class="form-control bg-white pointer"
+                        placeholder="开始时间" readonly>
                     <div class="input-group-prepend input-group-append">
                         <span class="input-group-text bg-white">到</span>
                     </div>
-                    <input type="text" class="form-control bg-white pointer" placeholder="结束时间" readonly>
+                    <input tsToggle [bind]="datepickerTwo" [target]="datepickerTwo" [value]="search.params.end" type="text" class="form-control bg-white pointer"
+                        placeholder="结束时间" readonly>
                 </div>
                 <div class="row mt-2 mb-2 m-btn">
                     <div class="col-6">

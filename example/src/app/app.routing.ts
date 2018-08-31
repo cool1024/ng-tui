@@ -3,6 +3,7 @@
  */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GuardService } from './cores/services';
 
 const routes: Routes = [
 
@@ -10,10 +11,10 @@ const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
 
     // 懒加载子模块
-    { path: 'demo', loadChildren: './modules/demo/demo.module#DemoModule' },
-    { path: 'admin', loadChildren: './modules/admin/admin.module#AdminModule' },
-    { path: 'store', loadChildren: './modules/store/store.module#StoreModule' },
-    { path: 'system', loadChildren: './modules/system/system.module#SystemModule' },
+    { path: 'demo', loadChildren: './modules/demo/demo.module#DemoModule', canActivate: [GuardService] },
+    { path: 'admin', loadChildren: './modules/admin/admin.module#AdminModule', canActivate: [GuardService] },
+    { path: 'store', loadChildren: './modules/store/store.module#StoreModule', canActivate: [GuardService] },
+    { path: 'system', loadChildren: './modules/system/system.module#SystemModule', canActivate: [GuardService] },
 
     // 最后全局匹配其他链接
     { path: '**', redirectTo: 'error', pathMatch: 'full' }

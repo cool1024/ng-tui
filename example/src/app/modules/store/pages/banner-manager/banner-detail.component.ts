@@ -28,7 +28,7 @@ import { GlobalService } from '../../../../cores/services';
             <input tsFile accept="image/*" #inputFile="tsFile" (fileChange)="uploadBanner($event)">
             <button tsBtn (click)="modal.dismiss()">取消/返回</button>
             <button tsBtn color="primary" (click)="inputFile.openFileDialog()">
-                <i class="fa fa-fw fa-file-picture-o"></i>选择图片
+                <i class="iconfont icon-pic mr-1"></i>选择图片
             </button>
             <button tsBtn loading (submit)="confirmSave($event)" color="success">确认保存</button>
         </div>`,

@@ -547,7 +547,7 @@ ts-select .dropdown-menu {
     }
 
     .text-#{$name}-hover {
-        color: $gray-500;
+        color: $gray-600;
     }
 
     .text-#{$name}-hover:hover {
@@ -736,7 +736,7 @@ p.bold {
 }
 
 /** three-dots **/
-$dotColor: $success;
+$dotColor: $primary;
 
 @import "assets/three-dots/_variables";
 @import "assets/three-dots/mixins";

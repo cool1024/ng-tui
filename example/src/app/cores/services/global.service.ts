@@ -13,6 +13,26 @@ export class GlobalService {
     params: any = {};
 
     /**
+     * 获取一个值，如果不存在，那么给一个默认值
+     * @param {string} key 参数名称
+     * @param {any} 参数默认值
+     * @return {any}
+     */
+    getValue(key: string, defaultValue: any): any {
+        return this.params[key] || defaultValue;
+    }
+
+    /**
+     * 设置一个值
+     * @param key 参数名称
+     * @param value 参数的值
+     * @return {void}
+     */
+    setValue(key: string, value: any): void {
+        this.params[key] = value;
+    }
+
+    /**
      * 批量覆盖params参数
      * @param {any} newParams 新参数
      * @return {void}

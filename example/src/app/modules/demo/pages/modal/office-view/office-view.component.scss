@@ -1,0 +1,26 @@
+.source-view-header {
+    z-index: 2;
+}
+
+.source-view-content {
+    padding-top: 55px;
+}
+
+.source-view-office {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.source-view-tools {
+    width: 350px;
+    max-width: 350px;
+    min-width: 350px;
+}
+
+.message-box {
+    background-color: #f0f0f0;
+}
+
+.message-box textarea {
+    resize: none;
+}

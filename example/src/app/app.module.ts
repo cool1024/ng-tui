@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app.routing';
 import { CoreModule } from './cores/core.module';
 import { SortablejsModule } from 'angular-sortablejs';
-import { TUIModule, EChartModule, ToastModule, DropdownModule, MapModule, ButtonModule } from './tools-ui';
+import { TUIModule, EChartModule, ToastModule, DropdownModule, MapModule, ButtonModule, ConfirmModule } from './tools-ui';
 import { AppComponent } from './app.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { QuillModule } from './tools-ui/lib/quill/quill.module';
@@ -23,6 +23,7 @@ import { QuillModule } from './tools-ui/lib/quill/quill.module';
             monthTitles: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
             paginationItems: [{ text: '显示 5 条', value: 5 }, { text: '显示 10 条', value: 10 }, { text: '显示 20 条', value: 20 }]
         }),
+        ConfirmModule,
         ToastModule.forRoot({ position: 'bottom right', timeout: 3000, maxLength: 6 }),
         EChartModule.forRoot('assets/echart/echarts.common.min.js'),
         QuillModule.forRoot(['assets/quill/quill.min.js']),

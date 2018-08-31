@@ -5,7 +5,7 @@
  * @file   view.component.ts
  * @date   2018-8-29 22:21:52
  */
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { WindowViewService } from '../../../../tools-ui';
 
 @Component({
@@ -15,7 +15,7 @@ import { WindowViewService } from '../../../../tools-ui';
              class="position-fixed right top mr-2 pointer iconfont icon-wrong text-white"
              style="font-size:2rem;right"></span>
         <div class="h-100 d-flex justify-content-center align-items-center">
-            <img style="max-width:90%;max-height:90%" [src]="src">
+            <img class="shadow" style="max-width:90%;max-height:90%" [src]="src">
         </div>
     </div>`
 })

@@ -1,7 +1,7 @@
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ToastService, UploadConfig } from '../../../../tools-ui';
-import { GlobalService } from '../../../../cores/services';
+import { GlobalService, AuthService } from '../../../../cores/services';
 import { ManagerService } from '../../services/manager.service';
 import { Manager } from '../../interfaces/manager.interface';
 
@@ -20,6 +20,7 @@ export class ManagerDetailComponent implements OnInit {
         private toast: ToastService,
         private managerService: ManagerService,
         public location: Location,
+        private auth: AuthService,
     ) {
         this.options = {
             queryString: '?x-oss-process=image/resize,h_130,w_130',
@@ -39,6 +40,7 @@ export class ManagerDetailComponent implements OnInit {
         this.managerService.updateManagerInfo(this.manager).subscribe({
             next: () => {
                 this.toast.success('修改成功', `成功修改账户信息`);
+                this.auth.user.avatar = this.manager.avatar;
             },
             complete: () => {
                 btn.dismiss();

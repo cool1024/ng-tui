@@ -9,30 +9,23 @@
     </div>
 </div>
 <div class="card card-body m-2">
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr class="font-weight-bold bg-light">
-                    <td *ngFor="let th of theads">{{th}}</td>
-                </tr>
-            </thead>
-            <tbody [sortablejs]="list">
-                <tr *ngFor="let td of list;index as i">
-                    <td>{{i+1}}</td>
-                    <td>
-                        <img tsImg class="shadow-sm rounded" dataSrc="assets/images/404.jpg" width="60" [src]="td.bannerSrc" alt="幻灯片">
-                    </td>
-                    <td class="text-primary">{{td.bannerLink}}</td>
-                    <td>
-                        <span (click)="confirmDelete(td)" class="btn-icon btn-icon-danger" tsTip="删除">
-                            <i tsIcon="delete"></i>
-                        </span>
-                        <span (click)="showEditModal(td)" class="btn-icon btn-icon-info" tsTip="编辑">
-                            <i tsIcon="form"></i>
-                        </span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="row" [sortablejs]="list">
+        <div *ngFor="let td of list;index as i" class="col-sm-4 col-lg-3">
+            <div class="card border p-2 mb-3">
+                <img tsImg class="w-100" dataSrc="assets/images/404.jpg" [src]="td.bannerSrc" alt="幻灯片">
+                <div class="d-flex mt-2">
+                    <div class="input-group flex-grow-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white">链接</span>
+                        </div>
+                        <input class="form-control" [value]="td.bannerLink" disabled>
+                    </div>
+                    <div class="m-btn flex-shrink-0 pl-2">
+                        <button (click)="confirmDelete(td)" tsBtn color="danger">删除</button>
+                        <button (click)="showEditModal(td)" tsBtn color="info">编辑</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

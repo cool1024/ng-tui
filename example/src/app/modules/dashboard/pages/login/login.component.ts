@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AppConfig } from '../../../../configs/app.config';
 import { Router } from '@angular/router';
-import { GlobalService, RequestService, MenuService } from '../../../../cores/services';
+import { GlobalService, RequestService, MenuService, AuthService } from '../../../../cores/services';
 import { HttpConfig } from '../../../../configs/http.config';
 import { Account } from './account.interface';
 
@@ -25,6 +25,7 @@ export class LoginComponent {
         public global: GlobalService,
         private request: RequestService,
         private menu: MenuService,
+        private auth: AuthService,
     ) { }
 
     confirmLogin(btn: any) {
@@ -36,7 +37,7 @@ export class LoginComponent {
                     'ng-params-two': datas.token,
                     'ng-params-three': datas.platform,
                 });
-                // this.auth.loadUserDeail();
+                this.auth.loadUserDeail();
                 // this.menu.loadMenu();
                 this.router.navigateByUrl('/');
             },

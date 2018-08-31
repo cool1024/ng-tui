@@ -1,0 +1,85 @@
+<div class="bg-light h-100">
+    <nav class="shadow-sm bg-white source-view-header d-flex justify-content-between align-items-center position-absolute w-100 p-3">
+        <h4 class="mb-0">微信小程序简单开发.doxs</h4>
+        <div>
+            <span class="text-primary-hover mr-2 pointer">
+                <i class="iconfont icon-download mr-2"></i>下载
+            </span>
+            <span (click)="view.close()" class="text-danger-hover pointer">
+                <i class="iconfont icon-wrong mr-2" aria-hidden="true"></i>关闭
+            </span>
+        </div>
+    </nav>
+    <div class="d-flex source-view-content h-100">
+        <div class="text-center h-100 source-view-office">
+            <iframe class="h-100 w-100 border-0" src="https://view.officeapps.live.com/op/view.aspx?src=http://hello1024.oss-cn-beijing.aliyuncs.com/upload/docs/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92.docx"
+                allowfullscreen></iframe>
+        </div>
+        <div class="border-left bg-light h-100 position-relative source-view-tools">
+            <div class="bg-white p-3 text-muted">
+                <p>
+                    <small>
+                        <i class="fa fa-folder-o mr-2"></i>
+                        <span>版本信息</span>
+                    </small>
+                </p>
+                <div class="d-flex justify-content-between">
+                    <span>
+                        <i class="fa fa-sm fa-circle mr-2 text-primary" aria-hidden="true"></i>
+                        Jian上传与 昨天14:50</span>
+                    <span>146.4 KB</span>
+                </div>
+                <hr>
+                <p>参与者（3）</p>
+                <div>
+                    <img class="rounded-circle mr-1 mb-1" height="30" width="30" src="https://randomuser.me/api/portraits/thumb/men/93.jpg" alt="">
+                    <img class="rounded-circle mr-1 mb-1" height="30" width="30" src="https://randomuser.me/api/portraits/thumb/men/94.jpg" alt="">
+                    <img class="rounded-circle mr-1 mb-1" height="30" width="30" src="https://randomuser.me/api/portraits/thumb/men/95.jpg" alt="">
+                </div>
+            </div>
+            <div class="p-3">
+                <div class="text-muted mb-2">
+                    <small>
+                        <i class="fa fa-plus fa-fw mr-2" aria-hidden="true"></i>
+                        <span>Jian 上传了文件 </span>
+                    </small>
+                </div>
+                <div class="text-muted mb-2">
+                    <small>
+                        <i class="fa fa-user-plus fa-fw mr-2" aria-hidden="true"></i>
+                        <span>Jian 添加的新项目成员 Cool1024 </span>
+                    </small>
+                </div>
+                <div class="media text-muted mt-1 mb-2">
+                    <img class="mr-1 rounded-circle" width="30" height="30" src="https://randomuser.me/api/portraits/thumb/men/91.jpg">
+                    <div class="media-body">
+                        <div class="mt-0">Tomky</div>
+                        <div class="text-dark">
+                            <small>需要修改部分样式</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="media text-muted mt-1 mb-2">
+                    <img class="mr-1 rounded-circle" width="30" height="30" src="https://randomuser.me/api/portraits/thumb/men/92.jpg">
+                    <div class="media-body">
+                        <div class="mt-0">Fer.Jas</div>
+                        <div class="text-dark">
+                            <small>我感觉缺少了点背景图，是不是加一点什么东西在后面会好点？</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-2 message-box position-absolute w-100 bottom-0" style="height:105px;">
+                <div class="h-100 w-100 border bg-white rounded">
+                    <textarea style="height: 40px;" placeholder="@提及他人，按Enter快速发布" class="form-control border-0"></textarea>
+                    <div class="border-top d-flex justify-content-between p-2 text-muted">
+                        <span>
+                            <i class="fa fa-smile-o fa-lg fa-fw" aria-hidden="true"></i>
+                        </span>
+                        <button tsBtn sm color="primary">发送</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

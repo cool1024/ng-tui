@@ -31,7 +31,7 @@
                                 <i class="iconfont icon-lock" aria-hidden="true"></i>
                             </span>
                         </div>
-                        <input type="password" name="password" [(ngModel)]="account.password" class="form-control
+                        <input (keyup.enter)="btn.present();confirmLogin(btn)" type="password" name="password" [(ngModel)]="account.password" class="form-control
                     rounded-0" [placeholder]="config.SECOND_PLACEHOLDER">
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                     <span class="pull-right text-muted ">忘记密码？</span>
                 </div>
                 <div class="p-4"></div>
-                <button tsBtn lg loading [color]="global.params.color" class="btn-block rounded-0" (submit)="confirmLogin($event)">登入</button>
+                <button #btn="tsBtn" tsBtn lg loading [color]="global.params.color" class="btn-block rounded-0" (submit)="confirmLogin($event)">登入</button>
             </div>
             <div class="card-footer bg-white text-center">
                 <p class="mt-1 mb-0">Copyright © 2018 XiaoJian. All Rights Reserved.

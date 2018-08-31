@@ -35,6 +35,9 @@ import { SimpleComponent } from './pages/upload/simple.component';
 import { ViewComponent } from './pages/upload/view.component';
 import { TableComponent } from './pages/table/table.component';
 import { BadgeSelectComponent } from './pages/badge/badge-select.component';
+import { SimpleWindowComponent } from './pages/modal/simple-window.component';
+import { OfficeViewComponent } from './pages/modal/office-view/office-view.component';
+import { FlexComponent } from './pages/flex/flex.component';
 
 const routes: Routes = [
     {
@@ -186,6 +189,12 @@ const routes: Routes = [
         data: {
             breadcrumbs: [{ title: '标准表格' }]
         }
+    },
+    {
+        path: 'flex', component: FlexComponent,
+        data: {
+            breadcrumbs: [{ title: 'Flex布局' }]
+        }
     }
 ];
 
@@ -211,6 +220,8 @@ export const declarationComponents = [
     IconfontComponent,
     ModalComponent,
     ModalSimpleComponent,
+    SimpleWindowComponent,
+    OfficeViewComponent,
     ConfirmComponent,
     RequestComponent,
     CodeComponent,
@@ -221,6 +232,7 @@ export const declarationComponents = [
     SimpleComponent,
     ViewComponent,
     TableComponent,
+    FlexComponent,
 ];
 
 /**
@@ -229,6 +241,8 @@ export const declarationComponents = [
 export const entryComponents = [
     ModalSimpleComponent,
     ViewComponent,
+    SimpleWindowComponent,
+    OfficeViewComponent,
 ];
 
 /**

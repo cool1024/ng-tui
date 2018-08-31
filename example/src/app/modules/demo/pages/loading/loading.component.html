@@ -1,6 +1,77 @@
 <div class="toolbar">
-    <div class="card-header bg-white">加载动画</div>
-    <div class="card-body m-btn position-relative" style="height:400px">
-        <ts-table-load display="true" label="数据加载中"></ts-table-load>
+    <h4>加载动画</h4>
+    <p class="text-muted">加载动画用于页面加载，表格数据加载</p>
+</div>
+<div class="p-3">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <button tsBtn (click)="loading=!loading">{{loading?'关闭':'开启'}}动画</button>
+                </div>
+                <div class="card-body m-btn position-relative" style="height:400px">
+                    <ts-table-load [display]="loading"></ts-table-load>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <button tsBtn (click)="loading=!loading">{{loading?'关闭':'开启'}}动画</button>
+                </div>
+                <!-- 这里设置高度只是为了让左右col-lg-6的高度一样 -->
+                <div class="card-body position-relative" style="height:400px">
+                    <ts-table-load [display]="loading"></ts-table-load>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

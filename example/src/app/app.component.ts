@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { Router, RouteConfigLoadStart, NavigationEnd, ActivatedRouteSnapshot, UrlSegment, RouterOutlet } from '@angular/router';
-import { GlobalService, RequestService, MenuService } from './cores/services';
+import { Router, RouteConfigLoadStart, NavigationEnd, ActivatedRouteSnapshot } from '@angular/router';
+import { GlobalService, RequestService, MenuService, AuthService } from './cores/services';
 import { MenuModel } from './modules/dashboard/components/menu/menu.interface';
 import { AppConfig } from './configs/app.config';
+import { ConfirmService } from './tools-ui';
 
 @Component({
     selector: 'app-root',
@@ -25,14 +26,21 @@ export class AppComponent {
         private request: RequestService,
         private menu: MenuService,
         private router: Router,
+        private confirm: ConfirmService,
+        public auth: AuthService,
     ) {
+
+        // 设置登入状态
+        this.global.setValue('loginStatus', false);
+
+        this.auth.loadUserDeail();
 
         // 载入系统默认配置参数
         this.global.appendValuesToParams({
             dashboardMode: 'full',
             menuMode: 'full',
             lazyload: true,
-            color: 'success'
+            color: 'dark'
         });
 
         // 载入服务端参数
@@ -69,7 +77,8 @@ export class AppComponent {
      * 退出登入
      */
     setOut() {
-        this.router.navigateByUrl('/login');
+        this.confirm.warning('退出登入', '您确认要退出当前的账户吗？')
+            .subscribe(() => this.auth.setOutAndClean());
     }
 
     /**

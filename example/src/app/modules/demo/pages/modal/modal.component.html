@@ -2,14 +2,34 @@
     <h4>弹窗</h4>
     <p class="text-muted">有些简单操作可以使用模态框完成，模态框目前只能打开一个（要打开新的模态框必须先关闭之前的）</p>
 </div>
-<div class="p-2">
-    <div class="card">
-        <div class="card-header bg-white">弹窗</div>
-        <div class="card-body m-btn">
-            <button tsBtn (click)="showModal('md',false)">普通弹窗</button>
-            <button tsBtn (click)="showModal('md',true)">居中</button>
-            <button tsBtn (click)="showModal('sm',false)">小尺寸</button>
-            <button tsBtn (click)="showModal('lg',false)">大尺寸</button>
+<div class="p-3">
+    <div class="row">
+        <div class="col-lg-6 mb-3">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <span>模态框</span>
+                    <a href="https://www.cool1024.com/gitbook/MODAL.html" target="blank">参考文档</a>
+                </div>
+                <div class="card-body m-btn">
+                    <button tsBtn (click)="showModal('md',false)">普通弹窗</button>
+                    <button tsBtn (click)="showModal('md',true)">居中</button>
+                    <button tsBtn (click)="showModal('sm',false)">小尺寸</button>
+                    <button tsBtn (click)="showModal('lg',false)">大尺寸</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-3">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <span>窗口</span>
+                    <a href="https://www.cool1024.com/gitbook/WINDOW.html" target="blank">参考文档</a>
+                </div>
+                <div class="card-body m-btn">
+                    <button tsBtn (click)="showWindow()">简单弹窗</button>
+                    <button tsBtn (click)="showImage('assets/images/background/1.jpg')">个性化（图片预览）</button>
+                    <button tsBtn (click)="showOffice()">文档阅读</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

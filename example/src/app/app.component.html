@@ -17,7 +17,8 @@
         <!-- 右侧内容 -->
         <div class="flex-grow-1 h-100 d-flex flex-column">
             <!-- 顶部工具栏 -->
-            <div class="headbar bg-success text-light d-flex align-items-center justify-content-between flex-shrink-0 shadow-sm" style="height:60px;z-index:1;">
+            <div class="headbar bg-{{global.params.color}} text-light d-flex align-items-center justify-content-between flex-shrink-0 shadow-sm"
+                style="height:60px;z-index:1;">
                 <div class="d-flex align-items-center flex-grow-1 h-100">
                     <div class="d-flex align-items-center bg-light-hover h-100 pl-3 pr-3">
                         <i (click)="changeMenuMode()" class="iconfont icon-category pointer"></i>
@@ -33,15 +34,15 @@
                         </div>
                     </div>
                     <div tsDropdown class="bg-light-hover h-100 d-flex align-items-center pointer">
-                        <img tsToggle src="assets/images/avatar/0.jpg" class="rounded-circle border border-light ml-3 mr-3" height="35" width="35"
-                            alt="avatar">
-                        <div tsDropMenu [offsetX]="-100" [offsetY]="28">
-                            <div class="dropdown-item-title">Admin</div>
+                        <img tsToggle [src]="auth.user.avatar" dataSrc="assets/images/avatar/0.jpg" class="rounded-circle border border-light ml-3 mr-3"
+                            height="35" width="35" alt="avatar">
+                        <div tsDropMenu [offsetX]="-100" [offsetY]="28" style="width:163px;">
+                            <div class="dropdown-item-title">{{auth.user?.role.roleName}}</div>
                             <button class="dropdown-item pointer">
                                 <span class="iconfont icon-mobile mr-2"></span>
-                                <span>18270881855</span>
+                                <span>{{auth.user.account}}</span>
                             </button>
-                            <button class="dropdown-item pointer">
+                            <button routerLink="/system/detail" class="dropdown-item pointer">
                                 <span class="iconfont icon-account mr-2"></span>
                                 <span>账号信息</span>
                             </button>

@@ -50,10 +50,6 @@
                         "url": "/demo/datepicker"
                     },
                     {
-                        "title": "幻灯片",
-                        "url": "/demo/loopcard"
-                    },
-                    {
                         "title": "搜索选择",
                         "url": "/demo/search"
                     }
@@ -161,12 +157,8 @@
                         "url": "/demo/loading"
                     },
                     {
-                        "title": "日期选择",
-                        "url": "/laboratory/datepicker"
-                    },
-                    {
                         "title": "Flex布局",
-                        "url": "/laboratory/flex"
+                        "url": "/demo/flex"
                     }
                 ]
             }

@@ -19,7 +19,7 @@ export const AppConfig = {
         BACKGROUND_COLOR: 'white',
         DEFAULT_TEXT_COLOR: 'black',
         LINE_COLOR: 'rgba(200, 200, 200,.3)',
-        ACTIVE_TEXT_THEME: 'success',
+        ACTIVE_TEXT_THEME: 'dark',
     },
 
     THEME_COLORS: [

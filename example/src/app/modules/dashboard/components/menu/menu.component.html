@@ -44,7 +44,7 @@
                 <img *ngIf="useImage&&group.image" width="30" height="30" [src]="group.image">
                 <i *ngIf="!(useImage&&group.image)" [class]="group.icon" aria-hidden="true"></i>
                 <div class="menu-popover">
-                    <div [ngStyle]="menuSmallStyle" class="shadow-sm rounded text-left ml-2 text-truncate">
+                    <div [ngStyle]="menuSmallStyle" class="shadow rounded text-left ml-2 text-truncate">
                         <div *ngFor="let item of group.menuItems;index as i" [routerLink]="item.url" class="menu-item pl-4 pr-4">
                             {{item.title}}
                         </div>

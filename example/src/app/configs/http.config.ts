@@ -45,10 +45,10 @@ export const HttpConfig = {
     PLATFORM_NAMWE: 'managerapi',
 
     // 401跳转页面
-    TOKEN_ERROR_URL: '/dashboard/login',
+    TOKEN_ERROR_URL: '/login',
 
     // 403跳转页面
-    AUTH_ERROR_URL: '/dashboard/error',
+    AUTH_ERROR_URL: '/error',
 
     // RSA 请求公钥
     RSA_PUBLIC_KEY: `-----BEGIN PUBLIC KEY-----

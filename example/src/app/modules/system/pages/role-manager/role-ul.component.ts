@@ -22,7 +22,7 @@ import { RoleGroup } from '../../interfaces/role.interface';
                         <i class="iconfont icon-add-circle"></i>
                     </span>
                     <span (click)="sendUpdateEvent(roleGroup)" class="btn-icon btn-icon-info" tsTip="编辑">
-                        <i class="iconfont icon-form"></i>
+                        <i class="iconfont icon-edit"></i>
                     </span>
                     <span (click)="sendDeleteEvent(roleGroup)" class="btn-icon btn-icon-danger" tsTip="删除">
                         <i class="iconfont icon-delete"></i>
