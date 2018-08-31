@@ -23,7 +23,7 @@ import { styleStr } from './upload.data';
         </div><div class="d-inline-block rounded border border-muted p-1 mb-1 align-top" [ngStyle]="blockStyle">
             <div (click)="input_file.click()" class="w-100 h-100 upload-block">
                 <div class="text-muted text-center h-100 w-100 pointer" [ngStyle]="windowStyle">
-                    <i class="fa fa-fw fa-lg fa-picture-o"></i>{{title}}
+                    <i class="iconfont icon-pic mr-1"></i>{{title}}
                 </div>
             </div>
         </div>

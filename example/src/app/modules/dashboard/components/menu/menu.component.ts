@@ -70,7 +70,7 @@ export class MenuComponent {
 
     toggleGroup(group: MenuGroup) {
         const tempActive = group.active;
-        this.setAllInActive();
+        this.setAllGroupInActive();
         group.active = !tempActive;
     }
 
@@ -94,6 +94,14 @@ export class MenuComponent {
                 }
             }
         }
+    }
+
+    setAllGroupInActive() {
+        this.items.forEach(item => {
+            item.menuGroups.forEach(a => {
+                if (this.autoClose) { a.active = false; }
+            });
+        });
     }
 
     setAllInActive() {

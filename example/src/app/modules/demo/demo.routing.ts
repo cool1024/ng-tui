@@ -38,6 +38,7 @@ import { BadgeSelectComponent } from './pages/badge/badge-select.component';
 import { SimpleWindowComponent } from './pages/modal/simple-window.component';
 import { OfficeViewComponent } from './pages/modal/office-view/office-view.component';
 import { FlexComponent } from './pages/flex/flex.component';
+import { UploadMoreComponent } from './pages/upload-more/upload-more.component';
 
 const routes: Routes = [
     {
@@ -195,6 +196,12 @@ const routes: Routes = [
         data: {
             breadcrumbs: [{ title: 'Flex布局' }]
         }
+    },
+    {
+        path: 'upload-more', component: UploadMoreComponent,
+        data: {
+            breadcrumbs: [{ title: '其它上传' }]
+        }
     }
 ];
 
@@ -233,6 +240,7 @@ export const declarationComponents = [
     ViewComponent,
     TableComponent,
     FlexComponent,
+    UploadMoreComponent,
 ];
 
 /**
