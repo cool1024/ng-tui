@@ -12,10 +12,26 @@ import { RoleModalComponent } from './pages/role-manager/role-modal.component';
 import { ManagerDetailComponent } from './pages/manager-detail/manager-detail.component';
 
 const routes: Routes = [
-    { path: 'menu', component: MenuManagerComponent },
-    { path: 'permission', component: PermissionManagerComponent },
-    { path: 'role', component: RoleManagerComponent },
-    { path: 'detail', component: ManagerDetailComponent },
+    {
+        path: 'menu', component: MenuManagerComponent, data: {
+            breadcrumbs: [{ title: '菜单管理' }]
+        }
+    },
+    {
+        path: 'permission', component: PermissionManagerComponent, data: {
+            breadcrumbs: [{ title: '权限管理' }]
+        }
+    },
+    {
+        path: 'role', component: RoleManagerComponent, data: {
+            breadcrumbs: [{ title: '角色管理' }]
+        }
+    },
+    {
+        path: 'detail', component: ManagerDetailComponent, data: {
+            breadcrumbs: [{ title: '账户详情' }]
+        }
+    },
 ];
 
 export const declarationComponents = [

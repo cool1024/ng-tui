@@ -1,27 +1,30 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { UploadConfig } from './upload.interface';
-import { Subscription } from 'rxjs';
 import { ConfigService } from '../../tui-core/base-services/config.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'ts-video',
     template: `
-    <div class="rounded border d-flex flex-column" [ngStyle]="videoStyle">
+    <div class="d-flex flex-column" [ngStyle]="videoStyle">
         <input #input_file type="file" class="d-none"
         [attr.accept]="type+'/*'" (change)="changeFile($event.target.files);input_file.value=null">
         <div *ngIf="!showMediaDom; else mediaDom" (click)="input_file.click()"
-            class="pointer text-muted h-100 d-flex align-items-center justify-content-center">
-            <i class="iconfont icon-video mr-2"></i>
+            class="pointer text-muted border d-flex align-items-center justify-content-center"
+            style="border-style:dashed !important;border-width:1px;height:100px;">
+            <i *ngIf="type!=='audio'" class="iconfont icon-video mr-2"></i>
+            <i *ngIf="type=='audio'" class="iconfont icon-music mr-2"></i>
             <span>{{title}}</span>
         </div>
         <ng-template #mediaDom>
             <video *ngIf="type!=='audio'" class="m-0 p-0 w-100 flex-grow-1" [src]="realSrc" controls></video>
+            <audio *ngIf="type=='audio'" class="m-0 p-0 w-100 flex-grow-1" [src]="realSrc" controls></audio>
         </ng-template>
         <div *ngIf="showMediaDom" class="flex-shrink-0 text-right p-2 d-flex justify-content-end align-items-center">
             <div *ngIf="showLoading" class="flex-grow-1 mr-2">
                 <div class="progress">
-                    <div class="progress-bar bg-{{color}}" style="width:10%"></div>
+                    <div class="progress-bar bg-{{color}}" [style.width]="loaded"></div>
                 </div>
             </div>
             <div class="flex-shrink-0 d-flex">
@@ -43,40 +46,6 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
         </div>
     </div>
     `
-    // `
-    // <div class="d-inline-block align-top">
-    //     <input #input_file type="file" class="d-none"
-    //         [attr.accept]="type+'/*'" (change)="changeFile($event.target.files);input_file.value=null">
-    //     <div class="btn-group mb-1" role="group">
-    //         <button [class]="btnClass" (click)="input_file.click()" type="button">
-    //             <i class="fa fa-folder-open-o fa-fw fa-lg" aria-hidden="true"></i>{{title||'OpenFile'}}</button>
-    //         <button *ngIf="useUpload&&!autoUpload" [class]="btnClass" (click)="tryUpload()" type="button">
-    //             <i class="fa fa-upload fa-fw fa-lg" aria-hidden="true"></i>
-    //         </button>
-    //         <button [class]="btnClass" (click)="cleanInput()" type="button">
-    //             <i class="fa fa-remove fa-fw" aria-hidden="true"></i>
-    //         </button>
-    //     </div>
-    //     <br>
-    //     <div *ngIf="showMediaDom&&!showLoading&&type!=='audio'"
-    //         [style.width]="videoSize[0]" [style.height]="videoSize[1]" class="d-inline-block">
-    //         <video class="m-0 p-0 rounded-0 border border-muted w-100 h-100" [src]="realSrc" controls="true"></video>
-    //     </div>
-    //     <div *ngIf="showMediaDom&&!showLoading&&type==='audio'"
-    //         [style.width]="videoSize[0]" [style.height]="videoSize[1]" class="d-inline-block">
-    //         <audio class="m-0 p-0 rounded-0 w-100" [src]="realSrc" controls="true"></audio>
-    //     </div>
-    //     <div *ngIf="showLoading"
-    //         [style.width]="videoSize[0]" [style.width]="videoSize[0]" [style.height]="videoSize[1]" class="d-inline-block">
-    //         <div class="w-100 h-100">
-    //             <div class="progress w-100 d-inline-block">
-    //                 <div class="progress-bar bg-{{color}} progress-bar-striped progress-bar-animated" [style.width]="loaded">
-    //                     {{loaded}}
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>`,
 })
 export class InputVideoComponent implements OnChanges {
 
@@ -117,7 +86,7 @@ export class InputVideoComponent implements OnChanges {
     get videoStyle(): Object {
         return {
             width: `${this.videoSize[0]}px`,
-            height: `${this.videoSize[1]}px`,
+            maxHeight: `${this.videoSize[1]}px`,
             fontSize: '1rem'
         };
     }
@@ -130,12 +99,14 @@ export class InputVideoComponent implements OnChanges {
         this.type = 'video';
         this.videoSize = [260, 200];
         this.autoUpload = false;
-        this.useUpload = false;
+        this.useUpload = true;
         this.color = this.configService.config.defaultColor;
     }
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes.src && changes.src.currentValue) {
+            // tslint:disable-next-line:no-unused-expression
+            this.type === 'audio' && (this.videoSize[1] = 100);
             this.showMediaDom = true;
             this.src = !changes.src.firstChange ? changes.src.currentValue : this.src;
         }
@@ -176,16 +147,16 @@ export class InputVideoComponent implements OnChanges {
         if (this.file === null || this.file === undefined) { return; }
         this.hasUpload = true;
         this.loaded = '0%';
-        // this.subscription = this.config.progresser(this.file).subscribe(res => {
-        //     if (typeof res === 'string') {
-        //         this.src = res;
-        //         this.showLoading = false;
-        //         this.needUpload = false;
-        //         this.srcChange.emit(res);
-        //     } else {
-        //         this.loaded = res + '%';
-        //     }
-        // });
+        this.subscription = this.config.progresser(this.file).subscribe(res => {
+            if (typeof res === 'string') {
+                this.src = res;
+                this.showLoading = false;
+                this.needUpload = false;
+                this.srcChange.emit(res);
+            } else {
+                this.loaded = res + '%';
+            }
+        });
         this.showLoading = true;
     }
 }

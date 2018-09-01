@@ -10,17 +10,39 @@ const routes: Routes = [
         path: 'company',
         component: CompanyTableComponent,
         children: [
-            { path: 'detail', component: CompanyDetailComponent },
-            { path: 'detail/:id', component: CompanyDetailComponent },
-        ]
+            {
+                path: 'detail', component: CompanyDetailComponent, data: {
+                    breadcrumbs: [{ title: '公司列表', path: '/admin/company' }, { title: '添加公司' }]
+                }
+            },
+            {
+                path: 'detail/:id', component: CompanyDetailComponent, data: {
+                    breadcrumbs: [{ title: '公司列表', path: '/admin/company' }, { title: '公司详情' }]
+                }
+            },
+        ],
+        data: {
+            breadcrumbs: [{ title: '公司列表' }]
+        }
     },
     {
         path: 'platform',
         component: PlatformTableComponent,
         children: [
-            { path: 'detail', component: PlatformDetailComponent },
-            { path: 'detail/:id', component: PlatformDetailComponent },
-        ]
+            {
+                path: 'detail', component: PlatformDetailComponent, data: {
+                    breadcrumbs: [{ title: '管理员列表', path: '/admin/platform' }, { title: '添加管理员' }]
+                }
+            },
+            {
+                path: 'detail/:id', component: PlatformDetailComponent, data: {
+                    breadcrumbs: [{ title: '管理员列表', path: '/admin/platform' }, { title: '管理员详情' }]
+                }
+            },
+        ],
+        data: {
+            breadcrumbs: [{ title: '管理员列表' }]
+        }
     },
 ];
 
