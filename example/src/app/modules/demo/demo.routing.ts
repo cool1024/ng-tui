@@ -39,6 +39,7 @@ import { SimpleWindowComponent } from './pages/modal/simple-window.component';
 import { OfficeViewComponent } from './pages/modal/office-view/office-view.component';
 import { FlexComponent } from './pages/flex/flex.component';
 import { UploadMoreComponent } from './pages/upload-more/upload-more.component';
+import { StepComponent } from './pages/step/step.component';
 
 const routes: Routes = [
     {
@@ -202,6 +203,12 @@ const routes: Routes = [
         data: {
             breadcrumbs: [{ title: '其它上传' }]
         }
+    },
+    {
+        path: 'step', component: StepComponent,
+        data: {
+            breadcrumbs: [{ title: '步骤列表' }]
+        }
     }
 ];
 
@@ -241,6 +248,7 @@ export const declarationComponents = [
     TableComponent,
     FlexComponent,
     UploadMoreComponent,
+    StepComponent,
 ];
 
 /**

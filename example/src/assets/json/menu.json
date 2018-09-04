@@ -159,6 +159,10 @@
                     {
                         "title": "Flex布局",
                         "url": "/demo/flex"
+                    },
+                    {
+                        "title": "步骤列表",
+                        "url": "/demo/step"
                     }
                 ]
             }

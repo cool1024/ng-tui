@@ -436,8 +436,8 @@ ts-select .dropdown-menu {
 /** dot **/
 .dot {
     display: inline-block;
-    width: 0.5rem;
-    height: 0.5rem;
+    width: 0.6rem;
+    height: 0.6rem;
     border-radius: 50%;
 }
 
@@ -460,6 +460,20 @@ ts-select .dropdown-menu {
     .dot-#{$name} {
         background-color: $color;
     }
+}
+
+/** step **/
+.step-list {
+    display: flex;
+}
+
+.step-item {
+    flex-grow: 1;
+}
+
+.step-line {
+    height: 0.2rem;
+    flex-grow: 1;
 }
 
 /** toast **/
