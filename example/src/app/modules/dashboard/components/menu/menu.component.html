@@ -1,5 +1,5 @@
 <div *ngIf="menuMode==='full'; else elseBlock" class="menu-full h-100" [ngStyle]="menuFullStyle">
-    <div #menu class="h-100 pt-2" [ngStyle]="menuFillStyle">
+    <div #menu class="h-100 pt-2 no-select" [ngStyle]="menuFillStyle">
         <ng-container *ngFor="let model of items">
             <div class="p-3 text-muted">{{model.modelTitle}}</div>
             <div class="menu-block no-select {{group.active?activeMainClass:''}}" *ngFor="let group of model.menuGroups">
@@ -13,7 +13,7 @@
                             <span>{{group.groupTitle | titlecase}}</span>
                         </div>
                         <div class="d-table-cell text-right pr-2">
-                            <div class="d-inline-block icon-{{group.active?'up':'down'}}">
+                            <div class="d-inline-block font-{{group.active?'up':'down'}}">
                                 <i class="iconfont icon-caret-down ts-icon-sm" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
 </div>
 <!-- small mode -->
 <ng-template #elseBlock>
-    <div #menu class="h-100  menu-small" [ngStyle]="menuSmallStyle">
+    <div #menu class="h-100 no-select menu-small" [ngStyle]="menuSmallStyle">
         <ng-container *ngFor="let model of items">
             <div *ngFor="let group of model.menuGroups" class="menu-rect text-center">
                 <img *ngIf="useImage&&group.image" width="30" height="30" [src]="group.image">

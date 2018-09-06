@@ -11,7 +11,7 @@ import { ApiData } from '../../../cores/classes/api-data.class';
 import { SearchParams } from '../../../cores/classes/search-params';
 import { User } from '../interfaces/user.interface';
 import { Observable } from 'rxjs';
-import { Pagination } from '../../../tools-ui';
+import { Pagination } from 'ng-tui';
 
 @Injectable()
 export class UserService {

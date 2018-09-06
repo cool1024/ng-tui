@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { GlobalService } from '../../../../cores/services';
 import { MenuService } from '../../services/menu.service';
 import { MenuGroup, Menu } from '../../interfaces/menu.interface';
-import { ModalService, ConfirmService, ToastService } from '../../../../tools-ui';
+import { ModalService, ConfirmService, ToastService } from 'ng-tui';
 import { MenuGroupModalComponent } from './menu-group-modal.component';
 import { MenuModalComponent } from './menu-modal.component';
 import { switchMap } from 'rxjs/operators';

@@ -6,7 +6,7 @@
  * @date   2018-8-29 22:21:52
  */
 import { Component } from '@angular/core';
-import { WindowViewService } from '../../../../tools-ui';
+import { WindowViewService } from 'ng-tui';
 
 @Component({
     template: `

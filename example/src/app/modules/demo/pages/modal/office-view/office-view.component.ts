@@ -6,7 +6,7 @@
  * @date   2018-6-22 11:25:19
  */
 import { Component, OnInit } from '@angular/core';
-import { WindowViewService } from '../../../../../tools-ui';
+import { WindowViewService } from 'ng-tui';
 
 @Component({
     templateUrl: './office-view.component.html',

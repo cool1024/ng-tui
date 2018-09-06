@@ -1,7 +1,7 @@
 /**
- * 请编写页面文件说明
+ * 步骤列表页面
  *
- * @author 填写作者
+ * @author xiaojian
  * @file   step.component.ts
  * @date   2018-9-4 19:00:47
  */

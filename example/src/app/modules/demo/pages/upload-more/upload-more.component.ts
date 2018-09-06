@@ -7,7 +7,7 @@
  */
 import { Component } from '@angular/core';
 import { GlobalService } from '../../../../cores/services';
-import { UploadConfig } from '../../../../tools-ui';
+import { UploadConfig } from 'ng-tui';
 import { interval } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 import * as XLSX from 'xlsx';

@@ -1,0 +1,24 @@
+{
+    "name": "ng-tui",
+    "version": "0.0.1",
+    "description": "a tools ui for angular6+",
+    "peerDependencies": {
+        "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+        "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/BeauitfullXiaoJian/ng-tui.git"
+    },
+    "keywords": [
+        "bootstrap4.1",
+        "angular6",
+        "iconfont"
+    ],
+    "author": "cool1024",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/BeauitfullXiaoJian/ng-tui/issues"
+    },
+    "homepage": "https://github.com/BeauitfullXiaoJian/ng-tui#readme"
+}

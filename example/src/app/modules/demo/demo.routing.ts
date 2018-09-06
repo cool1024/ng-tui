@@ -26,7 +26,6 @@ import { ModalComponent } from './pages/modal/modal.component';
 import { ModalSimpleComponent } from './pages/modal/modal-simple.component';
 import { ConfirmComponent } from './pages/confirm/confirm.component';
 import { RequestComponent } from './pages/request/request.component';
-import { CodeComponent } from '../../tools-ui/modules/code/code.component';
 import { MapComponent } from './pages/map/map.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { EchartComponent } from './pages/echart/echart.component';
@@ -40,6 +39,7 @@ import { OfficeViewComponent } from './pages/modal/office-view/office-view.compo
 import { FlexComponent } from './pages/flex/flex.component';
 import { UploadMoreComponent } from './pages/upload-more/upload-more.component';
 import { StepComponent } from './pages/step/step.component';
+import { CodeComponent } from './pages/code/code.component';
 
 const routes: Routes = [
     {
@@ -151,12 +151,6 @@ const routes: Routes = [
         }
     },
     {
-        path: 'code', component: CodeComponent,
-        data: {
-            breadcrumbs: [{ title: '代码高亮' }]
-        }
-    },
-    {
         path: 'map', component: MapComponent,
         data: {
             breadcrumbs: [{ title: '高德地图' }]
@@ -172,6 +166,12 @@ const routes: Routes = [
         path: 'echart', component: EchartComponent,
         data: {
             breadcrumbs: [{ title: '百度图表' }]
+        }
+    },
+    {
+        path: 'code', component: CodeComponent,
+        data: {
+            breadcrumbs: [{ title: '代码高亮' }]
         }
     },
     {
@@ -238,7 +238,6 @@ export const declarationComponents = [
     OfficeViewComponent,
     ConfirmComponent,
     RequestComponent,
-    CodeComponent,
     MapComponent,
     EditComponent,
     EchartComponent,
@@ -249,6 +248,7 @@ export const declarationComponents = [
     FlexComponent,
     UploadMoreComponent,
     StepComponent,
+    CodeComponent,
 ];
 
 /**

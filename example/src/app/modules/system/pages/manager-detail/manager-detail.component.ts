@@ -1,6 +1,6 @@
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ToastService, UploadConfig } from '../../../../tools-ui';
+import { ToastService, UploadConfig } from 'ng-tui';
 import { GlobalService, AuthService } from '../../../../cores/services';
 import { ManagerService } from '../../services/manager.service';
 import { Manager } from '../../interfaces/manager.interface';

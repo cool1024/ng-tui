@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalService, ToastService } from '../../../../tools-ui';
+import { ModalService, ToastService } from 'ng-tui';
 import { Role } from '../../interfaces/role.interface';
 import { RoleService } from '../../services/role.service';
 import { GlobalService } from '../../../../cores/services';

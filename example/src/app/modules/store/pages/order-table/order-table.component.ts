@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../../../../cores/services';
-import { Pagination } from '../../../../tools-ui';
+import { Pagination } from 'ng-tui';
 import { OrderService } from '../../services/order.service';
 import { SearchParams } from '../../../../cores/classes';
 import { Order } from '../../interfaces/order.interface';

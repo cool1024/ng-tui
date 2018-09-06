@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { of, Observable } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
-import { Item } from '../../../../tools-ui';
+import { Item } from 'ng-tui';
 
 @Component({
     selector: 'app-search',

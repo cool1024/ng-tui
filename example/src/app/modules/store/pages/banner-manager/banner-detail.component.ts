@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Banner } from '../../interfaces/banner.interface';
-import { ModalService } from '../../../../tools-ui';
+import { ModalService } from 'ng-tui';
 import { BannerService } from '../../services/banner.service';
 import { GlobalService } from '../../../../cores/services';
 

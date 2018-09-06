@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Pagination } from '../../../../tools-ui';
+import { Pagination } from 'ng-tui';
 import { GlobalService, RequestService } from '../../../../cores/services';
 import { SearchParams } from '../../../../cores/classes';
 

@@ -17,7 +17,7 @@
         <!-- 右侧内容 -->
         <div class="flex-grow-1 h-100 d-flex flex-column">
             <!-- 顶部工具栏 -->
-            <div class="headbar bg-{{global.params.color}} text-light d-flex align-items-center justify-content-between flex-shrink-0 shadow-sm"
+            <div class="headbar bg-{{global.params.color}} no-select text-light d-flex align-items-center justify-content-between flex-shrink-0 shadow-sm"
                 style="height:60px;z-index:1;">
                 <div class="d-flex align-items-center flex-grow-1 h-100">
                     <div class="d-flex align-items-center bg-light-hover h-100 pl-3 pr-3">
@@ -44,16 +44,16 @@
                             </button>
                             <button routerLink="/system/detail" class="dropdown-item pointer">
                                 <span class="iconfont icon-account mr-2"></span>
-                                <span>账号信息</span>
+                                <span i18n>账号信息</span>
                             </button>
                             <button class="dropdown-item pointer">
                                 <span class="iconfont icon-set mr-2"></span>
-                                <span>系统设置</span>
+                                <span i18n>系统设置</span>
                             </button>
                             <div class="dropdown-divider"></div>
                             <button (click)="setOut()" class="dropdown-item pointer">
                                 <span class="iconfont icon-out mr-2"></span>
-                                <span>退出</span>
+                                <span i18n>退出</span>
                             </button>
                         </div>
                     </div>

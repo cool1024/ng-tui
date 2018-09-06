@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoodsTypeItem } from './../../classes/goods-type-item.class';
-import { ConfirmService, ToastService } from '../../../../tools-ui';
+import { ConfirmService, ToastService } from 'ng-tui';
 import { GoodsTypeService } from '../../services/goods-type.service';
 
 @Component({

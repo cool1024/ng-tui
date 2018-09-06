@@ -3,15 +3,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app.routing';
 import { CoreModule } from './cores/core.module';
 import { SortablejsModule } from 'angular-sortablejs';
-import { TUIModule, EChartModule, ToastModule, DropdownModule, MapModule, ButtonModule, ConfirmModule } from './tools-ui';
 import { AppComponent } from './app.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
-import { QuillModule } from './tools-ui/lib/quill/quill.module';
+import { TUIModule, EChartModule, ToastModule, DropdownModule, MapModule, ButtonModule, ConfirmModule, QuillModule } from 'ng-tui';
 
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
+    declarations: [AppComponent],
     imports: [
         BrowserModule,
         CoreModule,

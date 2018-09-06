@@ -6,7 +6,7 @@
  * @date   2018-8-1 15:23:36
  */
 import { Component, OnInit } from '@angular/core';
-import { EChartService } from '../../../../tools-ui/lib/echart/echart.service';
+import { EChartService } from 'ng-tui';
 
 @Component({
     templateUrl: './home.component.html',

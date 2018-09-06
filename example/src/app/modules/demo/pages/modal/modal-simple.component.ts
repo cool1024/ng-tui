@@ -6,7 +6,7 @@
  * @date   2018-8-22 10:32:23
  */
 import { Component, OnInit } from '@angular/core';
-import { ModalService } from '../../../../tools-ui';
+import { ModalService } from 'ng-tui';
 
 @Component({
     template: `

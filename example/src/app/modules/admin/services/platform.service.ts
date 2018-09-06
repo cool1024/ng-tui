@@ -4,7 +4,7 @@ import { ApiData } from '../../../cores/classes/api-data.class';
 import { SearchParams } from '../../../cores/classes/search-params';
 import { PlatformManager } from '../interfaces/platform.interfaces';
 import { Observable } from 'rxjs';
-import { Pagination } from '../../../tools-ui';
+import { Pagination } from 'ng-tui';
 
 @Injectable()
 export class PlatformService {

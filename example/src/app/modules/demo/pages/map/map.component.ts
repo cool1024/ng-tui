@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { MapService, MapStyles, MapEvent } from '../../../../tools-ui';
+import { MapService, MapStyles, MapEvent } from 'ng-tui';
 
 @Component({
     templateUrl: './map.component.html',

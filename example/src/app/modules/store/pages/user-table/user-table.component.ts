@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Pagination, ConfirmService, ToastService } from '../../../../tools-ui';
+import { Pagination, ConfirmService, ToastService } from 'ng-tui';
 import { SearchParams } from '../../../../cores/classes';
 import { GlobalService } from '../../../../cores/services';
 import { UserService } from '../../services/user.service';

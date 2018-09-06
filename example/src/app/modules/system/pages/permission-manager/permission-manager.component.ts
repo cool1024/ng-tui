@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PermissionGroupItem, PermissionGroup, Permission } from '../../interfaces/permission.interface';
-import { ModalService, ConfirmService, ToastService } from '../../../../tools-ui';
+import { ModalService, ConfirmService, ToastService } from 'ng-tui';
 import { PermissionModalComponent } from './permission-modal.component';
 import { PermissionGroupModalComponent } from './permission-group-modal.component';
 import { PermissionService } from '../../services/permission.service';

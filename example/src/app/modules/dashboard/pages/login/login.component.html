@@ -1,7 +1,8 @@
-<div class="fixed-top h-100 w-100 login-pad bg-white" [ngStyle]="{'background-image':config.BACKGROUND_IMAGE_SRC}">
-    <div class="w-100 h-100 window d-flex justify-content-between">
-        <div class="w-100"></div>
-        <form style="min-width:25rem" class="card h-100 rounded-0 border-0 " autocomplete="off">
+<div class="fixed-top h-100 w-100 login-pad bg-white">
+    <div class="w-100 h-100 window bg-primary d-flex justify-content-center flex-wrap">
+        <div style="min-width:25rem" class="background flex-grow-1" [ngStyle]="{'background-image':config.BACKGROUND_IMAGE_SRC}">
+        </div>
+        <form style="width:25rem" class="card h-100 rounded-0 border-0" autocomplete="off">
             <div class="card-header login-header text-center border-bottom">
                 <img [src]="config.LOGO" width="35">
                 <span class="ml-2">{{config.TITLE}}</span>

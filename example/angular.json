@@ -48,6 +48,13 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "en-US": {
+              "aot": true,
+              "outputPath": "dist/en-US/",
+              "i18nFile": "src/locale/messages.en-US.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "en-US"
             }
           }
         },
@@ -59,6 +66,9 @@
           "configurations": {
             "production": {
               "browserTarget": "example:build:production"
+            },
+            "en-US": {
+              "browserTarget": "example:build:en-US"
             }
           }
         },
@@ -126,38 +136,38 @@
         }
       }
     },
-    "tools-ui": {
-      "root": "projects/tools-ui",
-      "sourceRoot": "projects/tools-ui/src",
+    "ng-tui": {
+      "root": "projects/ng-tui",
+      "sourceRoot": "projects/ng-tui/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/tools-ui/tsconfig.lib.json",
-            "project": "projects/tools-ui/ng-package.json"
+            "tsConfig": "projects/ng-tui/tsconfig.lib.json",
+            "project": "projects/ng-tui/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/tools-ui/ng-package.prod.json"
+              "project": "projects/ng-tui/ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/tools-ui/src/test.ts",
-            "tsConfig": "projects/tools-ui/tsconfig.spec.json",
-            "karmaConfig": "projects/tools-ui/karma.conf.js"
+            "main": "projects/ng-tui/src/test.ts",
+            "tsConfig": "projects/ng-tui/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-tui/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/tools-ui/tsconfig.lib.json",
-              "projects/tools-ui/tsconfig.spec.json"
+              "projects/ng-tui/tsconfig.lib.json",
+              "projects/ng-tui/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService, UploadConfig, Item, ConfirmService } from '../../../../tools-ui';
+import { ToastService, UploadConfig, Item, ConfirmService } from 'ng-tui';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { GlobalService } from '../../../../cores/services';
 import { GoodsSpecification, Goods } from '../../interfaces/goods.interface';

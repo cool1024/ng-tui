@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RequestService } from '../../../../cores/services';
-import { ToastService } from '../../../../tools-ui';
+import { ToastService } from 'ng-tui';
 import { QuillOptions } from '../../../../configs/quill.config';
 
 @Component({

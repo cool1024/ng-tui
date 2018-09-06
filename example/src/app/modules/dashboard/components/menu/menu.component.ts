@@ -26,6 +26,10 @@ export class MenuComponent {
 
     @Output() menuActiveChange = new EventEmitter<MenuItem>();
 
+    get activeMainClass(): string {
+        return `border-${this.menuConfig.ACTIVE_TEXT_THEME} bg-${this.menuConfig.ACTIVE_TEXT_THEME}-muted`;
+    }
+
     get menuChildActiveClass(): string {
         return `bg-${this.menuConfig.ACTIVE_TEXT_THEME}-muted text-${this.menuConfig.ACTIVE_TEXT_THEME} active`;
     }

@@ -16,3 +16,95 @@ NG-TUI是ng-tools-ui的增强版本，移除了大部分无用功能，保留了
 
 ## 预览
 ![preview](preview/dashboard.png)
+
+## 安装
+1. 安装bootstrap(如果只使用css，不需要自定义主题可以不用安装)
+`npm install bootstrap --save`
+2. 安装ng-tui
+`npm install ng-tui --save`
+3. 如果你的是使用angular cli建的项目，你可以在style.css文件中引入
+```css
+/* 单纯使用css文件，不自定义主题 */
+@import "~ng-tui/css/tui.css"
+```
+```scss
+/* 使用scss,自定义主题 */
+@import "~bootstrap/scss/functions";
+
+/* 你的变量设置，覆盖默认值-前置 */
+
+@import "~bootstrap/scss/variables";
+
+/* 你的变量设置，覆盖默认值-后置 */
+
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+// @import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+// @import "~bootstrap/scss/breadcrumb";
+// @import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+// @import "~bootstrap/scss/jumbotron";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/media";
+// @import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/modal";
+// @import "~bootstrap/scss/tooltip";
+// @import "~bootstrap/scss/popover";
+// @import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/print"；
+
+// tui拓展样式
+@import "~ng-tui/css/tui"
+```
+
+4. 也可以在angular.json文件中引入
+```json
+...
+
+"styles": [
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/ng-tui/css/tui.css",
+        "styles.css"
+      ],
+...
+```
+
+## 使用
+导入`TUIModule`到项目的的AppModule中
+```typescript
+import { TUIModule } from 'ng-tui';
+
+ 
+@NgModule({
+    imports: [..., 
+        TUIModule.forRoot({
+            // 你的配置参数
+        })
+        ...
+    ],
+    ...
+})
+export class MyModule { }
+```
+
+

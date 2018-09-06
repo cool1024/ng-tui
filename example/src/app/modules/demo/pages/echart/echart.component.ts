@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EChartService, EChartsInstance, ECharts } from '../../../../tools-ui';
+import { EChartService, EChartsInstance, ECharts } from 'ng-tui';
 import { RequestService } from '../../../../cores/services';
 
 @Component({

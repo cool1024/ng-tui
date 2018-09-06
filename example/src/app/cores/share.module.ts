@@ -30,9 +30,9 @@ import {
     ClipModule,
     MapModule,
     EChartModule,
-} from '../tools-ui';
-import { QuillModule } from '../tools-ui/lib/quill/quill.module';
-import { DatePickerModule } from '../tools-ui/modules/datepicker/datepicker.module';
+    QuillModule,
+    DatePickerModule
+} from 'ng-tui';
 
 @NgModule({
     exports: [

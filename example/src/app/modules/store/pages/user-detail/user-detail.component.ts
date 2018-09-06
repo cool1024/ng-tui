@@ -3,7 +3,7 @@ import { GlobalService } from '../../../../cores/services';
 import { User } from '../../interfaces/user.interface';
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { ToastService, Item } from '../../../../tools-ui';
+import { ToastService, Item } from 'ng-tui';
 import { ApiData } from '../../../../cores/classes';
 import { switchMap, skipWhile } from 'rxjs/operators';
 

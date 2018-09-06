@@ -6,7 +6,7 @@
  * @date   2018-8-22 10:31:03
  */
 import { Component } from '@angular/core';
-import { ModalService, WindowService } from '../../../../tools-ui';
+import { ModalService, WindowService } from 'ng-tui';
 import { ModalSimpleComponent } from './modal-simple.component';
 import { SimpleWindowComponent } from './simple-window.component';
 import { ViewComponent } from '../upload/view.component';

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Banner } from '../../interfaces/banner.interface';
-import { ModalService, ToastService, ConfirmService } from '../../../../tools-ui';
+import { ModalService, ToastService, ConfirmService } from 'ng-tui';
 import { BannerDetailComponent } from './banner-detail.component';
 import { BannerService } from '../../services/banner.service';
 import { switchMap } from 'rxjs/operators';

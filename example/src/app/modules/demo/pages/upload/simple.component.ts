@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../../../../cores/services';
-import { UploadConfig, WindowService } from '../../../../tools-ui';
+import { UploadConfig, WindowService } from 'ng-tui';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { ViewComponent } from './view.component';
@@ -33,7 +33,7 @@ export class SimpleComponent implements OnInit {
 
     imagesUrl = 'https://picsum.photos/300/300,https://picsum.photos/300/300?random';
 }`,
-        `import { UploadModule } from 'ng-tools-ui';
+        `import { UploadModule } from 'ng-tui';
 
 @NgModule({
     imports: [..., UploadModule ],

@@ -3,7 +3,7 @@ import { Router, RouteConfigLoadStart, NavigationEnd, ActivatedRouteSnapshot } f
 import { GlobalService, RequestService, MenuService, AuthService } from './cores/services';
 import { MenuModel } from './modules/dashboard/components/menu/menu.interface';
 import { AppConfig } from './configs/app.config';
-import { ConfirmService } from './tools-ui';
+import { ConfirmService } from 'ng-tui';
 
 @Component({
     selector: 'app-root',
@@ -38,9 +38,9 @@ export class AppComponent {
         // 载入系统默认配置参数
         this.global.appendValuesToParams({
             dashboardMode: 'full',
-            menuMode: 'full',
+            menuMode: 'small',
             lazyload: true,
-            color: 'dark'
+            color: 'primary'
         });
 
         // 载入服务端参数

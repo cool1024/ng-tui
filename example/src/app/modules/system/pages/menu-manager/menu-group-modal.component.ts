@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuGroup } from '../../interfaces/menu.interface';
-import { ModalService, ToastService } from '../../../../tools-ui';
+import { ModalService, ToastService } from 'ng-tui';
 import { MenuService } from '../../services/menu.service';
 
 @Component({

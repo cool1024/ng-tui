@@ -58,45 +58,46 @@
             </div>
         </div>
     </div>
-    <div class="card rounded-0 mt-2">
-        <div class="card-body">
-            <ts-table-load [display]="loading"></ts-table-load>
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <tbody>
-                        <tr class="font-weight-bold bg-light">
-                            <td *ngFor="let th of theads">{{th}}</td>
-                        </tr>
-                        <tr *ngFor="let td of list">
-                            <td>{{td.id}}</td>
-                            <td>{{td.platformManagerName}}</td>
-                            <td>{{td.platformManagerAccount}}</td>
-                            <td>{{td.platformManagerMobile}}</td>
-                            <td>{{td.createdAt.substring(0,10)|date:'yyyy/MM/dd'}}</td>
-                            <td>
-                                <span *ngIf="td.isActive===1" class="badge badge-success badge-pill">启用</span>
-                                <span *ngIf="td.isActive!==1" class="badge badge-secondary badge-pill">停用</span>
-                            </td>
-                            <td>
-                                <!-- <span class="btn-icon btn-icon-primary">
+    <div class="m-2">
+        <div class="card">
+            <div class="card-body">
+                <ts-table-load [display]="loading"></ts-table-load>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr class="font-weight-bold bg-light">
+                                <td *ngFor="let th of theads">{{th}}</td>
+                            </tr>
+                            <tr *ngFor="let td of list">
+                                <td>{{td.id}}</td>
+                                <td>{{td.platformManagerName}}</td>
+                                <td>{{td.platformManagerAccount}}</td>
+                                <td>{{td.platformManagerMobile}}</td>
+                                <td>{{td.createdAt.substring(0,10)|date:'yyyy/MM/dd'}}</td>
+                                <td>
+                                    <span *ngIf="td.isActive===1" class="badge badge-success badge-pill">启用</span>
+                                    <span *ngIf="td.isActive!==1" class="badge badge-secondary badge-pill">停用</span>
+                                </td>
+                                <td>
+                                    <!-- <span class="btn-icon btn-icon-primary">
                                     <i class="iconfont icon-viewgallery"></i>
                                 </span> -->
-                                <span (click)="confirmDelete(td)" class="btn-icon btn-icon-danger">
-                                    <i class="iconfont icon-delete"></i>
-                                </span>
-                                <span class="btn-icon btn-icon-info" routerLink="detail/{{td.id}}">
-                                    <i class="iconfont icon-edit"></i>
-                                </span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="text-right">
-                <ts-pagination (pageChange)="loadDatas()" [pagination]="pagination" [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]"
-                    [color]="global.params.color" goTitle="跳转" prevTitle="上一页" nextTitle="下一页" startTitle="首页" endTitle="末尾"
-                    outline></ts-pagination>
+                                    <span (click)="confirmDelete(td)" class="btn-icon btn-icon-danger">
+                                        <i class="iconfont icon-delete"></i>
+                                    </span>
+                                    <span class="btn-icon btn-icon-info" routerLink="detail/{{td.id}}">
+                                        <i class="iconfont icon-edit"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-right">
+                    <ts-pagination (pageChange)="loadDatas()" [pagination]="pagination" [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]"
+                        [color]="global.params.color" goTitle="跳转" prevTitle="上一页" nextTitle="下一页" startTitle="首页" endTitle="末尾"
+                        outline></ts-pagination>
+                </div>
             </div>
         </div>
     </div>

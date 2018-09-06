@@ -9,7 +9,7 @@ import { Observable, of, TimeoutError } from 'rxjs';
 import { HttpConfig, INTERCEPTOR_MESSAGES } from '../../configs/http.config';
 import { catchError, map } from 'rxjs/operators';
 import { ApiData } from '../classes';
-import { ToastService } from '../../tools-ui';
+import { ToastService } from 'ng-tui';
 import { Router } from '@angular/router';
 import { ApiResponse } from '../classes/api-data.class';
 

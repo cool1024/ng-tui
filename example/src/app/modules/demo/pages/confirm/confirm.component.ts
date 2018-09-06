@@ -6,7 +6,7 @@
  * @date   2018-8-22 10:41:19
  */
 import { Component, OnInit } from '@angular/core';
-import { ConfirmService } from '../../../../tools-ui';
+import { ConfirmService } from 'ng-tui';
 
 @Component({
     templateUrl: './confirm.component.html',

@@ -3,7 +3,7 @@
 /** bootstrap **/
 @import "~bootstrap/scss/functions";
 
-$blue: #007bff !default;
+$blue: #50a4ff !default;
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
 $pink: #e9488b !default;
@@ -99,6 +99,14 @@ input:disabled,
 textarea:disabled,
 button:disabled {
     cursor: not-allowed;
+}
+
+.no-select {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
 }
 
 .table td,
@@ -467,12 +475,22 @@ ts-select .dropdown-menu {
     display: flex;
 }
 
+.step-vlist {
+    display: flex;
+    flex-direction: column;
+}
+
 .step-item {
     flex-grow: 1;
 }
 
 .step-line {
     height: 0.2rem;
+    flex-grow: 1;
+}
+
+.step-vline {
+    width: 0.2rem;
     flex-grow: 1;
 }
 

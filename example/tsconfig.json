@@ -18,10 +18,18 @@
     ],
     "paths": {
       "tools-ui": [
+        "dist/tools-ui",
         "dist/tools-ui"
       ],
       "tools-ui/*": [
+        "dist/tools-ui/*",
         "dist/tools-ui/*"
+      ],
+      "ng-tui": [
+        "dist/ng-tui"
+      ],
+      "ng-tui/*": [
+        "dist/ng-tui/*"
       ]
     }
   }

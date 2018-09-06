@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="fa5bd7e382b007dd58536547eaaf7e81c083f994" datatype="html">
+        <source>账号信息</source>
+        <target>Profile</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fa7a33c82917330e93ebb34fe5a0acd8f9784aa0" datatype="html">
+        <source>系统设置</source>
+        <target>Settings</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a6d6468c01f128e151d5423c7a5f662cf39d872d" datatype="html">
+        <source>退出</source>
+        <target>Logout</target>        
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/app.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

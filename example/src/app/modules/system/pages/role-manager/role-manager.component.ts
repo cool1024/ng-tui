@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RoleGroup, Role } from '../../interfaces/role.interface';
-import { ModalService, ConfirmService } from '../../../../tools-ui';
+import { ModalService, ConfirmService } from 'ng-tui';
 import { RoleModalComponent } from './role-modal.component';
 import { RoleService } from '../../services/role.service';
 import { switchMap } from 'rxjs/operators';

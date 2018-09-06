@@ -18,11 +18,11 @@
     // filter: grayscale(100%);
 }
 
-.icon-up {
+.font-up {
     animation: icon-up 0.5s ease-out forwards;
 }
 
-.icon-down {
+.font-down {
     animation: icon-down 0.5s ease-out forwards;
 }
 
@@ -130,7 +130,7 @@
 .menu-popover {
     visibility: hidden;
     position: fixed;
-    z-index: 3;
+    z-index: 10;
     margin-top: -44px;
     margin-left: 80px;
     width: 130px;

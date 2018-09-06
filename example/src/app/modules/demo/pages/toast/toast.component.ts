@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService, ConfirmService } from '../../../../tools-ui';
+import { ToastService, ConfirmService } from 'ng-tui';
 
 @Component({
     selector: 'app-toast',

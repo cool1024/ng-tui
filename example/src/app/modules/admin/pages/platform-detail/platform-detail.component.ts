@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService, UploadConfig } from '../../../../tools-ui';
+import { ToastService, UploadConfig } from 'ng-tui';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { GlobalService } from '../../../../cores/services';
 import { PlatformService } from '../../services/platform.service';
