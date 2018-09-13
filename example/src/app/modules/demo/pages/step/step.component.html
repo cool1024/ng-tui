@@ -5,7 +5,7 @@
 <div class="m-3">
     <div class="row">
         <div class="col-lg-6">
-            <div class="card mb-2">
+            <div class="card mb-3">
                 <div class="card-header border-bottom">流程进度</div>
                 <div class="pt-3 pb-3">
                     <div class="step-list">
@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="col-lg-6">
-            <div class="card mb-2">
+            <div class="card mb-3">
                 <div class="card-header border-bottom">流程进度</div>
                 <div class="pt-3 pb-3">
                     <div class="step-list">
@@ -222,6 +222,50 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <div class="card-header">多级选择</div>
+        <div class="card-body">
+            <div class="custom-select pointer"></div>
+            <div class="card">
+                <ts-tabs [tabs]="['省份','城市','区县']" [target]="tsTabs" activeTab="省份"></ts-tabs>
+                <div #tsTabs='tsTabs' tsTabs class="card-body">
+                    <div tsTab tab='省份'>
+                        <div class="m-btn">
+                            <button tsBtn *ngFor="let province of provinceDatas">{{province.text}}</button>
+                        </div>
+                    </div>
+                    <div tsTab tab='城市'>
+
+                    </div>
+                    <div tsTab tab='区县'>
+
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="card mt-2">
+                <ts-tabs [tabs]="['省份','城市','区县']" [target]="tsTabsOne" activeTab="省份"></ts-tabs>
+                <div class="card-body">
+                    <div #tsTabsOne='tsTabs' tsTabs>
+                        <div tsTab tab='省份' class="d-flex">
+                            <div class="pointer text-primary-hover mr-2">江西省</div>
+                            <div class="pointer text-primary-hover mr-2">广东省</div>
+                            <div class="pointer text-primary-hover mr-2">福建省</div>
+                        </div>
+                        <div tsTab tab='城市' class="d-flex">
+                            <div class="pointer text-primary-hover mr-2">江西省</div>
+                            <div class="pointer text-primary-hover mr-2">广东省</div>
+                            <div class="pointer text-primary-hover mr-2">福建省</div>
+                        </div>
+                        <div tsTab tab='区县' class="d-flex">
+                            <div class="pointer text-primary-hover mr-2">江西省</div>
+                            <div class="pointer text-primary-hover mr-2">广东省</div>
+                            <div class="pointer text-primary-hover mr-2">福建省</div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
         </div>
     </div>
 </div>

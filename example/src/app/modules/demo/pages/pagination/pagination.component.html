@@ -1,6 +1,8 @@
 <div class="toolbar">
     <h4>分页</h4>
-    <p class="text-muted">分页组件通常用于列表（表格）数据展示</p>
+    <p class="text-muted">分页组件通常用于列表（表格）数据展示。
+        <a href="https://www.cool1024.com/gitbook/PAGE.html" target="blank">参考文档</a>
+    </p>
 </div>
 <div class="card m-2">
     <div class="card-header bg-white">
@@ -9,8 +11,7 @@
     <div class="card-body">
         <p>选择器：
             <code>ts-pagination </code>
-            <ts-pagination outline [color]="global.params.color" [pagination]="page" [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]"
-                goTitle="跳转"></ts-pagination>
+            <ts-pagination [color]="global.params.color" [pagination]="page" goTitle="跳转"></ts-pagination>
         </p>
         <table class="table table-striped">
             <thead>
