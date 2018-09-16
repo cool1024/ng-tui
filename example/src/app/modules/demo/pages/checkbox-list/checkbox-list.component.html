@@ -1,0 +1,34 @@
+<div class="toolbar">
+    <h4>选项列表</h4>
+    <p class="text-muted">选项列表可以处理要选中的数据较多的情况，结合分页表格可以勾选大量数据</p>
+</div>
+<div class="p-2">
+    <div class="card p-2">
+        <div class="card-header">选中的值：{{checkBoxValues|json}}</div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <ts-checkbox [(ngModel)]="isAllChecked" (checkedChange)="selectAllOrNone($event)" [value]="true"></ts-checkbox>
+                    </th>
+                    <th scope="col">文字</th>
+                    <th scope="col">值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listItems">
+                    <td>
+                        <ts-checkbox [(ngModel)]="checkBoxValues" [value]="item.value"></ts-checkbox>
+                    </td>
+                    <td>{{item.text}}</td>
+                    <td>{{item.value}}</td>
+                </tr>
+                <tr class="mat-cell">
+                    <td [attr.colspan]="3" class="text-right">
+                        <ts-pagination (pageChange)="loadDatas()" [pagination]="page" goTitle="跳转"></ts-pagination>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

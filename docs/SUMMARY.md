@@ -6,6 +6,9 @@
 * [分页](PAGE.md)
 * [下拉按钮](DROP.md)
 
+# 表单组件
+* [单选与多选](CHECKBOX.md)
+
 # 消息组件
 * [消息提示](TOAST.md)
 * [确认对话框](CONFIRM.md)

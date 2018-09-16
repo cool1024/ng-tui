@@ -2,14 +2,12 @@
 下拉有集成下拉组件与下拉菜单指令，根据具体需求使用。
 
 ## 导入相关模块
-在需要使用模态框页面所属模块导入ModalModule
 ```typescript
 import { NgModule } from '@angular/core';
 import { DropdownModule } from 'ng-tui';
 
 @NgModule({
     imports: [
-        // 导入按钮模块
         DropdownModule,
     ],
     declarations: [...],

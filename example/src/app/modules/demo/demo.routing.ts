@@ -40,6 +40,7 @@ import { FlexComponent } from './pages/flex/flex.component';
 import { UploadMoreComponent } from './pages/upload-more/upload-more.component';
 import { StepComponent } from './pages/step/step.component';
 import { CodeComponent } from './pages/code/code.component';
+import { CheckboxListComponent } from './pages/checkbox-list/checkbox-list.component';
 
 const routes: Routes = [
     {
@@ -70,6 +71,12 @@ const routes: Routes = [
         path: 'checkbox', component: CheckboxComponent,
         data: {
             breadcrumbs: [{ title: '选项' }]
+        }
+    },
+    {
+        path: 'checkbox-list', component: CheckboxListComponent,
+        data: {
+            breadcrumbs: [{ title: '选项列表' }]
         }
     },
     {
@@ -249,6 +256,7 @@ export const declarationComponents = [
     UploadMoreComponent,
     StepComponent,
     CodeComponent,
+    CheckboxListComponent,
 ];
 
 /**

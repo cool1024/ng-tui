@@ -2,7 +2,6 @@
 按钮指令可以快速的构建一个`bootstrap`样式的按钮，并会自动给按钮加上`type="button"`属性,还有加载类型按钮
 
 ## 导入相关模块
-在需要使用模态框页面所属模块导入ModalModule
 ```typescript
 import { NgModule } from '@angular/core';
 import { ButtonModule } from 'ng-tui';

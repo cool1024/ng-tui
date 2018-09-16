@@ -2,7 +2,6 @@
 分页组件通常用于列表（表格）数据展示。
 
 ## 导入相关模块
-在需要使用模态框页面所属模块导入ModalModule
 ```typescript
 import { NgModule } from '@angular/core';
 import { PaginationModule } from 'ng-tui';
