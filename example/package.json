@@ -24,7 +24,7 @@
         "animate.css": "^3.6.1",
         "bootstrap": "^4.1.2",
         "core-js": "^2.5.4",
-        "ng-tui": "0.0.2",
+        "ng-tui": "0.0.3",
         "rxjs": "^6.0.0",
         "sortablejs": "^1.7.0",
         "xlsx": "^0.13.5",

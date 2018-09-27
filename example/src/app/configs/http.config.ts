@@ -1,10 +1,12 @@
 export const HttpConfig = {
 
     // 服务器接口地址
-    SERVER_URL: 'http://127.0.0.1',
+    SERVER_URL: 'https://www.cool1024.com',
 
+    // WEBSOCKET链接地址
     WEBSOCKET_URL: '',
 
+    // 是否开启参数打包功能，只有POST|PUT请求的参数会被打包,上线需开启
     OPEN_PARAM_PACKAGE: false,
 
     // 请求超时时间
@@ -24,7 +26,7 @@ export const HttpConfig = {
         TOKEN_ERROR: '您的登入已经过期，请重新登入',
         AUTH_ERROR: '您没有权限访问这些数据',
         TIMEOUT_ERROR: ['通信异常', '服务器很久没有响应了,请检查您的网络'],
-        RESPONSE_CONTENT_ERROR: '接收到一个错误的响应',
+        RESPONSE_CONTENT_ERROR: '接收到一个错误的响应，这通常是由于请求的地址错误导致的～',
         CHECK_ERROR: '未授权的令牌~',
         OTHER_ERROR: ['请求发送失败', '其他错误，异常的请求'],
     },
