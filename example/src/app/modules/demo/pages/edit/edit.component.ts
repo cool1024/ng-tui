@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RequestService } from '../../../../cores/services';
 import { ToastService } from 'ng-tui';
 import { QuillOptions } from '../../../../configs/quill.config';
+import { CKEditorOptions } from 'src/app/configs/ckeditor.config';
 
 @Component({
     templateUrl: './edit.component.html',
@@ -10,7 +11,7 @@ export class EditComponent {
 
     content = '';
 
-    options = QuillOptions;
+    options = CKEditorOptions; // QuillOptions;
 
     constructor(
         private request: RequestService,

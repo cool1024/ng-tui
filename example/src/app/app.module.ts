@@ -5,7 +5,17 @@ import { CoreModule } from './cores/core.module';
 import { SortablejsModule } from 'angular-sortablejs';
 import { AppComponent } from './app.component';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
-import { TUIModule, EChartModule, ToastModule, DropdownModule, MapModule, ButtonModule, ConfirmModule, QuillModule } from 'ng-tui';
+import {
+    TUIModule,
+    EChartModule,
+    ToastModule,
+    DropdownModule,
+    MapModule,
+    ButtonModule,
+    ConfirmModule,
+    QuillModule,
+    CkeditorModule
+} from 'ng-tui';
 
 @NgModule({
     declarations: [AppComponent],
@@ -25,6 +35,7 @@ import { TUIModule, EChartModule, ToastModule, DropdownModule, MapModule, Button
         EChartModule.forRoot('assets/echart/echarts.common.min.js'),
         QuillModule.forRoot(['assets/quill/quill.min.js']),
         MapModule.forRoot('bea16ad29a10b04e05e0624362d504dc'),
+        CkeditorModule.forRoot(['assets/ckeditor/ckeditor-classic.js', 'assets/ckeditor/zh.js']),
         ButtonModule,
         DropdownModule,
         DashboardModule,

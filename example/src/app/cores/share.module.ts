@@ -31,6 +31,7 @@ import {
     MapModule,
     EChartModule,
     QuillModule,
+    CkeditorModule,
     DatePickerModule
 } from 'ng-tui';
 
@@ -60,6 +61,7 @@ import {
         QuillModule,
         MapModule,
         EChartModule,
+        CkeditorModule,
         DatePickerModule,
     ]
 })

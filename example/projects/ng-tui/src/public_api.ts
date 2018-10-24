@@ -3,6 +3,8 @@
  */
 
 export * from './tui.module';
+export * from './lib/ckeditor/ckeditor.module';
+export * from './lib/ckeditor/ckeditor.component';
 export * from './lib/echart/echart.module';
 export * from './lib/echart/echart.service';
 export * from './lib/echart/echart.interface';
