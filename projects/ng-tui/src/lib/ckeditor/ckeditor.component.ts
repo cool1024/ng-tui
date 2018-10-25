@@ -11,6 +11,7 @@ import {
     EventEmitter,
     OnInit,
     Inject,
+    OnDestroy,
 } from '@angular/core';
 import { ScriptService } from '../../tui-core/base-services/script.service';
 declare const window: any;
@@ -23,7 +24,7 @@ declare const window: any;
     encapsulation: ViewEncapsulation.Emulated,
 })
 
-export class CkeditorComponent implements AfterViewInit, OnInit, OnChanges {
+export class CkeditorComponent implements AfterViewInit, OnInit, OnChanges, OnDestroy {
 
     @ViewChild('editor') editor: ElementRef;
 
@@ -50,7 +51,9 @@ export class CkeditorComponent implements AfterViewInit, OnInit, OnChanges {
     }
 
     ngOnChanges(change: SimpleChanges) {
-        this.updateContent();
+        if (change.content && change.content.currentValue != null && change.content.currentValue !== undefined) {
+            this.updateContent();
+        }
     }
 
     ngOnInit() {
@@ -66,6 +69,9 @@ export class CkeditorComponent implements AfterViewInit, OnInit, OnChanges {
                     this.editroHandle = editor;
                     this.ready = true;
                     this.load.emit(this.editroHandle);
+                    editor.model.document.on('change:data', () => {
+                        this.contentChange.emit(editor.getData());
+                    });
                     this.updateContent();
                 })
                 .catch((error: any) => {
@@ -77,6 +83,12 @@ export class CkeditorComponent implements AfterViewInit, OnInit, OnChanges {
     updateContent() {
         if (this.ready) {
             this.editroHandle.setData(this.content);
+        }
+    }
+
+    ngOnDestroy() {
+        if (this.editroHandle) {
+            this.editroHandle.destroy();
         }
     }
 }

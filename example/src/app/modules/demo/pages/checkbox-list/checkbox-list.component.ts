@@ -6,7 +6,7 @@
  * @date   2018-9-14 11:43:06
  */
 import { Component } from '@angular/core';
-import { Pagination } from 'projects/ng-tui/src/public_api';
+import { Pagination } from 'ng-tui';
 
 @Component({
     templateUrl: './checkbox-list.component.html',

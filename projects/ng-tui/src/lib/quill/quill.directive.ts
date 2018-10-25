@@ -55,7 +55,9 @@ export class QuillDirective implements AfterViewInit, OnInit, OnChanges {
     }
 
     ngOnChanges(change: SimpleChanges) {
-        this.updateContent();
+        if (change.content && change.content.currentValue != null && change.content.currentValue !== undefined) {
+            this.updateContent();
+        }
     }
 
     ngOnInit() {

@@ -35,7 +35,7 @@ import {
         EChartModule.forRoot('assets/echart/echarts.common.min.js'),
         QuillModule.forRoot(['assets/quill/quill.min.js']),
         MapModule.forRoot('bea16ad29a10b04e05e0624362d504dc'),
-        CkeditorModule.forRoot(['assets/ckeditor/ckeditor-classic.js', 'assets/ckeditor/zh.js']),
+        CkeditorModule.forRoot(['assets/ckeditor/ckeditor-classic.js', 'assets/ckeditor/zh-cn.js']),
         ButtonModule,
         DropdownModule,
         DashboardModule,

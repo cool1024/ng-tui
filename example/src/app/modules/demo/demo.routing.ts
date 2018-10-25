@@ -41,6 +41,7 @@ import { UploadMoreComponent } from './pages/upload-more/upload-more.component';
 import { StepComponent } from './pages/step/step.component';
 import { CodeComponent } from './pages/code/code.component';
 import { CheckboxListComponent } from './pages/checkbox-list/checkbox-list.component';
+import { CkeditorComponent } from './pages/ckeditor/ckeditor.component';
 
 const routes: Routes = [
     {
@@ -164,7 +165,13 @@ const routes: Routes = [
         }
     },
     {
-        path: 'ckedit', component: EditComponent,
+        path: 'quill', component: EditComponent,
+        data: {
+            breadcrumbs: [{ title: '富文本' }]
+        }
+    },
+    {
+        path: 'ckedit', component: CkeditorComponent,
         data: {
             breadcrumbs: [{ title: '富文本' }]
         }
@@ -247,6 +254,7 @@ export const declarationComponents = [
     RequestComponent,
     MapComponent,
     EditComponent,
+    CkeditorComponent,
     EchartComponent,
     DatepickerComponent,
     SimpleComponent,
