@@ -18,10 +18,14 @@ export class MapComponent implements OnInit {
     constructor(private mapService: MapService, private changeDetectorRef: ChangeDetectorRef) { }
 
     ngOnInit() {
-        this.mapService.doFuc(() => {
+        this.mapService.doFuc((AMap) => {
             this.mapStatus = true;
             this.map.setMarker([116.480983, 40.0958]);
             this.changeDetectorRef.detectChanges();
+            // 添加自动补全插件
+            AMap.plugin('AMap.Autocomplete', () => {
+                return new AMap.Autocomplete({ input: 'search_input' });
+            });
         });
     }
 
