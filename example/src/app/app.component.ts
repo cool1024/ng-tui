@@ -38,9 +38,9 @@ export class AppComponent {
         // 载入系统默认配置参数
         this.global.appendValuesToParams({
             dashboardMode: 'full',
-            menuMode: 'small',
+            menuMode: 'full',
             lazyload: true,
-            color: 'primary'
+            color: 'info'
         });
 
         // 载入服务端参数
