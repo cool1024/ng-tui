@@ -12,6 +12,7 @@ import {
 import { Item } from '../../tui-core/interfaces/item.interface';
 import { BaseForm } from '../../tui-core/base-class/base-form.class';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'ts-select',
@@ -56,6 +57,8 @@ export class SelectComponent extends BaseForm implements OnChanges, AfterViewIni
 
     @Input() emptyLabel: string;
 
+    @Input() searchFunc: (key: string) => Observable<Item[]>;
+
     @Input() lg: string;
 
     @Input() sm: string;
@@ -99,7 +102,7 @@ export class SelectComponent extends BaseForm implements OnChanges, AfterViewIni
 
     ngAfterViewInit() {
         const div: HTMLElement = this.elementRef.nativeElement;
-        console.log(div.classList.add('form-control', 'p-0'));
+        div.classList.add('form-control', 'p-0');
     }
 
     writeValue(value: any) {
@@ -127,6 +130,11 @@ export class SelectComponent extends BaseForm implements OnChanges, AfterViewIni
 
     setSearchKey(value: string) {
         this.searchKey = value.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+        this.searchFunc && this.searchFunc(this.searchKey).subscribe(items => {
+            console.log(items);
+            
+            this.items = items;
+        });
     }
 
     setTitle() {

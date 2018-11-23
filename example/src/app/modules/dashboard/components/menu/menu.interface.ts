@@ -22,3 +22,11 @@ export interface MenuModel {
     menuGroups: MenuGroup[];
     active: boolean;
 }
+
+export interface MenuElement{
+    image?:string;
+    icon?:string;
+    title:string;
+    url?:string;
+    child
+}

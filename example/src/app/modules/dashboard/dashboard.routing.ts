@@ -11,6 +11,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { LoginComponent } from './pages/login/login.component';
+import { MenuItemsComponent } from './components/menu-items/menu-items.component';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -32,6 +33,7 @@ export const declarationComponents = [
     HomeComponent,
     LoginComponent,
     ErrorComponent,
+    MenuItemsComponent,
     ...exportComponents,
 ];
 

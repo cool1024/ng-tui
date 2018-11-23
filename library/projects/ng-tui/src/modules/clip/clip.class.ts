@@ -3,21 +3,12 @@ import { map } from 'rxjs/operators';
 
 declare const Snap: any;
 
-interface Size {
-    width: number;
-    height: number;
-}
-interface Point {
-    x: number;
-    y: number;
-}
-
 export class ClipPad {
 
     pad: HTMLDivElement;
     img: HTMLImageElement;
     svg: any;
-    padSize: Size;
+    padSize: any;
     expWidth: number;
     expHeight: number;
     rect: any;
@@ -56,10 +47,10 @@ export class ClipPad {
         });
     }
 
-    imgSize(file: File): Observable<Size> {
+    imgSize(file: File): Observable<any> {
         this.img = new Image();
         this.img.src = window.URL.createObjectURL(file);
-        return fromEvent<Event>(this.img, 'load').pipe(map<Event, Size>(() => {
+        return fromEvent<Event>(this.img, 'load').pipe(map<Event, any>(() => {
             return { width: this.img.width, height: this.img.height };
         }));
     }
@@ -187,7 +178,7 @@ export class ClipPad {
         );
     }
 
-    moveRect(ep: Point, mp: Point, rect: any) {
+    moveRect(ep: any, mp: any, rect: any) {
         const w = parseInt(rect.attr('width'), 10);
         const h = parseInt(rect.attr('height'), 10);
         mp.x = mp.x - w;
