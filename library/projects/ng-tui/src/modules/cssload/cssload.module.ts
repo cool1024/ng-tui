@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { TUICoreModule } from '../../tui-core/tui-core.module';
 import { TableLoadComponent } from './table-load.component';
-import { AnimateDirective } from './animate.component';
+import { AnimateDirective } from './animate.directive';
 
 @NgModule({
     imports: [
