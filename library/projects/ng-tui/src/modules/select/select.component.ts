@@ -12,7 +12,8 @@ import {
 import { Item } from '../../tui-core/interfaces/item.interface';
 import { BaseForm } from '../../tui-core/base-class/base-form.class';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
     selector: 'ts-select',
@@ -51,6 +52,10 @@ export class SelectComponent extends BaseForm implements OnChanges, AfterViewIni
 
     readonly: string;
 
+    value: any;
+
+    subject = new Subject<string>();
+
     @Input() items: Array<string | number | { value: any, text: string }>;
 
     @Input() placeholder: string;
@@ -65,9 +70,6 @@ export class SelectComponent extends BaseForm implements OnChanges, AfterViewIni
 
     @Output() optionChange = new EventEmitter<any>(false);
 
-
-    value: any[];
-
     constructor(private elementRef: ElementRef) {
         super();
         this.readonly = 'readonly';
@@ -76,11 +78,19 @@ export class SelectComponent extends BaseForm implements OnChanges, AfterViewIni
         this.title = '';
         this.items = [];
         this.emptyLabel = 'No results found.';
+        this.subject.pipe(
+            debounceTime(500),
+            distinctUntilChanged()
+        ).subscribe(key => {
+            return this.searchFunc && this.searchFunc(key).subscribe(items => {
+                this.items = items;
+            });
+        });
     }
 
     get itemsList(): Array<Item> {
         let items = this.formatItems;
-        if (this.searchKey) {
+        if (this.searchKey && !this.searchFunc) {
             items = items.filter(e => e.text.indexOf(this.searchKey) > -1);
         }
         return items;
@@ -130,11 +140,7 @@ export class SelectComponent extends BaseForm implements OnChanges, AfterViewIni
 
     setSearchKey(value: string) {
         this.searchKey = value.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-        this.searchFunc && this.searchFunc(this.searchKey).subscribe(items => {
-            console.log(items);
-            
-            this.items = items;
-        });
+        this.subject.next(this.searchKey);
     }
 
     setTitle() {

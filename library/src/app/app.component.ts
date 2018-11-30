@@ -14,10 +14,10 @@ export class AppComponent {
 
     doSearch = (key: string) => {
         return of(['A', 'AA', 'B', 'BB', 'ABC']).pipe(
-            delay(2000),
+            // delay(2000),
             map<string[], Item[]>(res => {
                 return res.map((item, index) => ({ value: index, text: item }));
             })
-        )
+        );
     }
 }

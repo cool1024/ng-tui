@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { TUIModule, SelectModule } from '../../projects/ng-tui/src/public_api';
+import { TUIModule, SelectModule, CssloadModule } from '../../projects/ng-tui/src/public_api';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { TUIModule, SelectModule } from '../../projects/ng-tui/src/public_api';
   imports: [
     BrowserModule,
     TUIModule.forRoot(),
-    SelectModule
+    SelectModule,
+    CssloadModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

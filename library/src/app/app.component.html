@@ -1,2 +1,4 @@
 <ts-select [(ngModel)]="selectedValue" [searchFunc]="doSearch"></ts-select>
 {{selectedValue}}
+<div #animate="tsAnimate" tsAnimate="slideInUp">11111111</div>
+<button class="btn btn-light" (click)="animate.showAnimate()">显示动画</button>

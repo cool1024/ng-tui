@@ -12,6 +12,8 @@ import { ApiData } from '../../../../cores/classes';
 })
 export class SearchComponent {
 
+    value = 0;
+
     values = new Array<Item>();
 
     constructor(private request: RequestService) { }
