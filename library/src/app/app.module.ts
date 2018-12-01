@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { TUIModule, SelectModule, CssloadModule } from '../../projects/ng-tui/src/public_api';
+import { TUIModule, SelectModule, CssloadModule, DatePickerModule, ButtonModule } from '../../projects/ng-tui/src/public_api';
 
 @NgModule({
   declarations: [
@@ -13,6 +13,8 @@ import { TUIModule, SelectModule, CssloadModule } from '../../projects/ng-tui/sr
     TUIModule.forRoot(),
     SelectModule,
     CssloadModule,
+    DatePickerModule,
+    ButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

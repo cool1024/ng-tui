@@ -1,9 +1,13 @@
-<div class="toolbar">
-    <h4>加载动画</h4>
-    <p class="text-muted">加载动画用于页面加载，表格数据加载</p>
-</div>
+<div class="toolbar"></div>
 <div class="p-3">
-    <div class="row">
+    <div class="card mb-3">
+        <h5 class="card-header">动画组件</h5>
+        <div class="card-body">
+            <p class="text-muted">1. 加载动画用于页面加载，表格数据加载</p>
+            <p class="text-muted">2. 动画指令使用了animate.css中的动画，可以快速给一个元素添加动画效果</p>
+        </div>
+    </div>
+    <div class="row mb-3">
         <div class="col-lg-6">
             <div class="card mb-3">
                 <div class="card-header">
@@ -72,6 +76,21 @@
                     </table>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">点击下面卡片查看动画效果,动画来源
+            <a href="https://daneden.github.io/animate.css/" target="_bank">[animate.css:查看演示地址]</a>
+        </div>
+        <div class="card-body">
+            <img #animate1="tsAnimate" (click)="animate1.showAnimate()" tsAnimate="slideInUp" class="img-thumbnail pointer mr-2"
+                src="assets/images/avatar/0.jpg" width="100">
+            <img #animate2="tsAnimate" (click)="animate2.showAnimate()" tsAnimate="zoomIn" class="img-thumbnail pointer mr-2"
+                src="assets/images/avatar/1.png" width="100">
+            <img #animate3="tsAnimate" (click)="animate3.showAnimate()" tsAnimate="hinge" timer="1000" class="img-thumbnail pointer mr-2"
+                src="assets/images/avatar/2.png" width="100">
+            <img #animate4="tsAnimate" (click)="animate4.showAnimate()" tsAnimate="rotateOut" class="img-thumbnail pointer mr-2"
+                src="assets/images/avatar/3.jpg" width="100">
         </div>
     </div>
 </div>

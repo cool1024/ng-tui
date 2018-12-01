@@ -5,7 +5,7 @@ import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
 @Component({
     selector: 'ts-dropdown',
     template: `
-    <div tsDropdown [dropup]="dropup">
+    <div tsDropdown [dropup]="dropup" style="height:100%">
         <button *ngIf="diyClass" [class]="diyClass" type="button" tsToggle>{{item ? item.text : text}}</button>
         <button *ngIf="!diyClass"
             tsToggle tsBtn

@@ -1,12 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { GlobalService } from '../../../../cores/services';
-
 @Component({
     selector: 'app-select',
     templateUrl: './select.component.html',
     styleUrls: ['./select.component.scss']
 })
-export class SelectComponent {
+export class SelectComponent implements AfterViewInit {
+
+    private cityPickerInstance: any;
+
+    @ViewChild('cityPicker') set cityPicker(elementRef: ElementRef) {
+        const $ = this.global.getWindowObject('$');
+        this.cityPickerInstance = $(elementRef.nativeElement);
+        this.cityPickerInstance.citypicker();
+    }
 
     diySelects = [
         {
@@ -35,5 +42,21 @@ export class SelectComponent {
 
     selectValues = [1, 2];
 
+    cityValue = '';
+
     constructor(public global: GlobalService) { }
+
+    getPickerValue() {
+        alert('选中的值为' + this.cityPickerInstance.val());
+    }
+
+    ngAfterViewInit() {
+        // 必须在视图初始化完成后才能设置省市区选择的默认选中值
+        this.cityPickerInstance.citypicker('destroy');
+        this.cityPickerInstance.citypicker({
+            province: '江苏省',
+            city: '常州市',
+            district: '溧阳市'
+        });
+    }
 }

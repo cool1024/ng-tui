@@ -21,7 +21,7 @@ export class FlexComponent implements OnInit {
 
     constructor() {
         this.items.push(...[
-            { align: 'start', src: 'assets/images/avatar/0.jpg' }
+            { align: 'start', src: 'assets/images/avatar/0' }
         ]);
     }
 
@@ -30,7 +30,7 @@ export class FlexComponent implements OnInit {
     }
 
     addItem(align: string) {
-        this.items.push({ align, src: `assets/images/avatar/${this.items.length % 7}.jpg` });
+        this.items.push({ align, src: `assets/images/avatar/${this.items.length % 7}` });
     }
 
     removeItem() {

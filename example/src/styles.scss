@@ -3,7 +3,19 @@
 /** bootstrap **/
 @import "~bootstrap/scss/functions";
 
-$blue: #175597 !default;
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$blue: #005cc5;
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
 $pink: #e9488b !default;
@@ -14,23 +26,45 @@ $green: #2abd87 !default;
 $teal: #35d1a2 !default;
 $cyan: #50a4ff !default;
 
+// 基础属性配置（阴影，渐变，动画，印刷样式）
 $enable-shadows: true;
-$enable-gradients: false;
+$enable-gradients: true;
 $enable-transitions: false;
-$enable-print-styles: false;
+$enable-print-styles: true;
 
-$font-size-base: 0.9rem;
-$font-weight-light: 200;
-$font-weight-normal: 300;
-$font-weight-bold: 400;
+$font-size-base: 0.8rem;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 500;
 
+// 表格样式配置
+$table-head-bg: rgba($cyan, 0.1);
+$table-head-color: $blue;
+$table-border-width: 0;
+$table-border-color: $gray-300;
+$table-striped-order: even;
+$table-accent-bg: rgba($cyan, 0.05) !default;
+$table-bg: rgba($gray-100, 0.1);
+$table-hover-bg: rgba($cyan, 0.3) !default;
+$table-active-bg: $table-hover-bg !default;
+
+// 卡片样式配置
 $card-border-radius: 0;
 $card-border-width: 0;
+$card-cap-bg: white;
+
+// 按钮样式配置
 $btn-box-shadow: none;
+
+// 下拉按钮样式配置
 $dropdown-border-radius: 0;
 $dropdown-min-width: auto;
+
+// 输入框配置
 $input-btn-focus-box-shadow: none;
 $input-focus-box-shadow: none;
+
+// 网格间距配置
 $grid-gutter-width: 15px !default;
 
 @import "~bootstrap/scss/variables";
@@ -145,354 +179,8 @@ ts-select .dropdown-menu {
     @extend .shadow-sm;
 }
 
-.card-header {
-    background: $white;
-}
-
-.m-btn .btn:not(:first-child) {
-    @extend .ml-1;
-}
-
-.pointer {
-    cursor: pointer;
-}
-
-.btn-white,
-.btn-outline-white {
-    background-color: $white;
-    color: $dark;
-    border-color: $gray-400;
-}
-
-.btn-white:hover,
-.btn-outline-white:hover,
-.btn-outline-white:active {
-    color: $dark;
-    background-color: $gray-100;
-    border-color: $gray-400;
-}
-
-.btn-outline-white:not(:disabled):not(.disabled):active,
-.btn-outline-white:not(:disabled):not(.disabled).active,
-.show > .btn-outline-white.dropdown-toggle {
-    color: $dark;
-    border-color: $gray-400;
-    background-color: $gray-300;
-}
-
-.btn-outline-white.disabled,
-.btn-outline-white:disabled {
-    color: $gray-500;
-}
-
-.btn-white.active,
-.btn-outline-white .active {
-    background-color: $gray-200;
-}
-
-/** btn **/
-.btn-icon {
-    border-radius: 50%;
-    height: 35px;
-    width: 35px !important;
-    line-height: 35px;
-    text-align: center;
-    display: inline-block;
-    cursor: pointer;
-    color: $dark;
-}
-
-.btn-icon .iconfont {
-    font-size: $font-size-base * 1.2;
-}
-
-.btn-icon:hover {
-    color: white;
-}
-
-.btn-icon:active {
-    opacity: 0.8;
-}
-
-@each $name, $color in $theme-colors {
-    .btn-icon-#{$name} {
-        color: $color;
-    }
-
-    .btn-icon-#{$name}:hover {
-        background-color: $color;
-    }
-}
-
-/** checkbox **/
-.radio-box {
-    cursor: pointer;
-}
-
-.radio-box.disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-}
-
-.radio {
-    border: 1px solid $gray-400;
-    height: 1.2rem;
-    width: 1.2rem;
-    padding: $border-width * 2;
-}
-
-.radio-check {
-    height: 100%;
-    width: 100%;
-}
-
-@each $name, $color in $theme-colors {
-    .radio-#{$name}.active .radio-check {
-        background-color: $color;
-    }
-}
-
-.radio:not(.active):hover .radio-check {
-    background-color: $gray-300;
-}
-
-.radio:hover .radio-check {
-    opacity: 0.8;
-}
-
-.switch {
-    cursor: pointer;
-}
-
-.switch-bar {
-    height: 17px;
-    width: 17px;
-}
-
-.switch-line {
-    height: 19px;
-    width: 33px;
-    padding: $border-width;
-    border-radius: 30px;
-    vertical-align: top;
-    background-color: $gray-300;
-}
-
-.switch.disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.switch.active .switch-bar {
-    transition: all 0.3s linear;
-    margin-left: 14px;
-}
-
-.switch .switch-bar {
-    transition: all 0.3s linear;
-    margin-left: 0px;
-}
-
-@each $name, $color in $theme-colors {
-    .switch-#{$name}.active .switch-line {
-        background-color: $color;
-    }
-}
-
-/** pagination **/
-.pagination-input {
-    width: 70px;
-    height: 35px;
-    border-radius: 2rem;
-    display: inline-block !important;
-    margin: 0.25rem;
-    flex-shrink: 0;
-}
-
-.pagination-item {
-    border-radius: 50%;
-    height: 35px;
-    width: 35px !important;
-    line-height: 35px;
-    text-align: center;
-    display: inline-block;
-    cursor: pointer;
-    margin: 0.25rem;
-    flex-shrink: 0;
-}
-
-.pagination-item.disabled {
-    opacity: 0.1;
-    cursor: not-allowed;
-}
-
-.pagination-button {
-    margin: 0.25rem;
-    padding: 0 1rem;
-    height: 35px;
-    line-height: 35px;
-    border-radius: 2rem;
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-.pagination-dropdown .dropdown-menu {
-    border-radius: 0.5rem;
-    overflow: hidden;
-}
-
-@each $name, $color in $theme-colors {
-    .pagination-tool-#{$name},
-    .pagination-button-#{$name} {
-        background-color: rgba($color, 0.1);
-        color: $color;
-    }
-
-    .pagination-item-#{$name} {
-        color: $color;
-    }
-
-    .pagination-button-#{$name}:hover,
-    .pagination-item-#{$name}.active,
-    .pagination-item-#{$name}:hover,
-    .pagination-tool-#{$name}:hover {
-        background-color: $color;
-        color: white;
-    }
-
-    .pagination-item-#{$name}.active:hover {
-        background-color: rgba($color, 0.8);
-    }
-}
-
-/** tab **/
-@each $name, $color in $theme-colors {
-    .nav-link-#{$name}.active {
-        border-top: 3px solid $color !important;
-        color: $color !important;
-    }
-
-    .tabs-#{$name} .tab-bar {
-        background-color: $color;
-    }
-
-    .tabs-#{$name} .tab:hover {
-        color: $color;
-        background-color: rgba($color, 0.1);
-    }
-
-    .tabs-#{$name} .tab.active {
-        color: $color;
-    }
-}
-
-.tabs {
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.tab {
-    padding: 12px 16px;
-    cursor: pointer;
-    position: relative;
-    transition: color ease-in-out 0.3s;
-}
-
-.tab-bar {
-    position: absolute;
-    height: 2px;
-    width: 0px;
-    bottom: -1px;
-    left: 0;
-    transition: all ease-in-out 0.3s;
-}
-
-/** badge **/
-.badge-mark {
-    display: inline-flex;
-    align-items: center;
-}
-
-.badge-mark span {
-    transition: all 0.2s;
-    width: 0px;
-    overflow: hidden;
-    opacity: 0;
-    display: inline-block;
-}
-
-.badge-mark:hover span {
-    transition: all 0.2s;
-    opacity: 1;
-    width: 15px;
-    overflow: hidden;
-    margin-left: 3px;
-}
-
-.badge-circle {
-    display: inline-block;
-    text-align: center;
-    border-radius: 50%;
-    line-height: $font-size-base * 1.5;
-    height: $font-size-base * 1.5;
-    width: $font-size-base * 1.5;
-}
-
-/** dot **/
-.dot {
-    display: inline-block;
-    width: 0.6rem;
-    height: 0.6rem;
-    border-radius: 50%;
-}
-
-.dot-lg {
-    width: 1rem;
-    height: 1rem;
-}
-
-.dot-text {
-    display: inline-block;
-    width: 1.4rem;
-    height: 1.4rem;
-    line-height: 1.4rem;
-    text-align: center;
-    border-radius: 50%;
-    color: $white;
-}
-
-@each $name, $color in $theme-colors {
-    .dot-#{$name} {
-        background-color: $color;
-    }
-}
-
-/** step **/
-.step-list {
-    display: flex;
-}
-
-.step-vlist {
-    display: flex;
-    flex-direction: column;
-}
-
-.step-item {
-    flex-grow: 1;
-}
-
-.step-line {
-    height: 0.2rem;
-    flex-grow: 1;
-}
-
-.step-vline {
-    width: 0.2rem;
-    flex-grow: 1;
-}
+/** tui必须的基础样式，每个组件的样式都在里面 **/
+@import "assets/css/base";
 
 /** toast **/
 .toast {
@@ -557,10 +245,9 @@ ts-select .dropdown-menu {
 
     @extend .pl-3;
 
-    @extend .pb-3;
-
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.05);
     background-color: $white;
+    min-height: 3px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.075) !important;
 }
 
 /** hover **/
@@ -612,161 +299,28 @@ ts-select .dropdown-menu {
     }
 }
 
-/** propper **/
-.link-anchor {
-    position: relative;
-    width: 0;
-    font-size: .8em;
-    opacity: 0;
-    transition: opacity .2s ease-in-out;
-}
-
-.anchor-wrapper {
-    border: none;
-}
-
-.anchor-wrapper:hover .link-anchor {
-    opacity: 1;
-}
-
-section h1[id]:focus,
-section h2[id]:focus,
-section h3[id]:focus,
-section h4[id]:focus,
-section h5[id]:focus {
-    outline: 0;
-}
-
-p.thin {
-    font-weight: 100;
-    margin: 0;
-    line-height: 1.2em;
-}
-
-p.bold {
-    font-weight: 900;
-    margin: 0;
-    margin-top: -5px;
-}
-
-.rel {
-    width: 30%;
-    margin: 0 auto;
-    position: relative;
-    text-align: center;
-    padding: 20px;
-    border-style: dotted;
-    border-color: white;
-    border-width: medium;
-}
-
-.popper,
-.tooltip {
-    position: absolute;
-    background: rgba($dark, 0.8);
-    color: $white;
-    border-radius: 3px;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-    max-width: 200px;
-    width: auto;
-    font-size: .8rem;
-    padding: .5em 1em;
-    text-align: center;
-}
-
-.popper .popper__arrow,
-.tooltip .tooltip-arrow {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    position: absolute;
-    margin: 5px;
-}
-
-.tooltip .tooltip-arrow,
-.popper .popper__arrow {
-    border-color: rgba($dark, 0.8);
-}
-
-.popper[x-placement^="top"],
-.tooltip[x-placement^="top"] {
-    margin-bottom: 5px;
-}
-
-.popper[x-placement^="top"] .popper__arrow,
-.tooltip[x-placement^="top"] .tooltip-arrow {
-    border-width: 5px 5px 0 5px;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    bottom: -5px;
-    left: calc(50% - 5px);
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.popper[x-placement^="bottom"],
-.tooltip[x-placement^="bottom"] {
-    margin-top: 5px;
-}
-
-.tooltip[x-placement^="bottom"] .tooltip-arrow,
-.popper[x-placement^="bottom"] .popper__arrow {
-    border-width: 0 5px 5px 5px;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-top-color: transparent;
-    top: -5px;
-    left: calc(50% - 5px);
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.tooltip[x-placement^="right"],
-.popper[x-placement^="right"] {
-    margin-left: 5px;
-}
-
-.popper[x-placement^="right"] .popper__arrow,
-.tooltip[x-placement^="right"] .tooltip-arrow {
-    border-width: 5px 5px 5px 0;
-    border-left-color: transparent;
-    border-top-color: transparent;
-    border-bottom-color: transparent;
-    left: -5px;
-    top: calc(50% - 5px);
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.popper[x-placement^="left"],
-.tooltip[x-placement^="left"] {
-    margin-right: 5px;
-}
-
-.popper[x-placement^="left"] .popper__arrow,
-.tooltip[x-placement^="left"] .tooltip-arrow {
-    border-width: 5px 0 5px 5px;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    right: -5px;
-    top: calc(50% - 5px);
-    margin-left: 0;
-    margin-right: 0;
-}
+/** propper tooltip **/
+@import "assets/css/tooltip";
 
 /** animate.css **/
 @import "~animate.css/source/_base.css";
 @import "~animate.css/source/sliding_entrances/slideInUp.css";
 @import "~animate.css/source/zooming_entrances/zoomIn.css";
+@import "~animate.css/source/specials/hinge.css";
+@import "~animate.css/source/rotating_exits/rotateOut.css";
 
+// 默认所有动画都是0.4s
 .animated {
     animation-duration: 0.4s;
 }
 
+// 可以重设指代动画的时间
+.animated.hinge {
+    animation-duration: 1s;
+}
+
 /** three-dots **/
-$dotColor: $primary;
+$dotColor: $info;
 
 @import "assets/three-dots/_variables";
 @import "assets/three-dots/mixins";

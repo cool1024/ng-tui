@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
     templateUrl: './code.component.html',
 })
 export class CodeComponent {
-
-    html = `<ts-prism-code [code]="html"></ts-prism-code>`;
-    typescript = `<ts-prism-code [code]="typescript_code" language="typescript"></ts-prism-code>`;
+    html = `<ts-prism [code]="html"></ts-prism>`;
+    typescript = `<ts-prism [code]="typescript_code" language="typescript"></ts-prism>`;
 }

@@ -25,7 +25,6 @@ export class TableComponent implements OnInit {
         public global: GlobalService) { }
 
     ngOnInit() {
-
         this.theads = ['No.', '会员', '联系电话 | 住址', '注册日期', '操作'];
         this.pageChanged();
     }

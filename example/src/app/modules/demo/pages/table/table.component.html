@@ -1,65 +1,68 @@
-<ts-datepicker [(ngModel)]="search.params.start" #datepickerOne="tsDatepicker" [color]="global.params.color"></ts-datepicker>
-<ts-datepicker [(ngModel)]="search.params.end" #datepickerTwo="tsDatepicker" [color]="global.params.color"></ts-datepicker>
 <div class="toolbar">
-    <h4>标准表格</h4>
-    <p class="text-muted">表格通常需要一个搜索按钮，一个重置搜索的按钮，和其它操作按钮</p>
-    <div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text bg-white">会员昵称</span>
+    <ts-datepicker [(ngModel)]="search.params.start" #datepickerOne="tsDatepicker" [color]="global.params.color"></ts-datepicker>
+    <ts-datepicker [(ngModel)]="search.params.end" #datepickerTwo="tsDatepicker" [color]="global.params.color"></ts-datepicker>
+</div>
+<div class="p-3">
+    <div class="card mb-3">
+        <h5 class="card-header">标准表格</h5>
+        <div class="card-body">
+            <p class="text-muted">表格通常需要一个搜索按钮，一个重置搜索的按钮，和其它操作按钮</p>
+            <div class="form-inline">
+                <div class="input-group mb-3 mr-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white">会员昵称</span>
+                    </div>
+                    <input style="width:140px" type="text" class="form-control" placeholder="请输入会员昵称的关键词">
+                    <div class="input-group-prepend input-group-append">
+                        <span class="input-group-text bg-white">联系电话</span>
+                    </div>
+                    <input style="width:140px" type="text" class="form-control" placeholder="请输入联系电话">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white">注册时间</span>
+                    </div>
+                    <input tsToggle [value]="search.params.start" [target]="datepickerOne" [bind]="datepickerOne" type="text"
+                        class="form-control bg-white pointer" placeholder="开始时间" style="width:140px" readonly>
+                    <div class="input-group-prepend input-group-append">
+                        <span class="input-group-text bg-white">到</span>
+                    </div>
+                    <input tsToggle [value]="search.params.end" [target]="datepickerTwo" [bind]="datepickerTwo" type="text"
+                        class="form-control bg-white pointer" placeholder="结束时间" style="width:140px" readonly>
+                </div>
             </div>
-            <input type="text" class="form-control" placeholder="请输入会员昵称的关键词">
-            <div class="input-group-prepend input-group-append">
-                <span class="input-group-text bg-white">联系电话</span>
-            </div>
-            <input type="text" class="form-control" placeholder="请输入联系电话">
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text bg-white">注册时间</span>
-            </div>
-            <input tsToggle [value]="search.params.start" [target]="datepickerOne" [bind]="datepickerOne" type="text" class="form-control bg-white pointer"
-                placeholder="开始时间" readonly>
-            <div class="input-group-prepend input-group-append">
-                <span class="input-group-text bg-white">到</span>
-            </div>
-            <input tsToggle [value]="search.params.end" [target]="datepickerTwo" [bind]="datepickerTwo" type="text" class="form-control bg-white pointer"
-                placeholder="结束时间" readonly>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                <div class="input-group">
+            <div class="form-inline">
+                <div class="input-group mr-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text bg-white">共查询到</span>
                     </div>
-                    <input type="text" value="{{pagination.total}}" class="form-control text-center bg-white" readonly placeholder="0">
+                    <input style="width:140px" type="text" value="{{pagination.total}}" class="form-control text-center bg-white"
+                        readonly placeholder="0">
                     <div class="input-group-append">
                         <span class="input-group-text bg-white">条/结果</span>
                     </div>
                 </div>
-            </div>
-            <div class="col-6 text-right m-btn">
-                <button class="btn btn-success">
-                    <span>新增会员</span>
-                </button>
-                <button (click)="doReset()" class="btn btn-white">
-                    <i class="iconfont icon-refresh mr-1"></i>
-                    <span>重置</span>
-                </button>
-                <button (click)="doSearch()" class="btn btn-white">
-                    <i class="iconfont icon-search mr-1"></i>
-                    <span>搜索</span>
-                </button>
+                <div class="m-btn">
+                    <button class="btn btn-info">
+                        <span>新增会员</span>
+                    </button>
+                    <button (click)="doReset()" class="btn btn-white">
+                        <i class="iconfont icon-refresh mr-1"></i>
+                        <span>重置</span>
+                    </button>
+                    <button (click)="doSearch()" class="btn btn-white">
+                        <i class="iconfont icon-search mr-1"></i>
+                        <span>搜索</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="p-2">
-    <div class="card">
+    <div class="card mb-3">
         <ts-table-load [display]="pagination.loading"></ts-table-load>
-        <table class="table bg-white border-0">
-            <thead class="text-dark">
-                <tr class="bg-light">
+        <table class="table table-striped table-hover">
+            <thead class="thead-light">
+                <tr>
                     <th *ngFor="let th of theads" class="border-0">{{th}}</th>
                 </tr>
             </thead>
@@ -76,7 +79,7 @@
                                     <small *ngIf="item.gender==='male'" class="text-dark">({{item.gender}})</small>
                                 </p>
                                 <p class="m-0 text-muted">
-                                    <small class="text-info">
+                                    <small class="text-primary">
                                         {{item.email}}
                                     </small>
                                 </p>
@@ -103,10 +106,10 @@
                                 <button class="dropdown-item pointer">Separated link</button>
                             </div>
                         </div>
-                        <span class="btn-icon btn-icon-info ml-2" tsTip="详情/编辑">
+                        <span class="btn-icon btn-icon-info" tsTip="详情/编辑">
                             <i class="iconfont icon-edit"></i>
                         </span>
-                        <span class="btn-icon btn-icon-danger ml-2" tsTip="删除">
+                        <span class="btn-icon btn-icon-danger" tsTip="删除">
                             <i class="iconfont icon-delete"></i>
                         </span>
                     </td>
@@ -116,12 +119,19 @@
                         暂无数据～
                     </td>
                 </tr>
-                <tr class="mat-cell">
+                <tr class="bg-white">
                     <td [attr.colspan]="theads.length" class="text-right">
-                        <ts-pagination outline (pageChange)="pageChanged()" [pagination]="pagination" [color]="global.params.color" goTitle="跳转"></ts-pagination>
+                        <ts-pagination outline (pageChange)="pageChanged()" [pagination]="pagination" goTitle="跳转"></ts-pagination>
                     </td>
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div class="card">
+        <h5 class="card-header">相关说明</h5>
+        <div class="card-body">
+            <p>1. 添加table-active样式可以让某一行数据显示被选中的状态</p>
+            <p>2. 参考文档 <a href="https://v4.bootcss.com/docs/4.0/content/tables/">https://v4.bootcss.com/docs/4.0/content/tables/</a></p>
+        </div>
     </div>
 </div>

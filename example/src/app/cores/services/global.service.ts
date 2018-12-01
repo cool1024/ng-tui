@@ -13,6 +13,14 @@ export class GlobalService {
     params: any = {};
 
     /**
+     * 从windows对象中获取一个对象
+     * @param key 要获取的对象名称
+     */
+    getWindowObject(key: string): any {
+        return window[key] || {};
+    }
+
+    /**
      * 获取一个值，如果不存在，那么给一个默认值
      * @param {string} key 参数名称
      * @param {any} 参数默认值

@@ -24,6 +24,7 @@ import {
         CoreModule,
         SortablejsModule.forRoot({ animation: 150 }),
         TUIModule.forRoot({
+            defaultColor: 'info',
             confirmCancelTitle: '取消',
             confirmOkTitle: '确认',
             weekTitles: ['一', '二', '三', '四', '五', '六', '日'],

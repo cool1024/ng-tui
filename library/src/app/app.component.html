@@ -1,4 +1,8 @@
-<ts-select [(ngModel)]="selectedValue" [searchFunc]="doSearch"></ts-select>
+<!-- <ts-select [(ngModel)]="selectedValue" [searchFunc]="doSearch"></ts-select>
 {{selectedValue}}
 <div #animate="tsAnimate" tsAnimate="slideInUp">11111111</div>
-<button class="btn btn-light" (click)="animate.showAnimate()">显示动画</button>
+<button class="btn btn-light" (click)="animate.showAnimate()">显示动画</button> -->
+<div class="d-flex flex-row-">
+    <button tsBtn tsToggle [bind]="datepickerOne" [target]="datepickerOne">选择日期</button>
+</div>
+<ts-datepicker #datepickerOne="tsDatepicker"></ts-datepicker>

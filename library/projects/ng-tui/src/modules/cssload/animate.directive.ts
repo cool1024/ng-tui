@@ -17,6 +17,6 @@ export class AnimateDirective {
     showAnimate() {
         const targetDom: HTMLElement = this.elementRef.nativeElement;
         targetDom.classList.add('animated', this.tsAnimate);
-        timer(1000).subscribe(() => targetDom.classList.remove('animated', this.tsAnimate));
+        timer(this.timer).subscribe(() => targetDom.classList.remove('animated', this.tsAnimate));
     }
 }

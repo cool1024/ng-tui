@@ -23,8 +23,9 @@
                 </div>
                 <button (click)="removeItem()" tsBtn outline color="danger">移除元素</button>
             </div>
-            <div class="mt-3 d-flex justify-content-{{justifyContent}} flex-{{flexWarp}}">
-                <img *ngFor="let item of items" class="img-thumbnail m-1 align-self-{{item.align}}" width="100" [src]="item.src">
+            <div class="mt-3 d-flex justify-content-{{justifyContent}} flex-{{flexWarp}}" style="overflow-x: auto">
+                <img *ngFor="let item of items" class="img-thumbnail m-1 align-self-{{item.align}}" width="100" [src]="item.src+'.jpg'"
+                    [dataSrc]="item.src+'.png'">
             </div>
         </div>
     </div>
