@@ -1,12 +1,15 @@
-<div class="toolbar">
-    <h4>CKEditor5</h4>
-    <p>
-        <span>更多方法参考</span>
-        <a href="https://ckeditor.com" target="_blanl">官方文档</a>
-        <a class="ml-2" routerLink="/demo/quill">[旧版本：QUILL编辑器]</a>
-    </p>
-</div>
-<div class="p-2">
+<div class="toolbar"></div>
+<div class="p-3">
+    <div class="card mb-3">
+        <h5 class="card-header">CKEditor5</h5>
+        <div class="card-body">
+            <p>
+                <span>更多方法参考</span>
+                <a href="https://ckeditor.com" target="_blanl">官方文档</a>
+                <a class="ml-2" routerLink="/demo/quill">[旧版本：QUILL编辑器]</a>
+            </p>
+        </div>
+    </div>
     <div class="card card-body">
         <div style="max-width:800px;">
             <ts-ckeditor [options]="options" [(content)]="content"></ts-ckeditor>

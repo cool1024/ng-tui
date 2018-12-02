@@ -23,10 +23,10 @@ export interface MenuModel {
     active: boolean;
 }
 
-export interface MenuElement{
-    image?:string;
-    icon?:string;
-    title:string;
-    url?:string;
-    child
-}
+// export interface MenuElement{
+//     image?:string;
+//     icon?:string;
+//     title:string;
+//     url?:string;
+//     child
+// }

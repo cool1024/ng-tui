@@ -21,16 +21,8 @@ export class ToastComponent implements OnInit {
         this.toast[color](color.toUpperCase(), 'Toast Message Content...');
     }
 
-    showConfirm(color: string) {
-        this.confirm[color](color.toUpperCase(), 'Confirm Message Content...');
-    }
-
     showCustom() {
         this.toast.create('自定义标题', '这是一条自定义消息，图标还有颜色可以自由设置', { color: 'dark', icon: 'account' });
-    }
-
-    showCustomConfirm() {
-        this.confirm.create('自定义标题', '这是一条自定义确认对话框，图标还有颜色可以自由设置', { color: 'dark', icon: 'account', cancelTitle: '拒绝', okTitle: '同意' });
     }
 
 }

@@ -2,7 +2,39 @@
 {{selectedValue}}
 <div #animate="tsAnimate" tsAnimate="slideInUp">11111111</div>
 <button class="btn btn-light" (click)="animate.showAnimate()">显示动画</button> -->
-<div class="d-flex flex-row-">
+<!-- <div class="d-flex flex-row-">
     <button tsBtn tsToggle [bind]="datepickerOne" [target]="datepickerOne">选择日期</button>
 </div>
-<ts-datepicker #datepickerOne="tsDatepicker"></ts-datepicker>
+<ts-datepicker #datepickerOne="tsDatepicker"></ts-datepicker> -->
+<div class="side-menu">
+    <div tsMenuGroup>
+        <button tsToggle class="dropdown-item">Action</button>
+        <div class="side-menu" tsSideMenu="hover" (displayChange)="$event&&closeOtherMenu(0)">
+            <button class="dropdown-item">Action</button>
+
+            <button class="dropdown-item" close>Another action</button>
+            <button class="dropdown-item">Something else here</button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item">Separated link</button>
+        </div>
+    </div>
+    <div tsMenuGroup>
+        <button tsToggle class="dropdown-item" close>Another action</button>
+        <div class="side-menu" tsSideMenu="hover" (displayChange)="$event&&closeOtherMenu(1)">
+            <div tsMenuGroup>
+                <button tsToggle class="dropdown-item" close>Another action</button>
+                <div class="side-menu" tsSideMenu="hover">
+                    <button class="dropdown-item">Action1</button>
+                    <button class="dropdown-item" close>Another action</button>
+                    <button class="dropdown-item">Something else here</button>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item">Separated link</button>
+                </div>
+            </div>
+            <button class="dropdown-item" close>Another action</button>
+            <button class="dropdown-item">Something else here</button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item">Separated link</button>
+        </div>
+    </div>
+</div>

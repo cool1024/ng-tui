@@ -28,7 +28,7 @@ $cyan: #50a4ff !default;
 
 // 基础属性配置（阴影，渐变，动画，印刷样式）
 $enable-shadows: true;
-$enable-gradients: true;
+$enable-gradients: false;
 $enable-transitions: false;
 $enable-print-styles: true;
 
@@ -179,6 +179,10 @@ ts-select .dropdown-menu {
     @extend .shadow-sm;
 }
 
+.table-bordered th, .table-bordered td {
+    border: 1px solid rgba($cyan, 0.1) !important;
+}
+
 /** tui必须的基础样式，每个组件的样式都在里面 **/
 @import "assets/css/base";
 
@@ -305,7 +309,11 @@ ts-select .dropdown-menu {
 /** animate.css **/
 @import "~animate.css/source/_base.css";
 @import "~animate.css/source/sliding_entrances/slideInUp.css";
+
+@import "~animate.css/source/sliding_entrances/slideInLeft.css";
 @import "~animate.css/source/zooming_entrances/zoomIn.css";
+
+@import "~animate.css/source/bouncing_entrances/bounceIn.css";
 @import "~animate.css/source/specials/hinge.css";
 @import "~animate.css/source/rotating_exits/rotateOut.css";
 
@@ -317,6 +325,10 @@ ts-select .dropdown-menu {
 // 可以重设指代动画的时间
 .animated.hinge {
     animation-duration: 1s;
+}
+
+.animated.zoomInLeft {
+    animation-name: zoomIn;
 }
 
 /** three-dots **/

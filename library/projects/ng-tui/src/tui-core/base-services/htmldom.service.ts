@@ -22,16 +22,4 @@ export class HtmlDomService {
     getWidth(dom: HTMLElement): number {
         return dom.clientWidth;
     }
-
-    // overflowBottom(dom: HTMLElement, offset = 0): boolean {
-    //     const height = dom.clientHeight + offset;
-    //     const position = this.getPosition(dom);
-    //     return window.innerHeight > position.y + height + offset;
-    // }
-
-    // overflowTop(dom: HTMLElement, offset = 0): boolean {
-    //     const height = dom.clientHeight + offset;
-    //     const position = this.getPosition(dom);
-    //     return (position.y - height - offset) > 0;
-    // }
 }

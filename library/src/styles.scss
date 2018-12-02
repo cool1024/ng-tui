@@ -1,0 +1,315 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+/** bootstrap **/
+@import "~bootstrap/scss/functions";
+
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$blue: #005cc5;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e9488b !default;
+$red: #ff4255 !default;
+$orange: #ff9100 !default;
+$yellow: #ffd900 !default;
+$green: #2abd87 !default;
+$teal: #35d1a2 !default;
+$cyan: #50a4ff !default;
+
+// 基础属性配置（阴影，渐变，动画，印刷样式）
+$enable-shadows: true;
+$enable-gradients: false;
+$enable-transitions: false;
+$enable-print-styles: true;
+
+$font-size-base: 0.8rem;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 500;
+
+// 表格样式配置
+$table-head-bg: rgba($cyan, 0.1);
+$table-head-color: $blue;
+$table-border-width: 0;
+$table-border-color: $gray-300;
+$table-striped-order: even;
+$table-accent-bg: rgba($cyan, 0.05) !default;
+$table-bg: rgba($gray-100, 0.1);
+$table-hover-bg: rgba($cyan, 0.3) !default;
+$table-active-bg: $table-hover-bg !default;
+
+// 卡片样式配置
+$card-border-radius: 0;
+$card-border-width: 0;
+$card-cap-bg: white;
+
+// 按钮样式配置
+$btn-box-shadow: none;
+
+// 下拉按钮样式配置
+$dropdown-border-radius: 0;
+$dropdown-min-width: auto;
+
+// 输入框配置
+$input-btn-focus-box-shadow: none;
+$input-focus-box-shadow: none;
+
+// 网格间距配置
+$grid-gutter-width: 15px !default;
+
+@import "~bootstrap/scss/variables";
+
+$dropdown-border-color: rgba($black, 0.01);
+$dropdown-link-active-color: $dark;
+$dropdown-link-active-bg: $gray-200;
+$input-placeholder-color: $gray-300;
+$theme-colors: ("primary": $primary, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark, "purple": $purple, "pink": $pink);
+
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/print";
+
+a,
+button,
+input,
+select,
+textarea {
+    outline: 0 none !important;
+    text-decoration: none !important;
+    z-index: 0 !important;
+    box-shadow: 0px 0px 0px white !important;
+}
+
+input:disabled,
+textarea:disabled,
+button:disabled {
+    cursor: not-allowed;
+}
+
+.no-select {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+
+.table td,
+.table th {
+    vertical-align: middle !important;
+}
+
+pre {
+    margin-bottom: 0 !important;
+}
+
+div,
+span {
+    outline: 0 none !important;
+}
+
+a:link, a:active, a:hover, a:visited {
+    text-decoration: none;
+}
+
+.dropup .dropdown-menu {
+    bottom: auto !important;
+}
+
+ts-select .dropdown-menu {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.selects-disabled {
+    cursor: not-allowed;
+    background-color: $gray-200;
+}
+
+.card {
+    @extend .shadow-sm;
+}
+
+/** tui必须的基础样式，每个组件的样式都在里面 **/
+@import "assets/css/base";
+
+/** toast **/
+.toast {
+    width: 18rem;
+    z-index: 9999;
+    border-width: 0;
+    border-left-width: 3px;
+}
+
+.toast .close {
+    cursor: pointer;
+}
+
+.top {
+    top: 0;
+}
+
+.bottom {
+    bottom: 0;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.toast-hidden {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/** table-loader **/
+.table-loader {
+    background-color: rgba($white, 0.6);
+    z-index: 1;
+}
+
+/** breadcrumb **/
+.breadcrumb {
+    line-height: 4;
+    color: $gray-600;
+}
+
+.breadcrumb a:not(:last-child) {
+    color: $primary;
+}
+
+.breadcrumb a:not(:last-child):after {
+    content: " /";
+}
+
+.breadcrumb i {
+    margin-right: 0.25rem;
+}
+
+/** toolbar **/
+.toolbar {
+    @extend .pr-3;
+
+    @extend .pl-3;
+
+    background-color: $white;
+    min-height: 3px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.075) !important;
+}
+
+/** hover **/
+@each $name, $color in $theme-colors {
+    .bg-#{$name}-muted {
+        background-color: rgba($color, 0.1);
+    }
+
+    .bg-#{$name}-hover:hover {
+        background-color: rgba($color, 0.1);
+        transition: background-color ease-in-out .2s;
+    }
+
+    .bg-#{$name}-hover:active {
+        background-color: rgba($color, 0.4);
+    }
+
+    .text-#{$name}-hover {
+        color: $gray-600;
+    }
+
+    .text-#{$name}-hover:hover {
+        color: $color;
+        transition: color ease-in-out .3s;
+    }
+}
+
+/** iconfont **/
+
+@import "assets/iconfont/iconfont.css";
+
+.iconfont {
+    font-size: inherit;
+}
+
+.iconfont-rotate {
+    animation: rotate 0.5s infinite linear;
+    display: inline-block;
+    text-align: center;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(359deg);
+    }
+}
+
+/** propper tooltip **/
+@import "assets/css/tooltip";
+
+/** animate.css **/
+@import "~animate.css/source/_base.css";
+@import "~animate.css/source/sliding_entrances/slideInUp.css";
+@import "~animate.css/source/zooming_entrances/zoomIn.css";
+@import "~animate.css/source/zooming_entrances/zoomInLeft.css";
+@import "~animate.css/source/specials/hinge.css";
+@import "~animate.css/source/rotating_exits/rotateOut.css";
+
+// 默认所有动画都是0.4s
+.animated {
+    animation-duration: 0.4s;
+}
+
+// 可以重设指代动画的时间
+.animated.hinge {
+    animation-duration: 1s;
+}
+
+/** three-dots **/
+$dotColor: $info;
+
+@import "assets/three-dots/_variables";
+@import "assets/three-dots/mixins";
+@import "assets/three-dots/dot-windmill";
+
+.dot-animate {
+    @extend .dot-windmill;
+}

@@ -48,6 +48,7 @@ export * from './modules/datepicker/timepicker.component';
 export * from './modules/dropdown/dropdown.module';
 export * from './modules/dropdown/dropdown.directive';
 export * from './modules/dropdown/dropdown.component';
+export * from './modules/dropdown/side-menu.directive';
 export * from './modules/iconfont/iconfont.module';
 export * from './modules/iconfont/iconfont.directive';
 export * from './modules/image/image.module';

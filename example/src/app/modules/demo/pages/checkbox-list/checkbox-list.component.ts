@@ -16,7 +16,7 @@ export class CheckboxListComponent {
 
     page = new Pagination(0, 1, 3);
 
-    checkBoxValues = new Array<number>();
+    checkBoxValues = [2, 4];
 
     listItems = [];
 
@@ -42,7 +42,6 @@ export class CheckboxListComponent {
     }
 
     selectAllOrNone(checked: boolean) {
-        console.log(checked);
         if (checked) {
             // 全选
             this.listItems.forEach(targetItem => {

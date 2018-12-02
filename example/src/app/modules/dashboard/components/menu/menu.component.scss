@@ -122,20 +122,22 @@
     // filter: grayscale(0%);
 }
 
-.menu-rect:hover > .menu-popover {
-    visibility: visible;
-    opacity: 1;
-}
+// .menu-rect:hover > .menu-popover {
+//     visibility: visible;
+//     opacity: 1;
+// }
 
 .menu-popover {
-    visibility: hidden;
+    // visibility: hidden;
     position: fixed;
-    z-index: 10;
-    margin-top: -44px;
-    margin-left: 80px;
+    z-index: 9999;
+
+    // margin-top: -44px;
+    margin-left: 20px;
     width: 130px;
-    opacity: 0;
-    transition: opacity ease-out .3s;
+
+    // opacity: 0;
+    // transition: opacity ease-out .3s;
 }
 
 .menu-popover .menu-item:hover {

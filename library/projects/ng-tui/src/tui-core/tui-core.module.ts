@@ -10,7 +10,7 @@ import { ToggleDirective } from './directives/toggle.directives';
     ],
     exports: [
         ToggleDirective,
-        CommonModule
+        CommonModule,
     ],
     declarations: [
         ToggleDirective,

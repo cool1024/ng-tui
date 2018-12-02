@@ -1,77 +1,80 @@
-<ts-datepicker #datepickerOne="tsDatepicker" [(ngModel)]="search.params.start" [color]="global.params.color" [weekTitles]="['一', '二', '三', '四', '五', '六', '日']"
-    [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']">
-</ts-datepicker>
-<ts-datepicker #datepickerTwo="tsDatepicker" [(ngModel)]="search.params.end" [color]="global.params.color" [weekTitles]="['一', '二', '三', '四', '五', '六', '日']"
-    [monthTitles]="['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']">
-</ts-datepicker>
+<ts-datepicker #datepickerOne="tsDatepicker" [(ngModel)]="search.params.start" [color]="global.params.color"></ts-datepicker>
+<ts-datepicker #datepickerTwo="tsDatepicker" [(ngModel)]="search.params.end" [color]="global.params.color"></ts-datepicker>
 <ng-container *ngIf="!outlet.isActivated">
-    <div class="toolbar">
-        <h4>公司列表</h4>
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text bg-white">商户名称</span>
-            </div>
-            <input [(ngModel)]="search.params.name" type="text" class="form-control" placeholder="请输入商家名称关键词">
-            <div class="input-group-prepend input-group-append">
-                <span class="input-group-text bg-white">商户账号</span>
-            </div>
-            <input [(ngModel)]="search.params.account" type="text" class="form-control" placeholder="请输入关键词">
-        </div>
-        <br>
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text bg-white">创建时间</span>
-            </div>
-            <input tsToggle [value]="search.params.start|date :'yyyy-MM-dd'" [target]="datepickerOne" [bind]="datepickerOne" type="text"
-                class="form-control bg-white pointer" placeholder="开始时间" readonly>
-            <div class="input-group-prepend input-group-append">
-                <span class="input-group-text bg-white">到</span>
-            </div>
-            <input tsToggle [value]="search.params.end|date :'yyyy-MM-dd'" [target]="datepickerTwo" [bind]="datepickerTwo" type="text"
-                class="form-control bg-white pointer" placeholder="结束时间" readonly>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-6">
-                <div class="input-group">
+    <div class="toolbar"></div>
+    <div class="p-3">
+        <div class="card mb-3">
+            <h5 class="card-header">公司列表</h5>
+            <div class="card-body form-inline">
+                <div class="input-group mb-3 mr-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text bg-white">共查询到</span>
+                        <span class="input-group-text bg-white">商户名称</span>
                     </div>
-                    <input type="text" value="{{pagination.total}}" class="form-control text-center bg-white" readonly placeholder="0">
-                    <div class="input-group-append">
-                        <span class="input-group-text bg-white">条/结果</span>
+                    <input style="width:140px" [(ngModel)]="search.params.name" type="text" class="form-control"
+                        placeholder="请输入商家名称关键词">
+                    <div class="input-group-prepend input-group-append">
+                        <span class="input-group-text bg-white">商户账号</span>
+                    </div>
+                    <input style="width:140px" [(ngModel)]="search.params.account" type="text" class="form-control"
+                        placeholder="请输入关键词">
+                </div>
+                <div class="input-group mb-3 mr-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white">创建时间</span>
+                    </div>
+                    <input style="width:140px" tsToggle [value]="search.params.start|date :'yyyy-MM-dd'" [target]="datepickerOne"
+                        [bind]="datepickerOne" type="text" class="form-control bg-white pointer" placeholder="开始时间"
+                        readonly>
+                    <div class="input-group-prepend input-group-append">
+                        <span class="input-group-text bg-white">到</span>
+                    </div>
+                    <input style="width:140px" tsToggle [value]="search.params.end|date :'yyyy-MM-dd'" [target]="datepickerTwo"
+                        [bind]="datepickerTwo" type="text" class="form-control bg-white pointer" placeholder="结束时间"
+                        readonly>
+                </div>
+                <div class="form-inline">
+                    <div class="input-group mr-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white">共查询到</span>
+                        </div>
+                        <input type="text" value="{{pagination.total}}" class="form-control text-center bg-white"
+                            readonly placeholder="0">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-white">条/结果</span>
+                        </div>
+                    </div>
+                    <div class="m-btn">
+                        <button class="btn btn-info" routerLink="detail">
+                            <span>添加商户</span>
+                        </button>
+                        <button (click)="doReset()" class="btn btn-white">
+                            <i class="iconfont icon-refresh mr-1"></i>
+                            <span>重置</span>
+                        </button>
+                        <button (click)="doSearch()" class="btn btn-white">
+                            <i class="iconfont icon-search mr-1"></i>
+                            <span>搜索</span>
+                        </button>
                     </div>
                 </div>
             </div>
-            <div class="col-6 text-right m-btn">
-                <button class="btn btn-success" routerLink="detail">
-                    <span>添加商户</span>
-                </button>
-                <button (click)="doReset()" class="btn btn-white">
-                    <i class="iconfont icon-refresh mr-1"></i>
-                    <span>重置</span>
-                </button>
-                <button (click)="doSearch()" class="btn btn-white">
-                    <i class="iconfont icon-search mr-1"></i>
-                    <span>搜索</span>
-                </button>
-            </div>
         </div>
-    </div>
-    <div class="p-2">
-        <div class="card rounded-0 mt-2">
+        <div class="card">
             <div class="card-body">
                 <ts-table-load [display]="loading"></ts-table-load>
                 <div class="table-responsive">
                     <table class="table table-striped">
-                        <tbody>
-                            <tr class="font-weight-bold bg-light">
-                                <td *ngFor="let th of theads">{{th}}</td>
+                        <thead class="thead-light">
+                            <tr>
+                                <th *ngFor="let th of theads">{{th}}</th>
                             </tr>
+                        </thead>
+                        <tbody>
                             <tr *ngFor="let td of list">
                                 <td>{{td.id}}</td>
                                 <td>
-                                    <img tsImg [src]="td.companyLogo" dataSrc="assets/images/404.jpg" class="rounded-circle" width="40" height="40" alt="Logo">
+                                    <img tsImg [src]="td.companyLogo" dataSrc="assets/images/404.jpg" class="rounded-circle"
+                                        width="40" height="40" alt="Logo">
                                 </td>
                                 <td>{{td.companyName}}</td>
                                 <td>{{td.companyManagerAccount}}</td>
@@ -95,8 +98,8 @@
                 </div>
                 <div class="text-right">
                     <ts-pagination (pageChange)="loadDatas()" [pagination]="pagination" [items]="[{text:'显示 5 条',value:5},{text:'显示 10 条',value:10},{text:'显示 20 条',value:20}]"
-                        [color]="global.params.color" goTitle="跳转" prevTitle="上一页" nextTitle="下一页" startTitle="首页" endTitle="末尾"
-                        outline></ts-pagination>
+                        [color]="global.params.color" goTitle="跳转" prevTitle="上一页" nextTitle="下一页" startTitle="首页"
+                        endTitle="末尾" outline></ts-pagination>
                 </div>
             </div>
         </div>

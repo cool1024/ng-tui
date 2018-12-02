@@ -9,7 +9,7 @@ import { RoleGroup } from '../../interfaces/role.interface';
             class="d-table w-100 list-none p-2 border border-muted mb-2">
             <div class="d-table-row">
                 <div tsToggle class="d-table-cell pointer">
-                    <button *ngIf="roleGroup.roleChildren.length>0" class="btn btn-sm btn-success mr-2">
+                    <button *ngIf="roleGroup.roleChildren.length>0" class="btn btn-sm btn-info mr-2">
                         <i class="iconfont icon-next" [class.fa-rotate-90]="tsCollapse.open"></i>
                     </button>
                     <button *ngIf="roleGroup.roleChildren.length===0" class="btn btn-sm btn-outline-white mr-2" disabled>

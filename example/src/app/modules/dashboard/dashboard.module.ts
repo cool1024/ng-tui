@@ -8,7 +8,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DashboardRoutingModule, declarationComponents, entryComponents, providers, exportComponents } from './dashboard.routing';
-import { ButtonModule, TabModule, EChartModule } from 'ng-tui';
+import { ButtonModule, TabModule, EChartModule, DropdownModule } from 'ng-tui';
 
 @NgModule({
     imports: [
@@ -16,6 +16,7 @@ import { ButtonModule, TabModule, EChartModule } from 'ng-tui';
         EChartModule,
         TabModule,
         ButtonModule,
+        DropdownModule,
         DashboardRoutingModule,
     ],
     declarations: [declarationComponents],

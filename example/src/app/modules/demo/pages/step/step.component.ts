@@ -27,14 +27,14 @@ export class StepComponent implements OnInit {
     constructor(private request: RequestService) { }
 
     ngOnInit() {
-        this.provincesOb.subscribe(datas => this.provinceDatas = datas);
+        // this.provincesOb.subscribe(datas => this.provinceDatas = datas);
     }
 
-    get provincesOb(): Observable<Item[]> {
-        return this.request.url('/managerapi/china/p').pipe(
-            map<ApiData, Item[]>(res =>
-                res.datas.map(item => ({ value: item.id, text: item.name }))
-            )
-        );
-    }
+    // get provincesOb(): Observable<Item[]> {
+    //     return this.request.url('/managerapi/china/p').pipe(
+    //         map<ApiData, Item[]>(res =>
+    //             res.datas.map(item => ({ value: item.id, text: item.name }))
+    //         )
+    //     );
+    // }
 }

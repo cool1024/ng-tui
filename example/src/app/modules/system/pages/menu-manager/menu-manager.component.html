@@ -1,15 +1,16 @@
-<div class="toolbar">
-    <h4>菜单管理</h4>
-    <div class="m-btn">
-        <button (click)="editMenuGroup()" tsBtn color="success">添加菜单组</button>
-        <button (click)="editMainMenu(activeGroup)" [disabled]="!activeGroup" tsBtn color="success">添加主要菜单</button>
-        <button (click)="editChildMenu(activeMenu)" [disabled]="!activeMenu" tsBtn color="success">添加子菜单</button>
-        <button (click)="loadDatas()" class="btn btn-white">
-            <i class="fa fa-refresh fa-fw"></i>刷新数据
-        </button>
+<div class="toolbar"></div>
+<div class="p-3">
+    <div class="card mb-3">
+        <h5 class="card-header">菜单管理</h5>
+        <div class="card-body m-btn">
+            <button (click)="editMenuGroup()" tsBtn color="info">添加菜单组</button>
+            <button (click)="editMainMenu(activeGroup)" [disabled]="!activeGroup" tsBtn color="info">添加主要菜单</button>
+            <button (click)="editChildMenu(activeMenu)" [disabled]="!activeMenu" tsBtn color="info">添加子菜单</button>
+            <button (click)="loadDatas()" class="btn btn-white">
+                <i class="fa fa-refresh fa-fw"></i>刷新数据
+            </button>
+        </div>
     </div>
-</div>
-<div class="p-2">
     <div class="card">
         <ts-tabs #tsTabs [tabs]="['菜单组','主菜单','子菜单']" [target]="tsTabPads" [color]="global.params.color" activeTab="菜单组"></ts-tabs>
         <div #tsTabPads='tsTabs' tsTabs class="card rounded-0 border-top-0">
@@ -17,11 +18,11 @@
             <div tsTab tab='菜单组' class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped">
-                        <thead>
-                            <tr class="font-weight-bold bg-light">
-                                <td>排序</td>
-                                <td>组名</td>
-                                <td>操作</td>
+                        <thead class="thead-light">
+                            <tr>
+                                <th>排序</th>
+                                <th>组名</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody [sortablejs]="menuGroups">
@@ -51,13 +52,13 @@
             <div tsTab tab='主菜单' class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped">
-                        <thead>
+                        <thead class="thead-light">
                             <tr class="font-weight-bold bg-light">
-                                <td>排序</td>
-                                <td>菜单名称</td>
-                                <td>图标</td>
-                                <td>图片</td>
-                                <td>操作</td>
+                                <th>排序</th>
+                                <th>菜单名称</th>
+                                <th>图标</th>
+                                <th>图片</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody [sortablejs]='activeMainMenus'>
@@ -68,13 +69,15 @@
                                     <i [ngClass]="mainMenu.menuIcon"></i>
                                 </td>
                                 <td>
-                                    <img tsImg dataSrc="assets/images/404.jpg" [src]="mainMenu.menuImage" width="20" height="20">
+                                    <img tsImg dataSrc="assets/images/404.jpg" [src]="mainMenu.menuImage" width="20"
+                                        height="20">
                                 </td>
                                 <td>
                                     <span (click)="deleteMenu(mainMenu)" class="btn-icon btn-icon-danger" tsTip="删除">
                                         <i class="iconfont icon-delete"></i>
                                     </span>
-                                    <span (click)="editMainMenu(activeGroup,mainMenu)" class="btn-icon btn-icon-info" tsTip="编辑">
+                                    <span (click)="editMainMenu(activeGroup,mainMenu)" class="btn-icon btn-icon-info"
+                                        tsTip="编辑">
                                         <i class="iconfont icon-edit"></i>
                                     </span>
                                     <span (click)="showChildMenus(mainMenu)" class="btn-icon btn-icon-dark" tsTip="子菜单列表">
@@ -93,12 +96,12 @@
             <div tsTab tab='子菜单' class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped">
-                        <thead>
-                            <tr class="font-weight-bold bg-light">
-                                <td>排序</td>
-                                <td>菜单名称</td>
-                                <td>链接</td>
-                                <td>操作</td>
+                        <thead class="thead-light">
+                            <tr class="font-weight-bold">
+                                <th>排序</th>
+                                <th>菜单名称</th>
+                                <th>链接</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody [sortablejs]="activeChildMenus">
@@ -112,7 +115,8 @@
                                     <span (click)="deleteMenu(childMenu)" class="btn-icon btn-icon-danger" tsTip="删除">
                                         <i class="iconfont icon-delete"></i>
                                     </span>
-                                    <span (click)="editChildMenu(activeMenu,childMenu)" class="btn-icon btn-icon-info" tsTip="编辑">
+                                    <span (click)="editChildMenu(activeMenu,childMenu)" class="btn-icon btn-icon-info"
+                                        tsTip="编辑">
                                         <i class="iconfont icon-edit"></i>
                                     </span>
                                 </td>

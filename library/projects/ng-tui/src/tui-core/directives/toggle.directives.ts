@@ -7,13 +7,14 @@ import { Toggle } from '../interfaces/toggle.interface';
 })
 export class ToggleDirective implements AfterViewInit {
 
-    blur: ($event: any) => void;
-
     @Input() target: Toggle;
 
     @Input() bind: Toggle;
 
     @Input() handleFunc: (target: any) => void;
+
+    blur: ($event: any) => void;
+    hover: ($event: any) => void;
 
     @HostListener('click') onClick() {
         if (this.handleFunc) {
@@ -24,6 +25,10 @@ export class ToggleDirective implements AfterViewInit {
 
     @HostListener('blur', ['$event']) onBlur($event: any) {
         return !this.blur || this.blur($event);
+    }
+
+    @HostListener('mouseover', ['$event']) onHover($event: any) {
+        return !this.hover || this.hover($event);
     }
 
     get dom(): HTMLElement | any {

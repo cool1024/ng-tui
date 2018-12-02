@@ -1,9 +1,12 @@
-<div class="toolbar">
-    <h4>高德地图</h4>
-    <p class="text-muted">对几个常用的地图方法进行了封装，提供了一个简单的地图显示指令。地图服务提供了原始地图API接口，可以使用几乎全部的地图接口。</p>
-</div>
-<div class="p-2">
-    <div class="card card-body mb-2">
+<div class="toolbar"></div>
+<div class="p-3">
+    <div class="card mb-3">
+        <h5 class="card-header">高德地图</h5>
+        <div class="card-body">
+            <p class="text-muted">对几个常用的地图方法进行了封装，提供了一个简单的地图显示指令。地图服务提供了原始地图API接口，可以使用几乎全部的地图接口。</p>
+        </div>
+    </div>
+    <div class="card card-body mb-3">
         <div class="map-pad" #map="tsMap" tsMap (positionChange)="getPosition($event)"></div>
         <div class="text-right mt-2 m-btn" *ngIf="mapStatus">
             <button (click)="randomStyle()" class="btn btn-info">随机样式</button>

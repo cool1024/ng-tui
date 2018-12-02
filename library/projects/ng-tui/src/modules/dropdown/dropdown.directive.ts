@@ -59,7 +59,6 @@ export class DropdownDirective implements AfterViewInit, OnInit {
                 this.toggle();
             }
         };
-        this.dropMenuDirective.bind(this.toggleDirective.dom);
     }
 
     toggle() {
@@ -103,8 +102,6 @@ export class DropMenuDirective implements AfterViewInit {
 
     dom: HTMLDivElement;
 
-    toggleDom: HTMLElement;
-
     constructor(
         public elementRef: ElementRef,
         private html: HtmlDomService,
@@ -143,10 +140,6 @@ export class DropMenuDirective implements AfterViewInit {
         const compare = window.innerWidth < this.modalSize ? window.innerWidth : (window.innerWidth + this.modalSize) / 2;
         const offset = (point.x + w) - compare;
         return offset > 0 ? offset + 20 : 0;
-    }
-
-    bind(toggle: HTMLElement) {
-        this.toggleDom = toggle;
     }
 
     setShow(dropup = false, btnSize: [number, number]) {
