@@ -18,6 +18,7 @@ export const AppConfig = {
         BACKGROUND_IMAGE_SRC: 'url(https://picsum.photos/300/800)',
         BACKGROUND_COLOR: 'white',
         DEFAULT_TEXT_COLOR: 'black',
+        MODEL_TITLE_COLOR: '#50a4ff',
         LINE_COLOR: 'rgba(200, 200, 200,.3)',
         ACTIVE_TEXT_THEME: 'info',
     }

@@ -14,10 +14,6 @@
     width: 30px;
 }
 
-.ts-icon img {
-    // filter: grayscale(100%);
-}
-
 .font-up {
     animation: icon-up 0.5s ease-out forwards;
 }
@@ -44,18 +40,6 @@
 .menu-child-block {
     line-height: 42px;
 }
-
-// .menu-child-item:hover {
-//     background-color: rgba(200, 200, 200, 0.05);
-// }
-
-// .menu-child-item.active {
-//     background-color: rgba(200, 200, 200, 0.05);
-// }
-
-// .menu-child-item:active {
-//     background-color: rgba(200, 200, 200, 0.1);
-// }
 
 .child-close {
     max-height: 0px;
@@ -105,11 +89,6 @@
     cursor: pointer;
 }
 
-.menu-rect img {
-    // filter: grayscale(100%);
-    // transition: filter ease-in-out .3s;
-}
-
 .menu-rect i {
     font-size: 1.2rem;
 }
@@ -118,26 +97,10 @@
     position: relative;
 }
 
-.menu-rect:hover img {
-    // filter: grayscale(0%);
-}
-
-// .menu-rect:hover > .menu-popover {
-//     visibility: visible;
-//     opacity: 1;
-// }
-
 .menu-popover {
-    // visibility: hidden;
     position: fixed;
     z-index: 9999;
-
-    // margin-top: -44px;
-    margin-left: 20px;
     width: 130px;
-
-    // opacity: 0;
-    // transition: opacity ease-out .3s;
 }
 
 .menu-popover .menu-item:hover {

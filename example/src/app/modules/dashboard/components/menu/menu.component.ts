@@ -54,6 +54,12 @@ export class MenuComponent {
         };
     }
 
+    get modelMenuStyle(): Object {
+        return {
+            color: this.menuConfig.MODEL_TITLE_COLOR
+        };
+    }
+
     get menuSmallStyle(): Object {
         return {
             background: this.menuConfig.BACKGROUND_COLOR,
