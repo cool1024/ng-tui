@@ -4,14 +4,16 @@
 使用angular-cli工具创建的例子项目，已经配置引入好了ng-tui
 
 ## 第三方库支持
-1. Quill.js[富文本]
-2. CKEditor5[富文本]
-3. popper.js&&tooltip.js[提示消息]
-4. prism.js[代码语法高亮]
-5. rsa.js[RSA加密支持]
-6. snap.svg[Snap库支持]
-7. OverlayScrollbars[自定义滚动条]
-8. animate.css[css3动画库]
+* Quill.js[富文本]
+* CKEditor5[富文本]
+* popper.js&&tooltip.js[提示消息]
+* prism.js[代码语法高亮]
+* rsa.js[RSA加密支持]
+* snap.svg[Snap库支持]
+* OverlayScrollbars[自定义滚动条]
+* animate.css[css3动画库]
+* echarts[图表库]
+* AMap[高德地图]
 
 ## 国际化支持
 1. 使用Angular内置国际化工具构建

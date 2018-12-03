@@ -59,15 +59,21 @@ export class SideMenuDirective implements Toggle, OnDestroy {
         const style = this.hostDom.style;
         const p = this.html.getPosition(this.targetDom);
         const w = this.html.getWidth(this.targetDom);
-        style.top = p.y + 'px';
-        style.left = w + p.x + 'px';
+        // 越界修正
+        setTimeout(() => {
+            const h = this.html.getHeight(this.hostDom);
+            let offset = (window.innerHeight - (h + p.y));
+            // tslint:disable-next-line:no-unused-expression
+            offset > 0 && (offset = 0);
+            style.top = p.y + offset + 'px';
+            style.left = w + p.x + 'px';
+        });
     }
 
     ngOnDestroy() {
         return this.intervalSub && this.intervalSub.unsubscribe();
     }
 }
-
 
 @Directive({
     selector: `[tsMenuGroup]`,
