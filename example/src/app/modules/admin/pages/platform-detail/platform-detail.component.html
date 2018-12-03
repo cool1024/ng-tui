@@ -1,72 +1,82 @@
-<div class="toolbar">
-    <h4>{{platformManager.id===0?'添加管理员':'管理员详情'}}</h4>
-</div>
-<div class="p-2">
-    <div class="card card-body">
-        <form #ngForm="ngForm" class="container m-0">
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label label-required text-right">平台管理名称</label>
-                <div class="col-sm-10">
-                    <input required name="name" #platformManagerName="ngModel" [class.is-invalid]="platformManagerName.invalid&&!platformManagerName.pristine"
-                        [(ngModel)]="platformManager.platformManagerName" type="text" class="form-control" placeholder="请输入平台管理名称（全称）">
-                    <div class="invalid-feedback">商户名称是必填的</div>
+<div class="toolbar"></div>
+<div class="p-3">
+    <div class="card">
+        <h5 class="card-header">{{platformManager.id===0?'添加管理员':'管理员详情'}}</h5>
+        <div class="card-body">
+            <form #ngForm="ngForm" class="container m-0">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label label-required text-right">平台管理名称</label>
+                    <div class="col-sm-10">
+                        <input required name="name" #platformManagerName="ngModel" [class.is-invalid]="platformManagerName.invalid&&!platformManagerName.pristine"
+                            [(ngModel)]="platformManager.platformManagerName" type="text" class="form-control"
+                            placeholder="请输入平台管理名称（全称）">
+                        <div class="invalid-feedback">商户名称是必填的</div>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label text-right">联系方式</label>
-                <div class="col-sm-10">
-                    <div class="row">
-                        <div class="col">
-                            <input name="mobile" [(ngModel)]="platformManager.platformManagerMobile" type="text" class="form-control" placeholder="请输入负责人手机号">
-                        </div>
-                        <div class="col">
-                            <input name="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z0-9.-]{2,}[.]{1}[a-zA-Z]{2,}" #platformManagerEmail="ngModel" [class.is-invalid]="platformManagerEmail.invalid&&!platformManagerEmail.pristine"
-                                [(ngModel)]="platformManager.platformManagerEmail" class="form-control" placeholder="请输入负责人邮箱">
-                            <div class="invalid-feedback">邮箱格式为example@mail.com</div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">联系方式</label>
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="col">
+                                <input name="mobile" [(ngModel)]="platformManager.platformManagerMobile" type="text"
+                                    class="form-control" placeholder="请输入负责人手机号">
+                            </div>
+                            <div class="col">
+                                <input name="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z0-9.-]{2,}[.]{1}[a-zA-Z]{2,}"
+                                    #platformManagerEmail="ngModel" [class.is-invalid]="platformManagerEmail.invalid&&!platformManagerEmail.pristine"
+                                    [(ngModel)]="platformManager.platformManagerEmail" class="form-control" placeholder="请输入负责人邮箱">
+                                <div class="invalid-feedback">邮箱格式为example@mail.com</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label label-required text-right">账号</label>
-                <div class="col-sm-10">
-                    <input [disabled]="platformManager.id!==0" required name="account" #platformManagerAccount="ngModel" [class.is-invalid]="platformManagerAccount.invalid&&!platformManagerAccount.pristine"
-                        [(ngModel)]="platformManager.platformManagerAccount" type="text" class="form-control" placeholder="请输入管理员的登入账号">
-                    <div class="invalid-feedback">登入账号是必填的</div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label label-required text-right">账号</label>
+                    <div class="col-sm-10">
+                        <input [disabled]="platformManager.id!==0" required name="account" #platformManagerAccount="ngModel"
+                            [class.is-invalid]="platformManagerAccount.invalid&&!platformManagerAccount.pristine"
+                            [(ngModel)]="platformManager.platformManagerAccount" type="text" class="form-control"
+                            placeholder="请输入管理员的登入账号">
+                        <div class="invalid-feedback">登入账号是必填的</div>
+                    </div>
                 </div>
-            </div>
-            <!--添加模式下必须填密码-->
-            <div class="form-group row" *ngIf="platformManager.id===0">
-                <label class="col-sm-2 col-form-label label-required text-right">密码</label>
-                <div class="col-sm-10">
-                    <input required name="password" #password="ngModel" [class.is-invalid]="password.invalid&&!password.pristine" [(ngModel)]="platformManager.password"
-                        type="password" class="form-control" placeholder="请输入管理员的登入密码">
-                    <div class="invalid-feedback">登入密码是必填的</div>
+                <!--添加模式下必须填密码-->
+                <div class="form-group row" *ngIf="platformManager.id===0">
+                    <label class="col-sm-2 col-form-label label-required text-right">密码</label>
+                    <div class="col-sm-10">
+                        <input required name="password" #password="ngModel" [class.is-invalid]="password.invalid&&!password.pristine"
+                            [(ngModel)]="platformManager.password" type="password" class="form-control" placeholder="请输入管理员的登入密码">
+                        <div class="invalid-feedback">登入密码是必填的</div>
+                    </div>
                 </div>
-            </div>
-            <!--编辑模式下可以选填密码-->
-            <div class="form-group row" *ngIf="platformManager.id!==0">
-                <label class="col-sm-2 col-form-label text-right">密码</label>
-                <div class="col-sm-10">
-                    <input name="password" [(ngModel)]="platformManager.password" type="password" class="form-control" placeholder="如果不修改密码，此处不填写">
+                <!--编辑模式下可以选填密码-->
+                <div class="form-group row" *ngIf="platformManager.id!==0">
+                    <label class="col-sm-2 col-form-label text-right">密码</label>
+                    <div class="col-sm-10">
+                        <input name="password" [(ngModel)]="platformManager.password" type="password" class="form-control"
+                            placeholder="如果不修改密码，此处不填写">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label label-required text-right">是否启用</label>
-                <div class="col-sm-10 pt-2">
-                    <ts-switch name="isActive" [color]="global.params.color" [values]="{open:1,close:0}" [(ngModel)]="platformManager.isActive"></ts-switch>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label label-required text-right">是否启用</label>
+                    <div class="col-sm-10 pt-2">
+                        <ts-switch name="isActive" [color]="global.params.color" [values]="{open:1,close:0}"
+                            [(ngModel)]="platformManager.isActive"></ts-switch>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label"></label>
-                <div class="col-sm-10 m-btn">
-                    <button tsBtn routerLink="/admin/platform">取消/返回</button>
-                    <button [disabled]="ngForm.form.invalid" *ngIf="platformManager.id===0" tsBtn loading (submit)="confirmInsert($event)" color="success">确认添加</button>
-                    <button [disabled]="ngForm.form.invalid" *ngIf="platformManager.id!==0" tsBtn loading (submit)="confirmUpdate($event)" color="primary">确认修改</button>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10 m-btn">
+                        <button tsBtn routerLink="/admin/platform">取消/返回</button>
+                        <button [disabled]="ngForm.form.invalid" *ngIf="platformManager.id===0" tsBtn loading (submit)="confirmInsert($event)"
+                            color="success">确认添加</button>
+                        <button [disabled]="ngForm.form.invalid" *ngIf="platformManager.id!==0" tsBtn loading (submit)="confirmUpdate($event)"
+                            color="primary">确认修改</button>
+                    </div>
                 </div>
-            </div>
-            <!--表单测试数据-->
-            <!-- <pre>{{platformManager|json}}</pre> -->
-        </form>
+                <!--表单测试数据-->
+                <!-- <pre>{{platformManager|json}}</pre> -->
+            </form>
+        </div>
     </div>
 </div>

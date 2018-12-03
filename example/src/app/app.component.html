@@ -8,8 +8,6 @@
             <div class="d-flex align-items-center justify-content-center bg-white flex-shrink-0" style="height: 60px;overflow: hidden;border-bottom:1px solid rgba(200, 200, 200,.3);">
                 <img [src]="menuConfig.SMALL_LOGO" width="30">
                 <h4 *ngIf="global.params.menuMode==='full'" class="m-0">Admin</h4>
-                <!-- <img *ngIf="global.params.menuMode==='full'" [src]="menuConfig.FULL_LOGO" alt="TOOLSUI" height="40"> -->
-                <!-- <img [src]="global.params.menuMode==='small'?menuConfig.SMALL_LOGO:menuConfig.FULL_LOGO" alt="TOOLSUI" height="40"> -->
             </div>
             <app-menu class="flex-grow-1 shadow-sm" [menuConfig]="menuConfig" [autoClose]="true" [menuMode]="global.params.menuMode"
                 [items]="menus" [useImage]="true"></app-menu>
@@ -20,8 +18,8 @@
             <div class="headbar bg-{{global.params.color}} no-select text-light d-flex align-items-center justify-content-between flex-shrink-0 shadow-sm"
                 style="height:60px;z-index:1;">
                 <div class="d-flex align-items-center flex-grow-1 h-100">
-                    <div class="d-flex align-items-center bg-light-hover h-100 pl-3 pr-3">
-                        <i (click)="changeMenuMode()" class="iconfont icon-category pointer"></i>
+                    <div (click)="changeMenuMode()" class="d-flex align-items-center bg-light-hover h-100 pl-3 pr-3">
+                        <i class="iconfont icon-category pointer"></i>
                     </div>
                 </div>
                 <div class="flex-shrink-0 d-flex align-items-center h-100">
@@ -33,10 +31,12 @@
                             <i class="iconfont icon-comments pointer"></i>
                         </div>
                     </div>
-                    <div tsDropdown class="bg-light-hover h-100 d-flex align-items-center pointer">
-                        <img tsToggle [src]="auth.user.avatar" dataSrc="assets/images/avatar/0.jpg" class="rounded-circle border border-light ml-3 mr-3"
-                            height="35" width="35" alt="avatar">
-                        <div tsDropMenu [offsetX]="-100" [offsetY]="28" style="width:163px;">
+                    <div tsDropdown class="h-100 d-flex align-items-center pointer">
+                        <div class="bg-light-hover h-100 d-flex align-items-center" tsToggle>
+                            <img [src]="auth.user.avatar" dataSrc="assets/images/avatar/0.jpg" class="rounded-circle border border-light ml-3 mr-3"
+                                height="35" width="35" alt="avatar">
+                        </div>
+                        <div tsDropMenu [offsetX]="-100" [offsetY]="2" style="width:163px;">
                             <div class="dropdown-item-title">{{auth.user?.role.roleName}}</div>
                             <button class="dropdown-item pointer">
                                 <span class="iconfont icon-mobile mr-2"></span>

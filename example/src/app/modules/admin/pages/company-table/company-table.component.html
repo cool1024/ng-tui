@@ -5,39 +5,41 @@
     <div class="p-3">
         <div class="card mb-3">
             <h5 class="card-header">公司列表</h5>
-            <div class="card-body form-inline">
-                <div class="input-group mb-3 mr-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-white">商户名称</span>
+            <div class="card-body">
+                <div class="form-inline">
+                    <div class="input-group mb-3 mr-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white">商户名称</span>
+                        </div>
+                        <input style="width:140px" [(ngModel)]="search.params.name" type="text" class="form-control"
+                            placeholder="请输入商家名称关键词">
+                        <div class="input-group-prepend input-group-append">
+                            <span class="input-group-text bg-white">商户账号</span>
+                        </div>
+                        <input style="width:140px" [(ngModel)]="search.params.account" type="text" class="form-control"
+                            placeholder="请输入关键词">
                     </div>
-                    <input style="width:140px" [(ngModel)]="search.params.name" type="text" class="form-control"
-                        placeholder="请输入商家名称关键词">
-                    <div class="input-group-prepend input-group-append">
-                        <span class="input-group-text bg-white">商户账号</span>
+                    <div class="input-group mb-3 mr-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white">创建时间</span>
+                        </div>
+                        <input style="width:140px" tsToggle [value]="search.params.start|date :'yyyy-MM-dd'" [target]="datepickerOne"
+                            [bind]="datepickerOne" type="text" class="form-control bg-white pointer" placeholder="开始时间"
+                            readonly>
+                        <div class="input-group-prepend input-group-append">
+                            <span class="input-group-text bg-white">到</span>
+                        </div>
+                        <input style="width:140px" tsToggle [value]="search.params.end|date :'yyyy-MM-dd'" [target]="datepickerTwo"
+                            [bind]="datepickerTwo" type="text" class="form-control bg-white pointer" placeholder="结束时间"
+                            readonly>
                     </div>
-                    <input style="width:140px" [(ngModel)]="search.params.account" type="text" class="form-control"
-                        placeholder="请输入关键词">
-                </div>
-                <div class="input-group mb-3 mr-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-white">创建时间</span>
-                    </div>
-                    <input style="width:140px" tsToggle [value]="search.params.start|date :'yyyy-MM-dd'" [target]="datepickerOne"
-                        [bind]="datepickerOne" type="text" class="form-control bg-white pointer" placeholder="开始时间"
-                        readonly>
-                    <div class="input-group-prepend input-group-append">
-                        <span class="input-group-text bg-white">到</span>
-                    </div>
-                    <input style="width:140px" tsToggle [value]="search.params.end|date :'yyyy-MM-dd'" [target]="datepickerTwo"
-                        [bind]="datepickerTwo" type="text" class="form-control bg-white pointer" placeholder="结束时间"
-                        readonly>
                 </div>
                 <div class="form-inline">
                     <div class="input-group mr-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-white">共查询到</span>
                         </div>
-                        <input type="text" value="{{pagination.total}}" class="form-control text-center bg-white"
+                        <input style="width:140px" type="text" value="{{pagination.total}}" class="form-control text-center bg-white"
                             readonly placeholder="0">
                         <div class="input-group-append">
                             <span class="input-group-text bg-white">条/结果</span>

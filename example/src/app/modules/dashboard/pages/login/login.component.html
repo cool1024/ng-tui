@@ -1,5 +1,5 @@
 <div class="fixed-top h-100 w-100 login-pad bg-white">
-    <div class="w-100 h-100 window bg-primary d-flex justify-content-center flex-wrap">
+    <div class="w-100 h-100 window bg-info d-flex justify-content-center flex-wrap">
         <div style="min-width:25rem" class="background flex-grow-1" [ngStyle]="{'background-image':config.BACKGROUND_IMAGE_SRC}">
         </div>
         <form style="width:25rem" class="card h-100 rounded-0 border-0" autocomplete="off">
@@ -21,7 +21,8 @@
                                 <i class="iconfont icon-account" aria-hidden="true"></i>
                             </span>
                         </div>
-                        <input type="text" name="account" [(ngModel)]="account.account" class="form-control rounded-0" [placeholder]="config.FIRST_PLACEHOLDER">
+                        <input type="text" name="account" [(ngModel)]="account.account" class="form-control rounded-0"
+                            [placeholder]="config.FIRST_PLACEHOLDER">
                     </div>
                 </div>
                 <div class="form-group">
@@ -32,15 +33,18 @@
                                 <i class="iconfont icon-lock" aria-hidden="true"></i>
                             </span>
                         </div>
-                        <input (keyup.enter)="btn.present();confirmLogin(btn)" type="password" name="password" [(ngModel)]="account.password" class="form-control
-                    rounded-0" [placeholder]="config.SECOND_PLACEHOLDER">
+                        <input (keyup.enter)="btn.present();confirmLogin(btn)" type="password" name="password"
+                            [(ngModel)]="account.password" class="form-control
+                    rounded-0"
+                            [placeholder]="config.SECOND_PLACEHOLDER">
                     </div>
                 </div>
                 <div class="form-group ">
                     <span class="pull-right text-muted ">忘记密码？</span>
                 </div>
                 <div class="p-4"></div>
-                <button #btn="tsBtn" tsBtn lg loading [color]="global.params.color" class="btn-block rounded-0" (submit)="confirmLogin($event)">登入</button>
+                <button #btn="tsBtn" tsBtn lg loading [color]="global.params.color" class="btn-block rounded-0"
+                    (submit)="confirmLogin($event)">登入</button>
             </div>
             <div class="card-footer bg-white text-center">
                 <p class="mt-1 mb-0">Copyright © 2018 XiaoJian. All Rights Reserved.

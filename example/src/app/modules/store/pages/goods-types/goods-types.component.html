@@ -1,18 +1,18 @@
-<div class="toolbar">
-    <h4>商品分类管理</h4>
-    <div class="m-btn">
-        <button (click)="addType()" tsBtn color="success">新增分类</button>
-        <!-- <button tsBtn color="warning">确认排序</button> -->
-        <button (click)="loadDatas()" class="btn btn-white">
-            <i class="fa fa-refresh fa-fw"></i>刷新列表
-        </button>
+<div class="toolbar"></div>
+<div class="p-3">
+    <div class="card mb-3">
+        <h5 class="card-header">商品分类管理</h5>
+        <div class="card-body m-btn">
+            <button (click)="addType()" tsBtn color="info">新增分类</button>
+            <button (click)="loadDatas()" class="btn btn-white">
+                <i class="fa fa-refresh fa-fw"></i>刷新列表
+            </button>
+        </div>
     </div>
-</div>
-<div class="p-2">
     <div class="card mt-2" tsCollapses>
         <div class="card-body">
             <table class="table">
-                <thead>
+                <thead class="thead-light">
                     <tr class="bg-light">
                         <th scope="col">#</th>
                         <th scope="col">分类名称</th>
@@ -25,8 +25,8 @@
                         <tr class="border-0">
                             <td>{{i+1}}</td>
                             <td>
-                                <input type="text" [disabled]="item.isSaved" [class.form-control]="!item.isSaved" [class.form-control-plaintext]="item.isSaved"
-                                    [(ngModel)]="item.mainType.goodsTypeTitle">
+                                <input type="text" [disabled]="item.isSaved" [class.form-control]="!item.isSaved"
+                                    [class.form-control-plaintext]="item.isSaved" [(ngModel)]="item.mainType.goodsTypeTitle">
                             </td>
                             <td>{{item.mainType.createdAt}}</td>
                             <td>
@@ -48,7 +48,8 @@
                             <td class="pt-0 pb-0 border-0"></td>
                             <td colspan="3" class="pt-0 pb-0 border-0 pl-2">
                                 <div tsCollapse [open]="!item.isSaved" class="form-inline">
-                                    <div *ngFor="let child of item.childTypes;index as j" class="input-group ml-1 mb-3" style="width:10rem;">
+                                    <div *ngFor="let child of item.childTypes;index as j" class="input-group ml-1 mb-3"
+                                        style="width:10rem;">
                                         <input type="text" class="form-control" [(ngModel)]="child.goodsTypeTitle">
                                         <div class="input-group-append">
                                             <button (click)="deleteChildType(item,j)" class="btn btn-white" type="button">

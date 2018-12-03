@@ -328,6 +328,14 @@ ts-select .dropdown-menu {
 }
 
 .animated.zoomInLeft {
+    animation-duration: 0.2s;
+    animation-name: zoomIn;
+}
+
+.dropdown-menu {
+    @extend .animated;
+
+    animation-duration: 0.1s;
     animation-name: zoomIn;
 }
 

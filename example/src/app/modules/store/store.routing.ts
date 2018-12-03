@@ -40,7 +40,7 @@ const routes: Routes = [
         children: [
             {
                 path: 'detail/:id', component: OrderDetailComponent,
-                data: { breadcrumbs: [{ title: '订单列表', path: '/store/list' }, { title: '订单详情' }] },
+                data: { breadcrumbs: [{ title: '订单列表', path: '../' }, { title: '订单详情' }] },
             },
         ]
     },

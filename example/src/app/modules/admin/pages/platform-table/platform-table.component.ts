@@ -20,8 +20,6 @@ export class PlatformTableComponent implements OnInit {
 
     list = new Array<PlatformManager>();
 
-    loading = false;
-
     pagination = new Pagination();
 
     constructor(
@@ -50,13 +48,13 @@ export class PlatformTableComponent implements OnInit {
     }
 
     loadDatas() {
-        this.loading = true;
+        this.pagination.loading = true;
         this.platformService.searchPlatformManager(this.pagination, this.search).subscribe({
             next: res => {
                 this.pagination.total = res.datas.total;
                 this.list = res.datas.rows;
             },
-            complete: () => this.loading = false
+            complete: () => this.pagination.loading = false
         });
     }
 

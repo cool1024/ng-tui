@@ -1,28 +1,31 @@
-<div class="card m-btn">
-    <div class="card-header bg-white">幻灯片管理</div>
-    <div class="card-body">
-        <button (click)="showEditModal()" tsBtn color="success">添加新幻灯片</button>
-        <button (submit)="confirmSort($event)" tsBtn loading color="warning">确认排序</button>
-        <button (click)="loadDatas()" tsBtn>
-            <i class="fa fa-fw fa-refresh"></i>刷新数据
-        </button>
+<div class="toolbar"></div>
+<div class="p-3">
+    <div class="card mb-3">
+        <h5 class="card-header">幻灯片管理</h5>
+        <div class="card-body m-btn">
+            <button (click)="showEditModal()" tsBtn color="info">添加新幻灯片</button>
+            <button (submit)="confirmSort($event)" tsBtn loading color="warning">确认排序</button>
+            <button (click)="loadDatas()" tsBtn>
+                <i class="fa fa-fw fa-refresh"></i>刷新数据
+            </button>
+        </div>
     </div>
-</div>
-<div class="card card-body m-2">
-    <div class="row" [sortablejs]="list">
-        <div *ngFor="let td of list;index as i" class="col-sm-4 col-lg-3">
-            <div class="card border p-2 mb-3">
-                <img tsImg class="w-100" dataSrc="assets/images/404.jpg" [src]="td.bannerSrc" alt="幻灯片">
-                <div class="d-flex mt-2">
-                    <div class="input-group flex-grow-1">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white">链接</span>
+    <div class="card card-body">
+        <div class="row" [sortablejs]="list">
+            <div *ngFor="let td of list;index as i" class="col-sm-4 col-lg-3">
+                <div class="card border p-2 mb-3">
+                    <img tsImg class="w-100" dataSrc="assets/images/404.jpg" [src]="td.bannerSrc" alt="幻灯片">
+                    <div class="d-flex mt-2">
+                        <div class="input-group flex-grow-1">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-white">链接</span>
+                            </div>
+                            <input class="form-control" [value]="td.bannerLink" disabled>
                         </div>
-                        <input class="form-control" [value]="td.bannerLink" disabled>
-                    </div>
-                    <div class="m-btn flex-shrink-0 pl-2">
-                        <button (click)="confirmDelete(td)" tsBtn color="danger">删除</button>
-                        <button (click)="showEditModal(td)" tsBtn color="info">编辑</button>
+                        <div class="flex-shrink-0 pl-2">
+                            <button (click)="confirmDelete(td)" tsBtn color="danger" class="mr-2">删除</button>
+                            <button (click)="showEditModal(td)" tsBtn color="info">编辑</button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
-<div class="pl-3 pr-3 bg-white">
-    <h4>商品详情</h4>
+<div class="toolbar">
+    <!-- <h4>商品详情</h4> -->
     <ts-tabs [tabs]="['基本信息','商品规格']" [color]="global.params.color" [target]="tsTabs" activeTab="基本信息">
     </ts-tabs>
 </div>
@@ -23,7 +23,8 @@
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col">
-                                            <select [(ngModel)]="goods.goodsParentType" class="custom-select" placeholder="请选择一级分类">
+                                            <select [(ngModel)]="goods.goodsParentType" class="custom-select"
+                                                placeholder="请选择一级分类">
                                                 <option *ngFor="let type of parentTypes" [ngValue]="type.value">{{type.text}}</option>
                                             </select>
                                         </div>
@@ -40,7 +41,8 @@
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col">
-                                            <input [(ngModel)]="goods.goodsPrice" type="text" class="form-control" placeholder="请输入商品的价格">
+                                            <input [(ngModel)]="goods.goodsPrice" type="text" class="form-control"
+                                                placeholder="请输入商品的价格">
                                             <div class="invalid-feedback">商品价格是必填的</div>
                                         </div>
                                         <div class="col">
@@ -105,9 +107,11 @@
                     <div class="card-header pl-0 pt-0">规格类型</div>
                     <div class="mt-2" *ngFor="let goodsSpecification of goodsSpecifications;index as i">
                         <div class="input-group">
-                            <input [(ngModel)]="goodsSpecification.specificationTitle" type="text" class="form-control" placeholder="请输入规格分类名称:颜色">
+                            <input [(ngModel)]="goodsSpecification.specificationTitle" type="text" class="form-control"
+                                placeholder="请输入规格分类名称:颜色">
                             <div class="input-group-append">
-                                <button (click)="addSpecificationChild(goodsSpecification)" class="btn btn-success" type="button">添加规格名称</button>
+                                <button (click)="addSpecificationChild(goodsSpecification)" class="btn btn-success"
+                                    type="button">添加规格名称</button>
                                 <button (click)="removeSpecification(i)" class="btn btn-danger" type="button">删除本规格</button>
                             </div>
                         </div>
@@ -118,7 +122,8 @@
                                 </div>
                                 <input [(ngModel)]="goodsSpecification.specificationNames[j]" type="text" class="form-control">
                                 <div class="input-group-append">
-                                    <button (click)="removeSpecificationChild(goodsSpecification,j)" class="btn btn-white" type="button">
+                                    <button (click)="removeSpecificationChild(goodsSpecification,j)" class="btn btn-white"
+                                        type="button">
                                         <i class="iconfont icon-delete"></i>
                                     </button>
                                 </div>
@@ -145,7 +150,8 @@
                                 <input [(ngModel)]="goodsSpecificationDetails[tr].goodsPrice" class="form-control" type="text">
                             </td>
                             <td>
-                                <input [(ngModel)]="goodsSpecificationDetails[tr].goodsStocks" class="form-control" type="text">
+                                <input [(ngModel)]="goodsSpecificationDetails[tr].goodsStocks" class="form-control"
+                                    type="text">
                             </td>
                             <td>
                                 <ts-switch [color]="global.params.color" [values]="{open:1,close:0}" [(ngModel)]="goodsSpecificationDetails[tr].isActive"></ts-switch>
