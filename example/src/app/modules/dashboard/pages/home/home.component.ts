@@ -69,13 +69,13 @@ export class HomeComponent implements OnInit {
             data: [1, 3, 1, 2, 3, 2, 1],
             type: 'bar',
             itemStyle: {
-                color: '#007bff',
+                color: '#50a4ff',
             }
         }]
     };
 
     optionThree: any = {
-        color: ['#007bff'],
+        color: ['#50a4ff'],
         tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -153,7 +153,7 @@ export class HomeComponent implements OnInit {
         },
         series: [{
             lineStyle: {
-                color: '#007bff',
+                color: '#50a4ff',
             },
             smooth: 0.4,
             data: [1, 3, 5, 1, 4, 3, 1],
@@ -162,7 +162,7 @@ export class HomeComponent implements OnInit {
                 color: 'rgba(0, 123, 255, 0.5)',
             },
             itemStyle: {
-                color: '#007bff',
+                color: '#50a4ff',
                 opacity: 0
             }
         }]
