@@ -42,6 +42,8 @@ export class CkeditorComponent implements AfterViewInit, OnInit, OnChanges, OnDe
 
     private ready: boolean;
 
+    private updateLock = false;
+
     constructor(
         private script: ScriptService,
         @Inject('CKEDITOR_SCRIPT_SRCS') private srcs: string[]
@@ -51,7 +53,9 @@ export class CkeditorComponent implements AfterViewInit, OnInit, OnChanges, OnDe
     }
 
     ngOnChanges(change: SimpleChanges) {
-        if (change.content && change.content.currentValue != null && change.content.currentValue !== undefined) {
+        if (this.updateLock) {
+            this.updateLock = false;
+        } else if (change.content) {
             this.updateContent();
         }
     }
@@ -71,6 +75,7 @@ export class CkeditorComponent implements AfterViewInit, OnInit, OnChanges, OnDe
                     this.load.emit(this.editroHandle);
                     editor.model.document.on('change:data', () => {
                         this.contentChange.emit(editor.getData());
+                        this.updateLock = true;
                     });
                     this.updateContent();
                 })
@@ -82,7 +87,7 @@ export class CkeditorComponent implements AfterViewInit, OnInit, OnChanges, OnDe
 
     updateContent() {
         if (this.ready) {
-            this.editroHandle.setData(this.content);
+            this.editroHandle.setData(this.content || '');
         }
     }
 

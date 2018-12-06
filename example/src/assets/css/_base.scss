@@ -411,6 +411,14 @@
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.075) !important;
 }
 
+/** side menu **/
+.side-menu {
+    @extend .dropdown-menu;
+
+    position: relative;
+    display: block;
+}
+
 /** hover **/
 $more_colors: map-merge($theme-colors, ("white": white));
 

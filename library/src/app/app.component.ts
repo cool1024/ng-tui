@@ -13,6 +13,25 @@ export class AppComponent {
 
     selectedValue = 0;
 
+    content = `
+    <h2>Sample</h2>
+
+	<p>This is an instance of the <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/overview.html#classic-editor">classic editor build</a>.</p>
+
+	<figure class="image">
+		<img src="https://hello1024.oss-cn-beijing.aliyuncs.com/upload/banner/201808310313105b88b246cb80c.jpg" />
+	</figure>
+
+	<p>You can use this sample to validate whether your <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/development/custom-builds.html">custom build</a> works fine.</p>
+    `;
+
+    options = {
+        language: 'zh-cn',
+        ckfinder: {
+            uploadUrl: 'https://www.cool1024.com/devexample/upload/ckeditor'
+        }
+    };
+
     @ViewChildren(SideMenuGroupDirective) menuGroups: QueryList<SideMenuGroupDirective>;
 
     doSearch = (key: string) => {

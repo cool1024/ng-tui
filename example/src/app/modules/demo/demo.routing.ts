@@ -42,6 +42,7 @@ import { StepComponent } from './pages/step/step.component';
 import { CodeComponent } from './pages/code/code.component';
 import { CheckboxListComponent } from './pages/checkbox-list/checkbox-list.component';
 import { CkeditorComponent } from './pages/ckeditor/ckeditor.component';
+import { SideMenuComponent } from './pages/side-menu/side-menu.component';
 
 const routes: Routes = [
     {
@@ -108,6 +109,12 @@ const routes: Routes = [
         path: 'collapse', component: CollapseComponent,
         data: {
             breadcrumbs: [{ title: '折叠面板' }]
+        }
+    },
+    {
+        path: 'side-menu', component: SideMenuComponent,
+        data: {
+            breadcrumbs: [{ title: '右侧菜单' }]
         }
     },
     {
@@ -240,6 +247,7 @@ export const declarationComponents = [
     TabComponent,
     SearchComponent,
     CollapseComponent,
+    SideMenuComponent,
     ProgressComponent,
     LoadingComponent,
     BadgeComponent,

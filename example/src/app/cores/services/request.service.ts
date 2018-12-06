@@ -157,7 +157,7 @@ export class RequestService {
      * @return {Observable<ApiData>}
      */
     files(url: string, params: { [key: string]: any },
-        files: Array<{ name: string, files: Array<File> }>, check = true): Observable<ApiData> {
+        files: Array<{ name: string, files: Array<File> }> = [], check = true): Observable<ApiData> {
         const observable = this.http.post<ApiData>(
             this.serverUlr + url, this.getFormdata(params, files), { headers: this.getHeaders() });
         return check ? observable.pipe(skipWhile(res => res.result === false)) : observable;

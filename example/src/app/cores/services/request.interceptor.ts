@@ -17,9 +17,14 @@ export class RequestInterceptor implements HttpInterceptor {
         let requestBody = request.body;
 
         // 如果开启了请求参数打包，那么处理POST/PUT请求的参数(base64处理)
-        if (HttpConfig.OPEN_PARAM_PACKAGE && requestBody && (request.method === 'POST' || request.method === 'PUT')) {
-            requestBody = { params: btoa(JSON.stringify(requestBody)) };
+        if (HttpConfig.OPEN_PARAM_PACKAGE
+            && requestBody
+            && (!(requestBody instanceof FormData))
+            && (request.method === 'POST' || request.method === 'PUT')) {
+            requestBody = { PACKAGE_PARAMAS: btoa(JSON.stringify(requestBody)) };
             request = request.clone({ body: requestBody });
+            console.log(requestBody, (requestBody instanceof FormData));
+
         }
 
         return next.handle(request);

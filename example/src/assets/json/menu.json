@@ -90,6 +90,10 @@
                     {
                         "title": "折叠面板",
                         "url": "/demo/collapse"
+                    },
+                    {
+                        "title": "侧边菜单",
+                        "url": "/demo/side-menu"
                     }
                 ]
             },

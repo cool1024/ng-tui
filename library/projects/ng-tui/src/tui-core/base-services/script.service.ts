@@ -73,13 +73,14 @@ export class ScriptService {
         if (test) {
             this.isReady = true;
             this.useScript.complete();
+        } else {
+            srcs.forEach(src => {
+                taskArray.push(this.task(src));
+            });
+            concat(...taskArray).subscribe({
+                complete: () => { this.useScript.complete(); }
+            });
         }
-        srcs.forEach(src => {
-            taskArray.push(this.task(src));
-        });
-        concat(...taskArray).subscribe({
-            complete: () => { this.useScript.complete(); }
-        });
         return this.useScript;
     }
 

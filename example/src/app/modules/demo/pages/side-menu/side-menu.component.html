@@ -1,0 +1,54 @@
+<div class="toolbar"></div>
+<div class="p-3">
+    <div class="card mb-3">
+        <h5 class="card-header bg-white">右侧菜单</h5>
+        <div class="card-body">
+            <p class="text-muted">1. 右侧菜单与普通的下菜单不同，可以更个性化的设计</p>
+            <p class="text-muted">2. 右侧菜单支持多级嵌套</p>
+        </div>
+    </div>
+    <div class="card card-body d-flex">
+        <div class="d-flex">
+            <div tsMenuGroup>
+                <button tsToggle tsBtn>点击显示菜单</button>
+                <div tsSideMenu class="side-menu ml-2">
+                    <button class="dropdown-item">Action</button>
+                    <button class="dropdown-item">Another action</button>
+                    <button close class="dropdown-item">点击这里会关闭菜单哦</button>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item">Separated link</button>
+                </div>
+            </div>
+            <div tsMenuGroup class="btn-group ml-3">
+                <button type="button" class="btn btn-white">点击右侧</button>
+                <button tsToggle type="button" class="btn btn-white dropdown-toggle dropdown-toggle-split"></button>
+                <div tsSideMenu class="side-menu ml-2">
+                    <button class="dropdown-item">Action</button>
+                    <button class="dropdown-item">Another action</button>
+                    <button class="dropdown-item">Something else here</button>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item">Separated link</button>
+                </div>
+            </div>
+            <div tsMenuGroup class="ml-3">
+                <button tsToggle tsBtn>鼠标移动到到上面</button>
+                <div tsSideMenu="hover" class="side-menu ml-2">
+                    <button class="dropdown-item">Action</button>
+                    <button class="dropdown-item">Another action</button>
+                    <div tsMenuGroup>
+                        <button tsToggle class="dropdown-item">移动到我这里可以看更多</button>
+                        <div tsSideMenu="hover" class="side-menu ml-2">
+                            <button class="dropdown-item">Action</button>
+                            <button class="dropdown-item">Another action</button>
+                            <button class="dropdown-item">Something else here</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item">Separated link</button>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item">Separated link</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

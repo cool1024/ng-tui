@@ -1,12 +1,15 @@
-<ts-datepicker #datepicker="tsDatepicker" [(ngModel)]="date" [color]="global.params.color"></ts-datepicker>
-<ts-timepicker #timepicker="tsTimepicker" [(ngModel)]="time" [color]="global.params.color"></ts-timepicker>
-
 <div class="toolbar">
-    <h4>日期选择</h4>
-    <p class="text-muted">日期选择与时间选择可以快速得到一个格式化好的日期/时间字符串</p>
+    <ts-datepicker #datepicker="tsDatepicker" [(ngModel)]="date" [color]="global.params.color"></ts-datepicker>
+    <ts-timepicker #timepicker="tsTimepicker" [(ngModel)]="time" [color]="global.params.color"></ts-timepicker>
 </div>
-<div class="p-2">
-    <div class="card mb-2">
+<div class="p-3">
+    <div class="card mb-3">
+        <h5 class="card-header">日期选择</h5>
+        <div class="card-body">
+            <p class="text-muted">日期选择与时间选择可以快速得到一个格式化好的日期/时间字符串</p>
+        </div>
+    </div>
+    <div class="card mb-3">
         <div class="card-header border-bottom">
             组件参数
         </div>
@@ -72,7 +75,7 @@
             </table>
         </div>
     </div>
-    <div class="card mb-2">
+    <div class="card mb-3">
         <div class="card-header border-bottom">
             导入日期模块
         </div>

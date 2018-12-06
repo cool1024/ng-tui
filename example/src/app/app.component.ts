@@ -38,7 +38,7 @@ export class AppComponent {
         // 载入系统默认配置参数
         this.global.appendValuesToParams({
             dashboardMode: 'full',
-            menuMode: 'full',
+            menuMode: this.global.getStringFromStorage('menuMode', 'full'),
             lazyload: true,
             color: 'info'
         });
@@ -71,6 +71,7 @@ export class AppComponent {
      */
     changeMenuMode() {
         this.global.params.menuMode = this.global.params.menuMode === 'small' ? 'full' : 'small';
+        this.global.setValuesToStorage({ menuMode: this.global.params.menuMode });
     }
 
     /**
