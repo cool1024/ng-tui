@@ -3,6 +3,9 @@ export const HttpConfig = {
     // 服务器接口地址
     SERVER_URL: 'https://www.cool1024.com',
 
+    // 资源地址
+    SOURCE_URL: 'https://www.cool1024.com',
+
     // WEBSOCKET链接地址
     WEBSOCKET_URL: '',
 

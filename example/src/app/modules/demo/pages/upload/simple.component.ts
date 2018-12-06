@@ -5,6 +5,7 @@ import { of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { ViewComponent } from './view.component';
 import { ApiData } from 'src/app/cores/classes';
+import { HttpConfig } from 'src/app/configs/http.config';
 
 @Component({
     templateUrl: './simple.component.html',
@@ -48,7 +49,7 @@ export class MyModule { }`,
         host: '',
         // uploader: file => of('https://picsum.photos/300/300/?random').pipe(delay(2000))
         uploader: file => this.request.files('/devexample/upload/file', { file: file })
-            .pipe(map<ApiData, string>(res => res.datas))
+            .pipe(map<ApiData, string>(res => HttpConfig.SOURCE_URL + '/' + res.datas))
     };
 
     imageUrl = 'https://picsum.photos/300/300?100';
