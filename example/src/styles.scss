@@ -239,6 +239,34 @@ ts-select .dropdown-menu {
     animation-name: zoomIn;
 }
 
+@keyframes jackInTheBox {
+    0% {
+        transform: rotate(0deg);
+        transform-origin: center center;
+    }
+
+    25% {
+        transform: rotate(-30deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(30deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.animated.jackInTheBox {
+    animation-duration: .2s;
+    animation-name: jackInTheBox;
+}
+
 .dropdown-menu {
     @extend .animated;
 

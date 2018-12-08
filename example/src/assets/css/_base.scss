@@ -419,6 +419,29 @@
     display: block;
 }
 
+/** badge message **/
+.badge-message {
+    position: relative;
+    border: none;
+}
+
+.badge-message[data-badge]:after {
+    content: attr(data-badge);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: .5em;
+    font-weight: 200;
+    background: $danger;
+    color: white;
+    width: 1rem;
+    height: 1rem;
+    text-align: center;
+    line-height: 1rem;
+    border-radius: 50%;
+    box-shadow: 0 0 1px rgb(179, 179, 179);
+}
+
 /** hover **/
 $more_colors: map-merge($theme-colors, ("white": white));
 

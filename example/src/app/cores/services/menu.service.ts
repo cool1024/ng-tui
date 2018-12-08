@@ -1,16 +1,26 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ApiData } from '../classes';
+import { RequestService } from './request.service';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class MenuService {
 
     menuModels = new Array<any>();
 
-    constructor() { }
+    constructor(private request: RequestService) { }
+
+    loadMenu(): Observable<ApiData> {
+        return this.request.url('/managerapi/menu').pipe(tap(res => {
+            this.menuModels = this.formatMenuData(res.datas);
+        }));
+    }
 
     /**
      * 加载系统菜单
      */
-    loadMenu(datas: any): any {
+    formatMenuData(datas: any): any {
 
         this.menuModels = [];
         const menus = datas;

@@ -28,7 +28,7 @@ import { MenuService } from '../../services/menu.service';
     </div>
     <div class="modal-footer">
         <button (click)="modal.dismiss()" type="button" class="btn btn-white">取消</button>
-        <button tsBtn loading color="primary" (submit)="confirmSave($event)" [disabled]="!menu.menuTitle">确认保存</button>
+        <button tsBtn loading color="info" (submit)="confirmSave($event)" [disabled]="!menu.menuTitle">确认保存</button>
     </div>`,
 })
 export class MenuModalComponent {
