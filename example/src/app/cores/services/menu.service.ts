@@ -12,6 +12,7 @@ export class MenuService {
     constructor(private request: RequestService) { }
 
     loadMenu(): Observable<ApiData> {
+        this.menuModels = [];
         return this.request.url('/managerapi/menu').pipe(tap(res => {
             this.menuModels = this.formatMenuData(res.datas);
         }));

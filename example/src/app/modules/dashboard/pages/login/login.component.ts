@@ -38,6 +38,7 @@ export class LoginComponent {
                     'ng-params-three': datas.platform,
                 });
                 this.auth.loadUserDeail();
+                this.menu.loadMenu().subscribe();
                 // this.menu.loadMenu();
                 this.router.navigateByUrl('/');
             },
