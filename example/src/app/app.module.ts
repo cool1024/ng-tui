@@ -14,7 +14,8 @@ import {
     ButtonModule,
     ConfirmModule,
     QuillModule,
-    CkeditorModule
+    CkeditorModule,
+    ImageModule
 } from 'ng-tui';
 
 @NgModule({
@@ -32,6 +33,7 @@ import {
             paginationItems: [{ text: '显示 5 条', value: 5 }, { text: '显示 10 条', value: 10 }, { text: '显示 20 条', value: 20 }]
         }),
         ConfirmModule,
+        ImageModule,
         ToastModule.forRoot({ position: 'bottom right', timeout: 3000, maxLength: 6 }),
         EChartModule.forRoot('assets/echart/echarts.common.min.js'),
         QuillModule.forRoot(['assets/quill/quill.min.js']),

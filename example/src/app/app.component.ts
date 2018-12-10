@@ -3,7 +3,7 @@ import { Router, RouteConfigLoadStart, NavigationEnd, ActivatedRouteSnapshot } f
 import { GlobalService, MenuService, AuthService } from './cores/services';
 import { MenuModel } from './modules/dashboard/components/menu/menu.interface';
 import { AppConfig } from './configs/app.config';
-import { ConfirmService } from 'ng-tui';
+import { ConfirmService, ToastService } from 'ng-tui';
 
 @Component({
     selector: 'app-root',
@@ -27,6 +27,7 @@ export class AppComponent {
         private router: Router,
         private confirm: ConfirmService,
         public auth: AuthService,
+        private toast: ToastService,
     ) {
 
         // 设置登入状态
@@ -48,6 +49,7 @@ export class AppComponent {
             this.auth.loadUserDeail();
         });
 
+        // 从本地文件载入菜单
         // this.request.withoutHost.text('assets/json/menu.json').subscribe(res => {
         //      this.menu.loadMenu(JSON.parse(res));
         // });
@@ -95,5 +97,19 @@ export class AppComponent {
         if (node.firstChild) {
             this.parseRoute(node.firstChild);
         }
+    }
+
+    /**
+     * 清空消息通知
+     */
+    cleanMessage() {
+        this.toast.info('操作不可用', '这个清空操作为预览，无实际效果');
+    }
+
+    /**
+     * 发送通知消息
+     */
+    sendMessage() {
+        this.toast.info('操作不可用', '这个发送操作为预览，无实际效果');
     }
 }

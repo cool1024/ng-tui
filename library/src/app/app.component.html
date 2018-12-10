@@ -1,1 +1,42 @@
-<ts-ckeditor [options]="options" [(content)]="content"></ts-ckeditor>
+<!-- <ts-ckeditor [options]="options" [(content)]="content"></ts-ckeditor> -->
+<div class="headbar bg-info no-select text-light d-flex align-items-center justify-content-between flex-shrink-0 shadow-sm"
+    style="height:60px;z-index:1;">
+    <div class="d-flex align-items-center flex-grow-1 h-100">
+
+    </div>
+    <div class="flex-shrink-0 d-flex align-items-center h-100">
+        <div class="h-100 d-flex">
+            <div class="d-flex align-items-center bg-light-hover pointer h-100 pl-3 pr-3">
+                <i class="iconfont icon-remind"></i>
+            </div>
+            <div tsDropdown [useItemClickClose]="false" class="d-flex align-items-center bg-light-hover pointer h-100 pl-3 pr-3 badge-message message-note"
+                data-badge="2">
+                <i tsToggle class="iconfont icon-comments"></i>
+                <div tsDropMenu [offsetX]="-200" [offsetY]="2" style="width:300px;">
+                    <div class="p-3">
+                        <div class="media">
+                            <img dataSrc="assets/images/404.jpg" src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png"
+                                height="35" width="35" class="mr-3">
+                            <div class="media-body">
+                                <p class="m-0 text-truncate" style="width:200px">您收到了10条消息</p>
+                                <small class="text-muted">刚刚</small>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="media">
+                            <img dataSrc="assets/images/404.jpg" src="https://gw.alipayobjects.com/zos/rmsportal/OKJXDXrmkNshAMvwtvhu.png"
+                                height="35" width="35" class="mr-3">
+                            <div class="media-body">
+                                <p class="m-0 text-truncate" style="width:200px">今天上班打卡成功，本月有10次未打卡32131</p>
+                                <small class="text-muted">1小时前</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex align-items-center bg-light-hover pointer h-100 pl-3 pr-3">
+                <i class="iconfont icon-remind"></i>
+            </div>
+        </div>
+    </div>
+</div>
