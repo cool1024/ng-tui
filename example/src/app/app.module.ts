@@ -39,6 +39,8 @@ import {
         QuillModule.forRoot(['assets/quill/quill.min.js']),
         MapModule.forRoot('bea16ad29a10b04e05e0624362d504dc'),
         CkeditorModule.forRoot(['assets/ckeditor/ckeditor-classic.js', 'assets/ckeditor/zh-cn.js']),
+        // 使用Word样式支持，参考地址 https://ckeditor.com/ckeditor-5/#document
+        // CkeditorModule.forRoot(['assets/ckeditor/ckeditor-document.js', 'assets/ckeditor/zh-cn-document.js']),
         ButtonModule,
         DropdownModule,
         DashboardModule,
