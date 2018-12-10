@@ -1,11 +1,11 @@
-# Example
+# TUI-模版项目
 
 ## 说明
 使用angular-cli工具创建的例子项目，已经配置引入好了ng-tui
 
 ## 第三方库支持
 * Quill.js[富文本]
-* CKEditor5[富文本]
+* CKEditor5(classic,document模式)[富文本]
 * popper.js&&tooltip.js[提示消息]
 * prism.js[代码语法高亮]
 * rsa.js[RSA加密支持]
