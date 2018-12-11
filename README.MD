@@ -30,8 +30,8 @@ NG-TUI是ng-tools-ui的增强版本，移除了大部分无用功能，保留了
 // 导入bootstrap样式
 @import "~bootstrap/scss/bootstrap";
 
-// 导入tui样式
-@import "~ng-tui/scss/style"
+// 导入tui样式-暂不可用，参考dashboard的引入方式
+// @import "~ng-tui/scss/style"
 ```
 
 ## 使用
