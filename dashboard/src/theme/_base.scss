@@ -1,0 +1,474 @@
+.m-btn .btn:not(:first-child) {
+    @extend .ml-3;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.btn-white,
+.btn-outline-white {
+    background-color: $white;
+    color: $dark;
+    border-color: $gray-400;
+}
+
+.btn-white:hover,
+.btn-outline-white:hover,
+.btn-outline-white:active {
+    color: $dark;
+    background-color: $gray-100;
+    border-color: $gray-400;
+}
+
+.btn-outline-white:not(:disabled):not(.disabled):active,
+.btn-outline-white:not(:disabled):not(.disabled).active,
+.show > .btn-outline-white.dropdown-toggle {
+    color: $dark;
+    border-color: $gray-400;
+    background-color: $gray-300;
+}
+
+.btn-outline-white.disabled,
+.btn-outline-white:disabled {
+    color: $gray-500;
+}
+
+.btn-white.active,
+.btn-outline-white .active {
+    background-color: $gray-200;
+}
+
+/** btn **/
+.btn-icon {
+    border-radius: 50%;
+    height: 35px;
+    width: 35px !important;
+    line-height: 35px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    color: $dark;
+}
+
+.btn-icon .iconfont {
+    font-size: $font-size-base * 1.2;
+}
+
+.btn-icon:hover {
+    color: white;
+}
+
+.btn-icon:active {
+    opacity: 0.8;
+}
+
+@each $name, $color in $theme-colors {
+    .btn-icon-#{$name} {
+        color: $color;
+    }
+
+    .btn-icon-#{$name}:hover {
+        background-color: $color;
+    }
+}
+
+/** checkbox **/
+.radio-box {
+    cursor: pointer;
+}
+
+.radio-box.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.radio {
+    border: 1px solid $gray-400;
+    height: 1.2rem;
+    width: 1.2rem;
+    padding: $border-width * 2;
+}
+
+.radio-check {
+    height: 100%;
+    width: 100%;
+}
+
+@each $name, $color in $theme-colors {
+    .radio-#{$name}.active .radio-check {
+        background-color: $color;
+    }
+}
+
+.radio:not(.active):hover .radio-check {
+    background-color: $gray-300;
+}
+
+.radio:hover .radio-check {
+    opacity: 0.8;
+}
+
+.switch {
+    cursor: pointer;
+}
+
+.switch-bar {
+    height: 17px;
+    width: 17px;
+}
+
+.switch-line {
+    height: 19px;
+    width: 33px;
+    padding: $border-width;
+    border-radius: 30px;
+    vertical-align: top;
+    background-color: $gray-300;
+}
+
+.switch.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.switch.active .switch-bar {
+    transition: all 0.3s linear;
+    margin-left: 14px;
+}
+
+.switch .switch-bar {
+    transition: all 0.3s linear;
+    margin-left: 0px;
+}
+
+@each $name, $color in $theme-colors {
+    .switch-#{$name}.active .switch-line {
+        background-color: $color;
+    }
+}
+
+/** pagination **/
+.pagination-input {
+    width: 70px;
+    height: 35px;
+    border-radius: 2rem;
+    display: inline-block !important;
+    margin: 0.25rem;
+    flex-shrink: 0;
+}
+
+.pagination-item {
+    border-radius: 50%;
+    height: 35px;
+    width: 35px !important;
+    line-height: 35px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    margin: 0.25rem;
+    flex-shrink: 0;
+}
+
+.pagination-item.disabled {
+    opacity: 0.1;
+    cursor: not-allowed;
+}
+
+.pagination-button {
+    margin: 0.25rem;
+    padding: 0 1rem;
+    height: 35px;
+    line-height: 35px;
+    border-radius: 2rem;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.pagination-dropdown .dropdown-menu {
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+@each $name, $color in $theme-colors {
+    .pagination-tool-#{$name},
+    .pagination-button-#{$name} {
+        background-color: rgba($color, 0.1);
+        color: $color;
+    }
+
+    .pagination-item-#{$name} {
+        color: $color;
+    }
+
+    .pagination-button-#{$name}:hover,
+    .pagination-item-#{$name}.active,
+    .pagination-item-#{$name}:hover,
+    .pagination-tool-#{$name}:hover {
+        background-color: $color;
+        color: white;
+    }
+
+    .pagination-item-#{$name}.active:hover {
+        background-color: rgba($color, 0.8);
+    }
+}
+
+/** tab **/
+@each $name, $color in $theme-colors {
+    .nav-link-#{$name}.active {
+        border-top: 3px solid $color !important;
+        color: $color !important;
+    }
+
+    .tabs-#{$name} .tab-bar {
+        background-color: $color;
+    }
+
+    .tabs-#{$name} .tab:hover {
+        color: $color;
+        background-color: rgba($color, 0.1);
+    }
+
+    .tabs-#{$name} .tab.active {
+        color: $color;
+    }
+}
+
+.tabs {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tab {
+    padding: 12px 16px;
+    cursor: pointer;
+    position: relative;
+    transition: color ease-in-out 0.3s;
+}
+
+.tab-bar {
+    position: absolute;
+    height: 2px;
+    width: 0px;
+    bottom: -1px;
+    left: 0;
+    transition: all ease-in-out 0.3s;
+}
+
+/** badge **/
+.badge-mark {
+    display: inline-flex;
+    align-items: center;
+}
+
+.badge-mark span {
+    transition: all 0.2s;
+    width: 0px;
+    overflow: hidden;
+    opacity: 0;
+    display: inline-block;
+}
+
+.badge-mark:hover span {
+    transition: all 0.2s;
+    opacity: 1;
+    width: 15px;
+    overflow: hidden;
+    margin-left: 3px;
+}
+
+.badge-circle {
+    display: inline-block;
+    text-align: center;
+    border-radius: 100%;
+    line-height: $font-size-base * 1.5;
+    height: $font-size-base * 1.5;
+    width: $font-size-base * 1.5;
+}
+
+/** dot **/
+.dot {
+    display: inline-block;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+}
+
+.dot-lg {
+    width: 1rem;
+    height: 1rem;
+}
+
+.dot-text {
+    display: inline-block;
+    width: 1.4rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    text-align: center;
+    border-radius: 50%;
+    color: $white;
+}
+
+@each $name, $color in $theme-colors {
+    .dot-#{$name} {
+        background-color: $color;
+    }
+}
+
+/** step **/
+.step-list {
+    display: flex;
+}
+
+.step-vlist {
+    display: flex;
+    flex-direction: column;
+}
+
+.step-item {
+    flex-grow: 1;
+}
+
+.step-line {
+    height: 0.2rem;
+    flex-grow: 1;
+}
+
+.step-vline {
+    width: 0.2rem;
+    flex-grow: 1;
+}
+
+/** toast **/
+.toast {
+    width: 18rem;
+    z-index: 9999;
+    border-width: 0;
+    border-left-width: 3px;
+}
+
+.toast .close {
+    cursor: pointer;
+}
+
+.top {
+    top: 0;
+}
+
+.bottom {
+    bottom: 0;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.toast-hidden {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/** table-loader **/
+.table-loader {
+    background-color: rgba($white, 0.6);
+    z-index: 1;
+}
+
+/** breadcrumb **/
+.breadcrumb {
+    line-height: 4;
+    color: $gray-600;
+}
+
+.breadcrumb a:not(:last-child) {
+    color: $primary;
+}
+
+.breadcrumb a:not(:last-child):after {
+    content: " /";
+}
+
+.breadcrumb i {
+    margin-right: 0.25rem;
+}
+
+/** toolbar **/
+.toolbar {
+    @extend .pr-3;
+
+    @extend .pl-3;
+
+    background-color: $white;
+    min-height: 3px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.075) !important;
+}
+
+/** side menu **/
+.side-menu {
+    @extend .dropdown-menu;
+
+    position: relative;
+    display: block;
+}
+
+/** badge message **/
+.badge-message {
+    position: relative;
+    border: none;
+}
+
+.badge-message[data-badge]:after {
+    content: attr(data-badge);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: .5em;
+    font-weight: 200;
+    background: $danger;
+    color: white;
+    width: 1rem;
+    height: 1rem;
+    text-align: center;
+    line-height: 1rem;
+    border-radius: 50%;
+    box-shadow: 0 0 1px rgb(179, 179, 179);
+}
+
+/** hover **/
+$more_colors: map-merge($theme-colors, ("white": white));
+
+@each $name, $color in $more_colors {
+    .bg-#{$name}-muted {
+        background-color: rgba($color, 0.1);
+    }
+
+    .bg-white-muted {
+        background-color: rgba($color, 0.1);
+    }
+
+    .bg-#{$name}-hover:hover {
+        background-color: rgba($color, 0.1);
+        transition: background-color ease-in-out .2s;
+    }
+
+    .bg-#{$name}-hover:active {
+        background-color: rgba($color, 0.4);
+    }
+
+    .text-#{$name}-hover {
+        color: $gray-600;
+    }
+
+    .text-#{$name}-hover:hover {
+        color: $color;
+        transition: color ease-in-out .3s;
+    }
+}
