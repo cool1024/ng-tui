@@ -1,5 +1,5 @@
 export class SearchParams {
-    constructor(public params: { [key: string]: string | number | any }, private emptyNumber = 0) { }
+    constructor(public params: { [key: string]: string | number | any } = {}, private emptyNumber = 0) { }
     get values(): { [key: string]: string | number } {
         const params: { [key: string]: string | number } = {};
         for (const key in this.params) {

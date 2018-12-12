@@ -1,5 +1,8 @@
 export interface Manager {
-    account: string;
+    id: number;
+    account?: string;
     password?: string;
     avatar?: string;
+    roleId?: number;
+    isActive?: number;
 }

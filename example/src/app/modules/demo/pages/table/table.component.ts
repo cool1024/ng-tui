@@ -56,6 +56,7 @@ export class TableComponent implements OnInit {
 
     doReset() {
         this.pagination.reset();
+        this.search.clean();
         this.pageChanged();
     }
 

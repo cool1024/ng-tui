@@ -11,7 +11,7 @@ import { Manager } from '../../interfaces/manager.interface';
 })
 export class ManagerDetailComponent implements OnInit {
 
-    manager: Manager = { account: '', avatar: '' };
+    manager: Manager = { id: 0, account: '', avatar: '' };
 
     options: UploadConfig;
 

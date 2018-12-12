@@ -10,6 +10,8 @@ import { RoleManagerComponent } from './pages/role-manager/role-manager.componen
 import { RoleUlComponent } from './pages/role-manager/role-ul.component';
 import { RoleModalComponent } from './pages/role-manager/role-modal.component';
 import { ManagerDetailComponent } from './pages/manager-detail/manager-detail.component';
+import { ManagerTableComponent } from './pages/manager-table/manager-table.component';
+import { ManagerInfoModalComponent } from './pages/manager-table/manager-info-modal.component';
 
 const routes: Routes = [
     {
@@ -25,6 +27,11 @@ const routes: Routes = [
     {
         path: 'role', component: RoleManagerComponent, data: {
             breadcrumbs: [{ title: '角色管理' }]
+        }
+    },
+    {
+        path: 'manager', component: ManagerTableComponent, data: {
+            breadcrumbs: [{ title: '管理员列表' }]
         }
     },
     {
@@ -45,6 +52,8 @@ export const declarationComponents = [
     RoleUlComponent,
     RoleModalComponent,
     ManagerDetailComponent,
+    ManagerTableComponent,
+    ManagerInfoModalComponent,
 ];
 
 export const entryComponents = [
@@ -53,6 +62,7 @@ export const entryComponents = [
     MenuGroupModalComponent,
     MenuModalComponent,
     RoleModalComponent,
+    ManagerInfoModalComponent,
 ];
 
 @NgModule({
