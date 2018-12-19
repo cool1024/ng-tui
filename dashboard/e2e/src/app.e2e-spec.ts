@@ -9,10 +9,8 @@ describe('workspace-project App', () => {
             const submitBtn = element(by.css('.btn-block'));
             accountInput.sendKeys('admin');
             passwordInput.sendKeys('123456789');
-            console.log(submitBtn);
             submitBtn.click();
-            // 等待5秒关闭
-            browser.wait(() => { }, 5000);
+            expect(browser.getCurrentUrl()).toBe('http://localhost:4200/login');
         });
     });
 });
