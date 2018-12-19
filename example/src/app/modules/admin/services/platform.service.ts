@@ -15,7 +15,7 @@ export class PlatformService {
      * 查询平台管理员，分页
      */
     searchPlatformManager(pagination: Pagination, search: SearchParams): Observable<ApiData> {
-        return this.request.get('/admin/platform/search', pagination.getpageDataWith(search.values));
+        return this.request.get('/admin/platform/search', pagination.getPageDataWith(search.values));
     }
     /**
     * 获取指定平台管理员

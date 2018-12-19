@@ -19,7 +19,7 @@ export class Pagination {
         return Math.ceil(this.total / this.limit);
     }
 
-    getpageDataWith(params: any = {}): { limit: number, offset: number, [key: string]: string | number } {
+    getPageDataWith(params: any = {}): { limit: number, offset: number, [key: string]: string | number } {
         params.limit = this.limit;
         params.offset = this.offset;
         return params;

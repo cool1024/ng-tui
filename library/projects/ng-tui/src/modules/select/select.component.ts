@@ -126,6 +126,7 @@ export class SelectComponent extends BaseForm implements OnChanges, AfterViewIni
         this.readonly = status ? null : 'readonly';
         if (status === false && this.searchKey.length > 0) {
             this.setTitle();
+            this.searchKey = '';
         }
     }
 
@@ -135,7 +136,8 @@ export class SelectComponent extends BaseForm implements OnChanges, AfterViewIni
         this.title = item.text;
         this.searchKey = '';
         this.optionChange.emit(item);
-        this.changeHandle(this.value);
+        // tslint:disable-next-line:no-unused-expression
+        this.changeHandle && this.changeHandle(this.value);
     }
 
     setSearchKey(value: string) {

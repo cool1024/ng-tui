@@ -15,7 +15,7 @@ export class CompanyService {
      * 查询商户，分页（公司）
      */
     searchCompany(pagination: Pagination, search: SearchParams): Observable<ApiData> {
-        return this.request.get('/admin/company/search', pagination.getpageDataWith(search.values));
+        return this.request.get('/admin/company/search', pagination.getPageDataWith(search.values));
     }
     /**
     * 获取指定商户（公司）

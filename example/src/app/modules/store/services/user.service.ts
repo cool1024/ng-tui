@@ -22,7 +22,7 @@ export class UserService {
      * 查询平台管理员，分页
      */
     searchUser(pagination: Pagination, search: SearchParams): Observable<ApiData> {
-        return this.request.get('/store/user/search', pagination.getpageDataWith(search.values));
+        return this.request.get('/store/user/search', pagination.getPageDataWith(search.values));
     }
 
     /**

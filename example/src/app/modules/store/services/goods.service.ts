@@ -22,7 +22,7 @@ export class GoodsService {
      * 查询商品，分页
      */
     searchGoods(pagination: Pagination, search: SearchParams): Observable<ApiData> {
-        return this.request.get('/store/goods/search', pagination.getpageDataWith(search.values));
+        return this.request.get('/store/goods/search', pagination.getPageDataWith(search.values));
     }
 
     /**

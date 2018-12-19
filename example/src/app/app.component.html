@@ -27,12 +27,13 @@
                         <div (click)="sendMessage()" class="d-flex align-items-center bg-light-hover pointer h-100 pl-3 pr-3">
                             <i class="iconfont icon-remind"></i>
                         </div>
+                        <!-- 消息显示面板 -->
                         <div tsDropdown class="d-flex align-items-center bg-light-hover pointer h-100 badge-message"
                             data-badge="2">
                             <div tsToggle class="h-100 d-flex align-items-center pl-3 pr-3">
                                 <i class="iconfont icon-comments"></i>
                             </div>
-                            <div tsDropMenu [offsetX]="-200" [offsetY]="-3" style="width:300px;">
+                            <div tsDropMenu [offsetX]="-200" [offsetY]="2" style="width:300px;">
                                 <div class="p-3 message-note">
                                     <div class="media">
                                         <img dataSrc="assets/images/404.jpg" src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png"
@@ -61,7 +62,10 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <button (click)="cleanMessage()" class="btn btn-link text-center text-primary-hover w-100">清空通知</button>
+                                    <div (click)="cleanMessage()" class="text-center text-primary-hover w-100">
+                                        <span class="iconfont icon-delete mr-2"></span>
+                                        <span>清空通知</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>

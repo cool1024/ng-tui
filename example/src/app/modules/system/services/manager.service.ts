@@ -25,7 +25,7 @@ export class ManagerService {
     }
 
     getManagerList(page: Pagination, search: SearchParams): Observable<ApiData> {
-        return this.request.get('/managerapi/account/search', page.getpageDataWith(search.values));
+        return this.request.get('/managerapi/account/search', page.getPageDataWith(search.values));
     }
 
     addManagerAccount(manager: Manager): Observable<ApiData> {

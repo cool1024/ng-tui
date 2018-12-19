@@ -165,6 +165,10 @@ a:link, a:active, a:hover, a:visited {
     bottom: auto !important;
 }
 
+ts-select {
+    height: auto !important;
+}
+
 ts-select .dropdown-menu {
     max-height: 300px;
     overflow-y: auto;

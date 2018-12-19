@@ -98,6 +98,7 @@
 @each $name, $color in $theme-colors {
     .radio-#{$name}.active .radio-check {
         background-color: $color;
+        position: relative;
     }
 }
 
