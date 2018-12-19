@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router, RouteConfigLoadStart, NavigationEnd, ActivatedRouteSnapshot } from '@angular/router';
 import { GlobalService, MenuService, AuthService } from './cores/services';
 import { MenuModel } from './modules/dashboard/components/menu/menu.interface';
@@ -11,6 +11,9 @@ import { ConfirmService, ToastService } from 'ng-tui';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+    // 主题内容DOM节点
+    @ViewChild('viewContent') viewContent: HTMLDivElement;
 
     // 系统菜单列表
     menus = new Array<MenuModel>();
@@ -61,8 +64,9 @@ export class AppComponent {
             } else if (event instanceof NavigationEnd) {
                 // 关闭加载动画
                 this.global.params.lazyload = false;
-                // 滚动条归位 -- ng6现在默认重置滑块位置了
-                // this.viewContent && (this.viewContent.scrollTop = 0);
+                // 滚动条归位 -- ng6现在默认重置滑块位置了（好像失效了）
+                // tslint:disable-next-line:no-unused-expression
+                this.viewContent && (this.viewContent.scrollTop = 0);
                 // 路由导航信息加载
                 this.breadcrumbs = [];
                 this.parseRoute(this.router.routerState.snapshot.root);
