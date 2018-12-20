@@ -25,6 +25,7 @@ import { ChartDataModalComponent } from './pages/chart-analyse/chart-data.modal'
 import { ApiTestComponent } from './pages/api-test/api-test.component';
 import { ApiChartComponent } from './pages/api-test/api-chart.component';
 import { ApiHeaderComponent } from './pages/api-test/api-header.component';
+import { ApiAddComponent } from './pages/api-test/api-add.component';
 
 const routes: Routes = [
     { path: 'mysql-test', component: MysqlTestComponent, },
@@ -45,6 +46,7 @@ export const declarationComponents = [
     ApiTestComponent,
     ApiChartComponent,
     ApiHeaderComponent,
+    ApiAddComponent,
 ];
 
 /**
@@ -56,6 +58,7 @@ export const entryComponents = [
     LineChartComponent,
     ChartDataModalComponent,
     ApiHeaderComponent,
+    ApiAddComponent,
 ];
 
 /**

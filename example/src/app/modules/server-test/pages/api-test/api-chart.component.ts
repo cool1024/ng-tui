@@ -1,11 +1,14 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { EChartsInstance } from 'ng-tui';
+import { RequestService, GlobalService } from 'src/app/cores/services';
 
 @Component({
     selector: 'app-api-chart',
     templateUrl: 'api-chart.component.html'
 })
 export class ApiChartComponent {
+
+    @Input() apiTest: { url: string, method: string, params: string };
 
     @Output() close = new EventEmitter<void>();
 
@@ -89,7 +92,15 @@ export class ApiChartComponent {
         ]
     };
 
-    constructor() {
+    constructor(
+        private request: RequestService,
+        private global: GlobalService
+    ) { }
 
+    sendRequest() {
+        const headers = this.global.getValue('apiTest.headers', {});
+        const request = this.request.withoutHeader.withHeader(headers);
+        const method = this.apiTest.method.toLowerCase();
+        request[method](this.request.url, JSON.parse(this.apiTest.params || '{}'));
     }
 }

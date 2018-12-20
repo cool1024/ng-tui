@@ -308,7 +308,8 @@ export class RequestService {
                 header = header.append(key, this.appendHeaders[key]);
             }
         }
-        HttpConfig.AUTH_HEADER_PARAMS.forEach(key => {
+        // tslint:disable-next-line:no-unused-expression
+        this.useHeader && HttpConfig.AUTH_HEADER_PARAMS.forEach(key => {
             header = header.append(key, localStorage.getItem(key) || '');
         });
         return header;
