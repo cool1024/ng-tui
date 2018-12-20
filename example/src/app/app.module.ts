@@ -35,7 +35,7 @@ import {
         ConfirmModule,
         ImageModule,
         ToastModule.forRoot({ position: 'bottom right', timeout: 3000, maxLength: 6 }),
-        EChartModule.forRoot('assets/echart/echarts.common.min.js'),
+        EChartModule.forRoot('assets/echart/echarts.min.js'),
         QuillModule.forRoot(['assets/quill/quill.min.js']),
         MapModule.forRoot('bea16ad29a10b04e05e0624362d504dc'),
         CkeditorModule.forRoot(['assets/ckeditor/ckeditor-classic.js', 'assets/ckeditor/zh-cn.js']),

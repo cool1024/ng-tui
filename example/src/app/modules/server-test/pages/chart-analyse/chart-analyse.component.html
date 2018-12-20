@@ -1,0 +1,11 @@
+<div class="toolbar"></div>
+<div class="p-3">
+    <div class="card mb-3">
+        <div class="card-body m-btn">
+            <button tsBtn color="info" (click)="chartRows.push({index:chartRows.length, type:'line'})">添加曲线图</button>
+        </div>
+    </div>
+    <div class="mb-3" *ngFor="let chart of chartRows;index as i">
+        <app-line-chart (close)="chartRows.splice(i,1)"></app-line-chart>
+    </div>
+</div>

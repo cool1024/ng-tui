@@ -1,0 +1,45 @@
+<div class="modal-header">
+    <h5 class="modal-title">图表数据编辑</h5>
+    <button (click)="modal.dismiss()" type="button" placeholder="请选择测试类型" class="close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">标题</th>
+                <th scope="col">数据</th>
+                <th scope="col">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of dataRows;index as i">
+                <td><input style="width:100%" [(ngModel)]="row.title" type="text" class="form-control"></td>
+                <td><input style="width:100%" [(ngModel)]="row.data" type="text" class="form-control"></td>
+                <td>
+                    <button (click)="dataRows.splice(i,1)" tsBtn sm tsIcon="delete"></button>
+                </td>
+            </tr>
+            <tr>
+                <td><input #title="ngModel" ngModel required style="width:100%" type="text" placeholder="请输入标题" class="form-control"></td>
+                <td><input #data="ngModel" ngModel required style="width:100%" type="text" placeholder="请输入数据" class="form-control"></td>
+                <td>
+                    <button (click)="confirmAdd(title,data)" tsBtn sm tsIcon="save"></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <div class="flex-grow-1">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white">下标</span>
+            </div>
+            <input [(ngModel)]="labels" type="text" class="form-control" placeholder="不填默认为数字下标">
+        </div>
+    </div>
+    <button tsBtn (click)="modal.dismiss()">取消</button>
+    <button tsBtn (click)="confirmSave()" color="info">确认添加</button>
+</div>

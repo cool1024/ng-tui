@@ -1,0 +1,14 @@
+<div class="card">
+    <div class="card-header">
+        <div class="m-btn">
+            <button (click)="close.emit()" tsIcon="delete" tsTip="移除" tsBtn sm color="danger"></button>
+            <button (click)="showDataEditModal()" tsIcon="add" tsTip="添加数据" tsBtn sm></button>
+            <button (click)="fileDom.openFileDialog()" tsIcon="upload" tsTip="导入" tsBtn sm></button>
+            <input #fileDom="tsFile" tsFile (fileChange)="importJsonFile($event)" accept="text/plain" type="file">
+            <button (click)="exportJsonFile()" tsIcon="share" tsTip="保存" tsBtn sm></button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div tsEchart [resize]="true" [option]="lineOption" (chartLoad)="chart=$event" style="width:100%;height:400px;"></div>
+    </div>
+</div>

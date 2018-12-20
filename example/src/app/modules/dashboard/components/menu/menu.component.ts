@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { MenuModel, MenuGroup, MenuItem } from './menu.interface';
 import { SideMenuGroupDirective } from 'ng-tui';
-declare const window: any;
+import { GlobalService } from 'src/app/cores/services';
 
 @Component({
     selector: `app-menu`,
@@ -24,7 +24,8 @@ export class MenuComponent {
     @ViewChildren(SideMenuGroupDirective) menuGroups: QueryList<SideMenuGroupDirective>;
 
     @ViewChild('menu') set menuDom(elementRef: ElementRef) {
-        window.OverlayScrollbars(elementRef.nativeElement, { className: 'os-theme-dark' });
+        const OverlayScrollbars = this.global.getWindowObject('OverlayScrollbars');
+        OverlayScrollbars(elementRef.nativeElement, { className: 'os-theme-dark' });
     }
 
     @Output() menuActiveChange = new EventEmitter<MenuItem>();
@@ -73,7 +74,7 @@ export class MenuComponent {
         };
     }
 
-    constructor() {
+    constructor(private global:GlobalService) {
         this.items = new Array<MenuModel>();
         this.autoClose = true;
         this.menuMode = 'full';
@@ -129,8 +130,10 @@ export class MenuComponent {
     }
 
     closeOtherMenu(offset: number, index: number) {
-        index = offset > 0 ? this.items[offset - 1].menuGroups.length + index : index;
-        const menuGroups = this.menuGroups.toArray();
+        for (let i = 0; i < offset; i++) {
+            index += this.items[i].menuGroups.length;
+        }
+        let menuGroups = this.menuGroups.toArray();
         menuGroups.splice(index, 1);
         menuGroups.forEach(item => item.dismiss());
     }
