@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of, TimeoutError } from 'rxjs';
 import { HttpConfig, INTERCEPTOR_MESSAGES } from '../../configs/http.config';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, timeout } from 'rxjs/operators';
 import { ApiData } from '../classes';
 import { ToastService } from 'ng-tui';
 import { Router } from '@angular/router';
@@ -19,9 +19,13 @@ export class ResponseInterceptor implements HttpInterceptor {
     constructor(private toast: ToastService, private router: Router) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+        const startTime = new Date().getTime();
+
         return next.handle(request).pipe(
+            timeout(HttpConfig.TIME_OUT),
             catchError(error => this.errorHandle(error)),
-            map(res => this.responseHandle(res, request)),
+            map(res => this.responseHandle(res, request, startTime)),
         );
     }
 
@@ -48,7 +52,7 @@ export class ResponseInterceptor implements HttpInterceptor {
 
             // 获取状态码对应提示消息
             if (code === 422) {
-                errorMessage = new ApiData(error.error.error, error.error.message, error.error.datas).messageStr;
+                errorMessage = new ApiData(false, error.error.message, error.error.datas || {}).messageStr;
             } else {
                 errorMessage = INTERCEPTOR_MESSAGES[code] || HttpConfig.HTTP_ERRORS.RESPONSE_CONTENT_ERROR;
             }
@@ -81,17 +85,20 @@ export class ResponseInterceptor implements HttpInterceptor {
      * @param res 响应数据
      * @param request 请求对象
      */
-    responseHandle(res: any, request: HttpRequest<any>) {
+    responseHandle(res: any, request: HttpRequest<any>, time: number) {
         if (res instanceof HttpResponse) {
             if (res.body !== null && ApiResponse.isApiResponse(res.body)) {
                 const apiData = new ApiData(res.body.result, res.body.message, res.body.datas);
+                apiData.startTime = time;
                 if (apiData.result === false) {
                     this.toast.warning('操作失败', apiData.messageStr, HttpConfig.TOAST_ERROR_TIME);
                 }
                 res = res.clone<ApiData>({ body: apiData });
 
             } else if (request.responseType !== 'text') {
-                res = res.clone<ApiData>({ body: new ApiData(false, HttpConfig.HTTP_ERRORS.API_DATA_ERROR) });
+                const apiData = new ApiData(false, HttpConfig.HTTP_ERRORS.API_DATA_ERROR);
+                apiData.startTime = time;
+                res = res.clone<ApiData>({ body: apiData });
             }
         }
         return res;

@@ -23,8 +23,6 @@ export class RequestInterceptor implements HttpInterceptor {
             && (request.method === 'POST' || request.method === 'PUT')) {
             requestBody = { PACKAGE_PARAMAS: btoa(JSON.stringify(requestBody)) };
             request = request.clone({ body: requestBody });
-            console.log(requestBody, (requestBody instanceof FormData));
-
         }
 
         return next.handle(request);

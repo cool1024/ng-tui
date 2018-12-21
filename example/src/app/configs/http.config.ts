@@ -12,8 +12,8 @@ export const HttpConfig = {
     // 是否开启参数打包功能，只有POST|PUT请求的参数会被打包,上线需开启
     OPEN_PARAM_PACKAGE: false,
 
-    // 请求超时时间
-    TIME_OUT: 10000,
+    // 请求超时时间(默认20000秒)
+    TIME_OUT: 20000,
 
     // 错误提示时间
     TOAST_ERROR_TIME: 3000,

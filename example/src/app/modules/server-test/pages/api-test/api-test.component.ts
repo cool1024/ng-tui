@@ -33,8 +33,12 @@ export class ApiTestComponent implements OnInit {
      */
     showHeaderEditModal() {
         const modalHandle = this.modal.create(ApiHeaderComponent, { center: true });
-        modalHandle.instance.requestHeaders = JSON.stringify(this.global.getValue('apiTest.headers', {}));
-        modalHandle.open().subscribe(headers => this.global.setValue('apiTest.headers', headers));
+        modalHandle.instance.requestHeaders = this.global.getStringFromStorage('apiTest.headers', '{}');
+        modalHandle.instance.hostUrl = this.global.getStringFromStorage('apiTest.url');
+        modalHandle.open().subscribe(res => {
+            this.global.setObjectToStorage('apiTest.headers', res.headers);
+            this.global.setValueToStorage('apiTest.url', res.url);
+        });
     }
 
     /**

@@ -1,6 +1,10 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { EChartsInstance } from 'ng-tui';
+import { EChartsInstance, ModalService, ToastService } from 'ng-tui';
 import { RequestService, GlobalService } from 'src/app/cores/services';
+import { ApiAddComponent } from './api-add.component';
+import { Observable, concat, of } from 'rxjs';
+import { ApiData } from 'src/app/cores/classes';
+import { map, delay } from 'rxjs/operators';
 
 @Component({
     selector: 'app-api-chart',
@@ -8,29 +12,13 @@ import { RequestService, GlobalService } from 'src/app/cores/services';
 })
 export class ApiChartComponent {
 
-    @Input() apiTest: { url: string, method: string, params: string };
+    @Input() apiTest: { url: string, method: string, params: string, testNum: number };
 
     @Output() close = new EventEmitter<void>();
 
     chart: { echartsInstance: EChartsInstance, echarts: any };
 
-    backgroundColors = [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
-    ];
-
-    borderColors = [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
-    ];
+    apiResults: Array<ApiData> = [];
 
     lineOption: any = {
         grid: {
@@ -38,7 +26,7 @@ export class ApiChartComponent {
             right: 10,
         },
         legend: {
-            data: ['数据'],
+            data: ['连续测试统计'],
         },
         tooltip: {
             trigger: 'axis',
@@ -81,7 +69,7 @@ export class ApiChartComponent {
         ],
         series: [
             {
-                name: '数据',
+                name: '连续测试统计',
                 type: 'line',
                 itemStyle: {
                     normal: { color: '#3e9cff' }
@@ -94,13 +82,67 @@ export class ApiChartComponent {
 
     constructor(
         private request: RequestService,
-        private global: GlobalService
+        private global: GlobalService,
+        private modal: ModalService,
+        private toast: ToastService,
     ) { }
 
-    sendRequest() {
-        const headers = this.global.getValue('apiTest.headers', {});
-        const request = this.request.withoutHeader.withHeader(headers);
+    get errorNum(): number {
+        return this.apiResults.filter(apiRes => !apiRes.result).length;
+    }
+
+    get successNum(): number {
+        return this.apiResults.length - this.errorNum;
+    }
+
+    get maxTime(): number {
+        let max = 0;
+        this.apiResults.forEach(apiRes => max = apiRes.requestTime > max ? apiRes.requestTime : max);
+        return max;
+    }
+
+    get minTime(): number {
+        let min = (this.apiResults[0] || { requestTime: 0 }).requestTime;
+        this.apiResults.forEach(apiRes => min = apiRes.requestTime < min ? apiRes.requestTime : min);
+        return min;
+    }
+
+    doApiTest() {
+        const requestQuery = [];
+        this.lineOption.series[0].data = [];
+        this.lineOption.xAxis.data = [];
+        this.apiResults = [];
+        for (let i = 0; i < this.apiTest.testNum; i++) {
+            this.lineOption.xAxis.data.push(i + 1);
+            requestQuery.push(this.sendRequest());
+        }
+        concat<ApiData>(...requestQuery).subscribe(res => {
+            this.lineOption.series[0].data.push(res.requestTime);
+            this.apiResults.push(res);
+            // tslint:disable-next-line:no-unused-expression
+            this.chart && this.chart.echartsInstance.setOption(this.lineOption);
+        });
+    }
+
+    sendRequest(): Observable<ApiData> {
+        const headers: any = this.global.getObjectFromStorage('apiTest.headers', {});
+        const host = this.global.getStringFromStorage('apiTest.url');
+        const request = this.request.withoutHeader.withoutHost.withHeader(headers);
         const method = this.apiTest.method.toLowerCase();
-        request[method](this.request.url, JSON.parse(this.apiTest.params || '{}'));
+        let params = {};
+        try {
+            params = JSON.parse(this.apiTest.params || '{}');
+        } catch (e) {
+            this.toast.warning('参数错误', '请求的参数不是合法的JSON字符串');
+        }
+
+        return request[method](host + this.apiTest.url, params, false).pipe(delay(100));
+    }
+
+    showEditModal() {
+        this.modal.create(ApiAddComponent, { center: true });
+        this.modal.instance.apiTest = this.apiTest;
+        this.modal.instance.modalTitle = '编辑接口';
+        this.modal.open().subscribe(res => this.apiTest = res);
     }
 }

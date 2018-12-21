@@ -54,7 +54,7 @@ export class GlobalService {
      * @param {string} key 键名
      * @param {number} defaultValue 默认值
      */
-    getNumberFromStorage(key: string, defaultValue: number) {
+    getNumberFromStorage(key: string, defaultValue: number = 0) {
         const temp = localStorage.getItem(key);
         return temp === null ? defaultValue : Number(temp);
     }
@@ -65,7 +65,7 @@ export class GlobalService {
      * @param {string} defaultValue 默认值
      * @return {string}
      */
-    getStringFromStorage(key: string, defaultValue: string): string {
+    getStringFromStorage(key: string, defaultValue: string = ''): string {
         return localStorage.getItem(key) || defaultValue;
     }
 
@@ -114,6 +114,10 @@ export class GlobalService {
                 localStorage.setItem(key, keyValues[key]);
             }
         }
+    }
+
+    setValueToStorage(key: string, value: number | string) {
+        localStorage.setItem(key, value.toString());
     }
 
     /**

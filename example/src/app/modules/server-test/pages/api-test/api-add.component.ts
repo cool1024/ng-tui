@@ -5,7 +5,7 @@
  * @file   api-add.component.ts
  * @date   2018-12-20 21:30:39
  */
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalService } from 'ng-tui';
 
 @Component({
@@ -36,25 +36,30 @@ import { ModalService } from 'ng-tui';
         </div>
     </div>
     <div class="modal-footer">
+        <div class="flex-grow-1">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-white">测试次数</span>
+                </div>
+                <input [(ngModel)]="apiTest.testNum" type="number" class="form-control" placeholder="不填默认为10">
+            </div>
+        </div>
         <button tsBtn (click)="modal.dismiss()">取消</button>
         <button tsBtn (click)="confirmSave()" color="info">确认保存</button>
     </div>`
 })
-export class ApiAddComponent implements OnInit {
+export class ApiAddComponent {
 
     modalTitle = '';
 
     apiTest = {
         url: '',
         method: 'GET',
-        params: ''
+        params: '',
+        testNum: 10
     };
 
     constructor(public modal: ModalService) { }
-
-    ngOnInit() {
-
-    }
 
     confirmSave() {
         this.modal.close(this.apiTest);

@@ -49,7 +49,7 @@ import { ManagerService } from '../../services/manager.service';
     </div>
     <div class="modal-footer">
         <button tsBtn (click)="modal.dismiss()">取消</button>
-        <button tsBtn loading (submit)="confirmSave($event)" color="primary">确认保存</button>
+        <button tsBtn loading (submit)="confirmSave($event)" color="info">确认保存</button>
     </div>`
 })
 export class ManagerInfoModalComponent {

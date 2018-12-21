@@ -1,9 +1,17 @@
 export class ApiData {
+
+    startTime: number;
+    endTime: number;
+
     constructor(
         public result: boolean,
         public message: string | { [key: string]: string[] },
         public datas: any | { rows: any[], total: number } = {},
-        public id: number = 0) { }
+        public id: number = 0
+    ) {
+        this.endTime = new Date().getTime();
+    }
+
     toJsonString(): string {
         const json = {
             result: this.result || false,
@@ -13,6 +21,7 @@ export class ApiData {
         };
         return JSON.stringify(json);
     }
+
     get messageStr(): string {
         let message = '';
         if (typeof this.message !== 'string' && typeof this.message !== 'number') {
@@ -27,9 +36,13 @@ export class ApiData {
         }
         return message;
     }
-}
-export class ApiResponse {
 
+    get requestTime(): number {
+        return this.endTime - this.startTime;
+    }
+}
+
+export class ApiResponse {
     static isApiResponse(resBody: any): boolean {
         return typeof resBody === 'object'
             && resBody.hasOwnProperty('result')

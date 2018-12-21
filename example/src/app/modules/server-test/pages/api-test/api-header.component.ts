@@ -11,13 +11,20 @@ import { ModalService, ToastService } from 'ng-tui';
 @Component({
     template: `
     <div class="modal-header">
-        <h5 class="modal-title">接口请求头设置</h5>
+        <h5 class="modal-title">接口请求设置</h5>
         <button (click)="modal.dismiss()" type="button" class="close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        <textarea class="form-control" [(ngModel)]="requestHeaders" placeholder="一个JSON字符串" style="height:100px"></textarea>
+        <div class="form-group">
+            <label>服务器地址</label>
+            <input class="form-control" [(ngModel)]="hostUrl" placeholder="https://www.cool1024.com">
+        </div>
+        <div class="form-group">
+            <label>请求头</label>
+            <textarea class="form-control" [(ngModel)]="requestHeaders" placeholder="一个JSON字符串" style="height:100px"></textarea>
+        </div>
     </div>
     <div class="modal-footer">
         <button tsBtn (click)="modal.dismiss()">取消</button>
@@ -32,6 +39,8 @@ export class ApiHeaderComponent {
         'ng-params-three': 'managerapi'
     });
 
+    hostUrl = '';
+
     constructor(
         public modal: ModalService,
         private toast: ToastService
@@ -39,7 +48,10 @@ export class ApiHeaderComponent {
 
     confirmSetting() {
         try {
-            this.modal.close(JSON.parse(this.requestHeaders) || {});
+            this.modal.close({
+                url: this.hostUrl,
+                headers: JSON.parse(this.requestHeaders) || {}
+            });
         } catch (e) {
             console.error(e);
             this.toast.warning('数据格式错误', '请求头设置参数必须是合法的JSON字符串');
