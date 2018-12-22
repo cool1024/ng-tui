@@ -94,7 +94,7 @@ export class TimepickerComponent extends Base implements OnInit, ControlValueAcc
     }
 
     writeValue(value: string) {
-        if (value === null) { return; }
+        if (value === null || value === undefined) { return; }
         const times = value.split(':');
         if (times.length !== 3) {
             // console.error('time format error , must like 23:59:01');

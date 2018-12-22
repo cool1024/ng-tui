@@ -54,7 +54,6 @@ export class Base implements OnDestroy, Toggle {
         if (this.show) {
             this.autoPosition();
         }
-        console.log(this.show);
     }
 
     bind(toggleDirective: ToggleDirective) {
@@ -83,10 +82,16 @@ export class Base implements OnDestroy, Toggle {
             this.datepickerStyle.left = position.x - padPositon.x + 'px';
             this.datepickerStyle.top = height + position.y + 7.5 + 'px';
             let top = height + position.y + 7.5 + 300;
+            let right = position.x - padPositon.x + 7.5 + 280;
             if (window.innerHeight < top) {
                 top = window.innerHeight - 300 - 7.5;
             } else {
                 top = position.y + height + 7.5;
+            }
+            if (window.innerWidth < right) {
+                // 修正右侧超出
+                right = window.innerWidth - 280 - 7.3;
+                this.datepickerStyle.left = right - padPositon.x + 'px';
             }
             this.datepickerStyle.top = top - padPositon.y + 'px';
             this.datepickerStyle.display = '';

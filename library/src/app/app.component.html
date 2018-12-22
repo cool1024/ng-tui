@@ -1,12 +1,4 @@
-<ts-checkbox color="primary">primary</ts-checkbox>
-<ts-checkbox color="danger">danger</ts-checkbox>
-<ts-checkbox color="warning">warning</ts-checkbox>
-<ts-checkbox color="info">info</ts-checkbox>
-<ts-checkbox color="success">success</ts-checkbox>
-<ts-checkbox color="dark">dark</ts-checkbox>
-<ts-radio color="primary">primary</ts-radio>
-<ts-radio color="danger">danger</ts-radio>
-<ts-radio color="warning">warning</ts-radio>
-<ts-radio color="info">info</ts-radio>
-<ts-radio color="success">success</ts-radio>
-<ts-radio color="dark">dark</ts-radio>
+<ts-timepicker #timepicker="tsTimepicker" [(ngModel)]="time"></ts-timepicker>
+<ts-datepicker #datepicker="tsDatepicker"></ts-datepicker>
+<button tsToggle [target]="timepicker" [bind]="timepicker" tsBtn="danger">{{time||'请选择一个时间'}}</button>
+<button tsToggle [target]="datepicker" [bind]="datepicker" tsBtn="danger">选择日期</button>
