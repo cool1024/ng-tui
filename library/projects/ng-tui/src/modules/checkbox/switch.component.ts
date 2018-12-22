@@ -7,9 +7,9 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
     selector: 'ts-switch',
     template: `
     <div (click)="toggle()" class="d-inline-flex align-items-center switch switch-{{color}}"
-        [class.inavtive]="!isOpen" [class.active]="isOpen" [class.disabled]="isDisabled">
-        <div class="d-inline-block switch-line text-left mr-1">
-            <div class="d-inline-block rounded-circle switch-bar bg-white align-top"></div>
+        [class.active]="isOpen" [class.disabled]="isDisabled">
+        <div class="switch-line text-left mr-1 position-relative">
+            <div class="d-inline-block rounded-circle switch-bar bg-white"></div>
         </div>
         <ng-content></ng-content>
     </div>`,
@@ -43,5 +43,4 @@ export class SwitchComponent extends BaseForm {
         this.value = this.isOpen ? this.values.close : this.values.open;
         this.changeHandle(this.value);
     }
-
 }

@@ -19,6 +19,11 @@ export class ButtonDirective extends BaseTheme implements AfterViewInit, OnChang
 
     private oldClass: string;
 
+    @Input() set tsBtn(color: string) {
+        // tslint:disable-next-line:no-unused-expression
+        color && (this.color = color);
+    }
+
     @Input() loading: string;
 
     @Output() submit = new EventEmitter<Loader>(false);

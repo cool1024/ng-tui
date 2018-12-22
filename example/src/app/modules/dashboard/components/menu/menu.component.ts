@@ -74,7 +74,7 @@ export class MenuComponent {
         };
     }
 
-    constructor(private global:GlobalService) {
+    constructor(private global: GlobalService) {
         this.items = new Array<MenuModel>();
         this.autoClose = true;
         this.menuMode = 'full';
@@ -133,7 +133,7 @@ export class MenuComponent {
         for (let i = 0; i < offset; i++) {
             index += this.items[i].menuGroups.length;
         }
-        let menuGroups = this.menuGroups.toArray();
+        const menuGroups = this.menuGroups.toArray();
         menuGroups.splice(index, 1);
         menuGroups.forEach(item => item.dismiss());
     }

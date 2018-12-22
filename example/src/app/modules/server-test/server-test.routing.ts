@@ -26,11 +26,14 @@ import { ApiTestComponent } from './pages/api-test/api-test.component';
 import { ApiChartComponent } from './pages/api-test/api-chart.component';
 import { ApiHeaderComponent } from './pages/api-test/api-header.component';
 import { ApiAddComponent } from './pages/api-test/api-add.component';
+import { MonologViewComponent } from './pages/monolog-view/monolog-view.component';
+import { MonologDetailComponent } from './pages/monolog-view/monolog-detail/monolog-detail.component';
 
 const routes: Routes = [
     { path: 'mysql-test', component: MysqlTestComponent, },
     { path: 'chart-analyse', component: ChartAnalyseComponent, data: { breadcrumbs: [{ title: '图表分析' }] } },
     { path: 'api-test', component: ApiTestComponent, data: { breadcrumbs: [{ title: '接口测试' }] } },
+    { path: 'log', component: MonologViewComponent, data: { breadcrumbs: [{ title: '测试日志' }] } },
 ];
 
 /**
@@ -47,6 +50,8 @@ export const declarationComponents = [
     ApiChartComponent,
     ApiHeaderComponent,
     ApiAddComponent,
+    MonologViewComponent,
+    MonologDetailComponent,
 ];
 
 /**
@@ -59,6 +64,7 @@ export const entryComponents = [
     ChartDataModalComponent,
     ApiHeaderComponent,
     ApiAddComponent,
+    MonologDetailComponent,
 ];
 
 /**

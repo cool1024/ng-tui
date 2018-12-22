@@ -1,0 +1,40 @@
+<!-- 这是头部工具栏目，里面的元素会和导航栏在一起，不要删除 -->
+<div class="toolbar"></div>
+
+<!-- 页面主体内容 -->
+<div class="p-3">
+    <div class="card mb-3">
+        <div class="card-header bg-white">日志列表</div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>名称</th>
+                        <th>大小</th>
+                        <th>最后更新时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of tableRows;index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.size}}字节</td>
+                        <td>{{item.time}}</td>
+                        <td>
+                            <span (click)="showLogDetail(item.name)" class="btn-icon btn-icon-info" tsTip="查看">
+                                <i class="iconfont icon-browse"></i>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr class="mat-cell" *ngIf="tableRows.length<=0">
+                        <td [attr.colspan]="4" class="text-center text-info">
+                            暂无数据～
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

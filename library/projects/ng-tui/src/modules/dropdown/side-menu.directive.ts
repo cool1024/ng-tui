@@ -13,10 +13,17 @@ export class SideMenuDirective implements Toggle, OnDestroy {
     @Input() tsSideMenu: string;
     @Output() displayChange = new EventEmitter<boolean>(false);
 
+
     private targetDom: HTMLElement;
     private hostDom: HTMLElement;
     private intervalSub: Subscription;
     private isShow = false;
+
+    @HostListener('mouseleave') onmouseleave() {
+        if (this.tsSideMenu === 'hover') {
+            this.dismiss();
+        }
+    }
 
     constructor(private html: HtmlDomService, private elementRef: ElementRef) {
         this.tsSideMenu = 'click';

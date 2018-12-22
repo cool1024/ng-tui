@@ -34,9 +34,50 @@
     color: $gray-500;
 }
 
+.btn-white:active,
 .btn-white.active,
 .btn-outline-white .active {
     background-color: $gray-200;
+}
+
+/** btn **/
+.btn-icon {
+    border-radius: 50%;
+    height: 35px;
+    width: 35px !important;
+    line-height: 35px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    color: $dark;
+}
+
+.btn-icon .iconfont {
+    font-size: $font-size-base * 1.2;
+}
+
+.btn-icon:hover {
+    color: white;
+}
+
+.btn-icon:active {
+    opacity: 0.8;
+}
+
+@each $name, $color in $theme-colors {
+    .btn-#{$name} {
+        &:active {
+            box-shadow: 0 0 0 0.2rem rgba($color, 0.2) !important;
+        }
+    }
+
+    .btn-icon-#{$name} {
+        color: $color;
+    }
+
+    .btn-icon-#{$name}:hover {
+        background-color: $color;
+    }
 }
 
 /** btn **/
@@ -84,9 +125,8 @@
 }
 
 .radio {
-    border: 1px solid $gray-400;
-    height: 1.2rem;
-    width: 1.2rem;
+    height: 20px;
+    width: 20px;
     padding: $border-width * 2;
 }
 
@@ -96,36 +136,61 @@
 }
 
 @each $name, $color in $theme-colors {
-    .radio-#{$name}.active .radio-check {
-        background-color: $color;
-        position: relative;
+    .radio-#{$name} {
+        border: 1px solid rgba($color, 0.7);
     }
-}
 
-.radio:not(.active):hover .radio-check {
-    background-color: $gray-300;
+    .radio-#{$name}:not(.active):hover .radio-check {
+        background-color: rgba($color, 0.2);
+    }
+
+    .radio-#{$name}.active {
+        .radio-check {
+            background-color: $color;
+            position: relative;
+
+            &::before {
+                position: absolute;
+                content: '';
+                height: 80%;
+                width: 40%;
+                border: 2px solid white;
+                border-top: 0;
+                border-left: 0;
+                top: 0px;
+                left: 4px;
+                transform: rotate(40deg);
+            }
+        }
+    }
 }
 
 .radio:hover .radio-check {
     opacity: 0.8;
 }
 
+/* switch */
 .switch {
+    vertical-align: middle;
     cursor: pointer;
 }
 
 .switch-bar {
-    height: 17px;
-    width: 17px;
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    box-shadow: 0px 0px 3px rgba(black, 0.3);
 }
 
 .switch-line {
-    height: 19px;
-    width: 33px;
-    padding: $border-width;
+    display: flex;
+    height: 20px;
+    width: 36px;
     border-radius: 30px;
-    vertical-align: top;
     background-color: $gray-300;
+    box-shadow: 0 0 0 2px rgba($gray-300, 0.2);
 }
 
 .switch.disabled {
@@ -134,18 +199,19 @@
 }
 
 .switch.active .switch-bar {
-    transition: all 0.3s linear;
-    margin-left: 14px;
+    margin-left: 18px;
 }
 
 .switch .switch-bar {
     transition: all 0.3s linear;
-    margin-left: 0px;
+    margin-left: 2px;
 }
 
 @each $name, $color in $theme-colors {
     .switch-#{$name}.active .switch-line {
+        transition: all .3s linear;
         background-color: $color;
+        box-shadow: 0 0 0 2px rgba($color, 0.2);
     }
 }
 
@@ -285,7 +351,7 @@
 .badge-circle {
     display: inline-block;
     text-align: center;
-    border-radius: 50%;
+    border-radius: 100%;
     line-height: $font-size-base * 1.5;
     height: $font-size-base * 1.5;
     width: $font-size-base * 1.5;
@@ -344,10 +410,132 @@
     flex-grow: 1;
 }
 
+/** toast **/
+.toast {
+    width: 18rem;
+    z-index: 9999;
+    border-width: 0;
+    border-left-width: 3px;
+}
+
+.toast .close {
+    cursor: pointer;
+}
+
+.top {
+    top: 0;
+}
+
+.bottom {
+    bottom: 0;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.toast-hidden {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/** table-loader **/
+.table-loader {
+    background-color: rgba($white, 0.6);
+    z-index: 1;
+}
+
+/** breadcrumb **/
+.breadcrumb {
+    line-height: 4;
+    color: $gray-600;
+}
+
+.breadcrumb a:not(:last-child) {
+    color: $primary;
+}
+
+.breadcrumb a:not(:last-child):after {
+    content: " /";
+}
+
+.breadcrumb i {
+    margin-right: 0.25rem;
+}
+
+/** toolbar **/
+.toolbar {
+    @extend .pr-3;
+
+    @extend .pl-3;
+
+    background-color: $white;
+    min-height: 3px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.075) !important;
+}
+
 /** side menu **/
 .side-menu {
     @extend .dropdown-menu;
 
     position: relative;
     display: block;
+}
+
+/** badge message **/
+.badge-message {
+    position: relative;
+    border: none;
+}
+
+.badge-message[data-badge]:after {
+    content: attr(data-badge);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: .9em;
+    font-weight: 200;
+    background: $danger;
+    color: white;
+    width: 1rem;
+    height: 1rem;
+    text-align: center;
+    line-height: 1rem;
+    border-radius: 50%;
+    box-shadow: 0 0 1px rgb(179, 179, 179);
+}
+
+/** hover **/
+$more_colors: map-merge($theme-colors, ("white": white));
+
+@each $name, $color in $more_colors {
+    .bg-#{$name}-muted {
+        background-color: rgba($color, 0.1);
+    }
+
+    .bg-white-muted {
+        background-color: rgba($color, 0.1);
+    }
+
+    .bg-#{$name}-hover:hover {
+        background-color: rgba($color, 0.1);
+        transition: background-color ease-in-out .2s;
+    }
+
+    .bg-#{$name}-hover:active {
+        background-color: rgba($color, 0.4);
+    }
+
+    .text-#{$name}-hover {
+        color: $gray-600;
+    }
+
+    .text-#{$name}-hover:hover {
+        color: $color;
+        transition: color ease-in-out .3s;
+    }
 }

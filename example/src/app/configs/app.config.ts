@@ -21,5 +21,9 @@ export const AppConfig = {
         MODEL_TITLE_COLOR: '#50a4ff',
         LINE_COLOR: 'rgba(200, 200, 200,.3)',
         ACTIVE_TEXT_THEME: 'info',
+    },
+
+    DEV_CONFIG: {
+        DEV_PASSWORD: '123456789'
     }
 };
