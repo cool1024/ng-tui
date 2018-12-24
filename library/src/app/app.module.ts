@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {
     TUIModule,
-    TabModule,
+    SelectModule,
 } from '../../projects/ng-tui/src/public_api';
 
 @NgModule({
@@ -15,7 +15,7 @@ import {
         BrowserModule,
         TUIModule.forRoot(),
         // CkeditorModule.forRoot(['assets/ckeditor/ckeditor-classic.js', 'assets/ckeditor/zh-cn.js']),
-        TabModule,
+        SelectModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

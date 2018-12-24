@@ -114,6 +114,16 @@
     }
 }
 
+/** select block **/
+.select-block {
+    .select-item {
+        min-width: 120px;
+    }
+
+    max-height: 3 00px;
+    overflow-x: auto;
+}
+
 /** checkbox **/
 .radio-box {
     cursor: pointer;

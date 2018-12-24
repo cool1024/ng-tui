@@ -92,3 +92,4 @@ export * from './modules/window/window.component';
 export * from './modules/window/window.directive';
 export * from './modules/window/window.class';
 export * from './tui-core/interfaces/item.interface';
+export * from './modules/select/item-tree.interface';

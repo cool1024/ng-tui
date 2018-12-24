@@ -1,18 +1,7 @@
 <div class="card-body">
-    <ts-side-tabs right [target]="tsTabsOne">
-        <ts-tab [active]="true">枫叶基本信息基本信息基本信息基本信息基本信息基本信息</ts-tab>
-        <ts-tab>草莓</ts-tab>
-        <ts-tab>菠萝</ts-tab>
-    </ts-side-tabs>
-</div>
-<div #tsTabsOne="tsTabs" tsTabs>
-    <div tsTab>
-        1111111
-    </div>
-    <div tsTab>
-        2222222
-    </div>
-    <div tsTab>
-        3333333
-    </div>
+    <ts-select-block [(ngModel)]="value" (optionChange)="activeOptions=$event" [items]="itemThrees" class="d-inline-block"
+        placeholder="请选择地址" style="width:200px;"></ts-select-block>
+    <pre>{{activeOptions|json}}</pre>
+    <pre>{{value|json}}</pre>
+    <button (click)="value=[0,1]">测试</button>
 </div>

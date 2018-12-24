@@ -10,6 +10,7 @@
     <div class="card mb-3">
         <div class="card-header">省市区选择</div>
         <div class="card-body form-inline">
+            <ts-select-block [items]="chinaOptions" placeholder="请选择省市区"></ts-select-block>
             <div class="form-control position-relative" style="width: 300px">
                 <input #cityPicker readonly type="text" style="width: 200px;line-height:1;height:19px;">
             </div>

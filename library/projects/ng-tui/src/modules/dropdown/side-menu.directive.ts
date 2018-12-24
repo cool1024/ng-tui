@@ -35,7 +35,7 @@ export class SideMenuDirective implements Toggle, OnDestroy {
                 this.dismiss();
             } else if (this.hostDom.contains(dom)) {
                 // tslint:disable-next-line:no-unused-expression
-                dom.hasAttribute('close') && this.dismiss();
+                (dom.hasAttribute('close') && dom.getAttribute('close') !== 'false') && this.dismiss();
             }
         }
     }

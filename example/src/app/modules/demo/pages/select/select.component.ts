@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { GlobalService } from '../../../../cores/services';
+import { GlobalService, RequestService } from '../../../../cores/services';
+import { ItemTree } from 'ng-tui';
 @Component({
     selector: 'app-select',
     templateUrl: './select.component.html',
@@ -38,13 +39,19 @@ export class SelectComponent implements AfterViewInit {
         }
     ];
 
+    chinaOptions = new Array<ItemTree>();
+
     selectValue = 'Brussels';
 
     selectValues = [1, 2];
 
     cityValue = '';
 
-    constructor(public global: GlobalService) { }
+    constructor(public global: GlobalService, private request: RequestService) {
+        request.text('/devexample/china').subscribe(res => {
+            this.chinaOptions = JSON.parse(res);
+        });
+    }
 
     getPickerValue() {
         alert('选中的值为' + this.cityPickerInstance.val());

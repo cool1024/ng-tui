@@ -2,7 +2,7 @@ import { Directive, HostListener, Input, ElementRef, AfterViewInit } from '@angu
 import { Toggle } from '../interfaces/toggle.interface';
 
 @Directive({
-    selector: `[tsToggle]`,
+    selector: `*[tsToggle]`,
     exportAs: 'tsToggle'
 })
 export class ToggleDirective implements AfterViewInit {
