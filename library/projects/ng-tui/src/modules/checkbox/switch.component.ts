@@ -41,6 +41,7 @@ export class SwitchComponent extends BaseForm {
     toggle() {
         if (this.isDisabled) { return; }
         this.value = this.isOpen ? this.values.close : this.values.open;
-        this.changeHandle(this.value);
+        // tslint:disable-next-line:no-unused-expression
+        this.changeHandle && this.changeHandle(this.value);
     }
 }

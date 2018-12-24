@@ -18,14 +18,21 @@ export class TabsDirective {
 
     constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
-    changeTab(tab: string) {
-        this.tabs.forEach(e => {
-            if (e.tab === tab) {
-                e.setShow();
-            } else {
-                e.setHidden();
-            }
-        });
+    changeTab(tab: string | number) {
+        if (typeof tab === 'number') {
+            this.tabs.forEach(e => e.setHidden());
+            const tabs = this.tabs.toArray();
+            // tslint:disable-next-line:no-unused-expression
+            tabs[tab] && tabs[tab].setShow();
+        } else {
+            this.tabs.forEach(e => {
+                if (e.tab === tab) {
+                    e.setShow();
+                } else {
+                    e.setHidden();
+                }
+            });
+        }
         this.changeDetectorRef.detectChanges();
     }
 }

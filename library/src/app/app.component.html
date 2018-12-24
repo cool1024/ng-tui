@@ -1,8 +1,18 @@
 <div class="card-body">
-    <ts-side-tabs>
-        <ts-tab [value]="1">枫叶</ts-tab>
-        <ts-tab [value]="2">草莓</ts-tab>
-        <ts-tab [value]="3">菠萝</ts-tab>
+    <ts-side-tabs right [target]="tsTabsOne">
+        <ts-tab [active]="true">枫叶基本信息基本信息基本信息基本信息基本信息基本信息</ts-tab>
+        <ts-tab>草莓</ts-tab>
+        <ts-tab>菠萝</ts-tab>
     </ts-side-tabs>
 </div>
-<ts-tabs [tabs]="['1','3','4']"></ts-tabs>
+<div #tsTabsOne="tsTabs" tsTabs>
+    <div tsTab>
+        1111111
+    </div>
+    <div tsTab>
+        2222222
+    </div>
+    <div tsTab>
+        3333333
+    </div>
+</div>

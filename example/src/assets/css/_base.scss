@@ -282,6 +282,11 @@
 }
 
 /** tab **/
+ts-tab {
+    width: 100%;
+    display: block;
+}
+
 @each $name, $color in $theme-colors {
     .nav-link-#{$name}.active {
         border-top: 3px solid $color !important;
@@ -292,13 +297,22 @@
         background-color: $color;
     }
 
+    .tabs-#{$name} .side-bar {
+        background-color: $color;
+    }
+
     .tabs-#{$name} .tab:hover {
         color: $color;
-        background-color: rgba($color, 0.1);
+        background-color: rgba($color, 0.2);
     }
 
     .tabs-#{$name} .tab.active {
         color: $color;
+        background-color: rgba($color, 0.1);
+
+        &:hover {
+            background-color: rgba($color, 0.2);
+        }
     }
 }
 
@@ -308,6 +322,28 @@
     justify-content: flex-start;
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tabs-side {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+
+    .side-bar {
+        position: absolute;
+        height: 0px;
+        width: 2px;
+        bottom: 0;
+        transition: all ease-in-out 0.3s;
+
+        &.left {
+            left: 0;
+        }
+
+        &.right {
+            right: 0;
+        }
+    }
 }
 
 .tab {

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoadingComponent implements OnInit {
 
-    loading = true;
+    loading = false;
 
     constructor() { }
 
