@@ -15,6 +15,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
 
 @Component({
     selector: 'ts-tabs',
+    exportAs: 'tsTabs',
     template: `
     <div *ngIf="!this.isApply(cardType)" class="tabs tabs-{{color}}"
         [class.justify-content-end]="position==='end'"
@@ -39,7 +40,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
         </li>
     </ul>`
 })
-export class TabComponent extends BaseTheme implements AfterViewInit, OnDestroy {
+export class TabsComponent extends BaseTheme implements AfterViewInit, OnDestroy {
 
     @Input() tabs: Array<string>;
 
@@ -50,8 +51,6 @@ export class TabComponent extends BaseTheme implements AfterViewInit, OnDestroy 
     @Input() cardType: boolean;
 
     @Input() target: TabsDirective;
-
-    @Input() tabType: string;
 
     @Output() tabChange = new EventEmitter<string>();
 
@@ -98,6 +97,10 @@ export class TabComponent extends BaseTheme implements AfterViewInit, OnDestroy 
     }
 
     moveActiveBar(i: number) {
+        // card mode not support
+        if (this.isApply(this.cardType)) {
+            return;
+        }
         const tabs = this.tabDoms;
         this.offsetLeft = 0;
         this.offsetLeft = tabs[i].offsetLeft;

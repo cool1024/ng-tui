@@ -1,4 +1,8 @@
-<ts-timepicker #timepicker="tsTimepicker" [(ngModel)]="time"></ts-timepicker>
-<ts-datepicker #datepicker="tsDatepicker"></ts-datepicker>
-<button tsToggle [target]="timepicker" [bind]="timepicker" tsBtn="danger">{{time||'请选择一个时间'}}</button>
-<button tsToggle [target]="datepicker" [bind]="datepicker" tsBtn="danger">选择日期</button>
+<div class="card-body">
+    <ts-side-tabs>
+        <ts-tab [value]="1">枫叶</ts-tab>
+        <ts-tab [value]="2">草莓</ts-tab>
+        <ts-tab [value]="3">菠萝</ts-tab>
+    </ts-side-tabs>
+</div>
+<ts-tabs [tabs]="['1','3','4']"></ts-tabs>

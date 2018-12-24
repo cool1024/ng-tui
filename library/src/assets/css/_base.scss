@@ -282,6 +282,11 @@
 }
 
 /** tab **/
+ts-tab {
+    width: 100%;
+    display: block;
+}
+
 @each $name, $color in $theme-colors {
     .nav-link-#{$name}.active {
         border-top: 3px solid $color !important;
@@ -308,6 +313,12 @@
     justify-content: flex-start;
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tabs-side {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .tab {

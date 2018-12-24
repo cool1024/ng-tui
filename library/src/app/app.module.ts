@@ -4,13 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {
     TUIModule,
-    SelectModule,
-    CssloadModule,
-    DatePickerModule,
-    ButtonModule,
-    DropdownModule,
-    CkeditorModule,
-    CheckboxModule
+    TabModule,
 } from '../../projects/ng-tui/src/public_api';
 
 @NgModule({
@@ -20,13 +14,8 @@ import {
     imports: [
         BrowserModule,
         TUIModule.forRoot(),
-        CkeditorModule.forRoot(['assets/ckeditor/ckeditor-classic.js', 'assets/ckeditor/zh-cn.js']),
-        SelectModule,
-        CssloadModule,
-        DatePickerModule,
-        DropdownModule,
-        ButtonModule,
-        CheckboxModule,
+        // CkeditorModule.forRoot(['assets/ckeditor/ckeditor-classic.js', 'assets/ckeditor/zh-cn.js']),
+        TabModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -68,7 +68,7 @@ export * from './modules/select/select.component';
 export * from './modules/select/selects.component';
 export * from './modules/tab/tab.module';
 export * from './modules/tab/tab.directive';
-export * from './modules/tab/tab.component';
+export * from './modules/tab/tabs.component';
 export * from './modules/toast/toast.module';
 export * from './modules/toast/toast.component';
 export * from './modules/toast/toast.interface';
