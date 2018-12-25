@@ -50,5 +50,6 @@ import { TUIModule } from 'ng-tui';
 })
 export class AppModule { }
 ```
-
+## 相关说明
+1. [可用组件列表](COMPONENT.MD)
 
