@@ -3,13 +3,14 @@ import {
     Output,
     EventEmitter,
     forwardRef,
-    AfterViewInit,
     Component,
     OnChanges,
+    SimpleChanges,
 } from '@angular/core';
 import { BaseForm } from '../../tui-core/base-class/base-form.class';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ItemTree } from './item-tree.interface';
+import { ConfigService } from '../../tui-core/base-services/config.service';
 
 @Component({
     selector: 'ts-select-block',
@@ -20,7 +21,7 @@ import { ItemTree } from './item-tree.interface';
         multi: true
     }]
 })
-export class SelectBlockComponent extends BaseForm implements AfterViewInit, OnChanges {
+export class SelectBlockComponent extends BaseForm implements OnChanges {
 
     title = '';
 
@@ -32,6 +33,8 @@ export class SelectBlockComponent extends BaseForm implements AfterViewInit, OnC
 
     isOpen = false;
 
+    @Input() color: string;
+
     @Input() placeholder = '';
 
     @Input() items: ItemTree[];
@@ -42,13 +45,16 @@ export class SelectBlockComponent extends BaseForm implements AfterViewInit, OnC
 
     @Output() optionChange = new EventEmitter<ItemTree[]>(false);
 
-    ngAfterViewInit() {
-
+    constructor(configService: ConfigService) {
+        super();
+        this.color = configService.config.defaultColor;
     }
 
-    ngOnChanges() {
-        this.optionsQuery[0] = this.items;
+    ngOnChanges(changes: SimpleChanges) {
+        this.items = changes.items.currentValue;
+        this.writeValue(this.values || []);
     }
+
 
     writeValue(values: Array<any>) {
         if (Array.isArray(values)) {
@@ -56,11 +62,14 @@ export class SelectBlockComponent extends BaseForm implements AfterViewInit, OnC
             this.optionsQuery = [this.items];
             this.activeOptions = [];
             this.values.forEach((value, i) => {
+                if (!this.optionsQuery[i]) {
+                    return;
+                }
                 this.activeOptions[i] = this.optionsQuery[i].find(option => option.value === value);
                 // tslint:disable-next-line:no-unused-expression
                 this.activeOptions[i] && (this.optionsQuery[i + 1] = this.activeOptions[i].children);
             });
-            this.title = this.activeOptions.map(option => option.text).join(' / ');
+            this.title = this.activeOptions.map(option => option ? option.text : '').join(' / ');
         }
     }
 

@@ -5,12 +5,12 @@
         <div class="d-flex">
             <div *ngFor="let options of optionsQuery;index as i" class="select-block">
                 <ng-container *ngFor="let option of options">
-                    <div [class.text-info]="isActiveOption(option)">
-                        <div *ngIf="!!option.children" (click)="showChildren(i,option,target)" class="select-item bg-info-hover px-3 py-2 pointer d-flex justify-content-between">
+                    <div class="text-{{isActiveOption(option)&&color}}">
+                        <div *ngIf="!!option.children" (click)="showChildren(i,option,target)" class="select-item bg-{{color}}-hover px-3 py-2 pointer d-flex justify-content-between">
                             <span>{{option.text}}</span>
                             <i class="iconfont icon-next"></i>
                         </div>
-                        <div *ngIf="!option.children" close (click)="showChildren(i,option,target)" class="select-item bg-info-hover px-3 py-2 pointer">
+                        <div *ngIf="!option.children" close (click)="showChildren(i,option,target)" class="select-item bg-{{color}}-hover px-3 py-2 pointer">
                             {{option.text}}
                         </div>
                     </div>

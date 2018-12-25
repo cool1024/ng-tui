@@ -41,7 +41,28 @@ export class SelectComponent implements AfterViewInit {
 
     chinaOptions = new Array<ItemTree>();
 
-    departmentOptions = [];
+    departmentOptions: Array<ItemTree> = [{
+        value: 1,
+        text: '董事长',
+        children: [
+            { value: 2, text: '董事长助理' },
+            {
+                value: 3, text: '执行董事兼总经理',
+                children: [
+                    {
+                        value: 4, text: '副总经理',
+                        children: [
+                            { value: '5', text: '执行部' },
+                            { value: '5', text: '行政部' },
+                            { value: '5', text: '财务部' },
+                            { value: '5', text: '操作部' },
+                            { value: '5', text: '安技部门' },
+                        ]
+                    },
+                ]
+            },
+        ]
+    }];
 
     selectValue = 'Brussels';
 

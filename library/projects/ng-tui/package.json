@@ -1,6 +1,6 @@
 {
     "name": "ng-tui",
-    "version": "0.0.24",
+    "version": "0.0.25",
     "description": "a tools ui for angular6+",
     "peerDependencies": {
         "@angular/common": "^6.0.0-rc.0 || ^6.0.0",

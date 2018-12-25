@@ -9,7 +9,7 @@
                 <img [src]="menuConfig.SMALL_LOGO" width="30">
                 <h4 *ngIf="global.params.menuMode==='full'" class="m-0">Admin</h4>
             </div>
-            <app-menu class="flex-grow-1 shadow-sm" [menuConfig]="menuConfig" [autoClose]="false" [menuMode]="global.params.menuMode"
+            <app-menu class="flex-grow-1 shadow-sm" [menuConfig]="menuConfig" [autoClose]="true" [menuMode]="global.params.menuMode"
                 [items]="menu.menuModels" [useImage]="true"></app-menu>
         </div>
         <!-- 右侧内容 -->
