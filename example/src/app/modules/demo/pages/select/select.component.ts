@@ -10,11 +10,11 @@ export class SelectComponent implements AfterViewInit {
 
     private cityPickerInstance: any;
 
-    @ViewChild('cityPicker') set cityPicker(elementRef: ElementRef) {
-        const $ = this.global.getWindowObject('$');
-        this.cityPickerInstance = $(elementRef.nativeElement);
-        this.cityPickerInstance.citypicker();
-    }
+    // @ViewChild('cityPicker') set cityPicker(elementRef: ElementRef) {
+    //     const $ = this.global.getWindowObject('$');
+    //     this.cityPickerInstance = $(elementRef.nativeElement);
+    //     this.cityPickerInstance.citypicker();
+    // }
 
     diySelects = [
         {
@@ -41,11 +41,13 @@ export class SelectComponent implements AfterViewInit {
 
     chinaOptions = new Array<ItemTree>();
 
+    departmentOptions = [];
+
     selectValue = 'Brussels';
 
     selectValues = [1, 2];
 
-    cityValue = '';
+    cityValue = ['11', '1101', '110101'];
 
     constructor(public global: GlobalService, private request: RequestService) {
         request.text('/devexample/china').subscribe(res => {
@@ -59,11 +61,11 @@ export class SelectComponent implements AfterViewInit {
 
     ngAfterViewInit() {
         // 必须在视图初始化完成后才能设置省市区选择的默认选中值
-        this.cityPickerInstance.citypicker('destroy');
-        this.cityPickerInstance.citypicker({
-            province: '江苏省',
-            city: '常州市',
-            district: '溧阳市'
-        });
+        // this.cityPickerInstance.citypicker('destroy');
+        // this.cityPickerInstance.citypicker({
+        //     province: '江苏省',
+        //     city: '常州市',
+        //     district: '溧阳市'
+        // });
     }
 }

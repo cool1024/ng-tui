@@ -9,12 +9,17 @@
     </div>
     <div class="card mb-3">
         <div class="card-header">省市区选择</div>
-        <div class="card-body form-inline">
-            <ts-select-block [items]="chinaOptions" placeholder="请选择省市区"></ts-select-block>
-            <div class="form-control position-relative" style="width: 300px">
+        <div class="card-body">
+            <ts-select-block [(ngModel)]="cityValue" [items]="chinaOptions" placeholder="请选择省市区" class="d-inline-block mb-2 mr-2"
+                style="width: 200px"></ts-select-block>
+            <ts-select-block [(ngModel)]="cityValue" [items]="departmentOptions" placeholder="请选择部门" class="d-inline-block mb-2"
+                style="width: 200px"></ts-select-block>
+            {{cityValue|json}}
+            <!-- 已经被弃用的省市区第三方选择插件 -->
+            <!-- <div class="form-control position-relative" style="width: 300px">
                 <input #cityPicker readonly type="text" style="width: 200px;line-height:1;height:19px;">
             </div>
-            <button class="ml-3" tsBtn (click)="getPickerValue()">获取选中的值</button>
+            <button class="ml-3" tsBtn (click)="getPickerValue()">获取选中的值</button> -->
         </div>
     </div>
     <div class="row">
