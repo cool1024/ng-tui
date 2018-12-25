@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ItemTree } from 'projects/ng-tui/src/public_api';
-import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { ItemTree, UploadConfig } from 'projects/ng-tui/src/public_api';
+import { of, interval } from 'rxjs';
+import { delay, take, map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-root',
@@ -9,6 +9,13 @@ import { delay } from 'rxjs/operators';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+    config: UploadConfig = {
+        progresser: file => interval(100).pipe(
+            take(10),
+            map<number, string | number | boolean>(progress => progress >= 9 ? false : progress * 10)
+        )
+    }
 
     itemThrees: Array<ItemTree> = [];
 

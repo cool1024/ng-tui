@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import {
     TUIModule,
     SelectModule,
+    UploadModule,
 } from '../../projects/ng-tui/src/public_api';
 
 @NgModule({
@@ -16,6 +17,7 @@ import {
         TUIModule.forRoot(),
         // CkeditorModule.forRoot(['assets/ckeditor/ckeditor-classic.js', 'assets/ckeditor/zh-cn.js']),
         SelectModule,
+        UploadModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

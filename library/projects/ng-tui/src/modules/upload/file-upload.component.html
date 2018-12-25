@@ -1,0 +1,11 @@
+<input #fileDom="tsFile" tsFile (fileChange)="addNewFilesTopUpload($event)" type="file" multiple="multiple">
+<button [class]="btnClass" (click)="fileDom.openFileDialog()"><i class="iconfont icon-upload"></i> {{title}}</button>
+<div *ngFor="let item of uploadFiles.items;index as i" class=" my-2">
+    <div class="d-flex justify-content-between {{item.error&&' text-danger'}} {{(!item.error)&&(item.uploading===false)&&' text-info'}}">
+        <div><i class="iconfont icon-form"></i> {{item?.file.name}}</div>
+        <span class="iconfont icon-delete pointer" (click)="uploadFiles.remove(i)"></span>
+    </div>
+    <div *ngIf="item.uploading&&!item.error" class="progress mt-1" style="height: 2px;">
+        <div class="progress-bar" role="progressbar" [style.width.%]="item.progress"></div>
+    </div>
+</div>
