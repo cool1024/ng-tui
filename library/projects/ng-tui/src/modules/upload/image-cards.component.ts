@@ -114,7 +114,7 @@ export class ImageCardsComponent implements OnChanges {
         let cx = 0;
         this.uploading = true;
         for (let i = 0; i < fileItems.length; i++) {
-            this.config.uploader(fileItems[i].file).subscribe(res => {
+            this.config.uploader(<File>fileItems[i].file).subscribe(res => {
                 fileItems[i].type = 'url';
                 fileItems[i].uploading = false;
                 fileItems[i].file = null;

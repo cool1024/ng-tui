@@ -10,7 +10,7 @@ export class InputFileDirective implements AfterViewInit {
 
     @HostBinding('type') type = 'file';
 
-    private inputDom: HTMLInputElement;
+    inputDom: HTMLInputElement;
 
     constructor(private elementRef: ElementRef) { }
 

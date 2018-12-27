@@ -6,7 +6,7 @@
  * @date   2018-8-31 20:35:52
  */
 import { Component } from '@angular/core';
-import { GlobalService } from '../../../../cores/services';
+import { GlobalService, RequestService } from '../../../../cores/services';
 import { UploadConfig } from 'ng-tui';
 import { interval } from 'rxjs';
 import { take, map } from 'rxjs/operators';
@@ -28,13 +28,19 @@ export class UploadMoreComponent {
         }
     };
 
+    moreUploadConfig = {
+        progresser: file => this.request.ossUploadRequest('/managerapi/quill', file, true)
+    };
+
+    uploadItems = [];
+
     theads: string[] = [];
 
     tbodys: { [key: string]: string }[] = [];
 
     sourceUrl = '';
 
-    constructor(public global: GlobalService) { }
+    constructor(public global: GlobalService, private request: RequestService) { }
 
     /**
      * Excel文件读取

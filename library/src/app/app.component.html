@@ -4,5 +4,6 @@
     <pre>{{activeOptions|json}}</pre>
     <pre>{{value|json}}</pre>
     <button (click)="value=['13','1303','130306']">测试</button> -->
-    <ts-upload class="d-inline-block" style="width:200px" title="添加新附件" [config]="config"></ts-upload>
+    <ts-upload [(src)]="src" class="d-inline-block" style="width:200px" title="添加新附件" [config]="config"></ts-upload>
+    {{src|json}}
 </div>

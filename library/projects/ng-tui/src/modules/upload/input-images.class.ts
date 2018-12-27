@@ -1,8 +1,13 @@
 import { SafeResourceUrl } from '@angular/platform-browser';
 
+export interface FileItem {
+    src: string | SafeResourceUrl;
+    name: string;
+}
+
 export interface UploadItem {
     type: string;
-    file: File;
+    file: File | FileItem;
     url: string | SafeResourceUrl;
     uploading: boolean;
     progress?: number;
@@ -35,7 +40,7 @@ export class InputImages {
     get files(): File[] {
         const files = new Array<File>();
         this.items.forEach(e => {
-            if (e.type === 'file') {
+            if (e.type === 'file' && e.file instanceof File) {
                 files.push(e.file);
             }
         });
@@ -60,11 +65,17 @@ export class InputImages {
         this.items[index] = Object.assign(this.items[index], params);
     }
 
-    push(item: UploadItem) {
-        return this.items.push(item) - 1;
+    push(item: UploadItem): UploadItem {
+        this.items.push(item);
+        return item;
     }
 
     remove(index: number) {
         this.items.splice(index, 1);
+    }
+
+    toFileItemArray(): FileItem[] {
+        return this.items.filter(item => item.type === 'url')
+            .map(item => ({ src: item.url, name: item.file.name }));
     }
 }

@@ -227,14 +227,14 @@ export class RequestService {
                 if (response.target.status === 200) {
                     subject.next(`${res.datas.host}/${formData.get('key')}`);
                 } else {
-                    console.error('osssUpload=>', response);
+                    console.error('ossUpload=>', response);
                     subject.next('upload response');
                 }
                 subject.complete();
             };
 
             request.onerror = (error: any) => {
-                console.error('osssUpload=>', error);
+                console.error('ossUpload=>', error);
                 subject.next('upload error');
                 subject.complete();
             };

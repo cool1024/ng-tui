@@ -11,11 +11,16 @@ import { delay, take, map } from 'rxjs/operators';
 export class AppComponent {
 
     config: UploadConfig = {
-        progresser: file => interval(100).pipe(
-            take(10),
-            map<number, string | number | boolean>(progress => progress >= 9 ? false : progress * 10)
-        )
-    }
+        host: '',
+        progresser: file => {
+            return interval(100).pipe(
+                take(101),
+                map<number, number | string>((res) => res < 100 ? res : 'https://cool1024.com/upload/47e0b428f30fde9a0395b18e6db62ddd.mp4')
+            );
+        }
+    };
+
+    src = [{ "src": "https://cool1024.com/upload/47e0b428f30fde9a0395b18e6db62ddd.mp4", "name": "db_copy.php" }, { "src": "https://cool1024.com/upload/47e0b428f30fde9a0395b18e6db62ddd.mp4", "name": "composer.phar" }, { "src": "https://cool1024.com/upload/47e0b428f30fde9a0395b18e6db62ddd.mp4", "name": "composer.json" }];
 
     itemThrees: Array<ItemTree> = [];
 
