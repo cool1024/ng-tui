@@ -27,3 +27,7 @@
 5. `npm run build` 打包项目
 6. `npm run serve-proxy` 开启代理服务器
 7. `npm run view` 查看打包分析结果（各个模块的大小）
+
+## CLI支持
+* npm i yo -g
+* npm i generator-tui -g

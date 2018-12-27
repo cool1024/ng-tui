@@ -13,8 +13,6 @@ import { InputFileDirective } from './input-file.directive';
 
 export class FileUploadComponent extends BaseTheme implements OnChanges, AfterViewInit {
 
-    @Input() multiple: string;
-
     @Input() src = new Array<FileItem>();
 
     @Input() title = '';
@@ -62,10 +60,7 @@ export class FileUploadComponent extends BaseTheme implements OnChanges, AfterVi
         });
     }
 
-    ngAfterViewInit() {
-        // tslint:disable-next-line:no-unused-expression
-        this.isApply(this.multiple) && this.inputFile.inputDom.setAttribute('multiple', 'multiple');
-    }
+    ngAfterViewInit() { }
 
     removeFile(i: number) {
         this.noInputChange = true;
