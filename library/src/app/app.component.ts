@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ItemTree, UploadConfig } from 'projects/ng-tui/src/public_api';
+import { ItemTree, UploadConfig, FileItem } from 'projects/ng-tui/src/public_api';
 import { of, interval } from 'rxjs';
 import { delay, take, map } from 'rxjs/operators';
 
@@ -9,6 +9,11 @@ import { delay, take, map } from 'rxjs/operators';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+    fileSrc: FileItem = {
+        src: '',
+        name: '最新测试文档.docs'
+    };
 
     config: UploadConfig = {
         host: '',

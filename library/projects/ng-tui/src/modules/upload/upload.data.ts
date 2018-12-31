@@ -56,3 +56,8 @@ export const styleStr = `
 .upload-block-window:hover{
     opacity:0.5;
 }`;
+
+export const FILETYPES = {
+    IMAGES: ['image/jpeg', 'image/png', 'image/bmp', 'image/gif', 'image/svg+xml', 'image/vnd.microsoft.icon', 'image/vnd.adobe.photoshop'],
+    WORD: ['image/jpeg', 'image/png', 'image/bmp', 'image/gif', 'image/svg+xml', 'image/vnd.microsoft.icon'],
+};

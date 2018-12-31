@@ -6,6 +6,7 @@ import { ImageCardComponent } from './image-card.component';
 import { ImageCardsComponent } from './image-cards.component';
 import { InputVideoComponent } from './input-video.component';
 import { FileUploadComponent } from './file-upload.component';
+import { FileCardComponent } from './file-card.component';
 
 @NgModule({
     imports: [
@@ -18,6 +19,7 @@ import { FileUploadComponent } from './file-upload.component';
         ImageCardsComponent,
         InputVideoComponent,
         FileUploadComponent,
+        FileCardComponent,
     ],
     exports: [
         FormsModule,
@@ -27,6 +29,7 @@ import { FileUploadComponent } from './file-upload.component';
         ImageCardsComponent,
         InputVideoComponent,
         FileUploadComponent,
+        FileCardComponent,
     ]
 })
 export class UploadModule { }
