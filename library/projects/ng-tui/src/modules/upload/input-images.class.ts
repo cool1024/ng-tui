@@ -3,6 +3,7 @@ import { SafeResourceUrl } from '@angular/platform-browser';
 export interface FileItem {
     src: string | SafeResourceUrl;
     name: string;
+    type?: string;
 }
 
 export interface UploadItem {

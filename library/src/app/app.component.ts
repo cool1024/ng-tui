@@ -12,7 +12,8 @@ export class AppComponent {
 
     fileSrc: FileItem = {
         src: '',
-        name: '最新测试文档.docs'
+        name: '最新测试文档.docs',
+        type: 'application/pdf'
     };
 
     config: UploadConfig = {

@@ -1,35 +1,40 @@
 
-import { Component, OnChanges, SimpleChanges, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, Input, Output, EventEmitter, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { UploadConfig } from './upload.interface';
 import { FileItem } from './input-images.class';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'ts-file-card',
     template: `
     <div class="border p-1 rounded" style="width:130px;height:130px;">
     <input #fileDom="tsFile" tsFile (fileChange)="uploadFile($event)" type="file">
-        <div *ngIf="src;else openPad" class="bg-dark-hover pointer">
-            <div style="background-size: contain;height:100px;background-position: center;" [style.backgroundImage]="backgroundImage">
+        <div *ngIf="src;else openPad" class="upload-block-window bg-primary-hover pointer">
+            <div style="background-size: 60% 80%;background-repeat: no-repeat;height:100px;background-position: center;" [style.backgroundImage]="backgroundImage">
                 <div class="h-100 d-flex align-items-center justify-content-center">
-                    <i (click)="src=null" class="iconfont icon-delete"></i>
+                    <i (click)="deleteFile()" class="iconfont icon-delete text-white"></i>
                 </div>
             </div>
             <div style="height:20px" class="position-relative">
                 <div *ngIf="uploaded>=0" class="progress mx-1" style="height:2px;">
-                    <div class="progress-bar" style="width: 25%;"></div>
+                    <div class="progress-bar" [style.width.%]="uploaded"></div>
                 </div>
-                <div class="position-absolute text-center text-muted text-truncate w-100 h-100">1111111111测试文档.doc</div>
+                <div class="position-absolute text-center text-muted text-truncate w-100 h-100">{{src?.name}}</div>
             </div>
         </div>
         <ng-template #openPad>
-            <div (click)="fileDom.openFileDialog()" class="h-100 pointer d-flex justify-content-center align-items-center">
-                <div class="text-muted"><i class="iconfont icon-folder mr-1"></i>{{title}}</div>
+            <div (click)="fileDom.openFileDialog()" class="text-muted h-100 pointer d-flex justify-content-center align-items-center">
+                <div><i class="iconfont icon-folder mr-1"></i>{{title}}</div>
             </div>
         </ng-template>
-    </div>`
+    </div>`,
+    styles: [
+        `.upload-block-window i{opacity:0}
+         .upload-block-window:hover i{opacity:1}`
+    ]
 })
 
-export class FileCardComponent implements OnChanges {
+export class FileCardComponent implements OnChanges, OnDestroy {
 
     @Input() config: UploadConfig;
     @Input() src: FileItem;
@@ -37,24 +42,28 @@ export class FileCardComponent implements OnChanges {
 
     @Output() fileChange = new EventEmitter<File>(false);
     @Output() srcChange = new EventEmitter<FileItem>(false);
+    @Output() fileDelete = new EventEmitter<void>(false);
 
     @ViewChild('input_file') inputFile: ElementRef;
 
     backgroundImage = '';
     uploaded = -1;
+    subscription: Subscription;
 
-    fileTypeImage(file: File): string {
-        const types = file.type.split('/');
+    fileTypeImage(fileType: string): string {
+        const types = fileType.split('/');
         let typeImage = 'assets/file-icon/';
         switch (types[0]) {
-            case 'image': typeImage += 'image.png'; break;
-            case 'video': typeImage += 'video.png'; break;
-            case 'audio': typeImage += 'rudio.png'; break;
+            case 'image': typeImage += 'image.svg'; break;
+            case 'video': typeImage += 'video.svg'; break;
+            case 'audio': typeImage += 'audio.svg'; break;
             case 'application': switch (types[1]) {
-                case 'pdf': typeImage += 'pdf.png'; break;
-                case 'x-iwork-pages-sffpages': typeImage += 'word.png'; break;
+                case 'pdf': typeImage += 'pdf.svg'; break;
+                case 'x-iwork-pages-sffpages': typeImage += 'docs.png'; break;
+                case 'json': typeImage += 'text.svg'; break;
             }break;
         }
+        console.log(fileType);
         return `url(${typeImage})`;
     }
 
@@ -63,14 +72,43 @@ export class FileCardComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
+        if (changes.src) {
+            this.backgroundImage = this.fileTypeImage(this.src.type);
+        }
+    }
+
+    ngOnDestroy() {
+        if (this.uploaded > -1 && this.subscription) {
+            this.subscription.unsubscribe();
+        }
+    }
+
+    deleteFile() {
+        if (this.uploaded > -1 && this.subscription) {
+            this.subscription.unsubscribe();
+            this.uploaded = -1;
+        }
+        this.src = null;
+        this.fileDelete.emit();
     }
 
     uploadFile(file: File) {
-        this.backgroundImage = this.fileTypeImage(file);
+        this.fileChange.emit(file);
+        this.backgroundImage = this.fileTypeImage(file.type);
         this.src = {
             name: file.name,
             src: window.URL.createObjectURL(file),
+            type: file.type
         };
+        this.uploaded = 0;
+        this.subscription = this.config.progresser(file).subscribe(res => {
+            if (typeof res === 'number') {
+                this.uploaded = res;
+            } else {
+                this.src.src = res;
+                this.uploaded = -1;
+                this.srcChange.emit(this.src);
+            }
+        });
     }
-
 }

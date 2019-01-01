@@ -27,7 +27,7 @@
             </div>
         </div>
     </div>
-    <div class="card card-mb-3">
+    <div class="card mb-3">
         <div class="card-header border-bottom">Excel文件读取</div>
         <div class="card-body">
             <div>
@@ -48,9 +48,22 @@
             </table>
         </div>
     </div>
-    <div class="card">
-        <div class="card-body">
-            <ts-upload [(src)]="uploadItems" class="d-inline-block" style="width:200px" title="添加新附件" [config]="moreUploadConfig"></ts-upload>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-3">
+                <div class="card-header border-bottom">单文件上传</div>
+                <div class="card-body">
+                    <ts-file-card [config]="moreUploadConfig" title="点击选择文件"></ts-file-card>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card mb-3">
+                <div class="card-header border-bottom">多附件上传</div>
+                <div class="card-body">
+                    <ts-upload [(src)]="uploadItems" class="d-inline-block" style="width:200px" title="添加新附件" [config]="moreUploadConfig"></ts-upload>
+                </div>
+            </div>
         </div>
     </div>
 </div>
