@@ -59,11 +59,19 @@ export class FileCardComponent implements OnChanges, OnDestroy {
             case 'audio': typeImage += 'audio.svg'; break;
             case 'application': switch (types[1]) {
                 case 'pdf': typeImage += 'pdf.svg'; break;
-                case 'x-iwork-pages-sffpages': typeImage += 'docs.png'; break;
+                case 'x-iwork-pages-sffpages': typeImage += 'docs.svg'; break;
+                case 'vnd.openxmlformats-officedocument.spreadsheetml.sheet': typeImage += 'excel.svg'; break;
+                case 'vnd.ms-excel': typeImage += 'excel.svg'; break;
+                case 'vnd.openxmlformats-officedocument.wordprocessingml.document': typeImage += 'docs.svg'; break;
+                case 'msword': typeImage += 'docs.svg'; break;
                 case 'json': typeImage += 'text.svg'; break;
+                case 'zip': typeImage += 'zip.svg'; break;
+                default: typeImage += 'other.svg';
             }break;
+            case 'text': typeImage += 'text.svg'; break;
+            default: typeImage += 'other.svg';
         }
-        console.log(fileType);
+        // console.log(fileType);
         return `url(${typeImage})`;
     }
 
