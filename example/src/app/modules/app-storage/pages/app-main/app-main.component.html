@@ -1,0 +1,26 @@
+<div class="toolbar"></div>
+<div class="p-3">
+    <div class="card">
+        <div class="d-flex mt-3 mb-3">
+            <div class="flex-grow-1 border-right" style="max-width: 200px;">
+                <ts-side-tabs>
+                    <ts-tab routerLink="app-docs">
+                        <div class="ml-2">应用说明</div>
+                    </ts-tab>
+                    <ts-tab routerLink="app-service">
+                        <div class="ml-2">功能列表</div>
+                    </ts-tab>
+                    <ts-tab routerLink="app-setting">
+                        <div class="ml-2">开发者参数</div>
+                    </ts-tab>
+                    <ts-tab routerLink="app-view">
+                        <div class="ml-2">预览</div>
+                    </ts-tab>
+                </ts-side-tabs>
+            </div>
+            <div class="flex-grow-1 pl-2">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

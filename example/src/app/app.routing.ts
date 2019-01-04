@@ -11,11 +11,13 @@ const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
 
     // 懒加载子模块
-    { path: 'demo', loadChildren: './modules/demo/demo.module#DemoModule', canActivate: [GuardService] },
-    { path: 'admin', loadChildren: './modules/admin/admin.module#AdminModule', canActivate: [GuardService] },
-    { path: 'store', loadChildren: './modules/store/store.module#StoreModule', canActivate: [GuardService] },
+    // { path: 'demo', loadChildren: './modules/demo/demo.module#DemoModule', canActivate: [GuardService] },
+    // { path: 'admin', loadChildren: './modules/admin/admin.module#AdminModule', canActivate: [GuardService] },
+    // { path: 'store', loadChildren: './modules/store/store.module#StoreModule', canActivate: [GuardService] },
     { path: 'system', loadChildren: './modules/system/system.module#SystemModule', canActivate: [GuardService] },
-    { path: 'server-test', loadChildren: './modules/server-test/server-test.module#ServerTestModule', canActivate: [GuardService] },
+    // { path: 'server-test', loadChildren: './modules/server-test/server-test.module#ServerTestModule', canActivate: [GuardService] },
+    { path: 'platform', loadChildren: './modules/platform/platform.module#PlatformModule', canActivate: [GuardService] },
+    { path: 'app-storage', loadChildren: './modules/app-storage/app-storage.module#AppStorageModule', canActivate: [GuardService] },
     // 最后全局匹配其他链接
     { path: '**', redirectTo: 'error', pathMatch: 'full' }
 ];

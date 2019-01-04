@@ -1,0 +1,101 @@
+<router-outlet #outlet="outlet"></router-outlet>
+<ng-container *ngIf="!outlet.isActivated">
+    <!-- 这是头部工具栏目，里面的元素会和导航栏在一起，不要删除 -->
+    <div class="toolbar">
+        <ts-datepicker #datepickerOne="tsDatepicker" [(ngModel)]="search.params.start"></ts-datepicker>
+        <ts-datepicker #datepickerTwo="tsDatepicker" [(ngModel)]="search.params.end"></ts-datepicker>
+    </div>
+    <!-- 页面主体内容 -->
+    <div class="p-3">
+        <div class="card mb-3">
+            <h6 class="card-header">公司列表</h6>
+            <div class="card-body">
+                <div class="form-inline">
+                    <div class="input-group mb-3 mr-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white">公司名称</span>
+                        </div>
+                        <input style="width:140px" [(ngModel)]="search.params.name" type="text" class="form-control"
+                            placeholder="请输入公司名称关键词">
+                        <div class="input-group-prepend input-group-append">
+                            <span class="input-group-text bg-white">创建时间</span>
+                        </div>
+                        <input style="width:140px" tsToggle [value]="search.params.start|date :'yyyy-MM-dd'" [target]="datepickerOne"
+                            [bind]="datepickerOne" type="text" class="form-control bg-white pointer" placeholder="开始时间"
+                            readonly>
+                        <div class="input-group-prepend input-group-append">
+                            <span class="input-group-text bg-white">到</span>
+                        </div>
+                        <input style="width:140px" tsToggle [value]="search.params.end|date :'yyyy-MM-dd'" [target]="datepickerTwo"
+                            [bind]="datepickerTwo" type="text" class="form-control bg-white pointer" placeholder="结束时间"
+                            readonly>
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <div class="input-group mr-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white">共查询到</span>
+                        </div>
+                        <input style="width:140px" type="text" value="{{page.total}}" class="form-control text-center bg-white"
+                            readonly placeholder="0">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-white">条/结果</span>
+                        </div>
+                    </div>
+                    <div class="m-btn">
+                        <button class="btn btn-info" routerLink="detail">
+                            <span>添加商户</span>
+                        </button>
+                        <button (click)="doReset()" class="btn btn-white">
+                            <i class="iconfont icon-refresh mr-1"></i>
+                            <span>重置</span>
+                        </button>
+                        <button (click)="doSearch()" class="btn btn-white">
+                            <i class="iconfont icon-search mr-1"></i>
+                            <span>搜索</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <ts-table-load [display]="page.loading"></ts-table-load>
+                <table class="table table-striped text-center">
+                    <thead class="thead-light">
+                        <tr>
+                            <th *ngFor="let th of tableHeads">{{th}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of tableRows">
+                            <td>{{row.id}}</td>
+                            <td>
+                                <img tsImg [src]="row.companyLogo" dataSrc="assets/images/404.jpg" class="rounded-circle"
+                                    width="40" height="40" alt="图标">
+                            </td>
+                            <td>{{row.companyName}}</td>
+                            <td>{{row.companyServiceActiveTotal}}/{{row.companyServiceTotal}}</td>
+                            <td>{{row.createdAt.substring(0,10)|date:'yyyy/MM/dd'}}</td>
+                            <td>
+                                <ts-switch (ngModelChange)="updateCompanyStatus(row,$event)" [ngModel]="row.isActive"
+                                    [values]="{open:1,close:0}"></ts-switch>
+                            </td>
+                            <td>
+                                <span (click)="confirmDelete(row)" tsTip="删除" class="btn-icon btn-icon-danger">
+                                    <i class="iconfont icon-delete"></i>
+                                </span>
+                                <span class="btn-icon btn-icon-info" tsTip="详情" routerLink="{{row.id}}">
+                                    <i class="iconfont icon-edit"></i>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-right">
+                    <ts-pagination (pageChange)="loadDatas()" [pagination]="page" outline></ts-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

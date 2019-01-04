@@ -1,0 +1,26 @@
+<h5 class="card-header">接口调用记录</h5>
+<div tsEchart [resize]="true" [option]="apiTotalData" (chartLoad)="chart=$event" style="width:100%;height:400px;"></div>
+<h5 class="card-header">空间统计</h5>
+<div class="card-body">
+    <table class="table table-bordered text-center">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">存储类型</th>
+                <th scope="col">总空间</th>
+                <th scope="col">剩余空间</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">本地存储</th>
+                <td>100M</td>
+                <td>10M</td>
+            </tr>
+            <tr>
+                <th scope="row">OSS</th>
+                <td>100G</td>
+                <td>10M</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
