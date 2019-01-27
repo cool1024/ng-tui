@@ -25,7 +25,9 @@ export class UploadMoreComponent {
                 take(101),
                 map<number, number | string>((res) => res < 100 ? res : 'https://cool1024.com/upload/47e0b428f30fde9a0395b18e6db62ddd.mp4')
             );
-        }
+        },
+        // 参考例子，image参数是接口对应的文件参数名称，file为要上传的文件对象
+        // progresser: file => this.request.progresser('文件的上传地址', { name: 'image', file: file })
     };
 
     moreUploadConfig = {

@@ -187,6 +187,23 @@ export class RequestService {
     }
 
     /**
+     * 单上传并附带上传进度
+     * @param url 上传地址
+     * @param fileItem 文件项，例如 {name:'file banner',file:imageFile}
+     */
+    progresser(url: string, fileItem: { name: string, file: File }): Observable<string | number> {
+        const subject = new Subject<string | number>();
+        this.upload(url, [{ name: fileItem.name, files: [fileItem.file] }],
+            progress => {
+                subject.next(progress);
+            }, res => {
+                subject.next(res.datas);
+                subject.complete();
+            });
+        return subject.asObservable();
+    }
+
+    /**
      * oss文件上传，简单方法
      * @param {string} url 请求接口地址
      * @param {File} file 要上传的文件对象
