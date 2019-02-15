@@ -12,6 +12,10 @@ export class ApiData {
         this.endTime = new Date().getTime();
     }
 
+    static getApiDataFromJson(obj: any): ApiData {
+        return new ApiData(obj.result ? true : false, obj.message || '', obj.datas || obj.data);
+    }
+
     toJsonString(): string {
         const json = {
             result: this.result || false,
@@ -39,6 +43,10 @@ export class ApiData {
 
     get requestTime(): number {
         return this.endTime - this.startTime;
+    }
+
+    get data(): any {
+        return this.datas;
     }
 }
 

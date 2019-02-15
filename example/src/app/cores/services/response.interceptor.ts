@@ -88,7 +88,8 @@ export class ResponseInterceptor implements HttpInterceptor {
     responseHandle(res: any, request: HttpRequest<any>, time: number) {
         if (res instanceof HttpResponse) {
             if (res.body !== null && ApiResponse.isApiResponse(res.body)) {
-                const apiData = new ApiData(res.body.result, res.body.message, res.body.datas);
+                // const apiData = new ApiData(res.body.result, res.body.message, res.body.datas);
+                const apiData = ApiData.getApiDataFromJson(res.body);
                 apiData.startTime = time;
                 if (apiData.result === false) {
                     this.toast.warning('操作失败', apiData.messageStr, HttpConfig.TOAST_ERROR_TIME);
