@@ -1,0 +1,35 @@
+<div class="h-100 d-flex">
+    <div class="m-auto shadow algin-self-center position-relative rounded"
+        style="background:url(assets/images/transparent.png);overflow: hidden;">
+        <nav class="bg-white align-items-center d-flex justify-content-between position-absolute w-100 shadow-sm"
+            style="height:55px;">
+            <span class="navbar-brand ml-2">图片编辑</span>
+            <div>
+                <span (click)="view.close()" class="text-muted text-danger-hover pointer">
+                    <i class="fa fa-times mr-2" aria-hidden="true"></i>关闭
+                </span>
+            </div>
+        </nav>
+        <div #drawPad style="width:600px;height:400px;margin-top:60px;margin-bottom:4px;"></div>
+        <div class="p-2 bg-white d-flex justify-content-between items-align-center">
+            <div class="d-inline-flex text-white">
+                <div (click)="activeColor='red'" class="paint-dot bg-danger pointer text-center">
+                    <i *ngIf="activeColor=='red'" class="iconfont icon-check"></i>
+                </div>
+                <div (click)="activeColor='yellow'" class="paint-dot bg-warning pointer text-center">
+                    <i *ngIf="activeColor=='yellow'" class="iconfont icon-check"></i>
+                </div>
+                <div (click)="activeColor='green'" class="paint-dot bg-success pointer text-center">
+                    <i *ngIf="activeColor=='green'" class="iconfont icon-check"></i>
+                </div>
+                <div (click)="activeColor='black'" class="paint-dot bg-dark pointer text-center">
+                    <i *ngIf="activeColor=='black'" class="iconfont icon-check"></i>
+                </div>
+            </div>
+            <div>
+                <button tsBtn (click)="reDo()" color="danger" class="mr-2">撤销</button>
+                <button tsBtn (click)="confirmDraw()" color="primary">确认涂鸦</button>
+            </div>
+        </div>
+    </div>
+</div>

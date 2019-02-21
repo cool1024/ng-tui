@@ -47,9 +47,29 @@ export class ClipPad {
         });
     }
 
-    imgSize(file: File): Observable<any> {
+    imgAutoSize(file: File | string): Observable<{ x: number, y: number, w: number, h: number }> {
+        return this.imgSize(file).pipe(map(size => {
+            const imgK = size.height / size.width;
+            this.expHeight = this.padSize.height;
+            this.expWidth = this.expHeight / imgK;
+            if (size.height > this.padSize.height) {
+                this.expHeight = this.padSize.height;
+                this.expWidth = this.expHeight / imgK;
+            }
+            if (this.expWidth > this.padSize.width) {
+                this.expWidth = this.padSize.width;
+                this.expHeight = this.expWidth * imgK;
+            }
+            const dw = (this.padSize.width - this.expWidth) / 2;
+            const dh = (this.padSize.height - this.expHeight) / 2;
+            console.log(size);
+            return { x: dw, y: dh, w: this.expWidth, h: this.expHeight };
+        }));
+    }
+
+    imgSize(file: File | string): Observable<any> {
         this.img = new Image();
-        this.img.src = window.URL.createObjectURL(file);
+        this.img.src = typeof file === 'string' ? file : window.URL.createObjectURL(file);
         return fromEvent<Event>(this.img, 'load').pipe(map<Event, any>(() => {
             return { width: this.img.width, height: this.img.height };
         }));

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClipComponent } from './clip.component';
 import { ButtonModule } from '../button/button.module';
+import { DrawComponent } from './draw.component';
 
 @NgModule({
     imports: [
@@ -9,10 +10,12 @@ import { ButtonModule } from '../button/button.module';
         ButtonModule
     ],
     declarations: [
-        ClipComponent
+        ClipComponent,
+        DrawComponent,
     ],
     entryComponents: [
-        ClipComponent
+        ClipComponent,
+        DrawComponent,
     ]
 })
 export class ClipModule { }

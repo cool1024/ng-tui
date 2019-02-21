@@ -32,6 +32,7 @@ export * from './modules/checkbox/radio.component';
 export * from './modules/checkbox/switch.component';
 export * from './modules/clip/clip.class';
 export * from './modules/clip/clip.component';
+export * from './modules/clip/draw.component';
 export * from './modules/clip/clip.module';
 export * from './modules/collapse/collapse.module';
 export * from './modules/collapse/collapse.directive';
