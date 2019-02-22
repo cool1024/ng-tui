@@ -80,7 +80,7 @@ export class FileCardComponent implements OnChanges, OnDestroy {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes.src) {
+        if (changes.src && changes.src.currentValue) {
             this.backgroundImage = this.fileTypeImage(this.src.type);
         }
     }

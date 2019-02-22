@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WindowService } from 'projects/ng-tui/src/public_api';
+import { WindowService, FileItem } from 'projects/ng-tui/src/public_api';
 import { DrawComponent } from 'projects/ng-tui/src/modules/clip/draw.component';
 
 @Component({
@@ -10,6 +10,8 @@ import { DrawComponent } from 'projects/ng-tui/src/modules/clip/draw.component';
 export class AppComponent {
 
     constructor(private windowService: WindowService) { }
+
+    fileSrc: FileItem = null;
 
     showDrawWindow() {
         const window = this.windowService.push(DrawComponent);

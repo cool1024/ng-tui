@@ -6,6 +6,7 @@ import {
     TUIModule,
     WindowModule,
     ClipModule,
+    UploadModule,
 } from '../../projects/ng-tui/src/public_api';
 
 @NgModule({
@@ -17,6 +18,7 @@ import {
         TUIModule.forRoot(),
         // CkeditorModule.forRoot(['assets/ckeditor/ckeditor-classic.js', 'assets/ckeditor/zh-cn.js']),
         WindowModule,
+        UploadModule,
         ClipModule,
     ],
     providers: [],
