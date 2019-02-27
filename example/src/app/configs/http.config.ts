@@ -7,7 +7,10 @@ export const HttpConfig = {
     SOURCE_URL: 'https://www.cool1024.com',
 
     // WEBSOCKET链接地址
-    WEBSOCKET_URL: '',
+    WEBSOCKET_URL: 'wss://www.cool1024.com:8000',
+
+    // 消息服务接口地址
+    MESSAGE_URL: 'https://www.cool1024.com:8000/message',
 
     // 是否开启参数打包功能，只有POST|PUT请求的参数会被打包,上线需开启
     OPEN_PARAM_PACKAGE: false,

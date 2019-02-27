@@ -68,6 +68,16 @@ export class RequestService {
     }
 
     /**
+     * 发送一个自定义请求（获取文本文件内容)
+     *
+     * @param {string} url 请求地址
+     * @return {Observable<string>}
+     */
+    request(method: string, url: string, body: any): Observable<string> {
+        return this.http.request(method, url, { responseType: 'text', body });
+    }
+
+    /**
      * 发送一个get请求(不带参数)
      *
      * @param {string} url 接口地址

@@ -10,7 +10,8 @@ import { Subscription } from 'rxjs';
     <div class="border p-1 rounded" style="width:130px;height:130px;">
     <input #fileDom="tsFile" tsFile (fileChange)="uploadFile($event)" type="file">
         <div *ngIf="src;else openPad" class="upload-block-window bg-primary-hover pointer">
-            <div style="background-size: 60% 80%;background-repeat: no-repeat;height:100px;background-position: center;" [style.backgroundImage]="backgroundImage">
+            <div style="background-size: 60% 80%;background-repeat: no-repeat;height:100px;background-position: center;"
+                [style.backgroundImage]="backgroundImage">
                 <div class="h-100 d-flex align-items-center justify-content-center">
                     <i (click)="deleteFile()" class="iconfont icon-delete text-white"></i>
                 </div>
@@ -81,7 +82,12 @@ export class FileCardComponent implements OnChanges, OnDestroy {
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes.src && changes.src.currentValue) {
-            this.backgroundImage = this.fileTypeImage(this.src.type);
+            if (this.src.file) {
+                this.uploadFile(this.src.file);
+                this.src.file = null;
+            } else {
+                this.backgroundImage = this.fileTypeImage(this.src.type);
+            }
         }
     }
 
@@ -102,21 +108,23 @@ export class FileCardComponent implements OnChanges, OnDestroy {
 
     uploadFile(file: File) {
         this.fileChange.emit(file);
-        this.backgroundImage = this.fileTypeImage(file.type);
-        this.src = {
-            name: file.name,
-            src: window.URL.createObjectURL(file),
-            type: file.type
-        };
-        this.uploaded = 0;
-        this.subscription = this.config.progresser(file).subscribe(res => {
-            if (typeof res === 'number') {
-                this.uploaded = res;
-            } else {
-                this.src.src = res;
-                this.uploaded = -1;
-                this.srcChange.emit(this.src);
-            }
-        });
+        if (this.config && this.config.progresser) {
+            this.backgroundImage = this.fileTypeImage(file.type);
+            this.src = {
+                name: file.name,
+                src: window.URL.createObjectURL(file),
+                type: file.type
+            };
+            this.uploaded = 0;
+            this.subscription = this.config.progresser(file).subscribe(res => {
+                if (typeof res === 'number') {
+                    this.uploaded = res;
+                } else {
+                    this.src.src = res;
+                    this.uploaded = -1;
+                    this.srcChange.emit(this.src);
+                }
+            });
+        }
     }
 }

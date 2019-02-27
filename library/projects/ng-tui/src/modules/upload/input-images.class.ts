@@ -1,9 +1,10 @@
 import { SafeResourceUrl } from '@angular/platform-browser';
 
 export interface FileItem {
-    src: string | SafeResourceUrl;
-    name: string;
+    src?: string | SafeResourceUrl;
+    name?: string;
     type?: string;
+    file?: File;
 }
 
 export interface UploadItem {

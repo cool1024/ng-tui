@@ -4,13 +4,15 @@
 <ng-template #elseBlock>
     <div class="d-flex" style="height:100vh;overflow: hidden;">
         <!-- 左侧菜单 -->
-        <div [class.menu-container-sm]="global.params.menuMode==='small'" class="menu-container flex-shrink-0 h-100 d-flex flex-column">
-            <div class="d-flex align-items-center justify-content-center bg-white flex-shrink-0" style="height: 60px;overflow: hidden;border-bottom:1px solid rgba(200, 200, 200,.3);">
+        <div [class.menu-container-sm]="global.params.menuMode==='small'"
+            class="menu-container flex-shrink-0 h-100 d-flex flex-column">
+            <div class="d-flex align-items-center justify-content-center bg-white flex-shrink-0"
+                style="height: 60px;overflow: hidden;border-bottom:1px solid rgba(200, 200, 200,.3);">
                 <img [src]="menuConfig.SMALL_LOGO" width="30">
                 <h4 *ngIf="global.params.menuMode==='full'" class="m-0">Admin</h4>
             </div>
-            <app-menu class="flex-grow-1 shadow-sm" [menuConfig]="menuConfig" [autoClose]="true" [menuMode]="global.params.menuMode"
-                [items]="menu.menuModels" [useImage]="true"></app-menu>
+            <app-menu class="flex-grow-1 shadow-sm" [menuConfig]="menuConfig" [autoClose]="true"
+                [menuMode]="global.params.menuMode" [items]="menu.menuModels" [useImage]="true"></app-menu>
         </div>
         <!-- 右侧内容 -->
         <div class="flex-grow-1 h-100 d-flex flex-column">
@@ -18,25 +20,40 @@
             <div class="headbar bg-{{global.params.color}} no-select text-light d-flex align-items-center justify-content-between flex-shrink-0 shadow-sm"
                 style="height:60px;z-index:1;">
                 <div class="d-flex align-items-center flex-grow-1 h-100">
-                    <div (click)="changeMenuMode()" class="d-flex align-items-center bg-light-hover pointer h-100 pl-3 pr-3">
+                    <div (click)="changeMenuMode()"
+                        class="d-flex align-items-center bg-light-hover pointer h-100 pl-3 pr-3">
                         <i class="iconfont icon-category"></i>
                     </div>
                 </div>
                 <div class="flex-shrink-0 d-flex align-items-center h-100">
                     <div class="h-100 d-flex">
-                        <div (click)="sendMessage()" class="d-flex align-items-center bg-light-hover pointer h-100 pl-3 pr-3">
+                        <div (click)="sendMessage()"
+                            class="d-flex align-items-center bg-light-hover pointer h-100 pl-3 pr-3">
                             <i class="iconfont icon-remind"></i>
                         </div>
                         <!-- 消息显示面板 -->
                         <div tsDropdown class="d-flex align-items-center bg-light-hover pointer h-100 badge-message"
-                            data-badge="2">
+                            [attr.databadge]="message.msgCount">
                             <div tsToggle class="h-100 d-flex align-items-center pl-3 pr-3">
                                 <i class="iconfont icon-comments"></i>
                             </div>
                             <div tsDropMenu [offsetX]="-200" [offsetY]="2" style="width:300px;">
                                 <div class="p-3 message-note">
-                                    <div class="media">
-                                        <img dataSrc="assets/images/404.jpg" src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png"
+                                    <ng-container *ngFor="let msg of message.messages">
+                                        <div class="media">
+                                            <img dataSrc="assets/images/404.jpg"
+                                                src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png"
+                                                height="35" width="35" class="mr-3">
+                                            <div class="media-body">
+                                                <p class="m-0 text-truncate" style="width:200px">{{msg.msg}}</p>
+                                                <small class="text-muted">{{msg.timeSpan}}</small>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </ng-container>
+                                    <!-- <div class="media">
+                                        <img dataSrc="assets/images/404.jpg"
+                                            src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png"
                                             height="35" width="35" class="mr-3">
                                         <div class="media-body">
                                             <p class="m-0 text-truncate" style="width:200px">您收到了10条消息</p>
@@ -45,7 +62,8 @@
                                     </div>
                                     <hr>
                                     <div class="media">
-                                        <img dataSrc="assets/images/404.jpg" src="https://gw.alipayobjects.com/zos/rmsportal/OKJXDXrmkNshAMvwtvhu.png"
+                                        <img dataSrc="assets/images/404.jpg"
+                                            src="https://gw.alipayobjects.com/zos/rmsportal/OKJXDXrmkNshAMvwtvhu.png"
                                             height="35" width="35" class="mr-3">
                                         <div class="media-body">
                                             <p class="m-0 text-truncate" style="width:200px">今天上班打卡成功，本月有10次未打卡</p>
@@ -54,17 +72,22 @@
                                     </div>
                                     <hr>
                                     <div class="media">
-                                        <img dataSrc="assets/images/404.jpg" src="https://gw.alipayobjects.com/zos/rmsportal/GvqBnKhFgObvnSGkDsje.png"
+                                        <img dataSrc="assets/images/404.jpg"
+                                            src="https://gw.alipayobjects.com/zos/rmsportal/GvqBnKhFgObvnSGkDsje.png"
                                             height="35" width="35" class="mr-3">
                                         <div class="media-body">
                                             <p class="m-0 text-truncate" style="width:200px">你关注的每日新闻更新了</p>
                                             <small class="text-muted">2天前</small>
                                         </div>
                                     </div>
-                                    <hr>
-                                    <div (click)="cleanMessage()" class="text-center text-primary-hover w-100">
+                                    <hr> -->
+                                    <div *ngIf="message.msgCount>0" (click)="cleanMessage()"
+                                        class="text-center text-primary-hover w-100">
                                         <span class="iconfont icon-delete mr-2"></span>
                                         <span>清空通知</span>
+                                    </div>
+                                    <div *ngIf="message.msgCount==0" class="text-center text-muted w-100">
+                                        当前没有收到任何消息～
                                     </div>
                                 </div>
                             </div>
@@ -73,8 +96,9 @@
                     <!-- 用户头像，下拉菜单 -->
                     <div tsDropdown class="h-100 d-flex align-items-center pointer">
                         <div class="bg-light-hover h-100 d-flex align-items-center" tsToggle>
-                            <img [src]="auth.user.avatar" dataSrc="assets/images/404.jpg" class="rounded-circle border border-light ml-3 mr-3"
-                                height="35" width="35" alt="avatar">
+                            <img [src]="auth.user.avatar" dataSrc="assets/images/404.jpg"
+                                class="rounded-circle border border-light ml-3 mr-3" height="35" width="35"
+                                alt="avatar">
                         </div>
                         <div tsDropMenu [offsetX]="-100" [offsetY]="2" style="width:163px;">
                             <div class="dropdown-item-title">{{auth.user?.role.roleName}}</div>
@@ -111,7 +135,8 @@
                                 <i class="iconfont icon-homepagenormal"></i>
                                 <span>首页</span>
                             </a>
-                            <a *ngFor="let breadcrumb of breadcrumbs" [routerLink]="breadcrumb.path" class="mr-2" class="ml-2">
+                            <a *ngFor="let breadcrumb of breadcrumbs" [routerLink]="breadcrumb.path" class="mr-2"
+                                class="ml-2">
                                 <span>{{breadcrumb.title}}</span>
                             </a>
                         </div>

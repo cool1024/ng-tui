@@ -13,7 +13,8 @@
             <div class="card mb-3">
                 <div class="card-header border-bottom">视频上传</div>
                 <div class="card-body">
-                    <ts-video [config]="uploadConfig" title="请选择视频" [color]="global.params.color" [src]="sourceUrl"></ts-video>
+                    <ts-video [config]="uploadConfig" title="请选择视频" [color]="global.params.color" [src]="sourceUrl">
+                    </ts-video>
                 </div>
             </div>
         </div>
@@ -53,7 +54,7 @@
             <div class="card mb-3">
                 <div class="card-header border-bottom">单文件上传</div>
                 <div class="card-body">
-                    <ts-file-card [config]="moreUploadConfig" title="点击选择文件"></ts-file-card>
+                    <ts-file-card [(src)]="fileItem" [config]="moreUploadConfig" title="点击选择文件"></ts-file-card>
                 </div>
             </div>
         </div>
@@ -61,7 +62,9 @@
             <div class="card mb-3">
                 <div class="card-header border-bottom">多附件上传</div>
                 <div class="card-body">
-                    <ts-upload [(src)]="uploadItems" class="d-inline-block" style="width:200px" title="添加新附件" [config]="moreUploadConfig"></ts-upload>
+                    <ts-file-cards [(src)]="fileItems" [config]="moreUploadConfig" title="点击选择文件"></ts-file-cards>
+                    <!-- ts-upload 会被移除，不再使用 -->
+                    <!-- <ts-upload [(src)]="uploadItems" class="d-inline-block" style="width:200px" title="添加新附件" [config]="moreUploadConfig"></ts-upload> -->
                 </div>
             </div>
         </div>

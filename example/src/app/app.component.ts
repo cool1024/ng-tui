@@ -1,9 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router, RouteConfigLoadStart, NavigationEnd, ActivatedRouteSnapshot } from '@angular/router';
-import { GlobalService, MenuService, AuthService } from './cores/services';
+import { GlobalService, MenuService, AuthService, MessageService } from './cores/services';
 import { MenuModel } from './modules/dashboard/components/menu/menu.interface';
 import { AppConfig } from './configs/app.config';
 import { ConfirmService, ToastService } from 'ng-tui';
+import { HttpConfig } from './configs/http.config';
 
 @Component({
     selector: 'app-root',
@@ -30,6 +31,7 @@ export class AppComponent {
         private router: Router,
         private confirm: ConfirmService,
         public auth: AuthService,
+        public message: MessageService,
         private toast: ToastService,
     ) {
 
@@ -57,6 +59,12 @@ export class AppComponent {
         //      this.menu.loadMenu(JSON.parse(res));
         // });
 
+        // 初始化消息服务
+        this.message.initWs(HttpConfig.WEBSOCKET_URL, 'admin');
+        this.message.initMs(HttpConfig.MESSAGE_URL, { token: '123456789' });
+
+        this.message.obs.subscribe(msg => this.toast.info('收到一条新消息', msg));
+
         // 设置路由监听事件
         this.router.events.subscribe(event => {
             if (event instanceof RouteConfigLoadStart) {
@@ -80,6 +88,12 @@ export class AppComponent {
     changeMenuMode() {
         this.global.params.menuMode = this.global.params.menuMode === 'small' ? 'full' : 'small';
         this.global.setValuesToStorage({ menuMode: this.global.params.menuMode });
+        // 修复菜单变化图表等监听resize事件不生效问题
+        setTimeout(() => {
+            const event = document.createEvent('Event');
+            event.initEvent('resize', true, true);
+            window.dispatchEvent(event);
+        }, 500);
     }
 
     /**
@@ -107,13 +121,16 @@ export class AppComponent {
      * 清空消息通知
      */
     cleanMessage() {
-        this.toast.info('操作不可用', '这个清空操作为预览，无实际效果');
+        // this.toast.info('操作不可用', '这个清空操作为预览，无实际效果');
+        this.message.cleanMsg();
     }
 
     /**
      * 发送通知消息
      */
     sendMessage() {
-        this.toast.info('操作不可用', '这个发送操作为预览，无实际效果');
+        this.message.sendMessage({ uid: 'admin', msg: '这是一条消息通知，发送时间为' + new Date() }).subscribe(res => {
+            // this.toast.info('操作不可用', res);
+        });
     }
 }

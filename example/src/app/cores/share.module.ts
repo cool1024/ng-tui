@@ -32,7 +32,7 @@ import {
     EChartModule,
     QuillModule,
     CkeditorModule,
-    DatePickerModule
+    DatePickerModule,
 } from 'ng-tui';
 
 @NgModule({

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { WindowService, FileItem } from 'projects/ng-tui/src/public_api';
+import { WindowService, FileItem, UploadConfig } from 'projects/ng-tui/src/public_api';
 import { DrawComponent } from 'projects/ng-tui/src/modules/clip/draw.component';
+import { interval } from 'rxjs';
+import { take, map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-root',
@@ -11,7 +13,16 @@ export class AppComponent {
 
     constructor(private windowService: WindowService) { }
 
-    fileSrc: FileItem = null;
+    fileSrcs: FileItem[] = [
+        { src: '资源地址', name: '图片名称', type: 'image/jpeg' },
+    ];
+
+    config: UploadConfig = {
+        progresser: file => interval(100).pipe(
+            take(100),
+            map<number, number | string>(res => res >= 99 ? '文件地址' : res)
+        )
+    };
 
     showDrawWindow() {
         const window = this.windowService.push(DrawComponent);

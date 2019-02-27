@@ -7,7 +7,7 @@
  */
 import { Component } from '@angular/core';
 import { GlobalService, RequestService } from '../../../../cores/services';
-import { UploadConfig } from 'ng-tui';
+import { UploadConfig, FileItem } from 'ng-tui';
 import { interval } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 import * as XLSX from 'xlsx';
@@ -26,15 +26,33 @@ export class UploadMoreComponent {
                 map<number, number | string>((res) => res < 100 ? res : 'https://cool1024.com/upload/47e0b428f30fde9a0395b18e6db62ddd.mp4')
             );
         },
-        // 参考例子，image参数是接口对应的文件参数名称，file为要上传的文件对象
-        // progresser: file => this.request.progresser('文件的上传地址', { name: 'image', file: file })
+        // 参考例子，file为要上传的文件对象
+        // progresser: file => this.request.progresser('文件的上传地址', { name: '接口参数名称', file: file })
     };
 
     moreUploadConfig = {
         progresser: file => this.request.ossUploadRequest('/managerapi/quill', file, true)
     };
 
-    uploadItems = [];
+    fileItems: FileItem[] = [
+        {
+            src: '文件的访问地址',
+            type: 'image/jpeg',
+            name: '一张图片'
+        },
+        {
+            src: '文件的访问地址',
+            type: 'application/pdf',
+            name: '一个PDF文件'
+        },
+        {
+            src: '文件的访问地址',
+            type: 'audio/mp3',
+            name: '一个音频文件'
+        }
+    ];
+
+    fileItem: FileItem = null;
 
     theads: string[] = [];
 

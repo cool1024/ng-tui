@@ -538,8 +538,8 @@ ts-tab {
     border: none;
 }
 
-.badge-message[data-badge]:after {
-    content: attr(data-badge);
+.badge-message[databadge]:after {
+    content: attr(databadge);
     position: absolute;
     top: 10px;
     right: 10px;
