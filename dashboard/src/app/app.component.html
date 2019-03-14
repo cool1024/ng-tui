@@ -1,120 +1,16 @@
-<!--纯净模式-->
-<router-outlet *ngIf="global.params.dashboardMode!=='full'; else elseBlock"></router-outlet>
-<!--附带菜单与顶部-->
-<ng-template #elseBlock>
-    <div class="d-flex" style="height:100vh;overflow: hidden;">
-        <!-- 左侧菜单 -->
-        <div [class.menu-container-sm]="global.params.menuMode==='small'" class="menu-container flex-shrink-0 h-100 d-flex flex-column">
-            <div class="d-flex align-items-center justify-content-center bg-white flex-shrink-0" style="height: 60px;overflow: hidden;border-bottom:1px solid rgba(200, 200, 200,.3);">
-                <img [src]="menuConfig.SMALL_LOGO" width="30">
-                <h4 *ngIf="global.params.menuMode==='full'" class="m-0">Admin</h4>
-            </div>
-            <app-menu class="flex-grow-1 shadow-sm" [menuConfig]="menuConfig" [autoClose]="true" [menuMode]="global.params.menuMode"
-                [items]="menu.menuModels" [useImage]="true"></app-menu>
-        </div>
-        <!-- 右侧内容 -->
-        <div class="flex-grow-1 h-100 d-flex flex-column">
-            <!-- 顶部工具栏 -->
-            <div class="headbar bg-{{global.params.color}} no-select text-light d-flex align-items-center justify-content-between flex-shrink-0 shadow-sm"
-                style="height:60px;z-index:1;">
-                <div class="d-flex align-items-center flex-grow-1 h-100">
-                    <div (click)="changeMenuMode()" class="d-flex align-items-center bg-light-hover pointer h-100 pl-3 pr-3">
-                        <i class="iconfont icon-category"></i>
-                    </div>
-                </div>
-                <div class="flex-shrink-0 d-flex align-items-center h-100">
-                    <div class="h-100 d-flex">
-                        <div (click)="sendMessage()" class="d-flex align-items-center bg-light-hover pointer h-100 pl-3 pr-3">
-                            <i class="iconfont icon-remind"></i>
-                        </div>
-                        <div tsDropdown class="d-flex align-items-center bg-light-hover pointer h-100 badge-message"
-                            data-badge="2">
-                            <div tsToggle class="h-100 d-flex align-items-center pl-3 pr-3">
-                                <i class="iconfont icon-comments"></i>
-                            </div>
-                            <div tsDropMenu [offsetX]="-200" [offsetY]="-3" style="width:300px;">
-                                <div class="p-3 message-note">
-                                    <div class="media">
-                                        <img dataSrc="assets/images/404.jpg" src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png"
-                                            height="35" width="35" class="mr-3">
-                                        <div class="media-body">
-                                            <p class="m-0 text-truncate" style="width:200px">您收到了10条消息</p>
-                                            <small class="text-muted">刚刚</small>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="media">
-                                        <img dataSrc="assets/images/404.jpg" src="https://gw.alipayobjects.com/zos/rmsportal/OKJXDXrmkNshAMvwtvhu.png"
-                                            height="35" width="35" class="mr-3">
-                                        <div class="media-body">
-                                            <p class="m-0 text-truncate" style="width:200px">今天上班打卡成功，本月有10次未打卡</p>
-                                            <small class="text-muted">1小时前</small>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="media">
-                                        <img dataSrc="assets/images/404.jpg" src="https://gw.alipayobjects.com/zos/rmsportal/GvqBnKhFgObvnSGkDsje.png"
-                                            height="35" width="35" class="mr-3">
-                                        <div class="media-body">
-                                            <p class="m-0 text-truncate" style="width:200px">你关注的每日新闻更新了</p>
-                                            <small class="text-muted">2天前</small>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <button (click)="cleanMessage()" class="btn btn-link text-center text-primary-hover w-100">清空通知</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 用户头像，下拉菜单 -->
-                    <div tsDropdown class="h-100 d-flex align-items-center pointer">
-                        <div class="bg-light-hover h-100 d-flex align-items-center" tsToggle>
-                            <img [src]="auth.user.avatar" dataSrc="assets/images/404.jpg" class="rounded-circle border border-light ml-3 mr-3"
-                                height="35" width="35" alt="avatar">
-                        </div>
-                        <div tsDropMenu [offsetX]="-100" [offsetY]="2" style="width:163px;">
-                            <div class="dropdown-item-title">{{auth.user?.role.roleName}}</div>
-                            <button class="dropdown-item pointer">
-                                <span class="iconfont icon-mobile mr-2"></span>
-                                <span>{{auth.user.account}}</span>
-                            </button>
-                            <button routerLink="/system/detail" class="dropdown-item pointer">
-                                <span class="iconfont icon-account mr-2"></span>
-                                <span i18n>账号信息</span>
-                            </button>
-                            <button class="dropdown-item pointer">
-                                <span class="iconfont icon-set mr-2"></span>
-                                <span i18n>系统设置</span>
-                            </button>
-                            <div class="dropdown-divider"></div>
-                            <button (click)="setOut()" class="dropdown-item pointer">
-                                <span class="iconfont icon-out mr-2"></span>
-                                <span i18n>退出</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- 主体内容 -->
-            <div class="flex-grow-1 bg-light w-100 h-100" style="overflow:auto;">
-                <div *ngIf="global.params.lazyload" class="h-100 w-100 bg-white d-flex align-items-center">
-                    <div class="dot-animate m-auto"></div>
-                </div>
-                <div *ngIf="!global.params.lazyload" class="h-100 d-flex flex-column">
-                    <div class="flex-grow-1" style="overflow: auto">
-                        <div class="breadcrumb bg-white pl-3 pr-3">
-                            <a routerLink="/">
-                                <i class="iconfont icon-homepagenormal"></i>
-                                <span>首页</span>
-                            </a>
-                            <a *ngFor="let breadcrumb of breadcrumbs" [routerLink]="breadcrumb.path" class="mr-2" class="ml-2">
-                                <span>{{breadcrumb.title}}</span>
-                            </a>
-                        </div>
-                        <router-outlet></router-outlet>
-                    </div>
-                </div>
-            </div>
-        </div>
+<nav class="navbar navbar-dark bg-dark text-white">
+  <a class="navbar-brand d-flex align-items-center">
+    <img src="favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="">
+    <span class="ml-2">Angular Tools UI</span>
+  </a>
+</nav>
+<div class="content d-flex justify-content-between">
+  <app-menu class="shadow-sm flex-shrink-0" [menuConfig]="menuConfig" [autoClose]="true" menuMode="full"
+    [items]="menuModels" [useImage]="true"></app-menu>
+  <div class="card m-3 w-100">
+    <div class="card-header bg-light">标题</div>
+    <div class="card-body">
+
     </div>
-</ng-template>
+  </div>
+</div>

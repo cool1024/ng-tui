@@ -1,16 +1,14 @@
-import { browser, by, element } from 'protractor';
+import { AppPage } from './app.po';
 
 describe('workspace-project App', () => {
+  let page: AppPage;
 
-    it('登入成功', () => {
-        browser.get('/').then(() => {
-            const accountInput = element(by.css('input[name="account"]'));
-            const passwordInput = element(by.css('input[name="password"]'));
-            const submitBtn = element(by.css('.btn-block'));
-            accountInput.sendKeys('admin');
-            passwordInput.sendKeys('123456789');
-            submitBtn.click();
-            expect(browser.getCurrentUrl()).toBe('http://localhost:4200/login');
-        });
-    });
+  beforeEach(() => {
+    page = new AppPage();
+  });
+
+  it('should display welcome message', () => {
+    page.navigateTo();
+    expect(page.getParagraphText()).toEqual('Welcome to dashboard!');
+  });
 });

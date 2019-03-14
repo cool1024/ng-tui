@@ -13,14 +13,14 @@ export interface MenuGroup {
     image?: string;
     menuItems: MenuItem[];
     targetModel: MenuModel;
-    active: boolean;
+    active?: boolean;
 }
 
 export interface MenuModel {
     modelTitle: string;
     icon?: string;
     menuGroups: MenuGroup[];
-    active: boolean;
+    active?: boolean;
 }
 
 // export interface MenuElement{

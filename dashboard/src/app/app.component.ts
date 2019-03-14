@@ -1,115 +1,117 @@
 import { Component } from '@angular/core';
-import { Router, RouteConfigLoadStart, NavigationEnd, ActivatedRouteSnapshot } from '@angular/router';
-import { GlobalService, MenuService, AuthService } from './cores/services';
-import { MenuModel } from './modules/dashboard/components/menu/menu.interface';
-import { AppConfig } from './configs/app.config';
-import { ConfirmService, ToastService } from 'ng-tui';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
 
-    // 系统菜单列表
-    menus = new Array<MenuModel>();
+  menuModels = [];
 
-    // 菜单配置参数
-    menuConfig = AppConfig.MENU_CONFIG;
+  menuConfig = {
+    SMALL_LOGO: 'assets/images/angular.svg',
+    FULL_LOGO: 'assets/images/logo.png',
+    BACKGROUND_IMAGE_SRC: 'url(https://picsum.photos/300/800)',
+    BACKGROUND_COLOR: 'white',
+    DEFAULT_TEXT_COLOR: '#000000ad',
+    MODEL_TITLE_COLOR: 'black',
+    LINE_COLOR: 'rgba(200, 200, 200,.3)',
+    ACTIVE_TEXT_THEME: 'dark',
+  };
 
-    // 面包屑导航列表
-    breadcrumbs = new Array<{ title: string, path?: string }>();
+  constructor() {
+    this.menuModels = this.formatMenuData([
+      {
+        title: '模块名称一',
+        menus: [
+          {
+            icon: '',
+            title: '菜单群组一',
+            image: 'https://img.icons8.com/color/48/000000/restaurant-menu.png',
+            children: [
+              {
+                title: '菜单一',
+                url: ''
+              },
+              {
+                title: '菜单二',
+                url: ''
+              },
+              {
+                title: '菜单三',
+                url: ''
+              },
+            ]
+          },
+          {
+            icon: '',
+            title: '菜单群组二',
+            image: 'https://img.icons8.com/color/48/000000/nintendo-64.png',
+            children: [
+              {
+                title: '菜单四',
+                url: ''
+              }
+            ]
+          },
+        ]
+      }, {
+        title: '模块名称二',
+        menus: [
+          {
+            icon: '',
+            title: '菜单群组三',
+            image: 'https://img.icons8.com/color/48/000000/discord-new-logo.png',
+            children: [
+              {
+                title: '菜单五',
+                url: ''
+              },
+              {
+                title: '菜单六',
+                url: ''
+              }
+            ]
+          }
+        ]
+      }
+    ]);
+  }
 
-    constructor(
-        public global: GlobalService,
-        public menu: MenuService,
-        private router: Router,
-        private confirm: ConfirmService,
-        public auth: AuthService,
-        private toast: ToastService,
-    ) {
+  formatMenuData(datas: any): any {
 
-        // 设置登入状态
-        this.global.setValue('loginStatus', false);
+    this.menuModels = [];
+    const menus = datas;
+    menus.forEach(model => {
+      const menuModel = {
+        modelTitle: model.title,
+        menuGroups: new Array<any>(),
+        active: false
+      };
+      model.menus.forEach(menu => {
+        const menuGroup: any = {
+          groupTitle: menu.title,
+          icon: menu.icon,
+          image: menu.image,
+          menuItems: new Array<any>(),
+          targetModel: menuModel,
+          active: false
+        };
+        menu.children.forEach(child => {
+          const menuItem: any = {
+            title: child.title,
+            url: child.url,
+            targetGroup: menuGroup,
+            active: false
+          };
 
-        // 载入系统默认配置参数
-        this.global.appendValuesToParams({
-            dashboardMode: 'full',
-            menuMode: this.global.getStringFromStorage('menuMode', 'full'),
-            lazyload: true,
-            color: 'info'
+          menuGroup.menuItems.push(menuItem);
         });
-
-        // 载入服务端参数
-
-        // 1.菜单载入
-        this.menu.loadMenu().subscribe(() => {
-            // 2. 用信息载入
-            this.auth.loadUserDeail();
-        });
-
-        // 从本地文件载入菜单
-        // this.request.withoutHost.text('assets/json/menu.json').subscribe(res => {
-        //      this.menu.loadMenu(JSON.parse(res));
-        // });
-
-        // 设置路由监听事件
-        this.router.events.subscribe(event => {
-            if (event instanceof RouteConfigLoadStart) {
-                this.global.params.lazyload = true;
-            } else if (event instanceof NavigationEnd) {
-                // 关闭加载动画
-                this.global.params.lazyload = false;
-                // 滚动条归位 -- ng6现在默认重置滑块位置了
-                // this.viewContent && (this.viewContent.scrollTop = 0);
-                // 路由导航信息加载
-                this.breadcrumbs = [];
-                this.parseRoute(this.router.routerState.snapshot.root);
-            }
-        });
-    }
-
-    /**
-     * 切换菜单模式（small/full）
-     */
-    changeMenuMode() {
-        this.global.params.menuMode = this.global.params.menuMode === 'small' ? 'full' : 'small';
-        this.global.setValuesToStorage({ menuMode: this.global.params.menuMode });
-    }
-
-    /**
-     * 退出登入
-     */
-    setOut() {
-        this.confirm.warning('退出登入', '您确认要退出当前的账户吗？')
-            .subscribe(() => this.auth.setOutAndClean());
-    }
-
-    /**
-     * 路由数据解析
-     * @param node 路由快照
-     */
-    parseRoute(node: ActivatedRouteSnapshot) {
-        if (node.data.breadcrumbs) {
-            this.breadcrumbs = node.data.breadcrumbs;
-        }
-        if (node.firstChild) {
-            this.parseRoute(node.firstChild);
-        }
-    }
-
-    /**
-     * 清空消息通知
-     */
-    cleanMessage() {
-        this.toast.info('操作不可用', '这个清空操作为预览，无实际效果');
-    }
-
-    /**
-     * 发送通知消息
-     */
-    sendMessage() {
-        this.toast.info('操作不可用', '这个发送操作为预览，无实际效果');
-    }
+        menuModel.menuGroups.push(menuGroup);
+      });
+      this.menuModels.push(menuModel);
+    });
+    return this.menuModels;
+  }
 }

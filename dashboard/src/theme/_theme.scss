@@ -1,6 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+
+/** bootstrap **/
 @import "~bootstrap/scss/functions";
 
-// bootstrap 颜色配置
 $white: #fff !default;
 $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
@@ -64,14 +66,13 @@ $input-focus-box-shadow: none;
 
 // 网格间距配置
 $grid-gutter-width: 15px !default;
-$dropdown-border-color: rgba($black, 0.01);
-$dropdown-link-active-color: $black;
-$dropdown-link-active-bg: $gray-200;
-$input-placeholder-color: $gray-300;
 
 @import "~bootstrap/scss/variables";
 
-// bootstrap 主题颜色设置
+$dropdown-border-color: rgba($black, 0.01);
+$dropdown-link-active-color: $dark;
+$dropdown-link-active-bg: $gray-200;
+$input-placeholder-color: $gray-300;
 $theme-colors: ("primary": $primary, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark, "purple": $purple, "pink": $pink);
 
 @import "~bootstrap/scss/mixins";
@@ -80,23 +81,41 @@ $theme-colors: ("primary": $primary, "secondary": $secondary, "success": $succes
 @import "~bootstrap/scss/type";
 @import "~bootstrap/scss/images";
 @import "~bootstrap/scss/code";
+
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/forms";
 @import "~bootstrap/scss/buttons";
+
+// @import "~bootstrap/scss/transitions";
 @import "~bootstrap/scss/dropdown";
 @import "~bootstrap/scss/button-group";
 @import "~bootstrap/scss/input-group";
 @import "~bootstrap/scss/custom-forms";
 @import "~bootstrap/scss/nav";
+
+@import "~bootstrap/scss/navbar";
 @import "~bootstrap/scss/card";
+
+// @import "~bootstrap/scss/breadcrumb";
+
+// @import "~bootstrap/scss/pagination";
 @import "~bootstrap/scss/badge";
+
+// @import "~bootstrap/scss/jumbotron";
 @import "~bootstrap/scss/alert";
 @import "~bootstrap/scss/progress";
 @import "~bootstrap/scss/media";
+
+// @import "~bootstrap/scss/list-group";
 @import "~bootstrap/scss/close";
 @import "~bootstrap/scss/modal";
+
+// @import "~bootstrap/scss/tooltip";
+// @import "~bootstrap/scss/popover";
+// @import "~bootstrap/scss/carousel";
 @import "~bootstrap/scss/utilities";
+
 @import "~bootstrap/scss/print";
 
 a,
@@ -146,6 +165,10 @@ a:link, a:active, a:hover, a:visited {
     bottom: auto !important;
 }
 
+ts-select {
+    height: auto !important;
+}
+
 ts-select .dropdown-menu {
     max-height: 300px;
     overflow-y: auto;
@@ -167,7 +190,8 @@ ts-select .dropdown-menu {
 /** tui必须的基础样式，每个组件的样式都在里面 **/
 @import "base";
 
-// iconfont支持
+/** iconfont **/
+
 @import "assets/iconfont/iconfont.css";
 
 .iconfont {

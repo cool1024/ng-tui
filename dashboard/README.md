@@ -1,11 +1,27 @@
-# TUI 模版项目
+# Dashboard
 
-## 安装项目
-`npm install`
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
 
-## 相关运行命令
-1. `npm run serve` 默认运行项目（使用了预编译）
-2. `npm run dev` 开发模式下运行（使用了预编译）
-3. `npm run prod` 产品级的运行
-4. `npm run build` 打包项目
-5. `npm run e2e` 端到端测试
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
