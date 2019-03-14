@@ -26,7 +26,7 @@ export class GlobalService {
      * @param {any} 参数默认值
      * @return {any}
      */
-    getValue(key: string, defaultValue: any): any {
+    getValue(key: string, defaultValue: any = ''): any {
         return this.params[key] || defaultValue;
     }
 

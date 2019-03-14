@@ -79,3 +79,7 @@ export const INTERCEPTOR_MESSAGES = {
     403: HttpConfig.HTTP_ERRORS.AUTH_ERROR,
     404: HttpConfig.HTTP_ERRORS.NOTFOUND_ERROR,
 };
+
+export const IGNORE_MESSAGES = [
+    'token lost'
+];

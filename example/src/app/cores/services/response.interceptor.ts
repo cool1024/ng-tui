@@ -6,7 +6,7 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of, TimeoutError } from 'rxjs';
-import { HttpConfig, INTERCEPTOR_MESSAGES } from '../../configs/http.config';
+import { HttpConfig, INTERCEPTOR_MESSAGES, IGNORE_MESSAGES } from '../../configs/http.config';
 import { catchError, map, timeout } from 'rxjs/operators';
 import { ApiData } from '../classes';
 import { ToastService } from 'ng-tui';
@@ -42,36 +42,41 @@ export class ResponseInterceptor implements HttpInterceptor {
 
             const code = error.status;
             errorTitle = `${code} : ${error.statusText}`;
-
             // 需要跳转的状态码
             if (code === 401) {
                 this.router.navigateByUrl(HttpConfig.TOKEN_ERROR_URL);
             } else if (code === 403) {
                 this.router.navigateByUrl(HttpConfig.AUTH_ERROR_URL);
             }
-
             // 获取状态码对应提示消息
             if (code === 422) {
                 errorMessage = new ApiData(false, error.error.message, error.error.datas || {}).messageStr;
             } else {
-                errorMessage = INTERCEPTOR_MESSAGES[code] || HttpConfig.HTTP_ERRORS.RESPONSE_CONTENT_ERROR;
+                if (!~IGNORE_MESSAGES.indexOf(error.error.message)) {
+                    errorMessage = INTERCEPTOR_MESSAGES[code] || HttpConfig.HTTP_ERRORS.RESPONSE_CONTENT_ERROR;
+                }
             }
 
             // 显示提示消息
             if (~HttpConfig.INFO_CODES.indexOf(code)) {
-                this.toast.info(errorTitle, errorMessage, HttpConfig.TOAST_ERROR_TIME);
+                // tslint:disable-next-line:no-unused-expression
+                errorMessage && this.toast.info(errorTitle, errorMessage, HttpConfig.TOAST_ERROR_TIME);
             } else if (~HttpConfig.WARNING_CODES.indexOf(code)) {
-                this.toast.warning(errorTitle, errorMessage, HttpConfig.TOAST_ERROR_TIME);
+                // tslint:disable-next-line:no-unused-expression
+                errorMessage && this.toast.warning(errorTitle, errorMessage, HttpConfig.TOAST_ERROR_TIME);
             } else {
-                this.toast.danger(errorTitle, errorMessage, HttpConfig.TOAST_ERROR_TIME);
+                // tslint:disable-next-line:no-unused-expression
+                errorMessage && this.toast.danger(errorTitle, errorMessage, HttpConfig.TOAST_ERROR_TIME);
             }
 
         } else if (error instanceof TimeoutError) {
             [errorMessage, errorTitle] = HttpConfig.HTTP_ERRORS.TIMEOUT_ERROR;
-            this.toast.danger(errorTitle, errorMessage, HttpConfig.TOAST_ERROR_TIME);
+            // tslint:disable-next-line:no-unused-expression
+            errorMessage && this.toast.danger(errorTitle, errorMessage, HttpConfig.TOAST_ERROR_TIME);
         } else {
             [errorMessage, errorTitle] = HttpConfig.HTTP_ERRORS.OTHER_ERROR;
-            this.toast.danger(errorTitle, errorMessage, HttpConfig.TOAST_ERROR_TIME);
+            // tslint:disable-next-line:no-unused-expression
+            errorMessage && this.toast.danger(errorTitle, errorMessage, HttpConfig.TOAST_ERROR_TIME);
         }
 
         return of<HttpResponse<string>>(new HttpResponse<string>({

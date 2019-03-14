@@ -337,7 +337,10 @@ export class RequestService {
         }
         // tslint:disable-next-line:no-unused-expression
         this.useHeader && HttpConfig.AUTH_HEADER_PARAMS.forEach(key => {
-            header = header.append(key, localStorage.getItem(key) || '');
+            const tokenValue = localStorage.getItem(key) || '';
+            if (tokenValue) {
+                header = header.append(key, tokenValue);
+            }
         });
         return header;
     }

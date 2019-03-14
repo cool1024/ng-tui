@@ -1,6 +1,7 @@
 <div class="fixed-top h-100 w-100 login-pad bg-white">
-    <div class="w-100 h-100 window bg-info d-flex justify-content-center flex-wrap">
-        <div style="min-width:25rem" class="background flex-grow-1" [ngStyle]="{'background-image':config.BACKGROUND_IMAGE_SRC}">
+    <div class="w-100 h-100 bg-{{global.getValue('color')}} d-flex justify-content-center flex-wrap">
+        <div style="min-width:25rem" class="background flex-grow-1 window"
+            [ngStyle]="{'background-image':config.BACKGROUND_IMAGE_SRC}">
         </div>
         <form style="width:25rem" class="card h-100 rounded-0 border-0" autocomplete="off">
             <div class="card-header login-header text-center border-bottom">
@@ -35,8 +36,7 @@
                         </div>
                         <input (keyup.enter)="btn.present();confirmLogin(btn)" type="password" name="password"
                             [(ngModel)]="account.password" class="form-control
-                    rounded-0"
-                            [placeholder]="config.SECOND_PLACEHOLDER">
+                    rounded-0" [placeholder]="config.SECOND_PLACEHOLDER">
                     </div>
                 </div>
                 <div class="form-group ">
@@ -47,7 +47,7 @@
                     (submit)="confirmLogin($event)">登入</button>
             </div>
             <div class="card-footer bg-white text-center">
-                <p class="mt-1 mb-0">Copyright © 2018 XiaoJian. All Rights Reserved.
+                <p class="mt-1 mb-0">Copyright © 2019 XiaoJian. All Rights Reserved.
                     <br> 赣 ICP备16010587号</p>
             </div>
         </form>
