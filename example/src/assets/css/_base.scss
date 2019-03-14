@@ -50,6 +50,7 @@
     display: inline-block;
     cursor: pointer;
     color: $dark;
+    user-select: none;
 }
 
 .btn-icon .iconfont {
@@ -73,9 +74,24 @@
 
     .btn-icon-#{$name} {
         color: $color;
+
+        &.active {
+            background-color: rgba($color, 0.8);
+            color: white;
+        }
+
+        &.disabled {
+            border: 1px solid $gray-300;
+            color: $gray-300;
+        }
     }
 
     .btn-icon-#{$name}:hover {
+        &.disabled {
+            background-color: white;
+            color: $gray-300;
+        }
+
         background-color: $color;
     }
 }

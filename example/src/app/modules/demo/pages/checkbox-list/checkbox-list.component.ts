@@ -31,6 +31,27 @@ export class CheckboxListComponent {
         { text: 'F', value: 6 },
     ];
 
+
+    transferDatas = [
+        [
+            { text: 'Amsterdam', value: 1 },
+            { text: 'Antwerp', value: 2 },
+            { text: 'Athens', value: 3 },
+            { text: 'Barcelona', value: 4 },
+            { text: 'Berlin', value: 5 },
+            { text: 'Birmingham', value: 6 }
+        ],
+        [
+            { text: 'Bremen', value: 7 },
+            { text: 'Brussels', value: 8 }
+        ]
+    ];
+
+    transferSelectedValues = [
+        [1, 2],
+        [8]
+    ];
+
     constructor() {
         this.loadDatas();
     }

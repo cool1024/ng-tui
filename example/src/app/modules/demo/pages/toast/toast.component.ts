@@ -25,4 +25,8 @@ export class ToastComponent implements OnInit {
         this.toast.create('自定义标题', '这是一条自定义消息，图标还有颜色可以自由设置', { color: 'dark', icon: 'account' });
     }
 
+    showHold() {
+        this.toast.success('固定的消息', '可以通过设置timer为-1让消息固定在页面上', -1);
+    }
+
 }

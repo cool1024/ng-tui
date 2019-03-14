@@ -12,7 +12,8 @@
             <thead>
                 <tr>
                     <th scope="col">
-                        <ts-checkbox [(ngModel)]="isAllChecked" (checkedChange)="selectAllOrNone($event)" [value]="true"></ts-checkbox>
+                        <ts-checkbox [(ngModel)]="isAllChecked" (checkedChange)="selectAllOrNone($event)"
+                            [value]="true"></ts-checkbox>
                     </th>
                     <th scope="col">文字</th>
                     <th scope="col">值</th>
@@ -33,5 +34,34 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+<div class="m-3 card">
+    <div class="card-header border-bottom">穿梭框-暂不可用</div>
+    <div class="card-body d-flex">
+        <div class="card" style="min-width:160px;">
+            <div class="card-header bg-light d-flex justify-content-between">
+                <span>源列表</span>
+                <span class="pill-right">{{transferDatas[0].length}}</span>
+            </div>
+            <div class="card-body py-0" style="height:250px;overflow-y: auto;">
+                <ts-checkbox *ngFor="let item of transferDatas[0]" [value]="item.value" class="d-block my-3">
+                    {{item.text}}</ts-checkbox>
+            </div>
+        </div>
+        <div class="mx-4 d-flex flex-column justify-content-center align-self-stretch">
+            <span class="btn-icon btn-icon-info disabled my-2" tsIcon="next"></span>
+            <span class="btn-icon btn-icon-info active my-2" tsIcon="preview"></span>
+        </div>
+        <div class="card" style="min-width:160px;">
+            <div class="card-header bg-light d-flex justify-content-between">
+                <span>源列表</span>
+                <span class="pill-right">{{transferDatas[1].length}}</span>
+            </div>
+            <div class="card-body py-0" style="height:250px;overflow-y: auto;">
+                <ts-checkbox *ngFor="let item of transferDatas[1]" [value]="item.value" class="d-block my-3">
+                    {{item.text}}</ts-checkbox>
+            </div>
+        </div>
     </div>
 </div>

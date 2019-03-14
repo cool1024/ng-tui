@@ -1,6 +1,8 @@
 <div class="toolbar">
-    <ts-datepicker [(ngModel)]="search.params.start" #datepickerOne="tsDatepicker" [color]="global.params.color"></ts-datepicker>
-    <ts-datepicker [(ngModel)]="search.params.end" #datepickerTwo="tsDatepicker" [color]="global.params.color"></ts-datepicker>
+    <ts-datepicker [(ngModel)]="search.params.start" #datepickerOne="tsDatepicker" [color]="global.params.color">
+    </ts-datepicker>
+    <ts-datepicker [(ngModel)]="search.params.end" #datepickerTwo="tsDatepicker" [color]="global.params.color">
+    </ts-datepicker>
 </div>
 <div class="p-3">
     <div class="card mb-3">
@@ -16,7 +18,8 @@
                     <div class="input-group-prepend input-group-append">
                         <span class="input-group-text bg-white">角色</span>
                     </div>
-                    <ts-select style="width:190px;" [(ngModel)]="search.params.roleId" placeholder="请选择筛选的角色" [items]="roleOptions"></ts-select>
+                    <ts-select style="width:190px;" [(ngModel)]="search.params.roleId" placeholder="请选择筛选的角色"
+                        [items]="roleOptions"></ts-select>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -38,8 +41,8 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text bg-white">共查询到</span>
                     </div>
-                    <input style="width:140px" type="text" value="{{page.total}}" class="form-control text-center bg-white"
-                        readonly placeholder="0">
+                    <input style="width:140px" type="text" value="{{page.total}}"
+                        class="form-control text-center bg-white" readonly placeholder="0">
                     <div class="input-group-append">
                         <span class="input-group-text bg-white">条/结果</span>
                     </div>
@@ -73,13 +76,14 @@
                 <tr *ngFor="let item of tableRows;index as i" class="mat-cell">
                     <td>{{page.offset+i+1}}</td>
                     <td>
-                        <img tsImg [src]="item.avatar" dataSrc="assets/images/404.jpg" alt="avatar" class="align-self-center mr-3 rounded-circle"
-                            height="40">
+                        <img tsImg [src]="item.avatar" dataSrc="assets/images/404.jpg" alt="avatar"
+                            class="align-self-center mr-3 rounded-circle" height="40">
                     </td>
                     <td>{{item.account}}</td>
                     <td>{{getRoleName(item.roleId)}}</td>
                     <td>
-                        <ts-switch [ngModel]="item.isActive" (ngModelChange)="changeActive(item,$event)" [values]="{open:1,close:0}">
+                        <ts-switch [ngModel]="item.isActive" (ngModelChange)="changeActive(item,$event)"
+                            [values]="{open:1,close:0}">
                             <!-- <span *ngIf="item.isActive===1" class="badge badge-success badge-pill">启用</span>
                             <span *ngIf="item.isActive===0" class="badge badge-secondary badge-pill">禁用</span> -->
                         </ts-switch>
@@ -101,7 +105,8 @@
                 </tr>
                 <tr class="bg-white">
                     <td [attr.colspan]="theads.length" class="text-right">
-                        <ts-pagination outline (pageChange)="pageChanged()" [pagination]="page" goTitle="跳转"></ts-pagination>
+                        <ts-pagination outline (pageChange)="pageChanged()" [pagination]="page" goTitle="跳转">
+                        </ts-pagination>
                     </td>
                 </tr>
             </tbody>
