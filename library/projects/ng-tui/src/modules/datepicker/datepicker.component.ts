@@ -60,7 +60,7 @@ const MAX_MONTH = 12;
                                     <button [disabled]="!useMonth" (click)="prevMonth()" class="btn btn-{{color}} btn-sm">
                                         <i class="iconfont icon-preview" aria-hidden="true"></i>
                                     </button>
-                                    <ts-dropdown [disabled]="!useMonth" 
+                                    <ts-dropdown [disabled]="!useMonth"
                                         diyClass="btn btn-{{color}} dropdown-toggle btn-sm rounded-0 border-left-0 border-right-0"
                                         [items]="monthTitles"
                                         [(value)]="month" [useNumber]="1" [color]="color" dropup></ts-dropdown>
