@@ -4,6 +4,7 @@ import { DropdownModule } from './../dropdown/dropdown.module';
 import { ButtonModule } from './../button/button.module';
 import { TimepickerComponent } from './timepicker.component';
 import { TUICoreModule } from '../../tui-core/tui-core.module';
+import { DatepickerYComponent } from './datepicker-y.component';
 
 @NgModule({
     imports: [
@@ -13,11 +14,13 @@ import { TUICoreModule } from '../../tui-core/tui-core.module';
     ],
     declarations: [
         DatepickerComponent,
+        DatepickerYComponent,
         TimepickerComponent,
     ],
     exports: [
         TUICoreModule,
         DatepickerComponent,
+        DatepickerYComponent,
         TimepickerComponent,
     ]
 })

@@ -1,9 +1,9 @@
-import { Component, Input, ElementRef, ViewChild, OnDestroy, forwardRef } from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
 import { HtmlDomService } from '../../tui-core/base-services/htmldom.service';
-import { Toggle } from '../../tui-core/interfaces/toggle.interface';
 import { ToggleDirective } from '../../tui-core/directives/toggle.directives';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ConfigService } from '../../tui-core/base-services/config.service';
+import { Base } from './base.class';
 
 const WEEK_DAY_NUM = 7;
 const MIN_YEAR = 1000;
@@ -118,11 +118,9 @@ const MAX_MONTH = 12;
         multi: true
     }]
 })
-export class DatepickerComponent implements OnDestroy, Toggle, ControlValueAccessor {
+export class DatepickerComponent extends Base {
 
     @Input() weekTitles: string[];
-
-    @Input() color: string;
 
     @Input() monthTitles: string[];
 
@@ -134,29 +132,11 @@ export class DatepickerComponent implements OnDestroy, Toggle, ControlValueAcces
     @Input() useMonth: boolean;
     @Input() useDay: boolean;
 
-    @ViewChild('pad') pad: ElementRef;
-
     year: number;
 
     month: number;
 
     day: number;
-
-    show: boolean;
-
-    toggleDom: HTMLElement;
-
-    ticking = false;
-
-    datepickerStyle = { top: '0', left: '0', display: 'none', position: 'absolute' };
-
-    private value: string;
-
-    autoHandle: () => void;
-
-    applyChange = new Function();
-
-    applyTounced = new Function();
 
     get days(): number[] {
         let date = new Date(this.year, this.month, 0);
@@ -194,8 +174,8 @@ export class DatepickerComponent implements OnDestroy, Toggle, ControlValueAcces
         return years;
     }
 
-    constructor(private html: HtmlDomService, private configService: ConfigService) {
-
+    constructor(html: HtmlDomService, configService: ConfigService) {
+        super(html, configService.config);
         this.useYear = true;
         this.useMonth = true;
         this.useDay = true;
@@ -213,16 +193,12 @@ export class DatepickerComponent implements OnDestroy, Toggle, ControlValueAcces
         // active day
         this.setValue();
 
-        this.color = this.configService.config.defaultColor;
-
         this.show = false;
+        this.size = {
+            width: 380,
+            height: 300
+        };
     }
-
-    ngOnDestroy() {
-        window.removeEventListener('scroll', this.autoHandle);
-        window.removeEventListener('resize', this.autoHandle);
-    }
-
 
     writeValue(value: any) {
         this.value = value;
@@ -235,10 +211,6 @@ export class DatepickerComponent implements OnDestroy, Toggle, ControlValueAcces
         this.day = date.getDate();
         this.setValue();
     }
-
-    registerOnChange(fn: any): void { this.applyChange = fn; }
-
-    registerOnTouched(fn: any): void { this.applyTounced = fn; }
 
     getMonth(month: number): string {
         return this.monthTitles[month - 1];
@@ -304,54 +276,6 @@ export class DatepickerComponent implements OnDestroy, Toggle, ControlValueAcces
             }
 
             this.autoPosition();
-        }
-    }
-
-    bind(toggleDirective: ToggleDirective) {
-        this.toggleDom = toggleDirective.dom;
-        this.autoHandle = () => {
-            if (!this.ticking) {
-                window.requestAnimationFrame(() => {
-                    if (this.show) {
-                        this.autoPosition();
-                    }
-                    this.ticking = false;
-                });
-            }
-            this.ticking = true;
-        };
-        window.addEventListener('scroll', this.autoHandle, false);
-        window.addEventListener('resize', this.autoHandle, false);
-    }
-
-    autoPosition() {
-        setTimeout(() => {
-            const padPositon = this.html.getPosition(this.pad.nativeElement);
-            const position = this.html.getPosition(this.toggleDom);
-            const height = this.html.getHeight(this.toggleDom);
-            this.datepickerStyle.display = 'none';
-            this.datepickerStyle.left = position.x - padPositon.x + 'px';
-            this.datepickerStyle.top = height + position.y + 7.5 + 'px';
-            let top = height + position.y + 7.5 + 380;
-            let right = position.x - padPositon.x + 7.5 + 300;
-            if (window.innerHeight < top) {
-                top = window.innerHeight - 380 - 7.5;
-            } else {
-                top = position.y + height + 7.5;
-            }
-            if (window.innerWidth < right) {
-                // 修正右侧超出
-                right = window.innerWidth - 300 - 7.3;
-                this.datepickerStyle.left = right - padPositon.x + 'px';
-            }
-            this.datepickerStyle.top = top - padPositon.y + 'px';
-            this.datepickerStyle.display = '';
-        });
-    }
-
-    tryClose($event: any) {
-        if ($event.target === this.pad.nativeElement) {
-            this.toggle();
         }
     }
 

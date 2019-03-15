@@ -3,6 +3,7 @@ import { HtmlDomService } from '../../tui-core/base-services/htmldom.service';
 import { Toggle } from '../../tui-core/interfaces/toggle.interface';
 import { ToggleDirective } from '../../tui-core/directives/toggle.directives';
 import { TUIConfig } from '../../tui-core/interfaces/config.interface';
+import { ControlValueAccessor } from '@angular/forms';
 
 export const styleStr = `
 .ts-datepicker-ym {width: 280px;}
@@ -15,7 +16,7 @@ export const styleStr = `
 .ts-time-item {line-height: 30px;}
 .ts-time-item.active {font-size: 20px;}`;
 
-export class Base implements OnDestroy, Toggle {
+export class Base implements OnDestroy, Toggle, ControlValueAccessor {
 
     @ViewChild('pad') pad: ElementRef;
 
@@ -27,13 +28,20 @@ export class Base implements OnDestroy, Toggle {
 
     ticking = false;
 
-    datepickerStyle = { top: '0', left: '0', display: 'none', position: 'absolute' };
+    size = {
+        width: 280,
+        height: 300
+    };
 
-    private value: string;
+    datepickerStyle: any = { top: '0', left: '0', display: 'none', position: 'absolute' };
+
+    value: any;
 
     autoHandle: () => void;
 
     applyChange = (value: any) => { };
+
+    applyTounced = (value: any) => { };
 
     constructor(private html: HtmlDomService, config: TUIConfig) {
         this.show = false;
@@ -47,7 +55,7 @@ export class Base implements OnDestroy, Toggle {
 
     registerOnChange(fn: any): void { this.applyChange = fn; }
 
-    registerOnTouched(fn: any): void { }
+    registerOnTouched(fn: any): void { this.applyTounced = fn; }
 
     toggle() {
         this.show = !this.show;
@@ -81,16 +89,16 @@ export class Base implements OnDestroy, Toggle {
             this.datepickerStyle.display = 'none';
             this.datepickerStyle.left = position.x - padPositon.x + 'px';
             this.datepickerStyle.top = height + position.y + 7.5 + 'px';
-            let top = height + position.y + 7.5 + 300;
-            let right = position.x - padPositon.x + 7.5 + 280;
+            let top = height + position.y + 7.5 + this.size.height;
+            let right = position.x - padPositon.x + 7.5 + this.size.width;
             if (window.innerHeight < top) {
-                top = window.innerHeight - 300 - 7.5;
+                top = window.innerHeight - this.size.height - 7.5;
             } else {
                 top = position.y + height + 7.5;
             }
             if (window.innerWidth < right) {
                 // 修正右侧超出
-                right = window.innerWidth - 280 - 7.3;
+                right = window.innerWidth - this.size.width - 7.3;
                 this.datepickerStyle.left = right - padPositon.x + 'px';
             }
             this.datepickerStyle.top = top - padPositon.y + 'px';
@@ -102,5 +110,9 @@ export class Base implements OnDestroy, Toggle {
         if ($event.target === this.pad.nativeElement) {
             this.toggle();
         }
+    }
+
+    writeValue(value: any) {
+        this.value = value;
     }
 }

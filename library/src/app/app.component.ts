@@ -23,5 +23,5 @@ export class AppComponent {
         )
     };
 
-    myDate = '';
+    myDate = 2018;
 }
