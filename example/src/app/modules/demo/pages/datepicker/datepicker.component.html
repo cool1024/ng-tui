@@ -1,6 +1,7 @@
 <div class="toolbar">
-    <ts-datepicker #datepicker="tsDatepicker" [(ngModel)]="date" [color]="global.params.color"></ts-datepicker>
-    <ts-timepicker #timepicker="tsTimepicker" [(ngModel)]="time" [color]="global.params.color"></ts-timepicker>
+    <ts-datepicker-y #yearpicker="tsDatepickerY" [(ngModel)]="year"></ts-datepicker-y>
+    <ts-datepicker #datepicker="tsDatepicker" [(ngModel)]="date"></ts-datepicker>
+    <ts-timepicker #timepicker="tsTimepicker" [(ngModel)]="time"></ts-timepicker>
 </div>
 <div class="p-3">
     <div class="card mb-3">
@@ -16,8 +17,12 @@
         <div class="card-body">
             <form class="form-inline">
                 <div class="input-group mb-3">
-                    <input [value]="date" tsToggle [target]="datepicker" [bind]="datepicker" type="text" class="form-control bg-white pointer"
-                        placeholder="请选择日期" readonly>
+                    <input [value]="year||''" tsToggle [target]="yearpicker" [bind]="yearpicker" type="text"
+                        class="form-control bg-white pointer" placeholder="请选择年份" readonly>
+                </div>
+                <div class="input-group ml-2 mb-3">
+                    <input [value]="date" tsToggle [target]="datepicker" [bind]="datepicker" type="text"
+                        class="form-control bg-white pointer" placeholder="请选择日期" readonly>
                     <div class="input-group-append">
                         <button class="btn btn-white" type="button" tsToggle [target]="datepicker">
                             <i class="iconfont icon-calendar"></i>
@@ -25,8 +30,8 @@
                     </div>
                 </div>
                 <div class="input-group ml-2 mb-3">
-                    <input [value]="time" tsToggle [target]="timepicker" [bind]="timepicker" type="text" class="form-control bg-white pointer"
-                        placeholder="请选择时间" readonly>
+                    <input [value]="time" tsToggle [target]="timepicker" [bind]="timepicker" type="text"
+                        class="form-control bg-white pointer" placeholder="请选择时间" readonly>
                     <div class="input-group-append">
                         <button class="btn btn-white" type="button" tsToggle [target]="timepicker">
                             <i class="iconfont icon-clock"></i>
@@ -84,7 +89,8 @@
         </div>
     </div>
     <div class="card">
-        <ts-tabs [tabs]="['example.html','example.ts']" [color]="global.params.color" [target]="tsTabsOne" activeTab="example.html"></ts-tabs>
+        <ts-tabs [tabs]="['example.html','example.ts']" [color]="global.params.color" [target]="tsTabsOne"
+            activeTab="example.html"></ts-tabs>
         <div #tsTabsOne='tsTabs' tsTabs>
             <div class="card-body">
                 <div tsTab tab='example.html'>

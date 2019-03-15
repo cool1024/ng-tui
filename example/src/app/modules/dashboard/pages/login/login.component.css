@@ -30,7 +30,7 @@
 }
 
 .window {
-    animation: win 1s linear infinite;
+    /* animation: win 1s linear infinite; */
 }
 
 @keyframes win {

@@ -6,6 +6,8 @@ import { RequestService, GlobalService } from '../../../../cores/services';
 })
 export class DatepickerComponent implements OnInit {
 
+    year: number;
+
     date = '';
 
     time = '';
