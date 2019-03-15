@@ -6,8 +6,8 @@ import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
     selector: 'ts-dropdown',
     template: `
     <div tsDropdown [dropup]="dropup" style="height:100%">
-        <button *ngIf="diyClass" [class]="diyClass" type="button" tsToggle>{{item ? item.text : text}}</button>
-        <button *ngIf="!diyClass"
+        <button [disabled]="disabled" *ngIf="diyClass" [class]="diyClass" type="button" tsToggle>{{item ? item.text : text}}</button>
+        <button [disabled]="disabled" *ngIf="!diyClass"
             tsToggle tsBtn
             class="dropdown-toggle"
             [lg]="isApply(lg)"
@@ -41,6 +41,8 @@ export class DropdownComponent extends BaseTheme implements OnChanges {
     @Input() dropup: string;
 
     @Input() useNumber: number;
+
+    @Input() disabled: boolean;
 
     @Output() valueChange = new EventEmitter<any>();
 
@@ -76,6 +78,7 @@ export class DropdownComponent extends BaseTheme implements OnChanges {
         this.diyClass = null;
         this.dropup = null;
         this.color = 'white';
+        this.disabled = false;
     }
 
     ngOnChanges(changes: SimpleChanges) {

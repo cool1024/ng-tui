@@ -7,6 +7,7 @@ import {
     WindowModule,
     ClipModule,
     UploadModule,
+    DatePickerModule
 } from '../../projects/ng-tui/src/public_api';
 
 @NgModule({
@@ -19,6 +20,7 @@ import {
         // CkeditorModule.forRoot(['assets/ckeditor/ckeditor-classic.js', 'assets/ckeditor/zh-cn.js']),
         WindowModule,
         UploadModule,
+        DatePickerModule,
         ClipModule,
     ],
     providers: [],

@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { DatepickerComponent } from './/datepicker.component';
 import { DropdownModule } from './../dropdown/dropdown.module';
 import { ButtonModule } from './../button/button.module';
-import { CommonModule } from '@angular/common';
 import { TimepickerComponent } from './timepicker.component';
+import { TUICoreModule } from '../../tui-core/tui-core.module';
 
 @NgModule({
     imports: [
-        CommonModule,
+        TUICoreModule,
         ButtonModule,
         DropdownModule,
     ],
@@ -16,6 +16,7 @@ import { TimepickerComponent } from './timepicker.component';
         TimepickerComponent,
     ],
     exports: [
+        TUICoreModule,
         DatepickerComponent,
         TimepickerComponent,
     ]

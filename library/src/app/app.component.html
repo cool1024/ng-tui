@@ -1,2 +1,5 @@
-<ts-file-cards [(src)]="fileSrcs" [config]="config" title="请选择文件"></ts-file-cards>
+<!-- <ts-file-cards [(src)]="fileSrcs" [config]="config" title="请选择文件"></ts-file-cards> -->
 <!-- <button class="btn btn-white" (click)="showDrawWindow()">弹窗</button> -->
+<ts-datepicker #datepicker="tsDatepicker" [useYear]="false" [useMonth]="false" [(ngModel)]="myDate"></ts-datepicker>
+<input tsToggle [value]="myDate|date :'yyyy-MM-dd'" [target]="datepicker" [bind]="datepicker" type="text"
+    class="form-control bg-white pointer" readonly>
