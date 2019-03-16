@@ -45,7 +45,7 @@ export class ManagerTableComponent implements OnInit {
 
     ngOnInit() {
         // 载入表格数据
-        this.pageChanged();
+        this.loadDatas();
         // 载入角色下拉选项
         this.service.getRoleOptions().subscribe(items => this.roleOptions = items);
     }
@@ -60,7 +60,7 @@ export class ManagerTableComponent implements OnInit {
     showInfoModal(userDetail?: Manager) {
         const modalHandle = this.modal.create(ManagerInfoModalComponent, { center: true });
         modalHandle.instance.userDetail = Object.assign({}, userDetail || { id: 0 });
-        modalHandle.open().subscribe(() => this.pageChanged());
+        modalHandle.open().subscribe(() => this.loadDatas());
     }
 
     confirmDelete(userDetail: Manager) {
@@ -68,7 +68,7 @@ export class ManagerTableComponent implements OnInit {
             .pipe(switchMap<void, ApiData>(() => this.service.deleteManagerAccount(userDetail.id)))
             .subscribe(res => {
                 this.toast.success('删除成功', `成功删除帐户‘${userDetail.account}’！`);
-                this.pageChanged();
+                this.loadDatas();
             });
     }
 
@@ -81,7 +81,7 @@ export class ManagerTableComponent implements OnInit {
         });
     }
 
-    pageChanged() {
+    loadDatas() {
         this.page.loading = true;
         this.service.getManagerList(this.page, this.search).subscribe({
             next: res => {
@@ -95,10 +95,11 @@ export class ManagerTableComponent implements OnInit {
     doReset() {
         this.page.reset();
         this.search.clean();
-        this.pageChanged();
+        this.loadDatas();
     }
 
     doSearch() {
-        this.pageChanged();
+        this.page.reset();
+        this.loadDatas();
     }
 }

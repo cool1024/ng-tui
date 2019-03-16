@@ -105,7 +105,7 @@
                 </tr>
                 <tr class="bg-white">
                     <td [attr.colspan]="theads.length" class="text-right">
-                        <ts-pagination outline (pageChange)="pageChanged()" [pagination]="page" goTitle="跳转">
+                        <ts-pagination outline (pageChange)="loadDatas()" [pagination]="page" goTitle="跳转">
                         </ts-pagination>
                     </td>
                 </tr>
