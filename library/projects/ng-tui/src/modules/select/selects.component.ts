@@ -40,7 +40,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
                 {{active.text}}
             </span>
         </div>
-        <div tsDropMenu [style.width]="'100%'">
+        <div tsDropMenu autoSize>
             <div class="w-100 ts-select-item">
                 <div class="pl-2 pb-2 pr-2">
                     <input [(ngModel)]="searchKey" [placeholder]="searchLabel" class="form-control" type="text">

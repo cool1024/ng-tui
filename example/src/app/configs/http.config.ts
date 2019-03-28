@@ -16,7 +16,7 @@ export const HttpConfig = {
     OPEN_PARAM_PACKAGE: false,
 
     // 请求超时时间(默认20000秒)
-    TIME_OUT: 20000,
+    TIME_OUT: 2000000,
 
     // 错误提示时间
     TOAST_ERROR_TIME: 3000,

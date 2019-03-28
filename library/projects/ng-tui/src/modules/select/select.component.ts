@@ -26,7 +26,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
             [(ngModel)]="title" (ngModelChange)="setSearchKey($event)" class="custom-select border-0 pointer" type="text"
             [placeholder]="placeholder"
             [disabled]="isDisabled">
-        <div (displayChange)="setReadonlyStatus($event)" tsDropMenu [style.width]="'100%'">
+        <div (displayChange)="setReadonlyStatus($event)" tsDropMenu autoSize>
             <div class="ts-select-item pointer border-none">
                 <div *ngFor="let item of itemsList;trackBy: trackByValue"
                      class="dropdown-item"

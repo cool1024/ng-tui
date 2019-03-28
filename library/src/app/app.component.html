@@ -1,5 +1,22 @@
 <!-- <ts-file-cards [(src)]="fileSrcs" [config]="config" title="请选择文件"></ts-file-cards> -->
 <!-- <button class="btn btn-white" (click)="showDrawWindow()">弹窗</button> -->
-<ts-datepicker-y #datepicker="tsDatepickerY" [(ngModel)]="myDate" color="danger"></ts-datepicker-y>
+<!-- <ts-datepicker-y #datepicker="tsDatepickerY" [(ngModel)]="myDate" color="danger"></ts-datepicker-y>
 <input style="width:100px" tsToggle [value]="myDate||''" [target]="datepicker" [bind]="datepicker" type="text"
-    class="form-control bg-white pointer" readonly>
+    class="form-control bg-white pointer" readonly> -->
+<!-- <ts-ckeditor [options]="options" [(content)]="content"></ts-ckeditor> -->
+<div class="card-body" style="height:1000px;overflow: auto;margin-top:100px;">
+    <button tsBtn (click)="a=true">销毁</button>
+    <ts-select *ngIf="a!==true" [items]="[1,2,3]" style="width: 100px;"></ts-select>
+    <div tsDropdown class="align-top">
+        <span tsToggle class="btn-icon btn-icon-primary">
+            <i class="iconfont icon-viewgallery"></i>
+        </span>
+        <div tsDropMenu [offsetX]="-50">
+            <button class="dropdown-item pointer">Action</button>
+            <button class="dropdown-item pointer">Another action</button>
+            <button class="dropdown-item pointer">Something else here</button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item pointer">Separated link</button>
+        </div>
+    </div>
+</div>

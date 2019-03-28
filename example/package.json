@@ -7,6 +7,7 @@
     "dev-en": "npx ng serve --aot --host 0.0.0.0 --configuration=en-US",
     "prod": "npx ng serve --host 0.0.0.0 --prod",
     "build": "npx ng build --base-href /ng/ --deploy-url //www.cool1024.com/ng/ --prod --build-optimizer --source-map",
+    "dist": "npx ng build --base-href /ng/ --deploy-url //www.cool1024.com/ng/ --prod --namedChunks --outputHashing=none --progress",
     "serve-proxy": "npx ng serve --host 0.0.0.0 --aot --proxy-config proxy.json",
     "view": "npx ng build --prod --stats-json && npx webpack-bundle-analyzer@latest ./dist/example/stats.json"
   },
@@ -27,7 +28,7 @@
     "core-js": "^2.5.4",
     "file-saver": "^2.0.0",
     "install": "^0.12.2",
-    "ng-tui": "0.0.35",
+    "ng-tui": "0.0.40",
     "rxjs": "~6.3.3",
     "sortablejs": "^1.7.0",
     "xlsx": "^0.14.0",

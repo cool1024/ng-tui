@@ -9,7 +9,8 @@ import {
     HostBinding,
     OnInit,
     HostListener,
-    EventEmitter
+    EventEmitter,
+    OnDestroy
 } from '@angular/core';
 import { ToggleDirective } from '../../tui-core/directives/toggle.directives';
 import { HtmlDomService } from '../../tui-core/base-services/htmldom.service';
@@ -71,8 +72,10 @@ export class DropdownDirective implements AfterViewInit, OnInit {
 
     present() {
         const btn = this.toggleDirective.elementRef.nativeElement;
+        const rect = btn.getBoundingClientRect();
         const btnSize: [number, number] = [btn.clientWidth, btn.clientHeight];
-        this.dropMenuDirective.setShow(this.dropup !== null, btnSize);
+        this.dropMenuDirective.setShowAndPostion(this.dropup !== null, btnSize, rect, btn);
+        // this.dropMenuDirective.setShow(this.dropup !== null, btnSize);
         this.displayChange.emit(false);
     }
 
@@ -86,7 +89,7 @@ export class DropdownDirective implements AfterViewInit, OnInit {
     selector: `[tsDropMenu]`,
     exportAs: `tsDropMenu`,
 })
-export class DropMenuDirective implements AfterViewInit {
+export class DropMenuDirective implements AfterViewInit, OnDestroy {
 
     @Input() modalSize: number;
 
@@ -94,13 +97,21 @@ export class DropMenuDirective implements AfterViewInit {
 
     @Input() offsetY: number;
 
+    @Input() autoSize: string;
+
     @Output() displayChange = new EventEmitter<boolean>();
 
     @HostBinding('class') class: string;
 
     @HostListener('click') onClick: any;
 
+    autoHandle: () => void;
+
     dom: HTMLDivElement;
+
+    dropup: any;
+    btnDom: any;
+    rect: any = null;
 
     constructor(
         public elementRef: ElementRef,
@@ -116,13 +127,31 @@ export class DropMenuDirective implements AfterViewInit {
         this.dom = this.elementRef.nativeElement;
         this.dom.style.top = '0';
         this.dom.style.left = '0';
+        this.autoHandle = () => {
+            if (!this.isClose() && this.btnDom) {
+                const rect = this.btnDom.getBoundingClientRect();
+                if (this.rect && this.rect.top === rect.top && this.rect.left === rect.left) {
+                    return;
+                }
+                const btnSize: [number, number] = [this.btnDom.clientWidth, this.btnDom.clientHeight];
+                this.rect = rect;
+                this.setFixedPosition(this.dropup || false, btnSize, rect);
+            }
+        };
+        this.html.addInterval(this.autoHandle);
     }
 
-    private setPostion(dropup = false, btnSize: [number, number]) {
+    ngOnDestroy() {
+        this.html.removeInterval(this.autoHandle);
+    }
+
+    private setFixedPosition(dropup = false, btnSize: [number, number], rect: any) {
         if (dropup !== null && dropup !== false) {
-            this.dom.style.transform = `translate3d(${this.offsetX}px, -${this.dom.clientHeight + this.offsetY}px, 0px)`;
+            this.dom.style.top = `${rect.top - this.dom.clientHeight + this.offsetY}px`;
+            this.dom.style.left = `${rect.left + this.offsetX}px`;
         } else {
-            this.dom.style.transform = `translate3d(${this.offsetX}px, ${btnSize[1] + this.offsetY}px, 0px)`;
+            this.dom.style.top = `${rect.top + btnSize[1] + this.offsetY}px`;
+            this.dom.style.left = `${rect.left + this.offsetX}px`;
         }
         if (this.modalSize > 0) {
             const overflowX = this.overflowX();
@@ -132,7 +161,26 @@ export class DropMenuDirective implements AfterViewInit {
                 this.dom.style.transform = `translate3d(${this.offsetX - overflowX}px, ${btnSize[1] + this.offsetY}px, 0px)`;
             }
         }
+        if (this.autoSize != null && this.autoSize !== undefined) {
+            this.dom.style.width = btnSize[0] + 'px';
+        }
     }
+
+    // private setPostion(dropup = false, btnSize: [number, number]) {
+    //     if (dropup !== null && dropup !== false) {
+    //         this.dom.style.transform = `translate3d(${this.offsetX}px, -${this.dom.clientHeight + this.offsetY}px, 0px)`;
+    //     } else {
+    //         this.dom.style.transform = `translate3d(${this.offsetX}px, ${btnSize[1] + this.offsetY}px, 0px)`;
+    //     }
+    //     if (this.modalSize > 0) {
+    //         const overflowX = this.overflowX();
+    //         if (dropup !== null && dropup !== false) {
+    //             this.dom.style.transform = `translate3d(${this.offsetX}px, -${this.dom.clientHeight + this.offsetY}px, 0px)`;
+    //         } else {
+    //             this.dom.style.transform = `translate3d(${this.offsetX - overflowX}px, ${btnSize[1] + this.offsetY}px, 0px)`;
+    //         }
+    //     }
+    // }
 
     private overflowX(): number {
         const point = this.html.getPosition(this.dom);
@@ -142,11 +190,21 @@ export class DropMenuDirective implements AfterViewInit {
         return offset > 0 ? offset + 20 : 0;
     }
 
-    setShow(dropup = false, btnSize: [number, number]) {
+    setShowAndPostion(dropup = false, btnSize: [number, number], rect: any, btn: any) {
+        this.dropup = dropup;
+        this.btnDom = btn;
         this.dom.style.display = 'block';
-        this.setPostion(dropup, btnSize);
+        this.dom.style.position = 'fixed';
+        this.setFixedPosition(dropup, btnSize, rect);
+        // this.setPostion(dropup, btnSize);
         this.displayChange.emit(true);
     }
+
+    // setShow(dropup = false, btnSize: [number, number]) {
+    //     this.dom.style.display = 'block';
+    //     this.setPostion(dropup, btnSize);
+    //     this.displayChange.emit(true);
+    // }
 
     setHidden() {
         this.dom.style.display = '';

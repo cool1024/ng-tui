@@ -125,14 +125,13 @@ select,
 textarea {
     outline: 0 none !important;
     text-decoration: none !important;
-
-    // z-index: 0 !important;
     box-shadow: 0px 0px 0px white !important;
 }
 
 input:disabled,
 textarea:disabled,
 button:disabled {
+    z-index: 99999 !important;
     cursor: not-allowed;
 }
 
@@ -203,6 +202,10 @@ ts-select .dropdown-menu {
     animation: rotate 0.5s infinite linear;
     display: inline-block;
     text-align: center;
+}
+
+.fa-rotate-90 {
+    // transform: rotate(180Xdeg);
 }
 
 @keyframes rotate {

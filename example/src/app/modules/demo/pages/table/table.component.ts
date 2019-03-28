@@ -63,4 +63,13 @@ export class TableComponent implements OnInit {
     doSearch() {
         this.pageChanged();
     }
+
+    doPrint() {
+        const frame = window.document.createElement('iframe');
+        frame.style.display = 'none';
+        window.document.body.appendChild(frame);
+        frame.contentWindow.document.write(document.querySelector('.table').parentElement.innerHTML);
+        frame.contentWindow.print();
+        window.document.body.removeChild(frame);
+    }
 }

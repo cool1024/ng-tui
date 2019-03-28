@@ -16,7 +16,6 @@ export class CkeditorComponent {
 
     content = `
     <h2>Sample</h2>
-
 	<p>This is an instance of the <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/overview.html#classic-editor">classic editor build</a>.</p>
 
 	<figure class="image">
@@ -34,5 +33,11 @@ export class CkeditorComponent {
      */
     testFunc(instance: any) {
         console.log(Array.from(instance.ui.componentFactory.names()));
+    }
+
+    updateMobileView() {
+        const iframe: HTMLIFrameElement = document.querySelector('iframe');
+        // tslint:disable-next-line:no-unused-expression
+        iframe && (iframe.contentDocument.documentElement.innerHTML = `<style>img{width:100%;}figure{margin:0px}</style>${this.content}`);
     }
 }

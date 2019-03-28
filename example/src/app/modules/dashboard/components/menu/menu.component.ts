@@ -1,7 +1,20 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import {
+    Component,
+    Input,
+    Output,
+    EventEmitter,
+    ViewChild,
+    ElementRef,
+    ViewChildren,
+    QueryList,
+    OnChanges,
+    SimpleChanges
+} from '@angular/core';
 import { MenuModel, MenuGroup, MenuItem } from './menu.interface';
 import { SideMenuGroupDirective } from 'ng-tui';
 import { GlobalService } from 'src/app/cores/services';
+import { Route, Router } from '@angular/router';
+import { iterateListLike } from '@angular/core/src/change_detection/change_detection_util';
 
 @Component({
     selector: `app-menu`,
@@ -9,7 +22,7 @@ import { GlobalService } from 'src/app/cores/services';
     templateUrl: './menu.component.html',
     styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent {
+export class MenuComponent implements OnChanges {
 
     @Input() items: MenuModel[];
 
@@ -74,12 +87,31 @@ export class MenuComponent {
         };
     }
 
-    constructor(private global: GlobalService) {
+    constructor(
+        private global: GlobalService,
+        private router: Router
+    ) {
         this.items = new Array<MenuModel>();
         this.autoClose = true;
         this.menuMode = 'full';
         this.menuConfig = {};
         this.useImage = false;
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        this.findActiveGroup();
+    }
+
+
+    findActiveGroup() {
+        const activePath = window.location.pathname;
+        // for (let i = 0; i < this.items.length; i++) {
+        //     const item = this.items[i];
+        //     for (let j = 0; j < item.menuGroups.length; j++) {
+        //         const child = item.menuGroups[j];
+        //         child.menuItems.some(it)
+        //     }
+        // }
     }
 
     toggleGroup(group: MenuGroup) {

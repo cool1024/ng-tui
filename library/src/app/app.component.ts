@@ -23,5 +23,11 @@ export class AppComponent {
         )
     };
 
+    options = {
+        language: 'zh-cn',
+    };
+
     myDate = 2018;
+
+    content = `<p class="text-red">1112222</p>`;
 }
