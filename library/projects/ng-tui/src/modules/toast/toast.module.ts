@@ -4,6 +4,7 @@ import { ToastComponent } from './toast.component';
 import { ToastService } from './toast.service';
 import { ToastConfig } from './toast.interface';
 import { IconfontModule } from '../iconfont/iconfont.module';
+import { NotifyComponent } from './notify.component';
 
 @NgModule({
     imports: [
@@ -11,14 +12,16 @@ import { IconfontModule } from '../iconfont/iconfont.module';
         IconfontModule,
     ],
     declarations: [
-        ToastComponent
+        ToastComponent,
+        NotifyComponent,
     ],
     entryComponents: [
         ToastComponent,
+        NotifyComponent,
     ]
 })
 export class ToastModule {
-    static forRoot(config: ToastConfig = { position: 'ts-bottom ts-right', timeout: 2000, maxLength: 6 }): ModuleWithProviders {
+    static forRoot(config: ToastConfig = { position: 'bottom right', timeout: 3000, maxLength: 6 }): ModuleWithProviders {
         return {
             ngModule: ToastModule,
             providers: [

@@ -2,10 +2,11 @@
 import { Component, OnDestroy, Inject } from '@angular/core';
 import { Toast } from './toast.class';
 import { ToastConfig } from './toast.interface';
+import { TUIComponent } from '../../tui-core/component-creator/component.interface';
 
 @Component({
     template: `
-    <div *ngIf="show" class="{{position}} position-fixed mr-3 mt-3 ml-3" style="z-index:9999">
+    <div class="{{position}} position-fixed mr-3 mt-3 ml-3" style="z-index:9999">
         <div *ngFor="let toast of toasts"
             class="toast border-{{toast.color}} animated slideInUp alert rounded-0 bg-white shadow-sm"
             [class.toast-hidden]="(toast.timeout - toast.cx)<=1000&&toast.timeout!==-1">
@@ -21,7 +22,7 @@ import { ToastConfig } from './toast.interface';
         </div>
     </div>`
 })
-export class ToastComponent implements OnDestroy {
+export class ToastComponent implements OnDestroy, TUIComponent {
 
     toasts: Toast[];
 
@@ -30,8 +31,6 @@ export class ToastComponent implements OnDestroy {
     position: string;
 
     dValue = 500;
-
-    show = true;
 
     private timer: any;
 
@@ -59,7 +58,6 @@ export class ToastComponent implements OnDestroy {
             this.toasts.splice(index, 1);
         }
         this.toasts.push(toast);
-        this.show = true;
     }
 
     removeToast(toast: Toast) {
@@ -84,4 +82,7 @@ export class ToastComponent implements OnDestroy {
         }
     }
 
+    present() { }
+    dismiss() { }
+    destroy() { }
 }

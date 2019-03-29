@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { FileItem, UploadConfig } from 'projects/ng-tui/src/public_api';
-import { interval } from 'rxjs';
-import { take, map } from 'rxjs/operators';
+import { ToastService } from 'projects/ng-tui/src/public_api';
 
 @Component({
     selector: 'app-root',
@@ -10,24 +8,18 @@ import { take, map } from 'rxjs/operators';
 })
 export class AppComponent {
 
-    constructor() { }
+    constructor(private toast: ToastService) { }
 
-    fileSrcs: FileItem[] = [
-        { src: '资源地址', name: '图片名称', type: 'image/jpeg' },
-    ];
+    showToast() {
+        this.toast.success('你好', '这是一条通知消息');
+    }
 
-    config: UploadConfig = {
-        progresser: file => interval(100).pipe(
-            take(100),
-            map<number, number | string>(res => res >= 99 ? '文件地址' : res)
-        )
-    };
+    showNotify() {
+        this.toast.notify({
+            title: 'Well done!',
+            // position: 'center',
+            content: 'Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.',
+        });
+    }
 
-    options = {
-        language: 'zh-cn',
-    };
-
-    myDate = 2018;
-
-    content = `<p class="text-red">1112222</p>`;
 }

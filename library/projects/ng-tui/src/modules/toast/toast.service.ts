@@ -1,32 +1,31 @@
-import { Injectable, Injector, Inject, ApplicationRef, ComponentFactoryResolver, ComponentRef, ComponentFactory } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { ToastComponent } from './toast.component';
 import { Toast } from './toast.class';
 import { ToastConfig } from './toast.interface';
+import { ComponentHandle } from '../../tui-core/component-creator/handle.class';
+import { ComponentService } from '../../tui-core/component-creator/component.service';
+import { NotifyConfig } from './notify.interface';
+import { NotifyComponent } from './notify.component';
+import { timeout } from 'rxjs/operators';
 
 @Injectable()
 export class ToastService {
 
-    private baseComponent: ComponentFactory<ToastComponent>;
-    private windowCmptRef: ComponentRef<ToastComponent>;
+    private handler: ComponentHandle;
 
     constructor(
-        private applicationRef: ApplicationRef,
-        private componentFactoryResolver: ComponentFactoryResolver,
         @Inject('DEFAULT_CONFIG') private config: ToastConfig,
-        private injector: Injector) { }
+        private cmpService: ComponentService
+    ) { }
 
-    private init() {
-        if (this.baseComponent !== undefined || this.baseComponent != null) { return; }
-        this.baseComponent = this.componentFactoryResolver.resolveComponentFactory(ToastComponent);
-        this.windowCmptRef = this.baseComponent.create(this.injector);
-        this.applicationRef.attachView(this.windowCmptRef.hostView);
-        const containerEl = document.querySelector('body');
-        containerEl.appendChild(this.windowCmptRef.location.nativeElement);
+    init() {
+        // tslint:disable-next-line:no-unused-expression
+        this.handler || (this.handler = this.cmpService.create(ToastComponent));
     }
 
     create(title: string, message: string, options: { color: string, icon: string, timeout?: number }) {
         this.init();
-        this.windowCmptRef.instance.addToast(new Toast(
+        this.handler.instance.addToast(new Toast(
             title, message, options.color, options.icon, options.timeout || this.config.timeout));
     }
 
@@ -60,5 +59,20 @@ export class ToastService {
             icon: 'warning',
             timeout: timer || this.config.timeout
         });
+    }
+
+    notify(options: NotifyConfig) {
+        const op: NotifyConfig = Object.assign({
+            color: 'primary',
+            timeout: this.config.timeout,
+            width: '500px',
+            position: 'top right'
+        }, options);
+        const handler = this.cmpService.create(NotifyComponent);
+        handler.instance.config = op;
+        // tslint:disable-next-line:no-unused-expression
+        op.timeout >= 0 && setTimeout(() => {
+            handler.destroy();
+        }, op.timeout);
     }
 }

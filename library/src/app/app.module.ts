@@ -4,13 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {
     TUIModule,
-    WindowModule,
-    ClipModule,
-    UploadModule,
-    DatePickerModule,
-    CkeditorModule,
-    SelectModule,
-    DropdownModule,
+    ToastModule,
+    ButtonModule,
 } from '../../projects/ng-tui/src/public_api';
 
 @NgModule({
@@ -20,13 +15,8 @@ import {
     imports: [
         BrowserModule,
         TUIModule.forRoot(),
-        CkeditorModule.forRoot(['assets/ckeditor/ckeditor-classic.js', 'assets/ckeditor/zh-cn.js']),
-        WindowModule,
-        UploadModule,
-        DatePickerModule,
-        ClipModule,
-        SelectModule,
-        DropdownModule,
+        ToastModule.forRoot(),
+        ButtonModule
     ],
     providers: [],
     bootstrap: [AppComponent]
