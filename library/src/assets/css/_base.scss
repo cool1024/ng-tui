@@ -532,6 +532,10 @@ ts-tab {
 }
 
 /** side menu **/
+.dropdown-menu {
+    display: block;
+}
+
 .side-menu {
     @extend .dropdown-menu;
 

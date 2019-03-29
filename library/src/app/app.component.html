@@ -2,3 +2,16 @@
     <button tsBtn (click)="showToast()">显示消息</button>
     <button tsBtn (click)="showNotify()">显示通知</button>
 </div>
+
+<div style="height:400px;overflow: auto;">
+    <div style="height:500px">
+        <button tsBtn="danger" tsToggle [target]="menuView" [bind]="menuView">目标节点</button>
+        <div #menuView="tsView" tsView="zoomInLeft" class="dropdown-menu no-select">
+            <a (click)="showToast()" class="dropdown-item pointer" close>Action</a>
+            <a class="dropdown-item pointer" close>Another action</a>
+            <a class="dropdown-item pointer" close>Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item pointer" close>Separated link</a>
+        </div>
+    </div>
+</div>
