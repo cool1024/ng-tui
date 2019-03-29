@@ -20,5 +20,11 @@
     "bugs": {
         "url": "https://github.com/BeauitfullXiaoJian/ng-tui/issues"
     },
-    "homepage": "https://github.com/BeauitfullXiaoJian/ng-tui#readme"
+    "homepage": "https://github.com/BeauitfullXiaoJian/ng-tui#readme",
+    "devDependencies": {
+        "resize-observer-polyfill": "^1.5.1"
+    },
+    "dependencies": {
+        "intersection-observer-polyfill": "^0.1.0"
+    }
 }

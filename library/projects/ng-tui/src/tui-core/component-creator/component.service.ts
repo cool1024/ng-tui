@@ -2,6 +2,7 @@ import { Injectable, ApplicationRef, ComponentFactoryResolver, Type, Injector } 
 import { ComponentHandleService } from './handle.service';
 import { ComponentHandle } from './handle.class';
 import { TUIComponent } from './component.interface';
+import { ViewHandle } from './view-handle.class';
 
 /**
  * 动态组件服务，把一些组件挂载到body上
@@ -22,8 +23,14 @@ export class ComponentService {
         const injector = Injector.create([{ provide: ComponentHandleService, useValue: handle }], this.injector);
         const windowCmptRef = instance.create(injector);
         handle.ref = windowCmptRef;
+        handle.dom = windowCmptRef.location.nativeElement.firstChild;
         this.applicationRef.attachView(windowCmptRef.hostView);
-        body.appendChild(windowCmptRef.location.nativeElement);
+        body.appendChild(handle.dom);
         return handle;
+    }
+
+    createView(component: Type<TUIComponent>) {
+        const handle = this.create(component);
+        return new ViewHandle(handle);
     }
 }

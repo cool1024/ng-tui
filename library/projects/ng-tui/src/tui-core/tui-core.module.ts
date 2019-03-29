@@ -5,6 +5,7 @@ import { HtmlDomService } from './base-services/htmldom.service';
 import { ToggleDirective } from './directives/toggle.directives';
 import { ComponentHandleService } from './component-creator/handle.service';
 import { ComponentService } from './component-creator/component.service';
+import { ViewDirective } from './component-creator/view.directive';
 
 @NgModule({
     imports: [
@@ -12,10 +13,12 @@ import { ComponentService } from './component-creator/component.service';
     ],
     exports: [
         ToggleDirective,
+        ViewDirective,
         CommonModule,
     ],
     declarations: [
         ToggleDirective,
+        ViewDirective,
     ],
     providers: [
         ConfigService,

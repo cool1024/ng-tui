@@ -6,6 +6,8 @@ export class ComponentHandle {
 
     ref: ComponentRef<TUIComponent>;
 
+    dom: HTMLElement;
+
     private subject = new Subject<any>();
 
     get instance(): any {
@@ -28,6 +30,7 @@ export class ComponentHandle {
 
     destroy(datas?: any) {
         this.ref.destroy();
+        this.dom.parentElement.removeChild(this.dom);
         this.subject.next(datas);
         this.subject.complete();
     }
