@@ -1,9 +1,21 @@
-<div class="p-3 m-btn">
-    <button tsBtn (click)="showToast()">显示消息</button>
+<div class="p-5 m-btn">
+    <!-- <button tsBtn (click)="showToast()">显示消息</button>
     <button tsBtn (click)="showNotify()">显示通知</button>
+    <ts-dropdown dropup [items]="['Action','Another action','Something else here']">
+        <button tsBtn>下面的菜单</button>
+    </ts-dropdown>
+    <ts-dropdown [items]="['Action','Another action','Something else here']">
+        <button tsBtn>上面的菜单</button>
+    </ts-dropdown>
+    <ts-dropdown [items]="['Action','Another action','Something else here']">
+        <span class="btn-icon btn-icon-danger" tsTip="删除">
+            <i class="iconfont icon-delete"></i>
+        </span>
+    </ts-dropdown> -->
+    <button tsBtn (click)="showMenu($event.target)">显示菜单</button>
 </div>
 
-<div style="height:400px;overflow: auto;">
+<!-- <div style="height:400px;overflow: auto;">
     <div style="height:500px">
         <button tsBtn="danger" tsToggle [target]="menuView" [bind]="menuView">目标节点</button>
         <div #menuView="tsView" tsView="zoomInLeft" class="dropdown-menu no-select">
@@ -14,4 +26,4 @@
             <a class="dropdown-item pointer" close>Separated link</a>
         </div>
     </div>
-</div>
+</div> -->

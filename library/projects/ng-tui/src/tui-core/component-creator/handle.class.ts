@@ -30,7 +30,11 @@ export class ComponentHandle {
 
     destroy(datas?: any) {
         this.ref.destroy();
-        this.dom.parentElement.removeChild(this.dom);
+        try {
+            this.dom.parentElement.removeChild(this.dom);
+        } catch (e) {
+
+        }
         this.subject.next(datas);
         this.subject.complete();
     }

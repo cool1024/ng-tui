@@ -1,5 +1,4 @@
 import { Rect } from './component.interface';
-import ResizeObserver from 'resize-observer-polyfill';
 import IntersectionObserver from 'intersection-observer-polyfill';
 
 export class ViewTool {
@@ -36,7 +35,6 @@ export class ViewTool {
         this.positionUpdateFunc = () => {
             const tRect = this.getRect(this.toggleDom);
             const mRect = this.getRect(this.targetDom);
-            console.log(mRect);
             this.targetDom.style.top = tRect.y + offsetY - mRect.h + 'px';
             this.targetDom.style.left = tRect.x + offsetX + 'px';
         };

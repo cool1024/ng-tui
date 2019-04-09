@@ -12,6 +12,9 @@ export class ViewDirective implements AfterViewInit, Toggle {
     @Input() set tsView(classStr: string) {
         this.appenClass = classStr;
     }
+    @Input() position: string;
+    @Input() offsetX: number;
+    @Input() offsetY: number;
 
     dom: HTMLElement;
     appenClass: string;
@@ -22,6 +25,9 @@ export class ViewDirective implements AfterViewInit, Toggle {
         this.appenClass = '';
         this.isActive = false;
         this.viewTool = new ViewTool();
+        this.position = 'bottom';
+        this.offsetX = 0;
+        this.offsetY = 0;
     }
 
     @HostListener('document:click', ['$event.target']) onDocumentClick(dom: HTMLElement): void {
@@ -37,7 +43,7 @@ export class ViewDirective implements AfterViewInit, Toggle {
 
     ngAfterViewInit() {
         this.dom = this.elementRef.nativeElement;
-        this.dom.classList.add('position-absolute', 'invisible', 'animated', this.appenClass);
+        this.dom.classList.add('position-absolute', 'd-none', 'animated');
         this.viewTool.targetDom = this.dom;
         document.body.appendChild(this.dom);
     }
@@ -48,15 +54,25 @@ export class ViewDirective implements AfterViewInit, Toggle {
 
     toggle() {
         if (!this.isActive) {
-            this.viewTool.autoPositionBottom();
-            this.dom.classList.remove('invisible');
+            this.dom.classList.remove('d-none');
+            this.dom.style.opacity = '0';
+            if (this.position === 'bottom') {
+                this.viewTool.autoPositionBottom(this.offsetX, this.offsetY);
+            }
+            if (this.position === 'top') {
+                this.viewTool.autoPositionTop(this.offsetX, this.offsetY);
+            }
+            setTimeout(() => {
+                this.dom.classList.add(this.appenClass);
+                this.dom.style.opacity = '1';
+            }, 100);
             this.isActive = true;
         }
     }
 
     dismiss() {
         if (this.isActive) {
-            this.dom.classList.add('invisible');
+            this.dom.classList.add('d-none');
             this.isActive = false;
         }
     }

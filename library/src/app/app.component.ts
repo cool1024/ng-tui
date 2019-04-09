@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToastService, ToggleDirective } from 'projects/ng-tui/src/public_api';
+import { ToastService, ToggleDirective, MenuService } from 'projects/ng-tui/src/public_api';
 
 @Component({
     selector: 'app-root',
@@ -8,7 +8,10 @@ import { ToastService, ToggleDirective } from 'projects/ng-tui/src/public_api';
 })
 export class AppComponent {
 
-    constructor(private toast: ToastService) { }
+    constructor(
+        private toast: ToastService,
+        private menu: MenuService
+    ) { }
 
     showToast() {
         this.toast.success('你好', '这是一条通知消息');
@@ -26,4 +29,10 @@ export class AppComponent {
         console.log(toggle);
     }
 
+
+    showMenu(dom: HTMLElement) {
+        this.menu.showMenu(dom, ['显示提示消息', '通知消息'], { position: 'bottom' }).subscribe(item => {
+            [() => this.showToast(), () => this.showNotify()][item.value]();
+        });
+    }
 }

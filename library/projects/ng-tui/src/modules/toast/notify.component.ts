@@ -6,7 +6,7 @@ import { ComponentHandleService } from '../../tui-core/component-creator/handle.
 
 @Component({
     template: `
-    <div #notify class="position-fixed {{config.position}} d-flex px-3 pt-3">
+    <div #notify class="position-fixed {{config.position}} d-flex px-3 pt-3 animated slideInUp">
         <div *ngIf="model==='small'" [ngStyle]="style" class="m-auto alert alert-{{config.color}} alert-dismissible fade show" role="alert">
             {{config.content}}
             <button (click)="handler.destroy()" type="button" class="close">

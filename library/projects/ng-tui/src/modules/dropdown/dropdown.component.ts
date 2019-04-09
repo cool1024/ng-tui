@@ -1,52 +1,40 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from '../../tui-core/interfaces/item.interface';
-import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
 
 @Component({
     selector: 'ts-dropdown',
     template: `
-    <div tsDropdown [dropup]="dropup" style="height:100%">
-        <button [disabled]="disabled" *ngIf="diyClass" [class]="diyClass" type="button" tsToggle>{{item ? item.text : text}}</button>
-        <button [disabled]="disabled" *ngIf="!diyClass"
-            tsToggle tsBtn
-            class="dropdown-toggle"
-            [lg]="isApply(lg)"
-            [sm]="isApply(sm)"
-            [outline]="isApply(outline)"
-            [color]="color">{{item ? item.text : text}}</button>
-        <div tsDropMenu>
-            <button [class.active]="item.value === value"
-                    class="dropdown-item pointer"
-                    *ngFor="let item of itemList; trackBy: trackByValue"
-                    (click)="itemClick(item)">
-                {{item.text}}
-            </button>
+        <div class="d-inline-block" tsToggle [target]="menuView" [bind]="menuView">
+            <ng-content></ng-content>
         </div>
-    </div>`
+        <div #menuView="tsView"
+            [offsetX]="offsetX"
+            [offsetY]="offsetY"
+            [ngStyle]="{minWidth:minWidth+'px'}"
+            [position]="isApply(dropup)?'top':'bottom'"
+            tsView="zoomIn"
+            class="bg-white shadow-sm no-select py-2">
+            <a *ngFor="let item of itemList; trackBy: trackByValue"
+               (click)="itemClick(item)"
+               class="dropdown-item pointer py-2"
+               close>{{item.text}}</a>
+        </div>`
 })
-export class DropdownComponent extends BaseTheme implements OnChanges {
-
-    item: Item;
-
-    @Input() text: string;
-
-    @Input() color: string;
-
-    @Input() value: any;
+export class DropdownComponent {
 
     @Input() items: any[];
 
-    @Input() diyClass: string;
-
     @Input() dropup: string;
+
+    @Input() offsetX: number;
+
+    @Input() offsetY: number;
 
     @Input() useNumber: number;
 
-    @Input() disabled: boolean;
+    @Input() minWidth: number;
 
-    @Output() valueChange = new EventEmitter<any>();
-
-    @Output() itemChange = new EventEmitter<Item>();
+    @Output() menuClick = new EventEmitter<Item>();
 
     get itemList(): Item[] {
         const items = new Array<any>();
@@ -73,29 +61,19 @@ export class DropdownComponent extends BaseTheme implements OnChanges {
     }
 
     constructor() {
-        super();
         this.items = [];
-        this.diyClass = null;
         this.dropup = null;
-        this.color = 'white';
-        this.disabled = false;
-    }
-
-    ngOnChanges(changes: SimpleChanges) {
-        if (changes.value) {
-            const items = this.itemList;
-            for (let i = 0; i < items.length; i++) {
-                if (items[i].value === changes.value.currentValue) {
-                    this.item = items[i];
-                }
-            }
-        }
+        this.minWidth = 100;
+        this.offsetX = 0;
+        this.offsetY = 0;
     }
 
     itemClick(item: Item) {
-        this.item = item;
-        this.valueChange.emit(item.value);
-        this.itemChange.emit(item);
+        this.menuClick.emit(item);
+    }
+
+    isApply(value: any): boolean {
+        return !!value || (value !== undefined && value !== null && value.toString() === '');
     }
 
     trackByValue(index: number, item: Item): number { return item.value; }

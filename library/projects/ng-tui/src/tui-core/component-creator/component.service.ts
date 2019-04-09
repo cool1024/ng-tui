@@ -20,7 +20,10 @@ export class ComponentService {
         const body = document.body;
         const instance = this.componentFactoryResolver.resolveComponentFactory<TUIComponent>(component);
         const handle = new ComponentHandle();
-        const injector = Injector.create([{ provide: ComponentHandleService, useValue: handle }], this.injector);
+        const injector = Injector.create({
+            providers: [{ provide: ComponentHandleService, useValue: handle }],
+            parent: this.injector
+        });
         const windowCmptRef = instance.create(injector);
         handle.ref = windowCmptRef;
         handle.dom = windowCmptRef.location.nativeElement.firstChild;

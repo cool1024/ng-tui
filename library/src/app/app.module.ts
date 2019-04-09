@@ -6,6 +6,7 @@ import {
     TUIModule,
     ToastModule,
     ButtonModule,
+    DropdownModule,
 } from '../../projects/ng-tui/src/public_api';
 
 @NgModule({
@@ -16,7 +17,8 @@ import {
         BrowserModule,
         TUIModule.forRoot(),
         ToastModule.forRoot(),
-        ButtonModule
+        ButtonModule,
+        DropdownModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
