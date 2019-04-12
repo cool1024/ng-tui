@@ -1,12 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {
     TUIModule,
-    ToastModule,
-    ButtonModule,
-    DropdownModule,
     DatepickerModule,
 } from '../../projects/ng-tui/src/public_api';
 
@@ -16,10 +14,8 @@ import {
     ],
     imports: [
         BrowserModule,
+        FormsModule,
         TUIModule.forRoot(),
-        ToastModule.forRoot(),
-        ButtonModule,
-        DropdownModule,
         DatepickerModule,
     ],
     providers: [],

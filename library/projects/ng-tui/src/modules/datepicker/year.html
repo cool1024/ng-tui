@@ -2,7 +2,7 @@
     <div *ngFor="let years of yearList" class="d-flex justify-content-around flex-grow-1 align-items-center"
         style="height:20%;">
         <div *ngFor="let year of years" class="pointer text-{{color}}-hover text-{{activeYear===year&&color}}"
-            (click)="setActiveYear(year)">{{year}}
+            (click)="setActiveYear(year)" close>{{year}}
         </div>
     </div>
     <div class="d-flex flex-column-reverse flex-grow-1" style="height:20%;">
@@ -16,8 +16,8 @@
                 </button>
             </div>
             <div class="text-right">
-                <button (click)="cleanValue()" tsBtn sm class="mr-1">清空</button>
-                <button (click)="setNow()" [tsBtn]="color" sm>今年</button>
+                <button (click)="cleanValue()" tsBtn sm class="mr-1" close>清空</button>
+                <button (click)="setNow()" [tsBtn]="color" sm close>今年</button>
             </div>
         </div>
         <hr class="w-100">

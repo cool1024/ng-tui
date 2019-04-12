@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from '../../tui-core/interfaces/item.interface';
+import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
+import { ConfigService } from '../../tui-core/base-services/config.service';
 
 @Component({
     selector: 'ts-dropdown',
@@ -12,15 +14,15 @@ import { Item } from '../../tui-core/interfaces/item.interface';
             [offsetY]="offsetY"
             [ngStyle]="{minWidth:minWidth+'px',zIndex:zIndex}"
             [position]="isApply(dropup)?'top':'bottom'"
-            tsView="zoomIn"
+            tsView="fadeIn"
             class="bg-white shadow no-select py-2">
             <a *ngFor="let item of itemList; trackBy: trackByValue"
                (click)="itemClick(item)"
-               class="dropdown-item pointer"
-               close>{{item.text}}</a>
+               class="dropdown-item pointer bg-{{activeValue==item.value&&(color+' text-white')}}"
+               hold close>{{item.text}}</a>
         </div>`
 })
-export class DropdownComponent {
+export class DropdownComponent extends BaseTheme {
 
     @Input() items: any[];
 
@@ -35,6 +37,8 @@ export class DropdownComponent {
     @Input() minWidth: number;
 
     @Input() zIndex: number;
+
+    @Input() activeValue: number;
 
     @Output() menuClick = new EventEmitter<Item>();
 
@@ -62,7 +66,9 @@ export class DropdownComponent {
         return items;
     }
 
-    constructor() {
+    constructor(csf: ConfigService) {
+        super();
+        this.color = csf.config.defaultColor;
         this.items = [];
         this.dropup = null;
         this.minWidth = 80;

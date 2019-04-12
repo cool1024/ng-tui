@@ -31,7 +31,7 @@ export class MenuService {
             offsetY: 0,
             position: 'bottom',
             minWidth: 0,
-            animation: 'zoomIn'
+            animation: 'fadeIn'
         }, options || {});
         handle.instance.handle = handle;
         this.activeHandle = handle;

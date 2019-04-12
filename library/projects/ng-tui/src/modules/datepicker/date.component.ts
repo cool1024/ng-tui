@@ -1,6 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
 import { ConfigService } from '../../tui-core/base-services/config.service';
+import { styleStr } from './style';
 
 const WEEK_DAY_NUM = 7;
 const MIN_YEAR = 1000;
@@ -10,53 +11,19 @@ const MAX_MONTH = 12;
 @Component({
     selector: 'ts-date',
     templateUrl: './date.html',
-    styles: [
-        `
-        .range{background-color:rgb(245, 245, 245,0.8)}
-        .ts-datepicker-table {
-            margin: auto auto;
-        }
-        .ts-month-title {
-            padding-left: 15px;
-            padding-top: 15px;
-            font-size: 15px;
-        }
-        .ts-weeks {
-            border-bottom: 1px solid rgb(245, 245, 245);
-        }
-        .ts-weeks th {
-            padding-bottom: 10px;
-        }
-        .ts-day {
-            width: 35px;
-            height: 35px;
-            line-height: 35px;
-        }
-        .ts-day-hover:hover {
-            background-color: #eee;
-        }
-        th {
-            font-weight: normal;
-            font-family: Microsoft YaiHei, 微软雅黑, KaiTi;
-        }
-        td {
-            cursor: pointer;
-        }`
-    ],
+    styles: [styleStr],
 
 })
-export class DateComponent extends BaseTheme {
+export class DateComponent extends BaseTheme implements OnChanges {
 
-    @Input() fillMax: string;
-    @Input() fillMin: string;
     @Input() weekTitles: string[];
     @Input() monthTitles: string[];
+    @Input() activeDate: string;
     @Output() dateChange = new EventEmitter<string>(false);
 
     year: number;
     month: number;
     day: number;
-    activeDate: string;
 
     get days(): number[] {
         let date = new Date(this.year, this.month, 0);
@@ -114,6 +81,17 @@ export class DateComponent extends BaseTheme {
         this.activeDate = `${this.year}/${this.month}/${this.day}`;
     }
 
+    ngOnChanges() {
+        let date;
+        try {
+            date = new Date(this.activeDate);
+            if (date.getFullYear()) {
+                this.year = date.getFullYear();
+                this.month = date.getMonth() + 1;
+            }
+        } catch (e) {}
+    }
+
 
     getMonth(month: number): string {
         return this.monthTitles[month - 1];
@@ -165,4 +143,10 @@ export class DateComponent extends BaseTheme {
     trackByFn(item: any): number {
         return item.length;
     }
+
+    present() { };
+
+    dismiss() { };
+
+    destroy() { };
 }

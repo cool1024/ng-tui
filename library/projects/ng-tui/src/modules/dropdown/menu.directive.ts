@@ -33,7 +33,7 @@ export class MenuDirective {
     constructor(private menuService: MenuService) {
         this.position = 'bottom';
         this.minWidth = this.offsetX = this.offsetY = 0;
-        this.animation = 'zoomIn';
+        this.animation = 'fadeIn';
     }
 
     showMenu(dom: HTMLElement) {

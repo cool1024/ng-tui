@@ -220,11 +220,12 @@ ts-select .dropdown-menu {
 /** animate.css **/
 @import "~animate.css/source/_base.css";
 @import "~animate.css/source/sliding_entrances/slideInUp.css";
+@import "~animate.css/source/attention_seekers/pulse.css";
 
 @import "~animate.css/source/sliding_entrances/slideInLeft.css";
 @import "~animate.css/source/zooming_entrances/zoomIn.css";
 @import "~animate.css/source/zooming_entrances/zoomInLeft.css";
-
+@import "~animate.css/source/fading_entrances/fadeIn.css";
 @import "~animate.css/source/bouncing_entrances/bounceIn.css";
 @import "~animate.css/source/specials/hinge.css";
 @import "~animate.css/source/rotating_exits/rotateOut.css";
@@ -234,43 +235,6 @@ ts-select .dropdown-menu {
     animation-duration: 0.4s;
 }
 
-// 可以重设指代动画的时间
-.animated.hinge {
-    animation-duration: 1s;
-}
-
-.animated.zoomInLeft {
-    animation-duration: 0.2s;
-    animation-name: zoomIn;
-}
-
-@keyframes jackInTheBox {
-    0% {
-        transform: rotate(0deg);
-        transform-origin: center center;
-    }
-
-    25% {
-        transform: rotate(-30deg);
-    }
-
-    50% {
-        transform: rotate(0deg);
-    }
-
-    75% {
-        transform: rotate(30deg);
-    }
-
-    to {
-        transform: rotate(0deg);
-    }
-}
-
-.animated.jackInTheBox {
-    animation-duration: .2s;
-    animation-name: jackInTheBox;
-}
 
 /** three-dots **/
 $dotColor: $info;

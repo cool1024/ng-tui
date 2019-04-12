@@ -1,6 +1,7 @@
 import { ControlValueAccessor } from '@angular/forms';
+import { BaseTheme } from './base-theme.class';
 
-export class BaseForm implements ControlValueAccessor {
+export class BaseForm extends BaseTheme implements ControlValueAccessor {
 
     isDisabled: boolean;
 
@@ -9,6 +10,7 @@ export class BaseForm implements ControlValueAccessor {
     touchedHandle: (value: any) => {};
 
     constructor() {
+        super();
         this.isDisabled = false;
     }
 

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
 import { ConfigService } from '../../tui-core/base-services/config.service';
 
@@ -6,11 +6,12 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
     selector: 'ts-year',
     templateUrl: './year.html'
 })
-export class YearComponent extends BaseTheme {
+export class YearComponent extends BaseTheme implements OnChanges {
 
     yearList: Array<number[]> = [];
-    activeYear: number;
     focusYear: number;
+
+    @Input()activeYear: number;
     @Output() yearChange = new EventEmitter<number>(false);
 
     constructor(confiService: ConfigService) {
@@ -20,6 +21,11 @@ export class YearComponent extends BaseTheme {
         this.color = confiService.config.defaultColor;
     }
 
+
+    ngOnChanges(){
+        this.focusYear = this.activeYear;
+        this.updateYears();
+    }
 
     updateYears() {
         const years = [];
@@ -44,7 +50,7 @@ export class YearComponent extends BaseTheme {
     }
 
     cleanValue() {
-        this.activeYear = 0;
+        this.setActiveYear(0);
     }
 
     setNow() {

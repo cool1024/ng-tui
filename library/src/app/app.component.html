@@ -1,36 +1,11 @@
-<div class="p-5">
-    <!-- <button tsBtn (click)="showToast()">显示消息</button>
-    <button tsBtn (click)="showNotify()">显示通知</button>
-    <ts-dropdown dropup [items]="['Action','Another action','Something else here']">
-        <button tsBtn>下面的菜单</button>
-    </ts-dropdown>
-    <ts-dropdown [items]="['Action','Another action','Something else here']">
-        <button tsBtn>上面的菜单</button>
-    </ts-dropdown>
-    <ts-dropdown [items]="['Action','Another action','Something else here']">
-        <span class="btn-icon btn-icon-danger" tsTip="删除">
-            <i class="iconfont icon-delete"></i>
-        </span>
-    </ts-dropdown> -->
-    <!-- <button tsBtn (mouseover)="showMenu($event.target)">显示菜单</button>
-    <button tsBtn [tsMenu]="['显示提示消息', '通知消息']" hover position="top" (menuClick)="doSome($event)">显示菜单</button> -->
-    <div class="card-body">
-        <ts-date-range></ts-date-range>
-        <!-- <ts-year class="d-inline-block shadow p-3 m-2"></ts-year>
-        <ts-date class="d-inline-block shadow p-3 m-2"></ts-date>
-        <ts-date class="d-inline-block shadow p-3 m-2"></ts-date> -->
-    </div>
+<div class="container pt-3">
+    <ts-datepicker color="success" [(ngModel)]="date">
+        <button tsBtn>{{date|date:'yyyy-MM-dd'}}</button>
+    </ts-datepicker>
+    <ts-yearpicker color="success" [(ngModel)]="year">
+        <input class="form-control bg-white pointer" readonly [value]="year" />
+    </ts-yearpicker>
+    <ts-timepicker color="success" [(ngModel)]="time">
+        <input class="form-control bg-white pointer" readonly [value]="time" />
+    </ts-timepicker>
 </div>
-
-<!-- <div style="height:400px;overflow: auto;">
-    <div style="height:500px">
-        <button tsBtn="danger" tsToggle [target]="menuView" [bind]="menuView">目标节点</button>
-        <div #menuView="tsView" tsView="zoomInLeft" class="dropdown-menu no-select">
-            <a (click)="showToast()" class="dropdown-item pointer" close>Action</a>
-            <a class="dropdown-item pointer" close>Another action</a>
-            <a class="dropdown-item pointer" close>Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item pointer" close>Separated link</a>
-        </div>
-    </div>
-</div> -->
