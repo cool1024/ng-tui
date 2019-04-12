@@ -1,4 +1,4 @@
-<div class="p-5 m-btn">
+<div class="p-5">
     <!-- <button tsBtn (click)="showToast()">显示消息</button>
     <button tsBtn (click)="showNotify()">显示通知</button>
     <ts-dropdown dropup [items]="['Action','Another action','Something else here']">
@@ -12,7 +12,14 @@
             <i class="iconfont icon-delete"></i>
         </span>
     </ts-dropdown> -->
-    <button tsBtn (click)="showMenu($event.target)">显示菜单</button>
+    <!-- <button tsBtn (mouseover)="showMenu($event.target)">显示菜单</button>
+    <button tsBtn [tsMenu]="['显示提示消息', '通知消息']" hover position="top" (menuClick)="doSome($event)">显示菜单</button> -->
+    <div class="card-body">
+        <ts-date-range></ts-date-range>
+        <!-- <ts-year class="d-inline-block shadow p-3 m-2"></ts-year>
+        <ts-date class="d-inline-block shadow p-3 m-2"></ts-date>
+        <ts-date class="d-inline-block shadow p-3 m-2"></ts-date> -->
+    </div>
 </div>
 
 <!-- <div style="height:400px;overflow: auto;">

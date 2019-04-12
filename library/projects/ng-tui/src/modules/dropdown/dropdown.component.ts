@@ -10,13 +10,13 @@ import { Item } from '../../tui-core/interfaces/item.interface';
         <div #menuView="tsView"
             [offsetX]="offsetX"
             [offsetY]="offsetY"
-            [ngStyle]="{minWidth:minWidth+'px'}"
+            [ngStyle]="{minWidth:minWidth+'px',zIndex:zIndex}"
             [position]="isApply(dropup)?'top':'bottom'"
             tsView="zoomIn"
-            class="bg-white shadow-sm no-select py-2">
+            class="bg-white shadow no-select py-2">
             <a *ngFor="let item of itemList; trackBy: trackByValue"
                (click)="itemClick(item)"
-               class="dropdown-item pointer py-2"
+               class="dropdown-item pointer"
                close>{{item.text}}</a>
         </div>`
 })
@@ -33,6 +33,8 @@ export class DropdownComponent {
     @Input() useNumber: number;
 
     @Input() minWidth: number;
+
+    @Input() zIndex: number;
 
     @Output() menuClick = new EventEmitter<Item>();
 
@@ -63,9 +65,10 @@ export class DropdownComponent {
     constructor() {
         this.items = [];
         this.dropup = null;
-        this.minWidth = 100;
+        this.minWidth = 80;
         this.offsetX = 0;
         this.offsetY = 0;
+        this.zIndex = 9999;
     }
 
     itemClick(item: Item) {

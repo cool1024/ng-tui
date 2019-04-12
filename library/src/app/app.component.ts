@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ToastService, ToggleDirective, MenuService } from 'projects/ng-tui/src/public_api';
+import { Item } from 'projects/ng-tui/src/tui-core/interfaces/item.interface';
 
 @Component({
     selector: 'app-root',
@@ -31,8 +32,11 @@ export class AppComponent {
 
 
     showMenu(dom: HTMLElement) {
-        this.menu.showMenu(dom, ['显示提示消息', '通知消息'], { position: 'bottom' }).subscribe(item => {
-            [() => this.showToast(), () => this.showNotify()][item.value]();
-        });
+        this.menu.showMenu(dom, ['显示提示消息', '通知消息'], { position: 'bottom' })
+            .subscribe(item => this.doSome(item));
+    }
+
+    doSome(item: Item) {
+        [() => this.showToast(), () => this.showNotify()][item.value]();
     }
 }

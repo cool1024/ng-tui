@@ -1,4 +1,4 @@
-import { Directive, ElementRef, AfterViewInit, Input, HostListener } from '@angular/core';
+import { Directive, ElementRef, AfterViewInit, Input, HostListener, OnDestroy } from '@angular/core';
 import { Toggle } from '../interfaces/toggle.interface';
 import { ToggleDirective } from '../directives/toggle.directives';
 import { ViewTool } from './view-tool.class';
@@ -7,7 +7,7 @@ import { ViewTool } from './view-tool.class';
     selector: `*[tsView]`,
     exportAs: 'tsView'
 })
-export class ViewDirective implements AfterViewInit, Toggle {
+export class ViewDirective implements AfterViewInit, OnDestroy, Toggle {
 
     @Input() set tsView(classStr: string) {
         this.appenClass = classStr;
@@ -43,7 +43,7 @@ export class ViewDirective implements AfterViewInit, Toggle {
 
     ngAfterViewInit() {
         this.dom = this.elementRef.nativeElement;
-        this.dom.classList.add('position-absolute', 'd-none', 'animated');
+        this.dom.classList.add('position-fixed', 'd-none', 'animated');
         this.viewTool.targetDom = this.dom;
         document.body.appendChild(this.dom);
     }
@@ -54,8 +54,10 @@ export class ViewDirective implements AfterViewInit, Toggle {
 
     toggle() {
         if (!this.isActive) {
+            console.log(this.viewTool.getRect(this.viewTool.toggleDom));
             this.dom.classList.remove('d-none');
             this.dom.style.opacity = '0';
+            console.log(this.offsetY);
             if (this.position === 'bottom') {
                 this.viewTool.autoPositionBottom(this.offsetX, this.offsetY);
             }
@@ -74,6 +76,11 @@ export class ViewDirective implements AfterViewInit, Toggle {
         if (this.isActive) {
             this.dom.classList.add('d-none');
             this.isActive = false;
+            this.viewTool.clean();
         }
+    }
+
+    ngOnDestroy() {
+        this.viewTool.clean();
     }
 }

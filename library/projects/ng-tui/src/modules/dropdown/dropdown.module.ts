@@ -4,6 +4,7 @@ import { ButtonModule } from '../button/button.module';
 import { DropdownComponent } from './dropdown.component';
 import { MenuComponent } from './menu.component';
 import { MenuService } from './menu.service';
+import { MenuDirective } from './menu.directive';
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import { MenuService } from './menu.service';
     ],
     declarations: [
         DropdownComponent,
-        MenuComponent
+        MenuComponent,
+        MenuDirective,
     ],
     entryComponents: [
         MenuComponent
@@ -24,6 +26,7 @@ import { MenuService } from './menu.service';
         TUICoreModule,
         ButtonModule,
         DropdownComponent,
+        MenuDirective,
     ]
 })
 export class DropdownModule { }

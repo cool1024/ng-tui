@@ -3,4 +3,5 @@ export interface MenuOptions {
     offsetX?: number;
     offsetY?: number;
     minWidth?: number;
+    animation?: string;
 }

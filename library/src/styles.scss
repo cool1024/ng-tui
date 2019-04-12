@@ -15,7 +15,7 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black: #000 !default;
 
-$blue: #005cc5;
+$blue: #3e81ce;
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
 $pink: #e9488b !default;
@@ -73,7 +73,7 @@ $dropdown-border-color: rgba($black, 0.01);
 $dropdown-link-active-color: $dark;
 $dropdown-link-active-bg: $gray-200;
 $input-placeholder-color: $gray-300;
-$theme-colors: ("primary": $primary, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark, "purple": $purple, "pink": $pink);
+$theme-colors: ("primary": $red, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark, "purple": $purple, "pink": $pink);
 
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/root";
