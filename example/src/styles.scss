@@ -131,7 +131,7 @@ textarea {
 input:disabled,
 textarea:disabled,
 button:disabled {
-    z-index: 99999 !important;
+    z-index: 1 !important;
     cursor: not-allowed;
 }
 
