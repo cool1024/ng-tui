@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
 import { ConfigService } from '../../tui-core/base-services/config.service';
 import { styleStr } from './style';
@@ -8,7 +8,7 @@ import { styleStr } from './style';
     templateUrl: './time.html',
     styles: [styleStr]
 })
-export class TimeComponent extends BaseTheme {
+export class TimeComponent extends BaseTheme implements OnChanges {
 
     @Input() activeTime = {
         hour: 0,
@@ -30,6 +30,16 @@ export class TimeComponent extends BaseTheme {
         this.setNow();
     }
 
+    ngOnChanges() {
+        this.updateTime();
+    }
+
+    updateTime() {
+        this.offsets.hour = this.activeTime.hour - 2;
+        this.offsets.minute = this.activeTime.minute - 2;
+        this.offsets.second = this.activeTime.second - 2;
+    }
+
     getTwoNumStr(num: number): string {
         return num > 9 ? num.toString() : `0${num}`;
     }
@@ -46,6 +56,7 @@ export class TimeComponent extends BaseTheme {
             minute: date.getMinutes(),
             second: date.getSeconds(),
         });
+        this.updateTime();
     }
 
 

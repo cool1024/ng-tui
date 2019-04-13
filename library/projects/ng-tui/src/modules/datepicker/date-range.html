@@ -26,7 +26,7 @@
             <tr>
                 <td class="text-right" colspan="7">
                     <div class="d-flex justify-content-between">
-                        <button class="mr-1" [tsBtn]="color" sm close>确认</button>
+                        <button (click)="updateRange()" class="mr-1" [tsBtn]="color" sm close>确认</button>
                         <div>
                             <div class="btn-group">
                                 <button style="opacity:0.9" (click)="prevYear()" [tsBtn]="color" sm>&lt;</button>
@@ -41,7 +41,7 @@
                                     sm>&lt;</button>
                                 <ts-dropdown [items]="monthTitles" [useNumber]="1" dropup
                                     (menuClick)="month=$event.value">
-                                    <button [tsBtn]="color" sm class="rounded-0">{{monthTitles[month-1]}}</button>
+                                    <button [tsBtn]="color" sm class="rounded-0 border-left-0 border-right-0">{{monthTitles[month-1]}}</button>
                                 </ts-dropdown>
                                 <button style="opacity:0.9" (click)="nextMonth()" [tsBtn]="color" sm>&gt;</button>
                             </div>

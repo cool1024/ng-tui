@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {
     TUIModule,
     DatepickerModule,
+    CheckboxModule,
 } from '../../projects/ng-tui/src/public_api';
 
 @NgModule({
@@ -17,6 +18,7 @@ import {
         FormsModule,
         TUIModule.forRoot(),
         DatepickerModule,
+        CheckboxModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

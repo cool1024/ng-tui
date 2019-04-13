@@ -143,10 +143,4 @@ export class DateComponent extends BaseTheme implements OnChanges {
     trackByFn(item: any): number {
         return item.length;
     }
-
-    present() { };
-
-    dismiss() { };
-
-    destroy() { };
 }

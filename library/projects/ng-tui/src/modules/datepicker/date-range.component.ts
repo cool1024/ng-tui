@@ -10,6 +10,7 @@ const MAX_MONTH = 12;
 
 @Component({
     selector: 'ts-date-range',
+    exportAs:'tsDateRange',
     templateUrl: './date-range.html',
     styles: [
         `.range{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABDSURBVFiF7c4xDcAwEACxTyGUP9gwSIdTlcVG4BngaM3Meztx8twOfBGsBCvBSrASrAQrwUqwEqwEK8FKsBKsBIGfbZTdAE7ig9T/AAAAAElFTkSuQmCC);}`,
@@ -20,15 +21,14 @@ export class DateRangeComponent extends BaseTheme {
 
     @Input() weekTitles: string[];
     @Input() monthTitles: string[];
+    @Input() activeDates = {
+        start: null,
+        end: null
+    };
     @Output() dateChange = new EventEmitter<any>(false);
 
     year: number;
     month: number;
-
-    activeDates = {
-        start: null,
-        end: null
-    };
 
     get days(): number[] {
         let date = new Date(this.year, this.month, 0);
@@ -88,6 +88,11 @@ export class DateRangeComponent extends BaseTheme {
             day: date.getDate()
         };
         this.activeDates.end = null;
+    }
+
+    updateRangeShow() {
+        this.month = this.activeDates.start.month;
+        this.year = this.activeDates.start.year;
     }
 
 
@@ -161,7 +166,7 @@ export class DateRangeComponent extends BaseTheme {
         }
     }
 
-    updateActiveDay() {
+    updateRange() {
         this.dateChange.emit(this.activeDates);
     }
 

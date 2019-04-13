@@ -9,6 +9,7 @@ import { DatepickerComponent } from './datepicker.component';
 import { YearpickerComponent } from './yearpicker.component';
 import { TimeComponent } from './time';
 import { TimepickerComponent } from './timepicker.component';
+import { DatepickersComponent } from './date-range-picker.component';
 
 @NgModule({
     imports: [
@@ -24,6 +25,7 @@ import { TimepickerComponent } from './timepicker.component';
         DatepickerComponent,
         YearpickerComponent,
         TimepickerComponent,
+        DatepickersComponent,
     ],
     entryComponents: [
     ],
@@ -40,6 +42,7 @@ import { TimepickerComponent } from './timepicker.component';
         DatepickerComponent,
         YearpickerComponent,
         TimepickerComponent,
+        DatepickersComponent,
     ]
 })
 export class DatepickerModule { }
