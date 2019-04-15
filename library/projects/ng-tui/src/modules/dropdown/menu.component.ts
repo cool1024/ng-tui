@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, ViewChild, ElementRef, HostListener, AfterViewInit } from '@angular/core';
 import { TUIComponent } from '../../tui-core/component-creator/component.interface';
 import { ViewTool } from '../../tui-core/component-creator/view-tool.class';
 import { ComponentHandle } from '../../tui-core/component-creator/handle.class';
@@ -8,14 +8,16 @@ import { ComponentHandle } from '../../tui-core/component-creator/handle.class';
         <div #menuView
             [ngStyle]="{minWidth:minWidth+'px'}"
             style="opacity:0"
-            class="bg-white animated shadow-sm no-select py-2 position-absolute d-inline-block">
-            <a *ngFor="let item of items;index as i"
-               (click)="itemClick(item,i)"
-               class="dropdown-item pointer py-2"
-               close>{{item}}</a>
+            class="bg-white animated shadow no-select py-2 position-absolute d-inline-block">
+            <ng-container *ngFor="let item of items;index as i">
+                <a *ngIf="item" (click)="itemClick(item,i)"
+                    class="dropdown-item pointer"
+                    close>{{item}}</a>
+                <div *ngIf="item===''" class="dropdown-divider"></div>
+            </ng-container>
         </div>`
 })
-export class MenuComponent implements TUIComponent {
+export class MenuComponent implements TUIComponent, AfterViewInit {
 
     @ViewChild('menuView') menuView: ElementRef;
     items = new Array<string>();
@@ -27,12 +29,20 @@ export class MenuComponent implements TUIComponent {
     handle: ComponentHandle;
     animation: string;
 
+    autoHandle: () => void;
 
     @HostListener('document:click', ['$event.target']) onDocumentClick(dom: HTMLElement): void {
         if (this.viewTool.targetDom && this.viewTool.toggleDom) {
             if ((!this.viewTool.targetDom.contains(dom)) && (!this.viewTool.toggleDom.contains(dom))) {
                 this.handle.destroy();
             }
+        }
+    }
+
+    ngAfterViewInit() {
+        if (this.position === 'auto') {
+            this.autoHandle = () => this.viewTool.autoPosition(this.offsetX, this.offsetX);
+            window.addEventListener('resize', this.autoHandle, false);
         }
     }
 
@@ -49,6 +59,8 @@ export class MenuComponent implements TUIComponent {
                     break;
                 case 'top': this.viewTool.autoPositionTop(this.offsetX, this.offsetY);
                     break;
+                case 'auto': this.viewTool.autoPosition(this.offsetX, this.offsetY);
+                    break;
             }
             setTimeout(() => {
                 this.viewTool.targetDom.style.opacity = '1';
@@ -58,8 +70,9 @@ export class MenuComponent implements TUIComponent {
     }
 
     dismiss() {
-
     }
 
-    destroy() { }
+    destroy() {
+        this.autoHandle && window.removeEventListener('scroll', this.autoHandle);
+    }
 }

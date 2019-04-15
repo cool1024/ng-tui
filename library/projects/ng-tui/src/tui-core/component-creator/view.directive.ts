@@ -92,6 +92,6 @@ export class ViewDirective implements AfterViewInit, OnDestroy, Toggle {
     ngOnDestroy() {
         this.viewTool.clean();
         this.dom.parentNode && this.dom.parentNode.removeChild(this.dom);
-        this.autoHandle && window.removeEventListener('scroll', this.autoHandle);
+        this.autoHandle && window.removeEventListener('resize', this.autoHandle);
     }
 }

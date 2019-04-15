@@ -29,6 +29,7 @@ export class ComponentHandle {
     }
 
     destroy(datas?: any) {
+        this.instance.destroy();
         this.ref.destroy();
         try {
             this.dom.parentElement.removeChild(this.dom);

@@ -73,7 +73,7 @@ $dropdown-border-color: rgba($black, 0.01);
 $dropdown-link-active-color: $dark;
 $dropdown-link-active-bg: $gray-200;
 $input-placeholder-color: $gray-300;
-$theme-colors: ("primary": $red, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark, "purple": $purple, "pink": $pink);
+$theme-colors: ("primary": $primary, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark, "purple": $purple, "pink": $pink);
 
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/root";
@@ -192,7 +192,7 @@ ts-select .dropdown-menu {
 
 /** iconfont **/
 
-@import "assets/iconfont/iconfont.css";
+// @import "assets/iconfont/iconfont.css";
 
 .iconfont {
     font-size: inherit;

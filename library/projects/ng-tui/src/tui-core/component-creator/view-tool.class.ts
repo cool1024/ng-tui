@@ -3,7 +3,6 @@ import { ValueChangeListenerService } from '../base-services/value-listener.serv
 // import IntersectionObserver from 'intersection-observer-polyfill';
 
 export class ViewTool {
-    private positionUpdateFunc: Function;
 
     private obs: any;
 

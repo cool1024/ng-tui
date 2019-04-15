@@ -5,6 +5,7 @@ import { ViewTool } from '../../tui-core/component-creator/view-tool.class';
 import { ComponentHandle } from '../../tui-core/component-creator/handle.class';
 import { skipWhile } from 'rxjs/operators';
 import { MenuOptions } from './menu-options.interface';
+import { Item } from 'ng-tui/ng-tui';
 
 @Injectable()
 export class MenuService {
@@ -35,6 +36,6 @@ export class MenuService {
         }, options || {});
         handle.instance.handle = handle;
         this.activeHandle = handle;
-        return handle.present().pipe(skipWhile(data => data === undefined));
+        return handle.present().pipe<Item>(skipWhile(data => data === undefined));
     }
 }
