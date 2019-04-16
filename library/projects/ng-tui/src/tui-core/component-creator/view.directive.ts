@@ -1,13 +1,14 @@
-import { Directive, ElementRef, AfterViewInit, Input, HostListener, OnDestroy } from '@angular/core';
+import { Directive, ElementRef, AfterViewInit, Input, HostListener, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Toggle } from '../interfaces/toggle.interface';
 import { ToggleDirective } from '../directives/toggle.directives';
 import { ViewTool } from './view-tool.class';
+import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
 
 @Directive({
     selector: `*[tsView]`,
     exportAs: 'tsView'
 })
-export class ViewDirective implements AfterViewInit, OnDestroy, Toggle {
+export class ViewDirective extends BaseTheme implements AfterViewInit, OnDestroy, Toggle {
 
     @Input() set tsView(classStr: string) {
         this.appenClass = classStr;
@@ -15,6 +16,8 @@ export class ViewDirective implements AfterViewInit, OnDestroy, Toggle {
     @Input() position: string;
     @Input() offsetX: number;
     @Input() offsetY: number;
+    @Input() autoSize: string;
+    @Output() displayChange = new EventEmitter<boolean>(false);
 
     dom: HTMLElement;
     appenClass: string;
@@ -22,6 +25,7 @@ export class ViewDirective implements AfterViewInit, OnDestroy, Toggle {
     isActive: boolean;
 
     constructor(public elementRef: ElementRef) {
+        super();
         this.appenClass = '';
         this.isActive = false;
         this.viewTool = new ViewTool();
@@ -49,7 +53,7 @@ export class ViewDirective implements AfterViewInit, OnDestroy, Toggle {
         this.viewTool.targetDom = this.dom;
         document.body.appendChild(this.dom);
         if (this.position === 'auto') {
-            this.autoHandle = () => this.viewTool.autoPosition(this.offsetX, this.offsetX);
+            this.autoHandle = () => this.viewTool.autoPosition(this.offsetX, this.offsetY, this.isApply(this.autoSize));
             window.addEventListener('resize', this.autoHandle, false);
         }
     }
@@ -62,14 +66,15 @@ export class ViewDirective implements AfterViewInit, OnDestroy, Toggle {
         if (!this.isActive) {
             this.dom.classList.remove('d-none');
             this.dom.style.opacity = '0';
+            const size = this.isApply(this.autoSize);
             if (this.position === 'bottom') {
-                this.viewTool.autoPositionBottom(this.offsetX, this.offsetY);
+                this.viewTool.autoPositionBottom(this.offsetX, this.offsetY, size);
             }
             if (this.position === 'top') {
-                this.viewTool.autoPositionTop(this.offsetX, this.offsetY);
+                this.viewTool.autoPositionTop(this.offsetX, this.offsetY, size);
             }
             if (this.position === 'auto') {
-                this.viewTool.autoPosition(this.offsetX, this.offsetX);
+                this.viewTool.autoPosition(this.offsetX, this.offsetY, size);
             }
             setTimeout(() => {
                 this.dom.classList.add(this.appenClass);
@@ -77,6 +82,7 @@ export class ViewDirective implements AfterViewInit, OnDestroy, Toggle {
             }, 200);
             this.isActive = true;
         }
+        this.displayChange.emit(true);
     }
 
     dismiss() {
@@ -85,6 +91,7 @@ export class ViewDirective implements AfterViewInit, OnDestroy, Toggle {
             this.isActive = false;
             this.viewTool.clean();
         }
+        this.displayChange.emit(false);
     }
 
     autoHandle: () => void;

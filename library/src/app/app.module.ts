@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import {
     TUIModule,
@@ -9,9 +8,11 @@ import {
     CheckboxModule,
     PaginationModule,
     IconfontModule,
+    CssloadModule,
+    TooltipsModule,
+    SelectModule,
 } from '../../projects/ng-tui/src/public_api';
 import { FlashComponent } from './demo/flash.component';
-import { TooltipsModule } from 'projects/ng-tui/src/modules/tooltips/tooltips.module';
 
 @NgModule({
     declarations: [
@@ -29,6 +30,8 @@ import { TooltipsModule } from 'projects/ng-tui/src/modules/tooltips/tooltips.mo
         CheckboxModule,
         PaginationModule,
         TooltipsModule,
+        CssloadModule,
+        SelectModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

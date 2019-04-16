@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { MenuService } from '../../../projects/ng-tui/src/public_api';
+import { MenuService, Pagination } from '../../../projects/ng-tui/src/public_api';
 
 @Component({
     selector: 'demo-flash',
     template: `
     <div class="card">
-        <table class="table table-striped table-hover table-bordered mb-0">
+        <table [tsLoad]="page.loading" class="table table-striped table-hover table-bordered mb-0">
             <thead class="thead-light"><tr><th *ngFor="let th of theads" scope="col">{{th}}</th></tr></thead>
             <tbody>
                 <tr class="pointer mat-cell" [class.table-info]="activeRow===row" *ngFor="let row of tableRows;index as i">
@@ -33,7 +33,7 @@ import { MenuService } from '../../../projects/ng-tui/src/public_api';
                 </tr>
                 <tr class="bg-white">
                     <td [attr.colspan]="theads.length" class="text-right">
-                        <ts-pagination color="info" goTitle="跳转"></ts-pagination>
+                        <ts-pagination [(pagination)]="page" (pageChange)="loadData()" color="info" goTitle="跳转"></ts-pagination>
                     </td>
                 </tr>
             </tbody>
@@ -43,6 +43,7 @@ import { MenuService } from '../../../projects/ng-tui/src/public_api';
 export class FlashComponent {
     theads = ['#', 'Img', 'Title', 'Time', 'IsActive', 'Opt'];
     activeRow = null;
+    page = new Pagination();
     tableRows = [
         { img: 'https://randomuser.me/api/portraits/thumb/women/1.jpg', title: 'Mark', time: '18点32分', isActive: 1 },
         { img: 'https://randomuser.me/api/portraits/thumb/women/2.jpg', title: 'Jacob', time: '18点32分', isActive: 0 },
@@ -51,7 +52,9 @@ export class FlashComponent {
         { img: 'https://randomuser.me/api/portraits/thumb/women/5.jpg', title: 'Larry the Bird', time: '18点32分', isActive: 1 }
     ];
 
-    constructor(private menu: MenuService) { }
+    constructor(private menu: MenuService) {
+
+    }
 
     showMenu(dom: HTMLElement) {
         this.menu.showMenu(dom, ['行为动作', '另一种操作', '', '有一些东西在这'], {
@@ -61,5 +64,10 @@ export class FlashComponent {
         }).subscribe(item => {
             console.log(item.value);
         });
+    }
+
+    loadData() {
+        this.page.loading = true;
+        setTimeout(() => this.page.loading = false, 2000);
     }
 }

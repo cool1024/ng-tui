@@ -17,8 +17,4 @@ export class TableLoadComponent {
     constructor() {
         this.display = false;
     }
-
-    present() { this.display = false; }
-
-    dismiss() { this.display = true; }
 }

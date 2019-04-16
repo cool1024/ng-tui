@@ -13,7 +13,7 @@ export class ViewTool {
         this.obs && ValueChangeListenerService.getInstance().removeObs(this.obs);
     }
 
-    autoPosition(offsetX: number = 0, offsetY: number = 0) {
+    autoPosition(offsetX: number = 0, offsetY: number = 0, size = false) {
         // tslint:disable-next-line:no-unused-expression
         this.obs && ValueChangeListenerService.getInstance().removeObs(this.obs);
         this.obs = ValueChangeListenerService.getInstance().observeClientRect(this.toggleDom, () => {
@@ -31,20 +31,27 @@ export class ViewTool {
             }
             this.targetDom.style.top = top + 'px';
             this.targetDom.style.left = left + 'px';
+
+            if (size) {
+                this.targetDom.style.width = tRect.w + 'px';
+            }
         });
     }
 
-    autoPositionBottom(offsetX: number = 0, offsetY: number = 0) {
+    autoPositionBottom(offsetX: number = 0, offsetY: number = 0, size = false) {
         // tslint:disable-next-line:no-unused-expression
         this.obs && ValueChangeListenerService.getInstance().removeObs(this.obs);
         this.obs = ValueChangeListenerService.getInstance().observeClientRect(this.toggleDom, () => {
             const tRect = this.getRect(this.toggleDom);
             this.targetDom.style.top = tRect.y + offsetY + tRect.h + 'px';
             this.targetDom.style.left = tRect.x + offsetX + 'px';
+            if (size) {
+                this.targetDom.style.width = tRect.w + 'px';
+            }
         });
     }
 
-    autoPositionTop(offsetX: number = 0, offsetY: number = 0) {
+    autoPositionTop(offsetX: number = 0, offsetY: number = 0, size = false) {
         // tslint:disable-next-line:no-unused-expression
         this.obs && ValueChangeListenerService.getInstance().removeObs(this.obs);
         this.obs = ValueChangeListenerService.getInstance().observeClientRect(this.toggleDom, () => {
@@ -52,6 +59,9 @@ export class ViewTool {
             const mRect = this.getRect(this.targetDom);
             this.targetDom.style.top = tRect.y + offsetY - mRect.h + 'px';
             this.targetDom.style.left = tRect.x + offsetX + 'px';
+            if (size) {
+                this.targetDom.style.width = tRect.w + 'px';
+            }
         });
     }
 

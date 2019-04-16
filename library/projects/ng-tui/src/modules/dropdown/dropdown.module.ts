@@ -5,6 +5,7 @@ import { DropdownComponent } from './dropdown.component';
 import { MenuComponent } from './menu.component';
 import { MenuService } from './menu.service';
 import { MenuDirective } from './menu.directive';
+import { SideMenuDirective, SideMenuGroupDirective } from './side-menu.directive';
 
 @NgModule({
     imports: [
@@ -15,6 +16,8 @@ import { MenuDirective } from './menu.directive';
         DropdownComponent,
         MenuComponent,
         MenuDirective,
+        SideMenuDirective,
+        SideMenuGroupDirective,
     ],
     entryComponents: [
         MenuComponent
@@ -27,6 +30,8 @@ import { MenuDirective } from './menu.directive';
         ButtonModule,
         DropdownComponent,
         MenuDirective,
+        SideMenuDirective,
+        SideMenuGroupDirective,
     ]
 })
 export class DropdownModule { }
