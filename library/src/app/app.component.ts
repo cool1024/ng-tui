@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { DateRange, ItemTree } from '../../projects/ng-tui/src/public_api';
+import { DateRange, ItemTree, ModalService } from '../../projects/ng-tui/src/public_api';
+import { FlashComponent } from './demo/flash.component';
 
 @Component({
     selector: 'app-root',
@@ -57,6 +58,12 @@ export class AppComponent {
         ]
     }];
 
-    constructor() { }
+    constructor(
+        private modal: ModalService
+    ) { }
+
+    showModal() {
+        this.modal.create(FlashComponent).present();
+    }
 
 }

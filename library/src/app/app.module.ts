@@ -11,6 +11,7 @@ import {
     CssloadModule,
     TooltipsModule,
     SelectModule,
+    ModalModule,
 } from '../../projects/ng-tui/src/public_api';
 import { FlashComponent } from './demo/flash.component';
 
@@ -32,6 +33,7 @@ import { FlashComponent } from './demo/flash.component';
         TooltipsModule,
         CssloadModule,
         SelectModule,
+        ModalModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
