@@ -11,13 +11,20 @@ import {
     CssloadModule,
     TooltipsModule,
     SelectModule,
+    ModalModule,
 } from '../../projects/ng-tui/src/public_api';
 import { FlashComponent } from './demo/flash.component';
+import { ExampleModalComponent } from './demo/example-modal.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         FlashComponent,
+        ExampleModalComponent,
+    ],
+    entryComponents: [
+        FlashComponent,
+        ExampleModalComponent,
     ],
     imports: [
         BrowserModule,
@@ -32,6 +39,7 @@ import { FlashComponent } from './demo/flash.component';
         TooltipsModule,
         CssloadModule,
         SelectModule,
+        ModalModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MenuService, Pagination } from '../../../projects/ng-tui/src/public_api';
 
 @Component({
@@ -40,7 +40,7 @@ import { MenuService, Pagination } from '../../../projects/ng-tui/src/public_api
         </table>
     </div>`
 })
-export class FlashComponent {
+export class FlashComponent implements OnDestroy {
     theads = ['#', 'Img', 'Title', 'Time', 'IsActive', 'Opt'];
     activeRow = null;
     page = new Pagination();
@@ -69,5 +69,9 @@ export class FlashComponent {
     loadData() {
         this.page.loading = true;
         setTimeout(() => this.page.loading = false, 2000);
+    }
+
+    ngOnDestroy() {
+        console.log(22222);
     }
 }

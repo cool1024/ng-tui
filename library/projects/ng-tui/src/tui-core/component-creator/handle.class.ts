@@ -14,6 +14,10 @@ export class ComponentHandle {
         return this.ref.instance;
     }
 
+    open(): Observable<any> {
+        return this.present();
+    }
+
     present(): Observable<any> {
         this.instance.present();
         return this.subject.asObservable();
@@ -21,6 +25,10 @@ export class ComponentHandle {
 
     send(data?: any) {
         this.subject.next(data);
+    }
+
+    close(datas?: any) {
+        this.destroy(datas);
     }
 
     dismiss(datas?: any) {

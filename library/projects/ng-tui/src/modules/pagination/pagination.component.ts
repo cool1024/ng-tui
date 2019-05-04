@@ -15,8 +15,12 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
         </div>
         <input ngModel #page="ngModel" [min]="1" class="form-control pagination-input" type="number">
     </ng-container>
-    <div tsToggle [target]="menuView" [bind]="menuView" class="pagination-button pagination-button-{{color}}">显示 {{pagination.limit}} 条</div>
+    <div tsToggle
+        [target]="menuView"
+        [bind]="menuView"
+        class="pagination-button pagination-button-{{color}}">显示 {{pagination.limit}} 条</div>
     <div #menuView="tsView"
+        style="z-index:9999"
         position="top"
         tsView="fadeIn"
         class="bg-white shadow no-select py-2 rounded">

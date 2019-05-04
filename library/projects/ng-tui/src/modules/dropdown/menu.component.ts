@@ -6,7 +6,7 @@ import { ComponentHandle } from '../../tui-core/component-creator/handle.class';
 @Component({
     template: `
         <div #menuView
-            [ngStyle]="{minWidth:minWidth+'px'}"
+            [ngStyle]="{minWidth:minWidth+'px',zIndex:zIndex}"
             style="opacity:0"
             class="bg-white animated shadow no-select py-2 position-absolute d-inline-block">
             <ng-container *ngFor="let item of items;index as i">
@@ -22,6 +22,7 @@ export class MenuComponent implements TUIComponent, AfterViewInit {
     @ViewChild('menuView') menuView: ElementRef;
     items = new Array<string>();
     position: string;
+    zIndex: string;
     offsetX: number;
     offsetY: number;
     viewTool: ViewTool;
@@ -70,6 +71,7 @@ export class MenuComponent implements TUIComponent, AfterViewInit {
     }
 
     dismiss() {
+        this.destroy();
     }
 
     destroy() {

@@ -68,7 +68,6 @@ export class ViewDirective extends BaseTheme implements AfterViewInit, OnDestroy
             this.dom.classList.remove('d-none');
             this.dom.style.opacity = '0';
             const size = this.isApply(this.autoSize);
-            console.log(this.position);
 
             if (this.position === 'bottom') {
                 this.viewTool.autoPositionBottom(this.offsetX, this.offsetY, size);

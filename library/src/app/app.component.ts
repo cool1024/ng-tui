@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { DateRange, ItemTree } from '../../projects/ng-tui/src/public_api';
+import { DateRange, ItemTree, ModalService } from '../../projects/ng-tui/src/public_api';
+import { ExampleModalComponent } from './demo/example-modal.component';
 
 @Component({
     selector: 'app-root',
@@ -57,6 +58,14 @@ export class AppComponent {
         ]
     }];
 
-    constructor() { }
+    constructor(
+        private modal: ModalService
+    ) { }
 
+    showModal() {
+        const modal = this.modal.create(ExampleModalComponent, { title: '这个是标题' });
+        modal.present().subscribe(res => {
+            console.log(res);
+        });
+    }
 }

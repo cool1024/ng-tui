@@ -1,4 +1,4 @@
-import { Directive, Input, Output, EventEmitter, HostListener } from '@angular/core';
+import { Directive, Input, Output, EventEmitter, HostListener, OnDestroy } from '@angular/core';
 import { Item } from '../../tui-core/interfaces/item.interface';
 import { MenuService } from './menu.service';
 
@@ -6,7 +6,7 @@ import { MenuService } from './menu.service';
     selector: '[tsMenu]',
     exportAs: 'tsMenu'
 })
-export class MenuDirective {
+export class MenuDirective implements OnDestroy {
 
     @Input() tsMenu: string[];
     @Output() menuClick = new EventEmitter<Item>(false);
@@ -15,6 +15,7 @@ export class MenuDirective {
     @Input() offsetY: number;
     @Input() minWidth: number;
     @Input() animation: string;
+    @Input() zIndex: string;
 
     @HostListener('click', ['$event']) onHostClick($event: any) {
         const dom: HTMLElement = $event.target;
@@ -43,6 +44,12 @@ export class MenuDirective {
             minWidth: this.minWidth,
             position: this.position,
             animation: this.animation,
+            zIndex: this.zIndex,
         }).subscribe((item) => this.menuClick.emit(item));
     }
+
+    ngOnDestroy() {
+        console.log(11);
+    }
+
 }
