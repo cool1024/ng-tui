@@ -22,13 +22,13 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
         <input tsToggle
             [target]="menuView" [bind]="menuView"
             [attr.readonly]="readonly"
-            [(ngModel)]="title" (ngModelChange)="setSearchKey($event)" 
+            [(ngModel)]="title" (ngModelChange)="setSearchKey($event)"
             class="custom-select custom-select-{{getSize}} border-0 pointer" type="text"
             [placeholder]="placeholder"
             [disabled]="isDisabled">
-        <div (displayChange)="setReadonlyStatus($event)" 
-            #menuView="tsView" 
-            tsView="fadeIn" 
+        <div (displayChange)="setReadonlyStatus($event)"
+            #menuView="tsView"
+            tsView="fadeIn"
             autoSize position="auto"
             [offsetY]="1"
             class="dropdown-menu">

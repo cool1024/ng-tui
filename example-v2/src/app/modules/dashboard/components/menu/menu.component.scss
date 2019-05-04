@@ -1,0 +1,109 @@
+.text-truncate {
+    max-width: 180px;
+}
+
+.menu-full {
+    background-size: cover;
+}
+
+.ts-icon-sm {
+    font-size: 11px;
+}
+
+.ts-icon {
+    width: 30px;
+}
+
+.font-up {
+    animation: icon-up 0.5s ease-out forwards;
+}
+
+.font-down {
+    animation: icon-down 0.5s ease-out forwards;
+}
+
+.model-title {
+    opacity: 0.8;
+}
+
+.menu-block {
+    overflow-y: hidden;
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-left-color: transparent;
+}
+
+.menu-main {
+    line-height: 42px;
+}
+
+.menu-child-block {
+    line-height: 42px;
+}
+
+.child-close {
+    max-height: 0px;
+    opacity: 0.5;
+    transform-origin: 50% 0%;
+    transition: all 0.5s linear;
+}
+
+.menu-line {
+    height: 1px;
+}
+
+.child-open {
+    max-height: 400px;
+    opacity: 1;
+    transform-origin: 50% 0%;
+    transition: all 1.5s linear;
+}
+
+@keyframes icon-up {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes icon-down {
+    0% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/** small menu mode **/
+.menu-small {
+    overflow-y: auto;
+}
+
+.menu-rect {
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.menu-rect i {
+    font-size: 1.2rem;
+}
+
+.menu-rect:hover {
+    position: relative;
+}
+
+.menu-popover {
+    position: fixed;
+    z-index: 9999;
+    width: 130px;
+}
+
+.menu-popover .menu-item:hover {
+    background-color: #50a4ff;
+    color: white;
+}

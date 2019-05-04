@@ -5,7 +5,7 @@ import { ViewTool } from '../../tui-core/component-creator/view-tool.class';
 import { ComponentHandle } from '../../tui-core/component-creator/handle.class';
 import { skipWhile } from 'rxjs/operators';
 import { MenuOptions } from './menu-options.interface';
-import { Item } from 'ng-tui/ng-tui';
+import { Item } from '../../tui-core/interfaces/item.interface';
 
 @Injectable()
 export class MenuService {

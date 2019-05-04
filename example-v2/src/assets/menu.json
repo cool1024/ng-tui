@@ -1,0 +1,245 @@
+[
+    {
+        "title": "开发文档",
+        "menus": [
+            {
+                "icon": "iconfont icon-hand",
+                "title": "按钮实例",
+                "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMHSURBVHhe7ZxNbtNQGEXfBCaIjYD4m/CzCaTK7owxuyGQltWwBgY0ccQGWAFiAAoI3lfdQdpcx/d9ycBC90hHSCU+UW+D40jFxRhjjDHGGGOMMcYYY4wxZujLg1VX3q/6Mqy78mPdl792x7pJbBMbxVaY7XiG83K3xi9r+A99Ysvcxmaf35Y7mDEHxv9EnsAq1u1iQ8zZTv0n9ZGGrW5XLjBnG5uuPKwH/6ZRq1s3TL0nxJsJDdpm65lkgVl1rq92SMymXGNWnfoD+E5CNmFsiVl1WMjmxaw6LGLzYlYdFrF5MasOi9i8mFWHRWxezKrDIjYvZtVhEZsXs+qwiM2LWXVYxObFrDosYvNiVh0WsXkxqw6L2LyYVYdFbF7MqsMiNi9m1WERmxez6rCIzYtZdVgk46orv+qfy6Evz7+8KffCTVdexNfwd/S4MefeGxOz6rBIs135tj4rT5DcYzgvT68fw45lzr13QCR1WKTFVV9+XvXlEXKjxADxWNbYde69KZHTYZFGl0hNUl9lF+T42869d1CkdFikxTiPIjXJ1Vl5yRq7zr03JVI6LNJivJkhNcnX1+U+a+w6996USOmwSIv+AdwUKR0WadGnoJsipcMiTTb8Ump97CVt7Dr33oRI6bBIi3HpVj/IPEZulLjWVj7wzL03JXI6LNJs/RAT3wCSe9TTwLN4DD2WOffeAZHUYZGMePUs4zwab2ZhffW9qt9Y/K+b5lfW3HtjYlYdFrF5MasOi9i8mFWHRWxezKrDIjYvZtVhEZsXs+qwiM2LWXVYxObFrDosYvNiVh0WsXkxqw6L2LyYVYdFbF7MqsMiNi9m1WERmxez6rCIzYtZdVjE5sWsOixi82JWnZVv1nEyY0vMqlMP8u1qTmfidjW+YdPp7Mo7zKqz8S3LTuU2fRvLevDyVsw2Ws8kHzBnO4NvW3mcx962Moibj8avaNTgdu8J7JjbeOUffePWXeI8Vq+MFjW+9iXqvtgktlmkz/nGGGOMMcYYY4wxxhhjjDHGGGP+Q0r5B6JocN25rtOVAAAAAElFTkSuQmCC",
+                "children": [
+                    {
+                        "title": "普通按钮",
+                        "url": "/demo/button"
+                    },
+                    {
+                        "title": "分页按钮",
+                        "url": "/demo/pagination"
+                    },
+                    {
+                        "title": "下拉按钮",
+                        "url": "/demo/dropdown"
+                    }
+                ]
+            },
+            {
+                "icon": "iconfont icon-calendar",
+                "title": "表格实例",
+                "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALkSURBVHhe7ZUxihhBDATv/5EzP8Gf8Asc+zOOzskER9E0JxokdlYFnSwUaCrZj2VZlmVZlmVZlmVZlmVZlsXy89fn7svaUUe8ee2oI968dtQRb147POD339pu89vhAepIt9v8dniAOtLtNr8dHqCOdLvNb4cHqCPdbvPb4QHqSLfb/HZ4gDrS7Ta/HR6gjnS7zW+HB6gj3W7z2+EB6ki32/x2eIA60u02vx0eoI50u81vhwe8fe2oI968dtQRb1476og3rx0eoH5UbvSL/Pjz7/PrzudvM+3nMKCK7Ea/SBpg2s9hQBXZjX6RNMC0n8OAKrIb/SJpgGk/hwFVZDf6RdIA034OA6rIbvSLpAGm/RwGVJHd6BdJA0z7OQyoIrvRL5IGmPZzGFBFdqNfJA0w7ecwoIrsRr9IGmDaz2FAFdmNfpE0wLSfw4Aqshv9ImmAaT+HAcPxQU/bqdKIiJhMPepJO1UaERGTqUc9aadKIyJiMvWoJ+1UaYQR1Y/WjX6RNMC0n8OAKrIb/SJpgGk/hwFVZDf6RdIA034OA6rIbvSLpAGm/RwGVJHd6BdJA0z7OQyoIrvRL5IGmPZzGFBFdqNfJA0w7ecwoIrsRr9IGmDaz2FAFdmNfpE0wLSfw4Aqshv9ImmAaT+HAVVkN/pF0gDTfg4Dqshu9IukAab9HAYMxwc9badKIyJiMvWoJ+1UaURETKYe9aSdKo2IiMnUo560U6URRlQ/Wjf6RdIA034OA6rIbvSLpAGm/RwGVJHd6BdJA0z7OQyoIrvRL5IGmPZzGFBFdqNfJA0w7ecwoIrsRr9IGmDaz2FAFdmNfpE0wLSfw4Aqshv9ImmAaT+HAVVkN/pF0gDTfg4Dqshu9IukAab9HAZUkd3oF0kDTPs5DKgiu9EvkgaY9nMYMBwf9LSdKo2IiMnUo560U6URETGZetSTdqo0IiImU4960k6VZVmWZVmWZVmWZVmWZVmWRfDx8R832aCPkeYntgAAAABJRU5ErkJggg==",
+                "children": [
+                    {
+                        "title": "标准表格",
+                        "url": "/demo/table"
+                    }
+                ]
+            },
+            {
+                "icon": "iconfont icon-form",
+                "title": "表单控件",
+                "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAL1SURBVHhe7Z1BahVRFAWzDZekbsM1uDMn0TUoONYIUdAVaOgfiHlyBpdHXejWY6dpTkHNPve8lIPgn+QqhBBCCCGEEEIIIYQQQuX60+Xl9efl29uby0PsHY0eW71QNh/XN8tXGozkcqtsPngodiqbDxqJvcrmg0Zir7L5oJHYq2w+aCT2KpsPGom9yuaDRmKvsvmgkdirbD5oJPYqmw8aib3K5oNGYq+y+aCR2KtsPmhkTz/8uH+4u394csYbxlvojVVl80Eje3p3UYED8OvxLfTGqrL5oJHqs9cf/0m6WT0a9MaqsvmgkSpF3SLdrB4NemNV2XzQSJWibpFuVo8GvbGqbD5opEpRt0g3q0eD3lhVNh80sqf5JQwje/r++/2fH/ypGW8Yb6E3VpXNB43EXmXzQSOxV9l80EjsVTYfNBJ7lc0HjcReZfNBI7FX2XzQyJ7m21AY2dP8RwxGqvT1whbpZvVo0BuryuaDRqoUdYt0s3o06I1VZfNBI1WKukW6WT0a9MaqsvmgkSpF3SLdrB4NemNV2XzQyJ7mlzCM7Gm+DYWR2KtsPmgk9iqbDxqJvcrmg0Zir7L5oJHYq2w+aCT2KpsPGom9yuaDRmKvsvmgkeqrNz//Srp1BpXNB41UKe4a6dYZVDYfNFKluGukW2dQ2XzQSJXirpFunUFl80Ej1Tnssizo/Dm6NaSvrI8kvbmqbD5opDqHpfjD+XN0a0g/9JGkN1eVzQeNVOewFH84f45uDemHPpL05qqy+aCR6hyW4g/nz9GtIf3QR5LeXFU2HzRSncNS/OH8Obp1BpXNB41U57AUfzh/jm6dQWXzQSPVOexa6dYZVDYfNFKluGukW2dQ2XzQSJXirpFunUFl80EjVYq7Rrp1BpXNB43EXmXzQSOxV9l80EjsVTYfNBJ7lc0HjcReZfNBI7FX2XzQSOxVNh80EnuVzUf+gMMW/8MfcBh/liP/CGtcbt99uTxXthBCCCGEEEIIIYQQQgiPXF39BtbkcUufAOYuAAAAAElFTkSuQmCC",
+                "children": [
+                    {
+                        "title": "多项/单选",
+                        "url": "/demo/checkbox"
+                    },
+                    {
+                        "title": "选项列表",
+                        "url": "/demo/checkbox-list"
+                    },
+                    {
+                        "title": "下拉选择",
+                        "url": "/demo/select"
+                    },
+                    {
+                        "title": "日期选择",
+                        "url": "/demo/datepicker"
+                    },
+                    {
+                        "title": "搜索选择",
+                        "url": "/demo/search"
+                    }
+                ]
+            },
+            {
+                "icon": "iconfont icon-save",
+                "title": "文件上传",
+                "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALPSURBVHhe7ZbPSlVRHEZPgwyiaUlohEFqNuw5eqZeoDCoaWSjoGGD/pgVYZBKEZGP0UiCgmzv9rl+iOgn98fvXm1w14I1/baufe85twMAAAAAAAAAAAAAADhMedQtlZVuuTzutps/60pXx2nbvqOj4CD1WTfVgj9ogf66cOOUSzjEIP5Kt+pinZRcwgFajIcu0knLJTRahJvt0bPrAp2GE38JLcCyC3OaTvQl9L92XJTTdmIvof3jOy7I/3AiL+FIiKfnan15qdb1uVo35mvdWpxsW4OyPve7vJn5Ul5M31a28bEf/smZWl9N17pp/gjcc3Ohlrez3+rzy+eVb3T247+74g/FI5YPV3/U9xcvKOFoDC6g/+Sbg/B4y9rsVyUcjcEz3xyAQ+wfR+N4JwxeuO4AHO7azGdlzDP4tePGcajl47VfypiHn5p5y8Z8UcY8bhjjKmMeN4pxlTGPG8W4ypjHjWJcZczjRjGuMuZxoxhXGfO4UYyrjHncKMZVxjxuFOMqYx43inGVMY8bxbjKmMeNYlxlzONGMa4y5nGjGFcZ87hRjKuMedwoxlXGPG4U4ypjHjeKcZUxjxvFuMqYx41iXGXM40YxrjLmcaMYVxnzuFGMq4x53CjGVcY8bhTjKmMeN4pxlTGPG8W4ypjHjWJcZczjRjGuMuZxoxhXGfO4UYyrjHncKMZVxjxuFOMqYx43inGVMY8bxbjKmMeNYlxlzONGMa4y5nGjGFcZ87hRjKuMedwoxlXGPGVrcccN43D7dsqYp2wtbLtxHG7ZXPiujHnayLIbx+G2b8BdZcxTNpaW2tCuOwCPtz05/pRP128o42iUzcX77hA83nYB95RvdOr20lR7FK26g/CoLf7rvpnyjYf6+dbZ/pvQf7XcoajHTvvk962UbfzsvRMW7vVveH6iDl60O2pxt2+jTAAAAAAAAAAAAAAAAKLr/gEeT5fdCqYo/QAAAABJRU5ErkJggg==",
+                "children": [
+                    {
+                        "title": "进度条",
+                        "url": "/demo/progress"
+                    },
+                    {
+                        "title": "图片上传",
+                        "url": "/demo/upload"
+                    },
+                    {
+                        "title": "其它上传",
+                        "url": "/demo/upload-more"
+                    }
+                ]
+            },
+            {
+                "icon": "iconfont icon-all",
+                "title": "显示面板",
+                "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFaSURBVHhe7dDhScRQFEThVGhBtmA9Ylt2oAh7UYaThzKb3ahn4Pt1Q3iczTnn3OceHp/ftO+SaX8fHz29vAoYsGTAkgFLBiwZsGTAkgFLBiwZsGTAkgFLBiydMuBZRm9LBlyM3pYMuBi9LRlwMXpbMuBi9LZkwMXobcmAi9HbkgEXo7elUwek2y3M6JYMCGZ0SwYEM7olA4IZ3ZIBwYxuyYBgRrd01YDt8j9f/31LM7olA4IZ3ZIBwYxuyYBgRrdkQDCjWzIgmNEtGRDM6JYMCGZ0S4cEpNtPzOh2CzO6JQOCGd2SAcGMbsmAYEa3ZEAwo1syIJjRLZ064L1Hb0sGXIzelk4Z8DcxYOlPBZzR7SgGLBmwZMCSAUsGLBmwZMCSAUsGLB0S8N6jtx3FgKWrBvyPDFgyYMmAJQOWDFgyYMmAJQOWDFgyYMmAJQOWvh1Q+y6ZnHPObdv2Di4d81CIJOSKAAAAAElFTkSuQmCC",
+                "children": [
+                    {
+                        "title": "面板切换",
+                        "url": "/demo/tab"
+                    },
+                    {
+                        "title": "折叠面板",
+                        "url": "/demo/collapse"
+                    },
+                    {
+                        "title": "侧边菜单",
+                        "url": "/demo/side-menu"
+                    }
+                ]
+            },
+            {
+                "icon": "iconfont icon-comments",
+                "title": "消息提示",
+                "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAVgSURBVHhe7Z1LiBxVFIZboyJq8I2vRSROV3eaGBdBURAUF0FUEIXZqNP3zgyMENGVKC5kcOVGjAZEAkqykkynb81MiEh8IFEhuHAiGh8YEReiRCPEICM6xvjf4oDp7lPdVVPV6Qv+P3zUJHXPqZ7zV91bVXOrq0JRFEVRFEVRFEVRFEVRFEVR1Oh1qnJWo2WurrYn15MU5prXbd4xc65UrHzVFqaujWI7W4vtUuTMCpanyACc/Qe1OlKLzYtVN3mTlLKY7nh/9hwkfg4bWO7ZIMmBORk5u3N9a+ZiKW1++WAk2a9vgKySr3yXJiXOodb4Grj6ppKQFMR3Yzfue+hSqXQ21WP7jJaMlEMUmz1S6sGK9s5cgXHjNy0RKQkM+PV44jYpeX/VnHlCTUJKBV3XLil5f8G9d7UEpFzQbf3qx2ope7pwvfGTloAMAVzfSdlTlJxd2b97AslQwGXFzVJ5Xf7aQwskwyGKJ2+X0uuiIWcWGhIYNCQwaEhg0JDAoCGBQUMCg4YEBg0JDBoSGDQkMGhIYNCQwKAhgUFDAoOGBAYNCQwaEhhBGOJn7kXOtqPYvI1/F58z7OwhLFs1Zz7AsuB8AHMSy49AC5/vk8515TNSQ6LY/omiPe4fZ5DNVeru4WtQhHe09oOAqcfqsX1QUiWK2qaObXyhtR+E31G6J69V2/YerDva3bYsRmuIM4/JZjrk57li/Q/d7QdRdc0HJEWHagtTNazPe+T9kTYJuh43t/iZhkpMYUZmCMw40e8BFvzCT2pxfViSUFXI95oSkwo+3xsSqgptfDemxhZhlIZ8JptQVY8n79Pi0jG7JVRVXoP9w0gSqgqf/3Utriij7LKOnj52dAsFfFSJSceZDyVUFdps64npA8ajHRKqCm3e6o4pg5GOIf4okM10CkZhDz2oxaSBPXbFjxWSoUOb9j9yIfL9qMWl4U8Q1s2bSyRFh/zYkpyQKHFFGakh6GZ+7v4A/pE5/LLb9fb9Qdxhf1YlqRLBpLVYt6+7bTbMexsXp6+SVInG4uYNWLfU27YcRmyIB+f5zs5hj3way+exp3+tt8vMsh/Ao3nzFH7eBpMKTRT3RwpyvOzz+W4M/K61K4sADCGnQ0MCg4YEBg0JDBoSGDQkMGhIYNCQwKAhgUFDAoOGBAYNCQwaEhg0JDBoSGDQkMCgIYFBQwKDhgTGQEMarfHztEAyHOrO3CqlT5efHaIFkyEwb66Xsqer5uzHajApm2XfI0nZ0xU586wSTMrGmQUpeX/5yWFRbP5Sk5DSSJu9rwrjyCtaElIOUWwP9pvr3CN/+ouj5HMtGSmKOb6hbatS6uxqLE6PYYD/Vk9KVoc5jjOrO6XE+VWPJy5HolVOXiYdOHuoGk9skNIWU+TsXej3FpGYL3bJh38I9QAG8GZldvZsKWd52rx35gL/+p6qM/diQ+P9KekC05lfsFTyhwt23vurcfOW3O8JGaZgyKf4cHqRc+CviyQlVUT+sTOtwHmAGScac9OXSUqqiFDQwk8e8egoUbiO+V4rcmac/W7dTnO+pKOKqPDfVZJXAjW3SDqqqPxZhlrojKCreklSUWUIZ1i7tUJn5ECm29JUNtXd1EYUdVXfyoNx55uxuckrJRVVVH7P9ncytWIPxNkvB7+Ticqu1vga9P271GIPAtcs/v2JkokqquSsytl5tdj98G9Uju32ob7q+v8m/6Vfq7nmwNF0pNCtaKpXyZjh7DGt4Knggg8xW3kmNQQlfy/J8G1rOBpWfJeG5d1DuQ1N/Sfs7a/2GOC/BMYP1LF9IblVvzC1VppTZ0LJTJU9zU3+u6Uara0XyX9TuVWp/AvW8WHqvtPvSAAAAABJRU5ErkJggg==",
+                "children": [
+                    {
+                        "title": "通知消息",
+                        "url": "/demo/toast"
+                    },
+                    {
+                        "title": "确认对话框",
+                        "url": "/demo/confirm"
+                    },
+                    {
+                        "title": "弹窗",
+                        "url": "/demo/modal"
+                    },
+                    {
+                        "title": "提示消息",
+                        "url": "/demo/tooltips"
+                    }
+                ]
+            },
+            {
+                "icon": "iconfont icon-viewgallery",
+                "title": "第三方库",
+                "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFHSURBVHhe7dRBasJQFEbhrE9K15BOC3YP6g7aaSciXUR06pKcR255JYPc0KcnQsDzwzczN+1psXHOOefcUrZ/X/WaVjJNLz7Un7+VMCBkQMiAkAEhA0IGhAwIVQfUtJLp/8WHs7/CM7op3N8MODAgZEDIgJABoUUFvHSf/XHb9of1y+8PNoe4FTcv3Vf6TireUbLULx7KjlHHTTsKMJeImL2TitslS/3ioewY9fPxOvrF5xK3s3dScbtkqV88lB2jHvkfeNq9pe+k4nbJUr94KDtGxfeU34FPxoCQASEDQgaEDAgZEDIgZEDIgJABIQNCBoQMCBkQMiBkQMiAkAEhA0IGhAwIGRAyIGRAyICQASEDQgaEDAgZEDIgZEDIgJABIQNCBoQMCBkQMiBkQMiAkAEhA0IGhAwI3R1Qg5LFOeeccwtZ01wBqbuCEgrf4BwAAAAASUVORK5CYII=",
+                "children": [
+                    {
+                        "title": "百度图表",
+                        "url": "/demo/echart"
+                    },
+                    {
+                        "title": "高德地图",
+                        "url": "/demo/map"
+                    },
+                    {
+                        "title": "代码展示",
+                        "url": "/demo/code"
+                    },
+                    {
+                        "title": "文本编辑",
+                        "url": "/demo/ckedit"
+                    }
+                ]
+            },
+            {
+                "icon": "iconfont icon-share",
+                "title": "实验室",
+                "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAThSURBVFhH7VhdTBxVGKXRaOJD9clXje+++aCJCQ/sHzuzrJSZZelasCxbBFNooYC2CNQ20VJbQIGyQKBWFNsGEUotlAILtNsY02r4sS6UmmqtQOsuUKgsLHzeb+YCDjvAUpiNmp7khIR7v3POfHPn7p0J+V+C5/kn9PptL4Qx214KhFpj9IuhoaFP0nJloWJMeo2Bd2tYHtZJj9YQZaQyimGLmuVGdRHRsO/dXMjK/mBVZh44CHszsyEl7T0gNfNa1jSG3adamw+WZZ9RM9xc9A4bfH/tR7j+Q8+a7OxyQmtbB8TE7sIuzqtU/LNUThmoWb5u2a0LmOTi6qmMctDpdE+rGC5Vw3INaPqWbTcUFtv9eKyoFHbEJ9NwXAPWYC2VUR4qln8dzT88WgRy+Gt6GnIPHREC4lxaFjw8DrhRPA64UfzrA6pZkwHNS+xVNJIUGPBoQbEQUKvnGFoWPKhYLgHNa2rP0khSTE974UR5lRCQ7IM7aVnwoGH4MjTv7HbSSFLMzMxAY9MFISD5/S6lZcED6YpLazCBZ2yMRpJibm4OBgYHAeeoGf4GLQsOVAbTq9iZpJQMGkce9+7dh13JaeKDEh71Ci1XHuRH/zSaftt8iUaRx+TkJHx15mvxNjPcKVquLLQs9xoeuXiLFaa9XhpFHj6fD367cwe4mHgM6MPOUxllgKcRYtSPHWltc9AYq2N8fBzq6htpF/k+RU805Gm0o9H+nMPUfm3Mzs7C8PAwOYHnLDzRdiq3uSBXH4cGZnIydrs91D4wTExMgMs1ANz2+IVOxlHZzUFYOPeyhjU9DDeaobfvJ2obOHDLGR4ZAUdnt7DtoBZqUvmNAd8hcM/DK09I2gOVJ2tk+eXpOpiaekgjSYF7ZdVnX0BRiR3iEt4Ruoiam/F+soUInRUF1+aZinq42TXkx+IjlbLzURs9RKtHAHlB2otC5mgblOeeXJGl2ZXkbzV0neiGK3Yn9NT3gOdXD9ztvQvOiqvQUeKAspwqYV5BZolAE28VQqIHtVsf8IikNfCzjDEG6vIbBONAOeVeutWDjpuSsQvHm6Hp4/NQnfc56CNiyJrkZ9d9HFNHRj6vZfnf8QqLD1RIDALhg5EHNB6A65JLMuYo6RQCIvPTC4Uuohd6UvvVgW/+GoZrw8LMpDyJuMByJ4y4RkmXpqCnodd/nPBa7XX4o38Ybl35RXa8pfDiYsjUhP3ieiSeAX11IL8Uh7Eg1pIMjtJOP3E0X8DowKjfeCDEtboQ8BuyfCzmRHE9Em8aQx548iUT5yMi34TG4+dlxZ3lV+H+rT/BO+mFvqZ+2TmB8GJR62LImkO1YIi0YMj5FU/foUbjc2SCBzfSyrxTsqKPSuz68v91l12Gc8fEgMjCrFJxEzfwbsxCYy2BrIFYbHN64vt+Yhvh7e9uC8thqHvIb+yfXUTujs8Sb7WBs9JYSyAB03EwP+MTP6GNcKB9EHwzPrjR8rPfWNun7ZKAB1PEt0CNns+isZagYqPCcHC7+W1oK+7wE1OCzQUti+HqPqoHs8kmBNQyJhWNJQF+nGzHCYY3LJBo3QfJtgxFmJSQAYnxaWDbuUegNS4VWOIpdI9sN5hFjLQMOp1lK5lQTR53rzA5iBQ8iTdmoHFWBtkwn8IP33IfxJUgeqEntf8vISTkb5Xlc0oWq0wKAAAAAElFTkSuQmCC",
+                "children": [
+                    {
+                        "title": "图标",
+                        "url": "/demo/icon"
+                    },
+                    {
+                        "title": "徽章标签",
+                        "url": "/demo/badge"
+                    },
+                    {
+                        "title": "图片",
+                        "url": "/demo/image"
+                    },
+                    {
+                        "title": "加载动画",
+                        "url": "/demo/loading"
+                    },
+                    {
+                        "title": "Flex布局",
+                        "url": "/demo/flex"
+                    },
+                    {
+                        "title": "步骤列表",
+                        "url": "/demo/step"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "平台管理",
+        "menus": [
+            {
+                "icon": "iconfont icon-set",
+                "title": "系统设置",
+                "image": "data:image/png;base64,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",
+                "children": [
+                    {
+                        "title": "菜单管理",
+                        "url": "/system/menu"
+                    },
+                    {
+                        "title": "权限管理",
+                        "url": "/system/permission"
+                    },
+                    {
+                        "title": "角色管理",
+                        "url": "/system/role"
+                    }
+                ]
+            },
+            {
+                "icon": "iconfont icon-add-account",
+                "title": "商户入驻",
+                "image": "data:image/png;base64,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",
+                "children": [
+                    {
+                        "title": "公司管理",
+                        "url": "/admin/company"
+                    },
+                    {
+                        "title": "平台管理员",
+                        "url": "/admin/platform"
+                    }
+                ]
+            },
+            {
+                "icon": "iconfont icon-viewlist",
+                "title": "商城管理",
+                "image": "data:image/png;base64,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",
+                "children": [
+                    {
+                        "title": "商城商品",
+                        "url": "/store/goods"
+                    },
+                    {
+                        "title": "商品分类",
+                        "url": "/store/types"
+                    },
+                    {
+                        "title": "订单管理",
+                        "url": "/store/order"
+                    },
+                    {
+                        "title": "会员管理",
+                        "url": "/store/user"
+                    },
+                    {
+                        "title": "幻灯片",
+                        "url": "/store/banner"
+                    }
+                ]
+            }
+        ]
+    }
+]

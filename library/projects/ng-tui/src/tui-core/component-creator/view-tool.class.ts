@@ -1,22 +1,24 @@
 import { Rect } from './component.interface';
 import { ValueChangeListenerService } from '../base-services/value-listener.service';
-// import IntersectionObserver from 'intersection-observer-polyfill';
 
 export class ViewTool {
 
     private obs: any;
 
-    constructor(public toggleDom?: HTMLElement, public targetDom?: HTMLElement) { }
+    constructor(
+        public toggleDom?: HTMLElement,
+        public targetDom?: HTMLElement
+    ) { }
 
     clean() {
         // tslint:disable-next-line:no-unused-expression
-        this.obs && ValueChangeListenerService.getInstance().removeObs(this.obs);
+        this.obs && new ValueChangeListenerService().getInstance().removeObs(this.obs);
     }
 
     autoPosition(offsetX: number = 0, offsetY: number = 0, size = false) {
         // tslint:disable-next-line:no-unused-expression
-        this.obs && ValueChangeListenerService.getInstance().removeObs(this.obs);
-        this.obs = ValueChangeListenerService.getInstance().observeClientRect(this.toggleDom, () => {
+        this.obs && new ValueChangeListenerService().getInstance().removeObs(this.obs);
+        this.obs = new ValueChangeListenerService().getInstance().observeClientRect(this.toggleDom, () => {
             const tRect = this.getRect(this.toggleDom);
             const mRect = this.getRect(this.targetDom);
             let top = tRect.y + offsetY + tRect.h;
@@ -40,8 +42,8 @@ export class ViewTool {
 
     autoPositionBottom(offsetX: number = 0, offsetY: number = 0, size = false) {
         // tslint:disable-next-line:no-unused-expression
-        this.obs && ValueChangeListenerService.getInstance().removeObs(this.obs);
-        this.obs = ValueChangeListenerService.getInstance().observeClientRect(this.toggleDom, () => {
+        this.obs && new ValueChangeListenerService().getInstance().removeObs(this.obs);
+        this.obs = new ValueChangeListenerService().getInstance().observeClientRect(this.toggleDom, () => {
             const tRect = this.getRect(this.toggleDom);
             this.targetDom.style.top = tRect.y + offsetY + tRect.h + 'px';
             this.targetDom.style.left = tRect.x + offsetX + 'px';
@@ -53,8 +55,8 @@ export class ViewTool {
 
     autoPositionTop(offsetX: number = 0, offsetY: number = 0, size = false) {
         // tslint:disable-next-line:no-unused-expression
-        this.obs && ValueChangeListenerService.getInstance().removeObs(this.obs);
-        this.obs = ValueChangeListenerService.getInstance().observeClientRect(this.toggleDom, () => {
+        this.obs && new ValueChangeListenerService().getInstance().removeObs(this.obs);
+        this.obs = new ValueChangeListenerService().getInstance().observeClientRect(this.toggleDom, () => {
             const tRect = this.getRect(this.toggleDom);
             const mRect = this.getRect(this.targetDom);
             this.targetDom.style.top = tRect.y + offsetY - mRect.h + 'px';

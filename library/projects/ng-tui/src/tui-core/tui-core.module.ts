@@ -5,6 +5,7 @@ import { ToggleDirective } from './directives/toggle.directives';
 import { ComponentHandleService } from './component-creator/handle.service';
 import { ComponentService } from './component-creator/component.service';
 import { ViewDirective } from './component-creator/view.directive';
+import { ValueChangeListenerService } from './base-services/value-listener.service';
 
 @NgModule({
     imports: [
@@ -20,6 +21,7 @@ import { ViewDirective } from './component-creator/view.directive';
         ViewDirective,
     ],
     providers: [
+        ValueChangeListenerService,
         ConfigService,
         ComponentService,
         ComponentHandleService,

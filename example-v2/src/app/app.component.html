@@ -1,0 +1,70 @@
+<!--附带菜单与顶部-->
+<div class="d-flex" style="height:100vh;overflow: hidden;">
+    <!-- 左侧菜单 -->
+    <div [class.menu-container-sm]="global.params.menuMode==='small'"
+        class="menu-container flex-shrink-0 h-100 d-flex flex-column">
+        <div class="d-flex align-items-center justify-content-center bg-white flex-shrink-0"
+            style="height: 60px;overflow: hidden;border-bottom:1px solid rgba(200, 200, 200,.3);">
+            <img [src]="menuConfig.SMALL_LOGO" width="30">
+            <h4 *ngIf="global.params.menuMode==='full'" class="m-0">Admin</h4>
+        </div>
+        <app-menu class="flex-grow-1 shadow-sm" [menuConfig]="menuConfig" [autoClose]="true"
+            [menuMode]="global.params.menuMode" [items]="menu.menuModels" [useImage]="true"></app-menu>
+    </div>
+    <!-- 右侧内容 -->
+    <div class="flex-grow-1 h-100 d-flex flex-column">
+        <!-- 顶部工具栏 -->
+        <div (click)="changeMenuMode()"
+            class="headbar bg-{{global.params.color}} no-select text-light d-flex align-items-center justify-content-between flex-shrink-0 shadow-sm"
+            style="height:60px;z-index:1;">
+            <div class="d-flex align-items-center flex-grow-1 h-100">
+                <div class="d-flex align-items-center bg-light-hover pointer h-100 pl-3 pr-3">
+                    <i class="iconfont icon-category"></i>
+                </div>
+            </div>
+            <div class="flex-shrink-0 d-flex align-items-center h-100">
+                <div class="h-100 d-flex">
+                    <div class="d-flex align-items-center bg-light-hover pointer h-100 pl-3 pr-3">
+                        <i class="iconfont icon-remind"></i>
+                    </div>
+                    <!-- 消息显示面板 -->
+                    <div class="bg-light-hover d-flex align-items-center pl-3 pr-3">
+                        <i class="iconfont icon-comments"></i>
+                    </div>
+                </div>
+                <div tsToggle [target]="useMenu" [bind]="useMenu"
+                    class="bg-light-hover h-100 d-flex align-items-center pointer">
+                    <img src="assets/images/avatar/1.png" dataSrc="assets/images/404.jpg"
+                        class="rounded-circle border border-light ml-3 mr-3" height="35" width="35" alt="avatar">
+                </div>
+
+                <div #useMenu="tsView" tsView="fadeIn" [offsetX]="0" [offsetY]="0" position="auto"
+                    class="dropdown-menu">
+                    <div class="dropdown-item-title">{{auth.user?.role.roleName}}</div>
+                    <button class="dropdown-item pointer">
+                        <span class="iconfont icon-mobile mr-2"></span>
+                        <span>{{auth.user.account}}</span>
+                    </button>
+                    <button routerLink="/system/detail" class="dropdown-item pointer">
+                        <span tsIcon="account" class="mr-2"></span>
+                        <span i18n>账号信息</span>
+                    </button>
+                    <button class="dropdown-item pointer">
+                        <span tsIcon="set" class="mr-2"></span>
+                        <span i18n>系统设置</span>
+                    </button>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item pointer" close>
+                        <span tsIcon="out" class="mr-2"></span>
+                        <span i18n>退出</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <!-- 主体内容 -->
+        <div class="flex-grow-1 bg-light w-100 h-100" style="overflow:auto;">
+
+        </div>
+    </div>
+</div>

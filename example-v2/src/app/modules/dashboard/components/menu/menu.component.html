@@ -1,0 +1,59 @@
+<div *ngIf="menuMode==='full'; else elseBlock" class="menu-full h-100" [ngStyle]="menuFullStyle">
+    <!-- full mode -->
+    <div #menu class="h-100 pt-2 no-select" [ngStyle]="menuFillStyle">
+        <ng-container *ngFor="let model of items">
+            <div class="p-3" [ngStyle]="modelMenuStyle">{{model.modelTitle}}</div>
+            <div class="menu-block no-select {{group.active?activeMainClass:''}}" *ngFor="let group of model.menuGroups">
+                <div class="menu-main pointer pl-2 pr-3 {{group.active?activeParentClass:''}}" (click)="toggleGroup(group)">
+                    <div class="d-table w-100 pb-1">
+                        <div class="d-table-cell text-center ts-icon">
+                            <img class="mb-1" *ngIf="useImage&&group.image" width="20" height="20" [src]="group.image">
+                            <i *ngIf="!(useImage&&group.image)" [class]="group.icon" aria-hidden="true"></i>
+                        </div>
+                        <div class="d-table-cell pl-3">
+                            <span>{{group.groupTitle | titlecase}}</span>
+                        </div>
+                        <div class="d-table-cell text-right pr-2">
+                            <div class="d-inline-block font-{{group.active?'up':'down'}}">
+                                <i class="iconfont icon-caret-down ts-icon-sm" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-child-block" [class.child-open]="group.active" [class.child-close]="!group.active">
+                    <div class="menu-child-item {{menuChildClass}} {{item.active&&menuChildActiveClass}}" *ngFor="let item of group.menuItems;index as i">
+                        <div [routerLink]="item.url" class="d-table w-100 pl-2 pointer" (click)="toggleMenu(group,i)">
+                            <div class="d-table-cell text-center ts-icon">
+                                <i class="iconfont icon-more"></i>
+                            </div>
+                            <div class="d-table-cell pl-3">
+                                <span>{{item.title}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-line" [ngStyle]="lineStyle"></div>
+        </ng-container>
+    </div>
+</div>
+<!-- small mode -->
+<ng-template #elseBlock>
+    <div #menu class="h-100 no-select menu-small" [ngStyle]="menuSmallStyle">
+        <ng-container *ngFor="let model of items;index as modelIndex">
+            <div tsMenuGroup *ngFor="let group of model.menuGroups;index as groupIndex" class="menu-rect text-center">
+                <div tsToggle class="d-flex-inline w-100">
+                    <img tsToggle *ngIf="useImage&&group.image" width="30" height="30" [src]="group.image">
+                    <i *ngIf="!(useImage&&group.image)" [class]="group.icon" aria-hidden="true"></i>
+                </div>
+                <div class="menu-popover" tsSideMenu="hover" (displayChange)="$event&&closeOtherMenu(modelIndex,groupIndex)">
+                    <div [ngStyle]="menuSmallStyle" class="shadow rounded text-left ml-2 text-truncate">
+                        <div *ngFor="let item of group.menuItems;index as i" [routerLink]="item.url" close class="menu-item pl-4 pr-4">
+                            {{item.title}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</ng-template>

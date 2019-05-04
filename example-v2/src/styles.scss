@@ -1,0 +1,90 @@
+/* You can add global styles to this file, and also import other style files */
+
+/** bootstrap **/
+@import "~bootstrap/scss/functions";
+
+@import "theme/value";
+
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/print";
+
+// TUI组件基础样式
+@import "theme/base";
+
+// TOOLTIP样式
+@import "theme/tooltip";
+
+/** iconfont **/
+
+// @import "//at.alicdn.com/t/font_984746_nin6ekrc85j.css";
+
+.iconfont {
+    font-size: inherit;
+}
+
+.iconfont-rotate {
+    animation: rotate 0.5s infinite linear;
+    display: inline-block;
+    text-align: center;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(359deg);
+    }
+}
+
+/** animate.css **/
+@import "~animate.css/source/_base.css";
+@import "~animate.css/source/sliding_entrances/slideInUp.css";
+@import "~animate.css/source/attention_seekers/pulse.css";
+
+@import "~animate.css/source/sliding_entrances/slideInLeft.css";
+@import "~animate.css/source/zooming_entrances/zoomIn.css";
+@import "~animate.css/source/zooming_entrances/zoomInLeft.css";
+@import "~animate.css/source/fading_entrances/fadeIn.css";
+@import "~animate.css/source/bouncing_entrances/bounceIn.css";
+@import "~animate.css/source/specials/hinge.css";
+@import "~animate.css/source/rotating_exits/rotateOut.css";
+
+// 默认所有动画都是0.4s
+.animated {
+    animation-duration: 0.4s;
+}
+
+/** three-dots **/
+$dotColor: $info;
+
+@import "assets/three-dots/_variables";
+@import "assets/three-dots/mixins";
+@import "assets/three-dots/dot-windmill";
+
+.dot-animate {
+    @extend .dot-windmill;
+}

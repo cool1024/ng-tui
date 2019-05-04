@@ -23,6 +23,7 @@ export class ViewDirective extends BaseTheme implements AfterViewInit, OnDestroy
     appenClass: string;
     viewTool: ViewTool;
     isActive: boolean;
+    autoHandle: () => void;
 
     constructor(public elementRef: ElementRef) {
         super();
@@ -67,6 +68,8 @@ export class ViewDirective extends BaseTheme implements AfterViewInit, OnDestroy
             this.dom.classList.remove('d-none');
             this.dom.style.opacity = '0';
             const size = this.isApply(this.autoSize);
+            console.log(this.position);
+
             if (this.position === 'bottom') {
                 this.viewTool.autoPositionBottom(this.offsetX, this.offsetY, size);
             }
@@ -93,8 +96,6 @@ export class ViewDirective extends BaseTheme implements AfterViewInit, OnDestroy
         }
         this.displayChange.emit(false);
     }
-
-    autoHandle: () => void;
 
     ngOnDestroy() {
         this.viewTool.clean();

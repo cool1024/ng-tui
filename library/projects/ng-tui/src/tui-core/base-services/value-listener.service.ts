@@ -1,14 +1,13 @@
 export class ValueChangeListenerService {
 
-    private static instance: ValueChangeListenerService;
     private observes = new Array<any>();
     private interval: any;
 
-    public static getInstance() {
-        if (ValueChangeListenerService.instance === undefined) {
-            ValueChangeListenerService.instance = new ValueChangeListenerService();
+    public getInstance() {
+        if (window['ValueChangeListenerService'] === undefined) {
+            window['ValueChangeListenerService'] = new ValueChangeListenerService();
         }
-        return ValueChangeListenerService.instance;
+        return window['ValueChangeListenerService'];
     }
 
     observe(dom: Object, attrs: string[], handler: Function) {

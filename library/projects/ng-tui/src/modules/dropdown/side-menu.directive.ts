@@ -28,7 +28,7 @@ export class SideMenuDirective implements Toggle, OnDestroy {
 
     constructor(private elementRef: ElementRef) {
         this.tsSideMenu = 'click';
-        this.animation = 'fadeIn'
+        this.animation = 'fadeIn';
     }
 
     @HostListener('document:click', ['$event.target']) onDocumentClick(dom: HTMLElement): void {
