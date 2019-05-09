@@ -13,6 +13,7 @@ import { FileItem } from './input-images.class';
                 [(src)]="src[i]"
                 [config]="config"
                 [title]="title"
+                (itemClick)="sendClick($event)"
                 (fileDelete)="src.splice(i,1)"
                 (srcChange)="sendChange()">
             </ts-file-card>
@@ -31,6 +32,7 @@ export class FileCardsComponent implements OnChanges {
     @Input() src: FileItem[];
     @Input() title: string;
 
+    @Output() itemClick = new EventEmitter<FileItem>(false);
     @Output() fileChange = new EventEmitter<File>(false);
     @Output() srcChange = new EventEmitter<FileItem[]>(false);
 
@@ -40,15 +42,19 @@ export class FileCardsComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        console.log(changes.src.currentValue);
+        // console.log(changes.src.currentValue);
     }
 
     addFileCard(file: File) {
         this.src.push({ file });
-        console.log(file);
+        // console.log(file);
     }
 
     sendChange() {
         this.srcChange.emit(this.src);
+    }
+
+    sendClick($event: FileItem) {
+        this.itemClick.emit($event);
     }
 }

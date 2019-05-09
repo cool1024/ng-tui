@@ -3,7 +3,6 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Base } from './base.class';
 import { HtmlDomService } from '../../tui-core/base-services/htmldom.service';
 import { ConfigService } from '../../tui-core/base-services/config.service';
-import { s } from '@angular/core/src/render3';
 
 @Component({
     selector: 'ts-datepicker-y',

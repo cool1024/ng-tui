@@ -6,6 +6,7 @@ import {
     TUIModule,
     ToastModule,
     ButtonModule,
+    UploadModule,
 } from '../../projects/ng-tui/src/public_api';
 
 @NgModule({
@@ -14,6 +15,7 @@ import {
     ],
     imports: [
         BrowserModule,
+        UploadModule,
         TUIModule.forRoot(),
         ToastModule.forRoot(),
         ButtonModule

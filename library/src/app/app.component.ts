@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToastService } from 'projects/ng-tui/src/public_api';
+import { ToastService, FileItem } from 'projects/ng-tui/src/public_api';
 
 @Component({
     selector: 'app-root',
@@ -20,6 +20,10 @@ export class AppComponent {
             // position: 'center',
             content: 'Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.',
         });
+    }
+
+    showFileItem(fileItem: FileItem) {
+        console.log(fileItem);
     }
 
 }

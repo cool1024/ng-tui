@@ -11,9 +11,10 @@ import { Subscription } from 'rxjs';
     <input #fileDom="tsFile" tsFile (fileChange)="uploadFile($event)" type="file">
         <div *ngIf="src;else openPad" class="upload-block-window bg-primary-hover pointer">
             <div style="background-size: 60% 80%;background-repeat: no-repeat;height:100px;background-position: center;"
-                [style.backgroundImage]="backgroundImage">
+                [style.backgroundImage]="backgroundImage"
+                (click)="sendClick()">
                 <div class="h-100 d-flex align-items-center justify-content-center">
-                    <i (click)="deleteFile()" class="iconfont icon-delete text-white"></i>
+                    <i (click)="deleteFile()" class="iconfont icon-delete text-white" style="text-shadow: 0px 0px 1px black;"></i>
                 </div>
             </div>
             <div style="height:20px" class="position-relative">
@@ -41,6 +42,7 @@ export class FileCardComponent implements OnChanges, OnDestroy {
     @Input() src: FileItem;
     @Input() title: string;
 
+    @Output() itemClick = new EventEmitter<FileItem>(false);
     @Output() fileChange = new EventEmitter<File>(false);
     @Output() srcChange = new EventEmitter<FileItem>(false);
     @Output() fileDelete = new EventEmitter<void>(false);
@@ -104,6 +106,10 @@ export class FileCardComponent implements OnChanges, OnDestroy {
         }
         this.src = null;
         this.fileDelete.emit();
+    }
+
+    sendClick() {
+        this.itemClick.emit(this.src);
     }
 
     uploadFile(file: File) {
