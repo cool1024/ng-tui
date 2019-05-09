@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { TUIModule, DropdownModule, IconfontModule, ToastModule } from 'ng-tui';
+import { TUIModule, DropdownModule, IconfontModule, ToastModule, ConfirmModule } from 'ng-tui';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,8 +13,8 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule,
         DashboardModule,
+        AppRoutingModule,
         TUIModule.forRoot({
             defaultColor: 'info',
             confirmCancelTitle: '取消',
@@ -23,6 +23,7 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
             monthTitles: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
             paginationItems: [{ text: '显示 5 条', value: 5 }, { text: '显示 10 条', value: 10 }, { text: '显示 20 条', value: 20 }]
         }),
+        ConfirmModule,
         ToastModule.forRoot({ position: 'bottom right', timeout: 3000, maxLength: 6 }),
         DropdownModule,
         IconfontModule,

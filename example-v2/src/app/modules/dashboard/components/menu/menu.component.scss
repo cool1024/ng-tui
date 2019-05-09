@@ -96,14 +96,3 @@
 .menu-rect:hover {
     position: relative;
 }
-
-.menu-popover {
-    position: fixed;
-    z-index: 9999;
-    width: 130px;
-}
-
-.menu-popover .menu-item:hover {
-    background-color: #50a4ff;
-    color: white;
-}

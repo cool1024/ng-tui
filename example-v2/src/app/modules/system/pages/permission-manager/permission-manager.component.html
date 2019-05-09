@@ -1,0 +1,94 @@
+<div class="toolbar"></div>
+<div class="p-3" tsCollapses>
+    <div class="card mb-3">
+        <h5 class="card-header">系统权限管理</h5>
+        <div class="card-body m-btn">
+            <button (click)="editPermissionGroup()" tsBtn color="info">新增权限组</button>
+            <button (click)="loadDatas()" class="btn btn-white">
+                <i class="fa fa-refresh fa-fw"></i>刷新数据
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3" *ngFor="let permissionGroupItem of permissionGroupItems;index as i" tsCollapses>
+            <div class="shadow-sm mb-2 rounded">
+                <div class="card-header pointer rounded d-flex justify-content-between" tsToggle>
+                    <span>{{permissionGroupItem.permissionGroup.permissionGroupName}}</span>
+                    <i tsIcon="down"></i>
+                </div>
+                <div tsCollapse [open]="true">
+                    <div class="card-body rounded">
+                        <div *ngFor="let permission of permissionGroupItem.permissions"
+                            class="badge badge-info p-2 pointer m-1">
+                            <span (click)="editPermission(permissionGroupItem.permissionGroup,permission)">
+                                {{permission.permissionName}}
+                            </span>
+                            <i (click)="deletePermission(permission)" tsIcon="delete"></i>
+                        </div>
+                    </div>
+                    <div class="text-right card-footer">
+                        <button (click)="editPermission(permissionGroupItem.permissionGroup)" tsBtn sm>添加子权限</button>
+                        <button (click)="deletePermissionGroup(permissionGroupItem.permissionGroup,i)" tsBtn sm
+                            class="ml-1 text-danger-hover">删除权限组</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="card card-body">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">分类名称</th>
+                    <th scope="col">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let permissionGroupItem of permissionGroupItems;index as i">
+                    <tr class="border-0">
+                        <td>{{i+1}}</td>
+                        <td>
+                            {{permissionGroupItem.permissionGroup.permissionGroupName}}
+                        </td>
+                        <td>
+                            <span tsTip="添加子权限" (click)="editPermission(permissionGroupItem.permissionGroup)"
+                                class="btn-icon btn-icon-primary">
+                                <i class="iconfont icon-add-circle"></i>
+                            </span>
+                            <span tsTip="删除权限组" (click)="deletePermissionGroup(permissionGroupItem.permissionGroup,i)"
+                                class="btn-icon btn-icon-danger">
+                                <i class="iconfont icon-delete"></i>
+                            </span>
+                            <span tsTip="编辑权限组" (click)="editPermissionGroup(permissionGroupItem.permissionGroup)"
+                                class="btn-icon btn-icon-info">
+                                <i class="iconfont icon-edit"></i>
+                            </span>
+                            <span tsTip="展开/收起" (click)="permissionGroupItem.open=!permissionGroupItem.open"
+                                class="btn-icon btn-icon-dark">
+                                <i class="iconfont icon-viewgallery"></i>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr class="border-0">
+                        <td class="pt-0 pb-0 border-0"></td>
+                        <td colspan="3" class="pt-0 pb-0 border-0 pl-2">
+                            <div tsCollapse [open]="permissionGroupItem.open" class="form-inline">
+                                <div *ngFor="let permission of permissionGroupItem.permissions"
+                                    class="btn-group ml-1 mb-3">
+                                    <button tsBtn
+                                        (click)="editPermission(permissionGroupItem.permissionGroup,permission)">{{permission.permissionName}}</button>
+                                    <button tsBtn (click)="deletePermission(permission)">
+                                        <i class="iconfont icon-delete"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div> -->
+</div>

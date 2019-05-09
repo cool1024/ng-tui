@@ -22,7 +22,7 @@ export class AuthService {
     ) { }
 
     get loginState(): boolean {
-        return <boolean>this.global.getValue('loginState', false);
+        return this.global.getValue('loginState', false) as boolean;
     }
 
     set loginState(value: boolean) {

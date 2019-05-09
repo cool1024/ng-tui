@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DateRange, ItemTree, ModalService } from '../../projects/ng-tui/src/public_api';
+import { DateRange, ItemTree, ModalService, ConfirmService } from '../../projects/ng-tui/src/public_api';
 import { ExampleModalComponent } from './demo/example-modal.component';
 
 @Component({
@@ -18,7 +18,7 @@ export class AppComponent {
     range: DateRange = {
         start: '2019/01/02',
         end: '2019/01/09',
-    }
+    };
 
     selectItems = ['Amsterdam', 'Antwerp', 'Athens', 'Barcelona',
         'Berlin', 'Birmingham', 'Bradford', 'Bremen', 'Brussels', 'Bucharest',
@@ -59,7 +59,8 @@ export class AppComponent {
     }];
 
     constructor(
-        private modal: ModalService
+        private modal: ModalService,
+        private confirm: ConfirmService,
     ) { }
 
     showModal() {
@@ -67,5 +68,9 @@ export class AppComponent {
         modal.present().subscribe(res => {
             console.log(res);
         });
+    }
+
+    showConfirm() {
+        this.confirm.success('确认操作', '这个提示你还是看一下，也许游泳呢？');
     }
 }

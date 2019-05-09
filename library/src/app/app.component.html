@@ -1,5 +1,5 @@
-<div class="container pt-3">
-    <!-- <ts-datepicker color="success" [(ngModel)]="date">
+<!-- <div class="container pt-3">
+    <ts-datepicker color="success" [(ngModel)]="date">
         <button tsBtn>{{date|date:'yyyy-MM-dd'}}</button>
     </ts-datepicker>
     <ts-yearpicker color="success" [(ngModel)]="year">
@@ -9,13 +9,17 @@
         <input class="form-control bg-white pointer" readonly [value]="time" />
     </ts-timepicker>
     <ts-datepickers color="success" [(ngModel)]="range">
-        <input class="form-control bg-white pointer" readonly  value="{{range.start|date:'yyyy-MM-dd'}}/{{range.end|date:'yyyy-MM-dd'}}"/>
+        <input class="form-control bg-white pointer" readonly
+            value="{{range.start|date:'yyyy-MM-dd'}}/{{range.end|date:'yyyy-MM-dd'}}" />
     </ts-datepickers>
     <ts-switch></ts-switch>
     <ts-checkbox></ts-checkbox>
-    <ts-radio></ts-radio> -->
-    <!-- <demo-flash></demo-flash> -->
-    <!-- <ts-select [items]="selectItems"></ts-select>
-    <ts-select-block [items]="departmentOptions" placeholder="请选择省市区" class="d-inline-block mb-2 mr-2" style="width: 200px"></ts-select-block> -->
+    <ts-radio></ts-radio>
+    <demo-flash></demo-flash>
+    <ts-select [items]="selectItems"></ts-select>
+    <ts-select-block [items]="departmentOptions" placeholder="请选择省市区" class="d-inline-block mb-2 mr-2"
+        style="width: 200px"></ts-select-block>
     <button tsBtn (click)="showModal()">模态框</button>
-</div>
+</div> -->
+
+<button tsBtn (click)="showConfirm()">确认</button>

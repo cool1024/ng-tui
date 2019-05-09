@@ -88,3 +88,32 @@ $dotColor: $info;
 .dot-animate {
     @extend .dot-windmill;
 }
+
+/** 右侧菜单 **/
+.menu-small {
+    overflow-y: auto;
+}
+
+.menu-rect {
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.menu-rect i {
+    font-size: 1.2rem;
+}
+
+.menu-rect:hover {
+    position: relative;
+}
+
+.menu-popover {
+    position: fixed;
+    z-index: 9999;
+    width: 130px;
+}
+
+.menu-popover .menu-item:hover {
+    background-color: #50a4ff;
+    color: white;
+}

@@ -39,7 +39,6 @@ export class LoginComponent {
                 });
                 this.auth.loadUserDeail();
                 this.menu.loadMenu().subscribe();
-                // this.menu.loadMenu();
                 this.router.navigateByUrl('/');
             },
             complete: btn.dismiss()

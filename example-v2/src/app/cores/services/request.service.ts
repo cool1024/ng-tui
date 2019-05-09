@@ -57,129 +57,62 @@ export class RequestService {
         ws.onclose = () => { reconnent(); };
     }
 
-    /**
-     * 发送一个get请求（获取文本文件内容)
-     *
-     * @param {string} url 请求地址
-     * @return {Observable<string>}
-     */
     text(url: string): Observable<string> {
         return this.http.request('get', this.serverUlr + url, { responseType: 'text' });
     }
 
-    /**
-     * 发送一个自定义请求（获取文本文件内容)
-     *
-     * @param {string} url 请求地址
-     * @return {Observable<string>}
-     */
     request(method: string, url: string, body: any): Observable<string> {
         return this.http.request(method, url, { responseType: 'text', body });
     }
 
-    /**
-     * 发送一个get请求(不带参数)
-     *
-     * @param {string} url 接口地址
-     * @param {boolean} check 是否校验接口调用结果，默认为true，开启校验时失败的接口调用会被跳过
-     * @return {Observable<ApiData>}
-     */
     url(url: string, check = true): Observable<ApiData> {
         const observable = this.http.get<ApiData>(this.serverUlr + url, { headers: this.getHeaders() });
         return check ? observable.pipe(skipWhile(res => res.result === false)) : observable;
     }
 
-    /**
-     * 发送一个get请求(可带参数)
-     *
-     * @param {string} url 接口地址
-     * @param {json|boolean} params 接口参数，如果这个参数是boolean类型的那么它会认为是check参数
-     * @param {boolean} check 是否校验接口调用结果，默认为true，开启校验时失败的接口调用会被跳过
-     * @return {Observable<ApiData>}
-     */
     get(url: string, params: { [key: string]: any } | boolean, check = true): Observable<ApiData> {
         if (typeof params === 'boolean') {
-            check = <boolean>params;
+            check = params as boolean;
             params = {};
         }
         const observable = this.http.get<ApiData>(this.serverUlr + url, { headers: this.getHeaders(), params: this.getParams(params) });
         return check ? observable.pipe(skipWhile(res => res.result === false)) : observable;
     }
-
-    /**
-     * 发送一个post请求(可带参数)
-     *
-     * @param {string} url 接口地址
-     * @param {json|boolean} params 接口参数，如果这个参数是boolean类型的那么它会认为是check参数
-     * @param {boolean} check 是否校验接口调用结果，默认为true，开启校验时失败的接口调用会被跳过
-     * @return {Observable<ApiData>}
-     */
     post(url: string, params?: { [key: string]: any } | boolean, check = true): Observable<ApiData> {
         if (typeof params === 'boolean') {
-            check = <boolean>params;
+            check = params as boolean;
             params = {};
         }
         const observable = this.http.post<ApiData>(this.serverUlr + url, params, { headers: this.getHeaders() });
         return check ? observable.pipe(skipWhile(res => res.result === false)) : observable;
     }
 
-    /**
-     * 发送一个put请求(可带参数)
-     *
-     * @param {string} url 接口地址
-     * @param {json|boolean} params 接口参数，如果这个参数是boolean类型的那么它会认为是check参数
-     * @param {boolean} check 是否校验接口调用结果，默认为true，开启校验时失败的接口调用会被跳过
-     * @return {Observable<ApiData>}
-     */
     put(url: string, params?: { [key: string]: any } | boolean, check = true): Observable<ApiData> {
         if (typeof params === 'boolean') {
-            check = <boolean>params;
+            check = params as boolean;
             params = {};
         }
         const observable = this.http.put<ApiData>(this.serverUlr + url, params, { headers: this.getHeaders() });
         return check ? observable.pipe(skipWhile(res => res.result === false)) : observable;
     }
 
-    /**
-     * 发送一个delete请求(可带参数)
-     *
-     * @param {string} url 接口地址
-     * @param {json|boolean} params 接口参数，如果这个参数是boolean类型的那么它会认为是check参数
-     * @param {boolean} check 是否校验接口调用结果，默认为true，开启校验时失败的接口调用会被跳过
-     * @return {Observable<ApiData>}
-     */
     delete(url: string, params?: { [key: string]: any } | boolean, check = true): Observable<ApiData> {
         if (typeof params === 'boolean') {
-            check = <boolean>params;
+            check = params as boolean;
             params = {};
         }
         const observable = this.http.delete<ApiData>(this.serverUlr + url, { headers: this.getHeaders(), params: this.getParams(params) });
         return check ? observable.pipe(skipWhile(res => res.result === false)) : observable;
     }
 
-    /**
-     * 发送一个post请求，可附带文件（用于文件上传）
-     *
-     * @param {string} url 接口地址
-     * @param {json} params 接口参数
-     * @param {Array<{ name: string, files: Array<File> }} files 上传的文件数组name为文件对应的上传参数名称，files为这个名称对应的文件数组
-     * @param {boolean} check 是否校验接口调用结果，默认为true，开启校验时失败的接口调用会被跳过
-     * @return {Observable<ApiData>}
-     */
     files(url: string, params: { [key: string]: any },
-        files: Array<{ name: string, files: Array<File> }> = [], check = true): Observable<ApiData> {
+        files: Array<{ name: string, files: Array<File> }> = [],
+        check = true): Observable<ApiData> {
         const observable = this.http.post<ApiData>(
             this.serverUlr + url, this.getFormdata(params, files), { headers: this.getHeaders() });
         return check ? observable.pipe(skipWhile(res => res.result === false)) : observable;
     }
 
-    /**
-     * 发送一个post请求，可附带文件（用于文件上传，提供上传进度）
-     *
-     * @param {string} url 接口地址
-     * @param {Array<{ name: string, files: Array<File> }} files 上传的文件数组name为文件对应的上传参数名称，files为这个名称对应的文件数组
-     * @return {void}
-     */
     upload(url: string, files: Array<{ name: string, files: Array<File> }>,
         onprogress: (value: number) => void, final: (value: ApiData) => void) {
         const req = new HttpRequest('POST', this.serverUlr + url, this.getFormdata({}, files), {
@@ -191,7 +124,7 @@ export class RequestService {
                 const percentDone = Math.round(100 * event.loaded / event.total);
                 onprogress(percentDone);
             } else if (event instanceof HttpResponse) {
-                final(<ApiData>event.body);
+                final(event.body as ApiData);
             }
         });
     }
@@ -223,13 +156,6 @@ export class RequestService {
         return <Observable<string>>this.ossUploadRequest(url, file);
     }
 
-    /**
-     * oss文件上传，基础方法可以获取上传进度
-     * @param {string} url 请求接口地址
-     * @param {File} file 要上传的文件对象
-     * @param {bool} useProgress 是否需要获取上传进度
-     * @return {Observable<string|number>}
-     */
     ossUploadRequest(url: string, file: File, useProgress = false): Observable<string | number> {
         const subject = new Subject<string | number>();
         this.url(`${url}?file=${file.name}`).subscribe(res => {
@@ -241,7 +167,7 @@ export class RequestService {
                 OSSAccessKeyId: res.datas.accessid,
                 success_action_status: '200',
                 signature: res.datas.signature,
-                file: file,
+                file,
             });
 
             if (useProgress) {
@@ -271,12 +197,6 @@ export class RequestService {
         return subject.asObservable();
     }
 
-    /**
-     * 设置额外的请求头
-     *
-     * @param headers 请求附带的头部参数
-     * @return {RequestService}
-     */
     withHeader(headers: { [key: string]: string }): RequestService {
         const request = new RequestService(this.http);
         request.serverUlr = this.serverUlr;
@@ -285,10 +205,6 @@ export class RequestService {
         return request;
     }
 
-    /**
-     * 不要添加统一前缀
-     * @return {RequestService}
-     */
     get withoutHost(): RequestService {
         const request = new RequestService(this.http);
         request.serverUlr = '';
@@ -297,10 +213,6 @@ export class RequestService {
         return request;
     }
 
-    /**
-     * 不用添加头部数据
-     * @return {RequestService}
-     */
     get withoutHeader(): RequestService {
         const request = new RequestService(this.http);
         request.serverUlr = this.serverUlr;
@@ -322,7 +234,7 @@ export class RequestService {
                 if (typeof params[key] === 'number') {
                     params[key] = params[key].toString();
                 }
-                httpParams = httpParams.append(key, <string>params[key]);
+                httpParams = httpParams.append(key, params[key] as string);
             }
         }
         return httpParams;
@@ -352,7 +264,7 @@ export class RequestService {
                 if (typeof params[key] === 'number') {
                     params[key] = params[key].toString();
                 }
-                formdata.append(key, <string>params[key]);
+                formdata.append(key, params[key] as string);
             }
         }
         for (const key in filesArray) {

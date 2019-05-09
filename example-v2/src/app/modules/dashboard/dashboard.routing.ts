@@ -10,8 +10,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from './components/menu/menu.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { LoginComponent } from './pages/login/login.component';
+import { HomeComponent } from './pages/hom.page';
 
 const routes: Routes = [
+    { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'error', component: ErrorComponent },
 ];
@@ -27,6 +29,7 @@ export const exportComponents = [
  * 指令、组件、管道声明
  */
 export const declarationComponents = [
+    HomeComponent,
     LoginComponent,
     ErrorComponent,
     ...exportComponents,

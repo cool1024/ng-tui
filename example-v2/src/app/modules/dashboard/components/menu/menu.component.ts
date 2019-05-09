@@ -13,6 +13,7 @@ import {
 import { MenuModel, MenuGroup, MenuItem } from './menu.interface';
 import { GlobalService } from 'src/app/cores/services';
 import { Router } from '@angular/router';
+import { SideMenuGroupDirective } from 'ng-tui';
 
 @Component({
     selector: `app-menu`,
@@ -32,7 +33,7 @@ export class MenuComponent implements OnChanges {
 
     @Input() menuConfig: any;
 
-    // @ViewChildren(SideMenuGroupDirective) menuGroups: QueryList<SideMenuGroupDirective>;
+    @ViewChildren(SideMenuGroupDirective) menuGroups: QueryList<SideMenuGroupDirective>;
 
     @ViewChild('menu') set menuDom(elementRef: ElementRef) {
         const OverlayScrollbars = this.global.getWindowObject('OverlayScrollbars');
@@ -53,33 +54,33 @@ export class MenuComponent implements OnChanges {
         return `bg-${this.menuConfig.ACTIVE_TEXT_THEME}-hover`;
     }
 
-    get menuFillStyle(): Object {
+    get menuFillStyle(): any {
         return {
             background: this.menuConfig.BACKGROUND_COLOR,
         };
     }
 
-    get menuFullStyle(): Object {
+    get menuFullStyle(): any {
         return {
             backgroundImage: this.menuConfig.BACKGROUND_IMAGE_SRC,
             color: this.menuConfig.DEFAULT_TEXT_COLOR
         };
     }
 
-    get modelMenuStyle(): Object {
+    get modelMenuStyle(): any {
         return {
             color: this.menuConfig.MODEL_TITLE_COLOR
         };
     }
 
-    get menuSmallStyle(): Object {
+    get menuSmallStyle(): any {
         return {
             background: this.menuConfig.BACKGROUND_COLOR,
             color: this.menuConfig.DEFAULT_TEXT_COLOR
         };
     }
 
-    get lineStyle(): Object {
+    get lineStyle(): any {
         return {
             background: this.menuConfig.LINE_COLOR
         };
@@ -102,12 +103,12 @@ export class MenuComponent implements OnChanges {
 
 
     findActiveGroup() {
-        const activePath = window.location.pathname;
+        // const activePath = window.location.pathname;
         // for (let i = 0; i < this.items.length; i++) {
         //     const item = this.items[i];
         //     for (let j = 0; j < item.menuGroups.length; j++) {
         //         const child = item.menuGroups[j];
-        //         child.menuItems.some(it)
+        //         child.menuItems.some(activePath)
         //     }
         // }
     }
@@ -163,8 +164,8 @@ export class MenuComponent implements OnChanges {
         for (let i = 0; i < offset; i++) {
             index += this.items[i].menuGroups.length;
         }
-        // const menuGroups = this.menuGroups.toArray();
-        // menuGroups.splice(index, 1);
-        // menuGroups.forEach(item => item.dismiss());
+        const menuGroups = this.menuGroups.toArray();
+        menuGroups.splice(index, 1);
+        menuGroups.forEach(item => item.dismiss());
     }
 }

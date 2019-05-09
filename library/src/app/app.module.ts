@@ -12,6 +12,8 @@ import {
     TooltipsModule,
     SelectModule,
     ModalModule,
+    ConfirmService,
+    ConfirmModule,
 } from '../../projects/ng-tui/src/public_api';
 import { FlashComponent } from './demo/flash.component';
 import { ExampleModalComponent } from './demo/example-modal.component';
@@ -32,6 +34,7 @@ import { ExampleModalComponent } from './demo/example-modal.component';
         TUIModule.forRoot({
             paginationItems: [{ text: '显示 5 条', value: 5 }, { text: '显示 10 条', value: 10 }, { text: '显示 20 条', value: 20 }]
         }),
+        ConfirmModule,
         IconfontModule,
         DatepickerModule,
         CheckboxModule,

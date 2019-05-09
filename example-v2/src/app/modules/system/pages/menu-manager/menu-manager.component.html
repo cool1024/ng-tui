@@ -1,0 +1,133 @@
+<div class="toolbar"></div>
+<div class="p-3">
+    <div class="card mb-3">
+        <h5 class="card-header">菜单管理</h5>
+        <div class="card-body m-btn">
+            <button (click)="editMenuGroup()" tsBtn color="info">添加菜单组</button>
+            <button (click)="editMainMenu(activeGroup)" [disabled]="!activeGroup" tsBtn color="info">添加主要菜单</button>
+            <button (click)="editChildMenu(activeMenu)" [disabled]="!activeMenu" tsBtn color="info">添加子菜单</button>
+            <button (click)="loadDatas()" class="btn btn-white">
+                <i class="fa fa-refresh fa-fw"></i>刷新数据
+            </button>
+        </div>
+    </div>
+    <div class="card">
+        <ts-tabs #tsTabs [tabs]="['菜单组','主菜单','子菜单']" [target]="tsTabPads" [color]="global.params.color" activeTab="菜单组"></ts-tabs>
+        <div #tsTabPads='tsTabs' tsTabs class="card rounded-0 border-top-0">
+            <!-- 菜单组 -->
+            <div tsTab tab='菜单组' class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>排序</th>
+                                <th>组名</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody [sortablejs]="menuGroups">
+                            <tr *ngFor="let menuGroup of menuGroups;index as i">
+                                <td>{{i+1}}</td>
+                                <td>{{menuGroup.menuGroupName}}</td>
+                                <td>
+                                    <span (click)="deleteMenuGroup(menuGroup)" class="btn-icon btn-icon-danger" tsTip="删除">
+                                        <i class="iconfont icon-delete"></i>
+                                    </span>
+                                    <span (click)="editMenuGroup(menuGroup)" class="btn-icon btn-icon-info" tsTip="编辑">
+                                        <i class="iconfont icon-edit"></i>
+                                    </span>
+                                    <span (click)="showMainMenus(menuGroup)" class="btn-icon btn-icon-dark" tsTip="主菜单列表">
+                                        <i class="iconfont icon-viewgallery"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <button tsBtn loading color="warning" (submit)="confirmGroupSort($event)">确认排序</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 主菜单 -->
+            <div tsTab tab='主菜单' class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr class="font-weight-bold bg-light">
+                                <th>排序</th>
+                                <th>菜单名称</th>
+                                <th>图标</th>
+                                <th>图片</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody [sortablejs]='activeMainMenus'>
+                            <tr *ngFor="let mainMenu of activeMainMenus;index as i">
+                                <td>{{i+1}}</td>
+                                <td>{{mainMenu.menuTitle}}</td>
+                                <td>
+                                    <i [ngClass]="mainMenu.menuIcon"></i>
+                                </td>
+                                <td>
+                                    <img tsImg dataSrc="assets/images/404.jpg" [src]="mainMenu.menuImage" width="20"
+                                        height="20">
+                                </td>
+                                <td>
+                                    <span (click)="deleteMenu(mainMenu)" class="btn-icon btn-icon-danger" tsTip="删除">
+                                        <i class="iconfont icon-delete"></i>
+                                    </span>
+                                    <span (click)="editMainMenu(activeGroup,mainMenu)" class="btn-icon btn-icon-info"
+                                        tsTip="编辑">
+                                        <i class="iconfont icon-edit"></i>
+                                    </span>
+                                    <span (click)="showChildMenus(mainMenu)" class="btn-icon btn-icon-dark" tsTip="子菜单列表">
+                                        <i class="iconfont icon-viewgallery"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <button tsBtn loading color="warning" (submit)="confirmSort($event,activeMainMenus)">确认排序</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 子菜单 -->
+            <div tsTab tab='子菜单' class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr class="font-weight-bold">
+                                <th>排序</th>
+                                <th>菜单名称</th>
+                                <th>链接</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody [sortablejs]="activeChildMenus">
+                            <tr *ngFor="let childMenu of activeChildMenus;index as i">
+                                <td>{{i+1}}</td>
+                                <td>{{childMenu.menuTitle}}</td>
+                                <td>
+                                    <a [routerLink]="childMenu.menuUrl">{{childMenu.menuUrl}}</a>
+                                </td>
+                                <td>
+                                    <span (click)="deleteMenu(childMenu)" class="btn-icon btn-icon-danger" tsTip="删除">
+                                        <i class="iconfont icon-delete"></i>
+                                    </span>
+                                    <span (click)="editChildMenu(activeMenu,childMenu)" class="btn-icon btn-icon-info"
+                                        tsTip="编辑">
+                                        <i class="iconfont icon-edit"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <button tsBtn loading color="warning" (submit)="confirmSort($event,activeChildMenus)">确认排序</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

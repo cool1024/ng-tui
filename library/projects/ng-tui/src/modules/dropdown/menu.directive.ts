@@ -9,13 +9,13 @@ import { MenuService } from './menu.service';
 export class MenuDirective implements OnDestroy {
 
     @Input() tsMenu: string[];
-    @Output() menuClick = new EventEmitter<Item>(false);
     @Input() position: string;
     @Input() offsetX: number;
     @Input() offsetY: number;
     @Input() minWidth: number;
     @Input() animation: string;
     @Input() zIndex: string;
+    @Output() menuClick = new EventEmitter<Item>(false);
 
     @HostListener('click', ['$event']) onHostClick($event: any) {
         const dom: HTMLElement = $event.target;

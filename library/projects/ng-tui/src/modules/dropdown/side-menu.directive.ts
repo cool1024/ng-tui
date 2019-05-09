@@ -28,7 +28,7 @@ export class SideMenuDirective implements Toggle, OnDestroy {
 
     constructor(private elementRef: ElementRef) {
         this.tsSideMenu = 'click';
-        this.animation = 'fadeIn';
+        this.animation = 'zoomIn';
     }
 
     @HostListener('document:click', ['$event.target']) onDocumentClick(dom: HTMLElement): void {
@@ -46,6 +46,7 @@ export class SideMenuDirective implements Toggle, OnDestroy {
         this.targetDom = toggle.elementRef.nativeElement;
         this.hostDom = this.elementRef.nativeElement;
         this.hostDom.classList.add('position-fixed', 'd-none', 'animated', this.animation);
+        document.body.append(this.hostDom);
         this.intervalSub = interval(500).subscribe(() => this.autoPosition());
         // tslint:disable-next-line:no-unused-expression
         this.tsSideMenu === 'hover' && (toggle.hover = () => this.toggle());
@@ -80,7 +81,12 @@ export class SideMenuDirective implements Toggle, OnDestroy {
     }
 
     ngOnDestroy() {
-        return this.intervalSub && this.intervalSub.unsubscribe();
+        try {
+            document.body.removeChild(this.hostDom);
+        } catch (e) {
+            console.log('SideMenu remove error');
+        }
+        this.intervalSub && this.intervalSub.unsubscribe();
     }
 }
 

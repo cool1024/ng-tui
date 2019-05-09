@@ -5,4 +5,5 @@ export { CryptService } from './crypt.service';
 export { AuthService } from './auth.service';
 export { GuardService } from './guard.service';
 export { MessageService } from './message.service';
+export { NavService } from './nav.service';
 
