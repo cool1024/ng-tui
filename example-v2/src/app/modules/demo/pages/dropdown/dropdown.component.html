@@ -1,0 +1,55 @@
+<div class="toolbar"></div>
+<div class="p-3">
+    <div class="card mb-3">
+        <h5 class="card-header">下拉按钮</h5>
+        <div class="card-body">
+            <p class="text-muted">1. 让一个按钮或其它元素可以唤起一个菜单面板，通常用在多项操作按钮上。
+                <a href="https://www.cool1024.com/gitbook/DROP.html" target="_blank">参考文档</a>
+            </p>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header bg-white">下拉菜单</div>
+        <div class="card-body">
+            <ts-dropdown class="mr-1" [items]="dropdowns">
+                <button tsBtn>Dropdown</button>
+            </ts-dropdown>
+            <ts-dropdown class="mr-1" [items]="dropdowns" dropup>
+                <button tsBtn>Dropup</button>
+            </ts-dropdown>
+            <ts-dropdown class="mr-1" [items]="dropdowns" (menuClick)="showClickItem($event)">
+                <button tsBtn>点击查看结果</button>
+            </ts-dropdown>
+            <ts-dropdown class="ml-3 pointer" [items]="stringDropdowns">
+                <i tsIcon="music"></i>
+            </ts-dropdown>
+        </div>
+        <div class="card-header bg-white">自定义下拉</div>
+        <div class="card-body">
+            <div tsToggle [target]="diyMenu" [bind]="diyMenu" class="bg-light-hover d-flex align-items-center pointer"
+                style="width:40px">
+                <img src="assets/images/avatar/1.png" class="rounded-circle border border-light ml-3 mr-3" height="35"
+                    width="35" alt="avatar">
+            </div>
+            <div #diyMenu="tsView" tsView="fadeIn" [offsetX]="0" [offsetY]="0" position="auto" class="dropdown-menu">
+                <button class="dropdown-item pointer" close>
+                    <span tsIcon="mobile" class="mr-2" close></span>
+                    <span close>联系方式</span>
+                </button>
+                <button class="dropdown-item pointer" close>
+                    <span tsIcon="account" class="mr-2" close></span>
+                    <span close>账号信息</span>
+                </button>
+                <button class="dropdown-item pointer" close>
+                    <span tsIcon="set" class="mr-2" close></span>
+                    <span close>系统设置</span>
+                </button>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-item pointer" close>
+                    <span tsIcon="out" class="mr-2" close></span>
+                    <span close>退出</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

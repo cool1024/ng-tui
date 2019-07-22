@@ -16,6 +16,7 @@ import {
     SelectModule,
     TooltipsModule,
     ToastModule,
+    DatepickerModule,
 } from 'ng-tui';
 
 @NgModule({
@@ -29,6 +30,7 @@ import {
         SelectModule,
         TooltipsModule,
         ToastModule,
+        DatepickerModule,
     ]
 })
 export class ShareModule { }

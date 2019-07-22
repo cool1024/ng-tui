@@ -1,0 +1,39 @@
+<div class="toolbar"></div>
+<div class="p-3">
+    <div class="card mb-3">
+        <h5 class="card-header">日期选择</h5>
+        <div class="card-body">
+            <p class="text-muted">日期选择与时间选择可以快速得到一个格式化好的日期/时间字符串</p>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-header border-bottom">组件参数 </div>
+        <div class="card-body">
+            <form class="form-inline">
+                <div class="input-group ml-2 mb-3">
+                    <ts-datepicker name="mydate" [(ngModel)]="date">
+                        <input type="text" class="form-control bg-white pointer" [value]="date|date:'yyyy-MM-dd'"
+                            placeholder="请选择日期" readonly>
+                    </ts-datepicker>
+                </div>
+                <div class="input-group ml-2 mb-3">
+                    <ts-yearpicker name="myyear" [(ngModel)]="year">
+                        <input class="form-control bg-white pointer" readonly [value]="year" />
+                    </ts-yearpicker>
+                </div>
+                <div class="input-group ml-2 mb-3">
+                    <ts-timepicker name="mytime" [(ngModel)]="time">
+                        <input class="form-control bg-white pointer" readonly [value]="time" />
+                    </ts-timepicker>
+                </div>
+
+                <div class="input-group ml-2 mb-3">
+                    <ts-datepickers name="myrange" [(ngModel)]="range">
+                        <input class="form-control bg-white pointer" readonly
+                            value="{{range.start|date:'yyyy-MM-dd'}}/{{range.end|date:'yyyy-MM-dd'}}" />
+                    </ts-datepickers>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

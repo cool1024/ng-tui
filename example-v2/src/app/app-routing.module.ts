@@ -11,7 +11,8 @@ const routes: Routes = [
      { path: '', redirectTo: 'home', pathMatch: 'full' },
 
      // 懒加载子模块
-     { path: 'system', loadChildren: './modules/system/system.module#SystemModule', canActivate: [GuardService] },
+     { path: 'demo', loadChildren: './modules/demo/demo.module#DemoModule' },
+     // { path: 'system', loadChildren: './modules/system/system.module#SystemModule', canActivate: [GuardService] },
 
      // 最后全局匹配其他链接
      { path: '**', redirectTo: 'error', pathMatch: 'full' }

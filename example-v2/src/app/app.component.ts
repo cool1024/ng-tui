@@ -65,10 +65,10 @@ export class AppComponent {
     }
 
     /**
-    * 退出登入
+    * 退出登录
     */
     setOut() {
-        this.confirm.warning('退出登入', '您确认要退出当前的账户吗？')
+        this.confirm.warning('退出登录', '您确认要退出当前的账户吗？')
             .subscribe(() => this.auth.setOutAndClean());
     }
 

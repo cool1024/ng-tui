@@ -1,0 +1,79 @@
+<div class="toolbar"></div>
+<div class="p-3">
+    <div class="card mb-3">
+        <h5 class="card-header">分页</h5>
+        <div class="card-body">
+            <p class="text-muted">分页组件通常用于列表（表格）数据展示。
+                <a href="https://www.cool1024.com/gitbook/PAGE.html" target="blank">参考文档</a>
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header bg-white">
+            组件参数 @Component
+        </div>
+        <div class="card-body">
+            <p>选择器：
+                <code>ts-pagination </code>
+                <ts-pagination [color]="global.params.color" [pagination]="page" goTitle="跳转"></ts-pagination>
+            </p>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">属性名称</th>
+                        <th scope="col">类型</th>
+                        <th scope="col">说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">pagination</th>
+                        <td>
+                            <code>Pagination</code>
+                        </td>
+                        <td>分页参数，提供了当前页码，数据量，每页数据量</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">items</th>
+                        <td>
+                            <code>Item[]</code>
+                        </td>
+                        <td>每页显示数据量选项列表，只有设置了这个属性，才会出现选项控件</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">goTitle</th>
+                        <td>
+                            <code>string</code>
+                        </td>
+                        <td>跳转按钮的标题，只有设置了这个属性，才会出现跳转按钮</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">color</th>
+                        <td>
+                            <code>string</code>
+                        </td>
+                        <td>颜色设置，bootstrap的基础颜色[danger,light,info...]</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-striped mt-2">
+                <thead>
+                    <tr>
+                        <th scope="col">事件名称</th>
+                        <th scope="col">事件类型</th>
+                        <th scope="col">说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">pageChange</th>
+                        <td>
+                            <code>Pagination</code>
+                        </td>
+                        <td>当切换了页面会执行pageChange绑定的方法</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

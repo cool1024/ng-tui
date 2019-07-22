@@ -38,7 +38,7 @@ export class YearpickerComponent extends BaseForm {
     }
 
     constructor(cfs: ConfigService) {
-        super()
+        super();
         this.color = cfs.config.defaultColor;
     }
 }

@@ -11,7 +11,7 @@ export class YearComponent extends BaseTheme implements OnChanges {
     yearList: Array<number[]> = [];
     focusYear: number;
 
-    @Input()activeYear: number;
+    @Input() activeYear: number;
     @Output() yearChange = new EventEmitter<number>(false);
 
     constructor(confiService: ConfigService) {
@@ -22,14 +22,14 @@ export class YearComponent extends BaseTheme implements OnChanges {
     }
 
 
-    ngOnChanges(){
+    ngOnChanges() {
         this.focusYear = this.activeYear;
         this.updateYears();
     }
 
     updateYears() {
         const years = [];
-        const year = this.focusYear;
+        const year = this.focusYear || (new Date()).getFullYear();
         for (let i = 0; i < 5; i++) {
             years.push(year - 5 + i);
         }

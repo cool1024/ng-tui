@@ -72,7 +72,7 @@ export class TimepickerComponent extends BaseForm {
     }
 
     constructor(cfs: ConfigService) {
-        super()
+        super();
         this.color = cfs.config.defaultColor;
     }
 }
