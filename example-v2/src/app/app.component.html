@@ -19,8 +19,9 @@
             <!-- 顶部工具栏 -->
             <div class="headbar bg-{{global.params.color}} no-select text-light d-flex align-items-center justify-content-between flex-shrink-0 shadow-sm"
                 style="height:60px;z-index:1;">
-                <div (click)="changeMenuMode()" class="d-flex align-items-center flex-grow-1 h-100">
-                    <div class="d-flex align-items-center bg-light-hover pointer h-100 pl-3 pr-3">
+                <div class="d-flex align-items-center flex-grow-1 h-100">
+                    <div (click)="changeMenuMode()"
+                        class="d-flex align-items-center bg-light-hover pointer h-100 pl-3 pr-3">
                         <i class="iconfont icon-category"></i>
                     </div>
                 </div>
