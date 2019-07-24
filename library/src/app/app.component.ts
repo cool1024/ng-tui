@@ -46,11 +46,11 @@ export class AppComponent {
                     {
                         value: 4, text: '副总经理',
                         children: [
-                            { value: '5', text: '执行部' },
-                            { value: '5', text: '行政部' },
-                            { value: '5', text: '财务部' },
-                            { value: '5', text: '操作部' },
-                            { value: '5', text: '安技部门' },
+                            { value: 5, text: '执行部' },
+                            { value: 6, text: '行政部' },
+                            { value: 7, text: '财务部' },
+                            { value: 8, text: '操作部' },
+                            { value: 9, text: '安技部门' },
                         ]
                     },
                 ]
@@ -71,6 +71,6 @@ export class AppComponent {
     }
 
     showConfirm() {
-        this.confirm.success('确认操作', '这个提示你还是看一下，也许游泳呢？');
+        this.confirm.success('确认操作', '这个提示你还是看一下，也许有用呢？');
     }
 }
