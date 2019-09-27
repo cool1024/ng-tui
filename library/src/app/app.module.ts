@@ -12,11 +12,11 @@ import {
     TooltipsModule,
     SelectModule,
     ModalModule,
-    ConfirmService,
     ConfirmModule,
 } from '../../projects/ng-tui/src/public_api';
 import { FlashComponent } from './demo/flash.component';
 import { ExampleModalComponent } from './demo/example-modal.component';
+import { UploadModule } from 'projects/ng-tui/src/modules/upload/upload.module';
 
 @NgModule({
     declarations: [
@@ -32,6 +32,8 @@ import { ExampleModalComponent } from './demo/example-modal.component';
         BrowserModule,
         FormsModule,
         TUIModule.forRoot({
+            confirmCancelTitle: '取消',
+            confirmOkTitle: '确认',
             paginationItems: [{ text: '显示 5 条', value: 5 }, { text: '显示 10 条', value: 10 }, { text: '显示 20 条', value: 20 }]
         }),
         ConfirmModule,
@@ -43,6 +45,7 @@ import { ExampleModalComponent } from './demo/example-modal.component';
         CssloadModule,
         SelectModule,
         ModalModule,
+        UploadModule
     ],
     providers: [],
     bootstrap: [AppComponent]

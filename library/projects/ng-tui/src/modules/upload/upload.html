@@ -1,0 +1,9 @@
+<div class="border rounded d-inline-block pointer" [ngStyle]="sizeStyle" (click)="fileInput.openFileDialog()">
+    <input tsFile #fileInput="tsFile" (fileChange)="uploadItem($event)">
+    <div style="height:20px" class="position-relative">
+        <div *ngIf="item && item.uploading" class="progress mx-1" style="height:2px;">
+            <div class="progress-bar" [style.width.%]="item?.progress"></div>
+        </div>
+        <div class="position-absolute text-center text-muted text-truncate w-100 h-100">{{item?.fileItem.name}}</div>
+    </div>
+</div>

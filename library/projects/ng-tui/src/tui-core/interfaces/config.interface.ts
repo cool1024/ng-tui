@@ -23,4 +23,6 @@ export interface TUIConfig {
     monthTitles?: string[];
 
     paginationItems?: Item[];
+
+    uploadItemSize?: number
 }
