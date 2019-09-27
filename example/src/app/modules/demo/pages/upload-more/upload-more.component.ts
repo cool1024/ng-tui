@@ -79,6 +79,8 @@ export class UploadMoreComponent {
                     console.log(JSON.stringify(roa));
                 }
             });
+            this.funCheckJson(result[0]);
+            return;
             try {
                 for (const key in result[0][0]) {
                     if (result[0][0].hasOwnProperty(key)) {
@@ -91,5 +93,40 @@ export class UploadMoreComponent {
             }
         });
         reader.readAsArrayBuffer(file);
+    }
+
+    funCheckJson(soureArray: Array<any>) {
+        const mapData = soureArray.map(item => ({ value: item['编号'], label: item['名称'], level: item['分类'] }));
+        const levelData = [
+            mapData.filter(item => item.level === '门类'),
+            mapData.filter(item => item.level === '大类'),
+            mapData.filter(item => item.level === '中类'),
+            mapData.filter(item => item.level === '子类'),
+        ];
+        const data = levelData[0].map(item => Object.assign(item, { children: this.getChildren(item.value, levelData[1], levelData[2], levelData[3]) }));
+        console.log(data);
+        localStorage.setItem('json', JSON.stringify(data));
+    }
+
+    _funCheckJson(soureArray: Array<any>) {
+        const mapData = soureArray.map(item => ({ value: item['代码编号'], label: item['代码名称'], text: item['备注'] }));
+        const data = [];
+        mapData.forEach(item => {
+            if (item.text === '节点不能选') {
+                data.push(Object.assign(item, { children: [] }));
+            } else {
+                data[data.length - 1] && data[data.length - 1].children.push(item);
+            }
+        });
+        localStorage.setItem('json', JSON.stringify(data));
+    }
+
+    getChildren(parentKey: string, childrenData: Array<any>, nextChildrenData: Array<any>, endChildrenData: Array<any>) {
+        return childrenData.filter(child => ~child.value.indexOf(parentKey))
+            .map(child => Object.assign(child, {
+                children: nextChildrenData.filter(nextChild => ~nextChild.value.indexOf(child.value))
+                    .map(nextChild => Object.assign(nextChild, { children: endChildrenData.filter(endChild => ~endChild.value.indexOf(nextChild.value)) }))
+
+            }));
     }
 }
