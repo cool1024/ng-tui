@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ConfigService } from '../../tui-core/base-services/config.service';
 import { FileItem, UploadItem } from './upload.class';
 
@@ -20,7 +20,9 @@ export class UploadComponent {
 
     @Output() srcChange = new EventEmitter<string>(true);
 
-    private item: UploadItem;
+    item: UploadItem;
+
+    dps: Subscription;
 
     get sizeStyle() {
         const pxStr = (this.size || this.configService.config.uploadItemSize) + 'px';
@@ -30,20 +32,38 @@ export class UploadComponent {
         };
     }
 
+    get previewSize() {
+        const pxStr = ((this.size || this.configService.config.uploadItemSize) - 26) + 'px';
+        return {
+            height: pxStr,
+        };
+    }
+
+    get previewStyle() {
+        return {
+            backgroundImage: `url(${this.item ? this.getThumb() : ''})`,
+            backgroundSize: 'contain',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+        };
+    }
+
     constructor(private configService: ConfigService) { }
 
     uploadItem(file: File) {
+        if (this.dps && (!this.dps.closed)) {
+            this.dps.unsubscribe();
+        }
         const fileItem = FileItem.createFromFile(file);
         this.item = new UploadItem(fileItem);
         if (this.uploader) {
             this.item.setUploading();
-            console.log(this.uploader(file));
-            const dps = this.uploader(file).subscribe(res => {
+            this.dps = this.uploader(file).subscribe(res => {
                 if (res === -1) {
-                    dps.unsubscribe();
+                    this.dps.unsubscribe();
                     this.item.setError();
                 } else {
-                    typeof res === 'string' ? (this.item.setComplete(res), dps.unsubscribe()) : this.item.setProgress(res);
+                    typeof res === 'string' ? (this.item.setComplete(res), this.dps.unsubscribe()) : this.item.setProgress(res);
                 }
             });
         } else {
@@ -51,12 +71,12 @@ export class UploadComponent {
         }
     }
 
-    getThumb(item: FileItem): string {
-        const fileType = item.type;
+    getThumb(): string {
+        const fileType = this.item.fileItem.type;
         const types = fileType.split('/');
         let typeImage = 'assets/file-icon/';
         switch (types[0]) {
-            case 'image': this.baseUrl || '' + item.src; break;
+            case 'image': typeImage = this.item.uploading ? URL.createObjectURL(this.item.fileItem.file) : (this.baseUrl || '' + this.item.fileItem.src); break;
             case 'video': typeImage += 'video.svg'; break;
             case 'audio': typeImage += 'audio.svg'; break;
             case 'application': switch (types[1]) {
@@ -73,7 +93,6 @@ export class UploadComponent {
             case 'text': typeImage += 'text.svg'; break;
             default: typeImage += 'other.svg';
         }
-        // console.log(fileType);
-        return `url(${typeImage})`;
+        return typeImage;
     }
 }

@@ -24,5 +24,5 @@ export interface TUIConfig {
 
     paginationItems?: Item[];
 
-    uploadItemSize?: number
+    uploadItemSize?: number;
 }
