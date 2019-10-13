@@ -10,6 +10,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
             <ng-content></ng-content>
         </div>
         <div #menuView="tsView"
+            (wheel)="itemWheel($event.deltaY)"
             [offsetX]="offsetX"
             [offsetY]="offsetY"
             [ngStyle]="{minWidth:minWidth+'px',zIndex:zIndex}"
@@ -41,6 +42,8 @@ export class DropdownComponent extends BaseTheme {
     @Input() activeValue: number;
 
     @Output() menuClick = new EventEmitter<Item>();
+
+    @Output() menuWheel = new EventEmitter<number>();
 
     get itemList(): Item[] {
         const items = new Array<any>();
@@ -81,9 +84,14 @@ export class DropdownComponent extends BaseTheme {
         this.menuClick.emit(item);
     }
 
+    itemWheel(value: number) {
+        this.menuWheel.emit(value);
+        console.log(value);
+    }
+
     isApply(value: any): boolean {
         return !!value || (value !== undefined && value !== null && value.toString() === '');
     }
 
-    trackByValue(index: number, item: Item): number { return item.value; }
+    trackByValue(_: number, item: Item): number { return item.value; }
 }

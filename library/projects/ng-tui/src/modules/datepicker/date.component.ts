@@ -81,6 +81,10 @@ export class DateComponent extends BaseTheme implements OnChanges {
         this.activeDate = `${this.year}/${this.month}/${this.day}`;
     }
 
+    wheelYear() {
+        console.log(12312);
+    }
+
     ngOnChanges() {
         let date;
         try {
@@ -89,7 +93,7 @@ export class DateComponent extends BaseTheme implements OnChanges {
                 this.year = date.getFullYear();
                 this.month = date.getMonth() + 1;
             }
-        } catch (e) {}
+        } catch (e) { }
     }
 
 

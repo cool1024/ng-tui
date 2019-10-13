@@ -23,4 +23,8 @@
 </div>
 
 <button tsBtn (click)="showConfirm()">确认</button> -->
-<ts-upload [uploader]="uploader"></ts-upload>
+<!-- <ts-upload [uploader]="uploader"></ts-upload> -->
+<ts-datepickers color="success" [(ngModel)]="range">
+    <input class="form-control bg-white pointer" readonly
+        value="{{range.start|date:'yyyy-MM-dd'}}/{{range.end|date:'yyyy-MM-dd'}}" />
+</ts-datepickers>

@@ -132,6 +132,7 @@ textarea {
 input:disabled,
 textarea:disabled,
 button:disabled {
+    z-index: 0 !important;
     cursor: not-allowed;
 }
 
@@ -157,7 +158,10 @@ span {
     outline: 0 none !important;
 }
 
-a:link, a:active, a:hover, a:visited {
+a:link,
+a:active,
+a:hover,
+a:visited {
     text-decoration: none;
 }
 
@@ -183,7 +187,8 @@ ts-select {
     @extend .shadow-sm;
 }
 
-.table-bordered th, .table-bordered td {
+.table-bordered th,
+.table-bordered td {
     border: 1px solid rgba($cyan, 0.1) !important;
 }
 

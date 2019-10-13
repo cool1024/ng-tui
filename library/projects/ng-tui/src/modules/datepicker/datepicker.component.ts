@@ -26,12 +26,12 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 export class DatepickerComponent extends BaseForm {
 
     @Input() zIndex: number;
-    
+
     activeDate: string;
 
 
     writeValue(value: string) {
-        let date = new Date(value);
+        const date = new Date(value);
         if (date.getFullYear()) {
             this.activeDate = value;
         }
@@ -42,7 +42,7 @@ export class DatepickerComponent extends BaseForm {
     }
 
     constructor(cfs: ConfigService) {
-        super()
+        super();
         this.color = cfs.config.defaultColor;
     }
 }
