@@ -11,19 +11,20 @@ const MAX_MONTH = 12;
 @Component({
     selector: 'ts-date',
     templateUrl: './date.html',
-    styles: [styleStr],
-
+    styles: [styleStr]
 })
 export class DateComponent extends BaseTheme implements OnChanges {
 
     @Input() weekTitles: string[];
     @Input() monthTitles: string[];
     @Input() activeDate: string;
-    @Output() dateChange = new EventEmitter<string>(false);
+    @Output() dateChange = new EventEmitter<string>();
+    @Output() objectChange = new EventEmitter<any>();
 
     year: number;
     month: number;
     day: number;
+    showYear: number;
 
     get days(): number[] {
         let date = new Date(this.year, this.month, 0);
@@ -31,7 +32,7 @@ export class DateComponent extends BaseTheme implements OnChanges {
         const days = new Array<number>();
         date = new Date(this.year, this.month - 1, 1);
         const week = date.getDay() || WEEK_DAY_NUM;
-        for (let i = 0; i < week - 1; i++) { days.push(0); }
+        for (let i = 0; i < week; i++) { days.push(0); }
         for (let i = 1; i <= dayTotal; i++) { days.push(i); }
         return days;
     }
@@ -52,11 +53,11 @@ export class DateComponent extends BaseTheme implements OnChanges {
     get yearList(): Array<number> {
         const years = [];
         for (let i = 0; i < 3; i++) {
-            years.push(this.year - 3 + i);
+            years.push(this.showYear - 3 + i);
         }
-        years.push(this.year);
+        years.push(this.showYear);
         for (let i = 0; i < 3; i++) {
-            years.push(this.year + 1 + i);
+            years.push(this.showYear + 1 + i);
         }
         return years;
     }
@@ -76,24 +77,23 @@ export class DateComponent extends BaseTheme implements OnChanges {
         this.year = date.getFullYear();
         this.month = date.getMonth() + 1;
         this.day = date.getDate();
+        this.showYear = this.year;
 
         // active day
         this.activeDate = `${this.year}/${this.month}/${this.day}`;
     }
 
-    wheelYear() {
-        console.log(12312);
-    }
-
     ngOnChanges() {
-        let date;
         try {
-            date = new Date(this.activeDate);
+            const date = new Date(this.activeDate);
             if (date.getFullYear()) {
                 this.year = date.getFullYear();
                 this.month = date.getMonth() + 1;
+                this.showYear = this.year;
             }
-        } catch (e) { }
+        } catch (e) {
+            console.error('date format error', e);
+        }
     }
 
 
@@ -131,17 +131,33 @@ export class DateComponent extends BaseTheme implements OnChanges {
 
     nextYear() {
         this.year++;
+        this.showYear = this.year;
     }
 
     prevYear() {
         if (this.year > MIN_YEAR) {
             this.year--;
+            this.showYear = this.year;
         }
     }
 
     updateActiveDay() {
         this.activeDate = `${this.year}/${this.month}/${this.day}`;
         this.dateChange.emit(this.activeDate);
+        this.objectChange.emit({
+            year: this.year,
+            month: this.month,
+            day: this.day
+        });
+    }
+
+    changeYear(year: number) {
+        this.year = year;
+        this.showYear = this.year;
+    }
+
+    wheelYear(value: number) {
+        return value < 0 ? this.showYear-- : this.showYear++;
     }
 
     trackByFn(item: any): number {

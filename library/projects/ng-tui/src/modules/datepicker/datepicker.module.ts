@@ -27,10 +27,6 @@ import { DatepickersComponent } from './date-range-picker.component';
         TimepickerComponent,
         DatepickersComponent,
     ],
-    entryComponents: [
-    ],
-    providers: [
-    ],
     exports: [
         TUICoreModule,
         ButtonModule,

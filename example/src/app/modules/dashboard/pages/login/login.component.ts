@@ -45,4 +45,8 @@ export class LoginComponent {
             complete: btn.dismiss()
         });
     }
+
+    devPreview() {
+        window.location.href = '/assets/preview';
+    }
 }

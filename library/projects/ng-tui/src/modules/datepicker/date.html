@@ -2,7 +2,8 @@
     <table class="ts-datepicker-table w-100">
         <thead>
             <tr class="ts-weeks">
-                <th class="text-center text-{{i>4&&color}}" *ngFor="let title of weekTitles;index as i">{{title}}
+                <th class="text-center text-{{(i===0||i===6)&&color}}" *ngFor="let title of weekTitles;index as i">
+                    {{title}}
                 </th>
             </tr>
         </thead>
@@ -11,7 +12,7 @@
                 <td class="text-muted ts-month-title" colspan="7">{{getMonth(month)}} </td>
             </tr>
             <tr *ngFor="let tr of trList;trackBy: trackByFn" class="text-dark">
-                <td class="text-center" *ngFor="let td of tr">
+                <td class="text-center" *ngFor="let td of tr" [class.range]="inRange(td)">
                     <div (click)="setDay(td)" class="ts-day m-auto rounded-circle
                         {{!isActiveDay(td)||('bg-'+color)}}" [class.text-white]="isActiveDay(td)"
                         [class.ts-day-hover]="td" close>{{td||''}}</div>
@@ -28,7 +29,7 @@
                     <div class="btn-group">
                         <button style="opacity:0.9" (click)="prevYear()" class="btn btn-{{color}} btn-sm">&lt;</button>
                         <ts-dropdown [items]="yearList" [useNumber]="0" [activeValue]="year" [color]="color" dropup
-                            (menuClick)="year=$event.value" (menuWheel)="wheelYear($event)">
+                            (menuClick)="changeYear($event.value)" (menuWheel)="wheelYear($event)">
                             <button [tsBtn]="color" sm class="rounded-0 border-left-0 border-right-0">{{year}}</button>
                         </ts-dropdown>
                         <button style="opacity:0.9" (click)="nextYear()" class="btn btn-{{color}} btn-sm">&gt;</button>

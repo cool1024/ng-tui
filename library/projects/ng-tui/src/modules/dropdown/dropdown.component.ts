@@ -86,7 +86,6 @@ export class DropdownComponent extends BaseTheme {
 
     itemWheel(value: number) {
         this.menuWheel.emit(value);
-        console.log(value);
     }
 
     isApply(value: any): boolean {

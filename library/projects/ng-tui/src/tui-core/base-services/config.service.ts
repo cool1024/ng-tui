@@ -14,7 +14,7 @@ export class ConfigService {
             confirmCancelTitle: 'Cancel',
             confirmOkTitle: 'Confirm',
             uploadItemSize: 120,
-            weekTitles: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+            weekTitles: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
             monthTitles: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             paginationItems: []
         }, config);

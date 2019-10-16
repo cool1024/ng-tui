@@ -22,7 +22,7 @@ export class ValueChangeListenerService {
 
     observeClientRect(dom: HTMLElement, handler: Function) {
         // tslint:disable-next-line:no-unused-expression
-        this.interval || (this.interval = setInterval(() => this.handlerFunc(), 200));
+        this.interval || (this.interval = setInterval(() => this.handlerFunc(), 1000));
         const obs = {
             dom, handler,
             rect: dom.getBoundingClientRect(),

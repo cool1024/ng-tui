@@ -28,3 +28,6 @@
     <input class="form-control bg-white pointer" readonly
         value="{{range.start|date:'yyyy-MM-dd'}}/{{range.end|date:'yyyy-MM-dd'}}" />
 </ts-datepickers>
+<ts-datepicker color="success" [(ngModel)]="date">
+    <input class="form-control bg-white pointer" readonly value="{{date|date:'yyyy-MM-dd'}}" />
+</ts-datepicker>
