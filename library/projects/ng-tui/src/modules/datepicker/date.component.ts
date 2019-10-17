@@ -31,7 +31,7 @@ export class DateComponent extends BaseTheme implements OnChanges {
         const dayTotal = date.getDate();
         const days = new Array<number>();
         date = new Date(this.year, this.month - 1, 1);
-        const week = date.getDay() || WEEK_DAY_NUM;
+        const week = date.getDay();
         for (let i = 0; i < week; i++) { days.push(0); }
         for (let i = 1; i <= dayTotal; i++) { days.push(i); }
         return days;

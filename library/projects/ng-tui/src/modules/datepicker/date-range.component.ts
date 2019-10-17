@@ -18,6 +18,7 @@ export class DateRangeComponent extends BaseTheme {
 
     @Input() weekTitles: string[];
     @Input() monthTitles: string[];
+    @Input() confirmTitle: string;
     @Input() activeDates = {
         start: null,
         end: null
@@ -27,30 +28,31 @@ export class DateRangeComponent extends BaseTheme {
     years: [number, number];
     months: [number, number];
     days: [number[][], number[][]];
+    yearList: [number[], number[]];
 
-    // days(): number[] {
-    //     let date = new Date(this.year, this.month, 0);
-    //     const dayTotal = date.getDate();
-    //     const days = new Array<number>();
-    //     date = new Date(this.year, this.month - 1, 1);
-    //     const week = date.getDay() || WEEK_DAY_NUM;
-    //     for (let i = 0; i < week - 1; i++) { days.push(0); }
-    //     for (let i = 1; i <= dayTotal; i++) { days.push(i); }
-    //     return days;
-    // }
-
-    // get trList(): Array<number[]> {
-    //     const days = this.days;
-    //     const groupNum = Math.ceil(days.length / WEEK_DAY_NUM);
-    //     const trs = new Array<number[]>();
-    //     for (let i = 0; i < groupNum; i++) {
-    //         trs[i] = new Array<number>();
-    //         for (let j = 0; j < WEEK_DAY_NUM; j++) {
-    //             trs[i][j] = days[i * WEEK_DAY_NUM + j] || 0;
-    //         }
-    //     }
-    //     return trs;
-    // }
+    updateDays() {
+        let dates = [new Date(this.years[0], this.months[0], 0), new Date(this.years[1], this.months[1], 0)];
+        const dayTotals = [dates[0].getDate(), dates[1].getDate()];
+        const days = [[], []];
+        days.forEach((e, j) => {
+            dates[j] = new Date(this.years[j], this.months[j] - 1, 1);
+            const week = dates[j].getDay();
+            for (let i = 0; i < week; i++) { e.push(0); }
+            for (let i = 1; i <= dayTotals[j]; i++) { e.push(i); }
+        });
+        const trs = days.map((e, _) => {
+            const groupNum = Math.ceil(e.length / WEEK_DAY_NUM);
+            const trs = new Array<number[]>();
+            for (let i = 0; i < groupNum; i++) {
+                trs[i] = new Array<number>();
+                for (let j = 0; j < WEEK_DAY_NUM; j++) {
+                    trs[i][j] = e[i * WEEK_DAY_NUM + j] || 0;
+                }
+            }
+            return trs;
+        });
+        this.days = [trs[0], trs[1]];
+    }
 
     getYearList(year: number): Array<number> {
         const years = [];
@@ -64,6 +66,19 @@ export class DateRangeComponent extends BaseTheme {
         return years;
     }
 
+    updateYears() {
+        this.yearList = [
+            this.getYearList(this.years[0]),
+            this.getYearList(this.years[1])
+        ];
+
+    }
+
+    updateAll() {
+        this.updateDays();
+        this.updateYears();
+    }
+
     constructor(configService: ConfigService) {
 
         super();
@@ -73,11 +88,16 @@ export class DateRangeComponent extends BaseTheme {
         // labels
         this.weekTitles = configService.config.weekTitles;
         this.monthTitles = configService.config.monthTitles;
+        this.confirmTitle = configService.config.pickerConfirmTitle
 
         // tody
         const date = new Date();
-        this.years[0] = date.getFullYear();
-        this.months[0] = date.getMonth() + 1;
+        this.years = [date.getFullYear(), date.getFullYear()];
+        this.months = [date.getMonth() + 1, date.getMonth() + 2];
+        if (this.months[1] > MAX_MONTH) {
+            this.years[1]++;
+            this.months[1] = MIN_MONTH;
+        }
 
         // active day
         this.activeDates.start = {
@@ -86,12 +106,17 @@ export class DateRangeComponent extends BaseTheme {
             day: date.getDate()
         };
         this.activeDates.end = null;
+
+        // update
+        // this.updateDays();
+        // this.updateYears();
+        this.updateAll();
     }
 
-    // updateRangeShow() {
-    //     this.month = this.activeDates.start.month;
-    //     this.year = this.activeDates.start.year;
-    // }
+    updateRangeShow() {
+        this.updateYear(this.activeDates.start.year);
+        this.updateMonth(this.activeDates.start.month);
+    }
 
 
     getMonth(month: number): string {
@@ -112,71 +137,95 @@ export class DateRangeComponent extends BaseTheme {
         }
     }
 
-    // setDay(day: number): void {
-    //     if (day <= 0) { return; }
-    //     const date = { year: this.year, month: this.month, day: day };
-    //     const dateTime = new Date(`${date.year}/${date.month}/${date.day}`).getTime();
-    //     const activeStartTime = new Date(`${this.activeDates.start.year}/${this.activeDates.start.month}/${this.activeDates.start.day}`).getTime();
-    //     if (this.activeDates.end != null) {
-    //         this.activeDates.start = date;
-    //         this.activeDates.end = null;
-    //     } else if (activeStartTime > dateTime) {
-    //         this.activeDates.end = this.activeDates.start;
-    //         this.activeDates.start = date;
-    //     } else {
-    //         this.activeDates.end = date;
-    //     }
-    // }
+    setDay(year: number, month: number, day: number): void {
+        if (day <= 0) { return; }
+        const date = { year, month, day };
+        const dateTime = new Date(`${date.year}/${date.month}/${date.day}`).getTime();
+        const activeStartTime = new Date(`${this.activeDates.start.year}/${this.activeDates.start.month}/${this.activeDates.start.day}`).getTime();
+        if (this.activeDates.end != null) {
+            this.activeDates.start = date;
+            this.activeDates.end = null;
+        } else if (activeStartTime > dateTime) {
+            this.activeDates.end = this.activeDates.start;
+            this.activeDates.start = date;
+        } else {
+            this.activeDates.end = date;
+        }
+    }
 
-    // isActiveDay(day: number): boolean {
-    //     return (this.activeDates.start != null
-    //         && this.year == this.activeDates.start.year
-    //         && this.month == this.activeDates.start.month
-    //         && day == this.activeDates.start.day)
-    //         || (this.activeDates.end != null
-    //             && this.year == this.activeDates.end.year
-    //             && this.month == this.activeDates.end.month
-    //             && day == this.activeDates.end.day);
-    // }
+    isActiveDay(year: number, month: number, day: number): boolean {
+        return this.isStartDay(year, month, day) || this.isEndDay(year, month, day);
+    }
 
-    // inRange(day: number) {
-    //     if (this.activeDates.end == null) {
-    //         return false;
-    //     }
-    //     const date = { year: this.year, month: this.month, day: day };
-    //     const dateTime = new Date(`${date.year}/${date.month}/${date.day}`).getTime();
-    //     const activeStartTime = new Date(`${this.activeDates.start.year}/${this.activeDates.start.month}/${this.activeDates.start.day}`).getTime();
-    //     const activeEndTime = new Date(`${this.activeDates.end.year}/${this.activeDates.end.month}/${this.activeDates.end.day}`).getTime();
-    //     return dateTime > activeStartTime && dateTime < activeEndTime;
-    // }
+    isStartDay(year: number, month: number, day: number): boolean {
+        return (this.activeDates.start != null
+            && year == this.activeDates.start.year
+            && month == this.activeDates.start.month
+            && day == this.activeDates.start.day);
+    }
 
-    // nextMonth() {
-    //     if (this.month < MAX_MONTH) {
-    //         this.month++;
-    //     } else {
-    //         this.year++;
-    //         this.month = MIN_MONTH;
-    //     }
-    // }
+    isEndDay(year: number, month: number, day: number): boolean {
+        return (this.activeDates.end != null
+            && year == this.activeDates.end.year
+            && month == this.activeDates.end.month
+            && day == this.activeDates.end.day);
+    }
 
-    // prevMonth() {
-    //     if (this.month > MIN_MONTH) {
-    //         this.month--;
-    //     } else if (this.year > MIN_YEAR) {
-    //         this.year--;
-    //         this.month = MAX_MONTH;
-    //     }
-    // }
+    inRange(year: number, month: number, day: number) {
+        if (this.activeDates.end == null) {
+            return false;
+        }
+        const date = { year, month, day };
+        const dateTime = new Date(`${date.year}/${date.month}/${date.day}`).getTime();
+        const activeStartTime = new Date(`${this.activeDates.start.year}/${this.activeDates.start.month}/${this.activeDates.start.day}`).getTime();
+        const activeEndTime = new Date(`${this.activeDates.end.year}/${this.activeDates.end.month}/${this.activeDates.end.day}`).getTime();
+        return dateTime >= activeStartTime && dateTime <= activeEndTime;
+    }
 
-    // nextYear() {
-    //     this.year++;
-    // }
+    nextMonth() {
+        if (this.months[0] < MAX_MONTH) {
+            this.months[0]++;
+        } else {
+            this.years[0]++;
+            this.months[0] = MIN_MONTH;
+        }
+        this.updateMonth(this.months[0]);
+    }
 
-    // prevYear() {
-    //     if (this.year > MIN_YEAR) {
-    //         this.year--;
-    //     }
-    // }
+    prevMonth() {
+        if (this.months[0] > MIN_MONTH) {
+            this.months[0]--;
+        } else if (this.years[0] > MIN_YEAR) {
+            this.years[0]--;
+            this.months[0] = MAX_MONTH;
+        }
+        this.updateMonth(this.months[0]);
+    }
+
+    updateMonth(month: number) {
+        this.months[0] = month;
+        this.months[1] = month === MAX_MONTH ? MIN_MONTH : month + 1;
+        this.updateYear(this.years[0]);
+        // this.updateAll();
+    }
+
+    nextYear() {
+        this.updateYear(this.years[0] + 1);
+        this.updateAll();
+    }
+
+    prevYear() {
+        if (this.years[0] > MIN_YEAR) {
+            this.updateYear(this.years[0] - 1);
+        }
+        this.updateAll();
+    }
+
+    updateYear(year: number) {
+        this.years[0] = year;
+        this.years[1] = this.months[0] === MAX_MONTH ? this.years[0] + 1 : this.years[0];
+        this.updateAll();
+    }
 
     updateRange() {
         this.dateChange.emit(this.activeDates);

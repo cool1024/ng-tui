@@ -13,6 +13,7 @@ import { DateRangeComponent } from './date-range.component';
         <ng-content></ng-content>
     </div>
     <div #menuView="tsView"
+        (displayChange)="$event&&this.dateRange.updateRangeShow()"
         [ngStyle]="{zIndex:zIndex}"
         position="auto"
         tsView="fadeIn"
@@ -48,7 +49,7 @@ export class DatepickersComponent extends BaseForm {
         if (value && value.start && value.end) {
             this.activeDates.end = this.getTimeObj(value.end);
         }
-        if(this.dateRange){
+        if (this.dateRange) {
             this.dateRange.updateRangeShow();
         }
     }

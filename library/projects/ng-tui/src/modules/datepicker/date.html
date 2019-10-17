@@ -1,4 +1,4 @@
-<div style="height:320px;width:280px;overflow: hidden;">
+<div style="height:350px;width:280px;overflow: hidden;">
     <table class="ts-datepicker-table w-100">
         <thead>
             <tr class="ts-weeks">
@@ -12,17 +12,21 @@
                 <td class="text-muted ts-month-title" colspan="7">{{getMonth(month)}} </td>
             </tr>
             <tr *ngFor="let tr of trList;trackBy: trackByFn" class="text-dark">
-                <td class="text-center" *ngFor="let td of tr" [class.range]="inRange(td)">
+                <td class="text-center ts-day-td" *ngFor="let td of tr">
                     <div (click)="setDay(td)" class="ts-day m-auto rounded-circle
                         {{!isActiveDay(td)||('bg-'+color)}}" [class.text-white]="isActiveDay(td)"
                         [class.ts-day-hover]="td" close>{{td||''}}</div>
                 </td>
             </tr>
             <tr *ngIf="trList.length<5" class="text-dark">
-                <td class="ts-day" colspan="7">&nbsp;</td>
+                <td class="ts-day-td" colspan="7">
+                    <div class="ts-day"></div>
+                </td>
             </tr>
             <tr *ngIf="trList.length<6" class="text-dark">
-                <td class="ts-day" colspan="7">&nbsp;</td>
+                <td class="ts-day-td" colspan="7">
+                    <div class="ts-day"></div>
+                </td>
             </tr>
             <tr>
                 <td class="text-right" colspan="7">

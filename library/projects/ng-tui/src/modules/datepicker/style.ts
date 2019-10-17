@@ -15,15 +15,19 @@ export const styleStr = `.ts-datepicker-table {
 .ts-day {
     width: 35px;
     height: 35px;
-    line-height: 35px;
+    line-height: 31px;
+    border:2px solid transparent;
 }
 .ts-day-hover:hover {
     background-color: #eee;
 }
-.range{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABDSURBVFiF7c4xDcAwEACxTyGUP9gwSIdTlcVG4BngaM3Meztx8twOfBGsBCvBSrASrAQrwUqwEqwEK8FKsBKsBIGfbZTdAE7ig9T/AAAAAElFTkSuQmCC);}       
-.range .ts-day-hover:hover {
-    background-color: transparent !important;
-}
+.ts-day-td {border-top:3px solid white;height:40px;vertical-align: middle;}
+.ts-day-td.start{border-bottom-left-radius: 50%;border-top-left-radius: 50%;}
+.ts-day-td.start .ts-day{border-color:white;}
+.ts-day-td.end{border-bottom-right-radius: 50%;border-top-right-radius: 50%;}
+.ts-day-td.end .ts-day{border-color:white;}
+.range {background-color: #eaeaea;}
+.range .ts-day-hover:hover {background-color: transparent !important;}
 th {
     font-weight: normal;
     font-family: Microsoft YaiHei, 微软雅黑, KaiTi;

@@ -16,6 +16,7 @@ export class ConfigService {
             uploadItemSize: 120,
             weekTitles: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
             monthTitles: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            pickerConfirmTitle: 'OK',
             paginationItems: []
         }, config);
     }
