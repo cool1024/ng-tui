@@ -32,7 +32,7 @@ $enable-gradients: false;
 $enable-transitions: false;
 $enable-print-styles: true;
 
-$font-size-base: 0.8rem;
+$font-size-base: 0.95rem;
 $font-weight-light: 300;
 $font-weight-normal: 400;
 $font-weight-bold: 500;
@@ -107,7 +107,7 @@ $theme-colors: ("primary": $primary, "secondary": $secondary, "success": $succes
 @import "~bootstrap/scss/progress";
 @import "~bootstrap/scss/media";
 
-// @import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/list-group";
 @import "~bootstrap/scss/close";
 @import "~bootstrap/scss/modal";
 

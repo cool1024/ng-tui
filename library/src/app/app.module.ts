@@ -17,6 +17,7 @@ import {
 import { FlashComponent } from './demo/flash.component';
 import { ExampleModalComponent } from './demo/example-modal.component';
 import { UploadModule } from 'projects/ng-tui/src/modules/upload/upload.module';
+import { AppRoutingModule } from './app.routing';
 
 @NgModule({
     declarations: [
@@ -45,7 +46,8 @@ import { UploadModule } from 'projects/ng-tui/src/modules/upload/upload.module';
         CssloadModule,
         SelectModule,
         ModalModule,
-        UploadModule
+        UploadModule,
+        AppRoutingModule
     ],
     providers: [],
     bootstrap: [AppComponent]

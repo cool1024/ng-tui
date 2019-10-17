@@ -24,10 +24,50 @@
 
 <button tsBtn (click)="showConfirm()">确认</button> -->
 <!-- <ts-upload [uploader]="uploader"></ts-upload> -->
-<ts-datepickers color="success" [(ngModel)]="range">
+<!-- <ts-datepickers color="success" [(ngModel)]="range">
     <input class="form-control bg-white pointer" readonly
         value="{{range.start|date:'yyyy-MM-dd'}}/{{range.end|date:'yyyy-MM-dd'}}" />
 </ts-datepickers>
 <ts-datepicker color="success" [(ngModel)]="date">
     <input class="form-control bg-white pointer" readonly value="{{date|date:'yyyy-MM-dd'}}" />
-</ts-datepicker>
+</ts-datepicker> -->
+<div class="container d-flex mt-5">
+    <div class="flex-shrink-0" style="width:240px;">
+        <h4>Base</h4>
+        <ul class="list-group border-0" style="font-size: 15px;">
+            <li routerLink="/base/button" class="py-2">Button</li>
+            <li class="py-2">Image</li>
+            <li class="py-2">Icon</li>
+            <li class="py-2">Pagination</li>
+            <li class="py-2">Dropdown</li>
+        </ul>
+        <h4 class="mt-5">Form</h4>
+        <ul class="list-group border-0" style="font-size: 15px;">
+            <li class="py-2 text-primary text-hover-primary">DatePicker</li>
+            <li class="py-2">Select</li>
+            <li class="py-2">Search</li>
+            <li class="py-2">Check</li>
+        </ul>
+        <h4 class="mt-5">Show</h4>
+        <ul class="list-group border-0" style="font-size: 15px;">
+            <li class="py-2 text-primary text-hover-primary">ToolTip</li>
+            <li class="py-2">Toast</li>
+            <li class="py-2">Confirm</li>
+            <li class="py-2">Progress</li>
+            <li class="py-2">Loading</li>
+            <li class="py-2">Menu</li>
+            <li class="py-2">Modal</li>
+            <li class="py-2">Window</li>
+        </ul>
+        <h4 class="mt-5">Other</h4>
+        <ul class="list-group border-0" style="font-size: 15px;">
+            <li class="py-2">Upload</li>
+            <li class="py-2">Editor</li>
+            <li class="py-2">Map</li>
+            <li class="py-2">Chart</li>
+        </ul>
+    </div>
+    <div class="flex-grow-1 pl-3">
+        <router-outlet></router-outlet>
+    </div>
+</div>

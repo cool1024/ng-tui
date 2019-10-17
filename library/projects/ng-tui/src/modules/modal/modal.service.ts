@@ -2,7 +2,6 @@ import { Injectable, Injector, ComponentFactoryResolver, ApplicationRef } from '
 import { ComponentService } from '../../tui-core/component-creator/component.service';
 import { ModalComponent } from './modal.component';
 import { ModalHandle } from './modal.handle';
-import { ModalViewService } from './handle.service';
 import { ComponentHandleService } from '../../tui-core/component-creator/handle.service';
 
 @Injectable()
