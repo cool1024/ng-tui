@@ -4,31 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {
     TUIModule,
-    DatepickerModule,
-    CheckboxModule,
-    PaginationModule,
-    IconfontModule,
-    CssloadModule,
-    TooltipsModule,
-    SelectModule,
-    ModalModule,
-    ConfirmModule,
 } from '../../projects/ng-tui/src/public_api';
-import { FlashComponent } from './demo/flash.component';
-import { ExampleModalComponent } from './demo/example-modal.component';
-import { UploadModule } from 'projects/ng-tui/src/modules/upload/upload.module';
 import { AppRoutingModule } from './app.routing';
 
 @NgModule({
     declarations: [
-        AppComponent,
-        FlashComponent,
-        ExampleModalComponent,
+        AppComponent
     ],
-    entryComponents: [
-        FlashComponent,
-        ExampleModalComponent,
-    ],
+    entryComponents: [],
     imports: [
         BrowserModule,
         FormsModule,
@@ -37,16 +20,6 @@ import { AppRoutingModule } from './app.routing';
             confirmOkTitle: '确认',
             paginationItems: [{ text: '显示 5 条', value: 5 }, { text: '显示 10 条', value: 10 }, { text: '显示 20 条', value: 20 }]
         }),
-        ConfirmModule,
-        IconfontModule,
-        DatepickerModule,
-        CheckboxModule,
-        PaginationModule,
-        TooltipsModule,
-        CssloadModule,
-        SelectModule,
-        ModalModule,
-        UploadModule,
         AppRoutingModule
     ],
     providers: [],

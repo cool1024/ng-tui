@@ -8,14 +8,14 @@
     Bootstrap base button,loading button.
 </div>
 <hr>
-<div class="mb-4">
+<div class="mb-4 border p-3">
     <div class="m-btn">
         <div>
             <h3 class="d-inline">Selector:&nbsp;
                 <code>button[tsBtn] </code>
             </h3>
-            <button tsBtn color="white">Button</button>
         </div>
+        <br>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -30,51 +30,51 @@
                     <td>
                         <code>string</code>
                     </td>
-                    <td>Color setting</td>
+                    <td>Color name, such as 'success', 'primary', etc.</td>
                 </tr>
                 <tr>
                     <th scope="row">disabled</th>
                     <td>
                         <code>boolean</code>
                     </td>
-                    <td>是否禁用按钮</td>
+                    <td>Whether to disable the button</td>
                 </tr>
                 <tr>
                     <th scope="row">outline</th>
                     <td>
-                        <code>boolean 不设值时为启用</code>
+                        <code>boolean</code>
                     </td>
-                    <td>添加这个属性按钮将会使用outline样式</td>
+                    <td>Whether to use outline style</td>
                 </tr>
                 <tr>
                     <th scope="row">sm</th>
                     <td>
-                        <code>boolean 不设值使用为启用</code>
+                        <code>boolean</code>
                     </td>
-                    <td>添加这个属性按钮会变小</td>
+                    <td>Small size</td>
                 </tr>
                 <tr>
                     <th scope="row">lg</th>
                     <td>
-                        <code>boolean 不设值时为启用</code>
+                        <code>boolean</code>
                     </td>
-                    <td>添加这个属性按钮会变大</td>
+                    <td>Large size</td>
                 </tr>
                 <tr>
                     <th scope="row">loading</th>
                     <td>
-                        <code>string 不设值使用默认图标（默认图标可以全局配置）</code>
+                        <code>string</code>
                     </td>
-                    <td>添加这个属性点击按钮会有加载动画，默认加载图标为loading</td>
+                    <td>Loading icon name</td>
                 </tr>
             </tbody>
         </table>
         <table class="table table-striped mt-2">
             <thead>
                 <tr>
-                    <th scope="col">事件名称</th>
-                    <th scope="col">事件类型</th>
-                    <th scope="col">说明</th>
+                    <th scope="col">Output</th>
+                    <th scope="col" style="width: 120px;">Event Type</th>
+                    <th scope="col">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -83,17 +83,18 @@
                     <td>
                         <code>Loader</code>
                     </td>
-                    <td>当按钮设置了loading属性时，每次按下按钮会触发submit绑定的方法,$event用来关闭动画</td>
+                    <td>When the button sets the loading property, each time the button is pressed, the submit event is
+                        triggered, and $event is used to close the animation.</td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
-<div class="p-3">
-
-    <div class="card mb-2">
-        <div class="card-header bg-white">按钮颜色</div>
-        <div class="card-body m-btn">
+<div class="mb-4 p-3 border">
+    <div class="mb-2">
+        <h3 class="bg-white">Color</h3>
+        <br>
+        <div class="m-btn">
             <button tsBtn>Default</button>
             <button tsBtn color="white">White</button>
             <button tsBtn color="primary">Primary</button>
@@ -103,40 +104,40 @@
             <button tsBtn color="danger">Purple</button>
             <button tsBtn color="info">Info</button>
         </div>
-    </div>
-    <div class="card mb-2">
-        <div class="card-header bg-white">空心按钮</div>
-        <div class="card-body m-btn">
-            <button tsBtn outline>Default</button>
-            <button tsBtn outline color="white">White</button>
-            <button tsBtn outline color="primary">Primary</button>
-            <button tsBtn outline color="secondary">Scondary</button>
-            <button tsBtn outline color="success">Success</button>
-            <button tsBtn outline color="warning">Pink</button>
-            <button tsBtn outline color="danger">Purple</button>
-            <button tsBtn outline color="info">Info</button>
+        <div>
+            <ts-prism code="var a = b;" language="javascript"></ts-prism>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="card mb-2">
-                <div class="card-header bg-white">尺寸</div>
-                <div class="card-body m-btn">
-                    <button tsBtn sm>Small</button>
-                    <button tsBtn>Default</button>
-                    <button tsBtn lg>Large</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="card mb-2">
-                <div class="card-header bg-white">加载动画</div>
-                <div class="card-body m-btn">
-                    <button tsBtn loading sm (submit)="doSubmit($event)">Small</button>
-                    <button tsBtn loading (submit)="doSubmit($event)">Default</button>
-                    <button tsBtn loading lg (submit)="doSubmit($event)">Large</button>
-                </div>
-            </div>
-        </div>
+</div>
+<div class="mb-4 p-3 border">
+    <h3>Outline</h3>
+    <br>
+    <div class="m-btn">
+        <button tsBtn outline>Default</button>
+        <button tsBtn outline color="white">White</button>
+        <button tsBtn outline color="primary">Primary</button>
+        <button tsBtn outline color="secondary">Scondary</button>
+        <button tsBtn outline color="success">Success</button>
+        <button tsBtn outline color="warning">Pink</button>
+        <button tsBtn outline color="danger">Purple</button>
+        <button tsBtn outline color="info">Info</button>
+    </div>
+</div>
+<div class="mb-4 p-3 border">
+    <h3>Size</h3>
+    <br>
+    <div class="m-btn">
+        <button tsBtn sm>Small</button>
+        <button tsBtn>Default</button>
+        <button tsBtn lg>Large</button>
+    </div>
+</div>
+<div class="mb-4 p-3 border">
+    <h3>Loading</h3>
+    <br>
+    <div class="m-btn">
+        <button tsBtn loading (submit)="doSubmit($event)">Loading</button>
+        <button tsBtn loading="favorite" (submit)="doSubmit($event)">Custom-icon-favorite</button>
+        <button tsBtn loading="hand" (submit)="doSubmit($event)">Custom-icon-hand</button>
     </div>
 </div>

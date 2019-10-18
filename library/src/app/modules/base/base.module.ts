@@ -7,11 +7,12 @@
  */
 import { NgModule } from '@angular/core';
 import { declarationComponents, entryComponents, BaseRoutingModule } from './base.routing';
-import { ButtonModule } from 'projects/ng-tui/src/public_api';
+import { ButtonModule, PrismModule } from 'projects/ng-tui/src/public_api';
 
 @NgModule({
     imports: [
         ButtonModule,
+        PrismModule,
         BaseRoutingModule,
     ],
     declarations: [declarationComponents],
