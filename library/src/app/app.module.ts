@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {
-    TUIModule,
+    TUIModule, CollapseModule,
 } from '../../projects/ng-tui/src/public_api';
 import { AppRoutingModule } from './app.routing';
 
@@ -20,6 +20,7 @@ import { AppRoutingModule } from './app.routing';
             confirmOkTitle: '确认',
             paginationItems: [{ text: '显示 5 条', value: 5 }, { text: '显示 10 条', value: 10 }, { text: '显示 20 条', value: 20 }]
         }),
+        CollapseModule,
         AppRoutingModule
     ],
     providers: [],

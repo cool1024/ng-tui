@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable, interval } from 'rxjs';
 import { take, map } from 'rxjs/operators';
+import { NodeItem, requestObject, MenuItem } from 'projects/ng-tui/src/public_api';
 
 @Component({
     selector: 'app-root',
@@ -13,5 +14,12 @@ export class AppComponent {
         return interval(100).pipe(take(101), map(progress => progress >= 100 ? 'success' : progress));
     }
 
-    constructor() { }
+    menus: MenuItem[] = [];
+
+    constructor() {
+        requestObject('/assets/menu.json').subscribe(obj => {
+            this.menus = obj;
+            console.log(this.menus);
+        });
+    }
 }

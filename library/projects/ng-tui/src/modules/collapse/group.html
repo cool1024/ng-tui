@@ -1,0 +1,8 @@
+<div tsCollapses class="pl-4">
+    <div tsToggle class="pointer py-3">
+        {{node.title}}
+    </div>
+    <div tsCollapse>
+        <ts-group *ngFor="let item of node.children" [node]="item"></ts-group>
+    </div>
+</div>

@@ -31,6 +31,77 @@
 <ts-datepicker color="success" [(ngModel)]="date">
     <input class="form-control bg-white pointer" readonly value="{{date|date:'yyyy-MM-dd'}}" />
 </ts-datepicker> -->
+<div style="width:200px;" class="bg-warning">
+    <ts-group *ngFor="let menu of menus" [node]="menu"></ts-group>
+</div>
+<pre>{{menu | json}}</pre>
+
+
+<div class="card mb-3">
+    <div class="card-header border-bottom">手风琴</div>
+    <div class="card-body">
+        <div tsCollapses>
+            <div class="shadow mb-2 rounded">
+                <div class="card-header pointer rounded d-flex justify-content-between" tsToggle>
+                    <span>你可以点击标题展开这个卡片</span>
+                    <i tsIcon="down"></i>
+                </div>
+                <div tsCollapse [open]="true">
+                    <div class="card-body rounded">
+                        <div class="media">
+                            <img class="align-self-start p-1 border mr-3 rounded-circle"
+                                src="assets/images/avatar/0.jpg" height="70" width="70">
+                            <div class="media-body">
+                                <h5 class="mt-0">可儿 那由多（かに なゆた）</h5>
+                                <p>伊月的后辈，中学时遭受校园欺凌而不愿再上学，偶然之下看到羽岛伊月的出道作觉得很有趣，甚至还爱慕上了当时尚未谋面的对方。为了想和他见面于是就自己开始写小说，并投稿至伊月参加过的新人奖。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shadow mb-2 rounded">
+                <div tsToggle class="card-header pointer rounded d-flex justify-content-between">
+                    <span>你可以点击标题展开这个卡片</span>
+                    <i tsIcon="down"></i>
+                </div>
+                <div tsCollapse>
+                    <div class="card-body rounded">
+                        <div class="media">
+                            <img class="align-self-start p-1 border mr-3 rounded-circle"
+                                src="assets/images/avatar/1.png" height="70" width="70">
+                            <div class="media-body">
+                                <h5 class="mt-0">羽岛 千寻（はしま ちひろ）</h5>
+                                <p>伊月没有血缘关系的弟弟，实际上是女孩子，但伊月并不知道这件事情。知道她是女孩子的除了父母与同学外，只有大野艾希莉。由于羽岛伊月基本上并无生活自理能力，因此会负责住家的打扫与煮饭。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shadow mb-2 rounded">
+                <div class="card-header pointer rounded d-flex justify-content-between" tsToggle>
+                    <span>你可以点击标题展开这个卡片</span>
+                    <i tsIcon="down"></i>
+                </div>
+                <div tsCollapse>
+                    <div class="card-body rounded">
+                        <div class="media mb-2">
+                            <img class="align-self-start p-1 border mr-3 rounded-circle"
+                                src="assets/images/avatar/2.png" height="70" width="70">
+                            <div class="media-body">
+                                <h5 class="mt-0">不破 春斗（ふわ はると）</h5>
+                                <p>与伊月同期出道的小说家，私底下很喜欢女仆与成人游戏，害怕手中握有自己把柄的税理士·大野艾希莉。遵守截稿日的程度属于“天使”等级。轻小说作品“绝界的圣灵骑士”动画化，但成品惨不忍睹。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container d-flex mt-5">
     <div class="flex-shrink-0" style="width:240px;">
         <h4>Base</h4>
