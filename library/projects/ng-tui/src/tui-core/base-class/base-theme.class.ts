@@ -20,10 +20,9 @@ export class BaseTheme {
         return `bg-${this.color}`;
     }
 
-    get bgWithTextClass():string{
+    get bgWithTextClass(): string {
         return `bg-${this.color} text-white`;
     }
-    
 
     get getSize(): string {
         return this.isApply(this.lg) ? 'lg' : (this.isApply(this.sm) ? 'sm' : 'md');

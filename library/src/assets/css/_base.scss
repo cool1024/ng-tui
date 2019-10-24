@@ -1,3 +1,73 @@
+a,
+button,
+input,
+select,
+textarea {
+    outline: 0 none !important;
+    text-decoration: none !important;
+    z-index: 0 !important;
+    box-shadow: 0px 0px 0px white !important;
+}
+
+input:disabled,
+textarea:disabled,
+button:disabled {
+    z-index: 0 !important;
+    cursor: not-allowed;
+}
+
+.no-select {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+
+.table td,
+.table th {
+    vertical-align: middle !important;
+}
+
+pre {
+    margin-bottom: 0 !important;
+}
+
+div,
+span {
+    outline: 0 none !important;
+}
+
+a:link,
+a:active,
+a:hover,
+a:visited {
+    text-decoration: none;
+}
+
+.dropup .dropdown-menu {
+    bottom: auto !important;
+}
+
+ts-select {
+    height: auto !important;
+}
+
+.dropdown-menu {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.selects-disabled {
+    cursor: not-allowed;
+    background-color: $gray-200;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid rgba($cyan, 0.1) !important;
+}
+
 .m-btn .btn:not(:first-child) {
     @extend .ml-3;
 }
@@ -23,7 +93,7 @@
 
 .btn-outline-white:not(:disabled):not(.disabled):active,
 .btn-outline-white:not(:disabled):not(.disabled).active,
-.show > .btn-outline-white.dropdown-toggle {
+.show>.btn-outline-white.dropdown-toggle {
     color: $dark;
     border-color: $gray-400;
     background-color: $gray-300;
@@ -64,7 +134,8 @@
     opacity: 0.8;
 }
 
-@each $name, $color in $theme-colors {
+@each $name,
+$color in $theme-colors {
     .btn-#{$name} {
         &:active {
             box-shadow: 0 0 0 0.2rem rgba($color, 0.2) !important;
@@ -104,7 +175,8 @@
     opacity: 0.8;
 }
 
-@each $name, $color in $theme-colors {
+@each $name,
+$color in $theme-colors {
     .btn-icon-#{$name} {
         color: $color;
     }
@@ -145,7 +217,8 @@
     width: 100%;
 }
 
-@each $name, $color in $theme-colors {
+@each $name,
+$color in $theme-colors {
     .radio-#{$name} {
         border: 1px solid rgba($color, 0.7);
     }
@@ -217,7 +290,8 @@
     margin-left: 2px;
 }
 
-@each $name, $color in $theme-colors {
+@each $name,
+$color in $theme-colors {
     .switch-#{$name}.active .switch-line {
         transition: all .3s linear;
         background-color: $color;
@@ -267,7 +341,9 @@
     overflow: hidden;
 }
 
-@each $name, $color in $theme-colors {
+@each $name,
+$color in $theme-colors {
+
     .pagination-tool-#{$name},
     .pagination-button-#{$name} {
         background-color: rgba($color, 0.1);
@@ -297,7 +373,8 @@ ts-tab {
     display: block;
 }
 
-@each $name, $color in $theme-colors {
+@each $name,
+$color in $theme-colors {
     .nav-link-#{$name}.active {
         border-top: 3px solid $color !important;
         color: $color !important;
@@ -426,7 +503,8 @@ ts-tab {
     color: $white;
 }
 
-@each $name, $color in $theme-colors {
+@each $name,
+$color in $theme-colors {
     .dot-#{$name} {
         background-color: $color;
     }
@@ -504,7 +582,6 @@ ts-tab {
 
 /** breadcrumb **/
 .breadcrumb {
-    line-height: 4;
     color: $gray-600;
 }
 
@@ -514,6 +591,7 @@ ts-tab {
 
 .breadcrumb a:not(:last-child):after {
     content: " /";
+    margin-left: 0.25rem;
 }
 
 .breadcrumb i {
@@ -566,15 +644,20 @@ ts-tab {
 }
 
 /** hover **/
-$more_colors: map-merge($theme-colors, ("white": white));
+$more_colors: map-merge($theme-colors, ("white": white, 'muted':#ccc));
 
-@each $name, $color in $more_colors {
+@each $name,
+$color in $more_colors {
     .bg-#{$name}-muted {
         background-color: rgba($color, 0.1);
     }
 
     .bg-white-muted {
         background-color: rgba($color, 0.1);
+    }
+
+    .bg-#{$name}-hover.active {
+        background-color: rgba($color, 0.2);
     }
 
     .bg-#{$name}-hover:hover {
@@ -594,4 +677,26 @@ $more_colors: map-merge($theme-colors, ("white": white));
         color: $color;
         transition: color ease-in-out .3s;
     }
+
+    .circle-#{$name}-hover:hover {
+        position: relative;
+
+        &::after {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            background-color: rgba($color, 0.4);
+        }
+    }
+}
+
+/** shadow **/
+
+.shadow-sm-right {
+    box-shadow: 0.22rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }

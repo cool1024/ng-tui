@@ -5,12 +5,13 @@ export interface NodeItem {
 }
 
 export interface MenuItem {
-    title: string;
+    title?: string;
     route?: string;
     image?: string;
     icon?: string;
-    children: MenuItem[];
+    children?: MenuItem[];
     active?: boolean;
+    close?: boolean;
 }
 
 export interface MenuTheme {

@@ -10,14 +10,16 @@ import { NodeItem, requestObject, MenuItem } from 'projects/ng-tui/src/public_ap
 })
 export class AppComponent {
 
-    uploader = (file: File): Observable<number | string> => {
-        return interval(100).pipe(take(101), map(progress => progress >= 100 ? 'success' : progress));
-    }
-
     menu: MenuItem = {
         title: '',
         children: []
     };
+
+    notes: MenuItem[] = [{ icon: 'iconfont icon-home', close: false }];
+
+    uploader = (file: File): Observable<number | string> => {
+        return interval(100).pipe(take(101), map(progress => progress >= 100 ? 'success' : progress));
+    }
 
     constructor() {
         requestObject('/assets/menu.json').subscribe(obj => {
@@ -27,5 +29,10 @@ export class AppComponent {
     }
 
     navHandler(item: MenuItem) {
+        if (item.route) {
+            item.close = true;
+            this.notes.push(item);
+            this.notes = Array.from(new Set(this.notes));
+        }
     }
 }
