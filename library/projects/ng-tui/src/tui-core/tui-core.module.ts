@@ -6,6 +6,7 @@ import { ComponentHandleService } from './component-creator/handle.service';
 import { ComponentService } from './component-creator/component.service';
 import { ViewDirective } from './component-creator/view.directive';
 import { ValueChangeListenerService } from './base-services/value-listener.service';
+import { RequestPipe } from './pipes/request.pipe';
 
 @NgModule({
     imports: [
@@ -14,11 +15,13 @@ import { ValueChangeListenerService } from './base-services/value-listener.servi
     exports: [
         ToggleDirective,
         ViewDirective,
+        RequestPipe,
         CommonModule,
     ],
     declarations: [
         ToggleDirective,
         ViewDirective,
+        RequestPipe,
     ],
     providers: [
         ValueChangeListenerService,

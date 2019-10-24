@@ -31,10 +31,22 @@
 <ts-datepicker color="success" [(ngModel)]="date">
     <input class="form-control bg-white pointer" readonly value="{{date|date:'yyyy-MM-dd'}}" />
 </ts-datepicker> -->
-<ts-group [node]="menu" [width]="250" class="bg-white d-block shadow"
-    style="width: 250px;height:100vh;overflow-y: auto;overflow-x: hidden;-webkit-user-select: none;"
-    (itemClick)="navHandler($event)">
-</ts-group>
+<div class="d-flex">
+    <ts-group [node]="menu" [width]="250" class="bg-white d-block shadow flex-shrink-0"
+        style="width: 250px;height:100vh;overflow-y: auto;overflow-x: hidden;-webkit-user-select: none;"
+        (itemClick)="navHandler($event)">
+    </ts-group>
+    <div class="flex-grow-1">
+        <nav class="navbar bg-light d-flex">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
+</div>
+
 
 <!-- <div class="container d-flex mt-5">
     <div class="flex-shrink-0" style="width:240px;">
