@@ -31,11 +31,12 @@
 <ts-datepicker color="success" [(ngModel)]="date">
     <input class="form-control bg-white pointer" readonly value="{{date|date:'yyyy-MM-dd'}}" />
 </ts-datepicker> -->
-<div style="width:200px;" class="bg-warning">
-    <ts-group *ngFor="let menu of menus" [node]="menu"></ts-group>
-</div>
+<ts-group [node]="menu" [width]="250" class="bg-white d-block shadow"
+    style="width: 250px;height:100vh;overflow-y: auto;overflow-x: hidden;-webkit-user-select: none;"
+    (itemClick)="navHandler($event)">
+</ts-group>
 
-<div class="container d-flex mt-5">
+<!-- <div class="container d-flex mt-5">
     <div class="flex-shrink-0" style="width:240px;">
         <h4>Base</h4>
         <ul class="list-group border-0" style="font-size: 15px;">
@@ -74,4 +75,4 @@
     <div class="flex-grow-1 pl-3">
         <router-outlet></router-outlet>
     </div>
-</div>
+</div> -->

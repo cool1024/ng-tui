@@ -24,16 +24,16 @@ export class CollapseDirective implements AfterViewInit, OnChanges, Toggle {
 
     ngAfterViewInit() {
         this.pad = this.elementRef.nativeElement;
-        this.updateCollapseShow();
+        this.updateCollapseShow(true);
     }
 
-    updateCollapseShow() {
+    updateCollapseShow(ignoreEmit = false) {
         if (this.pad) {
             this.open ? (
                 this.pad.classList.remove(BootstrapClass.DisplayNone)
                 // this.pad.classList.add(AnimateCssClass.Prefix, AnimateCssClass.Pulse)
             ) : this.pad.classList.add(BootstrapClass.DisplayNone);
-            this.openChange.emit(this.open);
+            if (!ignoreEmit) this.openChange.emit(this.open);
         }
     }
 

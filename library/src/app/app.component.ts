@@ -14,12 +14,18 @@ export class AppComponent {
         return interval(100).pipe(take(101), map(progress => progress >= 100 ? 'success' : progress));
     }
 
-    menus: MenuItem[] = [];
+    menu: MenuItem = {
+        title: '',
+        children: []
+    };
 
     constructor() {
         requestObject('/assets/menu.json').subscribe(obj => {
-            this.menus = obj;
-            console.log(this.menus);
+            this.menu.children = obj;
+            console.log(this.menu);
         });
+    }
+
+    navHandler(item: MenuItem) {
     }
 }
