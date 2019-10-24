@@ -13,7 +13,7 @@ export class ImageDirective implements OnChanges {
 
     @HostBinding('src') _src: string;
 
-    @HostListener('error', ['$event.target']) onError(image: HTMLImageElement) {
+    @HostListener('error') onError() {
         this._src = this.dataSrc || this.configService.config.errorImgSrc;
     }
 

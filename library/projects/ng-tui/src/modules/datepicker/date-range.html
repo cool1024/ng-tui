@@ -1,0 +1,97 @@
+<div class="d-flex justify-content-between" style="height:350px;width:580px;">
+    <table class="ts-datepicker-table flex-grow-1 mr-1">
+        <thead>
+            <tr class="ts-weeks">
+                <th class="text-center text-{{(i===6||i===0)&&color}}" *ngFor="let title of weekTitles;index as i">
+                    {{title}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-muted ts-month-title" colspan="7">{{getMonth(months[0])}}&nbsp;&nbsp;{{years[0]}}</td>
+            </tr>
+            <tr *ngFor="let tr of days[0];trackBy: trackByFn" class="text-dark">
+                <td class="text-center ts-day-td {{isStartDay(years[0],months[0],td)&&'start'}} {{isEndDay(years[0],months[0],td)&&'end'}}"
+                    *ngFor="let td of tr" [class.range]="inRange(years[0],months[0],td)"
+                    (click)="setDay(years[0],months[0],td)">
+                    <div class="ts-day m-auto rounded-circle {{!isActiveDay(years[0],months[0],td)||('bg-'+color)}}"
+                        [class.ts-day-hover]="td" [class.text-white]="isActiveDay(years[0],months[0],td)">{{td||''}}
+                    </div>
+                </td>
+            </tr>
+            <tr *ngIf="days[0].length<5">
+                <td class="ts-day" colspan="7">&nbsp;</td>
+            </tr>
+            <tr *ngIf="days[0].length<6">
+                <td class="ts-day" colspan="7">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="text-left" colspan="7">
+                    <div class="btn-group">
+                        <button tsBtn style="opacity:0">&gt;</button>
+                    </div>
+                    <div class="btn-group ml-1">
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="ts-datepicker-table flex-grow-1 ml-1">
+        <thead>
+            <tr class="ts-weeks">
+                <th class="text-center text-{{(i===6||i===0)&&color}}" *ngFor="let title of weekTitles;index as i">
+                    {{title}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-muted ts-month-title" colspan="7">{{getMonth(months[1])}}&nbsp;&nbsp;{{years[1]}}</td>
+            </tr>
+            <tr *ngFor="let tr of days[1];trackBy: trackByFn" class="text-dark">
+                <td class="text-center ts-day-td {{isStartDay(years[1],months[1],td)&&'start'}} {{isEndDay(years[1],months[1],td)&&'end'}}"
+                    *ngFor="let td of tr" [class.range]="inRange(years[1],months[1],td)"
+                    (click)="setDay(years[1],months[1],td)">
+                    <div class="ts-day m-auto rounded-circle {{!isActiveDay(years[1],months[1],td)||('bg-'+color)}}"
+                        [class.ts-day-hover]="td" [class.text-white]="isActiveDay(years[1],months[1],td)">{{td||''}}
+                    </div>
+                </td>
+            </tr>
+            <tr *ngIf="days[1].length<5">
+                <td class="ts-day" colspan="7">&nbsp;</td>
+            </tr>
+            <tr *ngIf="days[1].length<6">
+                <td class="ts-day" colspan="7">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="text-left" colspan="7">
+                    <div class="d-flex justify-content-between">
+                        <button (click)="updateRange()" class="mr-1" [tsBtn]="color" sm close>{{confirmTitle}}</button>
+                        <div>
+                            <div class="btn-group">
+                                <button style="opacity:0.9" (click)="prevYear()" [tsBtn]="color" sm>&lt;</button>
+                                <ts-dropdown [items]="yearList[0]" [useNumber]="0" dropup
+                                    (menuClick)="updateYear($event.value)">
+                                    <button [tsBtn]="color" sm
+                                        class="rounded-0 border-left-0 border-right-0">{{years[0]}}</button>
+                                </ts-dropdown>
+                                <button style="opacity:0.9" (click)="nextYear()" [tsBtn]=" color" sm>&gt;</button>
+                            </div>
+                            <div class="btn-group ml-1">
+                                <button style="opacity:0.9" (click)="prevMonth()" tsIcon=" preview" [tsBtn]="color"
+                                    sm>&lt;</button>
+                                <ts-dropdown [items]="monthTitles" [useNumber]="1" dropup
+                                    (menuClick)="updateMonth($event.value)">
+                                    <button [tsBtn]="color" sm
+                                        class="rounded-0 border-left-0 border-right-0">{{monthTitles[months[1]-1]}}</button>
+                                </ts-dropdown>
+                                <button style="opacity:0.9" (click)="nextMonth()" [tsBtn]="color" sm>&gt;</button>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

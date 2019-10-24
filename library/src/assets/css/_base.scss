@@ -532,9 +532,12 @@ ts-tab {
 }
 
 /** side menu **/
-.side-menu {
-    @extend .dropdown-menu;
+.dropdown-menu {
+    display: block;
+    min-width: 200px;
+}
 
+.side-menu {
     position: relative;
     display: block;
 }

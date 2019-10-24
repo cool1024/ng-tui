@@ -1,83 +1,31 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
-import { Base, styleStr } from './base.class';
-import { HtmlDomService } from '../../tui-core/base-services/htmldom.service';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, Input, forwardRef } from '@angular/core';
+import { BaseForm } from '../../tui-core/base-class/base-form.class';
 import { ConfigService } from '../../tui-core/base-services/config.service';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
     selector: 'ts-timepicker',
-    template: `
-    <div [ngClass]="{'d-none':!show}" #pad class="fixed-top h-100 w-100" (click)="tryClose($event)">
-        <div class="card p-3 ts-datepicker-hm no-select" [ngStyle]="datepickerStyle">
-            <div class="ts-datepicker-ym-toolbar d-flex justify-content-between align-items-center">
-                <div class="text-{{color}}">
-                    {{getTimeStr()}}
-                </div>
-                <div class="text-right" style="width:240px">
-                    <button (click)="setTime('');toggle()" tsBtn sm class="ml-1">现在</button>
-                    <button (click)="setClean();toggle()" tsBtn sm class="ml-1">清空</button>
-                    <button (click)="confirmTime();toggle()" tsBtn sm class="ml-1" [color]="color">确认</button>
-                </div>
-            </div>
-            <hr class="mb-2">
-            <div class="d-flex text-center">
-                <div class="ts-datepicker-hm-box" (wheel)="offsetTime($event,'hour',24)">
-                    <div (click)="offsetTime(-1,'hour',24)" class="pointer text-{{color}}-hover">
-                        <i class="fa fa-fw fa-lg fa-angle-up"></i>
-                    </div>
-                    <div *ngFor="let hour of getTimes(offsets['hour'],24);index as i"
-                        (click)="offsetTime(i-2,'hour',24)"
-                        class="ts-time-item pointer {{i===2&&'text-'+color+' active'}}">
-                        {{hour>9?hour:'0'+hour}}
-                    </div>
-                    <div (click)="offsetTime(+1,'hour',24)" class="pointer text-{{color}}-hover">
-                        <i class="fa fa-fw fa-lg fa-angle-down"></i>
-                    </div>
-                </div>
-                <div class="ts-datepicker-hm-box" (wheel)="offsetTime($event,'minute',60)">
-                    <div (click)="offsetTime(-1,'minute',60)" class="pointer text-{{color}}-hover">
-                        <i class="fa fa-fw fa-lg fa-angle-up"></i>
-                    </div>
-                    <div *ngFor="let minute of getTimes(offsets['minute'],60);index as i"
-                        (click)="offsetTime(i-2,'minute',60)"
-                        class="ts-time-item pointer {{i===2&&'text-'+color+' active'}}">
-                        {{minute>9?minute:'0'+minute}}
-                    </div>
-                    <div (click)="offsetTime(+1,'minute',60)" class="pointer text-{{color}}-hover">
-                        <i class="fa fa-fw fa-lg fa-angle-down"></i>
-                    </div>
-                </div>
-                <div class="ts-datepicker-hm-box" (wheel)="offsetTime($event,'second',60)">
-                    <div (click)="offsetTime(-1,'second',60)" class="pointer text-{{color}}-hover">
-                        <i class="fa fa-fw fa-lg fa-angle-up"></i>
-                    </div>
-                    <div *ngFor="let second of getTimes(offsets['second'],60);index as i"
-                        (click)="offsetTime(i-2,'second',60)"
-                        class="ts-time-item pointer {{i===2&&'text-'+color+' active'}}">
-                        {{second>9?second:'0'+second}}
-                    </div>
-                    <div (click)="offsetTime(+1,'second',60)" class="pointer text-{{color}}-hover">
-                        <i class="fa fa-fw fa-lg fa-angle-down"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>`,
-    styles: [styleStr],
     exportAs: 'tsTimepicker',
+    template: `
+    <div class="d-inline-block" tsToggle [target]="menuView" [bind]="menuView">
+        <ng-content></ng-content>
+    </div>
+    <div #menuView="tsView"
+        [ngStyle]="{zIndex:zIndex}"
+        position="auto"
+        tsView="fadeIn"
+        class="bg-white shadow no-select p-3">
+        <ts-time [activeTime]="activeTime" (timeChange)="sendChange($event)" [color]="color"></ts-time>
+    </div>`,
     providers: [{
         provide: NG_VALUE_ACCESSOR,
         useExisting: forwardRef(() => TimepickerComponent),
         multi: true
     }]
 })
-export class TimepickerComponent extends Base implements OnInit, ControlValueAccessor {
+export class TimepickerComponent extends BaseForm {
 
-    offsets = {
-        hour: 0,
-        minute: 0,
-        second: 0
-    };
+    @Input() zIndex: number;
 
     activeTime = {
         hour: 0,
@@ -85,13 +33,6 @@ export class TimepickerComponent extends Base implements OnInit, ControlValueAcc
         second: 0,
     };
 
-    constructor(html: HtmlDomService, configService: ConfigService) {
-        super(html, configService.config);
-    }
-
-    ngOnInit() {
-        this.setNow();
-    }
 
     writeValue(value: string) {
         if (value === null || value === undefined) { return; }
@@ -106,19 +47,6 @@ export class TimepickerComponent extends Base implements OnInit, ControlValueAcc
                 second: parseInt(times[2], 10) || 0,
             };
         }
-        this.offsets.hour = this.activeTime.hour - 2;
-        this.offsets.minute = this.activeTime.minute - 2;
-        this.offsets.second = this.activeTime.second - 2;
-    }
-
-
-    getTimeStr(): string {
-        // tslint:disable-next-line:max-line-length
-        return `${this.getTwoNumStr(this.activeTime.hour)}:${this.getTwoNumStr(this.activeTime.minute)}:${this.getTwoNumStr(this.activeTime.second)}`;
-    }
-
-    getTwoNumStr(num: number): string {
-        return num > 9 ? num.toString() : `0${num}`;
     }
 
     setNow() {
@@ -130,49 +58,21 @@ export class TimepickerComponent extends Base implements OnInit, ControlValueAcc
         });
     }
 
-    setTime(value: string) {
-        this.writeValue(value);
-        this.applyChange(this.getTimeStr());
+    getTwoNumStr(num: number): string {
+        return num > 9 ? num.toString() : `0${num}`;
     }
 
-    setClean() {
-        this.applyChange('');
+    getTimeStr(): string {
+        // tslint:disable-next-line:max-line-length
+        return `${this.getTwoNumStr(this.activeTime.hour)}:${this.getTwoNumStr(this.activeTime.minute)}:${this.getTwoNumStr(this.activeTime.second)}`;
     }
 
-    confirmTime() {
-        this.applyChange(this.getTimeStr());
+    sendChange(value: number) {
+        this.changeHandle(value && this.getTimeStr());
     }
 
-    offsetTime(opt: WheelEvent | number, type: string, max: number) {
-        if (typeof opt === 'number') {
-            this.offsets[type] += opt;
-        } else {
-            if (opt.deltaY > 0) {
-                this.offsets[type]++;
-            } else if (opt.deltaY < 0) {
-                this.offsets[type]--;
-            }
-        }
-        this.activeTime[type] = ((this.offsets[type] + 2) % max);
-        this.activeTime[type] = this.activeTime[type] < 0 ? this.activeTime[type] + max : this.activeTime[type];
-    }
-
-    getTimeArray(max: number): number[] {
-        const tms = new Array<number>();
-        for (let i = 0; i < max; i++) {
-            tms.push(i);
-        }
-        return tms;
-    }
-
-    getTimes(offset: number, max: number): number[] {
-        const tms = new Array<number>();
-        const tmsArray = this.getTimeArray(max);
-        for (let i = 0; i < 5; i++) {
-            let tempOffset = (offset + i) % max;
-            tempOffset = tempOffset < 0 ? max + tempOffset : tempOffset;
-            tms.push(tmsArray[tempOffset]);
-        }
-        return tms;
+    constructor(cfs: ConfigService) {
+        super();
+        this.color = cfs.config.defaultColor;
     }
 }

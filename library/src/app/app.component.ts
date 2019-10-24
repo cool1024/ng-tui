@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { ToastService, FileItem } from 'projects/ng-tui/src/public_api';
+import { Observable, interval } from 'rxjs';
+import { take, map } from 'rxjs/operators';
+import { NodeItem, requestObject, MenuItem } from 'projects/ng-tui/src/public_api';
 
 @Component({
     selector: 'app-root',
@@ -8,22 +10,22 @@ import { ToastService, FileItem } from 'projects/ng-tui/src/public_api';
 })
 export class AppComponent {
 
-    constructor(private toast: ToastService) { }
-
-    showToast() {
-        this.toast.success('你好', '这是一条通知消息');
+    uploader = (file: File): Observable<number | string> => {
+        return interval(100).pipe(take(101), map(progress => progress >= 100 ? 'success' : progress));
     }
 
-    showNotify() {
-        this.toast.notify({
-            title: 'Well done!',
-            // position: 'center',
-            content: 'Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.',
+    menu: MenuItem = {
+        title: '',
+        children: []
+    };
+
+    constructor() {
+        requestObject('/assets/menu.json').subscribe(obj => {
+            this.menu.children = obj;
+            console.log(this.menu);
         });
     }
 
-    showFileItem(fileItem: FileItem) {
-        console.log(fileItem);
+    navHandler(item: MenuItem) {
     }
-
 }

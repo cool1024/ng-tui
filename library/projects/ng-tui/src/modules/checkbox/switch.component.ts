@@ -11,7 +11,9 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
         <div class="switch-line text-left mr-1 position-relative">
             <div class="d-inline-block rounded-circle switch-bar bg-white"></div>
         </div>
-        <ng-content></ng-content>
+        <div [class]="isOpen&&activeClass">
+            <ng-content></ng-content>
+        </div>
     </div>`,
     providers: [{
         provide: NG_VALUE_ACCESSOR,
@@ -22,7 +24,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
 export class SwitchComponent extends BaseForm {
 
     @Input() values: { open: any, close: any };
-
+    @Input() activeClass:string;
     @Input() color: string;
 
     value: any;

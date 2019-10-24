@@ -37,7 +37,6 @@ export class CheckboxComponent extends BaseForm {
         this.color = this.configService.config.defaultColor;
     }
 
-
     changeStatus() {
         if (this.isDisabled) { return; }
         this.checked = !this.checked;

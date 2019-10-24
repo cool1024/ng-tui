@@ -1,285 +1,48 @@
 import { Component, Input, forwardRef } from '@angular/core';
-import { HtmlDomService } from '../../tui-core/base-services/htmldom.service';
-import { ToggleDirective } from '../../tui-core/directives/toggle.directives';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { BaseForm } from '../../tui-core/base-class/base-form.class';
 import { ConfigService } from '../../tui-core/base-services/config.service';
-import { Base } from './base.class';
-
-const WEEK_DAY_NUM = 7;
-const MIN_YEAR = 1000;
-const MIN_MONTH = 1;
-const MAX_MONTH = 12;
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
     selector: 'ts-datepicker',
-    template: `
-    <div [ngClass]="{'d-none':!show}" #pad class="fixed-top h-100 w-100" (click)="tryClose($event)">
-        <div class="card rounded-0 border-0 ts-box" [ngStyle]="datepickerStyle">
-            <div class="card-body">
-                <table class="ts-datepicker-table">
-                    <thead>
-                        <tr class="ts-weeks">
-                            <th class="text-center" *ngFor="let title of weekTitles;index as i">{{title}}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="text-muted ts-month-title" colspan="7">{{getMonth(month)}} </td>
-                        </tr>
-                        <tr *ngFor="let tr of trList;trackBy: trackByFn" class="text-dark">
-                            <td class="text-center" *ngFor="let td of tr">
-                                <div (click)="setDay(td)"
-                                class="ts-day rounded-circle
-                                {{!isActiveDay(td)||('bg-'+color)}}" [class.text-white]="isActiveDay(td)"
-                                    [class.ts-day-hover]="td">{{td||''}}</div>
-                            </td>
-                        </tr>
-                        <tr *ngIf="trList.length<5" class="text-dark">
-                            <td class="ts-day" colspan="7">&nbsp;</td>
-                        </tr>
-                        <tr *ngIf="trList.length<6" class="text-dark">
-                            <td class="ts-day" colspan="7">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="text-right" colspan="7">
-                                <div class="btn-group">
-                                    <button [disabled]="!useYear" (click)="prevYear()" class="btn btn-{{color}} btn-sm">
-                                        <i class="iconfont icon-preview" aria-hidden="true"></i>
-                                    </button>
-                                    <ts-dropdown [disabled]="!useYear"
-                                                diyClass="btn btn-{{color}} dropdown-toggle btn-sm rounded-0 border-left-0 border-right-0"
-                                                [items]="yearList" [(value)]="year"
-                                                [useNumber]="0"
-                                                [color]="color" dropup>
-                                    </ts-dropdown>
-                                    <button [disabled]="!useYear" (click)="nextYear()" class="btn btn-{{color}} btn-sm">
-                                        <i class="iconfont icon-next" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                                <div class="btn-group ml-1">
-                                    <button [disabled]="!useMonth" (click)="prevMonth()" class="btn btn-{{color}} btn-sm">
-                                        <i class="iconfont icon-preview" aria-hidden="true"></i>
-                                    </button>
-                                    <ts-dropdown [disabled]="!useMonth"
-                                        diyClass="btn btn-{{color}} dropdown-toggle btn-sm rounded-0 border-left-0 border-right-0"
-                                        [items]="monthTitles"
-                                        [(value)]="month" [useNumber]="1" [color]="color" dropup></ts-dropdown>
-                                    <button [disabled]="!useMonth" (click)="nextMonth()" class="btn btn-{{color}} btn-sm">
-                                        <i class="iconfont icon-next" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>`,
-    styles: [
-        `
-        .ts-box {
-            min-width: 300px;
-            box-shadow: 1px 2px 3px rgb(200, 200, 200);
-        }
-        .ts-datepicker-table {
-            margin: auto auto;
-        }
-        .ts-month-title {
-            padding-left: 15px;
-            padding-top: 15px;
-            font-size: 15px;
-        }
-        .ts-weeks {
-            border-bottom: 1px solid rgb(245, 245, 245);
-        }
-        .ts-weeks th {
-            padding-bottom: 10px;
-        }
-        .ts-day {
-            width: 35px;
-            height: 35px;
-            line-height: 35px;
-        }
-        .ts-day-hover:hover {
-            background-color: #eee;
-        }
-        th {
-            font-weight: normal;
-            font-family: Microsoft YaiHei, 微软雅黑, KaiTi;
-        }
-        td {
-            cursor: pointer;
-        }`
-    ],
     exportAs: 'tsDatepicker',
+    template: `
+    <div class="d-inline-block" tsToggle [target]="menuView" [bind]="menuView">
+        <ng-content></ng-content>
+    </div>
+    <div #menuView="tsView"
+        [ngStyle]="{zIndex:zIndex}"
+        position="auto"
+        tsView="fadeIn"
+        class="bg-white shadow no-select p-3">
+        <ts-date [activeDate]="activeDate" (dateChange)="sendChange($event)" [color]="color"></ts-date>
+    </div>`,
     providers: [{
         provide: NG_VALUE_ACCESSOR,
         useExisting: forwardRef(() => DatepickerComponent),
         multi: true
     }]
 })
-export class DatepickerComponent extends Base {
+export class DatepickerComponent extends BaseForm {
 
-    @Input() weekTitles: string[];
+    @Input() zIndex: number;
 
-    @Input() monthTitles: string[];
+    activeDate: string;
 
-    @Input() activeClass: string;
 
-    @Input() toggleTarget: ToggleDirective;
-
-    @Input() useYear: boolean;
-    @Input() useMonth: boolean;
-    @Input() useDay: boolean;
-
-    year: number;
-
-    month: number;
-
-    day: number;
-
-    get days(): number[] {
-        let date = new Date(this.year, this.month, 0);
-        const dayTotal = date.getDate();
-        const days = new Array<number>();
-        date = new Date(this.year, this.month - 1, 1);
-        const week = date.getDay() || WEEK_DAY_NUM;
-        for (let i = 0; i < week - 1; i++) { days.push(0); }
-        for (let i = 1; i <= dayTotal; i++) { days.push(i); }
-        return days;
-    }
-
-    get trList(): Array<number[]> {
-        const days = this.days;
-        const groupNum = Math.ceil(days.length / WEEK_DAY_NUM);
-        const trs = new Array<number[]>();
-        for (let i = 0; i < groupNum; i++) {
-            trs[i] = new Array<number>();
-            for (let j = 0; j < WEEK_DAY_NUM; j++) {
-                trs[i][j] = days[i * WEEK_DAY_NUM + j] || 0;
-            }
-        }
-        return trs;
-    }
-
-    get yearList(): Array<number> {
-        const years = [];
-        for (let i = 0; i < 3; i++) {
-            years.push(this.year - 3 + i);
-        }
-        years.push(this.year);
-        for (let i = 0; i < 3; i++) {
-            years.push(this.year + 1 + i);
-        }
-        return years;
-    }
-
-    constructor(html: HtmlDomService, configService: ConfigService) {
-        super(html, configService.config);
-        this.useYear = true;
-        this.useMonth = true;
-        this.useDay = true;
-
-        // labels
-        this.weekTitles = configService.config.weekTitles;
-        this.monthTitles = configService.config.monthTitles;
-
-        // tody
-        const date = new Date();
-        this.year = date.getFullYear();
-        this.month = date.getMonth() + 1;
-        this.day = date.getDate();
-
-        // active day
-        this.setValue();
-
-        this.show = false;
-        this.size = {
-            width: 380,
-            height: 300
-        };
-    }
-
-    writeValue(value: any) {
-        this.value = value;
-        let date = new Date(this.value);
-        if (!date.getFullYear()) {
-            date = new Date();
-        }
-        this.year = date.getFullYear();
-        this.month = date.getMonth() + 1;
-        this.day = date.getDate();
-        this.setValue();
-    }
-
-    getMonth(month: number): string {
-        return this.monthTitles[month - 1];
-    }
-
-    setDay(day: number): void {
-        if (day <= 0) { return; }
-        this.day = day;
-        this.setValue();
-        this.applyChange(this.value);
-        this.toggle();
-    }
-
-    setValue() {
-        this.value = `${this.year}/${this.month}/${this.day}`;
-    }
-
-    isActiveDay(day: number): boolean {
-        return this.value === `${this.year}/${this.month}/${day}`;
-    }
-
-    nextMonth() {
-        if (this.month < MAX_MONTH) {
-            this.month++;
-        } else {
-            this.year++;
-            this.month = MIN_MONTH;
+    writeValue(value: string) {
+        const date = new Date(value);
+        if (date.getFullYear()) {
+            this.activeDate = value;
         }
     }
 
-    prevMonth() {
-        if (this.month > MIN_MONTH) {
-            this.month--;
-        } else if (this.year > MIN_YEAR) {
-            this.year--;
-            this.month = MAX_MONTH;
-        }
+    sendChange(value: string) {
+        this.changeHandle(value);
     }
 
-    nextYear() {
-        this.year++;
-    }
-
-    prevYear() {
-        if (this.year > MIN_YEAR) {
-            this.year--;
-        }
-    }
-
-    toggle() {
-
-        this.show = !this.show;
-
-        if (this.show) {
-
-            if (!this.value) {
-                this.value = `${this.year}/${this.month}/${this.day}`;
-            } else {
-                const date = this.value.split('/');
-                this.year = parseInt(date[0], 10);
-                this.month = parseInt(date[1], 10);
-                this.day = parseInt(date[2], 10);
-            }
-
-            this.autoPosition();
-        }
-    }
-
-    trackByFn(item: any): number {
-        return item.length;
+    constructor(cfs: ConfigService) {
+        super();
+        this.color = cfs.config.defaultColor;
     }
 }

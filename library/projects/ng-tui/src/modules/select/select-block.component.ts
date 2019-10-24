@@ -39,10 +39,6 @@ export class SelectBlockComponent extends BaseForm implements OnChanges {
 
     @Input() items: ItemTree[];
 
-    @Input() lg: string;
-
-    @Input() sm: string;
-
     @Output() optionChange = new EventEmitter<ItemTree[]>(false);
 
     constructor(configService: ConfigService) {

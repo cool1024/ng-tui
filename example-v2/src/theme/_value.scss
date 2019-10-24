@@ -1,0 +1,71 @@
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$blue: #005cc5;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e9488b !default;
+$red: #ff4255 !default;
+$orange: #ff9100 !default;
+$yellow: #ffd900 !default;
+$green: #2abd87 !default;
+$teal: #35d1a2 !default;
+$cyan: #50a4ff !default;
+
+// 基础属性配置（阴影，渐变，动画，印刷样式）
+$enable-shadows: true;
+$enable-gradients: false;
+$enable-transitions: false;
+$enable-print-styles: true;
+
+$font-size-base: 0.8rem;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 500;
+
+// 表格样式配置
+$table-head-bg: rgba($cyan, 0.1);
+$table-head-color: $blue;
+$table-border-width: 0;
+$table-border-color: $gray-300;
+$table-striped-order: even;
+$table-accent-bg: rgba($cyan, 0.05) !default;
+$table-bg: rgba($gray-100, 0.1);
+$table-hover-bg: rgba($cyan, 0.3) !default;
+$table-active-bg: $table-hover-bg !default;
+
+// 卡片样式配置
+$card-border-radius: 0;
+$card-border-width: 0;
+$card-cap-bg: white;
+
+// 按钮样式配置
+$btn-box-shadow: none;
+
+// 下拉按钮样式配置
+$dropdown-border-radius: 0;
+$dropdown-min-width: auto;
+
+// 输入框配置
+$input-btn-focus-box-shadow: none;
+$input-focus-box-shadow: none;
+
+// 网格间距配置
+$grid-gutter-width: 15px !default;
+
+@import "~bootstrap/scss/variables";
+
+$dropdown-border-color: rgba($black, 0.01);
+$dropdown-link-active-color: $dark;
+$dropdown-link-active-bg: $gray-200;
+$input-placeholder-color: $gray-300;
+$theme-colors: ("primary": $primary, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark, "purple": $purple, "pink": $pink);

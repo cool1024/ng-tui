@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "importHelpers": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -22,6 +23,12 @@
       ],
       "ng-tui/*": [
         "dist/ng-tui/*"
+      ],
+      "v2": [
+        "dist/v2"
+      ],
+      "v2/*": [
+        "dist/v2/*"
       ]
     }
   }

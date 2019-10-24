@@ -1,6 +1,6 @@
 import { Directive, ElementRef, AfterViewInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { HtmlDomService } from '../../tui-core/base-services/htmldom.service';
 import { Toggle } from '../../tui-core/interfaces/toggle.interface';
+import { BootstrapClass } from '../../tui-core/base-class/default-value';
 
 @Directive({
     selector: '*[tsCollapse]',
@@ -10,50 +10,35 @@ export class CollapseDirective implements AfterViewInit, OnChanges, Toggle {
 
     @Input() open: boolean;
 
-    @Output() openChange = new EventEmitter<boolean>(false);
+    @Output() openChange = new EventEmitter<boolean>();
 
     private pad: HTMLElement;
 
-    private isReady: boolean;
-
-    constructor(private elementRef: ElementRef, private htmlDomService: HtmlDomService) {
+    constructor(private elementRef: ElementRef) {
         this.open = false;
-        this.isReady = false;
     }
 
     ngOnChanges() {
-        if (this.isReady) {
-            this.open ? this.collapseOpen() : this.collapseClose();
-        }
+        this.updateCollapseShow();
     }
 
     ngAfterViewInit() {
         this.pad = this.elementRef.nativeElement;
-        this.pad.style.overflow += 'hidden';
-        this.open ? this.collapseOpen() : this.collapseClose();
-        this.isReady = true;
+        this.updateCollapseShow(true);
     }
 
-    collapseClose() {
-        this.open = false;
-        const height = this.htmlDomService.getExpHeight(this.pad);
-        this.pad.style.height = height + 'px';
-        setTimeout(() => { this.pad.style.height = '0px'; }, 100);
-        this.openChange.emit(this.open);
-    }
-
-    collapseOpen() {
-        this.open = true;
-        this.pad.style.height = '';
-        const height = this.htmlDomService.getExpHeight(this.pad);
-        this.pad.style.height = '0px';
-        this.pad.style.transition = 'height .35s ease';
-        setTimeout(() => { this.pad.style.height = height + 'px'; });
-        setTimeout(() => { this.pad.style.height = ''; }, 350);
-        this.openChange.emit(this.open);
+    updateCollapseShow(ignoreEmit = false) {
+        if (this.pad) {
+            this.open ? (
+                this.pad.classList.remove(BootstrapClass.DisplayNone)
+                // this.pad.classList.add(AnimateCssClass.Prefix, AnimateCssClass.Pulse)
+            ) : this.pad.classList.add(BootstrapClass.DisplayNone);
+            if (!ignoreEmit) this.openChange.emit(this.open);
+        }
     }
 
     toggle() {
-        this.open ? this.collapseClose() : this.collapseOpen();
+        this.open = !this.open;
+        this.updateCollapseShow();
     }
 }

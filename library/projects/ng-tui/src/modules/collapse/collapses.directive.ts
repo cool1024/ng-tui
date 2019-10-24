@@ -35,7 +35,8 @@ export class CollapsesDirective implements AfterViewInit {
     closeOther(collapse: CollapseDirective) {
         this.collapses.forEach(e => {
             if (e !== collapse) {
-                e.collapseClose();
+                e.open = false;
+                e.updateCollapseShow();
             }
         });
     }

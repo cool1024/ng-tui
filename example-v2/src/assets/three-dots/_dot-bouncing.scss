@@ -1,0 +1,50 @@
+/**
+ * ==============================================
+ * Experiment-Emoji
+ * Dot Bouncing
+ * ==============================================
+ */
+
+$d: 20px;
+
+.dot-bouncing {
+  position: relative;
+  height: $dotHeight;
+  font-size: 10px;
+
+  &::before {
+    content: '⚽🏀🏐';
+    display: inline-block;
+    position: relative;
+    animation: dotBouncing 1s infinite;
+  }
+}
+
+@keyframes dotBouncing {
+  0% {
+    top: - $d;
+    animation-timing-function: ease-in;
+  }
+
+  34% {
+    transform: scale(1, 1);
+  }
+
+  35% {
+    top: $d;
+    animation-timing-function: ease-out;
+    transform: scale(1.5, .5);
+  }
+
+  45% {
+    transform: scale(1, 1);
+  }
+
+  90% {
+    top: - $d;
+  }
+
+  100% {
+    top: - $d;
+  }
+}

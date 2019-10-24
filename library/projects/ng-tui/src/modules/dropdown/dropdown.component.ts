@@ -1,52 +1,49 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from '../../tui-core/interfaces/item.interface';
 import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
+import { ConfigService } from '../../tui-core/base-services/config.service';
 
 @Component({
     selector: 'ts-dropdown',
     template: `
-    <div tsDropdown [dropup]="dropup" style="height:100%">
-        <button [disabled]="disabled" *ngIf="diyClass" [class]="diyClass" type="button" tsToggle>{{item ? item.text : text}}</button>
-        <button [disabled]="disabled" *ngIf="!diyClass"
-            tsToggle tsBtn
-            class="dropdown-toggle"
-            [lg]="isApply(lg)"
-            [sm]="isApply(sm)"
-            [outline]="isApply(outline)"
-            [color]="color">{{item ? item.text : text}}</button>
-        <div tsDropMenu>
-            <button [class.active]="item.value === value"
-                    class="dropdown-item pointer"
-                    *ngFor="let item of itemList; trackBy: trackByValue"
-                    (click)="itemClick(item)">
-                {{item.text}}
-            </button>
+        <div class="d-inline-block" tsToggle [target]="menuView" [bind]="menuView">
+            <ng-content></ng-content>
         </div>
-    </div>`
+        <div #menuView="tsView"
+            (wheel)="itemWheel($event.deltaY)"
+            [offsetX]="offsetX"
+            [offsetY]="offsetY"
+            [ngStyle]="{minWidth:minWidth+'px',zIndex:zIndex}"
+            [position]="isApply(dropup)?'top':'bottom'"
+            tsView="fadeIn"
+            class="bg-white shadow no-select py-2">
+            <a *ngFor="let item of itemList; trackBy: trackByValue"
+               (click)="itemClick(item)"
+               class="dropdown-item pointer bg-{{activeValue==item.value&&(color+' text-white')}}"
+               hold close>{{item.text}}</a>
+        </div>`
 })
-export class DropdownComponent extends BaseTheme implements OnChanges {
-
-    item: Item;
-
-    @Input() text: string;
-
-    @Input() color: string;
-
-    @Input() value: any;
+export class DropdownComponent extends BaseTheme {
 
     @Input() items: any[];
 
-    @Input() diyClass: string;
-
     @Input() dropup: string;
+
+    @Input() offsetX: number;
+
+    @Input() offsetY: number;
 
     @Input() useNumber: number;
 
-    @Input() disabled: boolean;
+    @Input() minWidth: number;
 
-    @Output() valueChange = new EventEmitter<any>();
+    @Input() zIndex: number;
 
-    @Output() itemChange = new EventEmitter<Item>();
+    @Input() activeValue: number;
+
+    @Output() menuClick = new EventEmitter<Item>();
+
+    @Output() menuWheel = new EventEmitter<number>();
 
     get itemList(): Item[] {
         const items = new Array<any>();
@@ -72,31 +69,28 @@ export class DropdownComponent extends BaseTheme implements OnChanges {
         return items;
     }
 
-    constructor() {
+    constructor(csf: ConfigService) {
         super();
+        this.color = csf.config.defaultColor;
         this.items = [];
-        this.diyClass = null;
         this.dropup = null;
-        this.color = 'white';
-        this.disabled = false;
-    }
-
-    ngOnChanges(changes: SimpleChanges) {
-        if (changes.value) {
-            const items = this.itemList;
-            for (let i = 0; i < items.length; i++) {
-                if (items[i].value === changes.value.currentValue) {
-                    this.item = items[i];
-                }
-            }
-        }
+        this.minWidth = 80;
+        this.offsetX = 0;
+        this.offsetY = 0;
+        this.zIndex = 9999;
     }
 
     itemClick(item: Item) {
-        this.item = item;
-        this.valueChange.emit(item.value);
-        this.itemChange.emit(item);
+        this.menuClick.emit(item);
     }
 
-    trackByValue(index: number, item: Item): number { return item.value; }
+    itemWheel(value: number) {
+        this.menuWheel.emit(value);
+    }
+
+    isApply(value: any): boolean {
+        return !!value || (value !== undefined && value !== null && value.toString() === '');
+    }
+
+    trackByValue(_: number, item: Item): number { return item.value; }
 }

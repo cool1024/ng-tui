@@ -1,0 +1,143 @@
+<div class="d-flex align-items-center">
+    <h1>Button</h1>
+    <div class="ml-3">
+        <h5 class="badge badge-info">Directive</h5>
+    </div>
+</div>
+<div>
+    Bootstrap base button,loading button.
+</div>
+<hr>
+<div class="mb-4 border p-3">
+    <div class="m-btn">
+        <div>
+            <h3 class="d-inline">Selector:&nbsp;
+                <code>button[tsBtn] </code>
+            </h3>
+        </div>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Input</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">color</th>
+                    <td>
+                        <code>string</code>
+                    </td>
+                    <td>Color name, such as 'success', 'primary', etc.</td>
+                </tr>
+                <tr>
+                    <th scope="row">disabled</th>
+                    <td>
+                        <code>boolean</code>
+                    </td>
+                    <td>Whether to disable the button</td>
+                </tr>
+                <tr>
+                    <th scope="row">outline</th>
+                    <td>
+                        <code>boolean</code>
+                    </td>
+                    <td>Whether to use outline style</td>
+                </tr>
+                <tr>
+                    <th scope="row">sm</th>
+                    <td>
+                        <code>boolean</code>
+                    </td>
+                    <td>Small size</td>
+                </tr>
+                <tr>
+                    <th scope="row">lg</th>
+                    <td>
+                        <code>boolean</code>
+                    </td>
+                    <td>Large size</td>
+                </tr>
+                <tr>
+                    <th scope="row">loading</th>
+                    <td>
+                        <code>string</code>
+                    </td>
+                    <td>Loading icon name</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-striped mt-2">
+            <thead>
+                <tr>
+                    <th scope="col">Output</th>
+                    <th scope="col" style="width: 120px;">Event Type</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">submit</th>
+                    <td>
+                        <code>Loader</code>
+                    </td>
+                    <td>When the button sets the loading property, each time the button is pressed, the submit event is
+                        triggered, and $event is used to close the animation.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="mb-4 p-3 border">
+    <div class="mb-2">
+        <h3 class="bg-white">Color</h3>
+        <br>
+        <div class="m-btn">
+            <button tsBtn>Default</button>
+            <button tsBtn color="white">White</button>
+            <button tsBtn color="primary">Primary</button>
+            <button tsBtn color="secondary">Scondary</button>
+            <button tsBtn color="success">Success</button>
+            <button tsBtn color="warning">Pink</button>
+            <button tsBtn color="danger">Purple</button>
+            <button tsBtn color="info">Info</button>
+        </div>
+        <div>
+            <ts-prism code="var a = b;" language="javascript"></ts-prism>
+        </div>
+    </div>
+</div>
+<div class="mb-4 p-3 border">
+    <h3>Outline</h3>
+    <br>
+    <div class="m-btn">
+        <button tsBtn outline>Default</button>
+        <button tsBtn outline color="white">White</button>
+        <button tsBtn outline color="primary">Primary</button>
+        <button tsBtn outline color="secondary">Scondary</button>
+        <button tsBtn outline color="success">Success</button>
+        <button tsBtn outline color="warning">Pink</button>
+        <button tsBtn outline color="danger">Purple</button>
+        <button tsBtn outline color="info">Info</button>
+    </div>
+</div>
+<div class="mb-4 p-3 border">
+    <h3>Size</h3>
+    <br>
+    <div class="m-btn">
+        <button tsBtn sm>Small</button>
+        <button tsBtn>Default</button>
+        <button tsBtn lg>Large</button>
+    </div>
+</div>
+<div class="mb-4 p-3 border">
+    <h3>Loading</h3>
+    <br>
+    <div class="m-btn">
+        <button tsBtn loading (submit)="doSubmit($event)">Loading</button>
+        <button tsBtn loading="favorite" (submit)="doSubmit($event)">Custom-icon-favorite</button>
+        <button tsBtn loading="hand" (submit)="doSubmit($event)">Custom-icon-hand</button>
+    </div>
+</div>

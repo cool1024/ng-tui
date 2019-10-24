@@ -1,5 +1,3 @@
-import { Observable } from 'rxjs';
-
 export interface TUIComponent {
 
     // 用于显示组件的方法
@@ -10,4 +8,11 @@ export interface TUIComponent {
 
     // 用于销毁组件
     destroy(): void;
+}
+
+export interface Rect {
+    x: number;
+    y: number;
+    w: number;
+    h: number;
 }

@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConfigService } from './base-services/config.service';
-import { HtmlDomService } from './base-services/htmldom.service';
 import { ToggleDirective } from './directives/toggle.directives';
 import { ComponentHandleService } from './component-creator/handle.service';
 import { ComponentService } from './component-creator/component.service';
+import { ViewDirective } from './component-creator/view.directive';
+import { ValueChangeListenerService } from './base-services/value-listener.service';
 
 @NgModule({
     imports: [
@@ -12,14 +13,16 @@ import { ComponentService } from './component-creator/component.service';
     ],
     exports: [
         ToggleDirective,
+        ViewDirective,
         CommonModule,
     ],
     declarations: [
         ToggleDirective,
+        ViewDirective,
     ],
     providers: [
+        ValueChangeListenerService,
         ConfigService,
-        HtmlDomService,
         ComponentService,
         ComponentHandleService,
     ]

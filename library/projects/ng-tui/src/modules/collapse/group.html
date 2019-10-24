@@ -1,0 +1,31 @@
+<div *ngIf="node.title;else elseMenuBlock" tsCollapses class="position-relative" [style.paddingLeft.px]="offset"
+    [auto]="true">
+    <div class="pointer py-3 d-flex" [style.color]="node.active?theme.activeTextColor:theme.defaultTextColor">
+        <div class="flex-shrink-0 pr-2 align-items-center">
+            <img class="mb-1" *ngIf="node.image;else elseBlock" width="20" height="20" [src]="node.image">
+            <ng-template #elseBlock>
+                <i [class]="node.icon" aria-hidden="true"></i>
+            </ng-template>
+        </div>
+        <div class="flex-grow-1 align-items-center">{{node.title}}</div>
+        <div class="flex-shrink-0 align-items-center" [style.paddingRight.px]="offset">
+            <div [class.ts-icon-up]="collapse.open" [class.ts-icon-down]="!collapse.open">
+                <i class="iconfont icon-caret-down" aria-hidden="true"
+                    [class.invisible]="!(node.children&&node.children.length>0)"></i>
+            </div>
+        </div>
+    </div>
+    <div tsToggle [ngStyle]="activeBarStyle" class="position-absolute h-100 ts-menu-hover" [class.active]="node.active">
+    </div>
+    <div tsCollapse #collapse="tsCollapse" [open]="open" (openChange)="updateGroup()">
+        <ts-group *ngFor="let item of node.children" [root]="false" [node]="item" [level]="level+1" [width]="width"
+            (itemClick)="itemClick.emit($event);cleanActive(node,$event)"></ts-group>
+    </div>
+</div>
+<ng-template #elseMenuBlock>
+    <ng-container *ngFor="let item of node.children;index as i">
+        <ts-group [root]="false" [node]="item" [level]="level" [width]="width" [open]="true"
+            (itemClick)="itemClick.emit($event);cleanActive(node,$event)"></ts-group>
+        <hr class="my-0 bg-white" *ngIf="i<node.children.length - 1" [style.backgroundColor]="theme.splitLineColor">
+    </ng-container>
+</ng-template>

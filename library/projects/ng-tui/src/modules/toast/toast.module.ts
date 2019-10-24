@@ -1,9 +1,9 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
+import { IconfontModule } from '../iconfont/iconfont.module';
 import { TUICoreModule } from '../../tui-core/tui-core.module';
 import { ToastComponent } from './toast.component';
 import { ToastService } from './toast.service';
 import { ToastConfig } from './toast.interface';
-import { IconfontModule } from '../iconfont/iconfont.module';
 import { NotifyComponent } from './notify.component';
 
 @NgModule({

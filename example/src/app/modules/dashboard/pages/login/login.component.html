@@ -40,11 +40,17 @@
                     </div>
                 </div>
                 <div class="form-group ">
-                    <span class="pull-right text-muted ">忘记密码？</span>
+                    <!-- <span class="pull-right text-muted ">忘记密码？</span> -->
+                    <span class="pull-right text-muted">预览：账号 admin 密码 123456789</span>
                 </div>
                 <div class="p-4"></div>
-                <button #btn="tsBtn" tsBtn lg loading [color]="global.params.color" class="btn-block rounded-0"
-                    (submit)="confirmLogin($event)">登入</button>
+                <div class="d-flex justify-content-around">
+                    <button #btn="tsBtn" tsBtn lg loading [color]="global.params.color" class="flex-grow-1 rounded-0"
+                        (submit)="confirmLogin($event)">登录</button>
+                    <button #btn="tsBtn" tsBtn="success" lg class="flex-grow-1 rounded-0 ml-3"
+                        (click)="devPreview()">开发者预览</button>
+                </div>
+
             </div>
             <div class="card-footer bg-white text-center">
                 <p class="mt-1 mb-0">Copyright © 2019 XiaoJian. All Rights Reserved.

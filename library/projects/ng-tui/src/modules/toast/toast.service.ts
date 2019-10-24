@@ -1,12 +1,11 @@
 import { Injectable, Inject } from '@angular/core';
-import { ToastComponent } from './toast.component';
 import { Toast } from './toast.class';
 import { ToastConfig } from './toast.interface';
+import { NotifyConfig } from './notify.interface';
 import { ComponentHandle } from '../../tui-core/component-creator/handle.class';
 import { ComponentService } from '../../tui-core/component-creator/component.service';
-import { NotifyConfig } from './notify.interface';
+import { ToastComponent } from './toast.component';
 import { NotifyComponent } from './notify.component';
-import { timeout } from 'rxjs/operators';
 
 @Injectable()
 export class ToastService {

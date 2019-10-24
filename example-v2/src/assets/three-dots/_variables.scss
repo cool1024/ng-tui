@@ -1,0 +1,14 @@
+// ==============================================
+// Variables
+// ==============================================
+
+$dotWidth: 10px;
+$dotHeight: 10px;
+$dotRadius: $dotWidth / 2;
+
+$dotColor: #9880ff !default;
+$dotBgColor: $dotColor;
+$dotBeforeColor: $dotColor;
+$dotAfterColor: $dotColor;
+
+$dotSpacing: $dotWidth + $dotWidth / 2;

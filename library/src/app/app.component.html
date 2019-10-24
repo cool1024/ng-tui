@@ -1,5 +1,78 @@
-<div class="p-3 m-btn">
-    <button tsBtn (click)="showToast()">显示消息</button>
-    <button tsBtn (click)="showNotify()">显示通知</button>
+<!-- <div class="container pt-3">
+    <ts-datepicker color="success" [(ngModel)]="date">
+        <button tsBtn>{{date|date:'yyyy-MM-dd'}}</button>
+    </ts-datepicker>
+    <ts-yearpicker color="success" [(ngModel)]="year">
+        <input class="form-control bg-white pointer" readonly [value]="year" />
+    </ts-yearpicker>
+    <ts-timepicker color="success" [(ngModel)]="time">
+        <input class="form-control bg-white pointer" readonly [value]="time" />
+    </ts-timepicker>
+    <ts-datepickers color="success" [(ngModel)]="range">
+        <input class="form-control bg-white pointer" readonly
+            value="{{range.start|date:'yyyy-MM-dd'}}/{{range.end|date:'yyyy-MM-dd'}}" />
+    </ts-datepickers>
+    <ts-switch></ts-switch>
+    <ts-checkbox></ts-checkbox>
+    <ts-radio></ts-radio>
+    <demo-flash></demo-flash>
+    <ts-select [items]="selectItems"></ts-select>
+    <ts-select-block [items]="departmentOptions" placeholder="请选择省市区" class="d-inline-block mb-2 mr-2"
+        style="width: 200px"></ts-select-block>
+    <button tsBtn (click)="showModal()">模态框</button>
 </div>
-<ts-file-cards (itemClick)="showFileItem($event)"></ts-file-cards>
+
+<button tsBtn (click)="showConfirm()">确认</button> -->
+<!-- <ts-upload [uploader]="uploader"></ts-upload> -->
+<!-- <ts-datepickers color="success" [(ngModel)]="range">
+    <input class="form-control bg-white pointer" readonly
+        value="{{range.start|date:'yyyy-MM-dd'}}/{{range.end|date:'yyyy-MM-dd'}}" />
+</ts-datepickers>
+<ts-datepicker color="success" [(ngModel)]="date">
+    <input class="form-control bg-white pointer" readonly value="{{date|date:'yyyy-MM-dd'}}" />
+</ts-datepicker> -->
+<ts-group [node]="menu" [width]="250" class="bg-white d-block shadow"
+    style="width: 250px;height:100vh;overflow-y: auto;overflow-x: hidden;-webkit-user-select: none;"
+    (itemClick)="navHandler($event)">
+</ts-group>
+
+<!-- <div class="container d-flex mt-5">
+    <div class="flex-shrink-0" style="width:240px;">
+        <h4>Base</h4>
+        <ul class="list-group border-0" style="font-size: 15px;">
+            <li routerLink="/base/button" class="py-2">Button</li>
+            <li class="py-2">Image</li>
+            <li class="py-2">Icon</li>
+            <li class="py-2">Pagination</li>
+            <li class="py-2">Dropdown</li>
+        </ul>
+        <h4 class="mt-5">Form</h4>
+        <ul class="list-group border-0" style="font-size: 15px;">
+            <li class="py-2 text-primary text-hover-primary">DatePicker</li>
+            <li class="py-2">Select</li>
+            <li class="py-2">Search</li>
+            <li class="py-2">Check</li>
+        </ul>
+        <h4 class="mt-5">Show</h4>
+        <ul class="list-group border-0" style="font-size: 15px;">
+            <li class="py-2 text-primary text-hover-primary">ToolTip</li>
+            <li class="py-2">Toast</li>
+            <li class="py-2">Confirm</li>
+            <li class="py-2">Progress</li>
+            <li class="py-2">Loading</li>
+            <li class="py-2">Menu</li>
+            <li class="py-2">Modal</li>
+            <li class="py-2">Window</li>
+        </ul>
+        <h4 class="mt-5">Other</h4>
+        <ul class="list-group border-0" style="font-size: 15px;">
+            <li class="py-2">Upload</li>
+            <li class="py-2">Editor</li>
+            <li class="py-2">Map</li>
+            <li class="py-2">Chart</li>
+        </ul>
+    </div>
+    <div class="flex-grow-1 pl-3">
+        <router-outlet></router-outlet>
+    </div>
+</div> -->

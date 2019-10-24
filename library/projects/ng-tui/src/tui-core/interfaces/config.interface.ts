@@ -22,5 +22,9 @@ export interface TUIConfig {
 
     monthTitles?: string[];
 
+    pickerConfirmTitle?: string;
+
     paginationItems?: Item[];
+
+    uploadItemSize?: number;
 }

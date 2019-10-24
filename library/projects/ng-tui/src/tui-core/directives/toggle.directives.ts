@@ -13,6 +13,8 @@ export class ToggleDirective implements AfterViewInit {
 
     @Input() handleFunc: (target: any) => void;
 
+    @Input() bindFunc: (self: ToggleDirective) => void;
+
     blur: ($event: any) => void;
     hover: ($event: any) => void;
 
@@ -40,6 +42,9 @@ export class ToggleDirective implements AfterViewInit {
     ngAfterViewInit() {
         if (this.bind) {
             this.bind.bind(this);
+        }
+        if (this.bindFunc) {
+            this.bindFunc(this);
         }
     }
 }

@@ -4,32 +4,38 @@ import {
     Output,
     EventEmitter,
     OnChanges,
-    SimpleChanges,
     forwardRef,
     ElementRef,
     AfterViewInit,
 } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Item } from '../../tui-core/interfaces/item.interface';
 import { BaseForm } from '../../tui-core/base-class/base-form.class';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ConfigService } from '../../tui-core/base-services/config.service';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
     selector: 'ts-select',
     template: `
-    <div tsDropdown class="w-100">
+    <div class="w-100">
         <input tsToggle
+            [target]="menuView" [bind]="menuView"
             [attr.readonly]="readonly"
-            [class.custom-select-sm]="isApply(sm)"
-            [class.custom-select-lg]="isApply(lg)"
-            [(ngModel)]="title" (ngModelChange)="setSearchKey($event)" class="custom-select border-0 pointer" type="text"
+            [(ngModel)]="title" (ngModelChange)="setSearchKey($event)"
+            class="custom-select custom-select-{{getSize}} border-0 pointer" type="text"
             [placeholder]="placeholder"
             [disabled]="isDisabled">
-        <div (displayChange)="setReadonlyStatus($event)" tsDropMenu autoSize>
+        <div (displayChange)="setReadonlyStatus($event)"
+            #menuView="tsView"
+            tsView="fadeIn"
+            autoSize position="auto"
+            [offsetY]="1"
+            class="dropdown-menu">
             <div class="ts-select-item pointer border-none">
                 <div *ngFor="let item of itemsList;trackBy: trackByValue"
-                     class="dropdown-item"
+                     close
+                     class="dropdown-item {{item.value===value&&bgWithTextClass}}"
                      [class.active]="item.value===value"
                      (click)="setValue(item)"
                      [innerHTML]="item.content||item.text">
@@ -64,14 +70,11 @@ export class SelectComponent extends BaseForm implements OnChanges, AfterViewIni
 
     @Input() searchFunc: (key: string) => Observable<Item[]>;
 
-    @Input() lg: string;
-
-    @Input() sm: string;
-
     @Output() optionChange = new EventEmitter<any>(false);
 
-    constructor(private elementRef: ElementRef) {
+    constructor(private elementRef: ElementRef, csf: ConfigService) {
         super();
+        this.color = csf.config.defaultColor;
         this.readonly = 'readonly';
         this.placeholder = 'select...';
         this.searchKey = '';
@@ -106,7 +109,7 @@ export class SelectComponent extends BaseForm implements OnChanges, AfterViewIni
         return items;
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
+    ngOnChanges() {
         this.setTitle();
     }
 
@@ -156,9 +159,5 @@ export class SelectComponent extends BaseForm implements OnChanges, AfterViewIni
             }
         }
         this.title = '';
-    }
-
-    isApply(value: any): boolean {
-        return !!value || (value !== undefined && value.toString() === '');
     }
 }

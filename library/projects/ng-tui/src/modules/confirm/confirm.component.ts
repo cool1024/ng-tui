@@ -1,4 +1,3 @@
-
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { ConfirmOptions } from './confirm.interface';

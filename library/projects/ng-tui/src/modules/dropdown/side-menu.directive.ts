@@ -1,8 +1,8 @@
 import { Directive, ElementRef, OnDestroy, HostListener, Input, Output, EventEmitter, AfterViewInit, ContentChild } from '@angular/core';
-import { HtmlDomService } from '../../tui-core/base-services/htmldom.service';
 import { Toggle } from '../../tui-core/interfaces/toggle.interface';
 import { ToggleDirective } from '../../tui-core/directives/toggle.directives';
 import { interval, Subscription } from 'rxjs';
+import { ViewTool } from '../../tui-core/component-creator/view-tool.class';
 
 @Directive({
     selector: '*[tsSideMenu]',
@@ -11,6 +11,7 @@ import { interval, Subscription } from 'rxjs';
 export class SideMenuDirective implements Toggle, OnDestroy {
 
     @Input() tsSideMenu: string;
+    @Input() animation: string;
     @Output() displayChange = new EventEmitter<boolean>(false);
 
 
@@ -25,8 +26,9 @@ export class SideMenuDirective implements Toggle, OnDestroy {
         }
     }
 
-    constructor(private html: HtmlDomService, private elementRef: ElementRef) {
+    constructor(private elementRef: ElementRef) {
         this.tsSideMenu = 'click';
+        this.animation = 'zoomIn';
     }
 
     @HostListener('document:click', ['$event.target']) onDocumentClick(dom: HTMLElement): void {
@@ -43,7 +45,8 @@ export class SideMenuDirective implements Toggle, OnDestroy {
     bind(toggle: ToggleDirective) {
         this.targetDom = toggle.elementRef.nativeElement;
         this.hostDom = this.elementRef.nativeElement;
-        this.hostDom.classList.add('position-fixed', 'd-none', 'animated', 'zoomInLeft');
+        this.hostDom.classList.add('position-fixed', 'd-none', 'animated', this.animation);
+        document.body.append(this.hostDom);
         this.intervalSub = interval(500).subscribe(() => this.autoPosition());
         // tslint:disable-next-line:no-unused-expression
         this.tsSideMenu === 'hover' && (toggle.hover = () => this.toggle());
@@ -64,21 +67,26 @@ export class SideMenuDirective implements Toggle, OnDestroy {
 
     autoPosition() {
         const style = this.hostDom.style;
-        const p = this.html.getPosition(this.targetDom);
-        const w = this.html.getWidth(this.targetDom);
+        const viewTool = new ViewTool();
+        const rect = viewTool.getRect(this.targetDom);
         // 越界修正
         setTimeout(() => {
-            const h = this.html.getHeight(this.hostDom);
-            let offset = (window.innerHeight - (h + p.y));
+            const h = viewTool.getRect(this.hostDom).h;
+            let offset = (window.innerHeight - (h + rect.y));
             // tslint:disable-next-line:no-unused-expression
             offset > 0 && (offset = 0);
-            style.top = p.y + offset + 'px';
-            style.left = w + p.x + 'px';
+            style.top = rect.y + offset + 'px';
+            style.left = rect.w + rect.x + 'px';
         });
     }
 
     ngOnDestroy() {
-        return this.intervalSub && this.intervalSub.unsubscribe();
+        try {
+            document.body.removeChild(this.hostDom);
+        } catch (e) {
+            console.log('SideMenu remove error');
+        }
+        this.intervalSub && this.intervalSub.unsubscribe();
     }
 }
 

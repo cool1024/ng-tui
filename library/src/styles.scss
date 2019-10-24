@@ -15,7 +15,7 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black: #000 !default;
 
-$blue: #005cc5;
+$blue: #3e81ce;
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
 $pink: #e9488b !default;
@@ -32,7 +32,7 @@ $enable-gradients: false;
 $enable-transitions: false;
 $enable-print-styles: true;
 
-$font-size-base: 0.8rem;
+$font-size-base: 0.95rem;
 $font-weight-light: 300;
 $font-weight-normal: 400;
 $font-weight-bold: 500;
@@ -107,7 +107,7 @@ $theme-colors: ("primary": $primary, "secondary": $secondary, "success": $succes
 @import "~bootstrap/scss/progress";
 @import "~bootstrap/scss/media";
 
-// @import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/list-group";
 @import "~bootstrap/scss/close";
 @import "~bootstrap/scss/modal";
 
@@ -132,6 +132,7 @@ textarea {
 input:disabled,
 textarea:disabled,
 button:disabled {
+    z-index: 0 !important;
     cursor: not-allowed;
 }
 
@@ -157,7 +158,10 @@ span {
     outline: 0 none !important;
 }
 
-a:link, a:active, a:hover, a:visited {
+a:link,
+a:active,
+a:hover,
+a:visited {
     text-decoration: none;
 }
 
@@ -169,7 +173,7 @@ ts-select {
     height: auto !important;
 }
 
-ts-select .dropdown-menu {
+.dropdown-menu {
     max-height: 300px;
     overflow-y: auto;
 }
@@ -183,7 +187,8 @@ ts-select .dropdown-menu {
     @extend .shadow-sm;
 }
 
-.table-bordered th, .table-bordered td {
+.table-bordered th,
+.table-bordered td {
     border: 1px solid rgba($cyan, 0.1) !important;
 }
 
@@ -220,10 +225,12 @@ ts-select .dropdown-menu {
 /** animate.css **/
 @import "~animate.css/source/_base.css";
 @import "~animate.css/source/sliding_entrances/slideInUp.css";
+@import "~animate.css/source/attention_seekers/pulse.css";
 
 @import "~animate.css/source/sliding_entrances/slideInLeft.css";
 @import "~animate.css/source/zooming_entrances/zoomIn.css";
-
+@import "~animate.css/source/zooming_entrances/zoomInLeft.css";
+@import "~animate.css/source/fading_entrances/fadeIn.css";
 @import "~animate.css/source/bouncing_entrances/bounceIn.css";
 @import "~animate.css/source/specials/hinge.css";
 @import "~animate.css/source/rotating_exits/rotateOut.css";
@@ -233,58 +240,14 @@ ts-select .dropdown-menu {
     animation-duration: 0.4s;
 }
 
-// 可以重设指代动画的时间
-.animated.hinge {
-    animation-duration: 1s;
-}
-
-.animated.zoomInLeft {
-    animation-duration: 0.2s;
-    animation-name: zoomIn;
-}
-
-@keyframes jackInTheBox {
-    0% {
-        transform: rotate(0deg);
-        transform-origin: center center;
-    }
-
-    25% {
-        transform: rotate(-30deg);
-    }
-
-    50% {
-        transform: rotate(0deg);
-    }
-
-    75% {
-        transform: rotate(30deg);
-    }
-
-    to {
-        transform: rotate(0deg);
-    }
-}
-
-.animated.jackInTheBox {
-    animation-duration: .2s;
-    animation-name: jackInTheBox;
-}
-
-.dropdown-menu {
-    @extend .animated;
-
-    animation-duration: 0.1s;
-    animation-name: zoomIn;
-}
 
 /** three-dots **/
-$dotColor: $info;
+// $dotColor: $info;
 
-@import "assets/three-dots/_variables";
-@import "assets/three-dots/mixins";
-@import "assets/three-dots/dot-windmill";
+// @import "assets/three-dots/_variables";
+// @import "assets/three-dots/mixins";
+// @import "assets/three-dots/dot-windmill";
 
-.dot-animate {
-    @extend .dot-windmill;
-}
+// .dot-animate {
+//     @extend .dot-windmill;
+// }
