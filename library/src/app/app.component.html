@@ -33,7 +33,7 @@
 </ts-datepicker> -->
 <div class="d-flex">
     <ts-group [node]="menu" [width]="250" class="bg-white d-block shadow-sm flex-shrink-0"
-        style="z-index:2;width: 250px;height:100vh;overflow-y: auto;overflow-x: hidden;-webkit-user-select: none;"
+        style="z-index:3;width: 250px;height:100vh;overflow-y: auto;overflow-x: hidden;-webkit-user-select: none;"
         (itemClick)="navHandler($event)">
         <h4 style="height: 60px;"
             class="py-3 m-0 border-bottom font-weight-normal d-flex justify-content-center align-items-center">
@@ -41,8 +41,8 @@
             <span>Admin Pro</span>
         </h4>
     </ts-group>
-    <div class="flex-grow-1">
-        <div class="shadow-sm">
+    <div class="flex-grow-1 d-flex flex-column">
+        <div class="shadow-sm flex-shrink-0" style="z-index: 2;">
             <nav style="height: 60px;" class="navbar bg-info text-white d-flex justify-content-between">
                 <div class="d-flex align-items-center">
                     <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
@@ -51,10 +51,19 @@
                     <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
                         <i class="iconfont icon-refresh"></i>
                     </div>
-                    <input type="text" class="form-control border-0 ml-3" placeholder="">
+                    <div class="input-group">
+                        <input type="text" style="background:#68b1ff;" class="form-control border-0 ml-3 text-white"
+                            placeholder="搜索菜单或功能">
+                        <div class="input-group-append">
+                            <button class="btn text-white" type="button" style="background:#68b1ff;">
+                                <i class="iconfont icon-search"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="d-flex align-items-center">
-                    <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
+                    <div (click)="changeFullscreen()"
+                        class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
                         <i class="iconfont icon-fullscreen"></i>
                     </div>
                     <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
@@ -66,7 +75,7 @@
                 </div>
             </nav>
             <nav style="height: 40px;" class="d-flex align-items-center">
-                <!-- <div class="h-100 d-flex align-items-center">
+                <div class="h-100 d-flex align-items-center">
                     <div class="d-flex align-items-center bg-info-hover pointer h-100 px-3">
                         <i class="iconfont icon-i-back"></i>
                     </div>
@@ -74,54 +83,17 @@
                         <a routerLink="/">首页</a>
                         <a class="ml-2"><span>用户列表</span></a>
                     </div>
-                </div> -->
-                <div class="d-flex align-items-center bg-info-hover pointer h-100 px-3">
+                </div>
+                <!-- <div class="d-flex align-items-center bg-info-hover pointer h-100 px-3">
                     <i class="iconfont icon-i-back"></i>
                 </div>
-                <ts-notes [notes]="notes" color="dark" class="d-block h-100"></ts-notes>
+                <ts-notes [notes]="notes" color="dark" class="d-block h-100"></ts-notes> -->
             </nav>
+        </div>
+        <div class="flex-grow-1 bg-white" style="max-height: calc(100vh - 100px);overflow-y: auto;">
+            <div [tsLoad]="true" class="p-3">
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
 </div>
-
-
-<!-- <div class="container d-flex mt-5">
-    <div class="flex-shrink-0" style="width:240px;">
-        <h4>Base</h4>
-        <ul class="list-group border-0" style="font-size: 15px;">
-            <li routerLink="/base/button" class="py-2">Button</li>
-            <li class="py-2">Image</li>
-            <li class="py-2">Icon</li>
-            <li class="py-2">Pagination</li>
-            <li class="py-2">Dropdown</li>
-        </ul>
-        <h4 class="mt-5">Form</h4>
-        <ul class="list-group border-0" style="font-size: 15px;">
-            <li class="py-2 text-primary text-hover-primary">DatePicker</li>
-            <li class="py-2">Select</li>
-            <li class="py-2">Search</li>
-            <li class="py-2">Check</li>
-        </ul>
-        <h4 class="mt-5">Show</h4>
-        <ul class="list-group border-0" style="font-size: 15px;">
-            <li class="py-2 text-primary text-hover-primary">ToolTip</li>
-            <li class="py-2">Toast</li>
-            <li class="py-2">Confirm</li>
-            <li class="py-2">Progress</li>
-            <li class="py-2">Loading</li>
-            <li class="py-2">Menu</li>
-            <li class="py-2">Modal</li>
-            <li class="py-2">Window</li>
-        </ul>
-        <h4 class="mt-5">Other</h4>
-        <ul class="list-group border-0" style="font-size: 15px;">
-            <li class="py-2">Upload</li>
-            <li class="py-2">Editor</li>
-            <li class="py-2">Map</li>
-            <li class="py-2">Chart</li>
-        </ul>
-    </div>
-    <div class="flex-grow-1 pl-3">
-        <router-outlet></router-outlet>
-    </div>
-</div> -->

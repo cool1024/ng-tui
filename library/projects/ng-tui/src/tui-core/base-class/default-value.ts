@@ -1,5 +1,6 @@
 export const BootstrapClass = {
-    DisplayNone: 'd-none'
+    DisplayNone: 'd-none',
+    PositionRelative: 'position-relative'
 };
 export const AnimateCssClass = {
     Prefix: 'animated',

@@ -9,7 +9,7 @@
                 "children": [
                     {
                         "title": "普通按钮",
-                        "route": "/demo/button"
+                        "route": "/base/button"
                     },
                     {
                         "title": "分页按钮",

@@ -13,9 +13,7 @@ export class NoteComponent extends BaseTheme {
 
     @Output() noteClick = new EventEmitter<MenuItem>();
 
-    constructor(
-        configService: ConfigService
-    ) {
+    constructor(configService: ConfigService) {
         super();
         this.color = configService.config.defaultColor;
     }
@@ -27,6 +25,10 @@ export class NoteComponent extends BaseTheme {
     }
 
     closeNote(index: number) {
+        this.notes[index].active = false;
         this.notes.splice(index, 1);
+        if (this.notes.length > 0 && (!~this.notes.findIndex(note => note.active))) {
+            this.setActive(this.notes[this.notes.length - 1]);
+        }
     }
 }

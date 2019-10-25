@@ -1,4 +1,5 @@
 import { Input, Directive, OnDestroy, ElementRef, AfterViewInit } from '@angular/core';
+import { BootstrapClass } from '../../tui-core/base-class/default-value';
 @Directive({
     selector: `*[tsLoad]`,
     exportAs: 'tsLoad',
@@ -42,6 +43,7 @@ export class TableLoadDirective implements AfterViewInit, OnDestroy {
 
     ngAfterViewInit() {
         this.parentDom = this.elementRef.nativeElement.parentElement;
+        this.parentDom.classList.add(BootstrapClass.PositionRelative);
         this.tsLoad = this.display;
     }
 

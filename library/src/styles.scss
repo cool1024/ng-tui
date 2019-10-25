@@ -168,12 +168,12 @@ $theme-colors: ("primary": $primary, "secondary": $secondary, "success": $succes
 
 
 /** three-dots **/
-// $dotColor: $info;
+$dotColor: $info;
 
-// @import "assets/three-dots/_variables";
-// @import "assets/three-dots/mixins";
-// @import "assets/three-dots/dot-windmill";
+@import "assets/three-dots/_variables";
+@import "assets/three-dots/mixins";
+@import "assets/three-dots/dot-windmill";
 
-// .dot-animate {
-//     @extend .dot-windmill;
-// }
+.dot-animate {
+    @extend .dot-windmill;
+}
