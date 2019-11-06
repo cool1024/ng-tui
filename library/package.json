@@ -2,7 +2,9 @@
   "name": "library",
   "version": "0.0.0",
   "scripts": {
-    "dev": "ng serve --aot"
+    "dev": "ng serve --aot",
+    "build": "ng build --prod",
+    "build-lib": "ng build ng-tui --prod"
   },
   "private": true,
   "dependencies": {
