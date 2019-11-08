@@ -1,58 +1,26 @@
-<!-- <div class="container pt-3">
-    <ts-datepicker color="success" [(ngModel)]="date">
-        <button tsBtn>{{date|date:'yyyy-MM-dd'}}</button>
-    </ts-datepicker>
-    <ts-yearpicker color="success" [(ngModel)]="year">
-        <input class="form-control bg-white pointer" readonly [value]="year" />
-    </ts-yearpicker>
-    <ts-timepicker color="success" [(ngModel)]="time">
-        <input class="form-control bg-white pointer" readonly [value]="time" />
-    </ts-timepicker>
-    <ts-datepickers color="success" [(ngModel)]="range">
-        <input class="form-control bg-white pointer" readonly
-            value="{{range.start|date:'yyyy-MM-dd'}}/{{range.end|date:'yyyy-MM-dd'}}" />
-    </ts-datepickers>
-    <ts-switch></ts-switch>
-    <ts-checkbox></ts-checkbox>
-    <ts-radio></ts-radio>
-    <demo-flash></demo-flash>
-    <ts-select [items]="selectItems"></ts-select>
-    <ts-select-block [items]="departmentOptions" placeholder="请选择省市区" class="d-inline-block mb-2 mr-2"
-        style="width: 200px"></ts-select-block>
-    <button tsBtn (click)="showModal()">模态框</button>
-</div>
-
-<button tsBtn (click)="showConfirm()">确认</button> -->
-<!-- <ts-upload [uploader]="uploader"></ts-upload> -->
-<!-- <ts-datepickers color="success" [(ngModel)]="range">
-    <input class="form-control bg-white pointer" readonly
-        value="{{range.start|date:'yyyy-MM-dd'}}/{{range.end|date:'yyyy-MM-dd'}}" />
-</ts-datepickers>
-<ts-datepicker color="success" [(ngModel)]="date">
-    <input class="form-control bg-white pointer" readonly value="{{date|date:'yyyy-MM-dd'}}" />
-</ts-datepicker> -->
 <div class="d-flex">
-    <ts-group [node]="menu" [width]="250" class="bg-white d-block shadow-sm flex-shrink-0"
-        style="z-index:3;width: 250px;height:100vh;overflow-y: auto;overflow-x: hidden;-webkit-user-select: none;"
-        (itemClick)="navHandler($event)">
-        <h4 style="height: 60px;"
-            class="py-3 m-0 border-bottom font-weight-normal d-flex justify-content-center align-items-center">
-            <img class="mr-3" height="25" src="favicon.ico">
-            <span>Admin Pro</span>
-        </h4>
-    </ts-group>
+    <div class="bg-white d-block shadow-sm flex-shrink-0 position-relative"
+        style="z-index:3;width: 200px;height:100vh;-webkit-user-select: none;overflow: hidden;">
+        <div class="d-block h-100 position-absolute"
+            style="width: 216px; right: -17px; padding-right: 17px; overflow-y: auto;overflow-x: hidden;">
+            <ts-group class="d-block" [node]="menu" [width]="200" (itemClick)="navHandler($event)">
+                <h4 style="height: 60px;"
+                    class="py-3 m-0 border-bottom font-weight-normal d-flex justify-content-center align-items-center">
+                    <img class="mr-3" height="25" src="favicon.ico">
+                    <span>Admin Pro</span>
+                </h4>
+            </ts-group>
+        </div>
+    </div>
     <div class="flex-grow-1 d-flex flex-column">
         <div class="shadow-sm flex-shrink-0" style="z-index: 2;">
-            <nav style="height: 60px;" class="navbar bg-info text-white d-flex justify-content-between">
+            <nav style="height: 60px;font-size: 18px;" class="navbar bg-info text-white d-flex justify-content-between">
                 <div class="d-flex align-items-center">
-                    <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
-                        <i class="iconfont icon-category"></i>
-                    </div>
-                    <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
+                    <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3 mx-2">
                         <i class="iconfont icon-refresh"></i>
                     </div>
                     <div class="input-group">
-                        <input type="text" style="background:#68b1ff;" class="form-control border-0 ml-3 text-white"
+                        <input type="text" style="background:#68b1ff;" class="form-control border-0 text-white"
                             placeholder="搜索菜单或功能">
                         <div class="input-group-append">
                             <button class="btn text-white" type="button" style="background:#68b1ff;">
@@ -84,14 +52,10 @@
                         <a class="ml-2"><span>用户列表</span></a>
                     </div>
                 </div>
-                <!-- <div class="d-flex align-items-center bg-info-hover pointer h-100 px-3">
-                    <i class="iconfont icon-i-back"></i>
-                </div>
-                <ts-notes [notes]="notes" color="dark" class="d-block h-100"></ts-notes> -->
             </nav>
         </div>
         <div class="flex-grow-1 bg-white" style="max-height: calc(100vh - 100px);overflow-y: auto;">
-            <div [tsLoad]="true" class="p-3">
+            <div [tsLoad]="uiService.routeLoading" class="p-3">
                 <router-outlet></router-outlet>
             </div>
         </div>

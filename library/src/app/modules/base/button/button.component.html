@@ -1,5 +1,5 @@
 <div class="d-flex align-items-center">
-    <h1>Button</h1>
+    <h3>Button</h3>
     <div class="ml-3">
         <h5 class="badge badge-info">Directive</h5>
     </div>
@@ -11,14 +11,14 @@
 <div class="mb-4 border p-3">
     <div class="m-btn">
         <div>
-            <h3 class="d-inline">Selector:&nbsp;
+            <h5 class="m-0">
                 <code>button[tsBtn] </code>
-            </h3>
+            </h5>
         </div>
         <br>
         <table class="table table-striped">
             <thead>
-                <tr>
+                <tr class="text-primary">
                     <th scope="col">Input</th>
                     <th scope="col">Type</th>
                     <th scope="col">Description</th>
@@ -71,7 +71,7 @@
         </table>
         <table class="table table-striped mt-2">
             <thead>
-                <tr>
+                <tr class="text-primary">
                     <th scope="col">Output</th>
                     <th scope="col" style="width: 120px;">Event Type</th>
                     <th scope="col">Description</th>
@@ -91,26 +91,24 @@
     </div>
 </div>
 <div class="mb-4 p-3 border">
-    <div class="mb-2">
-        <h3 class="bg-white">Color</h3>
-        <br>
-        <div class="m-btn">
-            <button tsBtn>Default</button>
-            <button tsBtn color="white">White</button>
-            <button tsBtn color="primary">Primary</button>
-            <button tsBtn color="secondary">Scondary</button>
-            <button tsBtn color="success">Success</button>
-            <button tsBtn color="warning">Pink</button>
-            <button tsBtn color="danger">Purple</button>
-            <button tsBtn color="info">Info</button>
-        </div>
-        <div>
-            <ts-prism code="var a = b;" language="javascript"></ts-prism>
-        </div>
+    <h5 class="bg-white">Color</h5>
+    <br>
+    <div class="m-btn">
+        <button tsBtn>Default</button>
+        <button tsBtn color="white">White</button>
+        <button tsBtn color="primary">Primary</button>
+        <button tsBtn color="secondary">Scondary</button>
+        <button tsBtn color="success">Success</button>
+        <button tsBtn color="warning">Warning</button>
+        <button tsBtn color="danger">Danger</button>
+        <button tsBtn color="info">Info</button>
+    </div>
+    <div class="mt-3 py-3 border">
+        <ts-prism [codeObs]=" '/assets/docs/button/color.html' | request" language="html"></ts-prism>
     </div>
 </div>
 <div class="mb-4 p-3 border">
-    <h3>Outline</h3>
+    <h5>Outline</h5>
     <br>
     <div class="m-btn">
         <button tsBtn outline>Default</button>
@@ -118,26 +116,38 @@
         <button tsBtn outline color="primary">Primary</button>
         <button tsBtn outline color="secondary">Scondary</button>
         <button tsBtn outline color="success">Success</button>
-        <button tsBtn outline color="warning">Pink</button>
-        <button tsBtn outline color="danger">Purple</button>
+        <button tsBtn outline color="warning">Warning</button>
+        <button tsBtn outline color="danger">Danger</button>
         <button tsBtn outline color="info">Info</button>
+    </div>
+    <div class="mt-3 py-3 border">
+        <ts-prism [codeObs]=" '/assets/docs/button/outline.html' | request" language="html"></ts-prism>
     </div>
 </div>
 <div class="mb-4 p-3 border">
-    <h3>Size</h3>
+    <h5>Size</h5>
     <br>
     <div class="m-btn">
         <button tsBtn sm>Small</button>
         <button tsBtn>Default</button>
         <button tsBtn lg>Large</button>
     </div>
+    <div class="mt-3 py-3 border">
+        <ts-prism [codeObs]=" '/assets/docs/button/size.html' | request" language="html"></ts-prism>
+    </div>
 </div>
 <div class="mb-4 p-3 border">
-    <h3>Loading</h3>
+    <h5>Loading</h5>
     <br>
     <div class="m-btn">
         <button tsBtn loading (submit)="doSubmit($event)">Loading</button>
         <button tsBtn loading="favorite" (submit)="doSubmit($event)">Custom-icon-favorite</button>
         <button tsBtn loading="hand" (submit)="doSubmit($event)">Custom-icon-hand</button>
+    </div>
+    <div class="mt-3 py-3 border">
+        <ts-prism [codeObs]=" '/assets/docs/button/loading.html' | request" language="html"></ts-prism>
+    </div>
+    <div class="mt-3 py-3 border">
+        <ts-prism [codeObs]=" '/assets/docs/button/loading._' | request" language="typescript"></ts-prism>
     </div>
 </div>

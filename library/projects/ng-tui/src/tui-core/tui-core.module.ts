@@ -27,7 +27,7 @@ import { RequestPipe } from './pipes/request.pipe';
         ValueChangeListenerService,
         ConfigService,
         ComponentService,
-        ComponentHandleService,
+        ComponentHandleService
     ]
 })
 export class TUICoreModule { }
