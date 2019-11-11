@@ -1,0 +1,4 @@
+<tr *ngIf="theads && theads.length>0">
+    <th *ngFor="let thead of theads" scope="col">{{thead.title || thead}}</th>
+</tr>
+<ng-content></ng-content>

@@ -74,6 +74,8 @@ export * from './modules/image/image.directive';
 export * from './modules/modal/modal.module';
 export * from './modules/modal/modal.service';
 export * from './modules/modal/handle.service';
+export * from './modules/table/table.module';
+export * from './modules/table/table';
 
 // export * from './modules/modal/modal.component';
 export * from './modules/pagination/pagination.module';

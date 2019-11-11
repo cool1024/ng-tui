@@ -29,7 +29,7 @@
                 "children": [
                     {
                         "title": "标准表格",
-                        "route": "/demo/table"
+                        "route": "/base/table"
                     }
                 ]
             },
