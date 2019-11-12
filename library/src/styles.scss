@@ -38,14 +38,14 @@ $font-weight-normal: 400;
 $font-weight-bold: 500;
 
 // 表格样式配置
-$table-head-bg: rgba($cyan, 0.1);
-$table-head-color: $blue;
+$table-head-bg: rgba($gray-300, 0.1);
+$table-head-color: $gray-600;
 $table-border-width: 0;
 $table-border-color: $gray-300;
 $table-striped-order: even;
-$table-accent-bg: rgba($cyan, 0.05) !default;
+$table-accent-bg: rgba($gray-300, 0.05) !default;
 $table-bg: rgba($gray-100, 0.1);
-$table-hover-bg: rgba($cyan, 0.3) !default;
+$table-hover-bg: rgba($gray-300, 0.3) !default;
 $table-active-bg: $table-hover-bg !default;
 
 // 卡片样式配置
@@ -81,41 +81,24 @@ $theme-colors: ("primary": $primary, "secondary": $secondary, "success": $succes
 @import "~bootstrap/scss/type";
 @import "~bootstrap/scss/images";
 @import "~bootstrap/scss/code";
-
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/forms";
 @import "~bootstrap/scss/buttons";
-
-// @import "~bootstrap/scss/transitions";
 @import "~bootstrap/scss/dropdown";
 @import "~bootstrap/scss/button-group";
 @import "~bootstrap/scss/input-group";
 @import "~bootstrap/scss/custom-forms";
 @import "~bootstrap/scss/nav";
-
-// @import "~bootstrap/scss/navbar";
 @import "~bootstrap/scss/card";
-
-// @import "~bootstrap/scss/breadcrumb";
-
-// @import "~bootstrap/scss/pagination";
 @import "~bootstrap/scss/badge";
-
-// @import "~bootstrap/scss/jumbotron";
 @import "~bootstrap/scss/alert";
 @import "~bootstrap/scss/progress";
 @import "~bootstrap/scss/media";
-
 @import "~bootstrap/scss/list-group";
 @import "~bootstrap/scss/close";
 @import "~bootstrap/scss/modal";
-
-// @import "~bootstrap/scss/tooltip";
-// @import "~bootstrap/scss/popover";
-// @import "~bootstrap/scss/carousel";
 @import "~bootstrap/scss/utilities";
-
 @import "~bootstrap/scss/print";
 
 /** tui必须的基础样式，每个组件的样式都在里面 **/
@@ -152,7 +135,6 @@ $theme-colors: ("primary": $primary, "secondary": $secondary, "success": $succes
 @import "~animate.css/source/_base.css";
 @import "~animate.css/source/sliding_entrances/slideInUp.css";
 @import "~animate.css/source/attention_seekers/pulse.css";
-
 @import "~animate.css/source/sliding_entrances/slideInLeft.css";
 @import "~animate.css/source/zooming_entrances/zoomIn.css";
 @import "~animate.css/source/zooming_entrances/zoomInLeft.css";

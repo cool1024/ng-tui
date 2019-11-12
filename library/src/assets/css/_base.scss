@@ -16,7 +16,8 @@ button:disabled {
     cursor: not-allowed;
 }
 
-.no-select {
+.no-select, 
+.select-none {
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;

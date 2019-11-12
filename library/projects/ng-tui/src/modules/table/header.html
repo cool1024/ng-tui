@@ -1,4 +1,7 @@
-<tr *ngIf="theads && theads.length>0">
+<!-- <tr *ngIf="theads && theads.length>0">
     <th *ngFor="let thead of theads" scope="col">{{thead.title || thead}}</th>
+</tr> -->
+<tr *ngIf="theads && theads.length>0">
+    <th *ngFor="let th of theads" class="border-0">{{th.title || th}}</th>
 </tr>
 <ng-content></ng-content>
