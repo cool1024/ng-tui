@@ -4,26 +4,93 @@
         <h5 class="badge badge-success">Component</h5>
     </div>
 </div>
-<div>
-    Simple table usage
-</div>
+<div class="my-3">The table components are not yet complete, only a simple display case is provided here.</div>
 <hr>
+<div class="p-3 border mb-3">
+    <h6 class="m-0">Simple Table</h6>
+    <hr>
+    <div class="form-inline">
+        <div class="input-group mb-3 mr-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white">UserName</span>
+            </div>
+            <input style="width:140px" type="text" class="form-control" placeholder="">
+            <div class="input-group-prepend input-group-append">
+                <span class="input-group-text bg-white">Mobile</span>
+            </div>
+            <input style="width:140px" type="text" class="form-control" placeholder="">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white">CreatedAt</span>
+            </div>
+            <ts-datepicker [(ngModel)]="table.search.startTime" [zIndex]="2">
+                <input type="text" [value]="table.search.startTime || ''"
+                    class="form-control bg-white pointer rounded-0" placeholder="StartTime" style="width:140px"
+                    readonly>
+            </ts-datepicker>
+            <div class="input-group-prepend input-group-append">
+                <span class="input-group-text bg-white">To</span>
+            </div>
+            <ts-datepicker [(ngModel)]="table.search.endTime" [zIndex]="2">
+                <input type="text" [value]="table.search.endTime || ''" class="form-control bg-white pointer" placeholder="EndTime" style="width:140px" readonly>
+            </ts-datepicker>
+        </div>
+    </div>
+    <div class="form-inline">
+        <div class="m-btn">
+            <button class="btn btn-info">
+                <span>New User</span>
+            </button>
+            <button (click)="table.doReset()" class="btn btn-white">
+                <i class="iconfont icon-refresh mr-1"></i>
+                <span>Reset</span>
+            </button>
+            <button (click)="table.doSearch()" class="btn btn-white">
+                <i class="iconfont icon-search mr-1"></i>
+                <span>Search</span>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="alert alert-primary" role="alert">
+    A total of <span class="alert-link">{{table.page.total}}</span> data queries.
+</div>
 <ts-table #table="tsTable" class="border d-block" [colNum]="theads.length" [loader]="dataLoader" [height]="500">
     <thead [theads]="theads" class="thead-light"></thead>
     <tbody>
-        <tr *ngFor="let item of table.data">
-            <td>{{item.full_name}}</td>
-            <td>{{item.description}}</td>
+        <tr *ngFor="let item of table.data;index as i" class="mat-cell">
+            <td>{{table.page.offset + i + 1}}</td>
             <td>
-                <img class="rounded-circle border bg-secondary" width="30" height="30" src="{{item.owner.avatar_url}}" alt="avatar">
-                <span>&nbsp;{{item.owner.login}}</span>
+                <div class="media">
+                    <img tsImg [src]="item.avatar" dataSrc="assets/images/404.jpg" alt="avatar"
+                        class="align-self-center mr-3 rounded-circle" height="40">
+                    <div class="media-body">
+                        <p class="m-0">{{item.nick}}
+                            <small *ngIf="item.gender==='female'" class="text-danger">({{item.gender}})</small>
+                            <small *ngIf="item.gender==='male'" class="text-dark">({{item.gender}})</small>
+                        </p>
+                        <p class="m-0 text-primary">
+                            {{item.email}}
+                        </p>
+                    </div>
+                </div>
             </td>
-            <td>{{item.stargazers_count}}/{{item.forks}}</td>
-            <td>{{item.language}}</td>
-            <td style="width: 80px;">
-                <button tsBtn sm>详情</button>
+            <td>
+                <p class="p-0 m-0">{{item.cell}}</p>
+                <p class="p-0 m-0">{{item.address}}</p>
+            </td>
+            <td>
+                <p class="p-0 m-0">{{item.registered.date}}</p>
+            </td>
+            <td>
+                <span class="btn-icon btn-icon-info" tsTip="详情/编辑">
+                    <i class="iconfont icon-edit"></i>
+                </span>
+                <span class="btn-icon btn-icon-danger" tsTip="删除">
+                    <i class="iconfont icon-delete"></i>
+                </span>
             </td>
         </tr>
     </tbody>
 </ts-table>
-<ts-sort color="info" [ngModel]="1"></ts-sort>

@@ -7,7 +7,7 @@
  */
 import { NgModule } from '@angular/core';
 import { declarationComponents, entryComponents, BaseRoutingModule } from './base.routing';
-import { ButtonModule, PrismModule, TableModule, CheckboxModule } from 'projects/ng-tui/src/public_api';
+import { ButtonModule, PrismModule, TableModule, CheckboxModule, ImageModule, DatepickerModule } from 'projects/ng-tui/src/public_api';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -16,8 +16,10 @@ import { FormsModule } from '@angular/forms';
         PrismModule,
         TableModule,
         CheckboxModule,
+        ImageModule,
+        DatepickerModule,
         FormsModule,
-        BaseRoutingModule,
+        BaseRoutingModule
     ],
     declarations: [declarationComponents],
     entryComponents: [entryComponents]

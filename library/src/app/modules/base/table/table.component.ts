@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Pagination, requestString, requestObject } from 'projects/ng-tui/src/public_api';
+import { Pagination, requestObject, TableHeader } from 'projects/ng-tui/src/public_api';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 })
 export class TableComponent implements OnInit {
 
-    theads: Array<any> = ['项目名称', '描述', '作者', 'Star/Fork', '语言', '操作'];
+    theads: Array<TableHeader | string> = ['No.', 'User', 'Link', 'Time', 'Opt'];
 
     constructor() { }
 
@@ -17,11 +17,22 @@ export class TableComponent implements OnInit {
 
     dataLoader(page: Pagination) {
         console.log(page);
-        return requestObject(`https://api.github.com/search/repositories?q=java&page=${page.page}&per_page=${page.limit}`)
+        // `https://api.github.com/search/repositories?q=java&page=${page.page}&per_page=${page.limit}`
+
+        return requestObject(`https://randomuser.me/api/?page=${page.page}&results=${page.limit}`)
             .pipe(
                 map(res => {
-                    const total = res.total_count;
-                    const data = res.items;
+                    const total = 1000;
+                    const data = res.results.map(user => ({
+                        avatar: user.picture.thumbnail,
+                        nick: user.name.first,
+                        email: user.email,
+                        gender: user.gender,
+                        cell: user.cell,
+                        phone: user.phone,
+                        address: `${user.location.city} ${user.location.street}`,
+                        registered: user.registered
+                    }));
                     console.log(data);
                     return { result: true, total, data };
                 })
