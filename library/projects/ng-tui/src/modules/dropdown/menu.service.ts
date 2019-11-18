@@ -40,3 +40,9 @@ export class MenuService {
         return handle.present().pipe<Item>(skipWhile(data => data === undefined));
     }
 }
+
+export enum Position {
+    AUTO = 'auto',
+    BOTTOM = 'bottom',
+    TOP = 'top'
+}

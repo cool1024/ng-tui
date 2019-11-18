@@ -49,7 +49,7 @@ export class MenuDirective implements OnDestroy {
     }
 
     ngOnDestroy() {
-        console.log(11);
+        
     }
 
 }

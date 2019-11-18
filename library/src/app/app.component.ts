@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { requestObject, MenuItem, TUIService } from 'projects/ng-tui/src/public_api';
-import { Router } from '@angular/router';
+import { requestObject, MenuItem, TUIService, MenuService, Position } from 'projects/ng-tui/src/public_api';
 
 @Component({
     selector: 'app-root',
@@ -15,7 +14,7 @@ export class AppComponent {
         children: []
     };
 
-    constructor(private router: Router, public uiService: TUIService) {
+    constructor(public uiService: TUIService, private menuService: MenuService) {
         requestObject('/assets/menu.json').subscribe(obj => {
             this.menu.children = obj;
             console.log(this.menu);
@@ -24,11 +23,20 @@ export class AppComponent {
 
     navHandler(item: MenuItem) {
         if (item.route) {
-            this.router.navigateByUrl(item.route);
+            this.uiService.navUrl(item.route);
         }
+    }
+
+    navBack() {
+        this.uiService.navBack();
     }
 
     changeFullscreen() {
         this.uiService.toggleFullScreen();
+    }
+
+    showUserMenu(dom: HTMLElement) {
+        console.log(dom);
+        this.menuService.showMenu(dom, ['1111', '', '2222'], { position: Position.AUTO, offsetX: 0 }).subscribe();
     }
 }

@@ -10,9 +10,12 @@ export class ValueChangeListenerService {
         return window['ValueChangeListenerService'];
     }
 
-    observe(dom: Object, attrs: string[], handler: Function) {
-        // tslint:disable-next-line:no-unused-expression
+    private initInterval() {
         this.interval || (this.interval = setInterval(() => this.handlerFunc(), 500));
+    }
+
+    observe(dom: Object, attrs: string[], handler: Function) {
+        this.initInterval();
         const obs = { dom, attrs, handler, check: (e) => this.valueChange(e), values: [] };
         attrs.forEach(attr => obs.values.push(dom[attr]));
         this.observes.push(obs);
@@ -20,9 +23,19 @@ export class ValueChangeListenerService {
         return obs;
     }
 
+    observeByCheck(checkFun: () => boolean, handler: Function) {
+        this.initInterval();
+        const obs = {
+            handler,
+            check: () => checkFun()
+        };
+        handler();
+        this.observes.push(obs);
+        return obs;
+    }
+
     observeClientRect(dom: HTMLElement, handler: Function) {
-        // tslint:disable-next-line:no-unused-expression
-        this.interval || (this.interval = setInterval(() => this.handlerFunc(), 500));
+        this.initInterval();
         const obs = {
             dom, handler,
             rect: dom.getBoundingClientRect(),

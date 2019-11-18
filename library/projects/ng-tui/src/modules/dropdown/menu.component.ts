@@ -41,10 +41,10 @@ export class MenuComponent implements TUIComponent, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        if (this.position === 'auto') {
-            this.autoHandle = () => this.viewTool.autoPosition(this.offsetX, this.offsetX);
-            window.addEventListener('resize', this.autoHandle, false);
-        }
+        // if (this.position === 'auto') {
+        //     this.autoHandle = () => this.viewTool.autoPosition(this.offsetX, this.offsetX);
+        //     window.addEventListener('resize', this.autoHandle, false);
+        // }
     }
 
     itemClick(item: string, index: number) {
@@ -53,21 +53,17 @@ export class MenuComponent implements TUIComponent, AfterViewInit {
 
     present() {
         this.viewTool.targetDom = this.menuView.nativeElement;
-        setTimeout(() => {
-            switch (this.position) {
-                case 'bottom':
-                    this.viewTool.autoPositionBottom(this.offsetX, this.offsetY);
-                    break;
-                case 'top': this.viewTool.autoPositionTop(this.offsetX, this.offsetY);
-                    break;
-                case 'auto': this.viewTool.autoPosition(this.offsetX, this.offsetY);
-                    break;
-            }
-            setTimeout(() => {
-                this.viewTool.targetDom.style.opacity = '1';
-                this.viewTool.targetDom.classList.add(this.animation);
-            });
-        }, 100);
+        switch (this.position) {
+            case 'bottom':
+                this.viewTool.autoPositionBottom(this.offsetX, this.offsetY);
+                break;
+            case 'top': this.viewTool.autoPositionTop(this.offsetX, this.offsetY);
+                break;
+            case 'auto': this.viewTool.autoPosition(this.offsetX, this.offsetY);
+                break;
+        }
+        this.viewTool.targetDom.style.opacity = '1';
+        this.viewTool.targetDom.classList.add(this.animation);
     }
 
     dismiss() {

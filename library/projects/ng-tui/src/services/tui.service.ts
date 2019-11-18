@@ -8,17 +8,36 @@ export class TUIService {
 
     public routeLoading = false;
 
-    public get $routeLoading(): Observable<boolean>{
+    public get $routeLoading(): Observable<boolean> {
         return this.router.events.pipe(
             skipWhile(e => !~[RouteConfigLoadStart, NavigationEnd].findIndex(t => e instanceof t)),
             map<Event, boolean>(e => e instanceof RouteConfigLoadStart)
         );
     };
 
+    public get canBack(): boolean {
+        return this.navCx > 0;
+    }
+
+    private navCx = -1;
+
     constructor(private router: Router) {
         this.$routeLoading.subscribe(e => {
-            this.routeLoading = e
+            this.routeLoading = e;
+            this.navCx++;
         });
+    }
+
+    navBack() {
+        if (this.canBack) {
+            window.history.back();
+            this.navCx--;
+        }
+    }
+
+    navUrl(url: string) {
+        this.navCx++;
+        this.router.navigateByUrl(url);
     }
 
     toggleFullScreen() {

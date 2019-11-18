@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
     ],
     exports: [
         PaginationComponent,
+        DropdownModule
     ]
 })
 export class PaginationModule { }

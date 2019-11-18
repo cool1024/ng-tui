@@ -37,17 +37,19 @@
                     <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
                         <i class="iconfont icon-remind"></i>
                     </div>
-                    <div class="bg-light-hover pointer h-100 px-3 d-flex justify-content-center align-items-center">
+                    <div (click)="showUserMenu($event.target)"
+                        class="bg-light-hover pointer h-100 px-3 d-flex justify-content-center align-items-center">
                         <img class="rounded-circle" width="35" height="35" src="https://lorempixel.com/100/100/?18017">
                     </div>
                 </div>
             </nav>
             <nav style="height: 40px;" class="d-flex align-items-center">
                 <div class="h-100 d-flex align-items-center">
-                    <div class="d-flex align-items-center bg-info-hover pointer h-100 px-3">
+                    <div *ngIf="uiService.canBack" (click)="navBack()"
+                        class="d-flex align-items-center bg-info-hover pointer h-100 px-3">
                         <i class="iconfont icon-i-back"></i>
                     </div>
-                    <div class="breadcrumb bg-white ml-1 pr-3 d-inline-block">
+                    <div class="breadcrumb bg-white ml-1 pl-2 pr-3 d-inline-block">
                         <a routerLink="/">首页</a>
                         <a class="ml-2"><span>用户列表</span></a>
                     </div>

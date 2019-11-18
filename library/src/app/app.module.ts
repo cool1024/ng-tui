@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { TUIModule, CollapseModule, TabModule, CssloadModule, TUIService } from '../../projects/ng-tui/src/public_api';
+import { TUIModule, CollapseModule, TabModule, CssloadModule, TUIService, DropdownModule } from '../../projects/ng-tui/src/public_api';
 import { AppRoutingModule } from './app.routing';
 import { ToolsUIConfig } from './config/tui-config';
 
@@ -17,6 +17,7 @@ import { ToolsUIConfig } from './config/tui-config';
         TUIModule.forRoot(ToolsUIConfig),
         CollapseModule,
         TabModule,
+        DropdownModule,
         CssloadModule,
         AppRoutingModule
     ],
