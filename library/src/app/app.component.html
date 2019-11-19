@@ -3,7 +3,7 @@
         style="z-index:3;width: 200px;height:100vh;-webkit-user-select: none;overflow: hidden;">
         <div class="d-block h-100 position-absolute"
             style="width: 216px; right: -17px; padding-right: 17px; overflow-y: auto;overflow-x: hidden;">
-            <ts-group class="d-block" [node]="menu" [width]="200" (itemClick)="navHandler($event)">
+            <ts-group class="d-block" [theme]="menuTheme" [node]="menu" [width]="200" (itemClick)="navHandler($event)">
                 <h4 style="height: 60px;"
                     class="py-3 m-0 border-bottom font-weight-normal d-flex justify-content-center align-items-center">
                     <img class="mr-3" height="25" src="favicon.ico">
@@ -37,7 +37,10 @@
                     <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
                         <i class="iconfont icon-remind"></i>
                     </div>
-                    <div (click)="showUserMenu($event.target)"
+                    <div #languageToggle (click)="showLanguageMenu(languageToggle)" class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
+                        <i class="iconfont icon-language"></i>
+                    </div>
+                    <div #userCenterToggle (click)="showUserMenu(userCenterToggle)"
                         class="bg-light-hover pointer h-100 px-3 d-flex justify-content-center align-items-center">
                         <img class="rounded-circle" width="35" height="35" src="https://lorempixel.com/100/100/?18017">
                     </div>
@@ -51,7 +54,7 @@
                     </div>
                     <div class="breadcrumb bg-white ml-1 pl-2 pr-3 d-inline-block">
                         <a routerLink="/">首页</a>
-                        <a class="ml-2"><span>用户列表</span></a>
+                        <!-- <a class="ml-2"><span>用户列表</span></a> -->
                     </div>
                 </div>
             </nav>

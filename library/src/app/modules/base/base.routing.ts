@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ButtonComponent } from './button/button.component';
 import { TableComponent } from './table/table.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 /**
  * 页面组件
@@ -17,10 +18,16 @@ import { TableComponent } from './table/table.component';
 
 const routes: Routes = [
     { path: 'button', component: ButtonComponent },
-    { path: 'table', component: TableComponent }
+    { path: 'table', component: TableComponent },
+    { path: 'pagination', component: PaginationComponent },
 ];
 
-export const declarationComponents = [ButtonComponent, TableComponent];
+export const declarationComponents = [
+    ButtonComponent,
+    TableComponent,
+    PaginationComponent
+];
+
 
 export const entryComponents = [];
 

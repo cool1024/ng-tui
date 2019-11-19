@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { MenuItem, MenuTheme } from './node.interface';
+import { MenuItem, MenuTheme, defaultMenuTheme } from './node.interface';
 
 @Component({
     selector: 'ts-group',
@@ -26,12 +26,8 @@ export class GroupComponent {
 
     @Input() open: boolean = false;
 
-    @Input() theme: MenuTheme = {
-        defaultTextColor: 'black',
-        activeTextColor: 'blue',
-        splitLineColor: 'white',
-        hoverBackgroundColor: 'rgba(0, 0, 0, 0.04)'
-    };
+    @Input() theme: MenuTheme = defaultMenuTheme;
+    ;
 
     @Output() itemClick = new EventEmitter<MenuItem>();
 

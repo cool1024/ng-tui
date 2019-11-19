@@ -40,9 +40,9 @@ export class ComponentHandle {
         this.instance.destroy();
         this.ref.destroy();
         try {
-            this.dom.parentElement.removeChild(this.dom);
+            this.dom.parentElement && this.dom.parentElement.removeChild(this.dom);
         } catch (e) {
-
+            console.error(e);
         }
         this.subject.next(datas);
         this.subject.complete();

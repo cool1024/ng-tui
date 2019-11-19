@@ -6,13 +6,16 @@ import { ComponentHandle } from '../../tui-core/component-creator/handle.class';
 @Component({
     template: `
         <div #menuView
+            style="transition: all 0.2s;"
             [ngStyle]="{minWidth:minWidth+'px',zIndex:zIndex}"
-            style="opacity:0"
-            class="bg-white animated shadow no-select py-2 position-absolute d-inline-block">
+            class="bg-white animated shadow no-select py-2 position-absolute d-inline-block;">
             <ng-container *ngFor="let item of items;index as i">
                 <a *ngIf="item" (click)="itemClick(item,i)"
                     class="dropdown-item pointer"
-                    close>{{item}}</a>
+                    close>
+                    <i *ngIf="item.icon" class="mr-1 {{item.icon}}"></i>
+                    {{item.title || item}}
+                </a>
                 <div *ngIf="item===''" class="dropdown-divider"></div>
             </ng-container>
         </div>`
@@ -41,18 +44,6 @@ export class MenuComponent implements TUIComponent, AfterViewInit {
     }
 
     ngAfterViewInit() {
-        // if (this.position === 'auto') {
-        //     this.autoHandle = () => this.viewTool.autoPosition(this.offsetX, this.offsetX);
-        //     window.addEventListener('resize', this.autoHandle, false);
-        // }
-    }
-
-    itemClick(item: string, index: number) {
-        this.handle.destroy({ text: item, value: index });
-    }
-
-    present() {
-        this.viewTool.targetDom = this.menuView.nativeElement;
         switch (this.position) {
             case 'bottom':
                 this.viewTool.autoPositionBottom(this.offsetX, this.offsetY);
@@ -62,6 +53,14 @@ export class MenuComponent implements TUIComponent, AfterViewInit {
             case 'auto': this.viewTool.autoPosition(this.offsetX, this.offsetY);
                 break;
         }
+    }
+
+    itemClick(item: string, index: number) {
+        this.handle.destroy({ text: item, value: index });
+    }
+
+    present() {
+        this.viewTool.targetDom = this.menuView.nativeElement;
         this.viewTool.targetDom.style.opacity = '1';
         this.viewTool.targetDom.classList.add(this.animation);
     }

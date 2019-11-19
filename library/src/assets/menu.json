@@ -14,11 +14,11 @@
                     },
                     {
                         "title": "分页按钮",
-                        "route": "/demo/pagination"
+                        "route": "/base/pagination"
                     },
                     {
                         "title": "下拉按钮",
-                        "route": "/demo/dropdown"
+                        "route": "/base/dropdown"
                     }
                 ]
             },

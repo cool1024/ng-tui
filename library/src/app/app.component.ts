@@ -1,5 +1,13 @@
 import { Component } from '@angular/core';
-import { requestObject, MenuItem, TUIService, MenuService, Position } from 'projects/ng-tui/src/public_api';
+import {
+    createMenuTheme,
+    requestObject,
+    MenuItem,
+    Position,
+    MenuTheme,
+    TUIService,
+    MenuService,
+} from 'projects/ng-tui/src/public_api';
 
 @Component({
     selector: 'app-root',
@@ -14,11 +22,13 @@ export class AppComponent {
         children: []
     };
 
+    // 菜单主题
+    menuTheme: MenuTheme = createMenuTheme({
+        activeTextColor: '#50a4ff'
+    });
+
     constructor(public uiService: TUIService, private menuService: MenuService) {
-        requestObject('/assets/menu.json').subscribe(obj => {
-            this.menu.children = obj;
-            console.log(this.menu);
-        });
+        requestObject('/assets/menu.json').subscribe(obj => this.menu.children = obj);
     }
 
     navHandler(item: MenuItem) {
@@ -35,8 +45,25 @@ export class AppComponent {
         this.uiService.toggleFullScreen();
     }
 
+    showLanguageMenu(dom: HTMLElement) {
+        this.menuService.showMenu(
+            dom,
+            ['简体中文', 'English'],
+            { position: Position.AUTO }
+        ).subscribe();
+    }
+
     showUserMenu(dom: HTMLElement) {
-        console.log(dom);
-        this.menuService.showMenu(dom, ['1111', '', '2222'], { position: Position.AUTO, offsetX: 0 }).subscribe();
+        this.menuService.showMenu(
+            dom,
+            [
+                { title: '系统管理员', icon: 'iconfont icon-account' },
+                { title: '18270881855', icon: 'iconfont icon-mobile' },
+                '',
+                { title: '个人设置', icon: 'iconfont icon-set' },
+                { title: '退出登录', icon: 'iconfont icon-out' }
+            ],
+            { position: Position.AUTO }
+        ).subscribe();
     }
 }
