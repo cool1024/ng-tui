@@ -1,5 +1,5 @@
 /**
- * Base Routing
+ * Demo Routing
  *
  * @author cool1024
  * @file   base.routing.ts
@@ -11,11 +11,7 @@ import { ButtonComponent } from './button/button.component';
 import { TableComponent } from './table/table.component';
 import { PaginationComponent } from './pagination/pagination.component';
 
-/**
- * 页面组件
- */
-
-
+// 模块路由配置
 const routes: Routes = [
     { path: 'button', component: ButtonComponent },
     { path: 'table', component: TableComponent },
@@ -35,4 +31,4 @@ export const entryComponents = [];
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class BaseRoutingModule { }
+export class DemoRoutingModule { }
