@@ -27,16 +27,16 @@ export class ComponentHandle {
         this.subject.next(data);
     }
 
-    close(datas?: any) {
-        this.destroy(datas);
+    close(data?: any) {
+        this.destroy(data);
     }
 
-    dismiss(datas?: any) {
+    dismiss(data?: any) {
         this.instance.dismiss();
-        this.subject.next(datas);
+        this.subject.next(data);
     }
 
-    destroy(datas?: any) {
+    destroy(data?: any) {
         this.instance.destroy();
         this.ref.destroy();
         try {
@@ -44,7 +44,7 @@ export class ComponentHandle {
         } catch (e) {
             console.error(e);
         }
-        this.subject.next(datas);
+        this.subject.next(data);
         this.subject.complete();
     }
 }

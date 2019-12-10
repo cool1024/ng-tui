@@ -9,6 +9,7 @@ import {
     MenuService,
 } from 'projects/ng-tui/src/public_api';
 import { LoginConfig } from './modules/dashboard/view/login/login.interface';
+import { DashbardService } from './modules/dashboard/service/dashboard.service';
 
 @Component({
     selector: 'app-root',
@@ -41,8 +42,21 @@ export class AppComponent {
         secondPlaceholder: '请输入管理员密码'
     };
 
-    constructor(public uiService: TUIService, private menuService: MenuService) {
-        requestObject('/assets/menu.json').subscribe(obj => this.menu.children = obj);
+    constructor(
+        public uiService: TUIService,
+        private menuService: MenuService,
+        private dashboardService: DashbardService
+    ) {
+        // 校验登录
+        dashboardService.checkLoginStatus().subscribe(status => {
+            if (status === false) {
+                // 显示登录页面
+                dashboardService.showLogin();
+            } else {
+                // 载入菜单
+                requestObject('/assets/menu.json').subscribe(obj => this.menu.children = obj);
+            }
+        });
     }
 
     navHandler(item: MenuItem) {

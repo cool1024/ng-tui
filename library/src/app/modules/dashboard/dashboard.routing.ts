@@ -21,7 +21,9 @@ export const declarationComponents = [
 ];
 
 
-export const entryComponents = [];
+export const entryComponents = [
+    LoginComponent
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

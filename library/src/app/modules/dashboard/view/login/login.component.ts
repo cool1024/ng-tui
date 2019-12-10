@@ -11,6 +11,8 @@ export class LoginComponent implements TUIComponent {
 
     @Input() config: LoginConfig;
 
+    display = false;
+
     loginForm = {
         account: '',
         password: ''
@@ -19,16 +21,17 @@ export class LoginComponent implements TUIComponent {
     constructor(private router: Router) { }
 
     confirmLogin(btn: any) {
-
+        this.dismiss();
     }
 
     devPreview() {
         this.router.navigateByUrl('/home');
+        this.dismiss();
     }
 
-    present() { }
+    present() { this.display = true; }
 
-    dismiss() { }
+    dismiss() { this.display = false; }
 
     destroy() { }
 }
