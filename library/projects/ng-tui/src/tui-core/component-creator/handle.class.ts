@@ -23,6 +23,10 @@ export class ComponentHandle {
         return this.subject.asObservable();
     }
 
+    getObs(): Observable<any> {
+        return this.subject.asObservable();
+    }
+
     send(data?: any) {
         this.subject.next(data);
     }

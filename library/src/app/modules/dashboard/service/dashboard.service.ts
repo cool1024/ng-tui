@@ -23,6 +23,16 @@ export class DashbardService {
         }
     }
 
+    /**
+     * 清空登录状态
+     */
+    cleanLoginStatus() {
+        this.cleanItemFromStorage(USER_DATA);
+    }
+
+    /**
+     * 检查登录状态
+     */
     checkLoginStatus(): Observable<boolean> {
         return of(true).pipe(delay(1000));
     }
@@ -54,5 +64,9 @@ export class DashbardService {
      */
     setObjectToStorage(key: string, object: { [key: string]: string | number | any }) {
         localStorage.setItem(key, JSON.stringify(object));
+    }
+
+    cleanItemFromStorage(key: string) {
+        localStorage.removeItem(key);
     }
 }

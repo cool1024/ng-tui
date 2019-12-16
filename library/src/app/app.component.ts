@@ -10,6 +10,7 @@ import {
 } from 'projects/ng-tui/src/public_api';
 import { LoginConfig } from './modules/dashboard/view/login/login.interface';
 import { DashbardService } from './modules/dashboard/service/dashboard.service';
+import { DropMenuItem } from 'projects/ng-tui/src/modules/dropdown/menu.component';
 
 @Component({
     selector: 'app-root',
@@ -77,21 +78,23 @@ export class AppComponent {
         this.menuService.showMenu(
             dom,
             ['简体中文', 'English'],
-            { position: Position.BOTTOM, offsetY: 10 }
+            { position: Position.AUTO, offsetY: 10 }
         ).subscribe();
     }
 
     showUserMenu(dom: HTMLElement) {
-        this.menuService.showMenu(
-            dom,
-            [
-                { title: '系统管理员', icon: 'iconfont icon-account' },
-                { title: '18270881855', icon: 'iconfont icon-mobile' },
-                '',
-                { title: '个人设置', icon: 'iconfont icon-set' },
-                { title: '退出登录', icon: 'iconfont icon-out' }
-            ],
-            { position: Position.AUTO, offsetX: -105, offsetY: 10 }
-        ).subscribe();
+        const menuItems = [
+            DropMenuItem.label('系统管理员', 'iconfont icon-account'),
+            DropMenuItem.label('18270881855', 'iconfont icon-mobile'),
+            DropMenuItem.label('个人设置', 'iconfont icon-set'),
+            DropMenuItem.split(),
+            DropMenuItem.label('退出登录', 'iconfont icon-out')
+        ];
+        const menuConfig = { position: Position.AUTO, offsetX: -105, offsetY: 10 };
+        this.menuService.showMenu(dom, menuItems, menuConfig).subscribe(res => {
+            if(res.index === 4){
+                this.dashboardService.cleanLoginStatus();
+            }
+        });
     }
 }

@@ -36,6 +36,7 @@ export class ValueChangeListenerService {
 
     observeClientRect(dom: HTMLElement, handler: Function) {
         this.initInterval();
+        setTimeout(() => handler())
         const obs = {
             dom, handler,
             rect: dom.getBoundingClientRect(),
@@ -49,9 +50,7 @@ export class ValueChangeListenerService {
                 return checkResult;
             }
         };
-
         this.observes.push(obs);
-        handler();
         return obs;
     }
 
@@ -71,8 +70,10 @@ export class ValueChangeListenerService {
     handlerFunc() {
         this.observes.forEach(obs => {
             try {
-                // tslint:disable-next-line: no-unused-expression
-                obs.check(obs) && obs.handler();
+                if (obs.check(obs)) {
+                    console.log('监测到变更');
+                    obs.handler();
+                }
             } catch (e) {
                 console.log('interval run error');
                 console.error(e);

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ComponentService } from '../../tui-core/component-creator/component.service';
-import { MenuComponent } from './menu.component';
+import { MenuComponent, DropMenuItem } from './menu.component';
 import { ViewTool } from '../../tui-core/component-creator/view-tool.class';
 import { ComponentHandle } from '../../tui-core/component-creator/handle.class';
 import { skipWhile } from 'rxjs/operators';
@@ -14,7 +14,7 @@ export class MenuService {
 
     constructor(private componentService: ComponentService) { }
 
-    showMenu(dom: HTMLElement, items: Array<string | MenuItem>, options?: MenuOptions) {
+    showMenu(dom: HTMLElement, items: Array<string | DropMenuItem>, options?: MenuOptions) {
         try {
             // tslint:disable-next-line:no-unused-expression
             this.activeHandle && this.activeHandle.destroy();
@@ -25,7 +25,17 @@ export class MenuService {
         const handle = this.componentService.create(MenuComponent);
         const viewTool = new ViewTool();
         viewTool.toggleDom = dom;
-        handle.instance.items = items;
+        handle.instance.items = items.map<DropMenuItem>(e => {
+            if (e) {
+                if (typeof e === 'string') {
+                    return DropMenuItem.item(e, e, null);
+                } else {
+                    return e;
+                }
+            } else {
+                return DropMenuItem.split();
+            }
+        });
         handle.instance.viewTool = viewTool;
         Object.assign(handle.instance, {
             offsetX: 0,
@@ -37,7 +47,7 @@ export class MenuService {
         }, options || {});
         handle.instance.handle = handle;
         this.activeHandle = handle;
-        return handle.present().pipe(skipWhile(data => data === undefined));
+        return handle.getObs().pipe(skipWhile(data => data === undefined));
     }
 }
 
