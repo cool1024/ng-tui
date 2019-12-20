@@ -30,9 +30,7 @@
                 ]
             },
             {
-                "icon": "iconfont icon-form",
                 "title": "表单控件",
-                "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAL1SURBVHhe7Z1BahVRFAWzDZekbsM1uDMn0TUoONYIUdAVaOgfiHlyBpdHXejWY6dpTkHNPve8lIPgn+QqhBBCCCGEEEIIIYQQQuX60+Xl9efl29uby0PsHY0eW71QNh/XN8tXGozkcqtsPngodiqbDxqJvcrmg0Zir7L5oJHYq2w+aCT2KpsPGom9yuaDRmKvsvmgkdirbD5oJPYqmw8aib3K5oNGYq+y+aCR2KtsPmhkTz/8uH+4u394csYbxlvojVVl80Eje3p3UYED8OvxLfTGqrL5oJHqs9cf/0m6WT0a9MaqsvmgkSpF3SLdrB4NemNV2XzQSJWibpFuVo8GvbGqbD5opEpRt0g3q0eD3lhVNh80sqf5JQwje/r++/2fH/ypGW8Yb6E3VpXNB43EXmXzQSOxV9l80EjsVTYfNBJ7lc0HjcReZfNBI7FX2XzQyJ7m21AY2dP8RwxGqvT1whbpZvVo0BuryuaDRqoUdYt0s3o06I1VZfNBI1WKukW6WT0a9MaqsvmgkSpF3SLdrB4NemNV2XzQyJ7mlzCM7Gm+DYWR2KtsPmgk9iqbDxqJvcrmg0Zir7L5oJHYq2w+aCT2KpsPGom9yuaDRmKvsvmgkeqrNz//Srp1BpXNB41UKe4a6dYZVDYfNFKluGukW2dQ2XzQSJXirpFunUFl80Ej1Tnssizo/Dm6NaSvrI8kvbmqbD5opDqHpfjD+XN0a0g/9JGkN1eVzQeNVOewFH84f45uDemHPpL05qqy+aCR6hyW4g/nz9GtIf3QR5LeXFU2HzRSncNS/OH8Obp1BpXNB41U57AUfzh/jm6dQWXzQSPVOexa6dYZVDYfNFKluGukW2dQ2XzQSJXirpFunUFl80EjVYq7Rrp1BpXNB43EXmXzQSOxV9l80EjsVTYfNBJ7lc0HjcReZfNBI7FX2XzQSOxVNh80EnuVzUf+gMMW/8MfcBh/liP/CGtcbt99uTxXthBCCCGEEEIIIYQQQgiPXF39BtbkcUufAOYuAAAAAElFTkSuQmCC",
                 "children": [
                     {
                         "title": "多项/单选",
@@ -172,8 +170,5 @@
                 ]
             }
         ]
-    },
-    {
-        "title": "111"
     }
 ]

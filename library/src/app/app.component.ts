@@ -52,7 +52,7 @@ export class AppComponent {
         dashboardService.checkLoginStatus().subscribe(status => {
             if (status === false) {
                 // 显示登录页面
-                dashboardService.showLogin();
+                dashboardService.showLogin(this.loginConfig);
             } else {
                 // 载入菜单
                 requestObject('/assets/menu.json').subscribe(obj => this.menu.children = obj);
@@ -94,6 +94,7 @@ export class AppComponent {
         this.menuService.showMenu(dom, menuItems, menuConfig).subscribe(res => {
             if(res.index === 4){
                 this.dashboardService.cleanLoginStatus();
+                this.dashboardService.showLogin(this.loginConfig);
             }
         });
     }

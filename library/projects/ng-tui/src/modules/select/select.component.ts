@@ -33,14 +33,14 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
             [offsetY]="1"
             class="dropdown-menu">
             <div class="ts-select-item pointer border-none">
-                <div *ngFor="let item of itemsList;trackBy: trackByValue"
+                <div *ngFor="let item of optionsList;trackBy: trackByValue"
                      close
                      class="dropdown-item {{item.value===value&&bgWithTextClass}}"
                      [class.active]="item.value===value"
                      (click)="setValue(item)"
                      [innerHTML]="item.content||item.text">
                 </div>
-                <div *ngIf="itemsList.length<=0" class="text-muted text-center">{{emptyLabel}}</div>
+                <div *ngIf="optionsList.length<=0" class="text-muted text-center">{{emptyLabel}}</div>
             </div>
         </div>
     </div>`,
@@ -62,7 +62,7 @@ export class SelectComponent extends BaseForm implements OnChanges, AfterViewIni
 
     subject = new Subject<string>();
 
-    @Input() items: Array<string | number | { value: any, text: string }>;
+    @Input() options: Array<string | Item>;
 
     @Input() placeholder: string;
 
@@ -79,34 +79,34 @@ export class SelectComponent extends BaseForm implements OnChanges, AfterViewIni
         this.placeholder = 'select...';
         this.searchKey = '';
         this.title = '';
-        this.items = [];
+        this.options = [];
         this.emptyLabel = 'No results found.';
         this.subject.pipe(
             debounceTime(500),
             distinctUntilChanged()
         ).subscribe(key => {
-            return this.searchFunc && this.searchFunc(key).subscribe(items => {
-                this.items = items;
+            return this.searchFunc && this.searchFunc(key).subscribe(options => {
+                this.options = options;
             });
         });
     }
 
-    get itemsList(): Array<Item> {
-        let items = this.formatItems;
+    get optionsList(): Array<Item> {
+        let options = this.formatoptions;
         if (this.searchKey && !this.searchFunc) {
-            items = items.filter(e => e.text.indexOf(this.searchKey) > -1);
+            options = options.filter(e => e.text.indexOf(this.searchKey) > -1);
         }
-        return items;
+        return options;
     }
 
-    get formatItems(): Array<Item> {
-        const items = new Array<any>();
-        if (this.items.length > 0) {
-            this.items.forEach(e => {
-                items.push(typeof e === 'string' || typeof e === 'number' ? { value: e, text: e } : e);
+    get formatoptions(): Array<Item> {
+        const options = new Array<any>();
+        if (this.options.length > 0) {
+            this.options.forEach(e => {
+                options.push(typeof e === 'string' || typeof e === 'number' ? { value: e, text: e } : e);
             });
         }
-        return items;
+        return options;
     }
 
     ngOnChanges() {
@@ -149,11 +149,11 @@ export class SelectComponent extends BaseForm implements OnChanges, AfterViewIni
     }
 
     setTitle() {
-        const items = this.formatItems;
+        const options = this.formatoptions;
         if (this.value !== undefined && this.value != null) {
-            for (let i = 0; i < items.length; i++) {
-                if (items[i].value === this.value) {
-                    this.title = items[i].text;
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].value === this.value) {
+                    this.title = options[i].text;
                     return;
                 }
             }

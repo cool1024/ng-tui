@@ -10,18 +10,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { ButtonComponent } from './button/button.component';
 import { TableComponent } from './table/table.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { CheckboxComponent } from './checkbox/checkbox.component';
+import { SelectComponent } from './select/select.component';
 
 // 模块路由配置
 const routes: Routes = [
     { path: 'button', component: ButtonComponent },
     { path: 'table', component: TableComponent },
     { path: 'pagination', component: PaginationComponent },
+    { path: 'checkbox', component: CheckboxComponent },
+    { path: 'select', component: SelectComponent },
 ];
 
 export const declarationComponents = [
     ButtonComponent,
     TableComponent,
-    PaginationComponent
+    PaginationComponent,
+    CheckboxComponent,
+    SelectComponent
 ];
 
 

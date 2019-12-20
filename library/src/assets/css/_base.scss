@@ -653,6 +653,10 @@ $color in $more_colors {
         background-color: rgba($color, 0.1);
     }
 
+    .bg-#{$name}-light {
+        background-color: $color + rgb(10, 10, 10) !important;
+    }
+
     .bg-white-muted {
         background-color: rgba($color, 0.1);
     }
@@ -701,3 +705,4 @@ $color in $more_colors {
 .shadow-sm-right {
     box-shadow: 0.22rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
+

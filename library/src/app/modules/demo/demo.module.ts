@@ -15,11 +15,11 @@ import {
     ButtonModule,
     PrismModule,
     TableModule,
-    CheckboxModule,
     ImageModule,
-    DatepickerModule
+    CheckboxModule,
+    DatepickerModule,
+    SelectModule
 } from 'projects/ng-tui/src/public_api';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
@@ -29,7 +29,7 @@ import { FormsModule } from '@angular/forms';
         CheckboxModule,
         ImageModule,
         DatepickerModule,
-        FormsModule,
+        SelectModule,
         DemoRoutingModule
     ],
     declarations: [declarationComponents],
