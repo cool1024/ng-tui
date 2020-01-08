@@ -90,8 +90,11 @@ export class AppComponent {
             DropMenuItem.split(),
             DropMenuItem.label('退出登录', 'iconfont icon-out')
         ];
-        const menuConfig = { position: Position.AUTO, offsetX: -105, offsetY: 10 };
+        const menuConfig = { position: Position.AUTO, offsetX: -100, offsetY: 10 };
         this.menuService.showMenu(dom, menuItems, menuConfig).subscribe(res => {
+            if(res.index === 2){
+                this.uiService.navUrl('/admin');
+            }
             if(res.index === 4){
                 this.dashboardService.cleanLoginStatus();
                 this.dashboardService.showLogin(this.loginConfig);

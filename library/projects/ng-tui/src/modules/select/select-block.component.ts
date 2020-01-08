@@ -55,7 +55,7 @@ export class SelectBlockComponent extends BaseForm implements OnChanges, AfterVi
 
     ngAfterViewInit() {
         const div: HTMLElement = this.elementRef.nativeElement;
-        div.classList.add('form-control', 'p-0');
+        div.classList.add('form-control');
     }
 
 

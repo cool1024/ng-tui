@@ -9,15 +9,18 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './view/login/login.component';
 import { HomeComponent } from './page/home/home.component';
+import { AdminComponent } from './page/admin/admin.component';
 
 // 模块路由配置
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
+    { path: 'admin', component: AdminComponent },
 ];
 
 export const declarationComponents = [
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    AdminComponent
 ];
 
 

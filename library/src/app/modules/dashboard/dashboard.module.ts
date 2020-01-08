@@ -7,7 +7,7 @@
  */
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ButtonModule } from 'projects/ng-tui/src/public_api';
+import { ButtonModule, SelectModule } from 'projects/ng-tui/src/public_api';
 import { DashboardRoutingModule, declarationComponents, entryComponents } from './dashboard.routing';
 import { DashbardService } from './service/dashboard.service';
 import { LoginComponent } from './view/login/login.component';
@@ -16,6 +16,7 @@ import { LoginComponent } from './view/login/login.component';
     imports: [
         FormsModule,
         ButtonModule,
+        SelectModule,
         DashboardRoutingModule
     ],
     exports: [LoginComponent],
