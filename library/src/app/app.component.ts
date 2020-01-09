@@ -32,8 +32,8 @@ export class AppComponent {
 
     // 登录页面配置
     loginConfig: LoginConfig = {
-        backgroundImageSrc: '/assets/images/background.svg',
-        logoSrc: '/assets/images/logo.svg',
+        backgroundImageSrc: 'assets/images/background.svg',
+        logoSrc: 'assets/images/logo.svg',
         title: 'Admin Pro',
         subject: '管理员登录',
         description: '欢迎使用本模板，使用Angular打造的精简模板',
@@ -55,7 +55,7 @@ export class AppComponent {
                 dashboardService.showLogin(this.loginConfig);
             } else {
                 // 载入菜单
-                requestObject('/assets/menu.json').subscribe(obj => this.menu.children = obj);
+                requestObject('assets/menu.json').subscribe(obj => this.menu.children = obj);
             }
         });
     }
