@@ -5,7 +5,7 @@
 <!-- 2. [English](README-EN.MD) -->
 
 ## 说明
-NG-TUI是ng-tools-ui的增强版本，移除了大部分无用功能，保留了原来的核心功能。组件名称没有太大的变化，但可能移除或新增了属性。
+NG_TUI是基于的Bootstrap样式库开发的Angular组件仓库，这个项目仍处于开发中。
 
 ## 特性
 1. 移除了FontAwesome的依赖，改为使用[iconfont](http://www.iconfont.cn)。
@@ -31,7 +31,7 @@ NG-TUI是ng-tools-ui的增强版本，移除了大部分无用功能，保留了
 @import "~bootstrap/scss/bootstrap";
 
 // 导入tui样式-暂不可用，参考dashboard的引入方式
-// @import "~ng-tui/scss/style"
+// @import "~ng-tui/scss/"
 ```
 
 ## 使用
@@ -48,8 +48,7 @@ import { TUIModule } from 'ng-tui';
     ],
     ...
 })
-export class AppModule { }
 ```
-## 相关说明
-1. [可用组件列表](COMPONENT.MD)
+<!-- ## 相关说明
+1. [可用组件列表](COMPONENT.MD) -->
 
