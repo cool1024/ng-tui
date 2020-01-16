@@ -10,6 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './view/login/login.component';
 import { HomeComponent } from './page/home/home.component';
 import { AdminComponent } from './page/admin/admin.component';
+import { NavbarComponent } from './view/navbar/navbar.component';
 
 // 模块路由配置
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
 
 export const declarationComponents = [
     LoginComponent,
+    NavbarComponent,
     HomeComponent,
     AdminComponent
 ];

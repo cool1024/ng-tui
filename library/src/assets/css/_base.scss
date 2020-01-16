@@ -654,7 +654,7 @@ $color in $more_colors {
     }
 
     .bg-#{$name}-light {
-        background-color: $color + rgb(10, 10, 10) !important;
+        background-color: mix($color,rgb(10, 10, 10)) !important;
     }
 
     .bg-white-muted {

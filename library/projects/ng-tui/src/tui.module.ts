@@ -7,7 +7,7 @@ export class TUIModule {
         return {
             ngModule: TUIModule,
             providers: [
-                { provide: 'TUI_CONFIG', useValue: config || {} }
+                { provide: 'TUI_CHART_CONFIG', useValue: config || {} }
             ]
         };
     }

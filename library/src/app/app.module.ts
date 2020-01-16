@@ -7,7 +7,8 @@ import {
     CollapseModule,
     TabModule,
     CssloadModule,
-    DropdownModule
+    DropdownModule,
+    ChartModule
 } from '../../projects/ng-tui/src/public_api';
 import { AppRoutingModule } from './app.routing';
 import { ToolsUIConfig } from './config/tui-config';
@@ -21,6 +22,7 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
     imports: [
         BrowserModule,
         TUIModule.forRoot(ToolsUIConfig),
+        ChartModule.forRoot(['https://gw.alipayobjects.com/os/lib/antv/g2/3.5.11/dist/g2.min.js']),
         CollapseModule,
         TabModule,
         DropdownModule,
