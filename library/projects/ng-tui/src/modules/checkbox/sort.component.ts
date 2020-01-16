@@ -6,12 +6,10 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
 @Component({
     selector: 'ts-sort',
     template: `
-    <div (click)="toggle()" class="pointer" style="line-height:0.6;">
+    <div (click)="toggle()" class="pointer d-inline-block" style="line-height:0.6;">
         <i class="iconfont icon-caret-up {{statusIndex===2?('text-'+color):'text-muted'}}"></i><br>
         <i class="iconfont icon-caret-down {{statusIndex===0?('text-'+color):'text-muted'}}"></i>
-    </div>
-
-    `,
+    </div>`,
     providers: [{
         provide: NG_VALUE_ACCESSOR,
         useExisting: forwardRef(() => SortComponent),

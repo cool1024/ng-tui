@@ -6,7 +6,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
 @Component({
     selector: 'ts-radio',
     template: `
-    <div (click)="changeStatus()" [class.disabled]="isDisabled" class="d-inline-flex align-items-center radio-box">
+    <div (click)="changeStatus()" [class.disabled]="isDisabled" class="d-inline-flex align-items-center radio-box select-none">
         <div [class.active]="checked" class="radio radio-{{color}} rounded-circle mr-1">
             <div class="radio-check rounded-circle"></div>
         </div>

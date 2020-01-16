@@ -1,10 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { TUIModule, CollapseModule, TabModule, CssloadModule, TUIService } from '../../projects/ng-tui/src/public_api';
+import {
+    TUIModule,
+    TUIService,
+    CollapseModule,
+    TabModule,
+    CssloadModule,
+    DropdownModule,
+    ChartModule
+} from '../../projects/ng-tui/src/public_api';
 import { AppRoutingModule } from './app.routing';
 import { ToolsUIConfig } from './config/tui-config';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 @NgModule({
     declarations: [
@@ -13,11 +21,13 @@ import { ToolsUIConfig } from './config/tui-config';
     entryComponents: [],
     imports: [
         BrowserModule,
-        FormsModule,
         TUIModule.forRoot(ToolsUIConfig),
+        ChartModule.forRoot(['https://gw.alipayobjects.com/os/lib/antv/g2/3.5.11/dist/g2.min.js']),
         CollapseModule,
         TabModule,
+        DropdownModule,
         CssloadModule,
+        DashboardModule,
         AppRoutingModule
     ],
     providers: [TUIService],

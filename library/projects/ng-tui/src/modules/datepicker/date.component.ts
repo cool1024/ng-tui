@@ -85,7 +85,10 @@ export class DateComponent extends BaseTheme implements OnChanges {
 
     ngOnChanges() {
         try {
-            const date = new Date(this.activeDate);
+            let date = new Date();;
+            if (this.activeDate) {
+                date = new Date(this.activeDate);
+            }
             if (date.getFullYear()) {
                 this.year = date.getFullYear();
                 this.month = date.getMonth() + 1;

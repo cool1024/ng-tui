@@ -85,7 +85,6 @@ export class ViewDirective extends BaseTheme implements AfterViewInit, OnDestroy
             this.isActive = true;
         }
         this.displayChange.emit(true);
-        console.log(1111);
     }
 
     dismiss() {

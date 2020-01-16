@@ -8,9 +8,9 @@ const routes: Routes = [
 
     // 此处设置网站首页
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-
+    
     // 懒加载子模块
-    { path: 'base', loadChildren: './modules/base/base.module#BaseModule' },
+    { path: 'demo', loadChildren: './modules/demo/demo.module#DemoModule' },
 
     // 最后全局匹配其他链接
     { path: '**', redirectTo: 'error', pathMatch: 'full' }

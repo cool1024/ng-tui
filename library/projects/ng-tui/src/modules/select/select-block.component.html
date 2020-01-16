@@ -1,5 +1,5 @@
 <input (click)="showSelectBlock(target)" [value]="title" readonly [placeholder]="placeholder" type="text"
-    class="form-control pointer bg-white">
+    class="border-0 w-100 h-100 pointer bg-white">
 <div tsMenuGroup>
     <span #target="tsToggle" tsToggle class="invisible"></span>
     <div tsSideMenu animation="fadeIn" (displayChange)="isOpen=$event" class="side-menu bg-white shadow py-2">

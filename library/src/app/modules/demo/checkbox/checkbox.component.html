@@ -1,0 +1,208 @@
+<div class="d-flex align-items-center">
+    <h3>勾选与开关</h3>
+    <div class="ml-3">
+        <h5 class="badge badge-success">Component</h5>
+    </div>
+</div>
+<div>
+    表单中的单选与多选，开关
+</div>
+<hr>
+<div class="mb-4 border p-3">
+    <div class="m-btn">
+        <div>
+            <h5 class="m-0">
+                <code>&lt;ts-radio&gt;</code>
+            </h5>
+        </div>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr class="text-primary">
+                    <th scope="col" style="width: 150px;">Input</th>
+                    <th scope="col" style="width: 120px;">Type</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">color</th>
+                    <td>
+                        <code>string</code>
+                    </td>
+                    <td>Color name, such as 'success', 'primary', etc.</td>
+                </tr>
+                <tr>
+                    <th scope="row">value</th>
+                    <td>
+                        <code>any</code>
+                    </td>
+                    <td>form value</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-striped mt-2">
+            <thead>
+                <tr class="text-primary">
+                    <th scope="col" style="width: 150px;">Output</th>
+                    <th scope="col" style="width: 120px;">Event Type</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">checkedChange</th>
+                    <td>
+                        <code>boolean</code>
+                    </td>
+                    <td>Checked status.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="p-3 border">
+        <div class="m-btn">
+            <ts-radio color="primary" class="mr-3" [(ngModel)]="radioValue" value="primary">Primary</ts-radio>
+            <ts-radio color="secondary" class="mr-3" [(ngModel)]="radioValue" value="secondary">Secondary</ts-radio>
+            <ts-radio color="success" class="mr-3" [(ngModel)]="radioValue" value="success">Success</ts-radio>
+            <ts-radio color="warning" class="mr-3" [(ngModel)]="radioValue" value="warning">Warning</ts-radio>
+            <ts-radio color="danger" class="mr-3" [(ngModel)]="radioValue" value="danger">Danger</ts-radio>
+            <ts-radio color="info" class="mr-3" [(ngModel)]="radioValue" value="info">Info</ts-radio>
+        </div>
+        <div class="mt-2 alert alert-{{radioValue}}" role="alert">
+            Radio value : <a href="#" class="alert-link">{{radioValue}}</a>.
+        </div>
+    </div>
+</div>
+<div class="mb-4 border p-3">
+    <div class="m-btn">
+        <div>
+            <h5 class="m-0">
+                <code>&lt;ts-checkbox&gt;</code>
+            </h5>
+        </div>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr class="text-primary">
+                    <th scope="col" style="width: 150px;">Input</th>
+                    <th scope="col" style="width: 120px;">Type</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">color</th>
+                    <td>
+                        <code>string</code>
+                    </td>
+                    <td>Color name, such as 'success', 'primary', etc.</td>
+                </tr>
+                <tr>
+                    <th scope="row">value</th>
+                    <td>
+                        <code>any</code>
+                    </td>
+                    <td>form value</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-striped mt-2">
+            <thead>
+                <tr class="text-primary">
+                    <th scope="col" style="width: 150px;">Output</th>
+                    <th scope="col" style="width: 120px;">Event Type</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">checkedChange</th>
+                    <td>
+                        <code>boolean</code>
+                    </td>
+                    <td>Checked status.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="p-3 border">
+        <div class="m-btn">
+            <ts-checkbox color="primary" class="mr-3" [(ngModel)]="checkboxValue" value="primary">Primary</ts-checkbox>
+            <ts-checkbox color="secondary" class="mr-3" [(ngModel)]="checkboxValue" value="secondary">Secondary</ts-checkbox>
+            <ts-checkbox color="success" class="mr-3" [(ngModel)]="checkboxValue" value="success">Success</ts-checkbox>
+            <ts-checkbox color="warning" class="mr-3" [(ngModel)]="checkboxValue" value="warning">Warning</ts-checkbox>
+            <ts-checkbox color="danger" class="mr-3" [(ngModel)]="checkboxValue" value="danger">Danger</ts-checkbox>
+            <ts-checkbox color="info" class="mr-3" [(ngModel)]="checkboxValue" value="info">Info</ts-checkbox>
+        </div>
+        <div class="mt-2 alert alert-dark" role="alert">
+            Checkbox value : <a href="#" class="alert-link">{{checkboxValue | json}}</a>.
+        </div>
+    </div>
+</div>
+<div class="mb-4 border p-3">
+    <div class="m-btn">
+        <div>
+            <h5 class="m-0">
+                <code>&lt;ts-switch&gt;</code>
+            </h5>
+        </div>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr class="text-primary">
+                    <th scope="col" style="width: 150px;">Input</th>
+                    <th scope="col" style="width: 200px;">Type</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">color</th>
+                    <td>
+                        <code>string</code>
+                    </td>
+                    <td>Color name, such as 'success', 'primary', etc.</td>
+                </tr>
+                <tr>
+                    
+                    <th scope="row">value</th>
+                    <td>
+                        <code>{{ '{open: any, close: any}' }}</code>
+                    </td>
+                    <td>form value</td>
+                </tr>
+                <tr>
+                    <th scope="row">activeClass</th>
+                    <td>
+                        <code>string</code>
+                    </td>
+                    <td>This class while append to ng-content</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-striped mt-2">
+            <thead>
+                <tr class="text-primary">
+                    <th scope="col" style="width: 150px;">Output</th>
+                    <th scope="col" style="width: 200px;">Event Type</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">checkedChange</th>
+                    <td>
+                        <code>boolean</code>
+                    </td>
+                    <td>Checked status.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="p-3 border">
+        <div class="m-btn">
+            <ts-switch color="primary" class="mr-3" activeClass="text-primary" [(ngModel)]="switchValue" [value]="{open: 1, close: 0}">{{ ['关闭', '开启'][switchValue] }}</ts-switch>
+        </div>
+    </div>
+</div>

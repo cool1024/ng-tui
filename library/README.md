@@ -1,7 +1,7 @@
 # TUI-DEV PROJECT
 
 ## Intall
-`npm install`
+`npm i`
 
 ## Script
 

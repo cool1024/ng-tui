@@ -10,9 +10,12 @@ export class ValueChangeListenerService {
         return window['ValueChangeListenerService'];
     }
 
+    private initInterval() {
+        this.interval || (this.interval = setInterval(() => this.handlerFunc(), 500));
+    }
+
     observe(dom: Object, attrs: string[], handler: Function) {
-        // tslint:disable-next-line:no-unused-expression
-        this.interval || (this.interval = setInterval(() => this.handlerFunc(), 200));
+        this.initInterval();
         const obs = { dom, attrs, handler, check: (e) => this.valueChange(e), values: [] };
         attrs.forEach(attr => obs.values.push(dom[attr]));
         this.observes.push(obs);
@@ -20,9 +23,20 @@ export class ValueChangeListenerService {
         return obs;
     }
 
+    observeByCheck(checkFun: () => boolean, handler: Function) {
+        this.initInterval();
+        const obs = {
+            handler,
+            check: () => checkFun()
+        };
+        handler();
+        this.observes.push(obs);
+        return obs;
+    }
+
     observeClientRect(dom: HTMLElement, handler: Function) {
-        // tslint:disable-next-line:no-unused-expression
-        this.interval || (this.interval = setInterval(() => this.handlerFunc(), 1000));
+        this.initInterval();
+        setTimeout(() => handler())
         const obs = {
             dom, handler,
             rect: dom.getBoundingClientRect(),
@@ -36,9 +50,7 @@ export class ValueChangeListenerService {
                 return checkResult;
             }
         };
-
         this.observes.push(obs);
-        handler();
         return obs;
     }
 
@@ -58,8 +70,10 @@ export class ValueChangeListenerService {
     handlerFunc() {
         this.observes.forEach(obs => {
             try {
-                // tslint:disable-next-line: no-unused-expression
-                obs.check(obs) && obs.handler();
+                if (obs.check(obs)) {
+                    console.log('监测到变更');
+                    obs.handler();
+                }
             } catch (e) {
                 console.log('interval run error');
                 console.error(e);

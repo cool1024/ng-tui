@@ -1,4 +1,4 @@
-import { Component, Input, Directive, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pagination } from '../pagination/pagination.class';
 import { BaseTheme } from '../../tui-core/base-class/base-theme.class';

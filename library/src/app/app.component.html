@@ -1,9 +1,9 @@
-<div class="d-flex">
+<div class="d-flex d-none">
     <div class="bg-white d-block shadow-sm flex-shrink-0 position-relative"
-        style="z-index:3;width: 200px;height:100vh;-webkit-user-select: none;overflow: hidden;">
+        style="z-index:3;width: 220px;height:100vh;-webkit-user-select: none;overflow: hidden;">
         <div class="d-block h-100 position-absolute"
-            style="width: 216px; right: -17px; padding-right: 17px; overflow-y: auto;overflow-x: hidden;">
-            <ts-group class="d-block" [node]="menu" [width]="200" (itemClick)="navHandler($event)">
+            style="width: 236px; right: -17px; padding-right: 17px; overflow-y: auto;overflow-x: hidden;">
+            <ts-group class="d-block" style="width: 220px;" [theme]="menuTheme" [node]="menu" [width]="220" (itemClick)="navHandler($event)">
                 <h4 style="height: 60px;"
                     class="py-3 m-0 border-bottom font-weight-normal d-flex justify-content-center align-items-center">
                     <img class="mr-3" height="25" src="favicon.ico">
@@ -14,50 +14,24 @@
     </div>
     <div class="flex-grow-1 d-flex flex-column">
         <div class="shadow-sm flex-shrink-0" style="z-index: 2;">
-            <nav style="height: 60px;font-size: 18px;" class="navbar bg-info text-white d-flex justify-content-between">
-                <div class="d-flex align-items-center">
-                    <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3 mx-2">
-                        <i class="iconfont icon-refresh"></i>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" style="background:#68b1ff;" class="form-control border-0 text-white"
-                            placeholder="搜索菜单或功能">
-                        <div class="input-group-append">
-                            <button class="btn text-white" type="button" style="background:#68b1ff;">
-                                <i class="iconfont icon-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center">
-                    <div (click)="changeFullscreen()"
-                        class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
-                        <i class="iconfont icon-fullscreen"></i>
-                    </div>
-                    <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
-                        <i class="iconfont icon-remind"></i>
-                    </div>
-                    <div class="bg-light-hover pointer h-100 px-3 d-flex justify-content-center align-items-center">
-                        <img class="rounded-circle" width="35" height="35" src="https://lorempixel.com/100/100/?18017">
-                    </div>
-                </div>
-            </nav>
+            <dashboard-navbar></dashboard-navbar>
             <nav style="height: 40px;" class="d-flex align-items-center">
                 <div class="h-100 d-flex align-items-center">
-                    <div class="d-flex align-items-center bg-info-hover pointer h-100 px-3">
+                    <div *ngIf="uiService.canBack" (click)="navBack()"
+                        class="d-flex align-items-center bg-info-hover pointer h-100 px-3">
                         <i class="iconfont icon-i-back"></i>
                     </div>
-                    <div class="breadcrumb bg-white ml-1 pr-3 d-inline-block">
+                    <div class="breadcrumb bg-white ml-1 pl-2 pr-3 d-inline-block">
                         <a routerLink="/">首页</a>
-                        <a class="ml-2"><span>用户列表</span></a>
+                        <!-- <a class="ml-2"><span>用户列表</span></a> -->
                     </div>
                 </div>
             </nav>
         </div>
-        <div class="flex-grow-1 bg-white" style="max-height: calc(100vh - 100px);overflow-y: auto;">
+        <div class="flex-grow-1 bg-light" style="max-height: calc(100vh - 100px);overflow-y: auto;">
             <div [tsLoad]="uiService.routeLoading" class="p-3">
                 <router-outlet></router-outlet>
             </div>
         </div>
     </div>
-</div>
+</div>  

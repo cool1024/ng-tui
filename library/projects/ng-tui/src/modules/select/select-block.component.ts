@@ -6,6 +6,8 @@ import {
     Component,
     OnChanges,
     SimpleChanges,
+    ElementRef,
+    AfterViewInit,
 } from '@angular/core';
 import { BaseForm } from '../../tui-core/base-class/base-form.class';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -21,7 +23,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
         multi: true
     }]
 })
-export class SelectBlockComponent extends BaseForm implements OnChanges {
+export class SelectBlockComponent extends BaseForm implements OnChanges, AfterViewInit {
 
     title = '';
 
@@ -37,25 +39,30 @@ export class SelectBlockComponent extends BaseForm implements OnChanges {
 
     @Input() placeholder = '';
 
-    @Input() items: ItemTree[];
+    @Input() options: ItemTree[];
 
     @Output() optionChange = new EventEmitter<ItemTree[]>(false);
 
-    constructor(configService: ConfigService) {
+    constructor(private elementRef: ElementRef, configService: ConfigService) {
         super();
         this.color = configService.config.defaultColor;
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        this.items = changes.items.currentValue;
+        this.options = changes.options.currentValue;
         this.writeValue(this.values || []);
+    }
+
+    ngAfterViewInit() {
+        const div: HTMLElement = this.elementRef.nativeElement;
+        div.classList.add('form-control');
     }
 
 
     writeValue(values: Array<any>) {
         if (Array.isArray(values)) {
             this.values = values;
-            this.optionsQuery = [this.items];
+            this.optionsQuery = [this.options];
             this.activeOptions = [];
             this.values.forEach((value, i) => {
                 if (!this.optionsQuery[i]) {
