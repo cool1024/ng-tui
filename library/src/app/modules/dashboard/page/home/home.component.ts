@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ChartInstance } from 'projects/ng-tui/src/public_api';
 
 @Component({
     selector: 'dashboard-login',
@@ -6,21 +7,35 @@ import { Component, Input } from '@angular/core';
 })
 export class HomeComponent {
 
+    data: any[] = []
+
     constructor() { }
 
-    initChart(chart: any) {
-        console.log(11111);
-        const data = [
+    initBarChart(chart: ChartInstance) {
+        chart.simpleBar({
+            position: 'genre*sold',
+            colors: ['red']
+        });
+        this.data = [
             { genre: 'Sports', sold: 275 },
             { genre: 'Strategy', sold: 115 },
             { genre: 'Action', sold: 120 },
             { genre: 'Shooter', sold: 350 },
             { genre: 'Other', sold: 150 },
         ];
-        chart.source(data);
-        chart.interval()
-            .position('genre*sold')
-            .color('genre');
-        chart.render();
+    }
+
+    initLineChart(chart: ChartInstance) {
+        chart.simpleLine({
+            position: 'genre*sold',
+            colors: ['red']
+        });
+        this.data = [
+            { genre: 'Sports', sold: 275 },
+            { genre: 'Strategy', sold: 115 },
+            { genre: 'Action', sold: 120 },
+            { genre: 'Shooter', sold: 350 },
+            { genre: 'Other', sold: 150 },
+        ];
     }
 }

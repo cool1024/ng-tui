@@ -1,17 +1,28 @@
-import { Directive, AfterViewInit, ElementRef, Inject, Input, Output, EventEmitter } from '@angular/core';
+import {
+    Directive,
+    AfterViewInit,
+    ElementRef,
+    Inject,
+    Input,
+    Output,
+    EventEmitter,
+    OnChanges,
+    SimpleChanges
+} from '@angular/core';
 import { ScriptService } from '../../tui-core/base-services/script.service';
 
 @Directive({
     selector: '*[tsChart]'
 })
-export class ChartDirective implements AfterViewInit {
+export class ChartDirective implements AfterViewInit, OnChanges {
 
     @Input() option: ChartOption;
+    @Input() data: any;
 
-    @Output() doInit = new EventEmitter<any>(false);
+    @Output() doInit = new EventEmitter<ChartInstance | any>(false);
 
     private canvas: HTMLCanvasElement;
-    private chart: any;
+    private chart: ChartInstance | any;
 
     constructor(
         private elementRef: ElementRef,
@@ -29,14 +40,47 @@ export class ChartDirective implements AfterViewInit {
                 forceFit: true,
                 animate: true,
             }, this.option || {}));
+            appendSimpleBarFunc(this.chart);
+            appendSimpleLineFunc(this.chart);
             this.doInit.emit(this.chart);
-        })
+        });
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        console.log(changes);
+        if (changes.data && changes.data.currentValue) {
+            console.log(111111);
+            this.updateData();
+        }
+    }
+
+    private updateData() {
+        if (this.chart) {
+            this.chart.source(this.data);
+            this.chart.render()
+        }
     }
 
     private prepareScripts() {
         this.scriptService.loads(this.config, !!window['G2']);
     }
 
+}
+
+function appendSimpleBarFunc(chart: ChartInstance) {
+    chart.simpleBar = (config: BarConfig) => {
+        chart.interval()
+            .position(config.position)
+            .color(...config.colors);
+    };
+}
+
+function appendSimpleLineFunc(chart: ChartInstance) {
+    chart.simpleLine = (config: LineConfig) => {
+        chart.line()
+            .position(config.position)
+            .color(...config.colors);
+    };
 }
 
 export interface ChartOption {
@@ -52,4 +96,27 @@ export interface ChartOption {
     data?: any[] | any;
     theme?: string | any;
     renderer?: string;
+}
+
+export interface BarConfig {
+    position: string | string[];
+    colors: any[];
+}
+
+export interface LineConfig extends BarConfig {
+
+}
+
+export interface ChartInstance {
+    source(data: any[] | any): ChartInstance;
+    interval(): Geometry;
+    line(): Geometry;
+    simpleBar(config: BarConfig);
+    simpleLine(config: LineConfig);
+    render();
+}
+
+export interface Geometry {
+    position(position: string | string[]): Geometry;
+    color(field?: string, colors?: string | string[] | Function): Geometry;
 }
