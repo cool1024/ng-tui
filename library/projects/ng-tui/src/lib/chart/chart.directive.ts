@@ -42,6 +42,7 @@ export class ChartDirective implements AfterViewInit, OnChanges {
             }, this.option || {}));
             appendSimpleBarFunc(this.chart);
             appendSimpleLineFunc(this.chart);
+            appendSimplePieFunc(this.chart);
             this.doInit.emit(this.chart);
         });
     }
@@ -49,7 +50,6 @@ export class ChartDirective implements AfterViewInit, OnChanges {
     ngOnChanges(changes: SimpleChanges) {
         console.log(changes);
         if (changes.data && changes.data.currentValue) {
-            console.log(111111);
             this.updateData();
         }
     }
@@ -83,6 +83,19 @@ function appendSimpleLineFunc(chart: ChartInstance) {
     };
 }
 
+function appendSimplePieFunc(chart: ChartInstance) {
+    chart.simplePie = (config: PieConfig) => {
+        chart.coord('theta', {
+            radius: config.radius,
+            innerRadius: config.innerRadius
+        });
+        chart.intervalStack()
+            .position(config.position)
+            .color(...config.colors)
+            .style(config.style);
+    };
+}
+
 export interface ChartOption {
     container: string | HTMLDivElement;
     width?: number;
@@ -101,10 +114,14 @@ export interface ChartOption {
 export interface BarConfig {
     position: string | string[];
     colors: any[];
+    style?: any;
 }
 
-export interface LineConfig extends BarConfig {
+export interface LineConfig extends BarConfig { }
 
+export interface PieConfig extends BarConfig {
+    radius: number;
+    innerRadius: number;
 }
 
 export interface ChartInstance {
@@ -113,7 +130,11 @@ export interface ChartInstance {
     line(): Geometry;
     simpleBar(config: BarConfig);
     simpleLine(config: LineConfig);
+    simplePie(config: PieConfig);
     render();
+    coord(type: string, config: any);
+    tooltip(config: any);
+    intervalStack();
 }
 
 export interface Geometry {
