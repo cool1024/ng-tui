@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ChartInstance, Position } from 'projects/ng-tui/src/public_api';
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component({
     selector: 'dashboard-login',
@@ -11,18 +13,22 @@ export class HomeComponent {
 
     constructor() { }
 
-    initBarChart(chart: ChartInstance) {
-        chart.simpleBar({
-            position: 'genre*sold',
-            colors: ['red']
-        });
-        this.data = [
+    loadData() {
+        of([
             { genre: 'Sports', sold: 275 },
             { genre: 'Strategy', sold: 115 },
             { genre: 'Action', sold: 120 },
             { genre: 'Shooter', sold: 350 },
             { genre: 'Other', sold: 150 },
-        ];
+        ]).pipe(delay(1000)).subscribe(data => this.data = data);
+    }
+
+    initBarChart(chart: ChartInstance) {
+        chart.simpleBar({
+            position: 'genre*sold',
+            colors: ['red']
+        });
+        this.loadData();
     }
 
     initLineChart(chart: ChartInstance) {
@@ -30,13 +36,8 @@ export class HomeComponent {
             position: 'genre*sold',
             colors: ['red']
         });
-        this.data = [
-            { genre: 'Sports', sold: 275 },
-            { genre: 'Strategy', sold: 115 },
-            { genre: 'Action', sold: 120 },
-            { genre: 'Shooter', sold: 350 },
-            { genre: 'Other', sold: 150 },
-        ];
+        this.loadData();
+
     }
 
     initPieChart(chart: ChartInstance) {
@@ -50,12 +51,6 @@ export class HomeComponent {
                 stroke: '#fff'
             }
         });
-        this.data = [
-            { genre: 'Sports', sold: 275 },
-            { genre: 'Strategy', sold: 115 },
-            { genre: 'Action', sold: 120 },
-            { genre: 'Shooter', sold: 350 },
-            { genre: 'Other', sold: 150 },
-        ];
+        this.loadData();
     }
 }

@@ -3,7 +3,8 @@
         style="z-index:3;width: 220px;height:100vh;-webkit-user-select: none;overflow: hidden;">
         <div class="d-block h-100 position-absolute"
             style="width: 236px; right: -17px; padding-right: 17px; overflow-y: auto;overflow-x: hidden;">
-            <ts-group class="d-block" style="width: 220px;" [theme]="menuTheme" [node]="menu" [width]="220" (itemClick)="navHandler($event)">
+            <ts-group class="d-block" style="width: 220px;" [theme]="menuTheme" [node]="menu"
+                (itemClick)="navHandler($event)">
                 <h4 style="height: 60px;"
                     class="py-3 m-0 border-bottom font-weight-normal d-flex justify-content-center align-items-center">
                     <img class="mr-3" height="25" src="favicon.ico">
@@ -34,4 +35,4 @@
             </div>
         </div>
     </div>
-</div>  
+</div>

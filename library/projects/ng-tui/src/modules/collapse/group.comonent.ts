@@ -2,21 +2,12 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { MenuItem, MenuTheme, defaultMenuTheme } from './node.interface';
 
 @Component({
-    selector: 'ts-group',
-    templateUrl: './group.html',
-    styles: [`
-    .ts-menu-hover{cursor:pointer;}
-    .ts-menu-hover:hover{background-color: rgba(0, 0, 0, 0.04);}
-    .ts-menu-hover:active{background-color: rgba(0, 0, 0, 0.1);}
-    .ts-icon-up{transform: rotate(180deg);transition: all .5s linear;}
-    .ts-icon-down{transform: rotate(0deg);transition: all .5s linear;}
-    `]
+    selector: '[tsGroup],ts-group',
+    templateUrl: './group.html'
 })
 export class GroupComponent {
 
     @Input() node: MenuItem;
-
-    @Input() width: number;
 
     @Input() level: number = 0;
 
@@ -27,16 +18,11 @@ export class GroupComponent {
     @Input() open: boolean = false;
 
     @Input() theme: MenuTheme = defaultMenuTheme;
-    ;
 
     @Output() itemClick = new EventEmitter<MenuItem>();
 
-    get activeBarStyle() {
-        return {
-            top: 0,
-            left: (this.level * - this.offset) + 'px',
-            width: this.width + 'px'
-        };
+    get marginLeft() {
+        return (this.level + 1) * this.offset;
     }
 
     updateGroup() {

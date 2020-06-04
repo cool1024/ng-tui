@@ -18,7 +18,7 @@ import {
     ImageModule,
     CheckboxModule,
     DatepickerModule,
-    SelectModule
+    SelectModule,
 } from 'projects/ng-tui/src/public_api';
 
 @NgModule({

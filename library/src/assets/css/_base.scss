@@ -16,7 +16,7 @@ button:disabled {
     cursor: not-allowed;
 }
 
-.no-select, 
+.no-select,
 .select-none {
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -275,6 +275,7 @@ $color in $theme-colors {
     border-radius: 30px;
     background-color: $gray-300;
     box-shadow: 0 0 0 2px rgba($gray-300, 0.2);
+    transition: background .4s ease-in-out;
 }
 
 .switch.disabled {
@@ -654,7 +655,7 @@ $color in $more_colors {
     }
 
     .bg-#{$name}-light {
-        background-color: mix($color,rgb(10, 10, 10)) !important;
+        background-color: mix($color, rgb(10, 10, 10)) !important;
     }
 
     .bg-white-muted {
@@ -706,3 +707,24 @@ $color in $more_colors {
     box-shadow: 0.22rem 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
+.ts-menu-hover {
+    cursor: pointer;
+}
+
+.ts-menu-hover:hover {
+    background-color: linear-gradient(270deg, rgba(66, 158, 254, 1) 0%, rgba(51, 119, 255, 1) 100%);
+}
+
+.ts-menu-hover:active {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.ts-icon-up {
+    transform: rotate(180deg);
+    transition: all .5s linear;
+}
+
+.ts-icon-down {
+    transform: rotate(0deg);
+    transition: all .5s linear;
+}
