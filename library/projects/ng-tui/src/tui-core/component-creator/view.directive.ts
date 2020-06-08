@@ -1,6 +1,6 @@
 import { Directive, ElementRef, AfterViewInit, Input, HostListener, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Toggle } from '../interfaces/toggle.interface';
-import { ToggleDirective } from '../directives/toggle.directives';
+import { ToggleDirective } from '../directives/toggle.directive';
 import { ViewTool } from './view-tool.class';
 import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
 

@@ -1,6 +1,6 @@
 import { Directive, ElementRef, AfterViewInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Toggle } from '../../tui-core/interfaces/toggle.interface';
-import { BootstrapClass } from '../../tui-core/base-class/default-value';
+import { BootstrapClass, AnimateCssClass } from '../../tui-core/base-class/default-value';
 
 @Directive({
     selector: '*[tsCollapse]',
@@ -29,10 +29,7 @@ export class CollapseDirective implements AfterViewInit, OnChanges, Toggle {
 
     updateCollapseShow(ignoreEmit = false) {
         if (this.pad) {
-            this.open ? (
-                this.pad.classList.remove(BootstrapClass.DisplayNone)
-                // this.pad.classList.add(AnimateCssClass.Prefix, AnimateCssClass.Pulse)
-            ) : this.pad.classList.add(BootstrapClass.DisplayNone);
+            this.open ? this.pad.classList.remove(BootstrapClass.DisplayNone) : this.pad.classList.add(BootstrapClass.DisplayNone);
             if (!ignoreEmit) this.openChange.emit(this.open);
         }
     }

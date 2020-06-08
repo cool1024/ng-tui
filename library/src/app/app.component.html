@@ -1,35 +1,23 @@
 <div class="d-flex d-none">
-    <div class="bg-white d-block shadow-sm flex-shrink-0 position-relative"
-        style="z-index:3;width: 220px;height:100vh;-webkit-user-select: none;overflow: hidden;">
-        <div class="d-block h-100 position-absolute"
-            style="width: 236px; right: -17px; padding-right: 17px; overflow-y: auto;overflow-x: hidden;">
-            <ts-group class="d-block" style="width: 220px;" [theme]="menuTheme" [node]="menu"
-                (itemClick)="navHandler($event)">
-                <h4 style="height: 60px;"
-                    class="py-3 m-0 border-bottom font-weight-normal d-flex justify-content-center align-items-center">
-                    <img class="mr-3" height="25" src="favicon.ico">
-                    <span>Admin Pro</span>
-                </h4>
-            </ts-group>
-        </div>
-    </div>
+    <dashboard-menu [menu]="menu"></dashboard-menu>
     <div class="flex-grow-1 d-flex flex-column">
         <div class="shadow-sm flex-shrink-0" style="z-index: 2;">
             <dashboard-navbar></dashboard-navbar>
+            <!-- <dashboard-navtool></dashboard-navtool> -->
             <nav style="height: 40px;" class="d-flex align-items-center">
                 <div class="h-100 d-flex align-items-center">
                     <div *ngIf="uiService.canBack" (click)="navBack()"
-                        class="d-flex align-items-center bg-info-hover pointer h-100 px-3">
+                        class="d-flex align-items-center text-info-hover pointer h-100 pl-3">
                         <i class="iconfont icon-i-back"></i>
                     </div>
-                    <div class="breadcrumb bg-white ml-1 pl-2 pr-3 d-inline-block">
+                    <div class="breadcrumb bg-white ml-2 pl-2 pr-3 d-inline-block">
                         <a routerLink="/">首页</a>
-                        <!-- <a class="ml-2"><span>用户列表</span></a> -->
+                        <a class="ml-2"><span>用户列表</span></a>
                     </div>
                 </div>
             </nav>
         </div>
-        <div class="flex-grow-1 bg-light" style="max-height: calc(100vh - 100px);overflow-y: auto;">
+        <div class="flex-grow-1 bg-light" style="max-height: calc(100vh - 110px);overflow-y: auto;">
             <div [tsLoad]="uiService.routeLoading" class="p-3">
                 <router-outlet></router-outlet>
             </div>

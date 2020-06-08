@@ -11,6 +11,7 @@ import { DashboardRoutingModule, declarationComponents, entryComponents } from '
 import { DashbardService } from './service/dashboard.service';
 import { LoginComponent } from './view/login/login.component';
 import { NavbarComponent } from './view/navbar/navbar.component';
+import { MenuComponent } from './view/menu/menu.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { NavbarComponent } from './view/navbar/navbar.component';
     ],
     exports: [
         LoginComponent,
-        NavbarComponent
+        NavbarComponent,
+        MenuComponent,
     ],
     providers: [DashbardService],
     declarations: [declarationComponents],

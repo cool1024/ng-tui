@@ -21,7 +21,7 @@ export * from './lib/prism/prism.component';
 // export * from './lib/quill/quill.module';
 // export * from './lib/quill/quill.interface';
 // export * from './lib/quill/quill.directive';
-export * from './tui-core/directives/toggle.directives';
+export * from './tui-core/directives/toggle.directive';
 export * from './tui-core/component-creator/view.directive';
 export * from './tui-core/component-creator/handle.class';
 export * from './tui-core/component-creator/handle.service';

@@ -1,8 +1,8 @@
 <ng-content></ng-content>
 <div *ngIf="node.title;else elseMenuBlock" tsCollapses class="position-relative" [auto]="true">
-    <div tsToggle class="ts-menu-hover" [class.active]="node.active">
-        <div class="pointer py-3 d-flex" [style.marginLeft.px]="marginLeft"
-            [style.color]="node.active?theme.activeTextColor:theme.defaultTextColor">
+    <div tsToggle class="ts-menu-hover" [class.active]="node.active" tsHover [hoverStyle]="hoverStyle"
+        [hoverActive]="node.active">
+        <div class="pointer py-3 d-flex" [style.marginLeft.px]="marginLeft">
             <div class="flex-shrink-0 pr-2 align-items-center">
                 <img class="mb-1" *ngIf="node.image;else elseBlock" width="20" height="20" [src]="node.image">
                 <ng-template #elseBlock>

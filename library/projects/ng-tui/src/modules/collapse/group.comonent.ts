@@ -25,6 +25,13 @@ export class GroupComponent {
         return (this.level + 1) * this.offset;
     }
 
+    get hoverStyle() {
+        return {
+            color: [this.theme.defaultTextColor, this.theme.hoverTextColor, this.theme.activeTextColor],
+            background: [this.theme.defaultBackgroundColor, this.theme.hoverBackgroundColor, this.theme.activeBackgroundColor]
+        };
+    }
+
     updateGroup() {
         this.setActive();
         this.cleanActive(this.node, this.node);

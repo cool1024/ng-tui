@@ -18,15 +18,21 @@ export interface MenuItem {
 export interface MenuTheme {
     splitLineColor?: string;
     defaultTextColor?: string;
+    hoverTextColor?: string;
     activeTextColor?: string;
+    defaultBackgroundColor?: string;
     hoverBackgroundColor?: string;
+    activeBackgroundColor?: string;
 }
 
 export const defaultMenuTheme = {
     defaultTextColor: 'black',
+    hoverTextColor: 'blue',
     activeTextColor: 'blue',
     splitLineColor: 'white',
-    hoverBackgroundColor: 'rgba(0, 0, 0, 0.04)'
+    defaultBackgroundColor: 'white',
+    hoverBackgroundColor: 'black',
+    activeBackgroundColor: 'gray',
 };
 
 export const createMenuTheme = (theme: MenuTheme): MenuTheme => {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Router, Event, RouteConfigLoadStart, NavigationEnd } from '@angular/router';
-import { map, skipWhile, tap, delay } from 'rxjs/operators';
+import { Router, Event, RouteConfigLoadStart, NavigationEnd, RouteConfigLoadEnd } from '@angular/router';
+import { map, filter, delay } from 'rxjs/operators';
 
 @Injectable()
 export class TUIService {
@@ -10,21 +10,20 @@ export class TUIService {
 
     public get $routeLoading(): Observable<boolean> {
         return this.router.events.pipe(
-            skipWhile(e => !~[RouteConfigLoadStart, NavigationEnd].findIndex(t => e instanceof t)),
+            filter(e => e instanceof RouteConfigLoadStart || e instanceof NavigationEnd),
             map<Event, boolean>(e => e instanceof RouteConfigLoadStart)
         );
     };
 
-    public get canBack(): boolean {
+    public get canBack() {
         return this.navCx > 0;
     }
 
-    private navCx = -1;
+    private navCx = 0;
 
     constructor(private router: Router) {
         this.$routeLoading.subscribe(e => {
             this.routeLoading = e;
-            this.navCx++;
         });
     }
 
