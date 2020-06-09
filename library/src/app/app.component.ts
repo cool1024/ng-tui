@@ -14,11 +14,8 @@ import { loginConfig } from './config/login-config';
 })
 export class AppComponent {
 
-    // 菜单树
-    menu: MenuItem = {
-        title: '',
-        children: []
-    };
+    // 菜单列表
+    menu: MenuItem[] = [];
 
     constructor(
         public uiService: TUIService,
@@ -31,13 +28,12 @@ export class AppComponent {
                 dashboardService.showLogin(loginConfig);
             } else {
                 // 载入菜单
-                requestObject('assets/menu.json').subscribe(obj => this.menu.children = obj);
+                requestObject('assets/menu.json').subscribe(obj => this.menu = obj);
             }
         });
     }
 
     navBack() {
-        this.uiService.routeLoading = true;
-        // this.uiService.navBack();
+        this.uiService.navBack();
     }
 }

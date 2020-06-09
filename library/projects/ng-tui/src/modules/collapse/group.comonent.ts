@@ -7,7 +7,7 @@ import { MenuItem, MenuTheme, defaultMenuTheme } from './node.interface';
 })
 export class GroupComponent {
 
-    @Input() node: MenuItem;
+    @Input() nodes: MenuItem[];
 
     @Input() level: number = 0;
 
@@ -32,22 +32,27 @@ export class GroupComponent {
         };
     }
 
-    updateGroup() {
-        this.setActive();
-        this.cleanActive(this.node, this.node);
-        this.itemClick.emit(this.node);
+    updateGroup(node: MenuItem) {
+        this.setActive(node);
+        this.cleanActive(this.nodes, node);
+        this.itemClick.emit(node);
     }
 
-    cleanActive(cleanItem: MenuItem, activeItem: MenuItem) {
-        if (this.root) {
-            (cleanItem !== activeItem) && (cleanItem.active = false);
-            cleanItem.children && cleanItem.children.forEach(item => this.cleanActive(item, activeItem));
+    cleanActive(cleanItems: MenuItem[], activeItem: MenuItem) {
+        if (this.root && activeItem.hasOwnProperty('route')) {
+            cleanItems.forEach(item => {
+                (item !== activeItem) && (item.active = false);
+                item.children && this.cleanActive(item.children, activeItem);
+            });
         }
     }
 
-    setActive() {
-        if ((!this.node.children) || this.node.children.length === 0) {
-            this.node.active = true;
+    setActive(node: MenuItem) {
+        if (!Array.isArray(node.children)) {
+            node.children = [];
+        }
+        if (node.children.length === 0) {
+            node.active = true;
         }
     }
 }

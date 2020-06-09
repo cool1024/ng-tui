@@ -8,20 +8,17 @@ import { MenuItem, createMenuTheme, TUIService } from 'projects/ng-tui/src/publi
 export class MenuComponent {
 
     // 菜单树
-    @Input() menu: MenuItem = {
-        title: '',
-        children: []
-    };
+    @Input() menu: MenuItem[] = [];
 
     // 菜单主题
     menuTheme = createMenuTheme({
         defaultTextColor: '#343a40',
-        hoverTextColor: 'black',
-        activeTextColor: 'black',
-        hoverBackgroundColor: 'white',
-        activeBackgroundColor: 'white',
+        hoverTextColor: 'white',
+        activeTextColor: 'white',
+        hoverBackgroundColor: 'linear-gradient(135deg,rgb(143, 117, 218) 0,rgb(114, 124, 245) 60%)',
+        // activeBackgroundColor: 'white',
         // activeBackgroundColor: '#343a40',
-        // activeBackgroundColor: 'linear-gradient(135deg,rgb(143, 117, 218) 0,rgb(114, 124, 245) 60%)'
+        activeBackgroundColor: 'linear-gradient(135deg,rgb(143, 117, 218) 0,rgb(114, 124, 245) 60%)'
     });
 
     constructor(

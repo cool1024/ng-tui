@@ -69,8 +69,8 @@ ts-select {
     border: 1px solid rgba($cyan, 0.1) !important;
 }
 
-.m-btn .btn:not(:first-child) {
-    @extend .ml-3;
+.m-btn .btn {
+    @extend .m-1;
 }
 
 .pointer {
