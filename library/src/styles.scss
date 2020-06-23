@@ -101,6 +101,8 @@ $theme-colors: ("primary": $primary, "secondary": $secondary, "success": $succes
 @import "~bootstrap/scss/list-group";
 @import "~bootstrap/scss/close";
 @import "~bootstrap/scss/modal";
+
+
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/print";
 
@@ -161,4 +163,15 @@ $dotColor: $info;
 
 .dot-animate {
     @extend .dot-windmill;
+}
+
+.column-container {
+    overflow: hidden;
+    column-count: 2;
+    column-gap: 15px;
+
+    .column-item {
+        break-inside: avoid;
+        box-sizing: border-box;
+    }
 }

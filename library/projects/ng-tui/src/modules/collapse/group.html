@@ -1,7 +1,7 @@
 <ng-content></ng-content>
 
 <!-- TopLevel will be subject -->
-<div *ngIf="level===0;else defaultGroup">
+<div *ngIf="level===0;else defaultGroup" class="flex-grow-1" style="overflow-y: auto;">
     <ng-container *ngFor="let node of nodes">
         <div class="pointer py-3 d-flex">
             <div class="flex-shrink-0 pr-2 align-items-center">
@@ -10,7 +10,7 @@
                     <i [class]="node.icon" aria-hidden="true"></i>
                 </ng-template>
             </div>
-            <div class="flex-grow-1 align-items-center">{{node.title}}</div>
+            <div class="flex-grow-1 align-items-center pl-4 font-weight-bold">{{node.title}}</div>
         </div>
         <div tsGroup [root]="false" [nodes]="node.children" [level]="level+1"
             (itemClick)="itemClick.emit($event);cleanActive(nodes,$event)"></div>
