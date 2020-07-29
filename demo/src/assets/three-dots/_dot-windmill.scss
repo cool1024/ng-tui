@@ -1,0 +1,50 @@
+/**
+ * ==============================================
+ * Dot Windmill
+ * ==============================================
+ */
+
+$r: 10px;
+$originX: 5px;
+$originY: 5px + $r;
+
+.dot-windmill {
+  position: relative;
+  top: - $r;
+
+  @include dot;
+
+  transform-origin: $originX $originY;
+  animation: dotWindmill 2s infinite linear;
+
+  &::before,
+  &::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+  }
+
+  &::before {
+    left: -($r/2*1.732);
+    top: $r + $r/2;
+
+    @include dot($bgColor: $dotBeforeColor);
+  }
+
+  &::after {
+    left: $r/2*1.732;
+    top: $r + $r/2;
+
+    @include dot($bgColor: $dotAfterColor);
+  }
+}
+
+@keyframes dotWindmill {
+  0% {
+    transform: rotateZ(0deg) translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: rotateZ(720deg) translate3d(0, 0, 0);
+  }
+}
