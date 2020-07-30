@@ -402,6 +402,10 @@ $color in $theme-colors {
         &:hover {
             background-color: rgba($color, 0.2);
         }
+
+        &:active {
+            background-color: rgba($color, 0.4);
+        }
     }
 }
 

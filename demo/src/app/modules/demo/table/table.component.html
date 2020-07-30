@@ -1,0 +1,95 @@
+<div class="p-1">
+    <h3>TABLE</h3>
+    <h5 class="text-muted mb-4">Documentation and examples for opt-in styling of tables with Bootstrap.</h5>
+</div>
+<div class="p-3 shadow-sm mb-3 bg-white">
+    <h6 class="m-0">Simple Table</h6>
+    <hr>
+    <div class="form-inline">
+        <div class="input-group mb-3 mr-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white">UserName</span>
+            </div>
+            <input style="width:140px" type="text" class="form-control" placeholder="">
+            <div class="input-group-prepend input-group-append">
+                <span class="input-group-text bg-white">Mobile</span>
+            </div>
+            <input style="width:140px" type="text" class="form-control" placeholder="">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-white">CreatedAt</span>
+            </div>
+            <ts-datepicker [(ngModel)]="table.search.startTime" [zIndex]="2">
+                <input type="text" [value]="table.search.startTime || ''"
+                    class="form-control bg-white pointer rounded-0" placeholder="StartTime" style="width:140px"
+                    readonly>
+            </ts-datepicker>
+            <div class="input-group-prepend input-group-append">
+                <span class="input-group-text bg-white">To</span>
+            </div>
+            <ts-datepicker [(ngModel)]="table.search.endTime" [zIndex]="2">
+                <input type="text" [value]="table.search.endTime || ''"
+                    class="form-control bg-white pointer rounded-0 rounded-right" placeholder="EndTime"
+                    style="width:140px" readonly>
+            </ts-datepicker>
+        </div>
+    </div>
+    <div class="form-inline">
+        <div class="m-btn">
+            <button class="btn btn-info">
+                <span>New User</span>
+            </button>
+            <button (click)="table.doReset()" class="btn btn-white">
+                <i class="iconfont icon-refresh mr-1"></i>
+                <span>Reset</span>
+            </button>
+            <button (click)="table.doSearch()" class="btn btn-white">
+                <i class="iconfont icon-search mr-1"></i>
+                <span>Search</span>
+            </button>
+        </div>
+    </div>
+    <ts-table #table="tsTable" class="mt-2 shadow-sm bg-white d-block" [colNum]="theads.length" [loader]="dataLoader"
+        [height]="500">
+        <thead [theads]="theads" class="thead-light"></thead>
+        <tbody>
+            <tr *ngFor="let item of table.data;index as i" class="mat-cell">
+                <td>{{table.page.offset + i + 1}}</td>
+                <td>
+                    <div class="media">
+                        <img tsImg [src]="item.avatar" dataSrc="assets/images/404.jpg" alt="avatar"
+                            class="align-self-center mr-3 rounded-circle" height="40">
+                        <div class="media-body">
+                            <p class="m-0">{{item.nick}}
+                                <small *ngIf="item.gender==='female'" class="text-danger">({{item.gender}})</small>
+                                <small *ngIf="item.gender==='male'" class="text-dark">({{item.gender}})</small>
+                            </p>
+                            <p class="m-0 text-primary">
+                                {{item.email}}
+                            </p>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <p class="p-0 m-0">{{item.cell}}</p>
+                    <p class="p-0 m-0">{{item.address}}</p>
+                </td>
+                <td>
+                    <p class="p-0 m-0">{{item.registered.date}}</p>
+                </td>
+                <td>
+                    <span class="btn-icon btn-icon-info" tsTip="详情/编辑">
+                        <i class="iconfont icon-edit"></i>
+                    </span>
+                    <span class="btn-icon btn-icon-danger" tsTip="删除">
+                        <i class="iconfont icon-delete"></i>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </ts-table>
+</div>
+<!-- <div class="alert alert-dark" role="alert">
+    A total of <span class="alert-link">{{table.page.total}}</span> data queries.
+</div> -->

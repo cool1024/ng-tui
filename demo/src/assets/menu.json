@@ -8,8 +8,12 @@
                 "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAThSURBVFhH7VhdTBxVGKXRaOJD9clXje+++aCJCQ/sHzuzrJSZZelasCxbBFNooYC2CNQ20VJbQIGyQKBWFNsGEUotlAILtNsY02r4sS6UmmqtQOsuUKgsLHzeb+YCDjvAUpiNmp7khIR7v3POfHPn7p0J+V+C5/kn9PptL4Qx214KhFpj9IuhoaFP0nJloWJMeo2Bd2tYHtZJj9YQZaQyimGLmuVGdRHRsO/dXMjK/mBVZh44CHszsyEl7T0gNfNa1jSG3adamw+WZZ9RM9xc9A4bfH/tR7j+Q8+a7OxyQmtbB8TE7sIuzqtU/LNUThmoWb5u2a0LmOTi6qmMctDpdE+rGC5Vw3INaPqWbTcUFtv9eKyoFHbEJ9NwXAPWYC2VUR4qln8dzT88WgRy+Gt6GnIPHREC4lxaFjw8DrhRPA64UfzrA6pZkwHNS+xVNJIUGPBoQbEQUKvnGFoWPKhYLgHNa2rP0khSTE974UR5lRCQ7IM7aVnwoGH4MjTv7HbSSFLMzMxAY9MFISD5/S6lZcED6YpLazCBZ2yMRpJibm4OBgYHAeeoGf4GLQsOVAbTq9iZpJQMGkce9+7dh13JaeKDEh71Ci1XHuRH/zSaftt8iUaRx+TkJHx15mvxNjPcKVquLLQs9xoeuXiLFaa9XhpFHj6fD367cwe4mHgM6MPOUxllgKcRYtSPHWltc9AYq2N8fBzq6htpF/k+RU805Gm0o9H+nMPUfm3Mzs7C8PAwOYHnLDzRdiq3uSBXH4cGZnIydrs91D4wTExMgMs1ANz2+IVOxlHZzUFYOPeyhjU9DDeaobfvJ2obOHDLGR4ZAUdnt7DtoBZqUvmNAd8hcM/DK09I2gOVJ2tk+eXpOpiaekgjSYF7ZdVnX0BRiR3iEt4Ruoiam/F+soUInRUF1+aZinq42TXkx+IjlbLzURs9RKtHAHlB2otC5mgblOeeXJGl2ZXkbzV0neiGK3Yn9NT3gOdXD9ztvQvOiqvQUeKAspwqYV5BZolAE28VQqIHtVsf8IikNfCzjDEG6vIbBONAOeVeutWDjpuSsQvHm6Hp4/NQnfc56CNiyJrkZ9d9HFNHRj6vZfnf8QqLD1RIDALhg5EHNB6A65JLMuYo6RQCIvPTC4Uuohd6UvvVgW/+GoZrw8LMpDyJuMByJ4y4RkmXpqCnodd/nPBa7XX4o38Ybl35RXa8pfDiYsjUhP3ieiSeAX11IL8Uh7Eg1pIMjtJOP3E0X8DowKjfeCDEtboQ8BuyfCzmRHE9Em8aQx548iUT5yMi34TG4+dlxZ3lV+H+rT/BO+mFvqZ+2TmB8GJR62LImkO1YIi0YMj5FU/foUbjc2SCBzfSyrxTsqKPSuz68v91l12Gc8fEgMjCrFJxEzfwbsxCYy2BrIFYbHN64vt+Yhvh7e9uC8thqHvIb+yfXUTujs8Sb7WBs9JYSyAB03EwP+MTP6GNcKB9EHwzPrjR8rPfWNun7ZKAB1PEt0CNns+isZagYqPCcHC7+W1oK+7wE1OCzQUti+HqPqoHs8kmBNQyJhWNJQF+nGzHCYY3LJBo3QfJtgxFmJSQAYnxaWDbuUegNS4VWOIpdI9sN5hFjLQMOp1lK5lQTR53rzA5iBQ8iTdmoHFWBtkwn8IP33IfxJUgeqEntf8vISTkb5Xlc0oWq0wKAAAAAElFTkSuQmCC",
                 "children": [
                     {
-                        "title": "Tabs",
-                        "route": "/demo/icon"
+                        "title": "Button",
+                        "route": "/demo/button"
+                    },
+                    {
+                        "title": "Table",
+                        "route": "/demo/table"
                     }
                 ]
             }

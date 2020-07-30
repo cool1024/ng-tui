@@ -1,6 +1,8 @@
 import { ControlValueAccessor } from '@angular/forms';
 import { BaseTheme } from './base-theme.class';
+import { Directive } from '@angular/core';
 
+@Directive()
 export class BaseForm extends BaseTheme implements ControlValueAccessor {
 
     isDisabled: boolean;

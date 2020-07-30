@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { ChartInstance, Position, Item } from 'projects/ng-tui/src/public_api';
+import { Component } from '@angular/core';
+import { ChartInstance } from 'projects/ng-tui/src/public_api';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -8,7 +8,7 @@ import { delay } from 'rxjs/operators';
 })
 export class HomeComponent {
 
-    tabItems = ['111', '222', '3333']
+    tabItems = ['111', '222', '3432432333']
 
     data: any[] = []
 

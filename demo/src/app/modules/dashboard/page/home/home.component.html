@@ -1,4 +1,8 @@
 <!-- <div tsChart (doInit)="initBarChart($event)" [data]="data"></div>
 <div tsChart (doInit)="initLineChart($event)" [data]="data"></div> -->
 <!-- <div tsChart (doInit)="initPieChart($event)" [data]="data"></div> -->
-<ts-tabs [items]="tabItems">111</ts-tabs>
+<ts-tabs #tsTabs="tsTabs" [items]="tabItems">
+    <div *ngIf="tsTabs.activeIndex===0">000</div>
+    <div *ngIf="tsTabs.activeIndex===1">111</div>
+    <div *ngIf="tsTabs.activeIndex===2">222</div>
+</ts-tabs>

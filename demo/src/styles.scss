@@ -155,7 +155,7 @@ $theme-colors: ("primary": $primary, "secondary": $secondary, "success": $succes
 
 
 /** three-dots **/
-$dotColor: $info;
+$dotColor: $dark;
 
 @import "assets/three-dots/_variables";
 @import "assets/three-dots/mixins";

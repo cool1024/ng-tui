@@ -6,7 +6,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
   // 懒加载子模块
-  // { path: 'demo', loadChildren: './modules/demo/demo.module#DemoModule' },
+  { path: 'demo', loadChildren: () => import('./modules/demo/demo.module').then(m => m.DemoModule) },
 
   // 最后全局匹配其他链接
   { path: '**', redirectTo: 'error', pathMatch: 'full' }
