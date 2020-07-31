@@ -18,6 +18,9 @@ import { NotifyComponent } from './notify.component';
     entryComponents: [
         ToastComponent,
         NotifyComponent,
+    ],
+    providers: [
+        ToastService
     ]
 })
 export class ToastModule {

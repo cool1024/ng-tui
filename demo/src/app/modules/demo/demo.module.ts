@@ -15,12 +15,16 @@ import {
     CheckboxModule,
     DatepickerModule,
     SelectModule,
+    ConfirmModule,
+    ToastModule,
     TabModule
 } from 'projects/ng-tui/src/public_api';
 
 @NgModule({
     imports: [
         ButtonModule,
+        ToastModule,
+        ConfirmModule,
         PrismModule,
         TableModule,
         CheckboxModule,

@@ -26,5 +26,14 @@ export interface TUIConfig {
 
     paginationItems?: Item[];
 
+    paginationLimitTextFormat?: (limit: number) => string;
+
     uploadItemSize?: number;
+
+    tableConfig?: TableConfig
+}
+
+export interface TableConfig {
+    emptyTitle: string;
+    goTitle: string;
 }

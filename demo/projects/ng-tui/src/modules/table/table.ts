@@ -21,6 +21,8 @@ export class TableComponent extends BaseTheme implements OnInit {
 
     @Input() colNum: number = 0;
     @Input() height: number = 400;
+    @Input() emptyTitle: String;
+    @Input() goTitle: String;
     @Input() loader: (page: Pagination) => Observable<{ data: Array<any>, total: number, result: boolean }>;
     @Input() data: Array<any> = [];
     @Input() params: SearchParams = SearchParams.createDefaultSearch();
@@ -29,9 +31,11 @@ export class TableComponent extends BaseTheme implements OnInit {
     get search() { return this.params.params; }
     private searchParams = SearchParams.createDefaultSearch();
 
-    constructor(private configService: ConfigService) {
+    constructor(configService: ConfigService) {
         super();
         this.color = configService.config.defaultColor;
+        this.emptyTitle = configService.config.tableConfig.emptyTitle;
+        this.goTitle = configService.config.tableConfig.goTitle;
     }
 
     ngOnInit() {
@@ -100,7 +104,7 @@ export class SearchParams {
 
     clean() {
         for (const key in this.params) {
-            this.setEmpty[key];
+            this.setEmpty(key);
         }
     }
 

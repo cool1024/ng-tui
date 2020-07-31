@@ -19,13 +19,13 @@
                             </g>
                         </g>
                     </svg>
-                    <span style="color:#ccc">暂无数据～</span>
+                    <span style="color:#ccc">{{emptyTitle}}</span>
                 </td>
             </tr>
         </table>
     </div>
     <div class="text-right px-2 pb-2">
-        <ts-pagination outline (pageChange)="doRefresh()" [pagination]="page" [color]="color" goTitle="跳转">
+        <ts-pagination outline (pageChange)="doRefresh()" [pagination]="page" [color]="color" goTitle="{{goTitle}}">
         </ts-pagination>
     </div>
 </div>

@@ -18,7 +18,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
     <div tsToggle
         [target]="menuView"
         [bind]="menuView"
-        class="pagination-button pagination-button-{{color}}">显示 {{pagination.limit}} 条</div>
+        class="pagination-button pagination-button-{{color}}">{{getLimitText(pagination.limit)}}</div>
     <div #menuView="tsView"
         style="z-index:9999"
         position="top"
@@ -67,7 +67,9 @@ export class PaginationComponent extends BaseTheme implements DoCheck {
 
     pages: number[];
 
-    constructor(private configService: ConfigService) {
+    getLimitText: (limit: number) => string
+
+    constructor(configService: ConfigService) {
 
         super();
 
@@ -77,9 +79,12 @@ export class PaginationComponent extends BaseTheme implements DoCheck {
 
         this.pagination = new Pagination();
 
-        this.color = this.configService.config.defaultColor;
+        this.color = configService.config.defaultColor;
 
         this.items = configService.config.paginationItems;
+
+        this.getLimitText = configService.config.paginationLimitTextFormat;
+
     }
 
     ngDoCheck() { this.setPages(); }
