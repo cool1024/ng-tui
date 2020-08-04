@@ -6,12 +6,6 @@ import { Component } from '@angular/core';
 })
 export class CheckboxComponent {
 
-    radioValue = 'primary';
-
-    checkboxValue = ['primary'];
-
     switchValue = 'secondary';
-
-    constructor() { }
 
 }

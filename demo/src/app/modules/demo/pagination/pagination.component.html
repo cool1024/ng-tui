@@ -1,12 +1,8 @@
-<div class="d-flex align-items-center">
-    <h3>Pagination</h3>
-    <div class="ml-3">
-        <h5 class="badge badge-info">Component</h5>
-    </div>
+<div class="p-1">
+    <h3 class="font-weight-normal">Pagination</h3>
+    <h5 class="text-muted font-weight-light mb-4">...</h5>
 </div>
-<div>分页组件通常用于列表（表格）数据展示。</div>
-<hr>
-<div class="mb-4 border p-3">
+<div class="card card-body shadow-sm">
     <div class="m-btn">
         <div>
             <h5 class="m-0">
@@ -28,7 +24,7 @@
                     <td>
                         <code>Pagination</code>
                     </td>
-                    <td>分页对象，保存维护当前页码，总数据，和其它分页相关参数</td>
+                    <td>Page Object</td>
                 </tr>
                 <tr>
                     <th scope="row">items</th>
@@ -90,20 +86,21 @@
         <ts-prism [codeObs]=" '/assets/docs/pagination/color.html' | request" language="html"></ts-prism>
     </div>
 </div>
-<div class="mb-4 p-3 border">
-    <h5 class="bg-white">Example</h5>
-    <hr>
+<div class="mb-4 p-3 card shadow-sm">
+    <h5>Example</h5>
     <div class="m-btn">
-        <ts-pagination [items]="[{text:'显示1条',value:1},{text:'显示5条',value:5},{text:'显示10条',value:10}]" [pagination]="examplePage" goTitle="Go" (pageChange)="loadData($event)"></ts-pagination>
+        <ts-pagination
+            [items]="[{text:'Show 1 Rows',value:1},{text:'Show 5 Rows',value:5},{text:'Show 10 Rows',value:10}]"
+            [pagination]="examplePage" goTitle="Go" (pageChange)="loadData($event)"></ts-pagination>
         <div class="alert alert-primary mt-2" role="alert">
-            数据总量： <span class="alert-link">{{examplePage.total}}</span> 
-            当前页码： <span class="alert-link">{{examplePage.page}}</span>
-            每页数据量： <span class="alert-link">{{examplePage.limit}}</span>
-            总页数： <span class="alert-link">{{examplePage.maxPage}}</span>
-            分页参数： <span class="alert-link">{{examplePage.pageData | json}}</span>
+            Total： <span class="alert-link">{{examplePage.total}}</span><br>
+            CurrentPage： <span class="alert-link">{{examplePage.page}}</span><br>
+            Limit： <span class="alert-link">{{examplePage.limit}}</span><br>
+            MaxPage： <span class="alert-link">{{examplePage.maxPage}}</span><br>
+            SQL： <span class="alert-link">{{examplePage.pageData | json}}</span>
         </div>
     </div>
-    <div class="mt-3 p-3 border">
+    <div class="p-3 border">
         <pre>{{data|json}}</pre>
     </div>
 </div>

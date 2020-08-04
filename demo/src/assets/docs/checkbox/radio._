@@ -8,10 +8,4 @@ export class CheckboxComponent {
 
     radioValue = 'primary';
 
-    checkboxValue = ['primary'];
-
-    switchValue = 'secondary';
-
-    constructor() { }
-
 }

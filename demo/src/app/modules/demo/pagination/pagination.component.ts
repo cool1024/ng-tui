@@ -10,6 +10,7 @@ export class PaginationComponent {
     page = new Pagination(100);
 
     examplePage = new Pagination();
+
     data = [];
 
     constructor() {
@@ -19,7 +20,10 @@ export class PaginationComponent {
     loadData(event: Pagination) {
         requestObject(`https://randomuser.me/api/?page=${event.page}&results=${event.limit}`).subscribe(res => {
             this.examplePage.total = 1000;
-            this.data = res.results;
+            this.data = res.results.map(user => ({
+                nick: user.name.first,
+                email: user.email
+            }));
         });
     }
 }

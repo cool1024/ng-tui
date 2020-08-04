@@ -14,6 +14,14 @@
                     {
                         "title": "Table",
                         "route": "/demo/table"
+                    },
+                    {
+                        "title": "Form Component",
+                        "route": "/demo/checkbox"
+                    },
+                    {
+                        "title": "Pagination",
+                        "route": "/demo/pagination"
                     }
                 ]
             }
