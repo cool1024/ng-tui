@@ -16,12 +16,16 @@
                         "route": "/demo/table"
                     },
                     {
+                        "title": "Pagination",
+                        "route": "/demo/pagination"
+                    },
+                    {
                         "title": "Form Component",
                         "route": "/demo/checkbox"
                     },
                     {
-                        "title": "Pagination",
-                        "route": "/demo/pagination"
+                        "title": "Select",
+                        "route": "/demo/select"
                     }
                 ]
             }

@@ -1,123 +1,159 @@
-<div class="d-flex align-items-center">
-    <h3>Select</h3>
-    <div class="ml-3">
-        <h5 class="badge badge-success">Component</h5>
-    </div>
+<div class="p-1">
+    <h3 class="font-weight-normal">Select</h3>
+    <h5 class="text-muted font-weight-light mb-4">Select component.</h5>
 </div>
-<div>
-    表单中的下拉选择
-</div>
-<hr>
-<div class="mb-4 border p-3">
-    <div class="m-btn">
-        <div>
-            <h5 class="m-0">
-                <code>&lt;ts-select&gt;</code>
+<div class="column-container">
+    <div class="column-item mb-3">
+        <div class="card card-body shadow-sm">
+            <h5 class="mb-3">
+                Component Overview
+                <code class="ml-4">&lt;ts-select&gt;</code>
             </h5>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 150px;">Input</th>
+                        <th scope="col" style="width: 120px;">Type</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>color</td>
+                        <td>
+                            <code>string</code>
+                        </td>
+                        <td>Color name, such as 'success', 'primary', etc.</td>
+                    </tr>
+                    <tr>
+                        <td>options</td>
+                        <td>
+                            <code>Item[]</code>
+                        </td>
+                        <td>Select option list</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-striped mt-2">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 150px;">Output</th>
+                        <th scope="col" style="width: 120px;">Event Type</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>optionChange</td>
+                        <td>
+                            <code>Item</code>
+                        </td>
+                        <td>Option change Listener</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <br>
-        <table class="table table-striped">
-            <thead>
-                <tr class="text-primary">
-                    <th scope="col" style="width: 150px;">Input</th>
-                    <th scope="col" style="width: 120px;">Type</th>
-                    <th scope="col">Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">color</th>
-                    <td>
-                        <code>string</code>
-                    </td>
-                    <td>Color name, such as 'success', 'primary', etc.</td>
-                </tr>
-                <tr>
-                    <th scope="row">options</th>
-                    <td>
-                        <code>Item[]</code>
-                    </td>
-                    <td>Select option list</td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-striped mt-2">
-            <thead>
-                <tr class="text-primary">
-                    <th scope="col" style="width: 150px;">Output</th>
-                    <th scope="col" style="width: 120px;">Event Type</th>
-                    <th scope="col">Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">optionChange</th>
-                    <td>
-                        <code>Item</code>
-                    </td>
-                    <td>Option change Listener</td>
-                </tr>
-            </tbody>
-        </table>
     </div>
-    <div class="p-3 border">
-        <ts-select [options]="selectOptions" [(ngModel)]="selectValue" [color]="selectValue" placeholder="Color Select" style="width: 200px;"></ts-select>
-    </div>
-</div>
-<div class="mb-4 border p-3">
-    <div class="m-btn">
-        <div>
-            <h5 class="m-0">
-                <code>&lt;ts-selects&gt;</code>
+    <div class="column-item mb-3">
+        <div class="card card-body shadow-sm">
+            <h5 class="mb-3">
+                Component Overview
+                <code class="ml-4">&lt;ts-selects&gt;</code>
             </h5>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 150px;">Input</th>
+                        <th scope="col" style="width: 120px;">Type</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>color</td>
+                        <td>
+                            <code>string</code>
+                        </td>
+                        <td>Color name, such as 'success', 'primary', etc.</td>
+                    </tr>
+                    <tr>
+                        <td>options</td>
+                        <td>
+                            <code>Item[]</code>
+                        </td>
+                        <td>Select option list</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-striped mt-2">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 150px;">Output</th>
+                        <th scope="col" style="width: 120px;">Event Type</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>optionChange</td>
+                        <td>
+                            <code>Item[]</code>
+                        </td>
+                        <td>Option change Listener</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <br>
-        <table class="table table-striped">
-            <thead>
-                <tr class="text-primary">
-                    <th scope="col" style="width: 150px;">Input</th>
-                    <th scope="col" style="width: 120px;">Type</th>
-                    <th scope="col">Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">color</th>
-                    <td>
-                        <code>string</code>
-                    </td>
-                    <td>Color name, such as 'success', 'primary', etc.</td>
-                </tr>
-                <tr>
-                    <th scope="row">options</th>
-                    <td>
-                        <code>Item[]</code>
-                    </td>
-                    <td>Select option list</td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-striped mt-2">
-            <thead>
-                <tr class="text-primary">
-                    <th scope="col" style="width: 150px;">Output</th>
-                    <th scope="col" style="width: 120px;">Event Type</th>
-                    <th scope="col">Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">optionChange</th>
-                    <td>
-                        <code>Item</code>
-                    </td>
-                    <td>Option change Listener</td>
-                </tr>
-            </tbody>
-        </table>
     </div>
-    <div class="p-3 border">
-        
+    <div class="column-item mb-3">
+        <div class="card card-body shadow-sm">
+            <h5 class="mb-3">Single Select Example</h5>
+            <ts-select [options]="selectOptions" [(ngModel)]="selectValue" [color]="selectValue"></ts-select>
+            <div class="alert alert-{{selectValue}} mt-2" role="alert">
+                selectValue: <span class="alert-link">{{selectValue}}</span>
+            </div>
+            <ts-tabs #tsSelectTabs="tsTabs" [items]="['Html','TypeScript']">
+                <ts-prism *ngIf="tsSelectTabs.isActive(0)" [codeObs]=" '/assets/docs/select/select.html' | request"
+                    language="html"></ts-prism>
+                <ts-prism *ngIf="tsSelectTabs.isActive(1)" [codeObs]=" '/assets/docs/select/select._' | request"
+                    language="typescript"></ts-prism>
+            </ts-tabs>
+        </div>
+    </div>
+    <div class="column-item mb-3">
+        <div class="card card-body shadow-sm">
+            <h5 class="mb-3">Multi Select Example</h5>
+            <ts-selects [options]="selectOptions" [(ngModel)]="selectValues" [color]="selectValue"></ts-selects>
+            <div class="alert alert-{{selectValue}} mt-2" role="alert">
+                selectValues: <span class="alert-link">{{selectValues | json}}</span>
+            </div>
+            <ts-tabs #tsSelectsTabs="tsTabs" [items]="['Html','TypeScript']">
+                <ts-prism *ngIf="tsSelectsTabs.isActive(0)" [codeObs]=" '/assets/docs/select/selects.html' | request"
+                    language="html"></ts-prism>
+                <ts-prism *ngIf="tsSelectsTabs.isActive(1)" [codeObs]=" '/assets/docs/select/selects._' | request"
+                    language="typescript"></ts-prism>
+            </ts-tabs>
+        </div>
+    </div>
+    <div class="column-item mb-3">
+        <div class="card card-body shadow-sm">
+            <h5 class="mb-3">Block Select Example</h5>
+            <ts-select-block [options]="blockOptions" [(ngModel)]="blockValue" color="primary"></ts-select-block>
+            <div class="alert alert-{{selectValue}} mt-2" role="alert">
+                blockValue: <span class="alert-link">{{blockValue}}</span>
+            </div>
+            <ts-tabs #tsBlockTabs="tsTabs" [items]="['Html','TypeScript']">
+                <ts-prism *ngIf="tsBlockTabs.isActive(0)" [codeObs]=" '/assets/docs/pagination/block.html' | request"
+                    language="html"></ts-prism>
+                <ts-prism *ngIf="tsBlockTabs.isActive(1)" [codeObs]=" '/assets/docs/pagination/block._' | request"
+                    language="typescript"></ts-prism>
+            </ts-tabs>
+        </div>
+    </div>
+    <div class="column-item mb-3">
+        <div class="card card-body shadow-sm">
+            <h5 class="mb-3">Rich Text Example</h5>
+            <ts-select [searchFunc]="doSearchUser"></ts-select>
+        </div>
     </div>
 </div>
-<ts-select-block [options]="blockOptions" [(ngModel)]="blockValue"  style="width: 200px;"></ts-select-block>
