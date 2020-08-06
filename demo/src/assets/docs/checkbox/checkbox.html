@@ -1,0 +1,18 @@
+<div class="m-btn">
+    <ts-checkbox color="primary" class="mr-3" [(ngModel)]="checkboxValue" value="primary">
+        Primary</ts-checkbox>
+    <ts-checkbox color="secondary" class="mr-3" [(ngModel)]="checkboxValue" value="secondary">
+        Secondary
+    </ts-checkbox>
+    <ts-checkbox color="success" class="mr-3" [(ngModel)]="checkboxValue" value="success">
+        Success</ts-checkbox>
+    <ts-checkbox color="warning" class="mr-3" [(ngModel)]="checkboxValue" value="warning">
+        Warning</ts-checkbox>
+    <ts-checkbox color="danger" class="mr-3" [(ngModel)]="checkboxValue" value="danger">Danger
+    </ts-checkbox>
+    <ts-checkbox color="info" class="mr-3" [(ngModel)]="checkboxValue" value="info">Info
+    </ts-checkbox>
+</div>
+<div class="mt-2 alert alert-dark" role="alert">
+    Checkbox value : <a href="#" class="alert-link">{{checkboxValue | json}}</a>.
+</div>

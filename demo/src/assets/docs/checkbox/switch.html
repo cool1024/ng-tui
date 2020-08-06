@@ -1,0 +1,7 @@
+<div class="m-btn">
+    <ts-switch color="primary" class="mr-3" [(ngModel)]="switchValue" [value]="{open: 'primary', close: 'secondary'}">
+    </ts-switch>
+    <div class="mt-2 alert alert-{{switchValue}}" role="alert">
+        Switch value : <a href="#" class="alert-link">{{ switchValue }}</a>.
+    </div>
+</div>

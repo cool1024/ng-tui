@@ -1,0 +1,22 @@
+<div class="bg-white d-block shadow-sm flex-shrink-0 position-relative"
+    style="z-index:3;width: 250px;height:100vh;overflow: hidden;">
+
+    <ts-group class="d-flex flex-column h-100" [theme]="menuTheme" [nodes]="menu" (itemClick)="navHandler($event)">
+        <h4 style="height: 70px;"
+            class="py-3 m-0 border-bottom font-weight-normal flex-shrink-0 d-flex justify-content-center align-items-center">
+            <img class="mr-3" height="25" src="favicon.ico">
+            <span>Admin Pro</span>
+        </h4>
+    </ts-group>
+    <!-- <div class="d-block w-1h-100 position-absolute"
+        style=" overflow-y: auto;overflow-x: hidden;">
+        <ts-group class="d-block" style="width: 250px;" [theme]="menuTheme" [nodes]="menu"
+            (itemClick)="navHandler($event)">
+            <h4 style="height: 70px;"
+                class="py-3 m-0 border-bottom font-weight-normal d-flex justify-content-center align-items-center">
+                <img class="mr-3" height="25" src="favicon.ico">
+                <span>Admin Pro</span>
+            </h4>
+        </ts-group>
+    </div> -->
+</div>

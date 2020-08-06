@@ -1,0 +1,112 @@
+<div class="p-1">
+    <h3 class="font-weight-normal">Pagination</h3>
+    <h5 class="text-muted font-weight-light mb-4">Documentation and examples for showing pagination to indicate a series
+        of related content exists across multiple pages.</h5>
+</div>
+<div class="column-container">
+    <div class="column-item mb-3">
+        <div class="card card-body shadow-sm">
+            <h5 class="mb-3">
+                Component Overview
+                <code class="ml-4">&lt;ts-pagination&gt;</code>
+            </h5>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Input</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>pagination</td>
+                        <td>
+                            <code>Pagination</code>
+                        </td>
+                        <td>Page Object</td>
+                    </tr>
+                    <tr>
+                        <td>items</td>
+                        <td>
+                            <code>Item[]</code>
+                        </td>
+                        <td>Row number select item</td>
+                    </tr>
+                    <tr>
+                        <td>goTitle</td>
+                        <td>
+                            <code>string</code>
+                        </td>
+                        <td>Go button title</td>
+                    </tr>
+                    <tr>
+                        <td>color</td>
+                        <td>
+                            <code>string</code>
+                        </td>
+                        <td>Color name, such as 'success', 'primary', etc.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-striped mt-2">
+                <thead>
+                    <tr>
+                        <th scope="col">Output</th>
+                        <th scope="col" style="width: 120px;">Event Type</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>pageChange</td>
+                        <td>
+                            <code>Pagination</code>
+                        </td>
+                        <td>Page change callback</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="column-item mb-3">
+        <div class="card card-body shadow-sm">
+            <h5 class="mb-3">Color</h5>
+            <div class="mb-3">
+                <ts-pagination [pagination]="page" color="primary"></ts-pagination>
+                <ts-pagination [pagination]="page" color="secondary"></ts-pagination>
+                <ts-pagination [pagination]="page" color="dark"></ts-pagination>
+                <ts-pagination [pagination]="page" color="success"></ts-pagination>
+                <ts-pagination [pagination]="page" color="warning"></ts-pagination>
+                <ts-pagination [pagination]="page" color="danger"></ts-pagination>
+                <ts-pagination [pagination]="page" color="info"></ts-pagination>
+            </div>
+            <ts-tabs #tsPageTabs="tsTabs" [items]="['Html','TypeScript']">
+                <ts-prism *ngIf="tsPageTabs.isActive(0)" [codeObs]=" '/assets/docs/pagination/color.html' | request"
+                    language="html"></ts-prism>
+                <ts-prism *ngIf="tsPageTabs.isActive(1)" [codeObs]=" '/assets/docs/pagination/color._' | request"
+                    language="typescript"></ts-prism>
+            </ts-tabs>
+        </div>
+    </div>
+    <div class="column-item mb-3">
+        <div class="mb-4 p-3 card shadow-sm">
+            <h5 class="mb-3">Full Example</h5>
+            <div>
+                <ts-pagination
+                    [items]="[{text:'Show 1 Rows',value:1},{text:'Show 5 Rows',value:5},{text:'Show 10 Rows',value:10}]"
+                    [pagination]="examplePage" goTitle="Go" (pageChange)="loadData($event)"></ts-pagination>
+                <div class="alert alert-primary mt-2" role="alert">
+                    <!-- Total： <span class="alert-link">{{examplePage.total}}</span><br>
+                    CurrentPage： <span class="alert-link">{{examplePage.page}}</span><br>
+                    Limit： <span class="alert-link">{{examplePage.limit}}</span><br>
+                    MaxPage： <span class="alert-link">{{examplePage.maxPage}}</span><br> -->
+                    PageData： <span class="alert-link">{{examplePage.pageData | json}}</span>
+                </div>
+            </div>
+            <div class="p-3 border">
+                <pre>{{data|json}}</pre>
+            </div>
+        </div>
+    </div>
+</div>
