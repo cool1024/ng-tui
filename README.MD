@@ -19,7 +19,7 @@ NG_TUI是基于的Bootstrap样式库开发的Angular组件仓库，这个项目�
 
 ## 预览
 ![preview](preview/dashboard.png)
-[在线查看](https://www.cool1024.com) 账号 admin 密码 123456789
+<!-- [在线查看](https://www.cool1024.com) 账号 admin 密码 123456789 -->
 
 ## 安装
 1. 安装bootstrap
