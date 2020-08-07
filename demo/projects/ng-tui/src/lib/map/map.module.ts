@@ -20,7 +20,7 @@ import { ScriptService } from '../../tui-core/base-services/script.service';
     ]
 })
 export class MapModule {
-    public static forRoot(appKey: string): ModuleWithProviders {
+    public static forRoot(appKey: string): ModuleWithProviders<MapModule> {
         return {
             ngModule: MapModule,
             providers: [
@@ -29,7 +29,7 @@ export class MapModule {
             ]
         };
     }
-    public static forChild(appKey: string): ModuleWithProviders {
+    public static forChild(appKey: string): ModuleWithProviders<MapModule> {
         return {
             ngModule: MapModule,
             providers: [

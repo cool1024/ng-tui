@@ -42,7 +42,7 @@ export class MapService {
 
     getPositionByAddress(address: string): Observable<{ result: boolean, data: any }> {
         return this.doAMapGeocoder().pipe(
-            switchMap<Geocoder, { result: boolean, data: any }>(geocoder => {
+            switchMap(geocoder => {
                 return fromEventPattern<{ result: boolean, data: any }>((handle => {
                     geocoder.getLocation(address, (status: string, result: any) => {
                         if (status === 'complete' && result.info === 'OK') {
@@ -58,7 +58,7 @@ export class MapService {
 
     getAddressByPosition(point: [number, number]): Observable<{ result: boolean, data: any }> {
         return this.doAMapGeocoder().pipe(
-            switchMap<Geocoder, { result: boolean, data: any }>(geocoder => {
+            switchMap(geocoder => {
                 return fromEventPattern<{ result: boolean, data: any }>((handle => {
                     geocoder.getAddress(point, (status: string, result: any) => {
                         if (status === 'complete' && result.info === 'OK') {

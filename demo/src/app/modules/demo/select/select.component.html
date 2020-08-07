@@ -143,9 +143,9 @@
                 blockValue: <span class="alert-link">{{blockValue}}</span>
             </div>
             <ts-tabs #tsBlockTabs="tsTabs" [items]="['Html','TypeScript']">
-                <ts-prism *ngIf="tsBlockTabs.isActive(0)" [codeObs]=" '/assets/docs/pagination/block.html' | request"
+                <ts-prism *ngIf="tsBlockTabs.isActive(0)" [codeObs]=" '/assets/docs/select/block.html' | request"
                     language="html"></ts-prism>
-                <ts-prism *ngIf="tsBlockTabs.isActive(1)" [codeObs]=" '/assets/docs/pagination/block._' | request"
+                <ts-prism *ngIf="tsBlockTabs.isActive(1)" [codeObs]=" '/assets/docs/select/block._' | request"
                     language="typescript"></ts-prism>
             </ts-tabs>
         </div>

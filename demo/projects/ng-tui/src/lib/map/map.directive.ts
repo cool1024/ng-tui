@@ -27,7 +27,7 @@ export class MapDirective implements AfterViewInit, OnDestroy {
         const options = {
             zoom: this.zoom,
             center: this.center,
-            mapStyle: this.options.mapStyle,
+            ...this.options
         };
         return options;
     }

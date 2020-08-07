@@ -17,7 +17,8 @@ import {
     SelectModule,
     ConfirmModule,
     ToastModule,
-    TabModule
+    TabModule,
+    MapModule
 } from 'projects/ng-tui/src/public_api';
 
 @NgModule({
@@ -32,6 +33,7 @@ import {
         DatepickerModule,
         SelectModule,
         TabModule,
+        MapModule,
         DemoRoutingModule
     ],
     declarations: [declarationComponents],

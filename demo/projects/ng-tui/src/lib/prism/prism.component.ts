@@ -42,6 +42,6 @@ export class PrismComponent implements OnInit, OnChanges {
             lineCode += '<span></span>';
         }
         lineCode += '</span">';
-        this.codePad.nativeElement.innerHTML = `${code}${lineCode}`;
+        this.codePad && (this.codePad.nativeElement.innerHTML = `${code}${lineCode}`);
     }
 }

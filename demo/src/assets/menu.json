@@ -9,23 +9,27 @@
                 "children": [
                     {
                         "title": "Button",
-                        "route": "/demo/button"
+                        "route": "/demo/ButtonComponent"
                     },
                     {
                         "title": "Table",
-                        "route": "/demo/table"
+                        "route": "/demo/tableComponent"
                     },
                     {
                         "title": "Pagination",
-                        "route": "/demo/pagination"
+                        "route": "/demo/PaginationComponent"
                     },
                     {
                         "title": "Form Component",
-                        "route": "/demo/checkbox"
+                        "route": "/demo/CheckboxComponent"
                     },
                     {
                         "title": "Select",
-                        "route": "/demo/select"
+                        "route": "/demo/SelectComponent"
+                    },
+                    {
+                        "title": "Map",
+                        "route": "/demo/MapComponent"
                     }
                 ]
             }

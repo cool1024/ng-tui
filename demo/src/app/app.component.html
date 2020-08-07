@@ -1,26 +1,27 @@
-<div class="d-flex d-none">
-    <dashboard-menu [menu]="menu"></dashboard-menu>
-    <div class="flex-grow-1 d-flex flex-column" style="overflow: hidden;">
-        <div class="shadow-sm flex-shrink-0" style="z-index: 2;">
+<div class="fixed-top w-100 h-100 overflow-hidden bg-dark d-flex">
+    <dashboard-menu class="h-100 overflow-hidden flex-shrink-0" [menu]="menu">
+    </dashboard-menu>
+    <div class="flex-grow-1 bg-danger overflow-hidden d-flex flex-column">
+        <div class="flex-shrink-0 shadow-sm">
             <dashboard-navbar></dashboard-navbar>
-            <!-- <dashboard-navtool></dashboard-navtool> -->
-            <!-- <nav style="height: 40px;" class="d-flex align-items-center">
-                <div class="h-100 d-flex align-items-center">
-                    <div *ngIf="uiService.canBack" (click)="navBack()"
-                        class="d-flex align-items-center text-info-hover pointer h-100 pl-3">
-                        <i class="iconfont icon-i-back"></i>
-                    </div>
-                    <div class="breadcrumb bg-white ml-2 pl-2 pr-3 d-inline-block">
-                        <a routerLink="/">Home</a>
-                        <a class="ml-2"><span></span></a>
-                    </div>
-                </div>
-            </nav> -->
         </div>
-        <div class="flex-grow-1 bg-light" style="max-height: calc(100vh - 70px);overflow-y: auto;">
+        <div class="flex-grow-1 bg-light" style="overflow-y: auto;overflow-x: hidden;">
             <div [tsLoad]="uiService.routeLoading" class="p-3">
                 <router-outlet></router-outlet>
             </div>
         </div>
     </div>
 </div>
+<!-- <dashboard-navtool></dashboard-navtool>
+<nav style="height: 40px;" class="d-flex align-items-center">
+    <div class="h-100 d-flex align-items-center">
+        <div *ngIf="uiService.canBack" (click)="navBack()"
+            class="d-flex align-items-center text-info-hover pointer h-100 pl-3">
+            <i class="iconfont icon-i-back"></i>
+        </div>
+        <div class="breadcrumb bg-white ml-2 pl-2 pr-3 d-inline-block">
+            <a routerLink="/">Home</a>
+            <a class="ml-2"><span></span></a>
+        </div>
+    </div>
+</nav> -->

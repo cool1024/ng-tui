@@ -25,4 +25,5 @@ export const MapStyles = DefaultStyles;
 
 export const DefaultConfig = {
     mapStyle: 'amap://styles/normal',
+    lang: 'en'
 };

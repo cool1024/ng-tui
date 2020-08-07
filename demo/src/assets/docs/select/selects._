@@ -1,0 +1,20 @@
+import { Component } from '@angular/core';
+import { Item } from 'projects/ng-tui/src/public_api';
+
+@Component({
+    selector: 'app-select',
+    templateUrl: './select.component.html'
+})
+export class SelectComponent {
+
+    selectOptions: Item[] = [
+        { text: 'Dark', value: 'dark' },
+        { text: 'Primary', value: 'primary' },
+        { text: 'Secondary', value: 'secondary' },
+        { text: 'Success', value: 'success' },
+        { text: 'Warning', value: 'warning' },
+        { text: 'Danger', value: 'danger' },
+    ];
+
+    selectValues = ['dark'];
+}

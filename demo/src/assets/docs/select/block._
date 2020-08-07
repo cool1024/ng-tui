@@ -1,0 +1,24 @@
+import { Component } from '@angular/core';
+import { ItemTree } from 'projects/ng-tui/src/public_api';
+
+@Component({
+    selector: 'app-select',
+    templateUrl: './select.component.html'
+})
+export class SelectComponent {
+
+    blockOptions: ItemTree[] = [
+        {
+            value: 1,
+            text: 'Parent',
+            children: [
+                {
+                    value: 2,
+                    text: 'Child',
+                }
+            ]
+        }
+    ];
+
+    blockValue = [];
+}
