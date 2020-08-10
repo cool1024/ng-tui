@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  // 此处设置网站首页
+
+  // Home Route
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-  // 懒加载子模块
+  // Child Module
   { path: 'demo', loadChildren: () => import('./modules/demo/demo.module').then(m => m.DemoModule) },
+  { path: 'data', loadChildren: () => import('./modules/data/data.module').then(m => m.DataModule) },
 
-  // 最后全局匹配其他链接
+  // Default Route
   { path: '**', redirectTo: 'error', pathMatch: 'full' }
 ];
 

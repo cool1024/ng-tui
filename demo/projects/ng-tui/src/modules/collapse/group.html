@@ -5,7 +5,8 @@
     <ng-container *ngFor="let node of nodes">
         <div class="pointer py-3 d-flex">
             <div class="flex-shrink-0 pr-2 align-items-center">
-                <img class="mb-1" *ngIf="node.image;else elseBlock" width="20" height="20" [src]="node.image">
+                <img class="mb-1" *ngIf="node.image;else elseBlock" width="20" height="20"
+                    [src]="sanitizer.bypassSecurityTrustResourceUrl(node.image)">
                 <ng-template #elseBlock>
                     <i [class]="node.icon" aria-hidden="true"></i>
                 </ng-template>
@@ -23,7 +24,8 @@
             [hoverActive]="node.active">
             <div class="pointer py-3 d-flex" [style.marginLeft.px]="marginLeft">
                 <div class="flex-shrink-0 pr-2 align-items-center">
-                    <img class="mb-1" *ngIf="node.image;else elseBlock" width="20" height="20" [src]="node.image">
+                    <img class="mb-1" *ngIf="node.image;else elseBlock" width="20" height="20"
+                        [src]="sanitizer.bypassSecurityTrustResourceUrl(node.image)">
                     <ng-template #elseBlock>
                         <i [class]="node.icon" aria-hidden="true"></i>
                     </ng-template>
@@ -42,13 +44,4 @@
             </div>
         </div>
     </div>
-    <!-- 
-    <ng-template #elseMenuBlock>
-        <ng-container *ngFor="let item of node.children;index as i">
-            <div tsGroup [root]="false" [node]="item" [level]="level" [open]="true"
-                (itemClick)="itemClick.emit($event);cleanActive(node,$event)"></div>
-            <hr class="my-0 bg-white" *ngIf="i<node.children.length - 1" [style.backgroundColor]="theme.splitLineColor">
-        </ng-container>
-    </ng-template> -->
-
 </ng-template>

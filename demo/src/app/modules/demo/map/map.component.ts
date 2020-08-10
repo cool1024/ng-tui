@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { MapService, MapStyles, MapEvent } from 'projects/ng-tui/src/public_api';
 
 @Component({
     templateUrl: './map.component.html',
     styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements AfterViewInit {
 
     @ViewChild('map') map: any;
 
@@ -17,14 +17,13 @@ export class MapComponent implements OnInit {
 
     constructor(private mapService: MapService, private changeDetectorRef: ChangeDetectorRef) { }
 
-    ngOnInit() {
+    ngAfterViewInit() {
         this.mapService.doFuc((AMap) => {
             this.mapStatus = true;
             this.map.setMarker([116.480983, 40.0958]);
             this.changeDetectorRef.detectChanges();
             // 添加自动补全插件
             AMap.plugin('AMap.Autocomplete', () => {
-                console.log(1111111);
                 return new AMap.Autocomplete({ input: 'search_input' });
             });
         });

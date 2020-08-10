@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { MenuItem, MenuTheme, defaultMenuTheme } from './node.interface';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: '[tsGroup],ts-group',
@@ -31,6 +32,8 @@ export class GroupComponent {
             background: [this.theme.defaultBackgroundColor, this.theme.hoverBackgroundColor, this.theme.activeBackgroundColor]
         };
     }
+
+    constructor(public sanitizer: DomSanitizer) { }
 
     updateGroup(node: MenuItem) {
         this.setActive(node);
