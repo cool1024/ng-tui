@@ -4,6 +4,7 @@
 
 export * from './tui.module';
 export * from './services/tui.service';
+export * from './tui-core/base-services/script.service';
 export * from './tui-core/component-creator/component.service';
 export * from './tui-core/component-creator/component.interface';
 // export * from './lib/ckeditor/ckeditor.module';
