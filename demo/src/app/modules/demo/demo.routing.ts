@@ -13,6 +13,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { SelectComponent } from './select/select.component';
 import { MapComponent } from './map/map.component';
+import { PickerComponent } from './picker/picker.component';
 
 export const declarationComponents = [
     ButtonComponent,
@@ -20,7 +21,8 @@ export const declarationComponents = [
     PaginationComponent,
     CheckboxComponent,
     SelectComponent,
-    MapComponent
+    MapComponent,
+    PickerComponent
 ];
 
 export const entryComponents = [];

@@ -25,7 +25,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class TimepickerComponent extends BaseForm {
 
-    @Input() zIndex: number;
+    @Input() zIndex: number = 1;
 
     activeTime = {
         hour: 0,
