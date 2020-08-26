@@ -2,11 +2,12 @@
     <div class="ts-datepicker-ym-toolbar d-flex justify-content-between align-items-center">
         <div class="text-{{color}}">
             {{getTimeStr()}}
+            {{activeTime|json}}
         </div>
         <div class="text-right" style="width:240px">
-            <button (click)="setNow();confirmTime()" tsBtn sm class="ml-1" close>现在</button>
-            <button (click)="setClean();" tsBtn sm class="ml-1" close>清空</button>
-            <button (click)="confirmTime();" tsBtn sm class="ml-1" [color]="color" close>确认</button>
+            <button (click)="setNow();confirmTime()" tsBtn sm class="ml-1" close>{{cfs.config.pickerNowTitle}}</button>
+            <button (click)="setClean();" tsBtn sm class="ml-1" close>{{cfs.config.pickerCleanTitle}}</button>
+            <button (click)="confirmTime();" tsBtn sm class="ml-1" [color]="color" close>{{cfs.config.pickerConfirmTitle}}</button>
         </div>
     </div>
     <hr class="mb-2">

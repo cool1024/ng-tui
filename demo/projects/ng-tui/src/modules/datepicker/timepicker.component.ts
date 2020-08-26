@@ -2,6 +2,7 @@ import { Component, Input, forwardRef } from '@angular/core';
 import { BaseForm } from '../../tui-core/base-class/base-form.class';
 import { ConfigService } from '../../tui-core/base-services/config.service';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Util } from '../../tui-core/util';
 
 @Component({
     selector: 'ts-timepicker',
@@ -35,11 +36,19 @@ export class TimepickerComponent extends BaseForm {
 
 
     writeValue(value: string) {
-        if (value === null || value === undefined) { return; }
+
+        if(Util.isNullOrEmpty(value)){
+            return this.setNow();
+        }
+
+        this.formatTime(value);
+    }
+
+    formatTime(value:string){
         const times = value.split(':');
         if (times.length !== 3) {
             // console.error('time format error , must like 23:59:01');
-            this.setNow();
+            return this.setNow();
         } else {
             this.activeTime = {
                 hour: parseInt(times[0], 10) || 0,
@@ -51,24 +60,15 @@ export class TimepickerComponent extends BaseForm {
 
     setNow() {
         const date = new Date();
-        Object.assign(this.activeTime, {
+       this.activeTime = {
             hour: date.getHours(),
             minute: date.getMinutes(),
             second: date.getSeconds(),
-        });
-    }
-
-    getTwoNumStr(num: number): string {
-        return num > 9 ? num.toString() : `0${num}`;
-    }
-
-    getTimeStr(): string {
-        // tslint:disable-next-line:max-line-length
-        return `${this.getTwoNumStr(this.activeTime.hour)}:${this.getTwoNumStr(this.activeTime.minute)}:${this.getTwoNumStr(this.activeTime.second)}`;
+        };
     }
 
     sendChange(value: number) {
-        this.changeHandle(value && this.getTimeStr());
+        this.changeHandle(value && Util.getTimeStr(this.activeTime));
     }
 
     constructor(cfs: ConfigService) {

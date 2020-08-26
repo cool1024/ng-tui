@@ -16,8 +16,8 @@
                 </button>
             </div>
             <div class="text-right">
-                <button (click)="cleanValue()" tsBtn sm class="mr-1" close>清空</button>
-                <button (click)="setNow()" [tsBtn]="color" sm close>今年</button>
+                <button (click)="cleanValue()" tsBtn sm class="mr-1" close>{{confiService.config.pickerCleanTitle}}</button>
+                <button (click)="setNow()" [tsBtn]="color" sm close>{{confiService.config.pickerNowYearTitle}}</button>
             </div>
         </div>
         <hr class="w-100">

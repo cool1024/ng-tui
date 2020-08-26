@@ -14,7 +14,7 @@ export class YearComponent extends BaseTheme implements OnChanges {
     @Input() activeYear: number;
     @Output() yearChange = new EventEmitter<number>(false);
 
-    constructor(confiService: ConfigService) {
+    constructor(public confiService: ConfigService) {
         super();
         this.activeYear = this.focusYear = new Date().getFullYear();
         this.updateYears();

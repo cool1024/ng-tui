@@ -23,6 +23,10 @@ export interface TUIConfig {
     monthTitles?: string[];
 
     pickerConfirmTitle?: string;
+    pickerCancleTitle?: string;
+    pickerNowTitle?:string;
+    pickerNowYearTitle?:string;
+    pickerCleanTitle?:string;
 
     paginationItems?: Item[];
 

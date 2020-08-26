@@ -1,4 +1,5 @@
 import { Item } from './interfaces/item.interface';
+import { Time } from './interfaces/time.interface';
 
 export class Util {
 
@@ -12,5 +13,25 @@ export class Util {
 
     static notEmpty(value: string | number | any[]): boolean {
         return value !== '' && value !== 0 && (Array.isArray(value) && value.length !== 0);
+    }
+
+    static notNull(value: string | number | any[]): boolean {
+        return value !== null && value !== undefined;
+    }
+
+    static notNullAndEmpty(value: string | number | any[]): boolean {
+        return Util.notNull(value) && Util.notEmpty(value);
+    }
+
+    static isNullOrEmpty(value: string | number | any[]): boolean {
+        return !Util.notNullAndEmpty(value);
+    }
+
+    static getTwoNumStr(num: number): string {
+        return num > 9 ? num.toString() : `0${num}`;
+    }
+
+    static getTimeStr(time: Time) {
+        return `${Util.getTwoNumStr(time.hour)}:${Util.getTwoNumStr(time.minute)}:${Util.getTwoNumStr(time.second)}`;
     }
 }

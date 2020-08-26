@@ -17,6 +17,10 @@ export class ConfigService {
             weekTitles: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
             monthTitles: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             pickerConfirmTitle: 'OK',
+            pickerCancelTitle: 'Cancel',
+            pickerCleanTitle: 'Clean',
+            pickerNowTitle: 'Now',
+            pickerNowYearTitle: 'Now',
             paginationItems: [],
             paginationLimitTextFormat: (limit: number) => `Show ${limit} rows`,
             tableConfig: {

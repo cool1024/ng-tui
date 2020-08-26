@@ -24,7 +24,7 @@ export class TimeComponent extends BaseTheme implements OnChanges {
         second: 0
     };
 
-    constructor(cfs: ConfigService) {
+    constructor(public cfs: ConfigService) {
         super();
         this.color = cfs.config.defaultColor;
         this.setNow();
@@ -38,6 +38,7 @@ export class TimeComponent extends BaseTheme implements OnChanges {
         this.offsets.hour = this.activeTime.hour - 2;
         this.offsets.minute = this.activeTime.minute - 2;
         this.offsets.second = this.activeTime.second - 2;
+        console.log(this.offsets);
     }
 
     getTwoNumStr(num: number): string {
@@ -51,11 +52,12 @@ export class TimeComponent extends BaseTheme implements OnChanges {
 
     setNow() {
         const date = new Date();
-        Object.assign(this.activeTime, {
+        this.activeTime = {
             hour: date.getHours(),
             minute: date.getMinutes(),
             second: date.getSeconds(),
-        });
+        }
+        console.log(this.activeTime);
         this.updateTime();
     }
 
