@@ -22,7 +22,7 @@ export class BaseTheme {
     }
 
     get bgWithTextClass(): string {
-        return `bg-${this.color} text-white`;
+        return `bg-${this.color}-light text-${this.color}`;
     }
 
     get getSize(): string {
@@ -38,5 +38,9 @@ export class BaseTheme {
 
     isApply(value: any): boolean {
         return !!value || (value !== undefined && value.toString() === '');
+    }
+
+    applyStyle(value: boolean, className: string) {
+        return value ? className : '';
     }
 }

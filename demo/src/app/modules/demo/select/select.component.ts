@@ -20,13 +20,32 @@ export class SelectComponent {
     blockOptions: ItemTree[] = [
         {
             value: 1,
-            text: 'Parent',
+            text: 'A',
             children: [
+                { value: 2, text: 'A-A' },
+                { value: 3, text: 'A-B' },
                 {
-                    value: 2,
-                    text: 'Child',
-                }
+                    value: 4,
+                    text: 'A-C',
+                    children: [
+                        { value: 5, text: 'A-C-A' },
+                        { value: 6, text: 'A-C-B' },
+                        { value: 7, text: 'A-C-C' }
+                    ]
+                },
             ]
+        },
+        {
+            value: 8,
+            text: 'B',
+            children: [
+                { value: 9, text: 'B-A' },
+                { value: 10, text: 'B-B' }
+            ]
+        },
+        {
+            value: 11,
+            text: 'C'
         }
     ];
 

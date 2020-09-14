@@ -8,7 +8,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
     exportAs: "tsTabs",
     template: `
     <div class="tabs tabs-{{color}}" #tabDom>
-        <div class="tab" *ngFor="let tab of tabs;let i = index" [class.active]="activeIndex === i" (click)="setActive(i)">{{tab.text}}</div>
+        <div class="tab" *ngFor="let item of items;let i = index" [class.active]="activeIndex === i" (click)="setActive(i)">{{itemText(item)}}</div>
         <div class="tab-bar" [style.left.px]="barOffset" [style.width.px]="barWidth"></div>
     </div><ng-content></ng-content>`
 })
@@ -29,13 +29,13 @@ export class TabComponent extends BaseTheme implements AfterViewInit {
     barOffset = 0;
     barWidth = 0;
 
-    get tabs(): Item[] {
-        return this.items.map(item => (typeof item === 'string' ? { text: item, value: item } : item));
-    }
-
     constructor(private configService: ConfigService) {
         super();
         this.color = this.configService.config.defaultColor;
+    }
+
+    itemText(item:Item|string){
+        return typeof item === 'string' ? item : item.text;
     }
 
     isActive(index: number) {

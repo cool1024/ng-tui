@@ -2,11 +2,11 @@
     class="border-0 w-100 h-100 pointer bg-white">
 <div tsMenuGroup>
     <span #target="tsToggle" tsToggle class="invisible"></span>
-    <div tsSideMenu animation="fadeIn" (displayChange)="isOpen=$event" class="side-menu bg-white shadow py-2">
+    <div tsSideMenu animation="fadeIn" (displayChange)="isOpen=$event" class="side-menu bg-white shadow py-2" style="z-index: 1;">
         <div class="d-flex">
             <div *ngFor="let options of optionsQuery;index as i" class="select-block">
                 <ng-container *ngFor="let option of options">
-                    <div class="text-{{isActiveOption(option)&&color}}">
+                    <div class="{{applyStyle(isActiveOption(option), bgWithTextClass)}}">
                         <div *ngIf="!!option.children" (click)="showChildren(i,option,target)"
                             class="select-item bg-{{color}}-hover px-3 py-2 pointer d-flex justify-content-between">
                             <span>{{option.text}}</span>

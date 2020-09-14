@@ -11,7 +11,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
         <div class="switch-line text-left mr-1 position-relative">
             <div class="d-inline-block rounded-circle switch-bar bg-white"></div>
         </div>
-        <div [class]="isOpen&&activeClass">
+        <div [class]="applyStyle(isOpen, activeClass)">
             <ng-content></ng-content>
         </div>
     </div>`,

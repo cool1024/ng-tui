@@ -33,10 +33,14 @@ $enable-gradients: false;
 $enable-transitions: false;
 $enable-print-styles: true;
 
-$font-size-base: 0.95rem;
-$font-weight-light: 300;
-$font-weight-normal: 400;
+$font-weight-light: 200;
+$font-weight-normal: 300;
 $font-weight-bold: 500;
+
+$font-size-base: 0.9rem;
+$font-weight-base: 300;
+// $font-family-base: 
+// $line-height-base;
 
 // 表格样式配置
 $table-head-bg: rgba($gray-300, 0.1);
