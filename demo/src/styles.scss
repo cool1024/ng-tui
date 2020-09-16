@@ -39,6 +39,7 @@ $font-weight-bold: 500;
 
 $font-size-base: 0.9rem;
 $font-weight-base: 300;
+$input-font-weight: $font-weight-base;
 // $font-family-base: 
 // $line-height-base;
 
@@ -159,7 +160,7 @@ $theme-colors: ("primary": $primary, "secondary": $secondary, "success": $succes
 
 
 /** three-dots **/
-$dotColor: $dark;
+$dotColor: $primary;
 
 @import "assets/three-dots/_variables";
 @import "assets/three-dots/mixins";

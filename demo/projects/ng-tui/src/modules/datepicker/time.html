@@ -2,7 +2,6 @@
     <div class="ts-datepicker-ym-toolbar d-flex justify-content-between align-items-center">
         <div class="text-{{color}}">
             {{getTimeStr()}}
-            {{activeTime|json}}
         </div>
         <div class="text-right" style="width:240px">
             <button (click)="setNow();confirmTime()" tsBtn sm class="ml-1" close>{{cfs.config.pickerNowTitle}}</button>

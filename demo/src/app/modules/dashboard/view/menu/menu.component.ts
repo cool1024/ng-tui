@@ -15,10 +15,10 @@ export class MenuComponent {
         defaultTextColor: '#343a40',
         hoverTextColor: 'white',
         activeTextColor: 'white',
-        hoverBackgroundColor: 'linear-gradient(135deg, rgb(35 39 43 / 0.8) 0px, rgb(52 58 64 / 0.8) 60%)',
+        hoverBackgroundColor: 'linear-gradient(135deg, rgb(0 123 255 / 0.8) 0px, rgb(20 140 255 / 0.8) 60%)',
         // activeBackgroundColor: 'white',
         // activeBackgroundColor: '#343a40',
-        activeBackgroundColor: 'linear-gradient(135deg, rgb(35 39 43) 0px, rgb(52 58 64) 60%)'
+        activeBackgroundColor: 'linear-gradient(135deg, rgb(0 123 255) 0px, rgb(20 140 255) 60%)'
     });
 
     constructor(

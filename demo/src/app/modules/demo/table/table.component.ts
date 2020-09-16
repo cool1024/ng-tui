@@ -3,7 +3,8 @@ import { Pagination, requestObject, TableHeader, ToastService, ConfirmService } 
 import { map } from 'rxjs/operators';
 
 @Component({
-    templateUrl: './table.component.html'
+    templateUrl: './table.component.html',
+    styleUrls: ['./table.component.scss']
 })
 export class TableComponent {
 

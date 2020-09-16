@@ -10,6 +10,7 @@ import { YearpickerComponent } from './yearpicker.component';
 import { TimeComponent } from './time';
 import { TimepickerComponent } from './timepicker.component';
 import { DatepickersComponent } from './date-range-picker.component';
+import { DateRangePipe } from './date-range.pipe';
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import { DatepickersComponent } from './date-range-picker.component';
         YearpickerComponent,
         TimepickerComponent,
         DatepickersComponent,
+        DateRangePipe
     ],
     exports: [
         TUICoreModule,
@@ -39,6 +41,7 @@ import { DatepickersComponent } from './date-range-picker.component';
         YearpickerComponent,
         TimepickerComponent,
         DatepickersComponent,
+        DateRangePipe
     ]
 })
 export class DatepickerModule { }
