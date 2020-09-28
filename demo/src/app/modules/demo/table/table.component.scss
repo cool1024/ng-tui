@@ -10,6 +10,13 @@
 }
 
 .datepicker {
-    background-color: white;
-    pointer-events: none;
+    position: relative;
+    .form-control {
+        background-color: white;
+        pointer-events: none;
+    }
+    .iconfont {
+        position: absolute !important;
+    
+    }
 }

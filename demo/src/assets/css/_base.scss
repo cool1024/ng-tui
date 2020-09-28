@@ -124,7 +124,7 @@ ts-select {
 }
 
 .btn-icon .iconfont {
-    font-size: $font-size-base * 1.2;
+    font-size: $font-size-base * 1.6;
 }
 
 .btn-icon:hover {
@@ -143,41 +143,6 @@ $color in $theme-colors {
         }
     }
 
-    .btn-icon-#{$name} {
-        color: $color;
-    }
-
-    .btn-icon-#{$name}:hover {
-        background-color: $color;
-    }
-}
-
-/** btn **/
-.btn-icon {
-    border-radius: 50%;
-    height: 35px;
-    width: 35px !important;
-    line-height: 35px;
-    text-align: center;
-    display: inline-block;
-    cursor: pointer;
-    color: $dark;
-}
-
-.btn-icon .iconfont {
-    font-size: $font-size-base * 1.2;
-}
-
-.btn-icon:hover {
-    color: white;
-}
-
-.btn-icon:active {
-    opacity: 0.8;
-}
-
-@each $name,
-$color in $theme-colors {
     .btn-icon-#{$name} {
         color: $color;
     }

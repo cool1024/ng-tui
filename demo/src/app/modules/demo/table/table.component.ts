@@ -22,7 +22,6 @@ export class TableComponent {
     dataLoader(page: Pagination) {
         console.log(page);
         // `https://api.github.com/search/repositories?q=java&page=${page.page}&per_page=${page.limit}`
-
         return requestObject(`https://randomuser.me/api/?seed=cool1024&page=${page.page}&results=${page.limit}`)
             .pipe(
                 map(res => {
