@@ -13,15 +13,15 @@
         </div>
     </div>
     <div class="d-flex align-items-center">
-        <div (click)="changeFullscreen()" class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
-            <i class="iconfont icon-fullscreen"></i>
-        </div>
-        <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
-            <i class="iconfont icon-remind"></i>
-        </div>
         <div #languageToggle (click)="showLanguageMenu(languageToggle)"
             class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
-            <i class="iconfont icon-language"></i>
+            <img height="15" src="assets/images/flags/cn.gif" alt="china">
+        </div>
+        <div (click)="changeFullscreen()" class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
+            <i class="iconfont icon-fullscreen-expand"></i>
+        </div>
+        <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
+            <i class="iconfont icon-notification"></i>
         </div>
         <div #userCenterToggle (click)="showUserMenu(userCenterToggle)"
             class="bg-light-hover pointer h-100 px-3 d-flex justify-content-center align-items-center">

@@ -88,7 +88,7 @@ export class SearchParams {
     }
 
     public static createDefaultSearch(params: { [key: string]: any } = {}): SearchParams {
-        return new SearchParams(params, [0, '']);
+        return new SearchParams(params, [0, '', null]);
     }
 
     isEmptyValue(value: any) {

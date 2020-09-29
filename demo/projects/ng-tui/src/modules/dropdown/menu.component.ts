@@ -9,11 +9,15 @@ import { ComponentHandle } from '../../tui-core/component-creator/handle.class';
     class="bg-white animated shadow no-select py-2 position-absolute d-inline-block;">
         <ng-container *ngFor="let item of items;index as i">
             <div *ngIf="item.isLine" class="dropdown-divider"></div>
-            <a *ngIf="item.isItem" (click)="itemClick(item, i)" class="dropdown-item pointer" close>
+            <a *ngIf="item.isItem" (click)="itemClick(item, i)" class="dropdown-item pointer">
                 <i *ngIf="item.hasIcon" class="mr-1 {{item.icon}}"></i>{{item.title}}
             </a>
             <div *ngIf="item.isTitle" class="dropdown-item">
                 <i *ngIf="item.hasIcon" class="mr-1 {{item.icon}}"></i>{{item.title}}
+            </div>
+            <div *ngIf="item.isImage" (click)="itemClick(item, i)" class="dropdown-item">
+                <img height="15" [src]="item.icon" class="mr-2" />
+                {{item.title}}
             </div>
         </ng-container>
     </div>`
@@ -30,8 +34,6 @@ export class MenuComponent implements TUIComponent, AfterViewInit {
     minWidth: number;
     handle: ComponentHandle;
     animation: string;
-
-    autoHandle: () => void;
 
     @HostListener('document:click', ['$event.target']) onDocumentClick(dom: HTMLElement): void {
         if (this.viewTool.targetDom && this.viewTool.toggleDom) {
@@ -70,7 +72,7 @@ export class MenuComponent implements TUIComponent, AfterViewInit {
     }
 
     destroy() {
-        this.autoHandle && window.removeEventListener('scroll', this.autoHandle);
+        this.viewTool.clean();
     }
 }
 
@@ -90,6 +92,10 @@ export class DropMenuItem {
 
     get isLine(): boolean {
         return this.type === DropMenuItemType.LINE;
+    }
+
+    get isImage(): boolean {
+        return this.type === DropMenuItemType.IMAGE;
     }
 
     constructor(
@@ -114,6 +120,10 @@ export class DropMenuItem {
     public static split() {
         return new DropMenuItem(null, null, null, DropMenuItemType.LINE);
     }
+
+    public static image(title: string, src: string, value: any) {
+        return new DropMenuItem(title, src, value, DropMenuItemType.IMAGE);
+    }
 }
 
-export enum DropMenuItemType { TITLE, ITEM, LINE }
+export enum DropMenuItemType { TITLE, ITEM, LINE, IMAGE }

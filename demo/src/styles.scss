@@ -50,10 +50,11 @@ $table-head-color: $gray-600;
 $table-border-width: 1px;
 $table-border-color: $gray-300;
 $table-striped-order: even;
-$table-accent-bg: rgba($gray-300, 0.05);
+$table-accent-bg: rgba($primary, 0.05);
 $table-bg: rgba($gray-100, 0.1);
 $table-hover-bg: rgba($gray-300, 0.3);
 $table-active-bg: $table-hover-bg;
+$table-head-color: $primary;
 
 // 卡片样式配置
 $card-border-radius: 0;

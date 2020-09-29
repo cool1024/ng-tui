@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { Item } from '../../tui-core/interfaces/item.interface';
 import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
 import { ConfigService } from '../../tui-core/base-services/config.service';
@@ -23,7 +23,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
                hold close>{{item.text}}</a>
         </div>`
 })
-export class DropdownComponent extends BaseTheme {
+export class DropdownComponent extends BaseTheme implements OnChanges {
 
     @Input() items: any[];
 
@@ -45,7 +45,19 @@ export class DropdownComponent extends BaseTheme {
 
     @Output() menuWheel = new EventEmitter<number>();
 
-    get itemList(): Item[] {
+    itemList: Item[] = [];
+
+    constructor(csf: ConfigService) {
+        super();
+        this.color = csf.config.defaultColor;
+        this.items = [];
+        this.dropup = null;
+        this.minWidth = 80;
+        this.offsetX = 0;
+        this.offsetY = 0;
+        this.zIndex = 9999;
+    }
+    ngOnChanges(changes: SimpleChanges): void {
         const items = new Array<any>();
         // just need some number value
         if (this.useNumber >= 0) {
@@ -66,18 +78,7 @@ export class DropdownComponent extends BaseTheme {
                 items.push(typeof item === 'string' || typeof item === 'number' ? { value: item, text: item } : item);
             });
         }
-        return items;
-    }
 
-    constructor(csf: ConfigService) {
-        super();
-        this.color = csf.config.defaultColor;
-        this.items = [];
-        this.dropup = null;
-        this.minWidth = 80;
-        this.offsetX = 0;
-        this.offsetY = 0;
-        this.zIndex = 9999;
     }
 
     itemClick(item: Item) {
