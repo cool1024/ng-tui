@@ -4,3 +4,9 @@ export interface Item {
     value: any;
     content?: string;
 }
+
+export interface TabItem {
+    text: string;
+    value?: any;
+    icon?: string;
+}

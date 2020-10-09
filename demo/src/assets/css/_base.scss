@@ -697,3 +697,27 @@ $color in $more_colors {
     transform: rotate(0deg);
     transition: all .5s linear;
 }
+
+.input-search {
+    @extend .d-flex;
+    @extend .align-items-center;
+    border-radius: 35px;
+    background-color: rgba(white, 0.2);
+    i {
+        @extend .ml-3;
+        @extend .flex-shrink-0;
+    }
+    input {
+        @extend .ml-2;
+        @extend .flex-grow-1;
+        border: none;
+        background-color: transparent;
+        font-weight: $font-weight-base;
+        font-size: $font-size-base;
+        line-height: 2.7;
+        color: white;
+        &::placeholder {
+            color: white;
+        }
+    }
+}

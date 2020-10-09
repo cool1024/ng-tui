@@ -27,6 +27,10 @@
                         "route": "/demo/SelectComponent"
                     },
                     {
+                        "title": "Tabs",
+                        "route": "/demo/TabsComponent"
+                    },
+                    {
                         "title": "Map",
                         "route": "/demo/MapComponent"
                     }

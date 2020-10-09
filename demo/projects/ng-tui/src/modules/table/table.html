@@ -24,8 +24,12 @@
             </tr>
         </table>
     </div>
-    <div class="text-right px-2 pb-2">
-        <ts-pagination outline (pageChange)="doRefresh()" [pagination]="page" [color]="color" goTitle="{{goTitle}}">
+    <div class="d-flex flex-row-reverse align-items-center px-2 pb-2">
+        <ts-pagination class="flex-shrink-0" outline (pageChange)="doRefresh()" [pagination]="page" [color]="color"
+            goTitle="{{goTitle}}">
         </ts-pagination>
+        <div class="flex-grow-1">
+            <ng-content select="span"></ng-content>
+        </div>
     </div>
 </div>

@@ -1,0 +1,48 @@
+<div class="p-1">
+    <h3 class="font-weight-normal">Pagination</h3>
+    <h5 class="text-muted font-weight-light mb-4">Documentation and examples for showing pagination to indicate a series
+        of related content exists across multiple pages.</h5>
+</div>
+
+<div class="column-container">
+    <div class="column-item mb-3">
+        <div class="card card-body shadow-sm">
+            <h5 class="mb-3">
+                Component Overview
+                <code class="ml-4">&lt;ts-tabs&gt;</code>
+            </h5>
+            <ts-tabs #tsTabsOne="tsTabs" [items]="tabItems"></ts-tabs>
+            <ts-prism [codeObs]=" '/assets/docs/tabs/tabs.html' | request" language="html"></ts-prism>
+        </div>
+    </div>
+    <div class="column-item mb-3">
+        <div class="card card-body shadow-sm">
+            <h5 class="mb-3">Use Tabs Change View</h5>
+            <ts-tabs #tsTabsTwo="tsTabs" [items]="tabItems">
+                <div class="mt-2">
+                    <div class="card" *ngIf="tsTabsTwo.activeIndex === 0">
+                        <img class="card-img-top" src="https://api.ixiaowai.cn/gqapi/gqapi.php?0" alt="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Home</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                    <div class="card" *ngIf="tsTabsTwo.activeIndex === 1">
+                        <img class="card-img-top" src="https://api.ixiaowai.cn/gqapi/gqapi.php?1" alt="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Profile</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                    <div class="card bg-light" *ngIf="tsTabsTwo.activeIndex === 2">
+                        <img class="card-img-top" src="https://api.ixiaowai.cn/gqapi/gqapi.php?2" alt="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Messages</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </ts-tabs>
+        </div>
+    </div>
+</div>

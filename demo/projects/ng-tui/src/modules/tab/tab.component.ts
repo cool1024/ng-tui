@@ -1,5 +1,5 @@
-import { Component, Input, AfterViewChecked, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
-import { Item } from '../../tui-core/interfaces/item.interface';
+import { Component, Input, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { TabItem } from '../../tui-core/interfaces/item.interface';
 import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
 import { ConfigService } from '../../tui-core/base-services/config.service';
 
@@ -8,14 +8,17 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
     exportAs: "tsTabs",
     template: `
     <div class="tabs tabs-{{color}}" #tabDom>
-        <div class="tab" *ngFor="let item of items;let i = index" [class.active]="activeIndex === i" (click)="setActive(i)">{{itemText(item)}}</div>
+        <div class="tab" *ngFor="let item of items;let i = index" [class.active]="activeIndex === i" (click)="setActive(i)">
+            <i *ngIf="item.icon" class="mr-1 {{item.icon}}"></i>
+            {{itemText(item)}}
+        </div>
         <div class="tab-bar" [style.left.px]="barOffset" [style.width.px]="barWidth"></div>
     </div><ng-content></ng-content>`
 })
 export class TabComponent extends BaseTheme implements AfterViewInit {
 
     @Input()
-    items: any[] = [];
+    items: Array<TabItem | string> = [];
 
     @Output()
     tabChange = new EventEmitter<number>(true)
@@ -34,7 +37,7 @@ export class TabComponent extends BaseTheme implements AfterViewInit {
         this.color = this.configService.config.defaultColor;
     }
 
-    itemText(item:Item|string){
+    itemText(item: TabItem | string) {
         return typeof item === 'string' ? item : item.text;
     }
 

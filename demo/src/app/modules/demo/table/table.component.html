@@ -22,7 +22,7 @@
                     <ts-datepickers [(ngModel)]="table.search.dateRange" [zIndex]="1">
                         <div class="form-control no-select pointer" style="width: 210px;">
                             <i class="iconfont icon-calendar"></i>
-                            <span class="ml-2">{{(table.search.dateRange | dateRange:'-')||'Time'}}</span>
+                            <span class="ml-2">{{(table.search.dateRange | dateRange:'-')||''}}</span>
                         </div>
                     </ts-datepickers>
                 </div>
@@ -45,11 +45,11 @@
             </div>
         </div>
     </div>
-    <ts-table #table="tsTable" class="d-block" [colNum]="theads.length" [loader]="dataLoader" [height]="500">
+    <ts-table #table="tsTable" class="d-block p-3" [colNum]="theads.length" [loader]="dataLoader" [height]="500">
         <thead [theads]="theads" class="thead-light"></thead>
         <tbody>
             <tr *ngFor="let item of table.data;index as i" class="mat-cell">
-                <td>{{table.page.offset + i + 1}}</td>
+                <td class="pl-3">{{table.page.offset + i + 1}}</td>
                 <td>
                     <div class="media">
                         <img tsImg [src]="item.avatar" dataSrc="assets/images/404.jpg" alt="avatar"
@@ -82,8 +82,8 @@
                 </td>
             </tr>
         </tbody>
+        <span>
+            A total of <span class="text-primary">{{table.page.total}}</span> data queries.
+        </span>
     </ts-table>
 </div>
-<!-- <div class="alert alert-dark" role="alert">
-    A total of <span class="alert-link">{{table.page.total}}</span> data queries.
-</div> -->

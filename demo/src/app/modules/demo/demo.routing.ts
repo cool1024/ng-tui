@@ -2,8 +2,8 @@
  * Demo Routing
  *
  * @author cool1024
- * @file   base.routing.ts
- * @date   2019-10-17
+ * @file   demo.routing.ts
+ * @date   2020-10-09
  */
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -14,6 +14,7 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { SelectComponent } from './select/select.component';
 import { MapComponent } from './map/map.component';
 import { PickerComponent } from './picker/picker.component';
+import { TabsComponent } from './tabs/tabs.component';
 
 export const declarationComponents = [
     ButtonComponent,
@@ -22,7 +23,8 @@ export const declarationComponents = [
     CheckboxComponent,
     SelectComponent,
     MapComponent,
-    PickerComponent
+    PickerComponent,
+    TabsComponent
 ];
 
 export const entryComponents = [];

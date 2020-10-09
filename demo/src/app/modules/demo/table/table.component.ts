@@ -34,7 +34,7 @@ export class TableComponent {
                         gender: user.gender,
                         cell: user.cell,
                         phone: user.phone,
-                        address: `${user.location.city} ${user.location.street}`,
+                        address: `${user.location.city} , ${user.location.country}`,
                         registered: user.registered
                     }));
                     return { result: true, total, data };
