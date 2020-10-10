@@ -7,42 +7,35 @@
 <div class="column-container">
     <div class="column-item mb-3">
         <div class="card card-body shadow-sm">
-            <h5 class="mb-3">
-                Component Overview
-                <code class="ml-4">&lt;ts-tabs&gt;</code>
-            </h5>
-            <ts-tabs #tsTabsOne="tsTabs" [items]="tabItems"></ts-tabs>
-            <ts-prism [codeObs]=" '/assets/docs/tabs/tabs.html' | request" language="html"></ts-prism>
+            <h5 class="mb-3">Component Overview</h5>
+            <ts-tabs #tsTabsOne="tsTabs" [items]="['Home', 'Profile', 'Messages']"></ts-tabs>
+            <ts-prism class="mt-2" [codeObs]=" '/assets/docs/tabs/tabs.html' | request" language="html"></ts-prism>
         </div>
     </div>
     <div class="column-item mb-3">
         <div class="card card-body shadow-sm">
             <h5 class="mb-3">Use Tabs Change View</h5>
-            <ts-tabs #tsTabsTwo="tsTabs" [items]="tabItems">
+            <ts-tabs #tsTabsTwo="tsTabs" [items]="['One', 'Two', 'Three']">
                 <div class="mt-2">
-                    <div class="card" *ngIf="tsTabsTwo.activeIndex === 0">
-                        <img class="card-img-top" src="https://api.ixiaowai.cn/gqapi/gqapi.php?0" alt="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Home</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                    <div class="card" *ngIf="tsTabsTwo.activeIndex === 1">
-                        <img class="card-img-top" src="https://api.ixiaowai.cn/gqapi/gqapi.php?1" alt="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Profile</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                    <div class="card bg-light" *ngIf="tsTabsTwo.activeIndex === 2">
-                        <img class="card-img-top" src="https://api.ixiaowai.cn/gqapi/gqapi.php?2" alt="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Messages</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
+                    <img *ngIf="tsTabsTwo.activeIndex === 0" class="w-100"
+                        src="https://api.ixiaowai.cn/gqapi/gqapi.php?i=0">
+                    <img *ngIf="tsTabsTwo.activeIndex === 1" class="w-100"
+                        src="https://api.ixiaowai.cn/gqapi/gqapi.php?i=1">
+                    <img *ngIf="tsTabsTwo.activeIndex === 2" class="w-100"
+                        src="https://api.ixiaowai.cn/gqapi/gqapi.php?i=2">
                 </div>
             </ts-tabs>
+            <ts-prism class="mt-2" [codeObs]=" '/assets/docs/tabs/tabs-view.html' | request" language="html"></ts-prism>
+        </div>
+    </div>
+    <div class="column-item mb-3">
+        <div class="card card-body shadow-sm">
+            <h5 class="mb-3">Vertical Tab</h5>
+            <div class="d-flex">
+                <ts-tabs  #tsTabsThree="tsTabs" vertical [items]="['One', 'Two', 'Three']"></ts-tabs>
+                <ts-prism  class="ml-1 flex-grow-1" [codeObs]=" '/assets/docs/tabs/tabs-vertical.html' | request" language="html">
+                </ts-prism>
+            </div>
         </div>
     </div>
 </div>

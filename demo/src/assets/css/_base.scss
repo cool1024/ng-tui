@@ -54,6 +54,11 @@ ts-select {
     height: auto !important;
 }
 
+ts-prism {
+    display: block;
+    overflow: hidden;
+}
+
 .dropdown-menu {
     max-height: 300px;
     overflow-y: auto;
@@ -334,12 +339,7 @@ $color in $theme-colors {
     }
 }
 
-/** tab **/
-ts-tab {
-    width: 100%;
-    display: block;
-}
-
+/** tabs **/
 @each $name,
 $color in $theme-colors {
     .nav-link-#{$name}.active {
@@ -380,44 +380,38 @@ $color in $theme-colors {
     justify-content: flex-start;
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
 
-.tabs-side {
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
+    .tab {
+        padding: 12px 16px;
+        cursor: pointer;
+        position: relative;
+        transition: color ease-in-out 0.3s;
+    }
 
-    .side-bar {
+    .tab-bar {
         position: absolute;
-        height: 0px;
-        width: 2px;
-        bottom: 0;
+        height: 2px;
+        width: 0px;
+        bottom: -1px;
+        // left: 0;
         transition: all ease-in-out 0.3s;
+    }
 
-        &.left {
-            left: 0;
+    &.vertical {
+        border-bottom: none;
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        display: inline-flex;
+        .tab {
+            width: 100%;
         }
-
-        &.right {
-            right: 0;
+        .tab-bar {
+            height: 0px;
+            width: 2px;
+            top: 0;
+            right: 0 !important;
         }
     }
-}
-
-.tab {
-    padding: 12px 16px;
-    cursor: pointer;
-    position: relative;
-    transition: color ease-in-out 0.3s;
-}
-
-.tab-bar {
-    position: absolute;
-    height: 2px;
-    width: 0px;
-    bottom: -1px;
-    left: 0;
-    transition: all ease-in-out 0.3s;
 }
 
 /** badge **/

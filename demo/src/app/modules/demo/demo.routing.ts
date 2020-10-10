@@ -15,6 +15,8 @@ import { SelectComponent } from './select/select.component';
 import { MapComponent } from './map/map.component';
 import { PickerComponent } from './picker/picker.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { ProgressComponent } from './progress/progress.component';
+import { ModalComponent } from './modal/modal.component';
 
 export const declarationComponents = [
     ButtonComponent,
@@ -24,10 +26,10 @@ export const declarationComponents = [
     SelectComponent,
     MapComponent,
     PickerComponent,
-    TabsComponent
+    TabsComponent,
+    ModalComponent,
+    ProgressComponent
 ];
-
-export const entryComponents = [];
 
 const routes = declarationComponents.map(component => ({
     path: component.name, component
@@ -35,6 +37,6 @@ const routes = declarationComponents.map(component => ({
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
 })
 export class DemoRoutingModule { }

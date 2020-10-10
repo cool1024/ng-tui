@@ -6,7 +6,7 @@
  * @date   2019-1-4 09:22:58
  */
 import { NgModule } from '@angular/core';
-import { declarationComponents, entryComponents, DemoRoutingModule } from './demo.routing';
+import { declarationComponents, DemoRoutingModule } from './demo.routing';
 import {
     ButtonModule,
     PrismModule,
@@ -18,7 +18,9 @@ import {
     ConfirmModule,
     ToastModule,
     TabModule,
-    MapModule
+    ProgressModule,
+    MapModule, 
+    ModalModule
 } from 'projects/ng-tui/src/public_api';
 
 @NgModule({
@@ -33,10 +35,11 @@ import {
         DatepickerModule,
         SelectModule,
         TabModule,
+        ProgressModule,
         MapModule,
+        ModalModule,
         DemoRoutingModule
     ],
     declarations: [declarationComponents],
-    entryComponents: [entryComponents]
 })
 export class DemoModule { }

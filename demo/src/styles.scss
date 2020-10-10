@@ -30,7 +30,7 @@ $cyan: #50a4ff !default;
 // 基础属性配置（阴影，渐变，动画，印刷样式）
 $enable-shadows: true;
 $enable-gradients: false;
-$enable-transitions: false;
+$enable-transitions: true;
 $enable-print-styles: true;
 
 $font-weight-light: 300;

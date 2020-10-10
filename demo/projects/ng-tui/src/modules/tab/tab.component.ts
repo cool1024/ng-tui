@@ -7,12 +7,13 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
     selector: "ts-tabs",
     exportAs: "tsTabs",
     template: `
-    <div class="tabs tabs-{{color}}" #tabDom>
+    <div class="tabs tabs-{{color}}" [ngClass]="{'vertical':needVertical}" #tabDom>
         <div class="tab" *ngFor="let item of items;let i = index" [class.active]="activeIndex === i" (click)="setActive(i)">
             <i *ngIf="item.icon" class="mr-1 {{item.icon}}"></i>
             {{itemText(item)}}
         </div>
-        <div class="tab-bar" [style.left.px]="barOffset" [style.width.px]="barWidth"></div>
+        <div *ngIf="!needVertical" class="tab-bar" [style.left.px]="barOffset" [style.width.px]="barLength"></div>
+        <div *ngIf="needVertical" class="tab-bar" [style.top.px]="barOffset" [style.height.px]="barLength"></div>
     </div><ng-content></ng-content>`
 })
 export class TabComponent extends BaseTheme implements AfterViewInit {
@@ -26,11 +27,10 @@ export class TabComponent extends BaseTheme implements AfterViewInit {
     @ViewChild('tabDom')
     tabsRef: ElementRef;
 
-
     tabsDom: HTMLDivElement;
     activeIndex = 0;
     barOffset = 0;
-    barWidth = 0;
+    barLength = 0;
 
     constructor(private configService: ConfigService) {
         super();
@@ -58,10 +58,10 @@ export class TabComponent extends BaseTheme implements AfterViewInit {
                 this.barOffset = 0
                 tabItems.forEach((tab, i) => {
                     if (i < this.activeIndex) {
-                        this.barOffset += tab.clientWidth
+                        this.barOffset +=  this.needVertical ? tab.clientHeight : tab.clientWidth;
                     }
                     if (i === this.activeIndex) {
-                        this.barWidth = tab.clientWidth
+                        this.barLength = this.needVertical ? tab.clientHeight : tab.clientWidth;
                     }
                 })
             }

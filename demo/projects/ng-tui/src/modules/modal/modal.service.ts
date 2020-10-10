@@ -33,5 +33,4 @@ export class ModalService {
         handle.aprf = this.applicationRef;
         return handle;
     }
-
 }

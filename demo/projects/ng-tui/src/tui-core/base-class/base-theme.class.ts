@@ -13,6 +13,8 @@ export class BaseTheme {
 
     @Input() active: boolean;
 
+    @Input() vertical: boolean;
+
     get textClass(): string {
         return `text-${this.color}`;
     }
@@ -34,6 +36,10 @@ export class BaseTheme {
         const outline = this.isApply(this.outline) ? 'outline-' : '';
         const size = this.getSize === 'md' ? '' : `btn-${this.getSize}`;
         return `btn ${size} btn-${outline}${this.color} ${active}`;
+    }
+
+    get needVertical(): boolean {
+        return this.isApply(this.vertical);
     }
 
     isApply(value: any): boolean {

@@ -6,7 +6,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
     selector: 'ts-progress',
     template: `
     <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-{{color}}" [ngStyle]="{width:value+'%'}">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" [ngClass]="bgClass" [ngStyle]="{width:value+'%'}">
             {{progress}}
         </div>
     </div>`

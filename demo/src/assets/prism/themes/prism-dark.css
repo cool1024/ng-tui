@@ -55,7 +55,7 @@ pre[class*="language-"],
 
 pre[class*="language-"] {
     padding: 1em;
-    margin: .5em 0;
+    margin: 0;
     overflow: auto;
     /* border: .3em solid hsl(30, 20%, 40%); */
     /* border-radius: .5em; */

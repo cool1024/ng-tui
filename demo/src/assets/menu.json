@@ -31,6 +31,14 @@
                         "route": "/demo/TabsComponent"
                     },
                     {
+                        "title": "Progress",
+                        "route": "/demo/ProgressComponent"
+                    },
+                    {
+                        "title": "Modal",
+                        "route": "/demo/ModalComponent"
+                    },
+                    {
                         "title": "Map",
                         "route": "/demo/MapComponent"
                     }
