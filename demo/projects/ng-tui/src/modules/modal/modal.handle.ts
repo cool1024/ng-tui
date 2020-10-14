@@ -19,11 +19,11 @@ export class ModalHandle {
     cmpHandle: ComponentHandle;
     modalCmp: any;
 
-    open() {
-        return this.present();
+    open(data?: any) {
+        return this.present(data);
     }
 
-    present() {
+    present(data?: any) {
         const componentFactory = this.resolver.resolveComponentFactory(this.content);
         this.modalCmp = componentFactory.create(this.injector);
         this.aprf.attachView(this.modalCmp.hostView);
@@ -33,7 +33,8 @@ export class ModalHandle {
             hostView.append(this.modalCmp.location.nativeElement.firstChild);
         });
         this.modalCmp.instance.handle = this.cmpHandle;
-        Object.assign(this.modalCmp.instance, this.data || {});
+        this.data = data || this.data || {};
+        Object.assign(this.modalCmp.instance, this.data);
         return this.cmpHandle.present().pipe(skipWhile(data => data === undefined));
     }
 

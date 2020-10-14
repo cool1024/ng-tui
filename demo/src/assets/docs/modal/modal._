@@ -1,0 +1,43 @@
+import { Component } from '@angular/core';
+import { ComponentHandleService, ModalService } from 'projects/ng-tui/src/public_api';
+
+@Component({
+    templateUrl: './modal.component.html'
+})
+export class ModalComponent {
+
+    constructor(private modal: ModalService) { }
+
+    showModal() {
+        const param = { a: 1, b: 'message' };
+        this.modal
+            .create(SimpleModal)
+            .present(param)
+            .subscribe(res => {
+                console.log(res);
+        });
+    }
+}
+
+@Component({
+    template: `
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Simple Modal</h5>
+                <button (click)="handle.close('bye~')" type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- ... -->   
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>`
+}) class SimpleModal {
+    constructor(public handle: ComponentHandleService) { }
+}

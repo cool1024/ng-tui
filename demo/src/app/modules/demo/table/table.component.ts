@@ -13,15 +13,19 @@ export class TableComponent {
     constructor(private confirm: ConfirmService, private toast: ToastService) { }
 
     deleteItem(itemIndex: number) {
-        this.confirm.danger('Warning', 'Are you sure?').subscribe(_ => {
+        this.confirm.danger('Warning', 'Are you sure?').subscribe(isOk => {
             console.log('delete item index => ', itemIndex);
-            this.toast.success('Delete Success', 'It`s just a test, no one will be delete');
+            if (isOk) this.toast.success('Delete Success', 'It`s just a test, no one will be delete');
         });
     }
 
     dataLoader(page: Pagination) {
         console.log(page);
         // `https://api.github.com/search/repositories?q=java&page=${page.page}&per_page=${page.limit}`
+        // requestObject(`https://api.github.com/search/repositories?q=java&page=${page.page}&per_page=${page.limit}`)
+        //     .pipe(map(res => ({
+
+        //     })));
         return requestObject(`https://randomuser.me/api/?seed=cool1024&page=${page.page}&results=${page.limit}`)
             .pipe(
                 map(res => {

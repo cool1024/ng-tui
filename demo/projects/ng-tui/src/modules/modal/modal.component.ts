@@ -23,14 +23,7 @@ export class ModalComponent implements TUIComponent {
         }
     }
 
-    present() {
-
-    }
-
-    dismiss() {
-
-    }
-
-    destroy() {
-    }
+    present() { }
+    dismiss() { }
+    destroy() { }
 }

@@ -30,42 +30,40 @@ export class ConfirmService {
         cancelTitle?: string,
         color?: string,
         icon?: string
-    }): Observable<void> {
+    }): Observable<boolean> {
         this.init();
         this.windowCmptRef.instance.title = title;
         this.windowCmptRef.instance.message = message;
         this.windowCmptRef.instance.play();
         this.windowCmptRef.instance.color = options.color || 'success';
-        if (options) {
-            this.windowCmptRef.instance.config = <ConfirmOptions>options;
-        }
+        this.windowCmptRef.instance.config = this.combineOptions(options);
         return this.windowCmptRef.instance.updateHandle();
     }
 
     info(title: string, message: string, options?: { okTitle?: string, cancelTitle?: string }) {
         const config = this.combineOptions(options || {});
-        config.icon = 'infomation';
+        // config.icon = 'infomation';
         config.color = 'info';
         return this.create(title, message, config);
     }
 
     warning(title: string, message: string, options?: { okTitle?: string, cancelTitle?: string }) {
         const config = this.combineOptions(options || {});
-        config.icon = 'warning';
+        // config.icon = 'warning';
         config.color = 'warning';
         return this.create(title, message, config);
     }
 
     danger(title: string, message: string, options?: { okTitle?: string, cancelTitle?: string }) {
         const config = this.combineOptions(options || {});
-        config.icon = 'wrong';
+        // config.icon = 'wrong';
         config.color = 'danger';
         return this.create(title, message, config);
     }
 
     success(title: string, message: string, options?: { okTitle?: string, cancelTitle?: string }) {
         const config = this.combineOptions(options || {});
-        config.icon = 'success';
+        // config.icon = 'success';
         config.color = 'success';
         return this.create(title, message, config);
     }

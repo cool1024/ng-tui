@@ -22,7 +22,7 @@ export class ToastService {
         this.handler || (this.handler = this.cmpService.create(ToastComponent));
     }
 
-    create(title: string, message: string, options: { color: string, icon: string, timeout?: number }) {
+    create(title: string, message: string, options: { color: string, icon?: string, timeout?: number }) {
         this.init();
         this.handler.instance.addToast(new Toast(
             title, message, options.color, options.icon, options.timeout || this.config.timeout));
@@ -31,7 +31,7 @@ export class ToastService {
     info(title: string, message: string, timer?: number) {
         this.create(title, message, {
             color: 'info',
-            icon: 'information',
+            // icon: 'information',
             timeout: timer || this.config.timeout
         });
     }
@@ -39,7 +39,7 @@ export class ToastService {
     success(title: string, message: string, timer?: number) {
         this.create(title, message, {
             color: 'success',
-            icon: 'success',
+            // icon: 'success',
             timeout: timer || this.config.timeout
         });
     }
@@ -47,7 +47,7 @@ export class ToastService {
     danger(title: string, message: string, timer?: number) {
         this.create(title, message, {
             color: 'danger',
-            icon: 'wrong',
+            // icon: 'wrong',
             timeout: timer || this.config.timeout
         });
     }
@@ -55,7 +55,7 @@ export class ToastService {
     warning(title: string, message: string, timer?: number) {
         this.create(title, message, {
             color: 'warning',
-            icon: 'warning',
+            // icon: 'warning',
             timeout: timer || this.config.timeout
         });
     }

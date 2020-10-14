@@ -6,14 +6,16 @@
  * @date   2020-8-10 14:33:30
  */
 import { NgModule } from '@angular/core';
-import { declarationComponents, entryComponents, DataRoutingModule } from './data.routing';
-import { } from 'projects/ng-tui/src/public_api';
-
+import { FormsModule } from '@angular/forms';
+import { TableModule } from 'projects/ng-tui/src/public_api';
+import { declarationComponents, providers, DataRoutingModule } from './data.routing';
 @NgModule({
     imports: [
+        FormsModule,
+        TableModule,
         DataRoutingModule
     ],
     declarations: [declarationComponents],
-    entryComponents: [entryComponents]
+    providers: [providers]
 })
 export class DataModule { }

@@ -8,13 +8,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ServerMapComponent } from './server-map/server-map.component';
+import { GithubSearchPage } from './pages/github-search/github-search';
+import { GithubApi } from './pages/github-search/api';
 
-
-export const declarationComponents = [
-    ServerMapComponent
+export const providers = [
+    GithubApi
 ];
 
-export const entryComponents = [];
+export const declarationComponents = [
+    ServerMapComponent,
+    GithubSearchPage
+];
 
 const routes = declarationComponents.map(component => ({
     path: component.name, component

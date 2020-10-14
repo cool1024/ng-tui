@@ -1,0 +1,55 @@
+<div class="shadow-sm mb-3 pt-4 bg-white">
+    <div class="px-4">
+        <h3 class="font-weight-normal">GitHub Search API</h3>
+        <h5 class="text-muted font-weight-light mb-4">The Search API helps you search for the specific item you want to
+            find.</h5>
+    </div>
+    <hr>
+    <div class="search-container">
+        <div class="search-container-shadow">
+            <div class="form-inline mb-4 mr-3">
+                <input class="form-control" placeholder="Key words" style="width:150px" [(ngModel)]="table.search.q">
+            </div>
+            <div class="form-inline mb-4">
+                <div class="m-btn">
+                    <button (click)="table.doReset()" class="btn btn-white">
+                        <i class="iconfont icon-close mr-1"></i>
+                        <span>Clean</span>
+                    </button>
+                    <button (click)="table.doSearch()" class="btn btn-primary">
+                        <i class="iconfont icon-search mr-1"></i>
+                        <span>Search</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ts-table #table="tsTable" class="d-block p-3" [colNum]="5" [loader]="dataLoader" [height]="500">
+        <thead [theads]="['#', 'ProjectName', 'Owner' ]" class="thead-light"></thead>
+        <tbody>
+            <tr *ngFor="let item of table.data;index as i" class="mat-cell">
+                <td class="pl-3">{{table.page.offset + i + 1}}</td>
+                <td>{{ item.full_name }}</td>
+                <td>
+                    <div class="media">
+                        <img [src]="item.owner.avatar_url" class="align-self-center mr-3" height="40">
+                        <div class="media-body">
+                            <p class="m-0">{{item.owner.login}}</p>
+                            <p class="m-0 text-primary">
+                                {{item.owner.type}}
+                            </p>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <span class="btn-icon btn-icon-primary" tsTip="详情/编辑">
+                        <i class="iconfont icon-edit"></i>
+                    </span>
+                    <span class="btn-icon btn-icon-danger" tsTip="删除">
+                        <i class="iconfont icon-ashbin"></i>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </ts-table>
+</div>

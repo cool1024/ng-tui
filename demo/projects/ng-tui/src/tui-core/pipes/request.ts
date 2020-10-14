@@ -14,3 +14,11 @@ export const requestString = (url: string) => {
 export const requestObject = (url: string) => {
     return requestString(url).pipe(map<string, any>(str => JSON.parse(str)));
 }
+
+export const paramToQueryString = (param: { [key: string]: string | number }) => {
+    const paramArray = [];
+    for (let key in param) {
+        paramArray.push(`${key}=${param[key]}`);
+    }
+    return paramArray.join('&');
+}

@@ -41,7 +41,7 @@ export class ConfirmComponent {
 
     config: ConfirmOptions;
 
-    handle: Subject<void>;
+    handle: Subject<boolean>;
 
     show: boolean;
 
@@ -49,7 +49,7 @@ export class ConfirmComponent {
 
     constructor() {
         this.show = false;
-        this.color = 'success';
+        // this.color = 'success';
     }
 
     tryClose(eventDom: HTMLElement) {
@@ -60,10 +60,12 @@ export class ConfirmComponent {
 
     dismiss() {
         this.show = false;
+        this.handle.next(false);
+        this.handle.complete();
     }
 
     confirm() {
-        this.handle.next();
+        this.handle.next(true);
         this.show = false;
     }
 
@@ -72,7 +74,7 @@ export class ConfirmComponent {
     }
 
     updateHandle(): Observable<any> {
-        this.handle = new Subject<void>();
+        this.handle = new Subject<boolean>();
         return this.handle.asObservable();
     }
 }

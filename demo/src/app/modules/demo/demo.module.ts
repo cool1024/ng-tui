@@ -20,7 +20,8 @@ import {
     TabModule,
     ProgressModule,
     MapModule, 
-    ModalModule
+    ModalModule,
+    TooltipsModule
 } from 'projects/ng-tui/src/public_api';
 
 @NgModule({
@@ -38,6 +39,7 @@ import {
         ProgressModule,
         MapModule,
         ModalModule,
+        TooltipsModule,
         DemoRoutingModule
     ],
     declarations: [declarationComponents],

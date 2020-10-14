@@ -23,7 +23,7 @@ export class TableComponent extends BaseTheme implements OnInit {
     @Input() height: number = 400;
     @Input() emptyTitle: String;
     @Input() goTitle: String;
-    @Input() loader: (page: Pagination) => Observable<{ data: Array<any>, total: number, result: boolean }>;
+    @Input() loader: (page: Pagination, search: SearchParams) => Observable<{ data: Array<any>, total: number, result: boolean }>;
     @Input() data: Array<any> = [];
     @Input() params: SearchParams = SearchParams.createDefaultSearch();
     @Input() page: Pagination = new Pagination();
@@ -49,7 +49,7 @@ export class TableComponent extends BaseTheme implements OnInit {
 
     doRefresh() {
         this.page.loading = true;
-        this.loader(this.page).subscribe(res => {
+        this.loader(this.page, this.params).subscribe(res => {
             if (res.result) {
                 this.page.total = res.total;
                 this.data = res.data;
@@ -88,11 +88,15 @@ export class SearchParams {
     }
 
     public static createDefaultSearch(params: { [key: string]: any } = {}): SearchParams {
-        return new SearchParams(params, [0, '', null]);
+        return new SearchParams(params, [0, '', null, undefined]);
+    }
+
+    isEmptyKey(key: string) {
+        return this.isEmptyValue(this.params[key]);
     }
 
     isEmptyValue(value: any) {
-        return this.emptyValues.findIndex(e => e === value);
+        return this.emptyValues.findIndex(e => e === value) >= 0;
     }
 
     setEmpty(key: string) {
