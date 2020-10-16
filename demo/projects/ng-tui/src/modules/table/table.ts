@@ -27,6 +27,7 @@ export class TableComponent extends BaseTheme implements OnInit {
     @Input() data: Array<any> = [];
     @Input() params: SearchParams = SearchParams.createDefaultSearch();
     @Input() page: Pagination = new Pagination();
+    @Input() auto = true;
 
     get search() { return this.params.params; }
     private searchParams = SearchParams.createDefaultSearch();
@@ -39,7 +40,7 @@ export class TableComponent extends BaseTheme implements OnInit {
     }
 
     ngOnInit() {
-        this.doRefresh();
+        this.auto && this.doRefresh();
     }
 
     doSearch() {

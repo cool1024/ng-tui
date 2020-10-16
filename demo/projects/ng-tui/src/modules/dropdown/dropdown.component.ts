@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { Item } from '../../tui-core/interfaces/item.interface';
+import { Util } from '../../tui-core/util';
 import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
 import { ConfigService } from '../../tui-core/base-services/config.service';
 
@@ -25,7 +26,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
 })
 export class DropdownComponent extends BaseTheme implements OnChanges {
 
-    @Input() items: any[];
+    @Input() items: Item[];
 
     @Input() dropup: string;
 
@@ -33,13 +34,11 @@ export class DropdownComponent extends BaseTheme implements OnChanges {
 
     @Input() offsetY: number;
 
-    @Input() useNumber: number;
-
     @Input() minWidth: number;
 
     @Input() zIndex: number;
 
-    @Input() activeValue: number;
+    @Input() activeValue: any;
 
     @Output() menuClick = new EventEmitter<Item>();
 
@@ -58,30 +57,13 @@ export class DropdownComponent extends BaseTheme implements OnChanges {
         this.zIndex = 9999;
     }
     ngOnChanges(changes: SimpleChanges): void {
-        const items = new Array<any>();
-        // just need some number value
-        if (this.useNumber >= 0) {
-            this.items.some((item, index) => {
-                if (typeof item === 'string') {
-                    items.push({ value: this.useNumber + index, text: item });
-
-                } else if (typeof item === 'number') {
-                    items.push({ value: this.useNumber + item, text: item.toString() });
-                } else {
-                    console.error('useNumber >= 0,items element must be a string or number', item);
-                    return false;
-                }
-            });
-        } else {
-            // diy item value
-            this.items.forEach(item => {
-                items.push(typeof item === 'string' || typeof item === 'number' ? { value: item, text: item } : item);
-            });
+        if (changes.items && changes.items.currentValue) {
+            this.itemList = Util.formateItems(changes.items.currentValue)
         }
-
     }
 
     itemClick(item: Item) {
+        this.activeValue = item.value;
         this.menuClick.emit(item);
     }
 

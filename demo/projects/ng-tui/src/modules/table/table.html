@@ -1,7 +1,7 @@
 <div class="position-relative">
     <ts-table-load [display]="page.loading"></ts-table-load>
-    <div [style.height.px]="height" style="overflow:auto">
-        <table class="table table-striped table-hover table-bordered">
+    <div class="mb-2" [style.maxHeight.px]="height" style="overflow:auto">
+        <table class="table table-striped table-hover table-bordered mb-0">
             <ng-content select="thead"></ng-content>
             <ng-content select="tbody"></ng-content>
             <tr class="mat-cell bg-white no-select" *ngIf="data.length<=0">
@@ -24,7 +24,7 @@
             </tr>
         </table>
     </div>
-    <div class="d-flex flex-row-reverse align-items-center px-2 pb-2">
+    <div class="d-flex flex-row-reverse align-items-center p-2">
         <ts-pagination class="flex-shrink-0" outline (pageChange)="doRefresh()" [pagination]="page" [color]="color"
             goTitle="{{goTitle}}">
         </ts-pagination>

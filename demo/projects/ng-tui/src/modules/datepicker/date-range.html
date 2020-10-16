@@ -71,8 +71,7 @@
                         <div>
                             <div class="btn-group">
                                 <button style="opacity:0.9" (click)="prevYear()" [tsBtn]="color" sm>&lt;</button>
-                                <ts-dropdown [items]="yearList[0]" [useNumber]="0" dropup
-                                    (menuClick)="updateYear($event.value)">
+                                <ts-dropdown [items]="yearList[0]" [activeValue]="years[0]" dropup (menuClick)="updateYear($event.value)">
                                     <button [tsBtn]="color" sm
                                         class="rounded-0 border-left-0 border-right-0">{{years[0]}}</button>
                                 </ts-dropdown>
@@ -81,8 +80,7 @@
                             <div class="btn-group ml-1">
                                 <button style="opacity:0.9" (click)="prevMonth()" tsIcon=" preview" [tsBtn]="color"
                                     sm>&lt;</button>
-                                <ts-dropdown [items]="monthTitles" [useNumber]="1" dropup
-                                    (menuClick)="updateMonth($event.value)">
+                                <ts-dropdown [items]="monthTitles" [activeValue]="monthTitles[months[1]-1]" dropup (menuClick)="updateMonth($event.value)">
                                     <button [tsBtn]="color" sm
                                         class="rounded-0 border-left-0 border-right-0">{{monthTitles[months[1]-1]}}</button>
                                 </ts-dropdown>

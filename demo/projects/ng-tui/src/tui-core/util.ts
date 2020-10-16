@@ -3,6 +3,24 @@ import { Time } from './interfaces/time.interface';
 
 export class Util {
 
+    static formateItems(options: Array<string | Item | number>): Array<Item> {
+        return options.map(item => {
+            let tmpItem = { value: null, text: '' };
+            if (typeof item === 'string') {
+                tmpItem.value = item;
+                tmpItem.text = item;
+            }
+            if (Number.isInteger(item)) {
+                tmpItem.value = item;
+                tmpItem.text = item.toString();
+            }
+            if (typeof item === 'object') {
+                Object.assign(tmpItem, item);
+            }
+            return tmpItem;
+        });
+    }
+
     static formateOptions(options: Array<string | Item>): Array<Item> {
         return options.map(option => typeof option === 'string' ? { value: option, text: option } : option);
     }

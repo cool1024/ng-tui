@@ -202,11 +202,17 @@ export class DateRangeComponent extends BaseTheme {
         this.updateMonth(this.months[0]);
     }
 
-    updateMonth(month: number) {
-        this.months[0] = month;
-        this.months[1] = month === MAX_MONTH ? MIN_MONTH : month + 1;
+    updateMonth(month: number | string) {
+        let monthIndex = 0;
+        if (typeof month === 'string') {
+            monthIndex = this.monthTitles.indexOf(month)
+        }
+        if (typeof month === 'number') {
+            monthIndex = month
+        }
+        this.months[0] = monthIndex;
+        this.months[1] = month === MAX_MONTH ? MIN_MONTH : monthIndex + 1;
         this.updateYear(this.years[0]);
-        // this.updateAll();
     }
 
     nextYear() {
