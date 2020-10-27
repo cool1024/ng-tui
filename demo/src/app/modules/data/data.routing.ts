@@ -9,7 +9,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ServerMapComponent } from './server-map/server-map.component';
 import { GithubSearchPage } from './pages/github-search/github-search';
+import { GithubDetailPage } from './pages/github-search/github-detail';
 import { GithubApi } from './pages/github-search/api';
+import { RouteUtil } from '../../../util/route';
 
 export const providers = [
     GithubApi
@@ -17,12 +19,12 @@ export const providers = [
 
 export const declarationComponents = [
     ServerMapComponent,
-    GithubSearchPage
+    [GithubSearchPage, GithubDetailPage]
 ];
 
-const routes = declarationComponents.map(component => ({
-    path: component.name, component
-}));
+const routes = RouteUtil.generateRoutesFromComponents(declarationComponents);
+
+console.table(routes);
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

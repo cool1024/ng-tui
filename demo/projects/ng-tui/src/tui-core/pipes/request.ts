@@ -5,6 +5,7 @@ export const requestString = (url: string) => {
     const obj = new XMLHttpRequest();
     const obs = fromEvent(obj, 'loadend');
     obj.open('GET', url, true);
+    obj.setRequestHeader('Accept', 'application/vnd.github.inertia-preview+json')
     obj.send();
     return obs.pipe(map<any, string>(_ => {
         return obj.responseText;

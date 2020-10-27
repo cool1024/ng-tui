@@ -17,4 +17,7 @@ export class GithubApi {
             }));
     }
 
+    projectDetail(projectId: number) {
+        return requestObject(`https://api.github.com/projects/${projectId}`)
+    }
 }

@@ -1,4 +1,4 @@
-<div class="shadow-sm mb-3 pt-4 bg-white">
+<div *ngIf="!outlet.isActivated" class="shadow-sm mb-3 pt-4 bg-white">
     <div class="px-4">
         <h3 class="font-weight-normal">GitHub Search API</h3>
         <h5 class="text-muted font-weight-light mb-4">The Search API helps you search for the specific item you want to
@@ -8,8 +8,8 @@
     <div class="search-container">
         <div class="search-container-shadow d-flex px-3">
             <div class="form-inline mb-4 mr-3">
-                <input class="form-control" placeholder="Key words" style="width:150px" [(ngModel)]="table.search.q">
-                <ts-dropdown [items]="['Starts', 'Forks', 'Default']">
+                <input class="form-control mr-3" placeholder="Key words" style="width:150px" [(ngModel)]="table.search.q">
+                <ts-dropdown (menuClick)="doSort(table,$event)" [items]="sortItems">
                     <button tsBtn class="dropdown-toggle">Sort By</button>
                 </ts-dropdown>
             </div>
@@ -55,9 +55,9 @@
                 <td>{{ item.stargazers_count }} / {{ item.forks }}</td>
                 <td>{{ item.open_issues }}</td>
                 <td>
-                    <span class="btn-icon btn-icon-primary" tsTip="详情/编辑">
+                    <a routerLink="GithubDetailPage"  class="btn-icon btn-icon-primary" tsTip="详情/编辑">
                         <i class="iconfont icon-edit"></i>
-                    </span>
+                    </a>
                     <span class="btn-icon btn-icon-danger" tsTip="删除">
                         <i class="iconfont icon-ashbin"></i>
                     </span>
@@ -66,3 +66,4 @@
         </tbody>
     </ts-table>
 </div>
+<router-outlet #outlet="outlet"></router-outlet>

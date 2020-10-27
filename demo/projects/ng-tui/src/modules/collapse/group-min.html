@@ -1,11 +1,13 @@
 <ng-content></ng-content>
-<div *ngFor="let item of node.children;index as i" class="position-relative">
-    <div class="pointer py-3 d-flex justify-content-center">
-        <div class="flex-shrink-0 px-2 align-items-center">
-            <img class="mb-1" *ngIf="item.image;else elseBlock" width="30" height="30" [src]="item.image">
-            <ng-template #elseBlock>
-                <i [class]="item.icon" aria-hidden="true"></i>
-            </ng-template>
+<ng-template ngFor let-item [ngForOf]="nodes" let-i="index">
+    <div *ngFor="let node of item.children;index as i" class="position-relative" tsHover [hoverStyle]="hoverStyle">
+        <div class="pointer py-3 d-flex justify-content-center">
+            <div class="flex-shrink-0 px-2 align-items-center">
+                <img class="mb-1" *ngIf="node.image;else elseBlock" width="30" height="30" [src]="sanitizer.bypassSecurityTrustResourceUrl(node.image)">
+                <ng-template #elseBlock>
+                    <i [class]="node.icon" aria-hidden="true"></i>
+                </ng-template>
+            </div>
         </div>
     </div>
-</div>
+</ng-template>

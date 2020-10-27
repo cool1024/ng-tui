@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: '[tsGroup],ts-group',
-    templateUrl: './group.html'
+    templateUrl: './group-min.html'
 })
 export class GroupComponent {
 
