@@ -53,6 +53,7 @@ export * from './modules/collapse/collapse.module';
 export * from './modules/collapse/collapse.directive';
 export * from './modules/collapse/collapses.directive';
 export * from './modules/collapse/group.comonent';
+export * from './modules/collapse/items-group';
 export * from './modules/collapse/node.interface';
 export * from './modules/confirm/confirm.module';
 export * from './modules/confirm/confirm.interface';

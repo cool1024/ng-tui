@@ -2,7 +2,8 @@ import { Directive, HostListener, Input, Output, EventEmitter, ElementRef, After
 import { Util } from '../util';
 
 @Directive({
-    selector: '*[tsHover]'
+    selector: '*[tsHover]',
+    exportAs: 'tsHover'
 })
 export class TsHover implements AfterViewInit {
 
@@ -23,6 +24,8 @@ export class TsHover implements AfterViewInit {
 
     private _hoverActive: boolean;
 
+    public isHover: boolean = false;
+
     constructor(private elementRef: ElementRef) { }
 
     @HostListener('mouseleave', ['$event'])
@@ -31,6 +34,7 @@ export class TsHover implements AfterViewInit {
         if (Util.notEmpty(this.tsHover)) {
             element.classList.remove(...Util.getStringArray(this.tsHover));
         }
+        this.isHover = false;
         this.applyStyle(element, this._hoverActive ? 2 : 0);
     }
 
@@ -41,6 +45,7 @@ export class TsHover implements AfterViewInit {
             element.classList.add(...Util.getStringArray(this.tsHover));
         }
         this.applyStyle(element, 1);
+        this.isHover = true;
         this.hover.emit($event);
     }
 

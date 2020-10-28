@@ -16,6 +16,7 @@ import { MenuComponent } from './view/menu/menu.component';
 @NgModule({
     imports: [
         CollapseModule,
+        SelectModule,
         ButtonModule,
         SelectModule,
         ChartModule,
