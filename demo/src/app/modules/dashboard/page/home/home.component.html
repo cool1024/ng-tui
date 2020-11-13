@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-md-4 mb-3">
         <div class="card card-body">
-            <div class="d-flex justify-content-between align-items-baseline">
-                <p>New Customers</p>
+            <div class="d-flex justify-content-between align-items-baseline mb-2">
+                <h6>New Customers</h6>
                 <ts-dropdown [items]="['View Detail', 'Delete Card', 'Ping']">
-                    <i class="iconfont icon-menu"></i>
+                    <i class="iconfont icon-menu pointer"></i>
                 </ts-dropdown>
             </div>
             <div class="d-flex">
@@ -17,17 +17,18 @@
                         </p>
                     </div>
                 </div>
-                <div class="flex-grow-1" tsChart (doInit)="initLineChart($event)" [option]="charOption" [data]="data">
+                <div class="flex-grow-1" tsChart (doInit)="initLineChart($event)" [option]="charOption"
+                    [data]="lineData">
                 </div>
             </div>
         </div>
     </div>
     <div class="col-md-4 mb-3">
         <div class="card card-body">
-            <div class="d-flex justify-content-between align-items-baseline">
-                <p>New Orders</p>
+            <div class="d-flex justify-content-between align-items-baseline mb-2">
+                <h6>New Orders</h6>
                 <ts-dropdown [items]="['View Detail', 'Delete Card', 'Ping']">
-                    <i class="iconfont icon-menu"></i>
+                    <i class="iconfont icon-menu pointer"></i>
                 </ts-dropdown>
             </div>
             <div class="d-flex">
@@ -40,22 +41,22 @@
                         </p>
                     </div>
                 </div>
-                <div class="flex-grow-1" tsChart (doInit)="initBarChart($event)" [option]="charOption" [data]="data">
+                <div class="flex-grow-1" tsChart (doInit)="initBarChart($event)" [option]="charOption" [data]="barData">
                 </div>
             </div>
         </div>
     </div>
     <div class="col-md-4 mb-3">
         <div class="card card-body">
-            <div class="d-flex justify-content-between align-items-baseline">
-                <p>Pie Chart</p>
+            <div class="d-flex justify-content-between align-items-baseline mb-2">
+                <h6>Pie Chart</h6>
                 <ts-dropdown [items]="['View Detail', 'Delete Card', 'Ping']">
-                    <i class="iconfont icon-menu"></i>
+                    <i class="iconfont icon-menu pointer"></i>
                 </ts-dropdown>
             </div>
             <div class="d-flex">
                 <div class="flex-shrink-0 mr-3">
-                    <h2 class="mb-3">45%</h2>
+                    <h2 class="mb-3">41,897</h2>
                     <div class="d-flex align-items-baseline">
                         <p class="text-success">
                             <span>10%</span>
@@ -63,7 +64,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="flex-grow-1" tsChart (doInit)="initPieChart($event)" [option]="pieOption" [data]="pieData">
+                <div class="flex-grow-1" tsChart (doInit)="initZLineChart($event)" [option]="charOption"
+                    [data]="lineData">
                 </div>
             </div>
         </div>
@@ -71,20 +73,48 @@
 </div>
 <div class="row">
     <div class="col-lg-5 col-xl-4">
-        <div class="card">
-            <div class="card-header">
-                <p>Level Top</p>
-            </div>
-            <div class="card-body">
+        <div class="card card-body">
+            <h6 class="mb-4">New Join Member</h6>
+            <ng-container *ngFor="let item of itemList;index as i">
                 <div class="media">
-                    <img src="https://randomuser.me/api/portraits/thumb/women/3.jpg" class="mr-3 rounded-circle">
+                    <img height="50" [src]="'assets/images/avatar/' + i + '.jpg'" class="mr-3 rounded-circle">
                     <div class="media-body">
-                        <p class="mt-0">Tammy </p>
-                        <div>fdsaf43124rfgdghtwreterfewg</div>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="mb-1">{{item.name}}</h6>
+                            <span class="text-muted">{{item.time}}</span>
+                        </div>
+                        <div class="text-muted">{{item.description}}</div>
                     </div>
                 </div>
-            </div>
+                <hr *ngIf="i < itemList.length - 1">
+            </ng-container>
         </div>
     </div>
-    <div class="col-lg-7 col-xl-8"></div>
+    <div class="col-lg-7 col-xl-8">
+        <div class="card card-body">
+            <h6 class="mb-3">Latest Transactions</h6>
+            <table class="table table-striped">
+                <thead class="text-primary">
+                    <tr>
+                        <th class="border-0" scope="col">#</th>
+                        <th class="border-0" scope="col">PROJECT NAME</th>
+                        <th class="border-0" scope="col">START DATE</th>
+                        <th class="border-0" scope="col">DUE DATE</th>
+                        <th class="border-0" scope="col">STATUS</th>
+                        <th class="border-0" scope="col">ASSIGN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of tableData;index as i">
+                        <th class="border-0" style="height: 47px;">{{i + 1}}</th>
+                        <td class="border-0">{{data.a}}</td>
+                        <td class="border-0">{{data.b}}</td>
+                        <td class="border-0">{{data.c}}</td>
+                        <td class="border-0 text-capitalize"><span class="badge badge-pill badge-{{data.d}}">{{data.d}}</span></td>
+                        <td class="border-0">{{data.e}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

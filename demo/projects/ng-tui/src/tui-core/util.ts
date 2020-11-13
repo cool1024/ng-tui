@@ -4,7 +4,6 @@ import { Time } from './interfaces/time.interface';
 export class Util {
 
     static isString(value: any) {
-        console.log(typeof value);
         return typeof value === 'string';
     }
 

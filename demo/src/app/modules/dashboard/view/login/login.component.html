@@ -1,5 +1,5 @@
 <div *ngIf="display" class="fixed-top h-100 w-100 login-pad bg-white">
-    <div class="w-100 h-100 bg-info d-flex justify-content-center flex-wrap">
+    <div class="w-100 h-100 bg-primary d-flex justify-content-center flex-wrap">
         <div style="min-width:25rem;background-repeat: no-repeat;background-position: center;"
             class="background flex-grow-1 window"
             [ngStyle]="{backgroundImage: 'url(' + config.backgroundImageSrc + ')' }">
@@ -46,9 +46,9 @@
                 </div>
                 <div class="p-4"></div>
                 <div class="d-flex justify-content-around">
-                    <button #btn="tsBtn" tsBtn="info" loading class="flex-grow-1 rounded-0"
+                    <button #btn="tsBtn" tsBtn="primary" loading class="flex-grow-1 rounded-0"
                         (submit)="confirmLogin($event)">登录</button>
-                    <button #btn="tsBtn" tsBtn="success" class="flex-grow-1 rounded-0 ml-3"
+                    <button #btn="tsBtn" tsBtn="info" class="flex-grow-1 rounded-0 ml-3"
                         (click)="devPreview()">开发者预览</button>
                 </div>
 

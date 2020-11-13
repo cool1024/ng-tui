@@ -36,11 +36,6 @@ export class ChartDirective implements AfterViewInit, OnChanges {
     ngAfterViewInit() {
         this.canvas = this.elementRef.nativeElement;
         this.scriptService.complete(() => {
-            console.log(Object.assign({
-                container: this.canvas,
-                forceFit: true,
-                animate: true,
-            }, this.option || {}));
             this.chart = new window['G2'].Chart(Object.assign({
                 container: this.canvas,
                 forceFit: true,
@@ -51,6 +46,7 @@ export class ChartDirective implements AfterViewInit, OnChanges {
             appendSimplePieFunc(this.chart);
             appendSimpleAreaFunc(this.chart);
             this.doInit.emit(this.chart);
+            this.updateData();
         });
     }
 
@@ -87,11 +83,12 @@ function appendSimpleLineFunc(chart: ChartInstance) {
         const gem = chart.line()
             .position(config.position)
             .color(...config.colors)
+            .tooltip(false)
         configShape(gem, config.shape);
     };
 }
 
-function appendSimpleAreaFunc(chart:ChartInstance){
+function appendSimpleAreaFunc(chart: ChartInstance) {
     chart.simpleArea = (config: LineConfig) => {
         const gem = chart.area()
             .position(config.position)
@@ -102,7 +99,7 @@ function appendSimpleAreaFunc(chart:ChartInstance){
 
 function appendSimplePieFunc(chart: ChartInstance) {
     chart.simplePie = (config: PieConfig) => {
-        chart.coord('theta', {
+        chart.coord(config.coordName || 'theta', {
             radius: config.radius,
             innerRadius: config.innerRadius
         });
@@ -115,7 +112,6 @@ function appendSimplePieFunc(chart: ChartInstance) {
 }
 
 function configShape(gem: Geometry, shape: string | any[]) {
-    console.log(shape);
     if (Util.notNullAndEmpty(shape)) {
         if (Util.isString(shape)) {
             gem.shape(shape as string);
@@ -139,6 +135,7 @@ export interface Options {
 
 export interface ChartOption {
     container?: string | HTMLDivElement;
+    tooltip?: boolean | any;
     width?: number;
     height?: number;
     padding?: any | number | any[];
@@ -155,7 +152,7 @@ export interface ChartOption {
 
 export interface BarConfig {
     position: string | string[];
-    colors: any[];
+    colors?: any[];
     shape?: string | any[];
     style?: any;
 }
@@ -165,8 +162,9 @@ export interface AreaConfig extends BarConfig { }
 export interface LineConfig extends BarConfig { }
 
 export interface PieConfig extends BarConfig {
-    radius: number;
-    innerRadius: number;
+    coordName?: string;
+    radius?: number;
+    innerRadius?: number;
 }
 
 export interface ChartInstance {
@@ -188,4 +186,5 @@ export interface Geometry {
     position(position: string | string[]): Geometry;
     color(field?: string, colors?: string | string[] | Function): Geometry;
     shape(field: string, shapes?: string | string[] | Function): Geometry;
+    tooltip(show: boolean): Geometry;
 }
