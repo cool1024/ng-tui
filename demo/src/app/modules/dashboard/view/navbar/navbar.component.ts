@@ -16,6 +16,10 @@ export class NavbarComponent {
         private dashboardService: DashbardService
     ) { }
 
+    changeMenuMode() {
+        this.dashboardService.menuMode = !this.dashboardService.menuMode;
+    }
+
     changeFullscreen() {
         this.uiService.toggleFullScreen();
     }

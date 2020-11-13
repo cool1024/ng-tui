@@ -20,7 +20,7 @@ export class TsHover implements AfterViewInit {
     hoverStyle: { [key: string]: [string, string, string] } = {};
 
     @Output()
-    hover = new EventEmitter<MouseEvent>(false);
+    hover = new EventEmitter<boolean>(false);
 
     private _hoverActive: boolean;
 
@@ -36,6 +36,7 @@ export class TsHover implements AfterViewInit {
         }
         this.isHover = false;
         this.applyStyle(element, this._hoverActive ? 2 : 0);
+        this.hover.emit(false);
     }
 
     @HostListener('mouseenter', ['$event'])
@@ -46,7 +47,7 @@ export class TsHover implements AfterViewInit {
         }
         this.applyStyle(element, 1);
         this.isHover = true;
-        this.hover.emit($event);
+        this.hover.emit(true);
     }
 
 

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, OnDestroy, HostListener, Input, Output, EventEmitter, AfterViewInit, ContentChild } from '@angular/core';
+import { Directive, ElementRef, OnDestroy, HostListener, Input, Output, EventEmitter, AfterViewInit, ContentChild, ɵConsole } from '@angular/core';
 import { Toggle } from '../../tui-core/interfaces/toggle.interface';
 import { ToggleDirective } from '../../tui-core/directives/toggle.directive';
 import { interval, Subscription } from 'rxjs';
@@ -102,8 +102,10 @@ export class SideMenuGroupDirective implements AfterViewInit {
     constructor() { }
 
     ngAfterViewInit() {
-        this.targetDirective.bind(this.toggleDirective);
-        this.toggleDirective.target = this.targetDirective;
+        if(this.targetDirective && this.toggleDirective){
+            this.targetDirective.bind(this.toggleDirective);
+            this.toggleDirective.target = this.targetDirective;
+        }
     }
 
     dismiss() {

@@ -11,6 +11,9 @@ export class DashbardService {
 
     private loginViewHandle: ComponentHandle;
 
+    set menuMode(value: boolean) { this.setValueToStorage('menuMode', String(value)) }
+    get menuMode() { return this.getBooleanFromStorage('menuMode') }
+
     constructor(private cmpService: ComponentService) { }
 
     showLogin(loginConfig?: LoginConfig) {
@@ -56,6 +59,11 @@ export class DashbardService {
         return temp === null ? defaultValue : JSON.parse(temp);
     }
 
+    getBooleanFromStorage(key: string): boolean {
+        const temp = localStorage.getItem(key);
+        return temp === 'true';
+    }
+
     /**
      * 设置一个对象到本地存储
      * @param {string} key 键名
@@ -64,6 +72,10 @@ export class DashbardService {
      */
     setObjectToStorage(key: string, object: { [key: string]: string | number | any }) {
         localStorage.setItem(key, JSON.stringify(object));
+    }
+
+    setValueToStorage(key: string, value: string) {
+        localStorage.setItem(key, value);
     }
 
     cleanItemFromStorage(key: string) {

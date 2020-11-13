@@ -6,7 +6,7 @@
  * @date   2019-1-4 09:22:58
  */
 import { NgModule } from '@angular/core';
-import { ButtonModule, SelectModule, ChartModule, CollapseModule, TabModule } from '../../../../projects/ng-tui/src/public_api';
+import { ButtonModule, SelectModule, ChartModule, CollapseModule, TabModule, DropdownModule } from '../../../../projects/ng-tui/src/public_api';
 import { DashboardRoutingModule, declarationComponents, entryComponents } from './dashboard.routing';
 import { DashbardService } from './service/dashboard.service';
 import { LoginComponent } from './view/login/login.component';
@@ -18,6 +18,7 @@ import { MenuComponent } from './view/menu/menu.component';
         CollapseModule,
         SelectModule,
         ButtonModule,
+        DropdownModule,
         SelectModule,
         ChartModule,
         TabModule,

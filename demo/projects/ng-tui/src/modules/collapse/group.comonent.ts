@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: '[tsGroup],ts-group',
-    templateUrl: './group-min.html'
+    templateUrl: './group.html'
 })
 export class GroupComponent {
 
@@ -17,6 +17,8 @@ export class GroupComponent {
     @Input() root: boolean = true;
 
     @Input() open: boolean = false;
+
+    @Input() min: boolean = false;
 
     @Input() theme: MenuTheme = defaultMenuTheme;
 

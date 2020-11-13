@@ -4,10 +4,12 @@ import { ItemsGroupComponent } from './items-group';
 import { CollapseDirective } from './collapse.directive';
 import { CollapsesDirective } from './collapses.directive';
 import { GroupComponent } from './group.comonent';
+import { DropdownModule } from '../dropdown/dropdown.module';
 
 @NgModule({
     imports: [
-        TUICoreModule
+        TUICoreModule,
+        DropdownModule,
     ],
     declarations: [
         CollapseDirective,

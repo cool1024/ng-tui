@@ -3,6 +3,11 @@ import { Time } from './interfaces/time.interface';
 
 export class Util {
 
+    static isString(value: any) {
+        console.log(typeof value);
+        return typeof value === 'string';
+    }
+
     static formateItems(options: Array<string | Item | number>): Array<Item> {
         return options.map(item => {
             let tmpItem = { value: null, text: '' };
@@ -30,7 +35,11 @@ export class Util {
     }
 
     static notEmpty(value: string | number | any[]): boolean {
-        return value !== '' && value !== 0 && (Array.isArray(value) && value.length !== 0);
+        if (Array.isArray(value)) {
+            return value.length > 0
+        } else {
+            return value !== '' && value !== 0;
+        }
     }
 
     static notNull(value: string | number | any[]): boolean {

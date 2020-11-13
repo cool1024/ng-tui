@@ -1,8 +1,7 @@
-<div class="dropdown-menu" [style.top.px]="0" [style.left.px]="0">
-    <a *ngFor="let node of nodes" class="dropdown-item pointer py-2" tsHover [hoverStyle]="hoverStyle">
-        {{node.title}}
-        <ts-items-group *ngIf="node.children && node.children.length > 0" [nodes]="node.children"></ts-items-group>
-    </a>
-    <!-- <a class="dropdown-item pointer py-2" tsHover [hoverStyle]="hoverStyle">Another action</a>
-    <a class="dropdown-item pointer py-2 bg-hover-primary" tsHover [hoverStyle]="hoverStyle">Something else here</a> -->
+<div *ngFor="let items of showNodes;index as level" class="dropdown-menu position-relative">
+    <a *ngFor="let item of items" 
+    class="dropdown-item pointer py-2" 
+    tsHover [hoverStyle]="hoverStyle" [hoverActive]="isActiveItem(item)"
+    (hover)="$event && updateShowNodes(level, item)"
+    (click)="closeMenu(item)">{{item.title}}</a>
 </div>

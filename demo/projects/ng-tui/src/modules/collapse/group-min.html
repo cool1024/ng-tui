@@ -1,8 +1,8 @@
 <ng-content></ng-content>
 <ng-template ngFor let-item [ngForOf]="nodes" let-i="index">
-    <div *ngFor="let node of item.children;index as i" class="position-relative" tsHover [hoverStyle]="hoverStyle"
-        #tsHover="tsHover">
-        <div class="pointer py-3 d-flex justify-content-center" tsToggle [target]="menuView">
+    <div *ngFor="let node of item.children;index as i" class="position-relative" tsHover
+        [hoverStyle]="hoverStyle" #tsHover="tsHover" tsMenuGroup>
+        <div class="pointer py-3 d-flex justify-content-center" tsToggle>
             <div class="flex-shrink-0 px-2 align-items-center">
                 <img class="mb-1" *ngIf="node.image;else elseBlock" width="30" height="30"
                     [src]="sanitizer.bypassSecurityTrustResourceUrl(node.image)">
@@ -10,10 +10,8 @@
                     <i [class]="node.icon" aria-hidden="true"></i>
                 </ng-template>
             </div>
-            <!-- *ngIf="node.children && node.children.length > 0 && tsHover.isHover" -->
-            <ts-items-group tsView="fadeIn" #menuView="tsView" autoSize position="auto" [nodes]="node.children"
-                [hoverStyle]="hoverStyle">
-            </ts-items-group>
         </div>
+        <ts-items-group *ngIf="node.children&&node.children.length>0" tsSideMenu style="z-index: 1000;" [nodes]="node.children" [hoverStyle]="hoverStyle">
+        </ts-items-group>
     </div>
 </ng-template>
