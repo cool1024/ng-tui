@@ -1,13 +1,23 @@
 import { Component } from '@angular/core';
-import { ChartInstance, ChartOption } from 'projects/ng-tui/src/public_api';
+import { ChartInstance, ChartOption, DropMenuItem, MenuService, Position } from 'projects/ng-tui/src/public_api';
 
 @Component({
-    templateUrl: './home.component.html'
+    templateUrl: './home.component.html',
+    styles: [`
+        .row {
+            margin-right: -8px !important;
+            margin-left: -8px !important;
+        }
+        .col-md-4, .col-lg-7, .col-xl-8, .col-lg-5, .col-xl-4 {
+            padding-right: 8px !important;
+            padding-left: 8px !important;
+        }
+    `]
 })
 export class HomeComponent {
 
     lineData = [
-        { x: 'A', y: 44 },
+        { x: 'A', y: 22 },
         { x: 'B', y: 55 },
         { x: 'C', y: 41 },
         { x: 'D', y: 22 },
@@ -21,7 +31,8 @@ export class HomeComponent {
         { x: 'L', y: 41 },
         { x: 'M', y: 56 },
         { x: 'N', y: 27 },
-        { x: 'O', y: 43 }
+        { x: 'O', y: 43 },
+        { x: 'P', y: 22 },
     ];
 
     barData = [
@@ -69,14 +80,31 @@ export class HomeComponent {
         }
     };
 
-    pieOption: ChartOption = {
+    bigCharOption: ChartOption = {
         tooltip: false,
-        height: 75,
-        padding: -3,
+        height: 300,
+        padding: 30,
         options: {
-            axes: false
+            // axes: true
         }
     };
+
+    pieOption: ChartOption = {
+        tooltip: false,
+        height: 300,
+        // padding: -3,
+        options: {
+            // axes: false,
+            geoms: [
+                {
+                    label: 'y',
+                    tooltip: false,
+                }
+            ]
+        }
+    };
+
+    constructor(private menuService: MenuService) { }
 
     initLineChart(chart: ChartInstance) {
         const lineConfig = {
@@ -108,14 +136,23 @@ export class HomeComponent {
 
     initPieChart(chart: ChartInstance) {
         chart.simplePie({
-            coordName: 'polar',
-            innerRadius: 0.2,
-            position: 'x*y',
+            innerRadius: 0.6,
+            position: 'y',
             colors: ['x', ['#007bff', '#3596fd', '#78b9ff']],
             style: {
                 lineWidth: 2,
                 stroke: '#fff'
             }
         });
+    }
+
+    showMenu(dom: HTMLElement) {
+        const menuItems = [
+            DropMenuItem.label('Detail'),
+            DropMenuItem.label('Remove'),
+            DropMenuItem.label('Top'),
+        ];
+        const menuConfig = { position: Position.AUTO };
+        this.menuService.showMenu(dom, menuItems, menuConfig);
     }
 }

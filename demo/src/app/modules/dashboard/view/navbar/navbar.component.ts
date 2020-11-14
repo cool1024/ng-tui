@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { TUIService, MenuService, Position } from 'projects/ng-tui/src/public_api';
+import { TUIService, MenuService, Position, DropMenuItem } from 'projects/ng-tui/src/public_api';
 import { DashbardService } from '../../service/dashboard.service';
-import { DropMenuItem } from 'projects/ng-tui/src/modules/dropdown/menu.component';
 import { loginConfig } from 'src/config/login-config';
 
 @Component({
@@ -28,9 +27,9 @@ export class NavbarComponent {
         this.menuService.showMenu(
             dom,
             [
-                DropMenuItem.image('简体中文','assets/images/flags/cn.gif',1),
-                DropMenuItem.image('日本语','assets/images/flags/jp.gif',2),
-                DropMenuItem.image('English','assets/images/flags/en.gif',3)
+                DropMenuItem.image('简体中文', 'assets/images/flags/cn.gif', 1),
+                DropMenuItem.image('日本语', 'assets/images/flags/jp.gif', 2),
+                DropMenuItem.image('English', 'assets/images/flags/en.gif', 3)
             ],
             { position: Position.AUTO, offsetY: 10 }
         ).subscribe();

@@ -130,7 +130,7 @@ export interface Options {
     filters?: any; // 数据过滤配置
     tooltip?: any; // 提示信息配置
     facet?: any; // 分面配置
-    geoms?: any; // 图形语法相关配置
+    geoms?: any[]; // 图形语法相关配置
 }
 
 export interface ChartOption {

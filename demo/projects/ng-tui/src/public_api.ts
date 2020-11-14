@@ -70,6 +70,7 @@ export * from './modules/datepicker/date-range.interface';
 export * from './modules/dropdown/dropdown.component';
 export * from './modules/dropdown/dropdown.module';
 export * from './modules/dropdown/menu.service';
+export * from './modules/dropdown/menu.component';
 export * from './modules/dropdown/side-menu.directive';
 export * from './modules/image/image.module';
 export * from './modules/image/image.directive';

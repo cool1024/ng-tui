@@ -3,12 +3,10 @@
         <div class="card card-body">
             <div class="d-flex justify-content-between align-items-baseline mb-2">
                 <h6>New Customers</h6>
-                <ts-dropdown [items]="['View Detail', 'Delete Card', 'Ping']">
-                    <i class="iconfont icon-menu pointer"></i>
-                </ts-dropdown>
+                <i #customerMenu (click)="showMenu(customerMenu)" class="iconfont icon-menu pointer"></i>
             </div>
-            <div class="d-flex">
-                <div class="flex-shrink-0 mr-3">
+            <div class="row">
+                <div class="col-4 col-md-12 col-xl-4">
                     <h2 class="mb-3">3,897</h2>
                     <div class="d-flex align-items-baseline">
                         <p class="text-success">
@@ -17,8 +15,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="flex-grow-1" tsChart (doInit)="initLineChart($event)" [option]="charOption"
-                    [data]="lineData">
+                <div class="col-8 col-md-12 col-xl-8">
+                    <div tsChart (doInit)="initLineChart($event)" [option]="charOption" [data]="lineData"></div>
                 </div>
             </div>
         </div>
@@ -27,12 +25,10 @@
         <div class="card card-body">
             <div class="d-flex justify-content-between align-items-baseline mb-2">
                 <h6>New Orders</h6>
-                <ts-dropdown [items]="['View Detail', 'Delete Card', 'Ping']">
-                    <i class="iconfont icon-menu pointer"></i>
-                </ts-dropdown>
+                <i #orderMenu (click)="showMenu(orderMenu)" class="iconfont icon-menu pointer"></i>
             </div>
-            <div class="d-flex">
-                <div class="flex-shrink-0 mr-3">
+            <div class="row">
+                <div class="col-4 col-md-12 col-xl-4">
                     <h2 class="mb-3">35,084</h2>
                     <div class="d-flex align-items-baseline">
                         <p class="text-danger">
@@ -41,7 +37,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="flex-grow-1" tsChart (doInit)="initBarChart($event)" [option]="charOption" [data]="barData">
+                <div class="col-8 col-md-12 col-xl-8">
+                    <div tsChart (doInit)="initBarChart($event)" [option]="charOption" [data]="barData"></div>
                 </div>
             </div>
         </div>
@@ -49,13 +46,11 @@
     <div class="col-md-4 mb-3">
         <div class="card card-body">
             <div class="d-flex justify-content-between align-items-baseline mb-2">
-                <h6>Pie Chart</h6>
-                <ts-dropdown [items]="['View Detail', 'Delete Card', 'Ping']">
-                    <i class="iconfont icon-menu pointer"></i>
-                </ts-dropdown>
+                <h6>Line Chart</h6>
+                <i #lineMenu (click)="showMenu(lineMenu)" class="iconfont icon-menu pointer"></i>
             </div>
-            <div class="d-flex">
-                <div class="flex-shrink-0 mr-3">
+            <div class="row">
+                <div class="col-4 col-md-12 col-xl-4">
                     <h2 class="mb-3">41,897</h2>
                     <div class="d-flex align-items-baseline">
                         <p class="text-success">
@@ -64,10 +59,35 @@
                         </p>
                     </div>
                 </div>
-                <div class="flex-grow-1" tsChart (doInit)="initZLineChart($event)" [option]="charOption"
-                    [data]="lineData">
+                <div class="col-8 col-md-12 col-xl-8">
+                    <div tsChart (doInit)="initZLineChart($event)" [option]="charOption" [data]="lineData">
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-7 col-xl-8 mb-3">
+        <div class="card card-body">
+            <div class="d-flex justify-content-between mb-2">
+                <h6 class="mb-0 lex-grow-1">REVENUE</h6>
+                <div>
+                    <ts-tabs class="d-inline-block mr-3" [items]="['Today', 'Week', 'Month', 'Year']"></ts-tabs>
+                    <i #revenueMenu (click)="showMenu(revenueMenu)" class="iconfont icon-menu pointer"></i>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="flex-grow-0 text-muted mr-2">Revenue is the income that a business has from its normal
+                    business activities, usually from the sale of goods and services to customers.</div>
+            </div>
+            <div tsChart (doInit)="initBarChart($event)" [option]="bigCharOption" [data]="lineData"></div>
+        </div>
+    </div>
+    <div class="col-lg-5 col-xl-4">
+        <div class="card card-body">
+            <h6 class="mb-0 lex-grow-1">Storage Part</h6>
+            <div tsChart (doInit)="initPieChart($event)" [option]="pieOption" [data]="pieData"></div>
         </div>
     </div>
 </div>
@@ -110,7 +130,8 @@
                         <td class="border-0">{{data.a}}</td>
                         <td class="border-0">{{data.b}}</td>
                         <td class="border-0">{{data.c}}</td>
-                        <td class="border-0 text-capitalize"><span class="badge badge-pill badge-{{data.d}}">{{data.d}}</span></td>
+                        <td class="border-0 text-capitalize"><span
+                                class="badge badge-pill badge-{{data.d}}">{{data.d}}</span></td>
                         <td class="border-0">{{data.e}}</td>
                     </tr>
                 </tbody>
