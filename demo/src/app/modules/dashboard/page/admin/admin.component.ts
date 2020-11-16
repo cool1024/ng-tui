@@ -11,6 +11,6 @@ export class AdminComponent {
     blockValue = ["11", "1101", "110101"];
 
     constructor() {
-        requestObject('https://www.cool1024.com/devexample/china').subscribe(options => this.blockOptions = options);
+        // requestObject('https://www.cool1024.com/devexample/china').subscribe(options => this.blockOptions = options);
     }
 }

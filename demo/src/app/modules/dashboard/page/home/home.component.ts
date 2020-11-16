@@ -8,7 +8,7 @@ import { ChartInstance, ChartOption, DropMenuItem, MenuService, Position, reques
             margin-right: -8px !important;
             margin-left: -8px !important;
         }
-        .col-md-4, .col-lg-7, .col-xl-8, .col-lg-5, .col-xl-4 {
+        .col-md-4, .col-lg-7, .col-xl-7, col-xl-5, .col-xl-8, .col-lg-5, .col-xl-4 {
             padding-right: 8px !important;
             padding-left: 8px !important;
         }
@@ -57,11 +57,11 @@ export class HomeComponent {
 
     bigCharOption: ChartOption = {
         height: 300,
-        padding: '30'
+        padding: [5, 5, 30, 30]
     };
 
     pieOption: ChartOption = {
-        height: 370,
+        height: 320,
         padding: 50,
         data: [
             { x: 'A', y: 44 },

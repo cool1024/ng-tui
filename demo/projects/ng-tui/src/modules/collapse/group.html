@@ -4,6 +4,7 @@
 <ng-container *ngIf="!min">
 
     <!-- TopLevel will be subject -->
+    <div class="mb-3" *ngIf="level===0"></div>
     <div *ngIf="level===0;else defaultGroup" class="flex-grow-1" style="overflow-y: auto;">
         <ng-container *ngFor="let node of nodes">
             <div class="pointer py-3 d-flex">
@@ -61,7 +62,7 @@
     <ng-template ngFor let-item [ngForOf]="nodes" let-i="index">
         <div *ngFor="let node of item.children;index as i" class="position-relative" tsHover [hoverStyle]="hoverStyle"
             #tsHover="tsHover" tsMenuGroup>
-            <div class="pointer py-3 d-flex justify-content-center" tsToggle>
+            <div class="pointer py-3 d-flex justify-content-center" tsToggle (click)="itemClick.emit(node)">
                 <div class="flex-shrink-0 px-2 align-items-center">
                     <img class="mb-1" *ngIf="node.image;else elseBlock" width="30" height="30"
                         [src]="sanitizer.bypassSecurityTrustResourceUrl(node.image)">

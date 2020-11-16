@@ -68,31 +68,16 @@
     </div>
 </div>
 
-<div class="card card-body mb-3">
-    <div class="d-flex justify-content-between mb-2">
-        <h6 class="mb-0 lex-grow-1">Rate Change Line</h6>
-        <div>
-            <ts-tabs class="d-inline-block mr-3" [items]="['All', '2013', '2014', '2015', '2016', '2017', '2018']"
-                (tabChange)="changeRateData($event)"></ts-tabs>
-            <i #revenueMenu (click)="showMenu(revenueMenu)" class="iconfont icon-menu pointer"></i>
-        </div>
-    </div>
-    <div tsChart (doInit)="initRateChart($event)" [option]="bigCharOption" [data]="rateData"></div>
-</div>
-
 <div class="row">
     <div class="col-lg-7 col-xl-8 mb-3">
         <div class="card card-body" style="height: 440px;">
             <div class="d-flex justify-content-between mb-2">
                 <h6 class="mb-0 lex-grow-1">REVENUE</h6>
-                <div>
-                    <ts-tabs class="d-inline-block mr-3" [items]="['Today', 'Week', 'Month', 'Year']"></ts-tabs>
-                    <i #revenueMenu (click)="showMenu(revenueMenu)" class="iconfont icon-menu pointer"></i>
-                </div>
+                <i #revenueMenu (click)="showMenu(revenueMenu)" class="iconfont icon-menu pointer"></i>
             </div>
-            <div class="d-flex justify-content-between">
-                <div class="flex-grow-0 text-muted mr-2">Revenue is the income that a business has from its normal
-                    business activities, usually from the sale of goods and services to customers.</div>
+            <div class="d-flex justify-content-between mb-3">
+                <div class="flex-grow-0 text-muted mr-2">Sales are activities related to selling or the number of goods
+                    or services sold in a given time period.</div>
             </div>
             <div tsChart (doInit)="initBarChart($event)" [option]="bigCharOption" [data]="lineData"></div>
         </div>
@@ -101,8 +86,27 @@
         <div class="card card-body" style="height: 440px;">
             <h6 class="mb-0 lex-grow-1">Storage Part</h6>
             <div tsChart (doInit)="initPieChart($event)" [option]="pieOption"></div>
+            <div class="px-4">
+                <button class="btn-block" tsBtn="primary">Upgrade storage</button>
+            </div>
         </div>
     </div>
+</div>
+
+<div class="card card-body mb-3">
+    <div class="d-flex justify-content-between mb-2">
+        <h6 class="mb-0 lex-grow-1">Rate Change Line</h6>
+        <i #revenueMenu (click)="showMenu(revenueMenu)" class="iconfont icon-menu pointer"></i>
+    </div>
+    <div class="row">
+        <div class="col-xl-7 text-muted mb-3">Revenue is the income that a business has from its normal business
+            activities, usually from the sale of goods
+            and services to customers.</div>
+        <div class="col-xl-5 d-flex justify-content-md-end mb-3">
+            <ts-tabs [items]="['ALL', '2013', '2014', '2015']" (tabChange)="changeRateData($event)"></ts-tabs>
+        </div>
+    </div>
+    <div tsChart (doInit)="initRateChart($event)" [option]="bigCharOption" [data]="rateData"></div>
 </div>
 
 <div class="row">
