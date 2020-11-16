@@ -67,9 +67,22 @@
         </div>
     </div>
 </div>
+
+<div class="card card-body mb-3">
+    <div class="d-flex justify-content-between mb-2">
+        <h6 class="mb-0 lex-grow-1">Rate Change Line</h6>
+        <div>
+            <ts-tabs class="d-inline-block mr-3" [items]="['All', '2013', '2014', '2015', '2016', '2017', '2018']"
+                (tabChange)="changeRateData($event)"></ts-tabs>
+            <i #revenueMenu (click)="showMenu(revenueMenu)" class="iconfont icon-menu pointer"></i>
+        </div>
+    </div>
+    <div tsChart (doInit)="initRateChart($event)" [option]="bigCharOption" [data]="rateData"></div>
+</div>
+
 <div class="row">
     <div class="col-lg-7 col-xl-8 mb-3">
-        <div class="card card-body">
+        <div class="card card-body" style="height: 440px;">
             <div class="d-flex justify-content-between mb-2">
                 <h6 class="mb-0 lex-grow-1">REVENUE</h6>
                 <div>
@@ -84,15 +97,16 @@
             <div tsChart (doInit)="initBarChart($event)" [option]="bigCharOption" [data]="lineData"></div>
         </div>
     </div>
-    <div class="col-lg-5 col-xl-4">
-        <div class="card card-body">
+    <div class="col-lg-5 col-xl-4 mb-3">
+        <div class="card card-body" style="height: 440px;">
             <h6 class="mb-0 lex-grow-1">Storage Part</h6>
-            <div tsChart (doInit)="initPieChart($event)" [option]="pieOption" [data]="pieData"></div>
+            <div tsChart (doInit)="initPieChart($event)" [option]="pieOption"></div>
         </div>
     </div>
 </div>
+
 <div class="row">
-    <div class="col-lg-5 col-xl-4">
+    <div class="col-lg-5 col-xl-4 mb-3">
         <div class="card card-body">
             <h6 class="mb-4">New Join Member</h6>
             <ng-container *ngFor="let item of itemList;index as i">
@@ -110,7 +124,7 @@
             </ng-container>
         </div>
     </div>
-    <div class="col-lg-7 col-xl-8">
+    <div class="col-lg-7 col-xl-8 mb-3">
         <div class="card card-body">
             <h6 class="mb-3">Latest Transactions</h6>
             <table class="table table-striped">

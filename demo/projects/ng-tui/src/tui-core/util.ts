@@ -33,7 +33,7 @@ export class Util {
         return typeof param === 'string' ? [param] : param;
     }
 
-    static notEmpty(value: string | number | any[]): boolean {
+    private static notEmpty(value: string | number | any | any[]): boolean {
         if (Array.isArray(value)) {
             return value.length > 0
         } else {
@@ -41,7 +41,7 @@ export class Util {
         }
     }
 
-    static notNull(value: string | number | any[]): boolean {
+    static notNull(value: string | number | any | any[]): boolean {
         return value !== null && value !== undefined;
     }
 

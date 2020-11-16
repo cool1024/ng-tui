@@ -31,7 +31,7 @@ export class TsHover implements AfterViewInit {
     @HostListener('mouseleave', ['$event'])
     removeClass($event: MouseEvent) {
         const element = $event.target as HTMLElement;
-        if (Util.notEmpty(this.tsHover)) {
+        if (Util.notNullAndEmpty(this.tsHover)) {
             element.classList.remove(...Util.getStringArray(this.tsHover));
         }
         this.isHover = false;
@@ -42,7 +42,7 @@ export class TsHover implements AfterViewInit {
     @HostListener('mouseenter', ['$event'])
     addClass($event: MouseEvent) {
         const element = $event.target as HTMLElement;
-        if (Util.notEmpty(this.tsHover)) {
+        if (Util.notNullAndEmpty(this.tsHover)) {
             element.classList.add(...Util.getStringArray(this.tsHover));
         }
         this.applyStyle(element, 1);

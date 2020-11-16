@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ChartInstance, ChartOption, DropMenuItem, MenuService, Position } from 'projects/ng-tui/src/public_api';
+import { ChartInstance, ChartOption, DropMenuItem, MenuService, Position, requestObject } from 'projects/ng-tui/src/public_api';
 
 @Component({
     templateUrl: './home.component.html',
@@ -44,14 +44,32 @@ export class HomeComponent {
         { x: 'F', y: 41 }
     ];
 
-    pieData = [
-        { x: 'A', y: 44 },
-        { x: 'B', y: 55 },
-        { x: 'C', y: 41 },
-        { x: 'D', y: 22 },
-        { x: 'E', y: 43 },
-        { x: 'F', y: 41 }
-    ];
+    rateData: Array<{ time: string, rate: number }> = [];
+
+    charOption: ChartOption = {
+        height: 70,
+        padding: 4,
+        options: {
+            axes: false,
+            tooltip: false
+        }
+    };
+
+    bigCharOption: ChartOption = {
+        height: 300,
+        padding: '30'
+    };
+
+    pieOption: ChartOption = {
+        height: 370,
+        padding: 50,
+        data: [
+            { x: 'A', y: 44 },
+            { x: 'B', y: 55 },
+            { x: 'C', y: 41 },
+            { x: 'D', y: 22 }
+        ]
+    };
 
     itemList = [
         { name: 'Terrance Moreno', description: `Hey! there I'm available.`, time: '12.30 PM' },
@@ -69,40 +87,7 @@ export class HomeComponent {
         { a: 'NobleUI Laravel', b: '01/01/2020	', c: '31/12/2020', d: 'warning', e: 'Coming soon Yaretzi Mayo' },
         { a: 'NobleUI NodeJs', b: '01/01/2020', c: '31/12/2020', d: 'dark', e: 'Coming soon	Carl Henson' },
         { a: 'NobleUI EmberJs', b: '01/05/2020	', c: '10/11/2020', d: 'secondary', e: 'Pending	Jensen Combs' }
-    ]
-
-    charOption: ChartOption = {
-        tooltip: false,
-        height: 70,
-        padding: 4,
-        options: {
-            axes: false
-        }
-    };
-
-    bigCharOption: ChartOption = {
-        tooltip: false,
-        height: 300,
-        padding: 30,
-        options: {
-            // axes: true
-        }
-    };
-
-    pieOption: ChartOption = {
-        tooltip: false,
-        height: 300,
-        // padding: -3,
-        options: {
-            // axes: false,
-            geoms: [
-                {
-                    label: 'y',
-                    tooltip: false,
-                }
-            ]
-        }
-    };
+    ];
 
     constructor(private menuService: MenuService) { }
 
@@ -115,6 +100,7 @@ export class HomeComponent {
         const areaConfig = { ...lineConfig, colors: ['l(90) 0:#007bff 1:#ffffff'] };
         chart.simpleLine(lineConfig);
         chart.simpleArea(areaConfig);
+        chart.render();
     }
 
     initZLineChart(chart: ChartInstance) {
@@ -134,16 +120,48 @@ export class HomeComponent {
         });
     }
 
-    initPieChart(chart: ChartInstance) {
-        chart.simplePie({
-            innerRadius: 0.6,
-            position: 'y',
-            colors: ['x', ['#007bff', '#3596fd', '#78b9ff']],
-            style: {
-                lineWidth: 2,
-                stroke: '#fff'
-            }
+    changeRateData(index: number) {
+        const activeYear = ['', '2013', '2014', '2015', '2016', '2017', '2018'][index];
+        requestObject('https://gw.alipayobjects.com/os/antvdemo/assets/data/income.json').subscribe(data => {
+            this.rateData = data.filter(item => ~item.time.indexOf(activeYear + '-'));
         });
+    }
+
+    initRateChart(chart: ChartInstance) {
+        // chart.source(data);
+        chart.line().position('time*rate');
+        chart.area().position('time*rate').color('l(90) 0:#007bff 1:#ffffff');
+        chart.render();
+        this.changeRateData(0);
+    }
+
+    initPieChart(chart: ChartInstance) {
+
+        chart.coord('theta', {
+            radius: 1,
+            innerRadius: 0.6
+        });
+
+        chart.guide().html({
+            position: ['50%', '50%'],
+            html: '<h5 class="text-muted">10GB</h5>',
+            alignX: 'middle',
+            alignY: 'middle'
+        });
+
+        chart.legend({
+            position: 'right',
+            itemGap: 20
+        });
+
+        chart.intervalStack()
+            .position('y')
+            .style({ lineWidth: 2, stroke: '#fff' })
+            .color('x', ['#007bff', '#3596fd', '#78b9ff', '#d1e7ff'])
+            .label('y', { formatter: (val, item) => item.point.x + ': ' + val })
+            .tooltip(false);
+
+        chart.render();
     }
 
     showMenu(dom: HTMLElement) {

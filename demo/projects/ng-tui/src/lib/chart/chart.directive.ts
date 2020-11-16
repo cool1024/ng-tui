@@ -51,15 +51,15 @@ export class ChartDirective implements AfterViewInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes.data && changes.data.currentValue) {
+        if (Util.notNull(changes.data) && Util.notNullAndEmpty(changes.data.currentValue)) {
             this.updateData();
         }
     }
 
     private updateData() {
-        if (this.chart) {
+        if (this.chart && Util.notNullAndEmpty(this.data)) {
             this.chart.source(this.data);
-            this.chart.render()
+            this.chart.render();
         }
     }
 
@@ -83,7 +83,6 @@ function appendSimpleLineFunc(chart: ChartInstance) {
         const gem = chart.line()
             .position(config.position)
             .color(...config.colors)
-            .tooltip(false)
         configShape(gem, config.shape);
     };
 }
@@ -130,7 +129,7 @@ export interface Options {
     filters?: any; // 数据过滤配置
     tooltip?: any; // 提示信息配置
     facet?: any; // 分面配置
-    geoms?: any[]; // 图形语法相关配置
+    geoms?: GeomOption[]; // 图形语法相关配置
 }
 
 export interface ChartOption {
@@ -150,6 +149,22 @@ export interface ChartOption {
     options?: Options;
 }
 
+export interface GeomOption {
+    type?: string; // 声明 geom 的类型：point line path area interval polygon schema edge heatmap pointStack pointJitter pointDodge intervalStack intervalDodge intervalSymmetric areaStack schemaDodge
+    adjust?: string | any[]; // 数据调整方式声明，如果只有一种调整方式，可以直接声明字符串，如果有多种混合方式，则以数组格式传入
+    position?: string | any; // potision 图形属性配置
+    color?: string | any[]; // color 图形属性配置
+    shape?: string | any; // shape 图形属性配置
+    size?: string | any; // size 图形属性配置
+    opacity?: string | any; // opacity 图形属性配置
+    label?: string | any // 图形上文本标记的配置
+    tooltip?: string; // 配置 tooltip 上显示的字段名称
+    style?: any; // 图形的样式属性配置
+    active?: boolean; // 开启关闭 geom active 交互
+    select?: any; // geom 选中交互配置
+    animate?: any; // 动画配置
+}
+
 export interface BarConfig {
     position: string | string[];
     colors?: any[];
@@ -167,11 +182,50 @@ export interface PieConfig extends BarConfig {
     innerRadius?: number;
 }
 
+export enum AlignX {
+    LEFT = 'left',
+    MIDDLE = 'middle',
+    RIGHT = 'right'
+}
+
+export enum AlignY {
+    TOP = 'top',
+    MIDDLE = 'middle',
+    BOTTOM = 'bottom'
+}
+
+export interface GuideHtml {
+    position?: any | Function | any[]; // html 的中心位置， 值为原始数据值，支持 callback
+    alignX?: 'left' | 'middle' | 'right';
+    alignY?: 'top' | 'middle' | 'bottom';
+    offsetX?: number;
+    offsetY?: number;
+    html?: string | Function; // html 代码，也支持callback,可能是最大值、最小值之类的判定
+    zIndex?: number;
+}
+
+export interface Guide {
+    line();//辅助线（可带文本），例如表示平均值或者预期分布的直线；
+    image();//辅助图片，在图表上添加辅助图片；
+    text();//辅助文本，指定位置添加文本说明；
+    region();//辅助框，框选一段图区，设置背景、边框等；
+    regionFilter();//区域着色，将图表中位于矩形选区中的图形元素提取出来，重新着色；
+    html(html: GuideHtml);//辅助 html，指定位置添加自定义 html，显示自定义信息；
+    arc();//辅助弧线。
+    dataMarker();//特殊数据点标注，多用于折线图和面积图
+    dataRegion();//特殊数据区间标注，多用于折线图和面积图
+}
+
 export interface ChartInstance {
-    source(data: any[] | any): ChartInstance;
+    source(data: any[] | any, cfg?: any): ChartInstance;
+    scale(field1: any, field2?: any):void;
+    guide(): Guide;
     interval(): Geometry;
     line(): Geometry;
     area(): Geometry;
+    position(position: string | string[]): Geometry;
+    style(field1: any, field2?: any): Geometry;
+    legend(field1: any, field2?: any): Geometry;
     simpleBar(config: BarConfig);
     simpleLine(config: LineConfig);
     simpleArea(config: AreaConfig);
@@ -179,7 +233,7 @@ export interface ChartInstance {
     render();
     coord(type: string, config: any);
     tooltip(config: any);
-    intervalStack();
+    intervalStack(): Geometry;
 }
 
 export interface Geometry {
@@ -187,4 +241,6 @@ export interface Geometry {
     color(field?: string, colors?: string | string[] | Function): Geometry;
     shape(field: string, shapes?: string | string[] | Function): Geometry;
     tooltip(show: boolean): Geometry;
+    style(field1: any, field2?: any): Geometry;
+    label(field1: any, field2?: any): Geometry;
 }
