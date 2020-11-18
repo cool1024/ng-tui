@@ -1,0 +1,20 @@
+import { Component } from '@angular/core';
+import { DropMenuItem, MenuService } from 'ng-tui';
+
+@Component({
+    template: ` <button #dom tsBtn (click)="showMenu(dom)">Click Here</button>`
+})
+export class DropdownComponent {
+
+    constructor(private menu: MenuService) { }
+
+    showMenu(targetDom: HTMLElement) {
+        this.menu.showMenu(targetDom, [
+            DropMenuItem.label('Action'),
+            DropMenuItem.label('Another Action'),
+            DropMenuItem.label('Something else here')
+        ]).subscribe(item => {
+            alert(JSON.stringify(item));
+        });
+    }
+}

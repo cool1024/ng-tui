@@ -21,12 +21,14 @@ import {
     ProgressModule,
     MapModule, 
     ModalModule,
-    TooltipsModule
+    TooltipsModule,
+    DropdownModule
 } from 'projects/ng-tui/src/public_api';
 
 @NgModule({
     imports: [
         ButtonModule,
+        DropdownModule,
         ToastModule,
         ConfirmModule,
         PrismModule,

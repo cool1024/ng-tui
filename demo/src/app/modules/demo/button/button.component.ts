@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Loader } from 'projects/ng-tui/src/public_api';
 import { timer } from 'rxjs';
 
 @Component({
@@ -13,11 +14,10 @@ export class ButtonComponent implements OnInit {
 
     }
 
-    doSubmit(btn: any) {
+    doSubmit(btn: Loader) {
+        // close animation after 3s
         timer(3000).subscribe(() => {
             btn.complete();
-            // btn.dismiss();
         });
     }
-
 }

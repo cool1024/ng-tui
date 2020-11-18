@@ -16,7 +16,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr class="text-primary">
-                            <th scope="col">Input</th>
+                            <th scope="col">@Input</th>
                             <th scope="col">Type</th>
                             <th scope="col">Description</th>
                         </tr>
@@ -27,42 +27,42 @@
                             <td>
                                 <code>string</code>
                             </td>
-                            <td>Color name, such as 'success', 'primary', etc.</td>
+                            <td>color name, such as 'success', 'primary', etc.</td>
                         </tr>
                         <tr>
                             <th scope="row">disabled</th>
                             <td>
                                 <code>boolean</code>
                             </td>
-                            <td>Whether to disable the button</td>
+                            <td>whether to disable the button</td>
                         </tr>
                         <tr>
                             <th scope="row">outline</th>
                             <td>
                                 <code>boolean</code>
                             </td>
-                            <td>Whether to use outline style</td>
+                            <td>whether to use outline style</td>
                         </tr>
                         <tr>
                             <th scope="row">sm</th>
                             <td>
                                 <code>boolean</code>
                             </td>
-                            <td>Small size</td>
+                            <td>apply small size</td>
                         </tr>
                         <tr>
                             <th scope="row">lg</th>
                             <td>
                                 <code>boolean</code>
                             </td>
-                            <td>Large size</td>
+                            <td>apply large size</td>
                         </tr>
                         <tr>
                             <th scope="row">loading</th>
                             <td>
                                 <code>string</code>
                             </td>
-                            <td>Loading icon name</td>
+                            <td>loading icon name (see examples)</td>
                         </tr>
                     </tbody>
                 </table>
@@ -80,7 +80,7 @@
                             <td>
                                 <code>Loader</code>
                             </td>
-                            <td>When the button sets the loading property, each time the button is pressed, the submit
+                            <td>when the button sets the loading property, each time the button is pressed, the submit
                                 event is
                                 triggered, and $event is used to close the animation.</td>
                         </tr>
@@ -164,12 +164,31 @@
                     <button tsBtn loading="hand" (submit)="doSubmit($event)">Custom-icon-hand</button>
                 </div>
                 <br>
-                <ts-tabs #tsTabs="tsTabs" [items]="['Html','TypeScript']">
-                    <ts-prism *ngIf="tsTabs.isActive(0)" [codeObs]=" '/assets/docs/button/loading.html' | request"
+                <ts-tabs #tsTabs="tsTabs" [activeIndex]="1" [items]="['Html','TypeScript']">
+                    <div style="height: 340px;">
+                        <ts-prism  *ngIf="tsTabs.isActive(0)" [codeObs]=" '/assets/docs/button/loading.html' | request"
                         language="html"></ts-prism>
                     <ts-prism *ngIf="tsTabs.isActive(1)" [codeObs]=" '/assets/docs/button/loading._' | request"
                         language="typescript"></ts-prism>
+                    </div>
                 </ts-tabs>
+            </div>
+        </div>
+    </div>
+    <!-- More -->
+    <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-header border-bottom">
+                <h5>Block Button</h5>
+                <p class="text-muted font-14">Use this attribute to set button size.</p>
+            </div>
+            <div class="card-body">
+                <div class="m-btn">
+                    <button tsBtn sm>Small</button>
+                    <button tsBtn>Default</button>
+                    <button tsBtn lg>Large</button>
+                </div>
+                <ts-prism [codeObs]=" '/assets/docs/button/size.html' | request" language="html"></ts-prism>
             </div>
         </div>
     </div>

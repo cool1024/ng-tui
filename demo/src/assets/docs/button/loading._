@@ -1,21 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Loader } from 'ng-tui';
 import { timer } from 'rxjs';
 
 @Component({
     selector: 'app-button',
-    templateUrl: './button.component.html',
-    styleUrls: ['./button.component.scss']
+    templateUrl: './button.component.html'
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent{
 
-    constructor() { }
-
-    ngOnInit() { }
-
-    doSubmit(btn: any) {
+    doSubmit(btn: Loader) {
+        // close animation after 3s
         timer(3000).subscribe(() => {
             btn.complete();
         });
     }
-
 }

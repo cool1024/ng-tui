@@ -26,7 +26,7 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
 })
 export class DropdownComponent extends BaseTheme implements OnChanges {
 
-    @Input() items: Item[];
+    @Input() items: Array<Item | string>;
 
     @Input() dropup: string;
 
@@ -56,9 +56,11 @@ export class DropdownComponent extends BaseTheme implements OnChanges {
         this.offsetY = 0;
         this.zIndex = 9999;
     }
-    ngOnChanges(changes: SimpleChanges): void {
+
+    ngOnChanges(changes: SimpleChanges) {
         if (changes.items && changes.items.currentValue) {
-            this.itemList = Util.formateItems(changes.items.currentValue)
+            this.itemList = Util.formateItems(changes.items.currentValue);
+            console.log(this.itemList);
         }
     }
 

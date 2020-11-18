@@ -1,7 +1,8 @@
-import { Component, Input, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, AfterViewInit,OnChanges, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { TabItem } from '../../tui-core/interfaces/item.interface';
 import { BaseTheme } from '../../tui-core/base-class/base-theme.class';
 import { ConfigService } from '../../tui-core/base-services/config.service';
+import { Util } from '../../tui-core/util';
 
 @Component({
     selector: "ts-tabs",
@@ -16,10 +17,13 @@ import { ConfigService } from '../../tui-core/base-services/config.service';
         <div *ngIf="needVertical" class="tab-bar" [style.top.px]="barOffset" [style.height.px]="barLength"></div>
     </div><ng-content></ng-content>`
 })
-export class TabComponent extends BaseTheme implements AfterViewInit {
+export class TabComponent extends BaseTheme implements AfterViewInit, OnChanges {
 
     @Input()
     items: Array<TabItem | string> = [];
+
+    @Input()
+    activeIndex = 0;
 
     @Output()
     tabChange = new EventEmitter<number>(true)
@@ -28,13 +32,17 @@ export class TabComponent extends BaseTheme implements AfterViewInit {
     tabsRef: ElementRef;
 
     tabsDom: HTMLDivElement;
-    activeIndex = 0;
     barOffset = 0;
     barLength = 0;
 
     constructor(private configService: ConfigService) {
         super();
         this.color = this.configService.config.defaultColor;
+    }
+    ngOnChanges(changes: SimpleChanges): void {
+        if(Util.notNull(changes.activeIndex)){
+            setTimeout(() => this.setActive(this.activeIndex));
+        }
     }
 
     itemText(item: TabItem | string) {
@@ -70,6 +78,6 @@ export class TabComponent extends BaseTheme implements AfterViewInit {
 
     ngAfterViewInit(): void {
         this.tabsDom = this.tabsRef.nativeElement;
-        setTimeout(() => this.setActive(this.activeIndex))
+        setTimeout(() => this.setActive(this.activeIndex));
     }
 }

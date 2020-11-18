@@ -8,6 +8,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ButtonComponent } from './button/button.component';
+import { DropdownComponent } from './dropdown/dropdown.component';
+
 import { TableComponent } from './table/table.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
@@ -20,6 +22,8 @@ import { ModalComponent } from './modal/modal.component';
 
 export const declarationComponents = [
     ButtonComponent,
+    DropdownComponent,
+
     TableComponent,
     PaginationComponent,
     CheckboxComponent,
