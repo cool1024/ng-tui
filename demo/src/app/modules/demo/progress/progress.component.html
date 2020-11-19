@@ -6,8 +6,34 @@
 
 <div class="column-container">
     <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div>
+                    <h5 class="m-0">Component Overview</h5>
+                </div>
+                <br>
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="text-primary">
+                            <th scope="col">@Input</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let input of inputs">
+                            <th scope="row">{{input[0]}}</th>
+                            <td><code>{{input[1]}}</code></td>
+                            <td>{{input[2]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="column-item mb-3">
         <div class="card card-body shadow-sm">
-            <h5 class="mb-3">Component Overview</h5>
+            <h5 class="mb-3">Example</h5>
             <ts-progress class="mb-2" [value]="30" color="primary"></ts-progress>
             <ts-progress class="mb-2" [value]="40" color="secondary"></ts-progress>
             <ts-progress class="mb-2" [value]="50" color="dark"></ts-progress>
@@ -15,6 +41,18 @@
             <ts-progress class="mb-2" [value]="70" color="warning"></ts-progress>
             <ts-progress class="mb-2" [value]="80" color="danger"></ts-progress>
             <ts-progress [value]="90" color="info"></ts-progress>
+            <ts-prism class="mt-3" [codeObs]=" '/assets/docs/progress/progress.html' | request" language="html">
+            </ts-prism>
+        </div>
+    </div>
+    <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="mb-3">More Usage</h5>
+                <ts-progress [value]="progressValue" color="primary"></ts-progress>
+                <ts-prism class="mt-3" [codeObs]=" '/assets/docs/progress/progress._' | request" language="typescript">
+                </ts-prism>
+            </div>
         </div>
     </div>
 </div>

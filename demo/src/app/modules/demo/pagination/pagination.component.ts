@@ -7,6 +7,17 @@ import { Pagination, requestObject } from 'projects/ng-tui/src/public_api';
 })
 export class PaginationComponent {
 
+    inputs = [
+        ['pagination', 'Pagination', `page data`],
+        ['btnNum', 'number', 'show button number, default value is 5'],
+        ['items', 'Item[]', 'row number select item'],
+        ['goTitle', 'string', 'go button tilte']
+    ];
+
+    outputs = [
+        ['pageChange', 'Pagination', 'page change callback']
+    ];
+
     page = new Pagination(100);
 
     examplePage = new Pagination();
