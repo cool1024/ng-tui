@@ -29,16 +29,18 @@ import {
     imports: [
         ButtonModule,
         DropdownModule,
+        ProgressModule,
+        ImageModule,
+
         ToastModule,
         ConfirmModule,
         PrismModule,
         TableModule,
         CheckboxModule,
-        ImageModule,
+    
         DatepickerModule,
         SelectModule,
         TabModule,
-        ProgressModule,
         MapModule,
         ModalModule,
         TooltipsModule,

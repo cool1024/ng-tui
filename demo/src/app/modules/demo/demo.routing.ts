@@ -7,32 +7,35 @@
  */
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ButtonComponent } from './button/button.component';
-import { DropdownComponent } from './dropdown/dropdown.component';
+
+import { ButtonComponent } from './base-component/button/button.component';
+import { DropdownComponent } from './base-component/dropdown/dropdown.component';
+import { PaginationComponent } from './base-component/pagination/pagination.component';
+import { ProgressComponent } from './base-component/progress/progress.component';
+
+import { TabsComponent } from './layout-view/tabs/tabs.component';
 
 import { TableComponent } from './table/table.component';
-import { PaginationComponent } from './pagination/pagination.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { SelectComponent } from './select/select.component';
 import { MapComponent } from './map/map.component';
 import { PickerComponent } from './picker/picker.component';
-import { TabsComponent } from './tabs/tabs.component';
-import { ProgressComponent } from './progress/progress.component';
 import { ModalComponent } from './modal/modal.component';
 
 export const declarationComponents = [
     ButtonComponent,
     DropdownComponent,
+    PaginationComponent,
+    ProgressComponent,
+
+    TabsComponent,
+    ModalComponent,
 
     TableComponent,
-    PaginationComponent,
     CheckboxComponent,
     SelectComponent,
     MapComponent,
-    PickerComponent,
-    TabsComponent,
-    ModalComponent,
-    ProgressComponent
+    PickerComponent
 ];
 
 const routes = declarationComponents.map(component => ({

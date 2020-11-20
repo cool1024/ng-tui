@@ -401,6 +401,7 @@ $color in $theme-colors {
         border-bottom: none;
         border-right: 1px solid rgba(0, 0, 0, 0.1);
         flex-direction: column;
+        flex-shrink: 0;
         display: inline-flex;
         .tab {
             width: 100%;

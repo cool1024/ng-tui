@@ -1,6 +1,5 @@
-<ts-tabs #tsTabsTwo="tsTabs" [items]="['One', 'Two', 'Three']">
-    <div class="mt-2">
-        <img *ngIf="tsTabsTwo.activeIndex === 0" class="w-100" src="https://api.ixiaowai.cn/gqapi/gqapi.php?i=0">
-        <img *ngIf="tsTabsTwo.activeIndex === 1" class="w-100" src="https://api.ixiaowai.cn/gqapi/gqapi.php?i=1">
-        <img *ngIf="tsTabsTwo.activeIndex === 2" class="w-100" src="https://api.ixiaowai.cn/gqapi/gqapi.php?i=2">
+<ts-tabs #tsTabsTwo="tsTabs" [items]="['IMAGE-A', 'IMAGE-B', 'IMAGE-C']">
+    <img *ngIf="tsTabsTwo.activeIndex === 0" src="https://api.ixiaowai.cn/gqapi/gqapi.php?i=0">
+    <img *ngIf="tsTabsTwo.activeIndex === 1" src="https://api.ixiaowai.cn/gqapi/gqapi.php?i=1">
+    <img *ngIf="tsTabsTwo.activeIndex === 2" src="https://api.ixiaowai.cn/gqapi/gqapi.php?i=2">
 </ts-tabs>

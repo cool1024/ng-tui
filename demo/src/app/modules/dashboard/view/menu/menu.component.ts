@@ -15,11 +15,11 @@ export class MenuComponent {
     menuTheme = createMenuTheme({
         defaultTextColor: '#343a40',
         hoverTextColor: 'white',
-        activeTextColor: 'white',
+        activeTextColor: 'rgb(20, 140, 255)',
         hoverBackgroundColor: 'linear-gradient(135deg, rgb(0 123 255 / 0.2) 0px, rgb(20 140 255 / 0.3) 60%)',
-        // activeBackgroundColor: 'white',
+        activeBackgroundColor: 'rgba(20, 140, 255, 0.3)',
         // activeBackgroundColor: '#343a40',
-        activeBackgroundColor: 'linear-gradient(135deg, rgb(0 123 255) 0px, rgb(20 140 255) 60%)'
+        // activeBackgroundColor: 'linear-gradient(135deg, rgb(0 123 255) 0px, rgb(20 140 255) 60%)'
     });
 
     get min(): boolean {

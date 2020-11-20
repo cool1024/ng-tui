@@ -41,6 +41,10 @@ export class Util {
         }
     }
 
+    static attrNotNullAndEmpty(object: Object, attrName: string) {
+        return object.hasOwnProperty(attrName) && Util.notNullAndEmpty(object[attrName]);
+    }
+
     static notNull(value: string | number | any | any[]): boolean {
         return value !== null && value !== undefined;
     }
