@@ -18,7 +18,7 @@ export class CollapseDirective implements AfterViewInit, OnChanges, Toggle {
         this.open = false;
     }
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         this.updateCollapseShow();
     }
 

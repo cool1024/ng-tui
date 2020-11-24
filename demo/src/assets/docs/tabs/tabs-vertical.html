@@ -1,1 +1,11 @@
-<ts-tabs vertical [items]="['One', 'Two', 'Three']"></ts-tabs>
+<ts-tabs #tsTabsThree="tsTabs" vertical class="d-flex align-items-start" [items]="['Terrance Moreno', 'Luke Cook', 'Joyce Freeman']">
+    <div *ngIf="tsTabsThree.activeIndex === 0" class="flex-grow-1">
+        
+    </div>
+    <div *ngIf="tsTabsThree.activeIndex === 1" class="flex-grow-1">
+
+    </div>
+    <div *ngIf="tsTabsThree.activeIndex === 2" class="flex-grow-1">
+    
+    </div>
+</ts-tabs>

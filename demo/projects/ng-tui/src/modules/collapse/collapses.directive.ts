@@ -21,7 +21,7 @@ export class CollapsesDirective implements AfterViewInit {
     ngAfterViewInit() {
         const collapses = this.collapses.toArray();
         this.toggles.forEach((e, index) => {
-            e.target = collapses[index];
+            e.setTarget(collapses[index]);
             e.handleFunc = (collapse: CollapseDirective) => {
                 if (this.auto) {
                     if (this.auto) {

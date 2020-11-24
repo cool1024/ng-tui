@@ -19,10 +19,11 @@ import {
     ToastModule,
     TabModule,
     ProgressModule,
-    MapModule, 
+    MapModule,
     ModalModule,
     TooltipsModule,
-    DropdownModule
+    DropdownModule,
+    CollapseModule
 } from 'projects/ng-tui/src/public_api';
 
 @NgModule({
@@ -32,15 +33,17 @@ import {
         ProgressModule,
         ImageModule,
 
+        TabModule,
+        CollapseModule,
+
         ToastModule,
         ConfirmModule,
         PrismModule,
         TableModule,
         CheckboxModule,
-    
+
         DatepickerModule,
         SelectModule,
-        TabModule,
         MapModule,
         ModalModule,
         TooltipsModule,

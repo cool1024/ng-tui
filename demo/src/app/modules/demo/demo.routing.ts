@@ -14,6 +14,7 @@ import { PaginationComponent } from './base-component/pagination/pagination.comp
 import { ProgressComponent } from './base-component/progress/progress.component';
 
 import { TabsComponent } from './layout-view/tabs/tabs.component';
+import { CollapseComponent } from './layout-view/collapse/collapse.component';
 
 import { TableComponent } from './table/table.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
@@ -29,6 +30,7 @@ export const declarationComponents = [
     ProgressComponent,
 
     TabsComponent,
+    CollapseComponent,
     ModalComponent,
 
     TableComponent,
