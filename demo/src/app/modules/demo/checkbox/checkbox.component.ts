@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastService } from 'projects/ng-tui/src/public_api';
 
 @Component({
     selector: 'app-checkbox',
@@ -6,12 +7,22 @@ import { Component } from '@angular/core';
 })
 export class CheckboxComponent {
 
-    radioValue = 'primary';
+    inputs = [
+        ['color', ' string', `color name, such as 'success', 'primary', etc.`],
+        ['value', ' any', 'checked value']
+    ];
 
-    checkboxValue = ['primary'];
+    outputs = [
+        ['checkedChange', 'boolean', 'checked status.'],
+    ];
 
-    switchValue = 'secondary';
+    radioValues = ['success', 'primary', 'danger'];
 
-    constructor() { }
+    checkedValue = 'primary';
 
+    constructor(private toast: ToastService) { }
+
+    showToast(content: string): void {
+        this.toast.notify({ title: 'Notify Title', content });
+    }
 }
