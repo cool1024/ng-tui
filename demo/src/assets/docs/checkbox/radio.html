@@ -1,11 +1,9 @@
-<div class="m-btn">
-    <ts-radio color="primary" [(ngModel)]="radioValue" value="primary">Primary</ts-radio>
-    <ts-radio color="secondary" [(ngModel)]="radioValue" value="secondary">Secondary</ts-radio>
-    <ts-radio color="success" [(ngModel)]="radioValue" value="success">Success</ts-radio>
-    <ts-radio color="warning" [(ngModel)]="radioValue" value="warning">Warning</ts-radio>
-    <ts-radio color="danger" [(ngModel)]="radioValue" value="danger">Danger</ts-radio>
-    <ts-radio color="info" [(ngModel)]="radioValue" value="info">Info</ts-radio>
-</div>
-<div class="mt-2 alert alert-{{radioValue}}" role="alert">
-    <a href="#" class="alert-link">{{radioValue}}</a>.
+<ts-radio 
+    *ngFor="let radioValue of radioValues" 
+    [(ngModel)]="checkedValue" 
+    [value]="radioValue" 
+    [color]="radioValue">
+</ts-radio>
+<div class="jumbotron mt-4 text-white bg-{{checkedValue}}">
+    <h1 class="display-4">Hello, world!</h1>
 </div>

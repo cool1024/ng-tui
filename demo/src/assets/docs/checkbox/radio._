@@ -1,11 +1,21 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-checkbox',
-    templateUrl: './checkbox.component.html'
+    template: `
+    <ts-radio 
+        *ngFor="let radioValue of radioValues" 
+        [(ngModel)]="checkedValue" 
+        [value]="radioValue" 
+        [color]="radioValue">
+    </ts-radio>
+    <div class="jumbotron mt-4 text-white bg-{{checkedValue}}">
+        <h1 class="display-4">Hello, world!</h1>
+    </div>`
 })
 export class CheckboxComponent {
 
-    radioValue = 'primary';
+    radioValues = ['success', 'primary', 'danger'];
 
+    checkedValue = 'primary';
 }
+

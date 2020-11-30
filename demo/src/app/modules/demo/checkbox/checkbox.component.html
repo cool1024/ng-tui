@@ -48,20 +48,25 @@
     </div>
     <div class="col-sm-12 col-lg-6">
         <div class="card card-body">
-            <h5>Basic usage of radio</h5>
-            <div class="mt-4">
-                <ts-radio *ngFor="let radioValue of radioValues" [(ngModel)]="checkedValue" [value]="radioValue"
-                    [color]="radioValue">
-                </ts-radio>
-                <div class="jumbotron mt-4 text-white bg-{{checkedValue}}">
-                    <h1 class="display-4">Hello, world!</h1>
-                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
-                        attention to featured content or information.</p>
-                    <hr>
-                    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-                    <button tsBtn outline color="light">Button</button>
+            <h5 class="mb-3">Basic Usage</h5>
+            <ts-tabs #tabsOne="tsTabs" [items]="['Preview','Code']">
+                <div *ngIf="tabsOne.activeIndex===0" class="mt-4">
+                    <ts-radio *ngFor="let radioValue of radioValues" [(ngModel)]="checkedValue" [value]="radioValue"
+                        [color]="radioValue">
+                    </ts-radio>
+                    <div class="jumbotron mt-4 text-white bg-{{checkedValue}}">
+                        <h1 class="display-4">Hello, world!</h1>
+                        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling
+                            extra
+                            attention to featured content or information.</p>
+                        <hr>
+                        <p>It uses utility classes for typography and spacing to space content out within the larger
+                            container.</p>
+                        <button tsBtn outline color="light">Button</button>
+                    </div>
                 </div>
-            </div>
+                <ts-prism *ngIf="tabsOne.activeIndex===1" [codeObs]=" '/assets/docs/checkbox/radio._' | request" language="typescript"></ts-prism>
+            </ts-tabs>
         </div>
     </div>
 </div>
