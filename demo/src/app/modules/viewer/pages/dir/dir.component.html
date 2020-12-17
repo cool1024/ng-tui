@@ -1,0 +1,6 @@
+<div class="masonry">
+    <div *ngFor="let item of items" (click)="showDetail(item)" class="item">
+        <img src="{{item.previewUrl}}">
+        <p class="text-center">{{item.fileName}}</p>
+    </div>
+</div>

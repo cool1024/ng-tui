@@ -49,6 +49,10 @@ export class Util {
         return value !== null && value !== undefined;
     }
 
+    static allNotNull(...item: any[]) {
+        return !~item.findIndex(e => !Util.notNull(e));
+    }
+
     static notNullAndEmpty(value: string | number | any[]): boolean {
         return Util.notNull(value) && Util.notEmpty(value);
     }

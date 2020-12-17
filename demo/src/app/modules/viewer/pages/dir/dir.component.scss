@@ -1,0 +1,12 @@
+.masonry {
+    width: 100%;
+    columns: 4;
+    .item {
+        width: 100%;
+        break-inside: avoid;
+        margin-bottom: 15px;
+        img {
+            width: 100%;
+        }
+    }
+}
