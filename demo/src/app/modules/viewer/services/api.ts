@@ -10,7 +10,8 @@ export class Api {
     private hostUrl = 'http://127.0.0.1:8080';
 
     getDirs(path: string): Observable<FileItem[]> {
-        return requestObject(`${this.hostUrl}/dir?dir=${path}`).pipe(this.dataMap)
+        return requestObject('/assets/album.json').pipe(this.dataMap)
+        // return requestObject(`${this.hostUrl}/dir?dir=${path}`).pipe(this.dataMap)
     }
 
     private dataMap = map((res: any): FileItem[] => {
