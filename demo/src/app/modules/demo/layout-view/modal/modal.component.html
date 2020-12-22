@@ -1,0 +1,84 @@
+<div class="p-1">
+    <h3 class="font-weight-normal">Modal</h3>
+    <h5 class="text-muted font-weight-light mb-4">Add dialogs to your site
+        for lightboxes, user notifications, or completely custom content.</h5>
+</div>
+
+<div class="column-container">
+    <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="m-0">Service Overview</h5>
+                <br>
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="text-primary">
+                            <th scope="col">Method</th>
+                            <th scope="col">Return</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let method of methods">
+                            <th scope="row">{{method[0]}}</th>
+                            <td><code>{{method[1]}}</code></td>
+                            <td>{{method[2]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="m-0">ModalHandle</h5><br>
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="text-primary">
+                            <th scope="col">Method</th>
+                            <th scope="col">Return</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let method of methods">
+                            <th scope="row">{{method[0]}}</th>
+                            <td><code>{{method[1]}}</code></td>
+                            <td>{{method[2]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="mb-3">Show Modal</h5>
+                <div class="form-group">
+                    <label>Title:</label>
+                    <input type="text" class="form-control" [(ngModel)]="modalTitle">
+                    <small id="emailHelp" class="form-text text-muted">the text will show as modal title.</small>
+                </div>
+                <button tsBtn (click)="showModal()">Open</button>
+                <ts-prism class="mt-2" [codeObs]=" '/assets/docs/modal/modal._' | request" language="typescript">
+                </ts-prism>
+            </div>
+        </div>
+    </div>
+    <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="mb-3">Dialog Example</h5>
+                <div class="m-btn">
+                    <button tsBtn="danger" (click)="showDialog('danger')">Danger</button>
+                    <button tsBtn="warning" (click)="showDialog('warning')">Warning</button>
+                    <button tsBtn="primary" (click)="showDialog('primary')">Primary</button>
+                    <button tsBtn="info" (click)="showDialog('info')">Info</button>
+                    <button tsBtn="success" (click)="showDialog('success')">Success</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

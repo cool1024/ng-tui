@@ -6,13 +6,20 @@ import { ComponentHandleService, ConfirmService, ModalService, ToastService } fr
 })
 export class ModalComponent {
 
+    methods = [
+        ['create(content: Component, data = {})', ' ModalHandle', `create new modal.`]
+    ];
+
+    modalTitle = 'Modal Title';
+
     constructor(private modal: ModalService, private toast: ToastService, private confirm: ConfirmService) { }
 
     showModal() {
-        const param = { messageContent: 'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.' };
+        const param = { modalTitle: this.modalTitle };
         this.modal.create(SimpleModal)
             .present(param)
             .subscribe(res => {
+                console.log(res);
                 this.toast.info('Message', res);
             });
     }
@@ -29,21 +36,26 @@ export class ModalComponent {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Simple Modal</h5>
+                <h5 class="modal-title">{{modalTitle}}</h5>
                 <button (click)="handle.close()" type="button" class="close" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <input class="form-control"/>
+                <div class="form-group">
+                    <label>Leave your message</label>
+                    <textarea [(ngModel)]="message" class="form-control" rows="3"></textarea>
+                </div>
             </div>
             <div class="modal-footer">
-                <button (click)="handle.close(messageContent)" type="button" class="btn btn-secondary">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button (click)="handle.close(message)" type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>`
-}) class SimpleModal {
-    messageContent: string;
+})
+
+export class SimpleModal {
+    modalTitle: string;
+    message: string;
     constructor(public handle: ComponentHandleService) { }
 }

@@ -3,7 +3,7 @@
  *
  * @author cool1024
  * @file   demo.routing.ts
- * @date   2020-10-09
+ * @date   2020-10-09
  */
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -21,7 +21,7 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { SelectComponent } from './select/select.component';
 import { MapComponent } from './map/map.component';
 import { PickerComponent } from './picker/picker.component';
-import { ModalComponent } from './modal/modal.component';
+import { ModalComponent, SimpleModal } from './layout-view/modal/modal.component';
 
 export const declarationComponents = [
     ButtonComponent,
@@ -32,6 +32,7 @@ export const declarationComponents = [
     TabsComponent,
     CollapseComponent,
     ModalComponent,
+    SimpleModal,
 
     TableComponent,
     CheckboxComponent,
