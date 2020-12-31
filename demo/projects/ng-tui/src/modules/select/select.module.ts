@@ -4,6 +4,7 @@ import { DropdownModule } from '../dropdown/dropdown.module';
 import { SelectComponent } from './select.component';
 import { SelectsComponent } from './selects.component';
 import { SelectBlockComponent } from './select-block.component';
+import { SelectService } from './select.service';
 
 @NgModule({
     imports: [
@@ -14,6 +15,9 @@ import { SelectBlockComponent } from './select-block.component';
         SelectComponent,
         SelectsComponent,
         SelectBlockComponent,
+    ],
+    providers: [
+        SelectService
     ],
     exports: [
         FormsModule,
