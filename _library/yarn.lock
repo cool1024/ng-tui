@@ -7372,14 +7372,10 @@ ts-node@~7.0.0:
     source-map-support "^0.5.6"
     yn "^2.0.0"
 
-tsickle@>=0.34.0:
-  version "0.37.0"
-  resolved "https://registry.npm.taobao.org/tsickle/download/tsickle-0.37.0.tgz#cc8a174310ac349913c62477b346db4f342c87d1"
-  integrity sha1-zIoXQxCsNJkTxiR3s0bbTzQsh9E=
-  dependencies:
-    minimist "^1.2.0"
-    mkdirp "^0.5.1"
-    source-map "^0.7.3"
+tsickle@~0.39.1:
+  version "0.39.1"
+  resolved "https://registry.yarnpkg.com/tsickle/-/tsickle-0.39.1.tgz#7ccf672cde5b430f5dd0b281ee49e170ef390ff9"
+  integrity sha512-CCc9cZhZbKoNizVM+K3Uqgit/go8GacjpqTv1cpwG/n2P0gB9GMoWZbxrUULDE9Wz26Lh86CGf6QyIPUVV1lnQ==
 
 tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.10.0"
@@ -7966,9 +7962,9 @@ xxhashjs@^0.2.1:
     cuint "^0.2.2"
 
 y18n@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.npm.taobao.org/y18n/download/y18n-3.2.1.tgz#6d15fba884c08679c0d77e88e7759e811e07fa41"
-  integrity sha1-bRX7qITAhnnA136I53WegR4H+kE=
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/y18n/-/y18n-3.2.2.tgz#85c901bd6470ce71fc4bb723ad209b70f7f28696"
+  integrity sha512-uGZHXkHnhF0XeeAPgnKfPv1bgKAYyVvmNL1xlKsPYZPaIHxGti2hHqvOCQv71XMsLxu1QjergkqogUnms5D3YQ==
 
 "y18n@^3.2.1 || ^4.0.0", y18n@^4.0.0:
   version "4.0.0"
