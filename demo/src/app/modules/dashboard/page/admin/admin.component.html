@@ -1,60 +1,47 @@
-<!-- <ts-tabs (tabChange)="changeTabContent($event)">
-    <ts-tab></ts-tab>
-    <ts-tab></ts-tab>
-    <ts-tab></ts-tab>
-</ts-tabs> -->
-<div class="card shadow-sm bg-white" style="width: 500px;">
+<div class="card shadow-sm bg-white" style="width: 500px">
     <div class="card-header d-flex align-items-center">
-        <img class="rounded-circle border" width="60" height="60" src="assets/images/avatar.jpg" alt="avatar">
+        <img class="rounded-circle" width="60" height="60" src="assets/image/avatar.jpg" alt="avatar" />
         <div class="ml-3">
-            <h5 class="m-0">Admin Manager</h5>
-            <div>18270880000</div>
+            <h5 class="m-0">{{ adminInfo.name }}</h5>
+            <div>{{ adminInfo.role }}</div>
         </div>
     </div>
-    <div class="card-body" style="background-image: url(assets/images/card_2.png);background-size: cover;">
+    <div class="card-body">
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label>邮箱</label>
-                <input type="email" class="form-control" value="123456@mail.com">
+                <label>Email:</label>
+                <input type="email" class="form-control" [(ngModel)]="adminInfo.email" />
             </div>
             <div class="form-group col-md-6">
-                <label>社交账号</label>
-                <input type="text" class="form-control" value="3456721">
+                <label>Phone:</label>
+                <input type="text" class="form-control" [(ngModel)]="adminInfo.phone" />
             </div>
         </div>
         <div class="form-group">
-            <label>联系地址</label>
-            <ts-select-block [options]="blockOptions" [(ngModel)]="blockValue"></ts-select-block>
+            <label>Address:</label>
+            <input type="text" class="form-control" [(ngModel)]="adminInfo.address" />
         </div>
         <div class="form-group">
-            <label>相关说明</label>
-            <textarea type="text" class="form-control"></textarea>
+            <label>Description</label>
+            <textarea type="text" class="form-control" [(ngModel)]="adminInfo.description"></textarea>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputCity">City</label>
-                <input type="text" class="form-control" id="inputCity">
+                <label>City</label>
+                <input type="text" class="form-control" [(ngModel)]="adminInfo.city" />
             </div>
             <div class="form-group col-md-4">
                 <label for="inputState">State</label>
-                <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                </select>
+                <input type="text" class="form-control" [(ngModel)]="adminInfo.state" />
             </div>
             <div class="form-group col-md-2">
-                <label for="inputZip">Zip</label>
-                <input type="text" class="form-control" id="inputZip">
+                <label>Zip</label>
+                <input type="text" class="form-control" [(ngModel)]="adminInfo.zip" />
             </div>
         </div>
-        <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                    Check me out
-                </label>
-            </div>
+        <div class="m-btn">
+            <button tsBtn>Refresh</button>
+            <button tsBtn="primary">Save</button>
         </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
     </div>
 </div>

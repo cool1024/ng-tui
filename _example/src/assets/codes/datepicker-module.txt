@@ -1,8 +1,0 @@
-// 导入日期模块在需要使用这个日期组件的特性模块
-import { DatePickerModule } from 'ng-tools-ui';
- 
-@NgModule({
-    imports: [..., DatePickerModule ],
-    ...
-})
-export class MyModule { }

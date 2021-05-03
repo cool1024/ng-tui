@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { LoginConfig } from './login.interface';
+import { defaultLoginConfig, LoginConfig } from './login.interface';
 import { Router } from '@angular/router';
-import { TUIComponent } from 'projects/ng-tui/src/public_api';
+import { TUIComponent } from 'ng-tui';
 
 @Component({
     selector: 'dashboard-login',
@@ -18,7 +18,9 @@ export class LoginComponent implements TUIComponent {
         password: ''
     };
 
-    constructor(private router: Router) { }
+    constructor(private router: Router) { 
+        this.config = defaultLoginConfig;
+    }
 
     confirmLogin(btn: any) {
         this.dismiss();

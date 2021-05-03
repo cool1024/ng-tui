@@ -1,0 +1,28 @@
+{
+    "name": "ng-tui",
+    "version": "0.1.7-alpha",
+    "description": "a tools ui for angular10+",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/cool1024/ng-tui.git"
+    },
+    "bugs": {
+        "url": "https://github.com/cool1024/ng-tui/issues"
+    },
+    "homepage": "https://github.com/cool1024/ng-tui#readme",
+    "author": "www.cool1024.com",
+    "keywords": [
+        "bootstrap5",
+        "angular10",
+        "iconfont"
+    ],
+    "license": "ISC",
+    "peerDependencies": {
+        "@angular/common": "^11.0.5",
+        "@angular/core": "^11.0.5",
+        "@angular/router": "~11.0.5"
+    },
+    "dependencies": {
+        "tslib": "^2.0.0"
+    }
+}

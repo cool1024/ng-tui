@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { Item, ItemTree, requestObject } from 'projects/ng-tui/src/public_api';
+import { Item, ItemTree, requestObject } from 'ng-tui';
 import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-select',
-    templateUrl: './select.component.html'
+    templateUrl: './select.component.html',
 })
 export class SelectComponent {
-
     selectOptions: Item[] = [
         { text: 'Dark', value: 'dark' },
         { text: 'Primary', value: 'primary' },
@@ -30,23 +29,23 @@ export class SelectComponent {
                     children: [
                         { value: 5, text: 'A-C-A' },
                         { value: 6, text: 'A-C-B' },
-                        { value: 7, text: 'A-C-C' }
-                    ]
+                        { value: 7, text: 'A-C-C' },
+                    ],
                 },
-            ]
+            ],
         },
         {
             value: 8,
             text: 'B',
             children: [
                 { value: 9, text: 'B-A' },
-                { value: 10, text: 'B-B' }
-            ]
+                { value: 10, text: 'B-B' },
+            ],
         },
         {
             value: 11,
-            text: 'C'
-        }
+            text: 'C',
+        },
     ];
 
     selectValue = 'dark';
@@ -60,11 +59,16 @@ export class SelectComponent {
     }
 
     doSearchUser = (userName: string) => {
-        return requestObject(`https://randomuser.me/api/?seed=cool1024&results=100`)
-            .pipe(map(res => res.results.map(user => ({
-                value: user.cell,
-                content: `<img class="rounded-circle mr-3 my-1" height="40" width="40" src="${user.picture.thumbnail}"/>${user.name.first}`,
-                text: user.name.first
-            })).filter(item => ~item.text.indexOf(userName))))
+        return requestObject(`https://randomuser.me/api/?seed=cool1024&results=100`).pipe(
+            map((res: any) =>
+                res.results
+                    .map((user: any) => ({
+                        value: user.cell,
+                        content: `<img class="rounded-circle mr-3 my-1" height="40" width="40" src="${user.picture.thumbnail}"/>${user.name.first}`,
+                        text: user.name.first,
+                    }))
+                    .filter((item: any) => item.text.indexOf(userName) >= 0)
+            )
+        );
     }
 }

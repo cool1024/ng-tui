@@ -1,0 +1,7 @@
+<div *ngFor="let items of showNodes;index as level" class="dropdown-menu position-relative">
+    <a *ngFor="let item of items" 
+    class="dropdown-item pointer py-2" 
+    tsHover [hoverStyle]="hoverStyle" [hoverActive]="isActiveItem(item)"
+    (hover)="$event && updateShowNodes(level, item)"
+    (click)="closeMenu(item)">{{item.title}}</a>
+</div>

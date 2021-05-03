@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ComponentService, ComponentHandle } from 'projects/ng-tui/src/public_api';
+import { ComponentService, ComponentHandle } from 'ng-tui';
 import { LoginComponent } from '../view/login/login.component';
 import { LoginConfig } from '../view/login/login.interface';
 import { Observable, of } from 'rxjs';
@@ -9,7 +9,7 @@ import { User, USER_DATA } from '../interface/user.interface';
 @Injectable()
 export class DashbardService {
 
-    private loginViewHandle: ComponentHandle;
+    private loginViewHandle?: ComponentHandle;
 
     set menuMode(value: boolean) { this.setValueToStorage('menuMode', String(value)) }
     get menuMode() { return this.getBooleanFromStorage('menuMode') }

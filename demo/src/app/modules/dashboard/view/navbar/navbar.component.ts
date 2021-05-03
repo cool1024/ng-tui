@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TUIService, MenuService, Position, DropMenuItem } from 'projects/ng-tui/src/public_api';
+import { TUIService, MenuService, Position, DropMenuItem } from 'ng-tui';
 import { DashbardService } from '../../service/dashboard.service';
 import { loginConfig } from 'src/config/login-config';
 
@@ -27,9 +27,9 @@ export class NavbarComponent {
         this.menuService.showMenu(
             dom,
             [
-                DropMenuItem.image('简体中文', 'assets/images/flags/cn.gif', 1),
-                DropMenuItem.image('日本语', 'assets/images/flags/jp.gif', 2),
-                DropMenuItem.image('English', 'assets/images/flags/en.gif', 3)
+                DropMenuItem.image('简体中文', 'assets/image/flags/cn.gif', 1),
+                DropMenuItem.image('日本语', 'assets/image/flags/jp.gif', 2),
+                DropMenuItem.image('English', 'assets/image/flags/en.gif', 3)
             ],
             { position: Position.AUTO, offsetY: 10 }
         ).subscribe();
@@ -37,11 +37,11 @@ export class NavbarComponent {
 
     showUserMenu(dom: HTMLElement) {
         const menuItems = [
-            DropMenuItem.label('系统管理员', 'iconfont icon-account'),
-            DropMenuItem.label('18270881855', 'iconfont icon-mobile'),
-            DropMenuItem.label('个人设置', 'iconfont icon-set'),
+            DropMenuItem.label('Administrator', 'iconfont icon-account'),
+            DropMenuItem.label('012-9832-321', 'iconfont icon-mobile'),
+            DropMenuItem.label('Settings', 'iconfont icon-set'),
             DropMenuItem.split(),
-            DropMenuItem.label('退出登录', 'iconfont icon-out')
+            DropMenuItem.label('Logout', 'iconfont icon-out')
         ];
         const menuConfig = { position: Position.AUTO, offsetX: -100, offsetY: 10 };
         this.menuService.showMenu(dom, menuItems, menuConfig).subscribe(res => {

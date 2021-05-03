@@ -1,16 +1,13 @@
-<div class="fixed-top w-100 h-100 overflow-hidden bg-dark d-flex" style="z-index: 1;">
-    <dashboard-menu class="h-100 overflow-hidden flex-shrink-0" [menu]="menu">
-    </dashboard-menu>
+<div class="fixed-top w-100 h-100 overflow-hidden bg-dark d-flex" style="z-index: 1">
+    <dashboard-menu class="h-100 overflow-hidden flex-shrink-0" [menu]="menu"></dashboard-menu>
     <div class="flex-grow-1 bg-danger overflow-hidden d-flex flex-column">
         <div class="flex-shrink-0 shadow-sm">
             <dashboard-navbar></dashboard-navbar>
         </div>
-        <div class="flex-grow-1 bg-light" style="overflow-y: auto;overflow-x: hidden;">
+        <div class="flex-grow-1 bg-light" style="overflow-y: auto; overflow-x: hidden">
             <div [tsLoad]="uiService.routeLoading" class="p-3">
                 <router-outlet></router-outlet>
             </div>
         </div>
     </div>
 </div>
-
-<!-- <router-outlet></router-outlet> -->

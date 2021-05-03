@@ -1,0 +1,16 @@
+<div
+    #menuView
+    style="visibility: hidden; top: 0; left: 0"
+    [ngStyle]="{minWidth:minWidth+'px',zIndex:zIndex}"
+    class="bg-white animated shadow no-select py-2 position-absolute d-inline-block;"
+>
+    <ng-container *ngFor="let item of items;index as i">
+        <div *ngIf="item.isLine" class="dropdown-divider"></div>
+        <a *ngIf="item.isItem" (click)="itemClick(item, i)" class="dropdown-item pointer" close>
+            <i *ngIf="item.hasIcon" class="mr-1 {{item.icon}}"></i>{{item.title}}
+        </a>
+        <div ngIf="item.isTitle" class="dropdown-item">
+            <i *ngIf="item.hasIcon" class="mr-1 {{item.icon}}"></i>{{item.title}}
+        </div>
+    </ng-container>
+</div>

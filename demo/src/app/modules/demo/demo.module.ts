@@ -9,46 +9,33 @@ import { NgModule } from '@angular/core';
 import { declarationComponents, DemoRoutingModule } from './demo.routing';
 import {
     ButtonModule,
-    PrismModule,
-    TableModule,
     ImageModule,
-    CheckboxModule,
-    DatepickerModule,
     SelectModule,
     ConfirmModule,
     ToastModule,
     TabModule,
-    ProgressModule,
-    MapModule,
-    ModalModule,
     TooltipsModule,
     DropdownModule,
-    CollapseModule
-} from 'projects/ng-tui/src/public_api';
+    CollapseModule,
+    PaginationModule,
+    PrismModule,
+} from 'ng-tui';
 
 @NgModule({
     imports: [
         ButtonModule,
         DropdownModule,
-        ProgressModule,
         ImageModule,
-
         TabModule,
         CollapseModule,
-
         ToastModule,
         ConfirmModule,
-        PrismModule,
-        TableModule,
-        CheckboxModule,
-
-        DatepickerModule,
         SelectModule,
-        MapModule,
-        ModalModule,
         TooltipsModule,
-        DemoRoutingModule
+        PaginationModule,
+        PrismModule,
+        DemoRoutingModule,
     ],
     declarations: [declarationComponents],
 })
-export class DemoModule { }
+export class DemoModule {}

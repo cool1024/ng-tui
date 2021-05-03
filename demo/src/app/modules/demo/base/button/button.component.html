@@ -1,0 +1,205 @@
+<div class="p-1">
+    <h3 class="font-weight-normal">BUTTON</h3>
+    <h5 class="text-muted font-weight-light mb-4">
+        Bootstrap’s custom button styles for actions in forms, dialogs, and more with support forloading,sizes,and more.
+    </h5>
+</div>
+<div class="column-container">
+    <!-- Overview -->
+    <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div>
+                    <h5 class="m-0">Directive Overview</h5>
+                </div>
+                <br />
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="text-primary">
+                            <th scope="col">@Input</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">color</th>
+                            <td>
+                                <code>string</code>
+                            </td>
+                            <td>color name, such as 'success', 'primary', etc.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">disabled</th>
+                            <td>
+                                <code>boolean</code>
+                            </td>
+                            <td>whether to disable the button</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">outline</th>
+                            <td>
+                                <code>boolean</code>
+                            </td>
+                            <td>whether to use outline style</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">sm</th>
+                            <td>
+                                <code>boolean</code>
+                            </td>
+                            <td>apply small size</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">lg</th>
+                            <td>
+                                <code>boolean</code>
+                            </td>
+                            <td>apply large size</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">loading</th>
+                            <td>
+                                <code>string</code>
+                            </td>
+                            <td>loading icon name (see examples)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-striped mt-2">
+                    <thead>
+                        <tr class="text-primary">
+                            <th scope="col">Output</th>
+                            <th scope="col" style="width: 120px">Event Type</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">submit</th>
+                            <td>
+                                <code>Loader</code>
+                            </td>
+                            <td>
+                                when the button sets the loading property, each time the button is pressed, the submit
+                                event is triggered, and $event is used to close the animation.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Colorful -->
+    <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-header border-bottom">
+                <h5>Colorful Buttons</h5>
+                <p class="text-muted font-14">Use the attribute to set color.</p>
+            </div>
+            <div class="card-body">
+                <div class="m-btn">
+                    <button tsBtn>Default</button>
+                    <button tsBtn color="white">White</button>
+                    <button tsBtn color="primary">Primary</button>
+                    <button tsBtn color="secondary">Secondary</button>
+                    <button tsBtn color="success">Success</button>
+                    <button tsBtn color="warning">Warning</button>
+                    <button tsBtn color="danger">Danger</button>
+                    <button tsBtn color="info">Info</button>
+                </div>
+                <br />
+                <ts-prism [codeObs]="'/assets/docs/button/color.html' | request" language="html"></ts-prism>
+            </div>
+        </div>
+    </div>
+    <!-- Outline -->
+    <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-header border-bottom">
+                <h5>Outline Buttons</h5>
+                <p class="text-muted font-14">Apply outline style for button.</p>
+            </div>
+            <div class="card-body">
+                <div class="m-btn">
+                    <button tsBtn outline>Default</button>
+                    <button tsBtn outline color="white">White</button>
+                    <button tsBtn outline color="primary">Primary</button>
+                    <button tsBtn outline color="secondary">Secondary</button>
+                    <button tsBtn outline color="success">Success</button>
+                    <button tsBtn outline color="warning">Warning</button>
+                    <button tsBtn outline color="danger">Danger</button>
+                    <button tsBtn outline color="info">Info</button>
+                </div>
+                <br />
+                <ts-prism [codeObs]="'/assets/docs/button/outline.html' | request" language="html"></ts-prism>
+            </div>
+        </div>
+    </div>
+    <!-- Size -->
+    <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-header border-bottom">
+                <h5>More Size</h5>
+                <p class="text-muted font-14">Use this attribute to set button size.</p>
+            </div>
+            <div class="card-body">
+                <div class="m-btn">
+                    <button tsBtn sm>Small</button>
+                    <button tsBtn>Default</button>
+                    <button tsBtn lg>Large</button>
+                </div>
+                <br />
+                <ts-prism [codeObs]="'/assets/docs/button/size.html' | request" language="html"></ts-prism>
+            </div>
+        </div>
+    </div>
+    <!-- Loading -->
+    <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-header border-bottom">
+                <h5>Loading Button</h5>
+                <p class="text-muted font-14">A button white loading anime.</p>
+            </div>
+            <div class="card-body">
+                <div class="m-btn">
+                    <button tsBtn loading (submit)="doSubmit($event)">Loading</button>
+                    <button tsBtn loading="favorite" (submit)="doSubmit($event)">Custom-icon-favorite</button>
+                    <button tsBtn loading="hand" (submit)="doSubmit($event)">Custom-icon-hand</button>
+                </div>
+                <br />
+                <ts-tabs #tsTabs="tsTabs" [activeIndex]="1" [items]="['Html', 'TypeScript']">
+                    <div style="height: 340px">
+                        <ts-prism
+                            *ngIf="tsTabs.isActive(0)"
+                            [codeObs]="'/assets/docs/button/loading.html' | request"
+                            language="html"
+                        ></ts-prism>
+                        <ts-prism
+                            *ngIf="tsTabs.isActive(1)"
+                            [codeObs]="'/assets/docs/button/loading._' | request"
+                            language="typescript"
+                        ></ts-prism>
+                    </div>
+                </ts-tabs>
+            </div>
+        </div>
+    </div>
+    <!-- More -->
+    <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-header border-bottom">
+                <h5>Block Button</h5>
+                <p class="text-muted font-14">Use this attribute to set button size.</p>
+            </div>
+            <div class="card-body">
+                <div class="m-btn">
+                    <button tsBtn sm>Small</button>
+                    <button tsBtn>Default</button>
+                    <button tsBtn lg>Large</button>
+                </div>
+                <ts-prism [codeObs]="'/assets/docs/button/size.html' | request" language="html"></ts-prism>
+            </div>
+        </div>
+    </div>
+</div>

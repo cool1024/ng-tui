@@ -15,7 +15,6 @@ $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black: #000 !default;
-
 $blue: #3e81ce;
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
@@ -26,8 +25,6 @@ $yellow: #ffd900 !default;
 $green: #2abd87 !default;
 $teal: #35d1a2 !default;
 $cyan: #50a4ff !default;
-
-// 基础属性配置（阴影，渐变，动画，印刷样式）
 $enable-shadows: true;
 $enable-gradients: false;
 $enable-transitions: true;
@@ -41,13 +38,7 @@ $font-size-base: 0.9rem;
 $font-weight-base: 400;
 $input-font-weight: $font-weight-base;
 $btn-font-weight: $font-weight-base;
-$font-family-base: "Helvetica Neue",
-Helvetica,
-Arial,
-sans-serif;
-// $line-height-base;
-
-// 表格样式配置
+$font-family-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $table-head-bg: rgba($gray-300, 0.1);
 $table-head-color: $gray-600;
 $table-border-width: 1px;
@@ -58,35 +49,31 @@ $table-bg: rgba($gray-100, 0.1);
 $table-hover-bg: rgba($gray-300, 0.3);
 $table-active-bg: $table-hover-bg;
 $table-head-color: $primary;
-
-// 卡片样式配置
 $card-border-radius: 0;
 $card-border-width: 0;
 $card-cap-bg: transparent;
-
-// 按钮样式配置
 $btn-box-shadow: none;
-
-// 下拉按钮样式配置
 $dropdown-border-radius: 0;
 $dropdown-min-width: auto;
-
-// 输入框配置
 $input-btn-focus-box-shadow: none;
 $input-focus-box-shadow: none;
-
-// 网格间距配置
 $grid-gutter-width: 15px !default;
-
-
-// 下拉菜单样式
 $dropdown-border-color: rgba($black, 0.01);
 $dropdown-link-active-color: $dark;
 $dropdown-link-active-bg: $gray-200;
 $input-placeholder-color: $gray-300;
-
-// 主题颜色
-$theme-colors: ("primary": $primary, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark, "purple": $purple, "pink": $pink);
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $light,
+    "dark": $dark,
+    "purple": $purple,
+    "pink": $pink,
+);
 
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/root";
@@ -113,58 +100,30 @@ $theme-colors: ("primary": $primary, "secondary": $secondary, "success": $succes
 @import "~bootstrap/scss/close";
 @import "~bootstrap/scss/modal";
 @import "~bootstrap/scss/jumbotron";
-
-
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/print";
-
-/** tui必须的基础样式，每个组件的样式都在里面 **/
-@import "assets/css/base";
-
-/** iconfont **/
-
-// @import "assets/iconfont/iconfont.css";
-
-.iconfont {
-    font-size: inherit;
-}
-
-.iconfont-rotate {
-    animation: rotate 0.5s infinite linear;
-    display: inline-block;
-    text-align: center;
-}
-
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(359deg);
-    }
-}
-
-/** propper tooltip **/
-@import "assets/css/tooltip";
 
 /** animate.css **/
 @import "~animate.css/source/_base.css";
 @import "~animate.css/source/sliding_entrances/slideInUp.css";
-@import "~animate.css/source/attention_seekers/pulse.css";
 @import "~animate.css/source/sliding_entrances/slideInLeft.css";
 @import "~animate.css/source/zooming_entrances/zoomIn.css";
-@import "~animate.css/source/zooming_entrances/zoomInLeft.css";
-@import "~animate.css/source/fading_entrances/fadeIn.css";
 @import "~animate.css/source/bouncing_entrances/bounceIn.css";
 @import "~animate.css/source/specials/hinge.css";
 @import "~animate.css/source/rotating_exits/rotateOut.css";
-
-// 默认所有动画都是0.4s
 .animated {
     animation-duration: 0.4s;
 }
-
+.animated.hinge {
+    animation-duration: 1s;
+}
+.animated.zoomInLeft {
+    animation-duration: 0.2s;
+    animation-name: zoomIn;
+}
+/** tui **/
+@import "assets/scss/base";
+@import "assets/scss/tooltip";
 
 /** three-dots **/
 $dotColor: $primary;

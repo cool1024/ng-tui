@@ -1,8 +1,8 @@
 import { LoginConfig } from '../app/modules/dashboard/view/login/login.interface';
 
 export const loginConfig: LoginConfig = {
-    backgroundImageSrc: 'assets/images/background.svg',
-    logoSrc: 'assets/images/logo.svg',
+    backgroundImageSrc: 'assets/image/background.svg',
+    logoSrc: 'assets/image/logo.svg',
     title: 'Admin Pro',
     subject: '管理员登录',
     description: '欢迎使用本模板，使用Angular打造的精简模板',

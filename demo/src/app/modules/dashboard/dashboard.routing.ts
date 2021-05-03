@@ -1,10 +1,3 @@
-/**
- * Dashboard Routing
- *
- * @author cool1024
- * @file   dashboard.routing.ts
- * @date   2019-10-17
- */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './view/login/login.component';
@@ -25,11 +18,6 @@ export const declarationComponents = [
     MenuComponent,
     HomeComponent,
     AdminComponent
-];
-
-
-export const entryComponents = [
-    LoginComponent
 ];
 
 @NgModule({

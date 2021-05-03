@@ -8,8 +8,8 @@ const routes: Routes = [
 
   // Child Module
   { path: 'demo', loadChildren: () => import('./modules/demo/demo.module').then(m => m.DemoModule) },
-  { path: 'data', loadChildren: () => import('./modules/data/data.module').then(m => m.DataModule) },
-  { path: 'viewer', loadChildren: () => import('./modules/viewer/viewer.module').then(m => m.ViewerModule) },
+  // { path: 'data', loadChildren: () => import('./modules/data/data.module').then(m => m.DataModule) },
+  // { path: 'viewer', loadChildren: () => import('./modules/viewer/viewer.module').then(m => m.ViewerModule) },
 
   // Default Route
   { path: '**', redirectTo: 'error', pathMatch: 'full' }

@@ -1,0 +1,20 @@
+<div class="d-flex h-100 align-items-center no-select">
+    <div
+        class="bg-muted-hover pointer h-100 px-3 d-flex align-items-center text-{{note.active&&color}}"
+        style="color: #999"
+        *ngFor="let note of notes;index as i"
+        [class.active]="note.active"
+        (click)="setActive(note)"
+    >
+        <i *ngIf="note.icon" class="{{note.icon}} mr-1"></i>
+        <div>{{note.title}}</div>
+        <img
+            *ngIf="note.close"
+            class="bg-muted-hover ml-3 text-center rounded-circle p-1"
+            height="20"
+            width="20"
+            (click)="closeNote(i)"
+            src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNTcxOTI4NjI4NDcyIiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjQ0NjUiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48L3N0eWxlPjwvZGVmcz48cGF0aCBkPSJNOTU3Ljc1NzE0MjQ4IDEwNC40OTI4NTc1MmwtMzguMjUtMzguMjVMNTEyIDQ3My43NSAxMDQuNDkyODU3NTIgNjYuMjQyODU3NTIgNjYuMjQyODU3NTIgMTA0LjQ5Mjg1NzUyIDQ3My43NSA1MTIgNjYuMjQyODU3NTIgOTE5LjUwNzE0MjQ4bDM4LjI1IDM4LjI1TDUxMiA1NTAuMjVsNDA3LjUwNzE0MjQ4IDQwNy41MDcxNDI0OCAzOC4yNS0zOC4yNUw1NTAuMjUgNTEyeiIgcC1pZD0iNDQ2NiIgZmlsbD0iIzhhOGE4YSI+PC9wYXRoPjwvc3ZnPg=="
+        />
+    </div>
+</div>

@@ -1,39 +1,28 @@
 import { Component } from '@angular/core';
-import {
-    requestObject,
-    MenuItem,
-    TUIService,
-} from 'projects/ng-tui/src/public_api';
+import { MenuItem, requestObject, TUIService } from 'ng-tui';
+import { loginConfig } from 'src/config/login-config';
 import { DashbardService } from './modules/dashboard/service/dashboard.service';
-import { loginConfig } from '../config/login-config';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-
-    // 菜单列表
     menu: MenuItem[] = [];
 
-    constructor(
-        public uiService: TUIService,
-        public dashboardService: DashbardService
-    ) {
-        // 校验登录
-        dashboardService.checkLoginStatus().subscribe(status => {
+    constructor(public uiService: TUIService, public dashboardService: DashbardService) {
+        // check login
+        dashboardService.checkLoginStatus().subscribe((status) => {
             if (status === false) {
-                // 显示登录页面
                 dashboardService.showLogin(loginConfig);
             } else {
-                // 载入菜单
-                requestObject('assets/menu.json').subscribe(obj => this.menu = obj);
+                requestObject('assets/menu.json').subscribe((obj) => (this.menu = obj));
             }
         });
     }
 
-    navBack() {
+    navBack(): void {
         this.uiService.navBack();
     }
 }

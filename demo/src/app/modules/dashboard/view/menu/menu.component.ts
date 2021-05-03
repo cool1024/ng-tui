@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MenuItem, createMenuTheme, TUIService } from 'projects/ng-tui/src/public_api';
+import { MenuItem, createMenuTheme, TUIService } from 'ng-tui';
 import { DashbardService } from '../../service/dashboard.service';
 
 @Component({

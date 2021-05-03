@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ChartInstance, ChartOption, DropMenuItem, MenuService, Position, requestObject } from 'projects/ng-tui/src/public_api';
+import { ChartInstance, ChartOption, DropMenuItem, MenuService, Position, requestObject } from 'ng-tui';
 
 @Component({
     templateUrl: './home.component.html',
@@ -123,7 +123,7 @@ export class HomeComponent {
     changeRateData(index: number) {
         const activeYear = ['', '2013', '2014', '2015', '2016', '2017', '2018'][index];
         requestObject('https://gw.alipayobjects.com/os/antvdemo/assets/data/income.json').subscribe(data => {
-            this.rateData = data.filter(item => ~item.time.indexOf(activeYear + '-'));
+            this.rateData = data.filter((item: any) => ~item.time.indexOf(activeYear + '-'));
         });
     }
 
@@ -158,7 +158,7 @@ export class HomeComponent {
             .position('y')
             .style({ lineWidth: 2, stroke: '#fff' })
             .color('x', ['#007bff', '#3596fd', '#78b9ff', '#d1e7ff'])
-            .label('y', { formatter: (val, item) => item.point.x + ': ' + val })
+            .label('y', { formatter: (val: number, item: any) => item.point.x + ': ' + val })
             .tooltip(false);
 
         chart.render();
