@@ -5,7 +5,7 @@ This project was suspended for a long time, all related interfaces and examples 
 
 ## Language
 1. [简体中文](README.MD)
-2. [English](README-EN.MD)
+2. [English](README_EN.MD)
 
 ## Description
 NG_TUI is based with boostrap UI, for angular10+ project。

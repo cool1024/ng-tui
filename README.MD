@@ -5,7 +5,7 @@
 
 ## 语言
 1. [简体中文](README.MD)
-2. [English](README-EN.MD)
+2. [English](README_EN.MD)
 
 ## 说明
 NG_TUI是基于的Bootstrap样式库开发的Angular组件仓库，这个项目仍处于开发中。
