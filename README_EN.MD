@@ -18,7 +18,7 @@ NG_TUI is based with boostrap UI, for angular10+ project。
 5. Third part library support, map, chart, prims and CKEdit ect.
 
 ## Preview
-![preview](preview/dashboard.png)
+![preview](preview.png)
 <!-- [在线查看](https://www.cool1024.com) 账号 admin 密码 123456789 -->
 
 ## Install
