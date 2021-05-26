@@ -3,7 +3,6 @@ import { Subject, Observable, Observer, concat } from 'rxjs';
 
 @Injectable()
 export class ScriptService {
-    public src!: string;
     public isReady!: boolean;
     public useScript!: Subject<void>;
 
@@ -41,7 +40,8 @@ export class ScriptService {
         });
     }
 
-    loads(srcs: string[], test = false): Subject<void> {
+    loads(srcs: string[] | string, test = false): Subject<void> {
+        if (typeof srcs === 'string') { srcs = [srcs]; }
         this.isReady = false;
         this.useScript = new Subject<void>();
         const taskArray = new Array<any>();

@@ -6,7 +6,6 @@ export function generateImage(width: number, height: number): string {
             ${width} / ${height}
         </text>
     </svg>`;
-    console.log(svgTemplate);
     return `data:image/svg+xml;base64,${btoa(svgTemplate)}`;
 }
 

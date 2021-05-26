@@ -8,12 +8,11 @@ import { TUIComponent } from './component.interface';
  */
 @Injectable()
 export class ComponentService {
-
     constructor(
         private applicationRef: ApplicationRef,
         private componentFactoryResolver: ComponentFactoryResolver,
         private injector: Injector
-    ) { }
+    ) {}
 
     create(component: Type<TUIComponent>): ComponentHandle {
         const body = document.body;
@@ -21,7 +20,7 @@ export class ComponentService {
         const handle = new ComponentHandle();
         const injector = Injector.create({
             providers: [{ provide: ComponentHandleService, useValue: handle }],
-            parent: this.injector
+            parent: this.injector,
         });
         const windowCmptRef = instance.create(injector);
         handle.ref = windowCmptRef;

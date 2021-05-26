@@ -25,7 +25,7 @@ export class ViewDirective extends ThemeDirective implements AfterViewInit, OnDe
     @Input() position: string;
     @Input() offsetX: number;
     @Input() offsetY: number;
-    @Input() autoSize: string;
+    @Input() autoSize?: string;
     @Output() displayChange = new EventEmitter<boolean>(false);
 
     dom?: HTMLElement;
@@ -42,7 +42,6 @@ export class ViewDirective extends ThemeDirective implements AfterViewInit, OnDe
         this.position = ViewPosition.Bottom;
         this.offsetX = 0;
         this.offsetY = 0;
-        this.autoSize = '';
     }
 
     @HostListener('document:click', ['$event.target']) onDocumentClick(dom: HTMLElement): void {

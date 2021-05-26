@@ -1,14 +1,13 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MenuItem, MenuTheme, defaultMenuTheme } from './node.interface';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: '[tsGroup],ts-group',
-    templateUrl: './group.html'
+    templateUrl: './group.html',
 })
 export class GroupComponent {
-
-    @Input() nodes!: MenuItem[];
+    @Input() nodes: MenuItem[];
 
     @Input() level: number = 0;
 
@@ -31,11 +30,17 @@ export class GroupComponent {
     get hoverStyle(): { [key: string]: [string, string, string] } {
         return {
             color: [this.theme.defaultTextColor!, this.theme.hoverTextColor!, this.theme.activeTextColor!],
-            background: [this.theme.defaultBackgroundColor!, this.theme.hoverBackgroundColor!, this.theme.activeBackgroundColor!]
+            background: [
+                this.theme.defaultBackgroundColor!,
+                this.theme.hoverBackgroundColor!,
+                this.theme.activeBackgroundColor!,
+            ],
         };
     }
 
-    constructor(public sanitizer: DomSanitizer) { }
+    constructor(public sanitizer: DomSanitizer) {
+        this.nodes = [];
+    }
 
     updateGroup(node: MenuItem) {
         this.setActive(node);
@@ -45,8 +50,8 @@ export class GroupComponent {
 
     cleanActive(cleanItems: MenuItem[], activeItem: MenuItem) {
         if (this.root && activeItem.hasOwnProperty('route')) {
-            cleanItems.forEach(item => {
-                (item !== activeItem) && (item.active = false);
+            cleanItems.forEach((item) => {
+                item !== activeItem && (item.active = false);
                 item.children && this.cleanActive(item.children, activeItem);
             });
         }

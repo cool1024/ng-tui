@@ -1,0 +1,32 @@
+<div class="p-1">
+    <h3 class="font-weight-normal">Modal</h3>
+    <h5 class="text-muted font-weight-light mb-4">Use Bootstrap’s JavaScript modal plugin to add dialogs to your site
+        for lightboxes, user notifications, or completely custom content.</h5>
+</div>
+
+<div class="column-container">
+    <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="mb-3">Modal Example</h5>
+                <button tsBtn (click)="showModal()">Open</button>
+                <ts-prism class="mt-2" [codeObs]=" '/assets/docs/modal/modal._' | request" language="typescript">
+                </ts-prism>
+            </div>
+        </div>
+    </div>
+    <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="mb-3">Dialog Example</h5>
+                <div class="m-btn">
+                    <button tsBtn="danger" (click)="showDialog('danger')">Danger</button>
+                    <button tsBtn="warning" (click)="showDialog('warning')">Warning</button>
+                    <button tsBtn="primary" (click)="showDialog('primary')">Primary</button>
+                    <button tsBtn="info" (click)="showDialog('info')">Info</button>
+                    <button tsBtn="success" (click)="showDialog('success')">Success</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

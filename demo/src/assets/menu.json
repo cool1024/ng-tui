@@ -63,6 +63,10 @@
                     {
                         "title": "Select",
                         "route": "/demo/SelectComponent"
+                    },
+                    {
+                        "title": "Picker",
+                        "route": "/demo/PickerComponent"
                     }
                 ]
             },
@@ -72,11 +76,11 @@
                 "children": [
                     {
                         "title": "Table",
-                        "route": "/data/TableComponent"
+                        "route": "/demo/TableComponent"
                     },
                     {
                         "title": "Github Search",
-                        "route": "/data/GithubSearchPage"
+                        "route": "/demo/GithubSearchPage"
                     }
                 ]
             },
@@ -97,7 +101,7 @@
         ]
     },
     {
-        "title": "Simaple Page",
+        "title": "SIMAPLE PAGE",
         "children": [
             {
                 "title": "Settings",

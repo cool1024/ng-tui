@@ -4,6 +4,7 @@ export * from './service/tui.service';
 
 // TUI CORE
 export * from './tui-core/tui-core.module';
+export * from './tui-core/util';
 export * from './tui-core/interface/loader.interface';
 export * from './tui-core/interface/item.interface';
 export * from './tui-core/service/script.service';
@@ -24,6 +25,12 @@ export * from './lib/tooltips/tooltips.directive';
 export * from './lib/tooltips/tooltips.interface';
 export * from './lib/prism/prism.module';
 export * from './lib/prism/prism.component';
+export * from './lib/map/default.config';
+export * from './lib/map/map.config';
+export * from './lib/map/map.directive';
+export * from './lib/map/map.interface';
+export * from './lib/map/map.module';
+export * from './lib/map/map.service';
 
 // TUI ICONFONT
 export * from './modules/iconfont/iconfont.module';
@@ -94,6 +101,34 @@ export * from './modules/select/select.component';
 export * from './modules/select/selects.component';
 
 // TUI TABLE
-export * from './modules/image/image.module';
-export * from './modules/image/image';
-export * from './modules/image/image.directive';
+export * from './modules/table/table';
+export * from './modules/table/table.module';
+
+// TUI PROGRESS
+export * from './modules/progress/progress.module';
+export * from './modules/progress/progress.component';
+
+// TUI MODAL
+export * from './modules/modal/modal.module';
+export * from './modules/modal/modal.component';
+export * from './modules/modal/modal.service';
+export * from './modules/modal/modal.handle';
+
+// TUI CHECKBOK
+export * from './modules/checkbox/checkbox.module';
+export * from './modules/checkbox/checkbox.component';
+export * from './modules/checkbox/radio.component';
+export * from './modules/checkbox/switch.component';
+export * from './modules/checkbox/sort.component';
+
+// TUI DATEPICKER
+export * from './modules/datepicker/datepicker.module';
+export * from './modules/datepicker/date-range.component';
+export * from './modules/datepicker/date-range.interface';
+export * from './modules/datepicker/date.component';
+export * from './modules/datepicker/date.directive';
+export * from './modules/datepicker/datepicker.component';
+export * from './modules/datepicker/time';
+export * from './modules/datepicker/timepicker.component';
+export * from './modules/datepicker/year.component';
+export * from './modules/datepicker/yearpicker.component';
