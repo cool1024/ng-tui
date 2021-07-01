@@ -25,6 +25,7 @@ import {
     DatepickerModule,
     TableModule,
     MapModule,
+    ChartModule,
 } from 'ng-tui';
 
 @NgModule({
@@ -46,6 +47,7 @@ import {
         PrismModule,
         DatepickerModule,
         MapModule,
+        ChartModule,
         DemoRoutingModule,
     ],
     declarations: [declarationComponents],

@@ -12,6 +12,7 @@ import { CheckboxComponent } from './form/checkbox/checkbox.component';
 import { PickerComponent } from './form/picker/picker.component';
 import { MapComponent } from './lib/map/map.component';
 import { TableComponent } from './data/table/table.component';
+import { ChartComponent } from './lib/chart/chart.component';
 
 export const declarationComponents = [
     // base
@@ -33,9 +34,10 @@ export const declarationComponents = [
 
     // lib
     MapComponent,
+    ChartComponent,
 
     // data
-    TableComponent
+    TableComponent,
 ];
 
 const routes = [
@@ -49,8 +51,9 @@ const routes = [
     { path: 'SelectComponent', component: SelectComponent },
     { path: 'CheckboxComponent', component: CheckboxComponent },
     { path: 'PickerComponent', component: PickerComponent },
-    { path: 'MapComponent', component: MapComponent },
     { path: 'TableComponent', component: TableComponent },
+    { path: 'MapComponent', component: MapComponent },
+    { path: 'ChartComponent', component: ChartComponent },
 ];
 
 @NgModule({

@@ -240,6 +240,7 @@ export interface ChartInstance {
     interval(): Geometry;
     line(): Geometry;
     area(): Geometry;
+    point(): Geometry;
     position(position: string | string[]): Geometry;
     style(field1: any, field2?: any): Geometry;
     legend(field1: any, field2?: any): Geometry;

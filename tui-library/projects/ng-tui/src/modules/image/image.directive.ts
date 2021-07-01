@@ -9,6 +9,7 @@ import { loadImage, generateImage } from './image';
 })
 export class ImageDirective implements OnChanges, AfterViewInit {
     @Input() src!: string;
+    @Input() tsImg?: string;
     @HostBinding('src') mSrc!: string | SafeResourceUrl;
 
     private imageDom!: HTMLImageElement;
@@ -27,7 +28,7 @@ export class ImageDirective implements OnChanges, AfterViewInit {
     }
 
     private loadImage(): void {
-        this.imageDom.src = generateImage(this.imageDom.width, this.imageDom.height);
+        this.imageDom.src = this.tsImg || generateImage(this.imageDom.width, this.imageDom.height);
         loadImage(this.src, this.imageDom.width, this.imageDom.height, (src) => {
             this.mSrc = this.domSanitizer.bypassSecurityTrustResourceUrl(src);
         });

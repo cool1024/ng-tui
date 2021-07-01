@@ -94,7 +94,7 @@
                     },
                     {
                         "title": "Chart",
-                        "route": "/demo/MapComponent"
+                        "route": "/demo/ChartComponent"
                     }
                 ]
             }

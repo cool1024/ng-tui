@@ -1,6 +1,6 @@
 {
   "name": "tui-library",
-  "version": "0.1.18-alpha",
+  "version": "0.1.20-alpha",
   "scripts": {
     "dev": "ng build ng-tui --prod --watch",
     "test": "ng test",

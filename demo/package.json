@@ -20,7 +20,7 @@
     "@angular/router": "~11.0.5",
     "animate.css": "^4.1.1",
     "bootstrap": "^4.5.2",
-    "ng-tui": "^0.1.18-alpha",
+    "ng-tui": "^0.1.20-alpha",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
