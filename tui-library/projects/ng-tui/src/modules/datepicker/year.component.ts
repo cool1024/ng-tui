@@ -35,11 +35,8 @@ export class YearComponent extends ThemeDirective implements OnChanges {
         for (let i = 0; i < 6; i++) {
             years.push(year + 1 + i);
         }
-        this.yearList = [];
-        this.yearList.push(years.splice(0, 3));
-        this.yearList.push(years.splice(0, 3));
-        this.yearList.push(years.splice(0, 3));
-        this.yearList.push(years.splice(0, 3));
+        console.log(this.yearList);
+        this.yearList = [years.splice(0, 3), years.splice(0, 3), years.splice(0, 3)];
     }
 
     setActiveYear(year: number): void {

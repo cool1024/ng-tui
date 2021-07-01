@@ -64,7 +64,6 @@ export class DropdownComponent extends ThemeDirective implements OnChanges {
     ngOnChanges(changes: SimpleChanges): void {
         if (changes.items && changes.items.currentValue) {
             this.itemList = Util.formateItems(changes.items.currentValue);
-            console.log(this.itemList);
         }
     }
 

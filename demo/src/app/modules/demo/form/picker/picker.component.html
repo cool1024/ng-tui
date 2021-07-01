@@ -1,11 +1,48 @@
-<ts-timepicker color="primary" [(ngModel)]="timeValue">
-    <button tsBtn>{{timeValue || 'PickerTime'}}</button>
-</ts-timepicker>
-
-<ts-datepicker color="primary" [(ngModel)]="dateValue">
-    <button tsBtn>{{dateValue || 'PickerDate'}}</button>    
-</ts-datepicker>
-
-<ts-yearpicker color="primary" [(ngModel)]="yearValue">
-    <button tsBtn>{{yearValue || 'PickerYear'}}</button>    
-</ts-yearpicker>
+<div class="p-1">
+    <h3 class="font-weight-normal">Picker</h3>
+    <h5 class="text-muted font-weight-light mb-4">
+        A Picker is a dialog that displays a row of buttons and columns underneath. It appears on side of the target's
+        element.
+    </h5>
+</div>
+<div class="column-container">
+    <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Time Picker</h5>
+                <div class="border-top pt-3">
+                    <ts-timepicker [(ngModel)]="timeValue">
+                        <button tsBtn>{{ timeValue || 'PickerTime' }}</button>
+                    </ts-timepicker>
+                </div>
+                <ts-prism class="mt-3" [codeObs]=" '/assets/docs/picker/time.html' | request" language="html"></ts-prism>
+            </div>
+        </div>
+    </div>
+    <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Year Picker</h5>
+                <div class="border-top pt-3">
+                    <ts-yearpicker color="primary" [(ngModel)]="yearValue">
+                        <button tsBtn>{{ yearValue || 'PickerYear' }}</button>
+                    </ts-yearpicker>
+                </div>
+                <ts-prism class="mt-3" [codeObs]=" '/assets/docs/picker/year.html' | request" language="html"></ts-prism>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="column-item mb-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Date Picker</h5>
+                <div class="border-top pt-3">
+                    <ts-datepicker color="primary" [(ngModel)]="dateValue">
+                        <button tsBtn>{{ dateValue || 'PickerDate' }}</button>
+                    </ts-datepicker>
+                </div>
+                <ts-prism class="mt-3" [codeObs]=" '/assets/docs/picker/year.html' | request" language="html"></ts-prism>
+            </div>
+        </div>
+    </div> -->
+</div>
