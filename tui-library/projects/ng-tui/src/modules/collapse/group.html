@@ -1,25 +1,13 @@
 <ng-content></ng-content>
-
+11111
 <!-- FULL MODE -->
 <ng-container *ngIf="!min">
     <!-- TopLevel will be subject -->
     <div class="mb-3" *ngIf="level===0"></div>
     <div *ngIf="level===0;else defaultGroup" class="flex-grow-1" style="overflow-y: auto">
         <ng-container *ngFor="let node of nodes">
-            <div class="pointer py-3 d-flex">
-                <div class="flex-shrink-0 pr-2 align-items-center">
-                    <img
-                        class="mb-1"
-                        *ngIf="node.image;else elseBlock"
-                        width="20"
-                        height="20"
-                        [src]="sanitizer.bypassSecurityTrustResourceUrl(node.image)"
-                    />
-                    <ng-template #elseBlock>
-                        <i [class]="node.icon" aria-hidden="true"></i>
-                    </ng-template>
-                </div>
-                <div class="flex-grow-1 align-items-center pl-4 font-weight-bold">{{node.title}}</div>
+            <div class="no-select py-3">
+                <div class="pl-4 font-weight-bold">{{node.title}}</div>
             </div>
             <div
                 tsGroup
@@ -80,7 +68,6 @@
 </ng-container>
 
 <!-- MINMODE -->
-
 <ng-container *ngIf="min">
     <ng-template ngFor let-item [ngForOf]="nodes" let-i="index">
         <div

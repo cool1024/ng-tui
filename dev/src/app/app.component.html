@@ -1,0 +1,59 @@
+<!-- <div class="shadow-sm" style="width: 280px">
+  <ts-menu
+    [items]="items"
+    [toggleClass]="{
+      default: ['p-3', 'pointer'],
+      transition: ['p-3', 'text-primary', 'bg-primary-light', 'pointer'],
+      active: ['p-3', 'text-primary', 'bg-primary-light', 'pointer']
+    }"
+    [targetClass]="{
+      default: ['text-dark'],
+      active: ['bg-primary-light']
+    }"
+    [increamentX]="20"
+  ></ts-menu>
+</div> -->
+<!-- <div class="shadow-sm" style="width: 82px; height: 100vh; overflow-y: scroll">
+  <h4
+    class="
+      py-3
+      border-bottom
+      flex-shrink-0
+      d-flex
+      justify-content-center
+      align-items-center
+    "
+  >
+    <img height="50" src="assets/favicon.svg" />
+  </h4>
+  <ts-menus-mini [items]="items"></ts-menus-mini>
+</div> -->
+<input
+  [(ngModel)]="data"
+  type="text"
+  class="form-control"
+  id="recipient-name"
+/>
+<label for="message-text" class="col-form-label">Message:</label>
+<textarea [(ngModel)]="data" class="form-control" id="message-text"></textarea>
+<button tsBtn (click)="showModal()">显示窗口</button>
+
+<!-- <div class="shadow-sm" style="width: 280px; height: 100vh; overflow-y: scroll">
+  <h4
+    class="
+      py-3
+      border-bottom
+      flex-shrink-0
+      d-flex
+      justify-content-center
+      align-items-center
+    "
+  >
+    <img height="30" src="assets/favicon.svg" />
+    <span class="ml-3">Admin Pro</span>
+  </h4>
+  <ts-menus [items]="items"></ts-menus>
+</div> -->
+
+<!-- <button tsBtn tsToggle [target]="a">1111</button>
+<div #a="tsCollapse" tsCollapse>1232323123</div> -->

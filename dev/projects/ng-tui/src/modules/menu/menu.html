@@ -1,0 +1,56 @@
+<div tsCollapses [auto]="true">
+  <ng-container *ngFor="let menu of menus">
+    <div
+      tsToggle
+      [tsHover]="toggleClass"
+      [hoverActive]="menu.value.active"
+      (click)="handleActive(menu, menus)"
+    >
+      <div
+        class="d-flex align-items-center justify-content-between"
+        [ngStyle]="collapseItemStyle"
+      >
+        <img
+          *ngIf="menu.value.image"
+          width="20"
+          height="20"
+          [src]="sanitizer.bypassSecurityTrustResourceUrl(menu.value.image)"
+        />
+        <i
+          *ngIf="menu.value.icon"
+          [class]="menu.value.icon"
+          aria-hidden="true"
+        ></i>
+        <div class="ms-2 flex-grow-1">{{menu.value.text}}</div>
+        <div
+          class="flex-shrink-0 align-items-center"
+          [style.paddingRight.px]="offset"
+        >
+          <div
+            class="ms-2"
+            [class.ts-icon-up]="collapse.open"
+            [class.ts-icon-down]="!collapse.open"
+            [class.invisible]="!menu.hasChild"
+          >
+            ⊿
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      tsCollapse
+      #collapse="tsCollapse"
+      [class]="menu.value.active?targetClass.active:targetClass.default"
+    >
+      <ts-menu
+        *ngIf="menu.children&&menu.children.length>0"
+        [items]="menu.value.children"
+        [toggleClass]="toggleClass"
+        [targetClass]="targetClass"
+        [offsetX]="offsetX+increamentX"
+        [increamentX]="increamentX"
+        (itemClick)="handleClick($event)"
+      ></ts-menu>
+    </div>
+  </ng-container>
+</div>

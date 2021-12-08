@@ -241,6 +241,8 @@ export interface ChartInstance {
     line(): Geometry;
     area(): Geometry;
     point(): Geometry;
+    axis(show: boolean): Geometry;
+    axis(field: string, axisOption: any): Geometry;
     position(position: string | string[]): Geometry;
     style(field1: any, field2?: any): Geometry;
     legend(field1: any, field2?: any): Geometry;

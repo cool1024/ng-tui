@@ -1,0 +1,17 @@
+<div *ngFor="let menu of items;index as i">
+  <div class="py-3 px-4 fw-bold">{{menu.text}}</div>
+  <ts-menu
+    [items]="menu.children"
+    [toggleClass]="{
+  default: ['py-3','px-4', 'pointer'],
+  transition: ['py-3', 'px-4','text-primary', 'bg-primary-light', 'pointer'],
+  active: ['py-3', 'px-4','text-primary', 'bg-primary-light', 'pointer']
+}"
+    [targetClass]="{
+  default: ['text-dark'],
+  active: ['bg-primary-light']
+}"
+    [increamentX]="20"
+    (itemClick)="handleClick(i)"
+  ></ts-menu>
+</div>
