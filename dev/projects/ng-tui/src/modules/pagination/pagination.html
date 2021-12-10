@@ -1,0 +1,59 @@
+<div class="d-inline-flex flex-wrap">
+  <ng-container *ngIf="goTitle">
+    <div
+      (click)="page.invalid || sendChange(page.value)"
+      class="pagination-button pagination-button-{{ color }}"
+    >
+      {{ goTitle }}
+    </div>
+    <input
+      ngModel
+      #page="ngModel"
+      [min]="1"
+      class="form-control pagination-input"
+      type="number"
+    />
+  </ng-container>
+  <ts-dropdown [items]="items" (menuClick)="changeLimit($event.value)">
+    <div class="pagination-button pagination-button-{{ color }}">
+      {{ getLimitText(pagination.limit) }}
+    </div>
+  </ts-dropdown>
+  <div
+    (click)="startPage()"
+    [class.disabled]="!pagination.hasPrev()"
+    class="pagination-item pagination-tool-{{ color }}"
+  >
+    <i class="iconfont icon-start"></i>
+  </div>
+  <div
+    (click)="prevPage()"
+    [class.disabled]="!pagination.hasPrev()"
+    class="pagination-item pagination-tool-{{ color }}"
+  >
+    <i class="iconfont icon-preview"></i>
+  </div>
+  <ng-template ngFor let-item [ngForOf]="pages" let-i="index">
+    <div
+      (click)="pagination.page = item; sendChange()"
+      [ngClass]="{ active: item == pagination.page }"
+      class="pagination-item pagination-item-{{ color }}"
+    >
+      {{ item }}
+    </div>
+  </ng-template>
+  <div
+    (click)="nextPage()"
+    [class.disabled]="!pagination.hasNext()"
+    class="pagination-item pagination-tool-{{ color }}"
+  >
+    <i class="iconfont icon-next"></i>
+  </div>
+  <div
+    (click)="endPage()"
+    [class.disabled]="!pagination.hasNext()"
+    class="pagination-item pagination-tool-{{ color }}"
+  >
+    <i class="iconfont icon-end"></i>
+  </div>
+</div>

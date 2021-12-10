@@ -13,10 +13,10 @@ export class ConfigService {
         iconfontLoadingClass: ['iconfont-rotate'],
         buttonLoadingIcon: 'loading',
         defaultColor: 'primary',
-        config: {
+        confirm: {
           confirmCancelTitle: 'Cancel',
           confirmOkTitle: 'Confirm',
-          icons: {
+          icon: {
             info: 'info',
             warning: 'warning',
             success: 'success',
@@ -44,7 +44,11 @@ export class ConfigService {
         pickerCleanTitle: 'Clean',
         pickerNowTitle: 'Now',
         pickerNowYearTitle: 'Now',
-        paginationItems: [],
+        paginationItems: [
+          { text: 'Show 5 rows', value: 5 },
+          { text: 'Show 10 rows', value: 10 },
+          { text: 'Show 20 rows', value: 20 },
+        ],
         paginationLimitTextFormat: (limit: number) => `Show ${limit} rows`,
         tableConfig: {
           emptyTitle: 'Empty~',

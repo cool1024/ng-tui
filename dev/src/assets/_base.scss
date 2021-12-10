@@ -494,14 +494,14 @@ ts-prism {
 }
 
 /** toast **/
-.toast {
+.tui-toast {
     width: 18rem;
     z-index: 9999;
     border-width: 0;
     border-left-width: 3px;
 }
 
-.toast .close {
+.tui-toast .close {
     cursor: pointer;
 }
 

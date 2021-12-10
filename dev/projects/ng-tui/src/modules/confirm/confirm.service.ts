@@ -19,14 +19,16 @@ const THEME = TUI_CONST.BOOTSTRAP.THEME;
 export class ConfirmService {
   private baseComponent!: ComponentFactory<ConfirmComponent>;
   private windowCmptRef!: ComponentRef<ConfirmComponent>;
+  private config!: TUIConfig;
 
   constructor(
     private applicationRef: ApplicationRef,
     private componentFactoryResolver: ComponentFactoryResolver,
     private injector: Injector,
-    private options: ConfigService,
-    private config: TUIConfig
-  ) {}
+    confService: ConfigService
+  ) {
+    this.config = confService.config;
+  }
 
   private init(): void {
     if (this.baseComponent !== undefined || this.baseComponent != null) {
@@ -103,9 +105,9 @@ export class ConfirmService {
 
   combineOptions(options: { okTitle?: string; cancelTitle?: string }): any {
     return {
-      okTitle: options.okTitle || this.options.config.confirm.confirmOkTitle,
+      okTitle: options.okTitle || this.config.confirm.confirmOkTitle,
       cancelTitle:
-        options.cancelTitle || this.options.config.confirm.confirmCancelTitle,
+        options.cancelTitle || this.config.confirm.confirmCancelTitle,
     };
   }
 }

@@ -6,8 +6,11 @@ import { TUIModule } from 'projects/ng-tui/src/tui.module';
 import {
   ButtonModule,
   ConfirmModule,
+  DropdownModule,
   MenuModule,
   ModalModule,
+  PaginationModule,
+  ToastModule,
 } from 'projects/ng-tui/src/public-api';
 import { Modal } from './modal';
 import { FormsModule } from '@angular/forms';
@@ -22,6 +25,9 @@ import { FormsModule } from '@angular/forms';
     ModalModule,
     FormsModule,
     ConfirmModule,
+    DropdownModule,
+    PaginationModule,
+    ToastModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

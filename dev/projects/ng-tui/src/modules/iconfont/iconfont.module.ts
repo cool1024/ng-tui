@@ -4,8 +4,7 @@ import { IconfontDirective } from './iconfont.directive';
 
 @NgModule({
   imports: [TUICoreModule],
-  exports: [IconfontDirective],
+  exports: [TUICoreModule, IconfontDirective],
   declarations: [IconfontDirective],
-  providers: [],
 })
 export class IconfontModule {}

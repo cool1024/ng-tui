@@ -1,0 +1,47 @@
+<div tsToggle [target]="menuView" class="d-inline-block">
+  <ng-content></ng-content>
+</div>
+<div
+  #menuView="tsView"
+  [tsView]="position"
+  [fitWidth]="fitWidth"
+  [offsetX]="offsetX"
+  [offsetY]="offsetY"
+  [ngStyle]="{ minWidth: minWidth + 'px', zIndex: zIndex }"
+  class="bg-white shadow no-select py-2"
+>
+  <ng-container *ngFor="let item of items; index as i">
+    <div
+      [ngSwitch]="item.type"
+      (click)="handleClick(item, i)"
+      class="pointer {{bgHoverClass}}"
+    >
+      <ng-container *ngSwitchCase="type.IMAGE">
+        <div class="px-3 py-1 d-flex align-items-center" close>
+          <img
+            [width]="item.size!.width"
+            [height]="item.size!.height"
+            [src]="item.icon!"
+            close
+          />
+          <span class="ms-2" close>{{ item.title! }}</span>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="type.TITLE">
+        <div class="px-3 py-2">
+          <i *ngIf="item.hasIcon" [tsIcon]="item.icon"></i>
+          <h5 class="m-0">{{ item.title! }}</h5>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="type.ITEM">
+        <div class="px-3 py-1" close>
+          <i *ngIf="item.hasIcon" [tsIcon]="item.icon" close></i>
+          <span close>{{ item.title! }}</span>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="type.LINE">
+        <div class="border-bottom"></div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

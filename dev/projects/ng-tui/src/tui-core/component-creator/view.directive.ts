@@ -94,30 +94,34 @@ export class ViewDirective
 
   toggle(toggle: ToggleDirective): void {
     this.viewTool.toggleDom = toggle.dom;
-    if (!this.isActive && this.dom) {
-      this.dom.classList.remove(DISPLAY.NONE);
-      this.dom.style.opacity = '0';
-      if (this.position === POSITION.BOTTOM) {
-        this.viewTool.autoPositionBottom(
-          this.offsetX,
-          this.offsetY,
-          this.fitWidth
-        );
+    if (this.dom) {
+      if (this.isActive) {
+        this.dismiss();
+      } else {
+        this.dom.classList.remove(DISPLAY.NONE);
+        this.dom.style.opacity = '0';
+        if (this.position === POSITION.BOTTOM) {
+          this.viewTool.autoPositionBottom(
+            this.offsetX,
+            this.offsetY,
+            this.fitWidth
+          );
+        }
+        if (this.position === POSITION.TOP) {
+          this.viewTool.autoPositionTop(
+            this.offsetX,
+            this.offsetY,
+            this.fitWidth
+          );
+        }
+        if (this.position === POSITION.AUTO) {
+          this.viewTool.autoPosition(this.offsetX, this.offsetY, this.fitWidth);
+        }
+        this.isActive = true;
+        setTimeout(() => {
+          this.dom.style.opacity = '1';
+        }, 200);
       }
-      if (this.position === POSITION.TOP) {
-        this.viewTool.autoPositionTop(
-          this.offsetX,
-          this.offsetY,
-          this.fitWidth
-        );
-      }
-      if (this.position === POSITION.AUTO) {
-        this.viewTool.autoPosition(this.offsetX, this.offsetY, this.fitWidth);
-      }
-      this.isActive = true;
-      setTimeout(() => {
-        this.dom.style.opacity = '1';
-      }, 200);
     }
     this.displayChange.emit(this.isActive);
   }

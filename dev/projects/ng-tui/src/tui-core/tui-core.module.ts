@@ -11,19 +11,19 @@ import { TsHoverDirective } from './directive/hover.directive';
 
 @NgModule({
   imports: [CommonModule],
-  exports: [
-    ToggleDirective,
-    TsHoverDirective,
-    ViewDirective,
-    RequestPipe,
-    CommonModule,
-  ],
   declarations: [ToggleDirective, TsHoverDirective, ViewDirective, RequestPipe],
   providers: [
     ValueChangeListenerService,
     ConfigService,
     ComponentService,
     ComponentHandleService,
+  ],
+  exports: [
+    ToggleDirective,
+    TsHoverDirective,
+    ViewDirective,
+    RequestPipe,
+    CommonModule,
   ],
 })
 export class TUICoreModule {}

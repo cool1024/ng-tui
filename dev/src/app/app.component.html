@@ -28,15 +28,14 @@
   </h4>
   <ts-menus-mini [items]="items"></ts-menus-mini>
 </div> -->
-<input
-  [(ngModel)]="data"
-  type="text"
-  class="form-control"
-  id="recipient-name"
-/>
-<label for="message-text" class="col-form-label">Message:</label>
-<textarea [(ngModel)]="data" class="form-control" id="message-text"></textarea>
-<button tsBtn (click)="showModal()">显示窗口</button>
+<ts-drop-menu [items]="dropMenus" [minWidth]="200">
+  <button tsBtn>Dropdown</button>
+</ts-drop-menu>
+<ts-pagination [pagination]="page"></ts-pagination>
+<!-- <ts-dropdown [items]="[1, 2, 3, 4]">
+  <button tsBtn>Dropdown</button>
+</ts-dropdown> -->
+<!-- <button tsBtn (click)="showModal()">显示窗口</button> -->
 
 <!-- <div class="shadow-sm" style="width: 280px; height: 100vh; overflow-y: scroll">
   <h4

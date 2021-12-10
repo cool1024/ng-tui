@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { ModalService } from 'projects/ng-tui/src/modules/modal/modal.service';
-import { ConfirmService, Menu } from 'projects/ng-tui/src/public-api';
+import {
+  ConfirmService,
+  DropMenuItem,
+  Menu,
+  Pagination,
+  ToastService,
+} from 'projects/ng-tui/src/public-api';
 import { requestObject } from 'projects/ng-tui/src/tui-core/pipes/request';
 import { Modal } from './modal';
 
@@ -10,6 +16,7 @@ import { Modal } from './modal';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  page = new Pagination(100);
   data = '1111';
   items: Menu[] = [
     {
@@ -32,7 +39,22 @@ export class AppComponent {
     },
   ];
 
-  constructor(private modal: ModalService, private confirm: ConfirmService) {
+  dropMenus: DropMenuItem[] = [
+    DropMenuItem.title('个人信息'),
+    DropMenuItem.split(),
+    DropMenuItem.image('标题', 'assets/image/avatar/0.jpg', '', {
+      width: 20,
+      height: 20,
+    }),
+    DropMenuItem.item('手机号', ''),
+    DropMenuItem.item('家庭住宅', ''),
+  ];
+
+  constructor(
+    private modal: ModalService,
+    private confirm: ConfirmService,
+    private toast: ToastService
+  ) {
     requestObject('assets/menu.json').subscribe((obj) => {
       this.items = obj;
       console.log(this.items);
@@ -40,12 +62,7 @@ export class AppComponent {
   }
 
   showModal(): void {
-    this.confirm.success('11111', '1111122222').subscribe();
-    // this.modalÎ
-    //   .create(Modal, {})
-    //   .present()
-    //   .subscribe((res) => {
-    //     console.log(res);
-    //   });
+    this.toast.success('11111', 'w222222', -1);
+    // this.confirm.success('11111', '1111122222').subscribe();
   }
 }

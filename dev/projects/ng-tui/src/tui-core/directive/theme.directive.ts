@@ -22,6 +22,10 @@ export class ThemeDirective {
     return `bg-${this.color}`;
   }
 
+  get bgHoverClass(): string {
+    return `bg-${this.color}-hover`;
+  }
+
   get bgWithTextClass(): string {
     return `bg-${this.color}-light text-${this.color}`;
   }
