@@ -1,0 +1,28 @@
+.navbar {
+    .item {
+        height: 70px;
+    }
+    .nav-icon {
+        font-size: 1.5rem;
+    }
+}
+
+.input-search {
+    display: flex;
+    align-items: center;
+    border-radius: 35px;
+    background-color: rgba(white, 0.2);
+    input {
+        width: 8rem;
+        border: none;
+        background-color: transparent;
+        line-height: 2.7;
+        color: white;
+        &::placeholder {
+            color: white;
+        }
+    }
+    .iconfont {
+        font-size: 1.2rem;
+    }
+}

@@ -5,10 +5,13 @@
     "align": {
       "options": ["parameters", "statements"]
     },
+    "no-unused-expression": false,
     "array-type": false,
     "arrow-return-shorthand": true,
     "curly": true,
-    "deprecation": false,
+    "deprecation": {
+      "severity": "warning"
+    },
     "eofline": true,
     "import-blacklist": [true, "rxjs/Rx"],
     "import-spacing": true,
