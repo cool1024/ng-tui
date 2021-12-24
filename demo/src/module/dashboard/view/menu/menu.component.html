@@ -13,5 +13,5 @@
     <img height="30" src="assets/favicon.svg" />
     <span class="ml-3">Admin Pro</span>
   </h4>
-  <ts-menus [items]="items"></ts-menus>
+  <ts-menus [items]="items" (itemClick)="handleClick($event)"></ts-menus>
 </div>

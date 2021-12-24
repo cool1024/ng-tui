@@ -1,0 +1,47 @@
+<div
+  class="pointer form-control form-control-{{getSize}}"
+  style="height: auto"
+  tsToggle
+  [target]="menuView"
+  [bind]="menuView"
+  [class.disabled]="isDisabled"
+>
+  <span class="text-muted" *ngIf="activeItems.length<=0">{{placeholder}}</span>
+  <span
+    class="badge p-2 m-1 no-select {{bgClass}}"
+    *ngFor="let active of activeItems"
+  >
+    <i (click)="setValue(active)" style="font-size: 14px">&times;</i>
+    {{active.text}}
+  </span>
+</div>
+<div
+  #menuView="tsView"
+  tsView
+  [fitWidth]="true"
+  [offsetY]="2"
+  class="bg-white shadow-sm"
+  (displayChange)="onShowMenu($event)"
+>
+  <div class="px-3 pt-3">
+    <input
+      [(ngModel)]="searchKey"
+      [placeholder]="searchLabel"
+      class="form-control"
+      type="text"
+    />
+  </div>
+  <div class="pointer px-3 py-2">
+    <div
+      *ngFor="let item of items;trackBy: trackByValue"
+      class="dropdown-item {{isActiveItem(item)&&bgWithTextClass}}"
+      [class.active]="isActiveItem(item)"
+      (click)="setValue(item)"
+      [innerHTML]="item.content||item.text"
+    ></div>
+    <div *ngIf="items.length<=0" class="text-muted text-center">
+      <img [tsBase64]="boxData" />
+      <span>{{emptyLabel}}</span>
+    </div>
+  </div>
+</div>

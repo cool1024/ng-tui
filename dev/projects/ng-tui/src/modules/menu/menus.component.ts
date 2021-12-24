@@ -1,5 +1,13 @@
-import { Component, Input } from '@angular/core';
-import { Menu, Node } from '../../tui-core/interface/item.interface';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
+import { Menu } from '../../tui-core/interface/item.interface';
+import { MenuComponent } from './menu.component';
 
 @Component({
   selector: 'ts-menus',
@@ -10,16 +18,18 @@ export class MenusComponent {
   @Input()
   items: Menu[];
 
-  handleClick(keyIndex: number): void {
-    this.items.forEach((item, i) => {
+  @ViewChildren(MenuComponent)
+  menuViews!: QueryList<MenuComponent>;
+
+  @Output()
+  itemClick = new EventEmitter<Node>(true);
+
+  handleClick(node: Node, keyIndex: number): void {
+    this.menuViews.forEach((view, i) => {
       if (keyIndex !== i) {
-        this.cleanActive(item);
+        view.cleanAllActive();
       }
     });
-  }
-
-  cleanActive(item: Menu): void {
-    item.active = false;
-    (item.children || []).forEach((e) => this.cleanActive(e));
+    this.itemClick.emit(node);
   }
 }

@@ -28,16 +28,36 @@
   </h4>
   <ts-menus-mini [items]="items"></ts-menus-mini>
 </div> -->
-<ts-drop-menu [items]="dropMenus" [minWidth]="200">
+<!-- <ts-sort></ts-sort>
+<ts-switch></ts-switch>
+<ts-radio></ts-radio>
+<ts-checkbox></ts-checkbox>
+<ts-select title="123" [options]="options"></ts-select>
+<ts-selects title="123" [options]="options"></ts-selects> -->
+<!-- <ts-tabs [items]="items[1].children" vertical></ts-tabs> -->
+<!-- <ts-drop-menu [items]="dropMenus" [minWidth]="200">
   <button tsBtn>Dropdown</button>
-</ts-drop-menu>
-<ts-pagination [pagination]="page"></ts-pagination>
+</ts-drop-menu> -->
+<!-- <ts-pagination [pagination]="page"></ts-pagination> -->
 <!-- <ts-dropdown [items]="[1, 2, 3, 4]">
   <button tsBtn>Dropdown</button>
 </ts-dropdown> -->
 <!-- <button tsBtn (click)="showModal()">显示窗口</button> -->
+<!-- <ts-menu
+  [items]="items"
+  [toggleClass]="{
+    default: ['py-3', 'px-4', 'pointer', 'text-dark'],
+    transition: ['py-3', 'px-4', 'text-primary', 'bg-primary-light', 'pointer'],
+    active: ['py-3', 'px-4', 'text-primary', 'bg-primary-light', 'pointer']
+  }"
+  [targetClass]="{
+    default: ['text-dark'],
+    active: []
+  }"
+  [increamentX]="20"
+></ts-menu> -->
 
-<!-- <div class="shadow-sm" style="width: 280px; height: 100vh; overflow-y: scroll">
+<div class="shadow-sm" style="width: 280px; height: 100vh; overflow-y: scroll">
   <h4
     class="
       py-3
@@ -51,8 +71,8 @@
     <img height="30" src="assets/favicon.svg" />
     <span class="ml-3">Admin Pro</span>
   </h4>
-  <ts-menus [items]="items"></ts-menus>
-</div> -->
+  <ts-menus [items]="items" (itemClick)="handleClick($event)"></ts-menus>
+</div>
 
 <!-- <button tsBtn tsToggle [target]="a">1111</button>
 <div #a="tsCollapse" tsCollapse>1232323123</div> -->

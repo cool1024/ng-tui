@@ -28,9 +28,6 @@ export class ToggleDirective implements AfterViewInit {
     if (this.target && this.target.toggle) {
       this.target.toggle(this);
     }
-    if (this.bind && this.bind.toggle) {
-      this.bind.toggle(this);
-    }
   }
 
   constructor(public elementRef: ElementRef) {}

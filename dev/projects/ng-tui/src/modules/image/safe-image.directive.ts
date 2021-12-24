@@ -9,7 +9,6 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Directive({
   selector: 'img[tsBase64]',
-  exportAs: 'ts',
 })
 export class SafeImageDirective implements OnChanges {
   @Input() tsBase64?: string;

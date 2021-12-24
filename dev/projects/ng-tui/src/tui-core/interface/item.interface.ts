@@ -12,17 +12,11 @@ export interface Node {
 }
 
 export interface Menu {
-  text: string;
+  text?: string;
   value?: any;
   icon?: string;
   image?: string;
   active?: boolean;
   children?: Menu[];
   parent?: Menu;
-}
-
-export interface TabItem {
-  text: string;
-  value?: any;
-  icon?: string;
 }

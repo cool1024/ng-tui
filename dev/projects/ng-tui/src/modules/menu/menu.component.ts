@@ -11,8 +11,14 @@ import { Util } from '../../tui-core/util';
 export class MenuComponent {
   @Input()
   set items(items: Menu[]) {
-    this.menus = this.loadMenu(items);
+    if (items) {
+      this.menus = this.loadMenu(items);
+    }
   }
+
+  @Input()
+  menus: Node[] = [];
+
   @Input()
   toggleClass: StatusText = {};
 
@@ -37,8 +43,6 @@ export class MenuComponent {
     };
   }
 
-  menus: Node[] = [];
-
   constructor(public sanitizer: DomSanitizer) {}
 
   private loadMenu(items: Menu[], parent?: Node): Node[] {
@@ -47,16 +51,31 @@ export class MenuComponent {
         value: menu,
         parent,
         children: [],
-        hasChild: menu.children && menu.children.length > 0,
+        hasChild: menu.children && menu.children.length > 0 ? true : false,
       };
       node.children = this.loadMenu(menu.children || [], node);
       return node;
     });
   }
 
+  cleanAllActive(): void {
+    this.menus.forEach((menu) => this.cleanActive(menu));
+  }
+
   cleanActive(item: Node): void {
     item.value.active = false;
     item.children.forEach((e) => this.cleanActive(e));
+  }
+
+  cleanParent(item: Node): void {
+    if (item.parent && item.parent.parent && item.parent.parent.hasChild) {
+      const parents = item.parent.parent.children;
+      parents.forEach((e) => {
+        if (e !== item.parent) {
+          this.cleanActive(e);
+        }
+      });
+    }
   }
 
   handleActive(item: Node, items: Node[]): void {
@@ -66,6 +85,8 @@ export class MenuComponent {
         this.cleanActive(e);
       }
     });
+    // 清空父级
+    this.cleanParent(item);
     const menu = item.value as Menu;
     menu.active = true;
     this.itemClick.emit(item);

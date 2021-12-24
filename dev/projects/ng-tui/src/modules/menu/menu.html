@@ -3,7 +3,7 @@
     <div
       tsToggle
       [tsHover]="toggleClass"
-      [hoverActive]="menu.value.active"
+      [hoverActive]="menu.value.active&&!menu.hasChild"
       (click)="handleActive(menu, menus)"
     >
       <div
@@ -32,7 +32,7 @@
             [class.ts-icon-down]="!collapse.open"
             [class.invisible]="!menu.hasChild"
           >
-            ⊿
+            <i class="iconfont icon-next"></i>
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
     >
       <ts-menu
         *ngIf="menu.children&&menu.children.length>0"
-        [items]="menu.value.children"
+        [menus]="menu.children"
         [toggleClass]="toggleClass"
         [targetClass]="targetClass"
         [offsetX]="offsetX+increamentX"

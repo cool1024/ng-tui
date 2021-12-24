@@ -1,0 +1,38 @@
+<div class="w-100">
+  <input
+    tsToggle
+    [target]="menuView"
+    [bind]="menuView"
+    [attr.readonly]="readonly"
+    [(ngModel)]="title"
+    [placeholder]="placeholder"
+    [disabled]="isDisabled"
+    (ngModelChange)="setSearchKey($event)"
+    class="form-select w-100 pointer"
+    type="text"
+  />
+  <div
+    #menuView="tsView"
+    tsView
+    (displayChange)="setReadonlyStatus($event)"
+    [offsetY]="2"
+    [fitWidth]="true"
+    class="bg-white shadow-sm"
+  >
+    <div class="pointer border-none">
+      <div
+        *ngFor="let item of optionsList; trackBy: trackByValue"
+        close
+        class="{{ bgHoverClass }} px-3 py-2"
+        [class.active]="item.value === value"
+        (click)="setValue(item)"
+        [innerHTML]="item.content || item.text"
+      ></div>
+      <!-- no result -->
+      <div *ngIf="optionsList.length <=0 " class="text-muted text-center py-2">
+        <img [tsBase64]="boxData" />
+        <span>{{emptyLabel}}</span>
+      </div>
+    </div>
+  </div>
+</div>

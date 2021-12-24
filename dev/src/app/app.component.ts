@@ -3,6 +3,7 @@ import { ModalService } from 'projects/ng-tui/src/modules/modal/modal.service';
 import {
   ConfirmService,
   DropMenuItem,
+  Item,
   Menu,
   Pagination,
   ToastService,
@@ -18,6 +19,7 @@ import { Modal } from './modal';
 export class AppComponent {
   page = new Pagination(100);
   data = '1111';
+  options: Item[] = [{ text: '1111', value: '2222' }];
   items: Menu[] = [
     {
       text: '1',
@@ -57,12 +59,16 @@ export class AppComponent {
   ) {
     requestObject('assets/menu.json').subscribe((obj) => {
       this.items = obj;
-      console.log(this.items);
+      // console.log(this.items);
     });
   }
 
   showModal(): void {
     this.toast.success('11111', 'w222222', -1);
     // this.confirm.success('11111', '1111122222').subscribe();
+  }
+
+  handleClick(node: Node) {
+    console.log(node);
   }
 }
