@@ -1,6 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+$card-border-radius: 0;
+$card-border-width: 0;
+$card-cap-bg: transparent;
 @import "~bootstrap/scss/bootstrap";
 
 @import "./assets/base";
 
 @import "//at.alicdn.com/t/font_799319_5w8jsn3w1d5.css";
+
+.column-container {
+    overflow: hidden;
+    column-count: 2;
+    column-gap: 15px;
+
+    .column-item {
+        break-inside: avoid;
+        box-sizing: border-box;
+    }
+}

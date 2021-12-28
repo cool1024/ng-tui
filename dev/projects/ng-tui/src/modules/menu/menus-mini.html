@@ -6,8 +6,8 @@
       [target]="view"
     >
       <img
-        width="50"
-        height="50"
+        [width]="iconSize"
+        [height]="iconSize"
         [src]="sanitizer.bypassSecurityTrustResourceUrl(item.image)"
         [alt]="item.text"
       />

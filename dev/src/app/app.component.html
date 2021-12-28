@@ -57,7 +57,7 @@
   [increamentX]="20"
 ></ts-menu> -->
 
-<div class="shadow-sm" style="width: 280px; height: 100vh; overflow-y: scroll">
+<!-- <div class="shadow-sm" style="width: 280px; height: 100vh; overflow-y: scroll">
   <h4
     class="
       py-3
@@ -72,7 +72,11 @@
     <span class="ml-3">Admin Pro</span>
   </h4>
   <ts-menus [items]="items" (itemClick)="handleClick($event)"></ts-menus>
-</div>
+</div> -->
 
 <!-- <button tsBtn tsToggle [target]="a">1111</button>
 <div #a="tsCollapse" tsCollapse>1232323123</div> -->
+
+<button #toggle="tsToggle" tsBtn tsToggle (click)="showModal(toggle)">
+  Button
+</button>

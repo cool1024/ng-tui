@@ -1,0 +1,29 @@
+<div class="p-1">
+    <h3 class="font-weight-normal">G2 Chart</h3>
+    <h5 class="text-muted font-weight-light mb-4">
+        G2 is a highly interactive data-driven visualization grammar for statistical charts. with a high level of
+        usability and scalability. It provides a set of grammars, takes users beyond a limited set of charts to an
+        almost unlimited world of graphical forms. With G2, you can describe the visual appearance and interactive
+        behavior of a visualization just by one statement, and generate web-based views using Canvas or SVG.
+        <a target="_blank" href="https://g2.antv.vision/">Go to G2</a>
+    </h5>
+</div>
+<!-- <h5 class="card-header">Line Chart</h5> -->
+<ts-tabs class="card" #tsTabsOne="tsTabs" [items]="['Line', 'Curved line', 'Double y axes']">
+    <div class="card-body">
+        <div
+            *ngIf="tsTabsOne.activeIndex === 0"
+            tsChart
+            (doInit)="initLine($event)"
+            [data]="lineData"
+            [option]="{ padding: [5, 20, 30, 30], height: 400 }"
+        ></div>
+        <div
+            *ngIf="tsTabsOne.activeIndex === 1"
+            tsChart
+            (doInit)="initLines($event)"
+            [data]="linesData"
+            [option]="{ padding: [5, 20, 30, 50], height: 400 }"
+        ></div>
+    </div>
+</ts-tabs>

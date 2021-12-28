@@ -25,6 +25,7 @@ const ANIMATE_CSS = {
   ANIMATION: {
     ZoomIn: 'zoomIn',
     Pulse: 'pulse',
+    FadeIn: 'fadeIn',
   },
 };
 

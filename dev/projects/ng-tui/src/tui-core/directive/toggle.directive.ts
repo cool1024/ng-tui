@@ -4,8 +4,6 @@ import {
   Input,
   ElementRef,
   AfterViewInit,
-  Output,
-  EventEmitter,
 } from '@angular/core';
 import { Toggle } from '../interface/toggle.interface';
 

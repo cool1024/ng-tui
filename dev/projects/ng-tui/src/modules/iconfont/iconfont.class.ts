@@ -5,7 +5,7 @@ export class Iconfont {
 
   createDocumentNode(config: TUIConfig): HTMLElement {
     const dom: HTMLElement = document.createElement('i');
-    dom.classList.add(config.iconfontPrefix, `icon-${this.icon}`, 'mr-1');
+    dom.classList.add(config.iconfontPrefix, `icon-${this.icon}`, 'me-1');
     if (this.flash) {
       dom.classList.add(...config.iconfontLoadingClass);
     }

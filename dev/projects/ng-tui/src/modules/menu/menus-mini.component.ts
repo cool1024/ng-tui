@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MenusComponent } from './menus.component';
 
@@ -8,6 +8,9 @@ import { MenusComponent } from './menus.component';
   exportAs: 'tsMenusMini',
 })
 export class MenusMiniComponent extends MenusComponent {
+  @Input()
+  iconSize = 40;
+
   constructor(public sanitizer: DomSanitizer) {
     super();
   }

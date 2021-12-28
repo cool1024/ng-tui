@@ -7,15 +7,20 @@ export * from './ext/request/request';
 export * from './ext/request/request.interceptor';
 export * from './ext/request/request.module';
 export * from './tui-core/pipes/request';
-
 export * from './tui-core/interface/item.interface';
+export * from './tui-core/interface/loader.interface';
 
 export * from './tui.module';
 export * from './modules/iconfont/iconfont.module';
 export * from './modules/button/button.module';
+
 export * from './modules/collapse/collapse.module';
 export * from './modules/menu/menu.module';
+export * from './modules/menu/menu.service';
+
+// TUI MODAL
 export * from './modules/modal/modal.module';
+export * from './modules/modal/modal.service';
 
 // TUI CONFIRM
 export * from './modules/confirm/confirm.module';

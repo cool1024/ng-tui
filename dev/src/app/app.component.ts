@@ -5,9 +5,11 @@ import {
   DropMenuItem,
   Item,
   Menu,
+  MenuService,
   Pagination,
   ToastService,
 } from 'projects/ng-tui/src/public-api';
+import { ToggleDirective } from 'projects/ng-tui/src/tui-core/directive/toggle.directive';
 import { requestObject } from 'projects/ng-tui/src/tui-core/pipes/request';
 import { Modal } from './modal';
 
@@ -55,7 +57,8 @@ export class AppComponent {
   constructor(
     private modal: ModalService,
     private confirm: ConfirmService,
-    private toast: ToastService
+    private toast: ToastService,
+    private menu: MenuService
   ) {
     requestObject('assets/menu.json').subscribe((obj) => {
       this.items = obj;
@@ -63,8 +66,9 @@ export class AppComponent {
     });
   }
 
-  showModal(): void {
-    this.toast.success('11111', 'w222222', -1);
+  showModal(toggle: ToggleDirective): void {
+    this.menu.showMenu(toggle, ['11111', '22222']);
+    // this.toast.success('11111', 'w222222', -1);
     // this.confirm.success('11111', '1111122222').subscribe();
   }
 

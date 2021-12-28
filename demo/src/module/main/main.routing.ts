@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
   // Child Module
-  // { path: 'demo', loadChildren: () => import('./modules/demo/demo.module').then(m => m.DemoModule) },
+  { path: 'demo', loadChildren: () => import('../demo/demo.module').then(m => m.DemoModule) },
 
   // Default Route
   { path: '**', redirectTo: 'error', pathMatch: 'full' }
