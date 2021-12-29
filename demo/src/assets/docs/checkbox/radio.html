@@ -1,9 +1,11 @@
-<ts-radio 
-    *ngFor="let radioValue of radioValues" 
-    [(ngModel)]="checkedValue" 
-    [value]="radioValue" 
-    [color]="radioValue">
+<ts-radio
+  *ngFor="let value of radioValues"
+  [color]="value"
+  [value]="value"
+  [(ngModel)]="radioValue"
+  class="me-2"
+  >{{ value }}
 </ts-radio>
-<div class="jumbotron mt-4 text-white bg-{{checkedValue}}">
-    <h1 class="display-4">Hello, world!</h1>
+<div class="mt-2 alert alert-{{ radioValue }}" role="alert">
+  Radio value : <a href="#" class="alert-link">{{ radioValue }}</a>.
 </div>

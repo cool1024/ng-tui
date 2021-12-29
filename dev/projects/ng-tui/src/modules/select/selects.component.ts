@@ -32,6 +32,8 @@ export class SelectsComponent extends FormDirective {
 
   @Input() searchLabel: string;
 
+  @Input() zIndex = 1;
+
   @Output() optionChange = new EventEmitter<Item[]>(false);
 
   searchKey: string;
@@ -81,7 +83,7 @@ export class SelectsComponent extends FormDirective {
     } else {
       this.activeItems.splice(index, 1);
     }
-    this.changeHandle(this.values);
+    this.changeHandle && this.changeHandle(this.values);
     this.optionChange.emit(this.activeItems);
   }
 

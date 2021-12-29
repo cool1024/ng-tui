@@ -4,6 +4,7 @@ import {
   ConfirmService,
   DropMenuItem,
   Item,
+  ItemTree,
   Menu,
   MenuService,
   Pagination,
@@ -20,8 +21,42 @@ import { Modal } from './modal';
 })
 export class AppComponent {
   page = new Pagination(100);
-  data = '1111';
-  options: Item[] = [{ text: '1111', value: '2222' }];
+  data = '';
+  options: Item[] = [
+    { text: '1111', value: '2222' },
+    { text: '222', value: '11' },
+  ];
+  blockOptions: ItemTree[] = [
+    {
+      value: 1,
+      text: 'A',
+      children: [
+        { value: 2, text: 'A-A' },
+        { value: 3, text: 'A-B' },
+        {
+          value: 4,
+          text: 'A-C',
+          children: [
+            { value: 5, text: 'A-C-A' },
+            { value: 6, text: 'A-C-B' },
+            { value: 7, text: 'A-C-C' },
+          ],
+        },
+      ],
+    },
+    {
+      value: 8,
+      text: 'B',
+      children: [
+        { value: 9, text: 'B-A' },
+        { value: 10, text: 'B-B' },
+      ],
+    },
+    {
+      value: 11,
+      text: 'C',
+    },
+  ];
   items: Menu[] = [
     {
       text: '1',
@@ -42,6 +77,8 @@ export class AppComponent {
       ],
     },
   ];
+
+  value: any;
 
   dropMenus: DropMenuItem[] = [
     DropMenuItem.title('个人信息'),

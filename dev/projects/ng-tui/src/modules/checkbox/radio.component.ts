@@ -11,7 +11,7 @@ import { ConfigService } from '../../tui-core/service/config.service';
             [class.disabled]="isDisabled"
             class="d-inline-flex align-items-center radio-box select-none"
         >
-            <div [class.active]="checked" class="radio radio-{{ color }} rounded-circle mr-1">
+            <div [class.active]="checked" class="radio radio-{{ color }} rounded-circle me-1">
                 <div class="radio-check rounded-circle"></div>
             </div>
             <ng-content></ng-content>

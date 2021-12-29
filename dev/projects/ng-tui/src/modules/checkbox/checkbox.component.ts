@@ -10,7 +10,7 @@ import { ConfigService } from '../../tui-core/service/config.service';
         [class.disabled]="isDisabled"
         class="d-inline-flex align-items-center radio-box select-none"
     >
-        <div [class.active]="checked" class="radio radio-{{ color }} mr-1">
+        <div [class.active]="checked" class="radio radio-{{ color }} me-1">
             <div class="radio-check"></div>
         </div>
         <ng-content></ng-content>

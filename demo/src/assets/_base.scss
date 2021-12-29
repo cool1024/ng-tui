@@ -5,14 +5,14 @@ select,
 textarea {
     // outline: 0 none !important;
     // text-decoration: none !important;
-    z-index: 0 !important;
+    // z-index: 0 !important;
     // box-shadow: 0px 0px 0px white !important;
 }
 
 input:disabled,
 textarea:disabled,
 button:disabled {
-    z-index: 0 !important;
+    // z-index: 0 !important;
     cursor: not-allowed;
 }
 

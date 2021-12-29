@@ -99,9 +99,7 @@ export class ViewDirective
       if (this.isActive) {
         this.dismiss();
       } else {
-        console.log(this.dom);
         this.dom.classList.remove(DISPLAY.NONE);
-        console.log(this.dom.classList);
         this.dom.style.opacity = '0';
         if (this.position === POSITION.BOTTOM) {
           this.viewTool.autoPositionBottom(

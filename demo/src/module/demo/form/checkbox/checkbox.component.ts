@@ -1,24 +1,24 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-    selector: 'app-checkbox',
-    templateUrl: './checkbox.component.html',
+  selector: "app-checkbox",
+  templateUrl: "./checkbox.component.html",
 })
 export class CheckboxComponent {
-    inputs = [
-        ['color', ' string', `color name, such as 'success', 'primary', etc.`],
-        ['value', ' any', 'checked value'],
-    ];
+  inputs = [
+    ["color", " string", `color name, such as 'success', 'primary', etc.`],
+    ["value", " any", "checked value"],
+  ];
 
-    outputs = [['checkedChange', 'boolean', 'checked status.']];
+  outputs = [["checkedChange", "boolean", "checked status."]];
 
-    radioValues = ['success', 'primary', 'danger'];
+  radioValues = ["success", "primary", "danger"];
 
-    checkedValue = 'primary';
+  checkedValue = "primary";
 
-    switchValue = 'secondary';
+  switchValue = "secondary";
 
-    radioValue = 'primary';
+  radioValue = "primary";
 
-    checkboxValue = [];
+  checkboxValue = ["primary"];
 }

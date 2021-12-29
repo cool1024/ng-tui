@@ -64,7 +64,7 @@ export class SelectComponent {
                 res.results
                     .map((user: any) => ({
                         value: user.cell,
-                        content: `<img class="rounded-circle mr-3 my-1" height="40" width="40" src="${user.picture.thumbnail}"/>${user.name.first}`,
+                        content: `<img class="rounded-circle me-3 my-1" height="40" width="40" src="${user.picture.thumbnail}"/>${user.name.first}`,
                         text: user.name.first,
                     }))
                     .filter((item: any) => item.text.indexOf(userName) >= 0)

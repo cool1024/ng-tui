@@ -43,6 +43,8 @@ export class SelectComponent
 
   boxData = generateBox(30, 26);
 
+  @Input() zIndex = 1;
+
   @Input() options: Array<string | Item>;
 
   @Input() placeholder: string;

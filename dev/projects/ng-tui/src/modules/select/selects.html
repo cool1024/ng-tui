@@ -1,14 +1,14 @@
 <div
   class="pointer form-control form-control-{{getSize}}"
-  style="height: auto"
   tsToggle
   [target]="menuView"
   [bind]="menuView"
   [class.disabled]="isDisabled"
+  [style.zIndex]="zIndex"
 >
   <span class="text-muted" *ngIf="activeItems.length<=0">{{placeholder}}</span>
   <span
-    class="badge p-2 m-1 no-select {{bgClass}}"
+    class="me-1 badge no-select {{bgClass}}"
     *ngFor="let active of activeItems"
   >
     <i (click)="setValue(active)" style="font-size: 14px">&times;</i>
