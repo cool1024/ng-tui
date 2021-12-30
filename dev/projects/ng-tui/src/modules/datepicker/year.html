@@ -8,7 +8,7 @@
     <div class="d-flex flex-column-reverse flex-grow-1" style="height:20%;">
         <div class="d-flex justify-content-between">
             <div>
-                <button (click)="prevYear()" tsBtn sm class="mr-1">
+                <button (click)="prevYear()" tsBtn sm class="me-1">
                     <i class="iconfont icon-preview"></i>
                 </button>
                 <button (click)="nextYear()" tsBtn sm>
@@ -16,7 +16,7 @@
                 </button>
             </div>
             <div class="text-right">
-                <button (click)="cleanValue()" tsBtn sm class="mr-1" close>{{confiService.config.pickerCleanTitle}}</button>
+                <button (click)="cleanValue()" tsBtn sm class="me-1" close>{{confiService.config.pickerCleanTitle}}</button>
                 <button (click)="setNow()" [tsBtn]="color" sm close>{{confiService.config.pickerNowYearTitle}}</button>
             </div>
         </div>

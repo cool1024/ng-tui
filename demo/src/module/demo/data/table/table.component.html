@@ -1,107 +1,110 @@
 <div class="shadow-sm mb-3 pt-4 bg-white">
-    <div class="px-4">
-        <h3 class="font-weight-normal">TABLE</h3>
-        <h5 class="text-muted font-weight-light mb-4">
-            Documentation and examples for opt-in styling of tables with Bootstrap.
-        </h5>
-    </div>
-    <hr />
-    <div class="search-container">
-        <div class="search-container-shadow">
-            <div class="form-inline px-4">
-                <div class="form-inline mb-4 mr-3">
-                    <!-- <label class="col-form-label mx-4">Name</label> -->
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="User name"
-                        style="width: 150px"
-                        [(ngModel)]="table.search.name"
-                    />
-                </div>
-                <div class="form-inline mb-4 mr-3">
-                    <!-- <label class="col-form-label mx-4">Phone</label> -->
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Phone"
-                        style="width: 150px"
-                        [(ngModel)]="table.search.phone"
-                    />
-                </div>
-                <div class="form-inline mb-4 mr-3">
-                    <ts-datepickers [(ngModel)]="table.search.dateRange" [zIndex]="1">
-                        <div class="form-control no-select pointer" style="width: 210px">
-                            <i class="iconfont icon-calendar"></i>
-                            <span class="ml-2">{{ (table.search.dateRange | dateRange: '-') || '' }}</span>
-                        </div>
-                    </ts-datepickers>
-                </div>
-                <div class="form-inline mb-4">
-                    <div class="m-btn">
-                        <button (click)="table.doReset()" class="btn btn-white">
-                            <i class="iconfont icon-close mr-1"></i>
-                            <span>Clean</span>
-                        </button>
-                        <button (click)="table.doSearch()" class="btn btn-primary">
-                            <i class="iconfont icon-search mr-1"></i>
-                            <span>Search</span>
-                        </button>
-                        <!-- <button (click)="deleteAll()" class="btn btn-danger">
-                        <i class="iconfont icon-delete mr-1"></i>
-                        <span>Delete All</span>
-                    </button> -->
-                    </div>
-                </div>
-            </div>
+  <div class="px-4">
+    <h3 class="font-weight-normal">TABLE</h3>
+    <h5 class="text-muted font-weight-light mb-4">
+      Documentation and examples for opt-in styling of tables with Bootstrap.
+    </h5>
+  </div>
+  <hr />
+  <div class="search-container">
+    <div class="search-container-shadow px-4">
+      <div class="row g-3 pb-4">
+        <div class="col-auto">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="User name"
+            style="width: 150px"
+            [(ngModel)]="table.search.name"
+          />
         </div>
+        <div class="col-auto">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Phone"
+            style="width: 150px"
+            [(ngModel)]="table.search.phone"
+          />
+        </div>
+        <div class="col-auto">
+          <ts-datepickers [(ngModel)]="table.search.date">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Date range"
+              style="width: 150px"
+              [value]="(table.search.date|json)||''"
+            />
+          </ts-datepickers>
+        </div>
+        <div class="col-auto">
+          <button tsBtn (click)="table.doReset()" class="me-1">Clean</button>
+          <button tsBtn="primary" (click)="table.doSearch()" class="me-1">
+            Search
+          </button>
+          <button tsBtn="danger" class="me-1">Delete</button>
+        </div>
+      </div>
     </div>
-    <ts-table #table="tsTable" class="d-block p-3" [colNum]="theads.length" [loader]="dataLoader" [height]="500">
-        <thead [theads]="theads" class="thead-light"></thead>
-        <tbody>
-            <tr *ngFor="let item of table.data; index as i" class="mat-cell">
-                <td class="pl-3">{{ table.page.offset + i + 1 }}</td>
-                <td>
-                    <div class="media">
-                        <img
-                            tsImg
-                            [src]="item.avatar"
-                            alt="avatar"
-                            class="align-self-center mr-3 rounded-circle"
-                            width="40"
-                            height="40"
-                        />
-                        <div class="media-body">
-                            <p class="m-0">
-                                {{ item.nick }}
-                                <small *ngIf="item.gender === 'female'" class="text-danger">({{ item.gender }})</small>
-                                <small *ngIf="item.gender === 'male'" class="text-dark">({{ item.gender }})</small>
-                            </p>
-                            <p class="m-0 text-primary">
-                                {{ item.email }}
-                            </p>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <p class="p-0 m-0">{{ item.cell }}</p>
-                    <p class="p-0 m-0">{{ item.address }}</p>
-                </td>
-                <td>
-                    <p class="p-0 m-0">{{ item.registered.date }}</p>
-                </td>
-                <td>
-                    <span class="btn-icon btn-icon-primary">
-                        <i class="iconfont icon-edit"></i>
-                    </span>
-                    <span (click)="deleteItem(i)" class="btn-icon btn-icon-danger">
-                        <i class="iconfont icon-ashbin"></i>
-                    </span>
-                </td>
-            </tr>
-        </tbody>
-        <span>
-            A total of <span class="text-primary">{{ table.page.total }}</span> data queries.
-        </span>
-    </ts-table>
+  </div>
+  <ts-table
+    #table="tsTable"
+    class="d-block p-3"
+    [colNum]="theads.length"
+    [loader]="dataLoader"
+    [height]="500"
+  >
+    <thead [theads]="theads" class="thead-light"></thead>
+    <tbody>
+      <tr *ngFor="let item of table.data; index as i" class="mat-cell">
+        <td class="pl-3">{{ table.page.offset + i + 1 }}</td>
+        <td>
+          <div class="media">
+            <img
+              tsImg
+              [src]="item.avatar"
+              alt="avatar"
+              class="align-self-center mr-3 rounded-circle"
+              width="40"
+              height="40"
+            />
+            <div class="media-body">
+              <p class="m-0">
+                {{ item.nick }}
+                <small *ngIf="item.gender === 'female'" class="text-danger"
+                  >({{ item.gender }})</small
+                >
+                <small *ngIf="item.gender === 'male'" class="text-dark"
+                  >({{ item.gender }})</small
+                >
+              </p>
+              <p class="m-0 text-primary">
+                {{ item.email }}
+              </p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="p-0 m-0">{{ item.cell }}</p>
+          <p class="p-0 m-0">{{ item.address }}</p>
+        </td>
+        <td>
+          <p class="p-0 m-0">{{ item.registered.date }}</p>
+        </td>
+        <td>
+          <span class="btn-icon btn-icon-primary">
+            <i class="iconfont icon-edit"></i>
+          </span>
+          <span (click)="deleteItem(i)" class="btn-icon btn-icon-danger">
+            <i class="iconfont icon-ashbin"></i>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+    <span>
+      A total of <span class="text-primary">{{ table.page.total }}</span> data
+      queries.
+    </span>
+  </ts-table>
 </div>

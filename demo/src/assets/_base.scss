@@ -69,10 +69,10 @@ ts-prism {
     background-color: $gray-200;
 }
 
-.table-bordered th,
-.table-bordered td {
-    border: 1px solid rgba($cyan, 0.1) !important;
-}
+// .table-bordered th,
+// .table-bordered td {
+//     border: 1px solid rgba($cyan, 0.1) !important;
+// }
 
 .m-btn .btn {
     @extend .m-1;

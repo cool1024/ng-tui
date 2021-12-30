@@ -12,8 +12,7 @@ import { ConfigService } from '../../tui-core/service/config.service';
         <div
             #menuView="tsView"
             [ngStyle]="{ zIndex: zIndex }"
-            position="auto"
-            tsView="fadeIn"
+            tsView
             class="bg-white shadow no-select p-3"
         >
             <ts-year [activeYear]="activeYear" (yearChange)="sendChange($event)" [color]="color"></ts-year>

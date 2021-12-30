@@ -60,15 +60,16 @@ export class ViewDirective
     dom: HTMLElement
   ): void {
     if (this.viewTool.targetDom && this.viewTool.toggleDom) {
-      if (
-        !this.viewTool.targetDom.contains(dom) &&
-        !this.viewTool.toggleDom.contains(dom)
-      ) {
-        dom.hasAttribute(VIEW_KEYS.HOLD) || this.dismiss();
-      } else if (this.viewTool.targetDom.contains(dom)) {
+      if (this.viewTool.targetDom.contains(dom)) {
+        // 如果触发点在自己内部
         dom.hasAttribute(VIEW_KEYS.CLOSE) &&
           dom.getAttribute(VIEW_KEYS.CLOSE) !== 'false' &&
           this.dismiss();
+      } else if (this.viewTool.toggleDom.contains(dom)) {
+        // 如果触发点在触发对象内部暂不做操作
+      } else {
+        // 如果触发点不在自己或者触发点那么关闭本视图
+        dom.hasAttribute(VIEW_KEYS.HOLD) || this.dismiss();
       }
     }
   }

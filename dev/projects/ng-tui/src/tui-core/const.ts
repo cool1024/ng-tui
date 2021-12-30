@@ -42,6 +42,7 @@ const POSITION = {
 const VIEW_KEYS = {
   HOLD: 'hold',
   CLOSE: 'close',
+  CHECK: 'check',
 };
 
 export const TUI_CONST = {

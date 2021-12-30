@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TUIComponent } from 'projects/ng-tui/src/tui-core/component-creator/component.interface';
 import { ComponentHandleService } from 'projects/ng-tui/src/tui-core/component-creator/handle.service';
 
 @Component({

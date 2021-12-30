@@ -13,8 +13,7 @@ import { Util } from '../../tui-core/util';
         <div
             #menuView="tsView"
             [ngStyle]="{ zIndex: zIndex }"
-            position="auto"
-            tsView="fadeIn"
+            tsView
             class="bg-white shadow no-select p-3"
         >
             <ts-time [activeTime]="activeTime" (timeChange)="sendChange($event)" [color]="color"></ts-time>

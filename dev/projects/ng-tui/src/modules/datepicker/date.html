@@ -19,6 +19,7 @@
       <tr *ngFor="let tr of trList;trackBy: trackByFn" class="text-dark">
         <td class="text-center ts-day-td" *ngFor="let td of tr">
           <div
+             *ngIf="!!td"
             (click)="setDay(td)"
             class="ts-day m-auto rounded-circle
                         {{!isActiveDay(td)||('bg-'+color)}}"
@@ -26,8 +27,9 @@
             [class.ts-day-hover]="td"
             close
           >
-            {{td||''}}
+            {{td}}
           </div>
+          <div *ngIf="!td" class="ts-day m-auto rounded-circle"></div>
         </td>
       </tr>
       <tr *ngIf="trList.length<5" class="text-dark">

@@ -32,6 +32,7 @@ import { Util } from '../../tui-core/util';
         (click)="itemClick(item)"
         class="pointer px-3 py-1 {{ bgHoverClass }}"
         [class.active]="activeValue === item.value"
+        hold
         close
       >
         {{ item.text }}
