@@ -14,7 +14,7 @@
       type="number"
     />
   </ng-container>
-  <ts-dropdown [items]="items" (menuClick)="changeLimit($event.value)">
+  <ts-dropdown dropup [items]="items" (menuClick)="changeLimit($event.value)">
     <div class="pagination-button pagination-button-{{ color }}">
       {{ getLimitText(pagination.limit) }}
     </div>

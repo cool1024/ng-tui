@@ -13,37 +13,23 @@
           <input
             type="text"
             class="form-control"
-            placeholder="User name"
+            placeholder="Key words..."
             style="width: 150px"
-            [(ngModel)]="table.search.name"
+            [(ngModel)]="table.search.q"
           />
         </div>
         <div class="col-auto">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Phone"
-            style="width: 150px"
-            [(ngModel)]="table.search.phone"
-          />
-        </div>
-        <div class="col-auto">
-          <ts-datepickers [(ngModel)]="table.search.date">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Date range"
-              style="width: 150px"
-              [value]="(table.search.date|json)||''"
-            />
-          </ts-datepickers>
+          <ts-select
+            [(ngModel)]="table.search.sort"
+            [options]="['stars', 'forks', 'help-wanted-issues']"
+            placeholder="select sort..."
+          ></ts-select>
         </div>
         <div class="col-auto">
           <button tsBtn (click)="table.doReset()" class="me-1">Clean</button>
-          <button tsBtn="primary" (click)="table.doSearch()" class="me-1">
+          <button tsBtn="primary" (click)="doSearch(table)" class="me-1">
             Search
           </button>
-          <button tsBtn="danger" class="me-1">Delete</button>
         </div>
       </div>
     </div>
@@ -60,45 +46,24 @@
       <tr *ngFor="let item of table.data; index as i" class="mat-cell">
         <td class="pl-3">{{ table.page.offset + i + 1 }}</td>
         <td>
-          <div class="media">
-            <img
-              tsImg
-              [src]="item.avatar"
-              alt="avatar"
-              class="align-self-center mr-3 rounded-circle"
-              width="40"
-              height="40"
-            />
-            <div class="media-body">
-              <p class="m-0">
-                {{ item.nick }}
-                <small *ngIf="item.gender === 'female'" class="text-danger"
-                  >({{ item.gender }})</small
-                >
-                <small *ngIf="item.gender === 'male'" class="text-dark"
-                  >({{ item.gender }})</small
-                >
-              </p>
-              <p class="m-0 text-primary">
-                {{ item.email }}
-              </p>
-            </div>
-          </div>
+          <a [href]="item.html_url" target="_blank">{{ item.full_name }}</a>
+          <br />
+          <img
+            tsImg
+            [src]="item.owner.avatar_url"
+            class="rounded"
+            width="20"
+            height="20"
+          />
+          <small class="ms-2">{{ item.owner.login }}</small>
         </td>
+        <td>{{ item.language }}</td>
+        <td>{{ item.stargazers_count }}</td>
+        <td>{{ item.forks_count }}</td>
         <td>
-          <p class="p-0 m-0">{{ item.cell }}</p>
-          <p class="p-0 m-0">{{ item.address }}</p>
-        </td>
-        <td>
-          <p class="p-0 m-0">{{ item.registered.date }}</p>
-        </td>
-        <td>
-          <span class="btn-icon btn-icon-primary">
-            <i class="iconfont icon-edit"></i>
-          </span>
-          <span (click)="deleteItem(i)" class="btn-icon btn-icon-danger">
-            <i class="iconfont icon-ashbin"></i>
-          </span>
+          <button (click)="showMore(item)" type="button" class="btn btn-link">
+            more
+          </button>
         </td>
       </tr>
     </tbody>

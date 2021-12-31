@@ -1,0 +1,32 @@
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">{{data.full_name}}</h5>
+      <button (click)="handle.close()" type="button" class="btn-close"></button>
+    </div>
+    <div class="modal-body">
+      <div class="d-flex mb-3">
+        <div class="flex-shrink-0">
+          <img tsImg width="40" height="40" [src]="data.owner.avatar_url" class="rounded" />
+        </div>
+        <div class="flex-grow-1 ms-3">{{data.description}}</div>
+      </div>
+      <div class="mb-3">
+        <span
+          *ngFor="let topic of data.topics"
+          class="badge rounded-pill bg-primary me-2"
+          >{{topic}}</span
+        >
+      </div>
+      <div>
+        {{data.stargazers_count}}&nbsp;
+        {{data.language}}&nbsp;
+        {{data.license?.name}}&nbsp;
+        {{data.updated_at}}
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button tsBtn (click)="handle.close()">Close</button>
+    </div>
+  </div>
+</div>

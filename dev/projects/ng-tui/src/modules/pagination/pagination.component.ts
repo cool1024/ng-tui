@@ -33,7 +33,6 @@ export class PaginationComponent extends ThemeDirective implements DoCheck {
     this.pagination = new Pagination();
 
     this.color = configService.config.defaultColor;
-    console.log(configService.config);
     this.items = configService.config.paginationItems as any;
 
     this.getLimitText = configService.config.paginationLimitTextFormat as any;
@@ -72,7 +71,6 @@ export class PaginationComponent extends ThemeDirective implements DoCheck {
   }
 
   changeLimit(limit: number): void {
-    console.log(limit);
     this.pagination.limit = limit;
     this.setPages();
     this.pageChange.emit(this.pagination);
