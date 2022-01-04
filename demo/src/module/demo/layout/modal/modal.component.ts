@@ -33,7 +33,11 @@ export class ModalComponent {
     this.confirm
       .create("Dialog Title", `Type : ${color}`, { color })
       .subscribe((res: boolean) => {
-        this.toast.create("Message", `Result : ${res}`, { color });
+        this.toast.create("Message", `Result : ${res}`, {
+          color,
+          timeout: -1,
+          icon: color,
+        });
       });
   }
 }

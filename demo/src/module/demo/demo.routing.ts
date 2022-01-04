@@ -13,6 +13,7 @@ import { MapComponent } from "./lib/map/map.component";
 import { TableComponent } from "./data/table/table.component";
 import { ChartComponent } from "./lib/chart/chart.component";
 import { MoreComponent } from "./data/table/more/more.component";
+import { ModalComponent, SimpleModal } from "./layout/modal/modal.component";
 
 export const declarationComponents = [
   // base
@@ -24,6 +25,8 @@ export const declarationComponents = [
   // layout
   TabsComponent,
   CollapseComponent,
+  ModalComponent,
+  SimpleModal,
 
   // form
   SelectComponent,
@@ -46,6 +49,7 @@ const routes = [
   { path: "ProgressComponent", component: ProgressComponent },
   { path: "TabsComponent", component: TabsComponent },
   { path: "CollapseComponent", component: CollapseComponent },
+  { path: "ModalComponent", component: ModalComponent },
   { path: "SelectComponent", component: SelectComponent },
   { path: "CheckboxComponent", component: CheckboxComponent },
   { path: "PickerComponent", component: PickerComponent },

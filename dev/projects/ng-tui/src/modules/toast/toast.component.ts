@@ -18,9 +18,9 @@ import { ToastConfig } from './toast.interface';
       "
     >
       <h6 class="alert-heading d-flex justify-content-between">
-        <div>
-          <i [tsIcon]="toast.icon" [ngClass]="'text-' + toast.color"></i>
-          <span class="text-dark ml-2">{{ toast.title }}</span>
+        <div [ngClass]="'text-' + toast.color">
+          <i [tsIcon]="toast.icon"></i>
+          <span class="ms-2">{{ toast.title }}</span>
         </div>
         <button
           (click)="removeToast(toast)"

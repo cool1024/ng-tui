@@ -1,0 +1,76 @@
+<div class="p-1">
+  <h3 class="font-weight-normal">Modal</h3>
+  <h5 class="text-muted font-weight-light mb-4">
+    Bootstrap’s modal, more usage see
+    <a
+      target="_blank"
+      href="https://getbootstrap.com/docs/5.1/components/modal/"
+      >docs</a
+    >.
+  </h5>
+</div>
+
+<div class="column-container">
+  <div class="column-item mb-3">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="mb-3">Modal Example</h5>
+        <div class="mb-3">
+          <button tsBtn (click)="showModal()">Open</button>
+        </div>
+        <ts-tabs
+          #tsTabs="tsTabs"
+          class="mb-3"
+          [items]="['modal.component.ts', 'simple.html']"
+        >
+          <ts-prism
+            *ngIf="tsTabs.activeIndex === 0"
+            class="mt-2"
+            [codeObs]="'/assets/docs/modal/modal._' | request"
+            language="typescript"
+          >
+          </ts-prism>
+          <ts-prism
+            *ngIf="tsTabs.activeIndex === 1"
+            class="mt-2"
+            [codeObs]="'/assets/docs/modal/simple.html' | request"
+            language="typescript"
+          >
+          </ts-prism>
+        </ts-tabs>
+      </div>
+    </div>
+  </div>
+  <div class="column-item mb-3">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5>Vertically centered</h5>
+        <ts-prism
+          [codeObs]="'/assets/docs/modal/center.html' | request"
+          language="typescript"
+        >
+        </ts-prism>
+      </div>
+    </div>
+  </div>
+  <div class="column-item mb-3">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="mb-3">Dialog Example</h5>
+        <div class="m-btn">
+          <button tsBtn="danger" (click)="showDialog('danger')">Danger</button>
+          <button tsBtn="warning" (click)="showDialog('warning')">
+            Warning
+          </button>
+          <button tsBtn="primary" (click)="showDialog('primary')">
+            Primary
+          </button>
+          <button tsBtn="info" (click)="showDialog('info')">Info</button>
+          <button tsBtn="success" (click)="showDialog('success')">
+            Success
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,9 +6,9 @@ $card-cap-bg: transparent;
 $table-border-color: #ced4da;
 @import "~bootstrap/scss/bootstrap";
 
-@import "./assets/base";
+@import "~ng-tui/scss/index";
 
-@import "//at.alicdn.com/t/font_799319_5w8jsn3w1d5.css";
+@import "//at.alicdn.com/t/font_799319_gi7b3dir7ct.css";
 
 @font-face {
     font-family: "Nunito";
@@ -24,17 +24,6 @@ $table-border-color: #ced4da;
 
 * {
     font-family: "Nunito";
-}
-
-/** three-dots **/
-$dotColor: $primary;
-
-@import "assets/three-dots/_variables";
-@import "assets/three-dots/mixins";
-@import "assets/three-dots/dot-windmill";
-
-.dot-animate {
-    @extend .dot-windmill;
 }
 
 .column-container {
