@@ -13,9 +13,9 @@ NG_TUI is based with boostrap UI, for angular10+ project。
 ## Feature
 1. Support Iconfont [iconfont](http://www.iconfont.cn)
 2. Used [animate.css](https://daneden.github.io/animate.css/)
-3. Used [bootstrap4.1.3](http://getbootstrap.com)
+3. Used [Bootstrap v5.1.3](http://getbootstrap.com)
 4. Theme DIY support。
-5. Third part library support, map, chart, prims and CKEdit ect.
+5. Third part library support, map, chart, and prims ect.
 
 ## Preview
 ![preview](preview.png)
@@ -34,7 +34,10 @@ NG_TUI is based with boostrap UI, for angular10+ project。
 @import "~bootstrap/scss/bootstrap";
 
 // import ng-tui style
-// @import "~ng-tui/scss/"
+@import "~ng-tui/scss/index";
+
+// import iconfont style
+@import "//at.alicdn.com/t/font_799319_gi7b3dir7ct.css";
 ```
 
 ## Usage
@@ -52,4 +55,7 @@ import { TUIModule } from 'ng-tui';
     ...
 })
 ```
+
+## Info
+1. [Component list](COMPONENT_EN.MD)
 
