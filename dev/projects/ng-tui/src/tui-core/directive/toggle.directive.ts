@@ -18,6 +18,8 @@ export class ToggleDirective implements AfterViewInit {
 
   data: any;
 
+  link = false;
+
   @Input() target?: Toggle;
 
   @Input() bind?: Toggle;
@@ -25,6 +27,9 @@ export class ToggleDirective implements AfterViewInit {
   @HostListener('click') onClick(): void {
     if (this.target && this.target.toggle) {
       this.target.toggle(this);
+    }
+    if (this.link && this.bind && this.bind.toggle) {
+      this.bind.toggle(this);
     }
   }
 

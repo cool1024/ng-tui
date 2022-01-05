@@ -6,7 +6,6 @@ import {
   AfterViewInit,
   OnChanges,
   SimpleChanges,
-  AfterViewChecked,
 } from '@angular/core';
 import { ToggleDirective } from '../../tui-core/directive/toggle.directive';
 import { Toggle } from '../../tui-core/interface/toggle.interface';
@@ -19,9 +18,11 @@ import { CollapseDirective } from './collapse.directive';
 export class CollapsesDirective implements AfterViewInit, OnChanges, Toggle {
   @Input() auto: boolean;
 
-  @ContentChildren(CollapseDirective) collapses!: QueryList<CollapseDirective>;
+  @ContentChildren(CollapseDirective, { descendants: true })
+  collapses!: QueryList<CollapseDirective>;
 
-  @ContentChildren(ToggleDirective) toggles!: QueryList<ToggleDirective>;
+  @ContentChildren(ToggleDirective, { descendants: true })
+  toggles!: QueryList<ToggleDirective>;
 
   constructor() {
     this.auto = false;
@@ -37,6 +38,7 @@ export class CollapsesDirective implements AfterViewInit, OnChanges, Toggle {
     if (this.collapses) {
       const collapses = this.collapses.toArray();
       this.toggles.forEach((e, index) => {
+        e.link = true;
         e.data = index;
         e.target = collapses[index];
         e.bind = this;
@@ -56,6 +58,7 @@ export class CollapsesDirective implements AfterViewInit, OnChanges, Toggle {
 
   toggle(toggle: ToggleDirective): void {
     if (this.auto) {
+      console.log(111111);
       this.closeOther(toggle.data);
     }
   }

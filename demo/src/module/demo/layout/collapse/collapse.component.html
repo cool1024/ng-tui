@@ -31,24 +31,6 @@
             </tr>
           </tbody>
         </table>
-        <table class="table table-striped mt-2">
-          <thead>
-            <tr class="text-primary">
-              <th scope="col">Output</th>
-              <th scope="col" style="width: 120px">Event Type</th>
-              <th scope="col">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let output of outputs">
-              <th scope="row">{{ output[0] }}</th>
-              <td>
-                <code>{{ output[1] }}</code>
-              </td>
-              <td>{{ output[2] }}</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </div>
@@ -84,14 +66,15 @@
   <div class="column-item mb-3">
     <div class="card card-body shadow-sm">
       <h5 class="mb-3">More Usage</h5>
-      <div class="accordion">
-        <div tsCollapses class="accordion-item">
+      <div tsCollapses [auto]="true" class="accordion">
+        <!-- One -->
+        <div class="accordion-item">
           <h2 tsToggle class="accordion-header">
             <button class="accordion-button collapsed" type="button">
               Accordion Item #1
             </button>
           </h2>
-          <div tsCollapse class="accordion-collapse">
+          <div tsCollapse class="accordion-collapse ">
             <div class="accordion-body">
               <strong>This is the first item's accordion body.</strong> It is
               shown by default, until the collapse plugin adds the appropriate
@@ -101,6 +84,44 @@
               overriding our default variables. It's also worth noting that just
               about any HTML can go within the <code>.accordion-body</code>,
               though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+        <!-- Two -->
+        <div class="accordion-item">
+          <h2 tsToggle class="accordion-header">
+            <button class="accordion-button collapsed" type="button">
+              Accordion Item #2
+            </button>
+          </h2>
+          <div tsCollapse class="accordion-collapse">
+            <div class="accordion-body">
+              <strong>This is the second item's accordion body.</strong> It is
+              hidden by default, until the collapse plugin adds the appropriate
+              classes that we use to style each element. These classes control
+              the overall appearance, as well as the showing and hiding via CSS
+              transitions. You can modify any of this with custom CSS or
+              overriding our default variables. It's also worth noting that just
+              about any HTML can go within the <code>.accordion-body</code>,
+              though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+        <!-- Three -->
+        <div class="accordion-item">
+          <h2 tsToggle class="accordion-header">
+            <button class="accordion-button collapsed" type="button">
+              Accordion Item #3
+            </button>
+          </h2>
+          <div tsCollapse class="accordion-collapse">
+            <div class="accordion-body">
+              Placeholder content for this accordion, which is intended to
+              demonstrate the <code>.accordion-flush</code> class. This is the
+              third item's accordion body. Nothing more exciting happening here
+              in terms of content, but just filling up the space to make it
+              look, at least at first glance, a bit more representative of how
+              this would look in a real-world application.
             </div>
           </div>
         </div>

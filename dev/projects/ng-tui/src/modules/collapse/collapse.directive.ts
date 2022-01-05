@@ -8,6 +8,7 @@ import {
   OnChanges,
 } from '@angular/core';
 import { TUI_CONST } from '../../tui-core/const';
+import { ToggleDirective } from '../../tui-core/directive/toggle.directive';
 import { Toggle } from '../../tui-core/interface/toggle.interface';
 
 const DISPLY = TUI_CONST.BOOTSTRAP.CLASS.DISPLAY;
