@@ -8,11 +8,30 @@ import {
   Output,
   EventEmitter,
   SimpleChanges,
+  Directive,
+  ContentChildren,
+  QueryList,
 } from '@angular/core';
 import { Menu } from '../../tui-core/interface/item.interface';
 import { ThemeDirective } from '../../tui-core/directive/theme.directive';
 import { ConfigService } from '../../tui-core/service/config.service';
 import { Util } from '../../tui-core/util';
+import { TUI_CONST } from '../../tui-core/const';
+@Directive({ selector: '*[tsTab]' })
+export class TabItemDirective {
+  set active(value: boolean) {
+    if (this.e) {
+      const e = this.e.nativeElement as HTMLElement;
+      if (!value) {
+        e.classList.add(TUI_CONST.BOOTSTRAP.CLASS.DISPLAY.NONE);
+      } else {
+        e.classList.remove(TUI_CONST.BOOTSTRAP.CLASS.DISPLAY.NONE);
+      }
+    }
+  }
+
+  constructor(private e: ElementRef) {}
+}
 
 @Component({
   selector: 'ts-tabs',
@@ -62,6 +81,9 @@ export class TabComponent
   @ViewChild('tabDom')
   tabsRef!: ElementRef;
 
+  @ContentChildren(TabItemDirective, { descendants: true })
+  tabItems!: QueryList<TabItemDirective>;
+
   tabsDom!: HTMLDivElement;
   barOffset = 0;
   barLength = 0;
@@ -74,6 +96,11 @@ export class TabComponent
     if (Util.notNull(changes.activeIndex)) {
       setTimeout(() => this.setActive(this.activeIndex));
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.tabsDom = this.tabsRef.nativeElement;
+    setTimeout(() => this.setActive(this.activeIndex));
   }
 
   itemIcon(item: Menu | string): string {
@@ -92,6 +119,7 @@ export class TabComponent
     this.activeIndex = index;
     this.tabChange.emit(index);
     this.moveBar();
+    this.updateTabItem(index);
   }
 
   moveBar(): void {
@@ -115,8 +143,11 @@ export class TabComponent
     }
   }
 
-  ngAfterViewInit(): void {
-    this.tabsDom = this.tabsRef.nativeElement;
-    setTimeout(() => this.setActive(this.activeIndex));
+  updateTabItem(index: number): void {
+    if (this.tabItems) {
+      this.tabItems.forEach((tab, i) => {
+        tab.active = i === index;
+      });
+    }
   }
 }

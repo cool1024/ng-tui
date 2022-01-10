@@ -32,3 +32,4 @@
 - Select
 - Tab
 - Toast
+- Offcanvas

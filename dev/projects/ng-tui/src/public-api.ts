@@ -18,6 +18,10 @@ export * from './modules/collapse/collapse.module';
 export * from './modules/menu/menu.module';
 export * from './modules/menu/menu.service';
 
+// TUI OFFCANVAS
+export * from './modules/offcanvas/offcanvas.service';
+export * from './modules/offcanvas/offcanvas.module';
+
 // TUI MODAL
 export * from './modules/modal/modal.module';
 export * from './modules/modal/modal.service';

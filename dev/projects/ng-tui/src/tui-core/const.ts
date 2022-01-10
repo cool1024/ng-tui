@@ -35,7 +35,17 @@ const POSITION = {
   AUTO: 'auto',
   TOP: 'top',
   LEFT: 'left',
+  START: 'start',
+  END: 'end',
   RIGHT: 'right',
+};
+
+// style values
+const STYLE = {
+  VISIBILITY: {
+    HIDDEN: 'hidden',
+    VISABLE: 'visible',
+  },
 };
 
 // view key word
@@ -50,4 +60,5 @@ export const TUI_CONST = {
   ANIMATE_CSS,
   POSITION,
   VIEW_KEYS,
+  STYLE,
 };

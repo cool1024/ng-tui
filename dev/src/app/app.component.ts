@@ -7,6 +7,7 @@ import {
   ItemTree,
   Menu,
   MenuService,
+  OffcanvasService,
   Pagination,
   ToastService,
 } from 'projects/ng-tui/src/public-api';
@@ -95,6 +96,7 @@ export class AppComponent {
     private modal: ModalService,
     private confirm: ConfirmService,
     private toast: ToastService,
+    private offcanvas: OffcanvasService,
     private menu: MenuService
   ) {
     requestObject('assets/menu.json').subscribe((obj) => {
@@ -103,8 +105,9 @@ export class AppComponent {
     });
   }
 
-  showModal(toggle: ToggleDirective): void {
-    this.menu.showMenu(toggle, ['11111', '22222']);
+  showModal(): void {
+    this.offcanvas.create(Modal, { title: '111111', position: 'top' }).present();
+    // this.menu.showMenu(toggle, ['11111', '22222']);
     // this.toast.success('11111', 'w222222', -1);
     // this.confirm.success('11111', '1111122222').subscribe();
   }

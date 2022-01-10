@@ -34,7 +34,12 @@
 <ts-checkbox></ts-checkbox>
 <ts-select title="123" [options]="options"></ts-select>
 <ts-selects title="123" [options]="options"></ts-selects> -->
-<!-- <ts-tabs [items]="items[1].children" vertical></ts-tabs> -->
+<!-- <ts-tabs [items]="items[1].children">
+  <div tsTab>1</div>
+  <div tsTab>2</div>
+  <div tsTab>3</div>
+  <div tsTab>4</div>
+</ts-tabs> -->
 <!-- <ts-drop-menu [items]="dropMenus" [minWidth]="200">
   <button tsBtn>Dropdown</button>
 </ts-drop-menu> -->
@@ -42,7 +47,7 @@
 <!-- <ts-dropdown [items]="[1, 2, 3, 4]">
   <button tsBtn>Dropdown</button>
 </ts-dropdown> -->
-<!-- <button tsBtn (click)="showModal()">显示窗口</button> -->
+<button tsBtn (click)="showModal()">显示窗口</button>
 <!-- <ts-menu
   [items]="items"
   [toggleClass]="{
@@ -84,62 +89,3 @@
 <ts-timepicker [(ngModel)]="data">
   <button tsBtn>{{data}}</button>
 </ts-timepicker> -->
-<div tsCollapses [auto]="true" class="accordion">
-  <!-- One -->
-  <div class="accordion-item">
-    <h2 tsToggle class="accordion-header">
-      <button class="accordion-button collapsed" type="button">
-        Accordion Item #1
-      </button>
-    </h2>
-    <div tsCollapse class="accordion-collapse">
-      <div class="accordion-body">
-        <strong>This is the first item's accordion body.</strong> It is shown by
-        default, until the collapse plugin adds the appropriate classes that we
-        use to style each element. These classes control the overall appearance,
-        as well as the showing and hiding via CSS transitions. You can modify
-        any of this with custom CSS or overriding our default variables. It's
-        also worth noting that just about any HTML can go within the
-        <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
-    </div>
-  </div>
-  <!-- Two -->
-  <div class="accordion-item">
-    <h2 tsToggle class="accordion-header">
-      <button class="accordion-button collapsed" type="button">
-        Accordion Item #2
-      </button>
-    </h2>
-    <div tsCollapse class="accordion-collapse">
-      <div class="accordion-body">
-        <strong>This is the second item's accordion body.</strong> It is hidden
-        by default, until the collapse plugin adds the appropriate classes that
-        we use to style each element. These classes control the overall
-        appearance, as well as the showing and hiding via CSS transitions. You
-        can modify any of this with custom CSS or overriding our default
-        variables. It's also worth noting that just about any HTML can go within
-        the <code>.accordion-body</code>, though the transition does limit
-        overflow.
-      </div>
-    </div>
-  </div>
-  <!-- Three -->
-  <div class="accordion-item">
-    <h2 tsToggle class="accordion-header">
-      <button class="accordion-button collapsed" type="button">
-        Accordion Item #3
-      </button>
-    </h2>
-    <div tsCollapse class="accordion-collapse">
-      <div class="accordion-body">
-        Placeholder content for this accordion, which is intended to demonstrate
-        the <code>.accordion-flush</code> class. This is the third item's
-        accordion body. Nothing more exciting happening here in terms of
-        content, but just filling up the space to make it look, at least at
-        first glance, a bit more representative of how this would look in a
-        real-world application.
-      </div>
-    </div>
-  </div>
-</div>

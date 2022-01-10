@@ -15,6 +15,7 @@ import {
   SelectModule,
   TabModule,
   ToastModule,
+  OffCanvasModule,
 } from 'projects/ng-tui/src/public-api';
 import { Modal } from './modal';
 import { FormsModule } from '@angular/forms';
@@ -35,6 +36,7 @@ import { FormsModule } from '@angular/forms';
     SelectModule,
     TabModule,
     DatepickerModule,
+    OffCanvasModule,
     ToastModule.forRoot(),
   ],
   providers: [],
