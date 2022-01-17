@@ -43,6 +43,10 @@
             "route": "/demo/TabsComponent"
           },
           {
+            "text": "Offcanvas",
+            "route": "/demo/OffcanvasComponent"
+          },
+          {
             "text": "Collapse",
             "route": "/demo/CollapseComponent"
           },

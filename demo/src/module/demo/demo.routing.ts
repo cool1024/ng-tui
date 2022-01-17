@@ -14,6 +14,8 @@ import { TableComponent } from "./data/table/table.component";
 import { ChartComponent } from "./lib/chart/chart.component";
 import { MoreComponent } from "./data/table/more/more.component";
 import { ModalComponent, SimpleModal } from "./layout/modal/modal.component";
+import { OffcanvasComponent } from "./layout/offcanvas/offcanvas.component";
+import { CanvasComponent } from "./layout/offcanvas/canvas";
 
 export const declarationComponents = [
   // base
@@ -25,6 +27,8 @@ export const declarationComponents = [
   // layout
   TabsComponent,
   CollapseComponent,
+  OffcanvasComponent,
+  CanvasComponent,
   ModalComponent,
   SimpleModal,
 
@@ -49,6 +53,7 @@ const routes = [
   { path: "ProgressComponent", component: ProgressComponent },
   { path: "TabsComponent", component: TabsComponent },
   { path: "CollapseComponent", component: CollapseComponent },
+  { path: "OffcanvasComponent", component: OffcanvasComponent },
   { path: "ModalComponent", component: ModalComponent },
   { path: "SelectComponent", component: SelectComponent },
   { path: "CheckboxComponent", component: CheckboxComponent },
@@ -62,4 +67,4 @@ const routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DemoRoutingModule {}
+export class DemoRoutingModule { }

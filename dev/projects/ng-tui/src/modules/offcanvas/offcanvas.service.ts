@@ -6,7 +6,7 @@ import { OffcanvasComponent } from './offcanvas.component';
 
 @Injectable()
 export class OffcanvasService {
-  constructor(private cmpService: ComponentService) {}
+  constructor(private cmpService: ComponentService) { }
 
   create(content: any, options: OffcanvasOptions): ComponentHandle {
     const mHandle = this.cmpService.create(OffcanvasComponent);
@@ -32,4 +32,5 @@ export class OffcanvasService {
 export interface OffcanvasOptions {
   title: string;
   position: string;
+  content?: any;
 }

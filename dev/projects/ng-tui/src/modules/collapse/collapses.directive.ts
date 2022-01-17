@@ -58,7 +58,6 @@ export class CollapsesDirective implements AfterViewInit, OnChanges, Toggle {
 
   toggle(toggle: ToggleDirective): void {
     if (this.auto) {
-      console.log(111111);
       this.closeOther(toggle.data);
     }
   }

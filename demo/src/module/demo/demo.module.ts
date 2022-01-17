@@ -26,6 +26,7 @@ import {
     TableModule,
     MapModule,
     ChartModule,
+    OffCanvasModule,
 } from 'ng-tui';
 
 @NgModule({
@@ -37,6 +38,7 @@ import {
         ImageModule,
         TabModule,
         CollapseModule,
+        OffCanvasModule,
         ToastModule,
         ConfirmModule,
         ModalModule,
@@ -52,4 +54,4 @@ import {
     ],
     declarations: [declarationComponents],
 })
-export class DemoModule {}
+export class DemoModule { }
