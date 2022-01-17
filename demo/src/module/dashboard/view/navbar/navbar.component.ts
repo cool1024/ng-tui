@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
+import { OffcanvasService } from 'ng-tui';
+import { SideComponent } from './side';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.scss'],
 })
 export class NavbarComponent {
-  constructor() {}
+  constructor(private offcanvas: OffcanvasService) { }
+
+  showSideMenu() {
+    this.offcanvas.create(SideComponent, { title: 'System Settings', position: 'end' }).present();
+  }
 
   // changeMenuMode() {
   //     this.dashboardService.menuMode = !this.dashboardService.menuMode;

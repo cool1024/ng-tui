@@ -1,8 +1,6 @@
 <nav class="navbar text-white bg-primary d-flex justify-content-between py-0">
   <div class="item d-flex align-items-center">
-    <div
-      class="d-flex align-items-center bg-light-hover pointer h-100 px-3 mx-2"
-    >
+    <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3 mx-2">
       <i class="nav-icon iconfont icon-toggle-left"></i>
     </div>
     <div class="input-search">
@@ -20,8 +18,10 @@
     <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
       <i class="nav-icon iconfont icon-notification"></i>
     </div>
-    <div
-      class="
+    <div (click)="showSideMenu()" class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
+      <i class="nav-icon iconfont icon-setting"></i>
+    </div>
+    <div class="
         bg-light-hover
         pointer
         h-100
@@ -29,14 +29,8 @@
         d-flex
         justify-content-center
         align-items-center
-      "
-    >
-      <img
-        class="rounded-circle"
-        width="35"
-        height="35"
-        src="/assets/image/avatar.jpg"
-      />
+      ">
+      <img class="rounded-circle" width="35" height="35" src="/assets/image/avatar.jpg" />
     </div>
   </div>
 </nav>
