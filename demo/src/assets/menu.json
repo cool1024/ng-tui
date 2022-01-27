@@ -85,10 +85,6 @@
           {
             "text": "Table",
             "route": "/demo/TableComponent"
-          },
-          {
-            "text": "Github Search",
-            "route": "/demo/GithubSearchPage"
           }
         ]
       },
@@ -103,6 +99,10 @@
           {
             "text": "Chart",
             "route": "/demo/ChartComponent"
+          },
+          {
+            "text": "Ckeditor",
+            "route": "/demo/CkeditorComponent"
           }
         ]
       }

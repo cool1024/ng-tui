@@ -28,6 +28,7 @@ import {
     ChartModule,
     OffCanvasModule,
     TimelineModule,
+    CkeditorModule,
 } from 'ng-tui';
 
 @NgModule({
@@ -52,6 +53,7 @@ import {
         DatepickerModule,
         MapModule,
         ChartModule,
+        CkeditorModule,
         DemoRoutingModule,
     ],
     declarations: [declarationComponents],

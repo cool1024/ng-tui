@@ -24,7 +24,7 @@ export class TableComponent {
     "Opt",
   ];
 
-  constructor(private confirm: ConfirmService, private modal: ModalService) {}
+  constructor(private confirm: ConfirmService, private modal: ModalService) { }
 
   doSearch(table: any) {
     if (this.checkSearchForm(table.params)) {
@@ -56,14 +56,12 @@ export class TableComponent {
 
   dataLoader(page: Pagination, search: SearchParams): Observable<any> {
     return requestObject(
-      `https://api.github.com/search/repositories?q=${
-        search.params.q || "Angular"
-      }&sort=${search.params.sort || "stars"}&page=${page.page}&per_page=${
-        page.limit
+      `https://api.github.com/search/repositories?q=${search.params.q || "Angular"
+      }&sort=${search.params.sort || "stars"}&page=${page.page}&per_page=${page.limit
       }`
     ).pipe(
       map((res) => {
-        const total = res.total_count;
+        const total = Math.min(res.total_count || 0, 1000);
         const data = res.items;
         return { result: true, total, data };
       })
