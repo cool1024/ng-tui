@@ -35,7 +35,7 @@ export class YearpickerComponent extends FormDirective {
     }
 
     sendChange(value: number): void {
-        this.changeHandle(value || null);
+        this.changeHandle && this.changeHandle(value || null);
     }
 
     constructor(cfs: ConfigService) {

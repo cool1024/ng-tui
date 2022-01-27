@@ -71,6 +71,9 @@ export * from './lib/map/map.directive';
 export * from './lib/map/map.interface';
 export * from './lib/map/map.module';
 export * from './lib/map/map.service';
+export * from './lib/ckeditor/ckeditor.module';
+export * from './lib/ckeditor/ckeditor.directive';
+
 
 // TUI TAB
 export * from './modules/tab/tab.module';

@@ -1,0 +1,468 @@
+/* Global overrides for CKEditor 5 demos (e.g /ckeditor-5, track-changes, comments, mathtype, proofreader etc. */
+main.site-content {
+    /* To not style comments container ( with role="comment" ). */
+    .ck-editor[role="application"],
+    .ck-editor[role="textbox"] {
+        .ck-editor__main {
+            // @extend .pretty-text--sm;
+
+            .ck-content {
+                // padding: 0 _space();
+                overflow-wrap: anywhere;
+                word-break: break-word;
+            }
+
+            // See: https://github.com/cksource/bigbang-ckeditor.com/issues/263
+            h3 {
+                line-height: 1.5;
+            }
+
+            // h2 {
+            //     margin-top: $pretty-line-height--rem;
+            // }
+        }
+
+        .image {
+            &-style-side {
+                // margin: _space();
+                margin-right: 0;
+            }
+
+            & > figcaption {
+                // padding: _space() * 0.5 _space();
+                background-color: _color(dimmed);
+                line-height: 2rem;
+                font: {
+                    size: _font-scale(small);
+                    weight: 600;
+                }
+                // @include _zindex(float);
+            }
+        }
+
+        blockquote {
+            p:first-child,
+            h1:first-child,
+            h2:first-child,
+            h3:first-child,
+            h4:first-child,
+            h5:first-child,
+            li:first-child ul:first-child {
+                margin-top: 0;
+            }
+
+            p:last-child,
+            h1:last-child,
+            h2:last-child,
+            h3:last-child,
+            h4:last-child,
+            h5:last-child,
+            li:last-child,
+            ul:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+#cke5-inline-demo {
+    .ck-content {
+        // @extend .pretty-text--sm;
+        margin-bottom: 1rem;
+        // padding: _space();
+        background-color: _color("white");
+        // @include _border;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+
+        h3 {
+            margin-top: 0;
+        }
+    }
+
+    header.ck-editor__editable {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        text-align: center;
+
+        h2 {
+            &:first-of-type {
+                margin-top: 0;
+            }
+
+            & + h3 {
+                margin-top: 0;
+                color: _text-color(secondary);
+                font: {
+                    weight: 600;
+                    size: _font-scale(big);
+                }
+            }
+        }
+    }
+
+    .demo-row {
+        p {
+            margin: {
+                // top: _space();
+                bottom: 0;
+            }
+        }
+
+        h3 {
+            margin: 0;
+            // line-height: $pretty-line-height--rem;
+            font: {
+                weight: 600;
+                size: _font-scale(big);
+            }
+        }
+    }
+}
+
+#cke5-balloon-demo,
+#cke5-balloon-block-demo {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    // @extend .pretty-text--sm;
+    // padding: 0 _space();
+    display: inline-block;
+}
+
+.ck.ck-block-toolbar-button {
+    transform: translateX(-10px);
+}
+
+.demo-row {
+    width: 100%;
+    display: flex;
+
+    &__half {
+        width: 50%;
+
+        &:first-of-type {
+            padding-right: 0.5rem;
+        }
+
+        &:last-of-type {
+            padding-left: 0.5rem;
+        }
+    }
+
+    &__third {
+        width: 33.3333%;
+
+        & > div {
+            // padding: _space();
+            // @include _border;
+        }
+
+        &:nth-of-type(2) {
+            padding: {
+                left: 1rem;
+                right: 1rem;
+            }
+        }
+    }
+
+    h3 {
+        margin: 0;
+        // line-height: $pretty-line-height--rem;
+        font: {
+            weight: 600;
+            size: _font-scale(big);
+        }
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+#cke5-decoupled-document-demo {
+    background-color: _gray-hex("silver");
+
+    .cke5-decoupled-document-editable {
+        // The horizontal padding has been reset due to the `ckeditor5-export-pdf` demo showcase.
+        // https://github.com/cksource/ckeditor5-internal/issues/139.
+        // padding: _double-space() _double-space()*2;
+        padding: _double-space() 0;
+        max-height: 700px;
+        overflow-y: auto;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        // @include _pretty-text(17px, 1.7rem, 2.5rem);
+
+        h2 {
+            &:first-of-type {
+                margin-top: 0;
+            }
+
+            & + h3 {
+                margin-top: 0;
+                margin-bottom: _double-space();
+            }
+        }
+
+        h3 {
+            font-size: 2rem;
+            // margin-bottom: _space();
+        }
+
+        .ck-widget.table {
+            table {
+                font-size: 0.9em;
+                width: 100%;
+
+                thead {
+                    background-color: #f2f2f2;
+                }
+
+                td {
+                    text-align: left;
+                    // workaround for not sure if content will be p/span or none
+                    padding: {
+                        top: _half-space();
+                        bottom: _half-space();
+                    }
+
+                    > * {
+                        margin: _half-space() 0;
+
+                        &:first-child {
+                            margin-top: 0;
+                        }
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+        // style for signature image
+        .image-style-full-left {
+            margin-left: 0;
+            margin-right: auto;
+        }
+    }
+
+    .ck-content.ck-editor__editable {
+        width: calc(21cm + 2px);
+        // The responsiveness of the editable's width is temporary disabled due to the `ckeditor5-export-pdf` demo showcase.
+        // https://github.com/cksource/ckeditor5-internal/issues/139.
+        // max-width: 100%;
+        min-height: calc(29.7cm + 2px);
+        margin: 0 auto;
+        padding: 2cm 1.2cm;
+        border: 1px hsl(0, 0%, 82.7%) solid;
+        background-color: _color("white");
+        box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.1);
+        overflow-wrap: anywhere;
+        word-break: break-word;
+
+        &.ck-pagination-view {
+            min-height: auto;
+        }
+    }
+
+    .ck-toolbar {
+        border: {
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+    }
+}
+
+#cke5-decoupled-document-paged-demo {
+    background-color: _gray-hex("silver");
+
+    .cke5-decoupled-document-paged-info {
+        // padding: _space() _space() _space() _double-space() * 2;
+        background: _color("info");
+        position: relative;
+        color: _text-color("primary", "light");
+
+        a {
+            color: _color("panel");
+        }
+
+        &:before {
+            content: "i";
+            position: absolute;
+            left: _double-space();
+            font-size: 4rem;
+            top: 38%;
+            color: currentColor;
+        }
+    }
+
+    .cke5-decoupled-document-paged-editable {
+        padding: _double-space() 0;
+        max-height: 700px;
+        overflow-y: auto;
+
+        .ck-content.ck-editor__editable {
+            width: calc(21cm + 2px);
+            // The responsiveness of the editable's width is temporary disabled due to the `ckeditor5-export-pdf` demo showcase.
+            // https://github.com/cksource/ckeditor5-internal/issues/139.
+            // max-width: 100%;
+            min-height: calc(29.7cm + 2px);
+            margin: 0 auto;
+            padding: 2cm 1.2cm;
+            border: 1px hsl(0, 0%, 82.7%) solid;
+            background-color: _color("white");
+            box-shadow: 0 0 5px hsla(0, 0%, 0%, 0.1);
+            overflow-wrap: anywhere;
+            word-break: break-word;
+
+            &.ck-pagination-view {
+                min-height: auto;
+            }
+
+            > *:first-child {
+                margin-top: 0;
+            }
+        }
+
+        p {
+            letter-spacing: -0.048px;
+            margin: 0 0 24.2px;
+            font-size: 17px;
+            line-height: 1.5;
+
+            &:first-of-type {
+                margin-top: 0;
+            }
+        }
+
+        a {
+            color: #0a90eb;
+            text-decoration: none;
+        }
+
+        h2 {
+            font-size: 27px;
+            line-height: 1;
+            margin: 12.5px 0 12.5px;
+            font-weight: 600;
+
+            &:first-of-type {
+                margin-top: 0;
+            }
+
+            & + h3 {
+                margin-top: 0;
+                margin-bottom: 50px;
+            }
+        }
+
+        h3 {
+            font-size: 20px;
+            line-height: 1.25;
+            letter-spacing: -0.2px;
+            margin: 25px 0 8.33px;
+            font-weight: 700;
+        }
+        h4 {
+            font-size: 18px;
+            line-height: 1.4;
+            margin: 23px 0 8.33px;
+            font-weight: 800;
+        }
+        h2,
+        h3,
+        h4 {
+            break-after: avoid;
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+        .page-break + {
+            h2,
+            h3,
+            h4 {
+                margin-top: 0;
+            }
+        }
+
+        strong {
+            font-weight: 700;
+        }
+        ol,
+        ul {
+            margin-top: 25px;
+            margin-bottom: 25px;
+            li {
+                letter-spacing: 0.6px;
+                font-size: 17px;
+                line-height: 1.5;
+            }
+            ol,
+            ul {
+                padding-right: 0;
+                margin: 0;
+            }
+        }
+
+        figure {
+            &.table {
+                margin: {
+                    top: 25px;
+                    bottom: 25px;
+                }
+                table {
+                    font-size: 14px;
+                    width: 100%;
+                    margin: 0;
+
+                    thead {
+                        display: table-row-group;
+                    }
+
+                    /* There is no simple way to beat default <th> content styles (.ck-content[dir="ltr"] .table th { text-align: left } ). */
+                    th {
+                        &,
+                        & p {
+                            text-align: center !important;
+                            background-color: _gray-hex("light");
+                        }
+                    }
+                    th,
+                    td {
+                        padding: 6.25px 6.25px;
+                        &,
+                        & p {
+                            font-size: 15.3px;
+                            line-height: 1.63;
+                            text-align: left;
+                        }
+                        // single paragraphs are removed - but if it is not the only child/there is text alignment - the paragraphs are left in
+                        > * {
+                            margin: 12.5px 0;
+                            &:first-child {
+                                margin-top: 0;
+                            }
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+                ol,
+                ul {
+                    li {
+                        letter-spacing: -0.048px;
+                        margin: 23px 0;
+                        font-size: 15.64px;
+                        line-height: 1.62;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#cke5-decoupled-document-demo .page-break:after {
+    display: block;
+}

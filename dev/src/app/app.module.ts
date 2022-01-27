@@ -17,6 +17,7 @@ import {
   ToastModule,
   OffCanvasModule,
   TimelineModule,
+  CkeditorModule,
 } from 'projects/ng-tui/src/public-api';
 import { Modal } from './modal';
 import { FormsModule } from '@angular/forms';
@@ -39,6 +40,7 @@ import { FormsModule } from '@angular/forms';
     DatepickerModule,
     OffCanvasModule,
     TimelineModule,
+    CkeditorModule,
     ToastModule.forRoot(),
   ],
   providers: [],

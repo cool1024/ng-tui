@@ -10,18 +10,21 @@ export class YearComponent extends ThemeDirective implements OnChanges {
     yearList: Array<number[]> = [];
     focusYear: number;
 
-    @Input() activeYear: number;
+    @Input() activeYear = 2020;
     @Output() yearChange = new EventEmitter<number>(false);
 
     constructor(public confiService: ConfigService) {
         super();
-        this.activeYear = this.focusYear = new Date().getFullYear();
+        this.focusYear = new Date().getFullYear();
+        this.activeYear = this.focusYear;
         this.updateYears();
         this.color = confiService.config.defaultColor;
     }
 
     ngOnChanges(): void {
-        this.focusYear = this.activeYear;
+        if (this.activeYear) {
+            this.focusYear = this.activeYear;
+        }
         this.updateYears();
     }
 
@@ -35,8 +38,8 @@ export class YearComponent extends ThemeDirective implements OnChanges {
         for (let i = 0; i < 6; i++) {
             years.push(year + 1 + i);
         }
-        console.log(this.yearList);
         this.yearList = [years.splice(0, 3), years.splice(0, 3), years.splice(0, 3)];
+        console.log(this.yearList);
     }
 
     setActiveYear(year: number): void {
