@@ -6,8 +6,8 @@ const routes: Routes = [
   // Home Route
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-  // Child Module
   { path: 'demo', loadChildren: () => import('../demo/demo.module').then(m => m.DemoModule) },
+  { path: 'simple', loadChildren: () => import('../simple/simple.module').then(m => m.SimpleModule) },
 
   // Default Route
   { path: '**', redirectTo: 'error', pathMatch: 'full' }

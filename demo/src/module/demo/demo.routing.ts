@@ -16,6 +16,7 @@ import { MoreComponent } from "./data/table/more/more.component";
 import { ModalComponent, SimpleModal } from "./layout/modal/modal.component";
 import { OffcanvasComponent } from "./layout/offcanvas/offcanvas.component";
 import { CanvasComponent } from "./layout/offcanvas/canvas";
+import { TimelineComponent } from "./layout/timeline/timeline.component";
 
 export const declarationComponents = [
   // base
@@ -26,6 +27,7 @@ export const declarationComponents = [
 
   // layout
   TabsComponent,
+  TimelineComponent,
   CollapseComponent,
   OffcanvasComponent,
   CanvasComponent,
@@ -53,6 +55,7 @@ const routes = [
   { path: "ProgressComponent", component: ProgressComponent },
   { path: "TabsComponent", component: TabsComponent },
   { path: "CollapseComponent", component: CollapseComponent },
+  { path: "TimelineComponent", component: TimelineComponent },
   { path: "OffcanvasComponent", component: OffcanvasComponent },
   { path: "ModalComponent", component: ModalComponent },
   { path: "SelectComponent", component: SelectComponent },

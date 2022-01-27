@@ -11,7 +11,7 @@ import { ConfigService } from '../../tui-core/service/config.service';
         [class.active]="isOpen"
         [class.disabled]="isDisabled"
     >
-        <div class="switch-line text-left mr-1 position-relative">
+        <div class="switch-line text-left me-1 position-relative">
             <div class="d-inline-block rounded-circle switch-bar bg-white"></div>
         </div>
         <div [class]="applyStyle(isOpen, activeClass)">

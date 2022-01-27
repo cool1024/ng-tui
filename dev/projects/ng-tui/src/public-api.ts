@@ -126,3 +126,8 @@ export * from './modules/datepicker/time';
 export * from './modules/datepicker/timepicker.component';
 export * from './modules/datepicker/year.component';
 export * from './modules/datepicker/yearpicker.component';
+
+
+// TUI TIMELINE
+export * from './modules/timeline/timeline.module';
+export * from './modules/timeline/timeline.module';

@@ -1,0 +1,38 @@
+.timeline {
+    position: relative;
+    .timeline-item {
+        &::before {
+            background-color: #f1f3fa;
+            bottom: 0;
+            content: "";
+            left: 9px;
+            position: absolute;
+            top: 20px;
+            width: 2px;
+            z-index: 0;
+        }
+        .timeline-dot {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            position: relative;
+            .timeline-dot-out {
+                border-radius: 100%;
+                width: 100%;
+                height: 100%;
+                opacity: 0.3;
+            }
+            .timeline-dot-in {
+                position: absolute;
+                left: 4px;
+                top: 4px;
+                border-radius: 100%;
+                width: 12px;
+                height: 12px;
+            }
+        }
+        .timeline-item-info{
+            margin-left: 30px;
+        }
+    }
+}

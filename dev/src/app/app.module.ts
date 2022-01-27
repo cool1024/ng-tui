@@ -16,6 +16,7 @@ import {
   TabModule,
   ToastModule,
   OffCanvasModule,
+  TimelineModule,
 } from 'projects/ng-tui/src/public-api';
 import { Modal } from './modal';
 import { FormsModule } from '@angular/forms';
@@ -37,9 +38,10 @@ import { FormsModule } from '@angular/forms';
     TabModule,
     DatepickerModule,
     OffCanvasModule,
+    TimelineModule,
     ToastModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

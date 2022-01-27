@@ -27,6 +27,7 @@ import {
     MapModule,
     ChartModule,
     OffCanvasModule,
+    TimelineModule,
 } from 'ng-tui';
 
 @NgModule({
@@ -39,6 +40,7 @@ import {
         TabModule,
         CollapseModule,
         OffCanvasModule,
+        TimelineModule,
         ToastModule,
         ConfirmModule,
         ModalModule,
