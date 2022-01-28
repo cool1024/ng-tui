@@ -28,6 +28,7 @@ export * from './modules/modal/modal.service';
 export * from './tui-core/component-creator/component.service';
 export * from './tui-core/component-creator/component.interface';
 export * from './tui-core/component-creator/handle.service';
+export * from './tui-core/component-creator/view.service';
 
 // TUI CONFIRM
 export * from './modules/confirm/confirm.module';

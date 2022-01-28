@@ -10,8 +10,8 @@ import {
   OffcanvasService,
   Pagination,
   ToastService,
+  ViewService,
 } from 'projects/ng-tui/src/public-api';
-import { ToggleDirective } from 'projects/ng-tui/src/tui-core/directive/toggle.directive';
 import { requestObject } from 'projects/ng-tui/src/tui-core/pipes/request';
 import { Modal } from './modal';
 
@@ -97,7 +97,8 @@ export class AppComponent {
     private confirm: ConfirmService,
     private toast: ToastService,
     private offcanvas: OffcanvasService,
-    private menu: MenuService
+    private menu: MenuService,
+    private view: ViewService,
   ) {
     requestObject('assets/menu.json').subscribe((obj) => {
       this.items = obj;
@@ -105,8 +106,9 @@ export class AppComponent {
     });
   }
 
-  showModal(): void {
-    this.offcanvas.create(Modal, { title: '111111', position: 'top' }).present();
+  showModal(toggle: any): void {
+    this.view.create(toggle, Modal, { position: 'auto', offsetX: 0, offsetY: 0, zIndex: 1, fitWidth: false }).present();
+    //this.offcanvas.create(Modal, { title: '111111', position: 'top' }).present();
     // this.menu.showMenu(toggle, ['11111', '22222']);
     // this.toast.success('11111', 'w222222', -1);
     // this.confirm.success('11111', '1111122222').subscribe();

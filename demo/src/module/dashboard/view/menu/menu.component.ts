@@ -1,16 +1,15 @@
-import { Component } from "@angular/core";
-import { Router } from "@angular/router";
-import { Menu, Node, requestObject } from "ng-tui";
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Menu, Node, requestObject } from 'ng-tui';
 @Component({
-  selector: "app-menu",
-  templateUrl: "./menu.component.html",
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
 })
 export class MenuComponent {
   items: Menu[] = [];
   constructor(private router: Router) {
-    requestObject("assets/menu.json").subscribe((obj) => {
+    requestObject('assets/menu.json').subscribe((obj) => {
       this.items = obj;
-      console.log(this.items);
     });
   }
 

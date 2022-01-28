@@ -12,24 +12,17 @@
     <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
       <img height="18" src="assets/image/flags/cn.gif" alt="china" />
     </div>
-    <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
-      <i class="nav-icon iconfont icon-fullscreen-expand"></i>
-    </div>
-    <div class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
+    <div (click)="showMsg(toggle)" tsToggle #toggle="tsToggle"
+      class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
       <i class="nav-icon iconfont icon-notification"></i>
+    </div>
+    <div (click)="showFullScreen()" class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
+      <i class="nav-icon iconfont icon-fullscreen-expand"></i>
     </div>
     <div (click)="showSideMenu()" class="d-flex align-items-center bg-light-hover pointer h-100 px-3">
       <i class="nav-icon iconfont icon-setting"></i>
     </div>
-    <div class="
-        bg-light-hover
-        pointer
-        h-100
-        px-3
-        d-flex
-        justify-content-center
-        align-items-center
-      ">
+    <div class="bg-light-hover pointer h-100 px-3 d-flex justify-content-center align-items-center">
       <img class="rounded-circle" width="35" height="35" src="/assets/image/avatar.jpg" />
     </div>
   </div>

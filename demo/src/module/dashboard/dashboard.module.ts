@@ -3,6 +3,7 @@ import { ButtonModule, ChartModule, CheckboxModule, MenuModule, OffCanvasModule,
 import { DashboardRoutingModule } from './dashboard.routing';
 import { HomePageComponent } from './page/home/home.page';
 import { MenuComponent } from './view/menu/menu.component';
+import { MsgComponent } from './view/navbar/msg';
 import { NavbarComponent } from './view/navbar/navbar.component';
 import { SideComponent } from './view/navbar/side';
 
@@ -16,7 +17,7 @@ import { SideComponent } from './view/navbar/side';
     OffCanvasModule,
     DashboardRoutingModule,
   ],
-  declarations: [NavbarComponent, SideComponent, MenuComponent, HomePageComponent],
+  declarations: [NavbarComponent, SideComponent, MsgComponent, MenuComponent, HomePageComponent],
   exports: [NavbarComponent, MenuComponent],
 })
 export class DashboardModule { }
