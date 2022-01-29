@@ -1,0 +1,24 @@
+<div class="card ribbon-box shadow">
+    <div class="card-body">
+        <!-- TAG -->
+        <ng-container *ngIf="hasPosition">
+            <div class="ribbon ribbon-{{color}} float-{{position}}">
+                <i [tsIcon]="icon"></i>
+                <span class="ms-1">{{tag}}</span>
+            </div>
+            <h6 class="{{textClass}} text-{{revPosition}} m-3">{{title}}</h6>
+        </ng-container>
+
+        <!-- PIN -->
+        <ng-container *ngIf="!hasPosition">
+            <div class="ribbon-two ribbon-two-{{color}}">
+                <span class="ms-1">{{tag}}</span>
+            </div>
+            <div class="mb-3"></div>
+        </ng-container>
+
+        <div class="mx-3 mb-3">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

@@ -18,6 +18,7 @@ import {
   OffCanvasModule,
   TimelineModule,
   CkeditorModule,
+  RibbonsModule,
 } from 'projects/ng-tui/src/public-api';
 import { Modal } from './modal';
 import { FormsModule } from '@angular/forms';
@@ -41,6 +42,7 @@ import { FormsModule } from '@angular/forms';
     OffCanvasModule,
     TimelineModule,
     CkeditorModule,
+    RibbonsModule,
     ToastModule.forRoot(),
   ],
   providers: [],

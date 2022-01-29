@@ -4,11 +4,10 @@
     <div class="flex-shrink-0 shadow-sm">
       <app-navbar></app-navbar>
     </div>
-    <div
-      class="flex-grow-1 bg-light"
-      style="overflow-y: auto; overflow-x: hidden"
-    >
-      <div class="p-4"><router-outlet></router-outlet></div>
+    <div class="flex-grow-1 bg-light" style="overflow-y: auto; overflow-x: hidden;z-index: 1;">
+      <div class="p-4">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 </div>

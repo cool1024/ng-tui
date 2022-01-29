@@ -55,6 +55,10 @@
             "route": "/demo/TimelineComponent"
           },
           {
+            "text": "Ribbons",
+            "route": "/demo/RibbonsComponent"
+          },
+          {
             "text": "Modal",
             "route": "/demo/ModalComponent"
           }

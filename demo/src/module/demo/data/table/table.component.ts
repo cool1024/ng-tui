@@ -24,6 +24,8 @@ export class TableComponent {
     "Opt",
   ];
 
+  checkedItems: number[] = [];
+
   constructor(private confirm: ConfirmService, private modal: ModalService) { }
 
   doSearch(table: any) {

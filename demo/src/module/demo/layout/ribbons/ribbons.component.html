@@ -1,0 +1,41 @@
+<div class="p-1">
+  <h3 class="font-weight-normal">Ribbons</h3>
+  <h5 class="text-muted font-weight-light mb-4">
+  </h5>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <ts-ribbons tag="Developer" title="Lead designer" icon="fujian" position="start">
+        <p class="font-14">websitename.com <span class="ms-2 font-12">Year: 2015 - 18</span></p>
+        <p class="text-muted mt-2">Everyone realizes why a new common language
+          would be desirable: one could refuse to pay expensive translators.
+          To achieve this, it would be necessary to have uniform grammar,
+          pronunciation and more common words.</p>
+      </ts-ribbons>
+      <br>
+      <ts-ribbons color="info" tag="Developer" title="Lead designer" icon="fujian" position="end">
+        <p class="font-14">websitename.com <span class="ms-2 font-12">Year: 2015 - 18</span></p>
+        <p class="text-muted mt-2">Everyone realizes why a new common language
+          would be desirable: one could refuse to pay expensive translators.
+          To achieve this, it would be necessary to have uniform grammar,
+          pronunciation and more common words.</p>
+      </ts-ribbons>
+      <br>
+      <ts-ribbons tag="Developer">
+        <h5 class="mt-0 mb-1">Lead designer / Developer</h5>
+        <p class="font-14">websitename.com <span class="ms-2 font-12">Year: 2015 - 18</span></p>
+        <p class="text-muted mt-2">Everyone realizes why a new common language
+          would be desirable: one could refuse to pay expensive translators.
+          To achieve this, it would be necessary to have uniform grammar,
+          pronunciation and more common words.</p>
+      </ts-ribbons>
+    </div>
+    <div class="col-6">
+      <div class="card card-body shadow-sm">
+        <h5>Code</h5>
+        <ts-prism [codeObs]="'/assets/docs/ribbons/1.html' | request" language="html"></ts-prism>
+      </div>
+    </div>
+  </div>
+</div>

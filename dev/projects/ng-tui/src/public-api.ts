@@ -135,3 +135,7 @@ export * from './modules/datepicker/yearpicker.component';
 // TUI TIMELINE
 export * from './modules/timeline/timeline.module';
 export * from './modules/timeline/timeline.module';
+
+// TUI RIBBONS
+export * from './modules/ribbons/ribbons.module';
+export * from './modules/ribbons/ribbons';

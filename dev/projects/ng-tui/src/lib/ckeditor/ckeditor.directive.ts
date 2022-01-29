@@ -8,6 +8,8 @@ export class CkeditorDirective implements OnChanges, AfterViewInit, OnDestroy {
 
     @Input() content: string;
 
+    @Input() config: any;
+
     @Output() contentChange = new EventEmitter<string>(false);
 
     private editor: any;
@@ -24,13 +26,13 @@ export class CkeditorDirective implements OnChanges, AfterViewInit, OnDestroy {
 
     ngAfterViewInit(): void {
         const dom = this.elf.nativeElement as HTMLElement;
-        ClassicEditor.create(dom)
+        ClassicEditor.create(dom, this.config || {})
             .then((editor: any) => {
                 this.editor = editor;
                 this.updateContent();
                 editor.model.document.on('change:data', () => {
                     this.contentChange.emit(editor.getData());
-                })
+                });
             })
             .catch(error => {
                 console.error(error);
@@ -38,6 +40,6 @@ export class CkeditorDirective implements OnChanges, AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.editor && this.editor.destory();
+        this.editor && this.editor.destroy();
     }
 }

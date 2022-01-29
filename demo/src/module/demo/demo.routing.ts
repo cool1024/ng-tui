@@ -18,6 +18,7 @@ import { OffcanvasComponent } from './layout/offcanvas/offcanvas.component';
 import { CanvasComponent } from './layout/offcanvas/canvas';
 import { TimelineComponent } from './layout/timeline/timeline.component';
 import { CkeditorComponent } from './lib/ckeditor/ckeditor.component';
+import { RibbonsComponent } from './layout/ribbons/ribbons.component';
 
 export const declarationComponents = [
   // base
@@ -30,6 +31,7 @@ export const declarationComponents = [
   TabsComponent,
   TimelineComponent,
   CollapseComponent,
+  RibbonsComponent,
   OffcanvasComponent,
   CanvasComponent,
   ModalComponent,
@@ -58,6 +60,7 @@ const routes = [
   { path: 'TabsComponent', component: TabsComponent },
   { path: 'CollapseComponent', component: CollapseComponent },
   { path: 'TimelineComponent', component: TimelineComponent },
+  { path: 'RibbonsComponent', component: RibbonsComponent },
   { path: 'OffcanvasComponent', component: OffcanvasComponent },
   { path: 'ModalComponent', component: ModalComponent },
   { path: 'SelectComponent', component: SelectComponent },

@@ -10,20 +10,12 @@
     <div class="search-container-shadow px-4">
       <div class="row g-3 pb-4">
         <div class="col-auto">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Key words..."
-            style="width: 150px"
-            [(ngModel)]="table.search.q"
-          />
+          <input type="text" class="form-control" placeholder="Key words..." style="width: 150px"
+            [(ngModel)]="table.search.q" />
         </div>
         <div class="col-auto">
-          <ts-select
-            [(ngModel)]="table.search.sort"
-            [options]="['stars', 'forks', 'help-wanted-issues']"
-            placeholder="select sort..."
-          ></ts-select>
+          <ts-select [(ngModel)]="table.search.sort" [options]="['stars', 'forks', 'help-wanted-issues']"
+            placeholder="select sort..."></ts-select>
         </div>
         <div class="col-auto">
           <button tsBtn (click)="table.doReset()" class="me-1">Clean</button>
@@ -34,27 +26,23 @@
       </div>
     </div>
   </div>
-  <ts-table
-    #table="tsTable"
-    class="d-block p-3"
-    [colNum]="theads.length"
-    [loader]="dataLoader"
-    [height]="500"
-  >
-    <thead [theads]="theads" class="thead-light"></thead>
+  <ts-table #table="tsTable" class="d-block p-3" [colNum]="theads.length" [loader]="dataLoader" [height]="500">
+    <thead class="thead-light">
+      <tr>
+        <th><ts-checkbox></ts-checkbox></th>
+        <th *ngFor="let th of theads">{{th}}</th>
+      </tr>
+    </thead>
     <tbody>
       <tr *ngFor="let item of table.data; index as i" class="mat-cell">
-        <td class="pl-3">{{ table.page.offset + i + 1 }}</td>
+        <td class="pl-3">
+          <ts-checkbox [value]="item.id" [(ngModel)]="checkedItems"></ts-checkbox>
+        </td>
+        <td class="ps-3">{{ table.page.offset + i + 1 }}</td>
         <td>
           <a [href]="item.html_url" target="_blank">{{ item.full_name }}</a>
           <br />
-          <img
-            tsImg
-            [src]="item.owner.avatar_url"
-            class="rounded"
-            width="20"
-            height="20"
-          />
+          <img tsImg [src]="item.owner.avatar_url" class="rounded" width="20" height="20" />
           <small class="ms-2">{{ item.owner.login }}</small>
         </td>
         <td>{{ item.language }}</td>

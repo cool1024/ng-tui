@@ -29,6 +29,7 @@ import {
     OffCanvasModule,
     TimelineModule,
     CkeditorModule,
+    RibbonsModule,
 } from 'ng-tui';
 
 @NgModule({
@@ -54,6 +55,7 @@ import {
         MapModule,
         ChartModule,
         CkeditorModule,
+        RibbonsModule,
         DemoRoutingModule,
     ],
     declarations: [declarationComponents],
