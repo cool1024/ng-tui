@@ -1,17 +1,23 @@
-<div style="width: 280px; height: 100vh; overflow-y: scroll">
-  <h4
-    class="
+<!-- FULL MODE -->
+<div *ngIf="fullMode" style="width: 280px; height: 100vh; overflow-y: scroll">
+  <h4 class="
       py-3
       border-bottom
       flex-shrink-0
       d-flex
       justify-content-center
       align-items-center
-    "
-    style="height: 70px;"
-  >
+    " style="height: 70px;">
     <img height="30" src="assets/favicon.svg" />
     <span class="ml-3">Admin Pro</span>
   </h4>
   <ts-menus [items]="items" (itemClick)="handleClick($event)"></ts-menus>
+</div>
+
+<!-- MINI MODE -->
+<div *ngIf="!fullMode" style="width: 80px; height: 100vh; overflow-y: scroll">
+  <h4 class="py-3 border-bottom flex-shrink-0 d-flex justify-content-center align-items-center" style="height: 70px;">
+    <img height="40" src="assets/favicon.svg" />
+  </h4>
+  <ts-menus-mini [items]="items" (itemClick)="handleClick($event)"></ts-menus-mini>
 </div>

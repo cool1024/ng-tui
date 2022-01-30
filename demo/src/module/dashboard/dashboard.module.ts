@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ButtonModule, ChartModule, CheckboxModule, MenuModule, OffCanvasModule, TabModule } from 'ng-tui';
+import { ButtonModule, ChartModule, CheckboxModule, MenuModule, OffCanvasModule, TabModule, TUIExtModule } from 'ng-tui';
 import { DashboardRoutingModule } from './dashboard.routing';
 import { HomePageComponent } from './page/home/home.page';
 import { MenuComponent } from './view/menu/menu.component';
@@ -9,6 +9,7 @@ import { SideComponent } from './view/navbar/side';
 
 @NgModule({
   imports: [
+    TUIExtModule,
     ButtonModule,
     CheckboxModule,
     TabModule,

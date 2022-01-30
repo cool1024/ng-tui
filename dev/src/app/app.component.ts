@@ -10,6 +10,7 @@ import {
   OffcanvasService,
   Pagination,
   ToastService,
+  ValueService,
   ViewService,
 } from 'projects/ng-tui/src/public-api';
 import { requestObject } from 'projects/ng-tui/src/tui-core/pipes/request';
@@ -99,11 +100,18 @@ export class AppComponent {
     private offcanvas: OffcanvasService,
     private menu: MenuService,
     private view: ViewService,
+    private value_: ValueService,
   ) {
     requestObject('assets/menu.json').subscribe((obj) => {
       this.items = obj;
       // console.log(this.items);
     });
+    this.value_.setValue('GOOD', 'AAA', false);
+    // this.value_.setValue('DOOG', 'BBB', false);
+    console.log(this.value_.getValue('DOOG', 111));
+    console.log(this.value_.getValue('GOOD', 111));
+    console.log(this.value_.getValue('GOOD_', 111));
+    console.log(this.value_.value);
   }
 
   showModal(toggle: any): void {

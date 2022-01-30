@@ -1,11 +1,14 @@
 /*
- * Public API Surface of ng-tui
+    Public API Surface of ng-tui
  */
 
 // TUI EXT
 export * from './ext/request/request';
 export * from './ext/request/request.interceptor';
 export * from './ext/request/request.module';
+export * from './ext/ext.module';
+export * from './ext/value/value.service';
+
 export * from './tui-core/pipes/request';
 export * from './tui-core/interface/item.interface';
 export * from './tui-core/interface/loader.interface';

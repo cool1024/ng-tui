@@ -1,6 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { OffcanvasService, ViewService } from 'ng-tui';
+import { OffcanvasService, ValueService, ViewService } from 'ng-tui';
 import { ToggleDirective } from 'ng-tui/tui-core/directive/toggle.directive';
+import { DASHBOARD_CONFIG } from '../../dashboard.const';
 import { MsgComponent } from './msg';
 import { SideComponent } from './side';
 @Component({
@@ -9,7 +10,17 @@ import { SideComponent } from './side';
   styleUrls: ['./navbar.scss'],
 })
 export class NavbarComponent implements AfterViewInit {
-  constructor(private offcanvas: OffcanvasService, private view: ViewService) { }
+
+  constructor(
+    private offcanvas: OffcanvasService,
+    private view: ViewService,
+    private vs: ValueService,
+  ) { }
+
+  toggleMenuSize(): void {
+    const value = this.vs.getValue(DASHBOARD_CONFIG.FULL_MENU, true) as boolean;
+    this.vs.setValue(DASHBOARD_CONFIG.FULL_MENU, !value, true);
+  }
 
   showSideMenu(): void {
     this.offcanvas.create(SideComponent, { title: 'System Settings', position: 'end' }).present();

@@ -19,6 +19,7 @@ import {
   TimelineModule,
   CkeditorModule,
   RibbonsModule,
+  TUIExtModule,
 } from 'projects/ng-tui/src/public-api';
 import { Modal } from './modal';
 import { FormsModule } from '@angular/forms';
@@ -43,6 +44,7 @@ import { FormsModule } from '@angular/forms';
     TimelineModule,
     CkeditorModule,
     RibbonsModule,
+    TUIExtModule,
     ToastModule.forRoot(),
   ],
   providers: [],
