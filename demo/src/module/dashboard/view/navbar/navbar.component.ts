@@ -23,12 +23,16 @@ export class NavbarComponent implements AfterViewInit {
   }
 
   showSideMenu(): void {
-    this.offcanvas.create(SideComponent, { title: 'System Settings', position: 'end' }).present();
+    this.offcanvas
+      .create(SideComponent, {
+        title: SideComponent.title,
+        position: SideComponent.position
+      })
+      .present();
   }
 
   showMsg(toggle: ToggleDirective): void {
     this.view.create(toggle, MsgComponent).present();
-
   }
 
   showFullScreen(): void {

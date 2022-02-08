@@ -3,5 +3,6 @@ import { Component } from '@angular/core';
   templateUrl: './side.html',
 })
 export class SideComponent {
-
+  static title = 'System Settings';
+  static position = 'end';
 }

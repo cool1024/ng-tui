@@ -1,4 +1,6 @@
 import { Injectable } from "@angular/core";
+import { Observable, Subject } from "rxjs";
+import { map, skipWhile } from "rxjs/operators";
 
 const TUI_STORAGE_KEY = 'TUI_STORAGE_KEY';
 
@@ -9,6 +11,12 @@ export class ValueService {
 
     get value(): { [key: string]: any } {
         return { ...this.loadFromStorage(), ...this.param };
+    }
+
+    private subject!: Subject<[string, any]>;
+
+    constructor() {
+        this.subject = new Subject<[string, any]>();
     }
 
     private loadFromStorage(): { [key: string]: any } {
@@ -27,9 +35,17 @@ export class ValueService {
             storageObj[key] = value;
             localStorage.setItem(TUI_STORAGE_KEY, JSON.stringify(storageObj));
         }
+        this.subject.next([key, value]);
     }
 
     getValue(key: string, defaultValue: any): any {
         return this.value[key] || defaultValue;
+    }
+
+    valueChange(key: string): Observable<any> {
+        return this.subject.asObservable().pipe(
+            skipWhile(item => item[0] !== key),
+            map<[string, any], any>(item => item[0])
+        );
     }
 }
