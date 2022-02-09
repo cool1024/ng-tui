@@ -33,7 +33,7 @@ export class ToggleDirective implements AfterViewInit {
     }
   }
 
-  constructor(public elementRef: ElementRef) {}
+  constructor(public elementRef: ElementRef) { }
 
   ngAfterViewInit(): void {
     if (this.bind && this.bind.bind) {

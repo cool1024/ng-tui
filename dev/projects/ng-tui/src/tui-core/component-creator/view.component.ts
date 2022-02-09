@@ -11,8 +11,8 @@ import { ViewOption } from "./view.interface";
                     [offsetX]="viewOption.offsetX"
                     [offsetY]="viewOption.offsetY"
                     [fitWidth]="viewOption.fitWidth"
-                    [style.zIndex]="viewOption.zIndex"
-                    (displayChange)="changeHandle($event)">
+                    [style.zIndex]="viewOption.zIndex">
+                    <!--(displayChange)="changeHandle($event)"-->
                     <ng-template tsHost></ng-template>
                 </div>`
 })
@@ -32,21 +32,16 @@ export class ViewComponent implements TUIComponent, AfterViewInit {
 
     constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
 
-    loadComponent(component: Type<any>, handle: ComponentHandle) {
+    loadComponent(component: Type<any>, handle: ComponentHandle): void {
         const viewContainerRef = this.host.viewContainerRef;
         const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
         viewContainerRef.createComponent<TUIComponent>(componentFactory);
         this.handle = handle;
     }
 
-    changeHandle(status: boolean): void {
-        if (!status) {
-            this.handle.destroy();
-        }
-    }
-
     ngAfterViewInit(): void {
         this.view.toggle(this.toggle);
+        this.toggle.target = this.view;
     }
 
     tuiOnPresent(): void { }

@@ -17,6 +17,7 @@ export class MenuComponent {
       this.items = obj;
     });
     this.fullMode = this.vs.getValue(DASHBOARD_CONFIG.FULL_MENU, true);
+    this.vs.valueChange(DASHBOARD_CONFIG.FULL_MENU).subscribe(v=>this.fullMode = v);
   }
 
   handleClick(node: Node): void {

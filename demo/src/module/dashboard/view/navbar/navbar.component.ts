@@ -1,5 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { OffcanvasService, ValueService, ViewService } from 'ng-tui';
+import { ComponentHandle } from 'ng-tui/tui-core/component-creator/handle.class';
 import { ToggleDirective } from 'ng-tui/tui-core/directive/toggle.directive';
 import { DASHBOARD_CONFIG } from '../../dashboard.const';
 import { MsgComponent } from './msg';
@@ -11,11 +12,17 @@ import { SideComponent } from './side';
 })
 export class NavbarComponent implements AfterViewInit {
 
+  private msgView?: ComponentHandle;
+
+  private fullMenu: boolean;
+
   constructor(
     private offcanvas: OffcanvasService,
     private view: ViewService,
     private vs: ValueService,
-  ) { }
+  ) {
+    this.vs.valueChange(DASHBOARD_CONFIG.FULL_MENU).subscribe(res => console.log(res));
+  }
 
   toggleMenuSize(): void {
     const value = this.vs.getValue(DASHBOARD_CONFIG.FULL_MENU, true) as boolean;
@@ -32,7 +39,10 @@ export class NavbarComponent implements AfterViewInit {
   }
 
   showMsg(toggle: ToggleDirective): void {
-    this.view.create(toggle, MsgComponent).present();
+    if (!this.msgView) {
+      this.msgView = this.view.create(toggle, MsgComponent);
+      // this.msgView.present();
+    }
   }
 
   showFullScreen(): void {

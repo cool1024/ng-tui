@@ -45,7 +45,7 @@ export class ValueService {
     valueChange(key: string): Observable<any> {
         return this.subject.asObservable().pipe(
             skipWhile(item => item[0] !== key),
-            map<[string, any], any>(item => item[0])
+            map<[string, any], any>(item => item[1])
         );
     }
 }

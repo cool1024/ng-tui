@@ -112,10 +112,15 @@ export class AppComponent {
     console.log(this.value_.getValue('GOOD', 111));
     console.log(this.value_.getValue('GOOD_', 111));
     console.log(this.value_.value);
+    this.value_.valueChange('DOOG').subscribe(v => console.log(v));
   }
 
   showModal(toggle: any): void {
-    this.view.create(toggle, Modal, { position: 'auto', offsetX: 0, offsetY: 0, zIndex: 1, fitWidth: false }).present();
+    this.value_.setValue('FDOOG', 4444);
+    if (!this.value) {
+      this.value = this.view.create(toggle, Modal, { position: 'auto', offsetX: 0, offsetY: 0, zIndex: 1, fitWidth: false });
+    }
+    // .present();
     //this.offcanvas.create(Modal, { title: '111111', position: 'top' }).present();
     // this.menu.showMenu(toggle, ['11111', '22222']);
     // this.toast.success('11111', 'w222222', -1);
