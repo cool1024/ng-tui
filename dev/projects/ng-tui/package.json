@@ -2,8 +2,8 @@
   "name": "ng-tui",
   "version": "0.1.47-alpha",
   "peerDependencies": {
-    "@angular/common": "^11.0.9",
-    "@angular/core": "^11.0.9"
+    "@angular/common": "^12.2.16",
+    "@angular/core": "^12.2.16"
   },
   "dependencies": {
     "tslib": "^2.0.0"
