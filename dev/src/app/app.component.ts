@@ -116,7 +116,9 @@ export class AppComponent {
   }
 
   showModal(toggle: any): void {
-    this.value_.setValue('FDOOG', 4444);
+    const doog = !this.value_.getValue('DOOG', true);
+    console.log('doog', doog);
+    this.value_.setValue('DOOG', doog, true);
     if (!this.value) {
       this.value = this.view.create(toggle, Modal, { position: 'auto', offsetX: 0, offsetY: 0, zIndex: 1, fitWidth: false });
     }

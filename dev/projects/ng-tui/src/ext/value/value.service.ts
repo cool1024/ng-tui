@@ -39,7 +39,11 @@ export class ValueService {
     }
 
     getValue(key: string, defaultValue: any): any {
-        return this.value[key] || defaultValue;
+        if (this.value[key] !== false) {
+            return this.value[key] || defaultValue;
+        } else {
+            return false;
+        }
     }
 
     valueChange(key: string): Observable<any> {

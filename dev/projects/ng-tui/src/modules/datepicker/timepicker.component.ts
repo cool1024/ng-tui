@@ -67,7 +67,7 @@ export class TimepickerComponent extends FormDirective {
     }
 
     sendChange(value: number): void {
-        this.changeHandle(value && Util.getTimeStr(this.activeTime));
+        this.changeHandle && this.changeHandle(value && Util.getTimeStr(this.activeTime));
     }
 
     constructor(cfs: ConfigService) {

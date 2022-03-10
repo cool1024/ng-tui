@@ -1,31 +1,12 @@
 <div *ngFor="let menu of items;index as i">
   <ng-container *ngFor="let item of menu.children">
-    <div
-      class="text-center py-3 bg-primary-hover pointer"
-      tsToggle
-      [target]="view"
-    >
-      <img
-        [width]="iconSize"
-        [height]="iconSize"
-        [src]="sanitizer.bypassSecurityTrustResourceUrl(item.image)"
-        [alt]="item.text"
-      />
+    <div class="text-center py-3 bg-primary-hover pointer" tsToggle [target]="view" (click)="handleIconClick(item,i)">
+      <img [width]="iconSize" [height]="iconSize" [src]="sanitizer.bypassSecurityTrustResourceUrl(item.image)"
+        [alt]="item.text" />
     </div>
-    <div
-      #view="tsView"
-      [tsView]="top"
-      [fitWith]="true"
-      [offsetX]="85"
-      [offsetY]="-80"
-      class="bg-white shadow-sm rounded"
-      style="overflow: hidden; min-width: 160px"
-    >
-      <div
-        close
-        *ngFor="let e of item.children"
-        class="pointer bg-primary-hover p-3"
-      >
+    <div #view="tsView" [tsView]="top" [fitWith]="true" [offsetX]="85" [offsetY]="-80"
+      class="bg-white shadow-sm rounded" style="overflow: hidden; min-width: 160px">
+      <div close *ngFor="let e of item.children" class="pointer bg-primary-hover p-3">
         {{e.text}}
       </div>
     </div>

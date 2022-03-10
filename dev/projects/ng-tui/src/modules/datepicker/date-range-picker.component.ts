@@ -88,6 +88,6 @@ export class DatepickersComponent extends FormDirective {
         ? `${value.end.year}/${value.end.month}/${value.end.day}`
         : '',
     };
-    this.changeHandle(range);
+    this.changeHandle && this.changeHandle(range);
   }
 }

@@ -14,4 +14,8 @@ export class MenusMiniComponent extends MenusComponent {
   constructor(public sanitizer: DomSanitizer) {
     super();
   }
+
+  handleIconClick(node: Node, keyIndex: number): void {
+    this.itemClick.emit(node);
+  }
 }
